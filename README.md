@@ -10,5 +10,4 @@
   </p>
 </p>
 
-# MapleStoryUnity
 > A framework to build MapleStory MMO RPG games.
