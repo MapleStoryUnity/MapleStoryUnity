@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="MapleStory Unity Logo" src="./etc/logo.png" />
+  <img alt="MapleStory Unity Logo" src="./etc/logo.png" width="300" height="300" />
   <h1 align="center">MapleStory Unity</h1>
   <p align="center">
     <a href="https://opensource.org/licenses/BSD-3-Clause"><img alt="License" src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg"/></a>
