@@ -1,0 +1,49 @@
+# ignore the these directories
+/.git
+/.vs
+/Temp
+/Build
+/Library
+/Logs
+/obj
+/Publish
+
+# ignore build info
+/Assets/StreamingAssets/build_info
+/Assets/StreamingAssets/build_info.*
+
+# ignore webcam images
+/Assets/JCS_GameData/WebcamShot
+/Assets/JCS_GameData/WebcamShot.*
+
+# ignore the following extension file
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+*.orig
+*.app
+*.exe
+*.*_data
+.vsconfig
+
+# Unity3D generated meta files
+*.pidb.meta
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+
+# ignore mac attribute file
+*.DS_Store
+
+# Builds
+*.apk
+*.unitypackage
+
+# ignore PSD
+*.psd
