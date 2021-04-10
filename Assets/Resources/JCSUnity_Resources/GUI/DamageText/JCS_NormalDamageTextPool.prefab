@@ -1,0 +1,237 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &147644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 488936}
+  - component: {fileID: 11421890}
+  m_Layer: 0
+  m_Name: JCS_NormalDamageText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &488936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438252}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11421890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b52126c65ff8042bdf36aa77ae65aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDamageTextEffectType: 0
+  mMoveSpeed: 0.4
+  mSpacing: 0.75
+  mFadeSpeed: 1
+  mBaseOrderLayer: 15
+  mCapitalizeLetter: 1
+  mCapitalLetterScale: {x: 0.1, y: 0.1, z: 0.1}
+  mWaveZiggeEffect: 1
+  mWaveZigge: 0.07
+  mAsymptoticScaleEffect: 1
+  mAsymptoticScale: 0.1
+  mCritialSpriteScale: {x: 1, y: 1, z: 1}
+  mSpacingX: 0.5
+  mSpacingY: 0.5
+  mRandomSize: 1
+  mMinSize: -1
+  mMaxSize: 1
+  mDamageTextMiss: {fileID: 0}
+  mCritialStrike: {fileID: 0}
+  mDamageText0: {fileID: 21300000, guid: 35c1884a6af385440bc9fbb692cb64d4, type: 3}
+  mDamageText1: {fileID: 21300000, guid: 0ecc2a5a8ad971841928c68b09aacfc4, type: 3}
+  mDamageText2: {fileID: 21300000, guid: ad65002eb732dbe43b4baaf8b54a4240, type: 3}
+  mDamageText3: {fileID: 21300000, guid: bca618a40add0b844b49f4d5d9d6bff1, type: 3}
+  mDamageText4: {fileID: 21300000, guid: c000c229c16523b4390e752133015915, type: 3}
+  mDamageText5: {fileID: 21300000, guid: da78b95490a463640a568b1ee712aa67, type: 3}
+  mDamageText6: {fileID: 21300000, guid: 6161cde7bcb1e4f449b13d0e3e8be9e0, type: 3}
+  mDamageText7: {fileID: 21300000, guid: 235bdc5aa248d3044a7186623f722f46, type: 3}
+  mDamageText8: {fileID: 21300000, guid: 68f473068199661459456e0a69fbb4e4, type: 3}
+  mDamageText9: {fileID: 21300000, guid: cbe575e6f3b3e55448305e932eaa8011, type: 3}
+--- !u!1 &196502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 438252}
+  - component: {fileID: 8285092}
+  - component: {fileID: 11470364}
+  - component: {fileID: 11467278}
+  m_Layer: 0
+  m_Name: JCS_NormalDamageTextPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &438252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 488936}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8285092
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196502}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &11470364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mSoundSettingType: 0
+--- !u!114 &11467278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 029e90126beb87049a6815ae59cd712f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mNumberOfHandle: 80
+  mDamageText: {fileID: 11445126, guid: 91cfec0190b91b849acda7dfb68bef7f, type: 3}
+  mSpacingPerText: 1
+  mTimePerSpawn: 0.1
+  mHitSound: {fileID: 8300000, guid: 4913222f00b7466419656d01e8bae9d6, type: 3}
+  mZiggeEffect: 1
+  mRightAlign: 0.2
+  mLeftAlign: 0.2

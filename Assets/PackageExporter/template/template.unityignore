@@ -1,0 +1,15 @@
+# 
+# Thank you for using 'Unity Package Exporter'. This is the generated 
+# unityignore file.
+# 
+# Package Name: [PACKAGE_NAME]
+# Version: [VERSION_NO]
+# Creation Date: [CREATION_DATE] 
+# 
+# Package Link: https://github.com/jcs090218/UnityPackageExporter
+# Author: Shen, Jen-Chieh
+# Email: jcs090218@gmail.com
+# 
+
+# Ignore this plugin itself.
+PackageExporter

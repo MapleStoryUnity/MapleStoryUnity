@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &101666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432412}
+  - 114: {fileID: 11445126}
+  m_Layer: 0
+  m_Name: JCS_NormalDamageText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &432412
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11445126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b52126c65ff8042bdf36aa77ae65aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDamageTextEffectType: 0
+  mScale: {x: 3, y: 3, z: 3}
+  mMoveSpeed: 0.4
+  mSpacing: 0.75
+  mFadeSpeed: 1
+  mBaseOrderLayer: 15
+  mCapitalizeLetter: 1
+  mCapitalLetterScale: {x: 0.1, y: 0.1, z: 0.1}
+  mWaveZiggeEffect: 1
+  mWaveZigge: 0.07
+  mAsymptoticScaleEffect: 1
+  mAsymptoticScale: 0.1
+  mDamageTextMiss: {fileID: 0}
+  mCritialStrike: {fileID: 0}
+  mDamageText0: {fileID: 21300000, guid: 35c1884a6af385440bc9fbb692cb64d4, type: 3}
+  mDamageText1: {fileID: 21300000, guid: 0ecc2a5a8ad971841928c68b09aacfc4, type: 3}
+  mDamageText2: {fileID: 21300000, guid: ad65002eb732dbe43b4baaf8b54a4240, type: 3}
+  mDamageText3: {fileID: 21300000, guid: bca618a40add0b844b49f4d5d9d6bff1, type: 3}
+  mDamageText4: {fileID: 21300000, guid: c000c229c16523b4390e752133015915, type: 3}
+  mDamageText5: {fileID: 21300000, guid: da78b95490a463640a568b1ee712aa67, type: 3}
+  mDamageText6: {fileID: 21300000, guid: 6161cde7bcb1e4f449b13d0e3e8be9e0, type: 3}
+  mDamageText7: {fileID: 21300000, guid: 235bdc5aa248d3044a7186623f722f46, type: 3}
+  mDamageText8: {fileID: 21300000, guid: 68f473068199661459456e0a69fbb4e4, type: 3}
+  mDamageText9: {fileID: 21300000, guid: cbe575e6f3b3e55448305e932eaa8011, type: 3}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 101666}
+  m_IsPrefabParent: 1

@@ -1,0 +1,10 @@
+========================================================================
+$File: A Star Pathfinding Doc.txt $
+$Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
+$Date: 2016-08-26 $
+$Notice: See LICENSE.txt for modification and distribution information 
+                  Copyright (c) 2016 by Shen, Jen-Chieh $
+========================================================================
+
+Any object with unwalkable plz attach the layer mask!
+Tutorial Link here: https://www.youtube.com/playlist?list=PLFt_AvWsXl0cq5Umv3pMC9SPnKjfp9eGW

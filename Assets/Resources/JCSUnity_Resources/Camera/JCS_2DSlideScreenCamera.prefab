@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &184380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 473926}
+  - component: {fileID: 8178290}
+  - component: {fileID: 11406734}
+  m_Layer: 0
+  m_Name: JCS_2DSlideScreenCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &473926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &8178290
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184380}
+  m_Enabled: 1
+--- !u!114 &11406734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aced5a0f8b8186c4792c067572fc63db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testWithKey: 0
+  upKey: 119
+  downKey: 120
+  leftKey: 97
+  rightKey: 100
+  upLeftKey: 113
+  downLeftKey: 122
+  upRightKey: 101
+  downRightKey: 99
+  mCurrentPage: {x: 0, y: 0}
+  mUnityGUIType: 1
+  mJCS_2DCamera: {fileID: 0}
+  mPanelHolder: {fileID: 0}
+  mSwipeArea: {x: 0.3, y: 0.3}
+  mFreezeX: 0
+  mFreezeY: 0
+  mSwitchSceneSound: {fileID: 0}
+  mMinPageX: -5
+  mMaxPageX: 5
+  mMinPageY: -5
+  mMaxPageY: 5

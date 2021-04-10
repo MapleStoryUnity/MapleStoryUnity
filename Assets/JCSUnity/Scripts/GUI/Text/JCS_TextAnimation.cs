@@ -1,0 +1,156 @@
+/**
+ * $File: JCS_TextAnimation.cs $
+ * $Date: 2019-07-18 14:34:29 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information
+ *                   Copyright © 2019 by Shen, Jen-Chieh $
+ */
+
+/* NOTE: If you are using `TextMesh Pro` uncomment this line.
+ */
+#define TMP_PRO
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+#if TMP_PRO
+using TMPro;
+#endif
+
+namespace JCSUnity
+{
+    /// <summary>
+    /// Text animation that will display text accordingly.
+    /// </summary>
+    public class JCS_TextAnimation
+        : MonoBehaviour
+    {
+        /* Variables */
+
+        [Header("** Chec Variables (JCS_TextAnimation) **")]
+
+        [Tooltip("Frame this animation is currently displayed.")]
+        [SerializeField]
+        private int mCurrentFrame = 0;
+
+
+        [Header("** Initialize Variables (JCS_TextAnimation) **")]
+
+        [Tooltip("Target text renderer.")]
+        [SerializeField]
+        private Text mTextContainer = null;
+
+#if TMP_PRO
+        [Tooltip("Target text renderer.")]
+        [SerializeField]
+        private TextMeshPro mTextMesh = null;
+#endif
+
+
+        [Header("** Runtime Variables (JCS_TextAnimation) **")]
+
+        [Tooltip("Animation active or not active.")]
+        [SerializeField]
+        private bool mActive = true;
+
+        [Tooltip("Hold all text animation's frame.")]
+        [TextArea]
+        public List<string> textFrame = null;
+
+        [Tooltip("Seconds per frame.")]
+        [SerializeField]
+        [Range(0.0f, 30.0f)]
+        private float mSPF = 0.5f;
+
+        // Base timer to display frame.
+        private float mFrameTimer = 0.0f;
+
+
+        /* Setter & Getter */
+
+        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
+#if TMP_PRO
+        public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
+#endif
+        public int CurrentFrame { get { return this.mCurrentFrame; } }
+        public float SPF { get { return this.mSPF; } set { this.mSPF = value; } }
+
+
+        /* Functions */
+
+        private void Awake()
+        {
+            // Initialize the first frame.
+            UpdateTextFrame();
+        }
+
+        private void Update()
+        {
+            if (!mActive)
+                return;
+
+            DoTextAnimation();
+        }
+
+        /// <summary>
+        /// Update the frame text.
+        /// </summary>
+        public void UpdateTextFrame()
+        {
+            UpdateTextFrame(this.mCurrentFrame);
+        }
+
+        /// <summary>
+        /// Update the frame text.
+        /// </summary>
+        /// <param name="frameIndex"> Frame index to displayed. </param>
+        public void UpdateTextFrame(int frameIndex)
+        {
+            if (this.mCurrentFrame < 0 ||
+                this.mCurrentFrame >= textFrame.Count)
+                return;
+
+            this.mCurrentFrame = frameIndex;
+
+            /* Ensure in display range. */
+            if (this.mCurrentFrame >= textFrame.Count)
+                this.mCurrentFrame = textFrame.Count - 1;
+            else if (this.mCurrentFrame < 0)
+                this.mCurrentFrame = 0;
+
+            if (mTextContainer)
+                mTextContainer.text = textFrame[this.mCurrentFrame];
+#if TMP_PRO
+            if (mTextMesh)
+                mTextMesh.text = textFrame[this.mCurrentFrame];
+#endif
+        }
+
+        /// <summary>
+        /// Do the actual text animation here.
+        /// </summary>
+        private void DoTextAnimation()
+        {
+            if (textFrame == null)
+                return;
+
+            mFrameTimer += Time.deltaTime;
+
+            if (mFrameTimer < mSPF)
+                return;
+
+            ++this.mCurrentFrame;
+
+            if (this.mCurrentFrame >= textFrame.Count)
+                this.mCurrentFrame = 0;
+
+            UpdateTextFrame();
+
+            mFrameTimer = 0.0f;  // Reset timer.
+        }
+    }
+}
