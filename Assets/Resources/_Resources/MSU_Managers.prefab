@@ -61,4 +61,6 @@ MonoBehaviour:
   - String
   - TamingMob
   - UI
-  mPaths: /../wz/
+  mEncVersion: 0
+  mVersion: 113
+  mPath: ../wz/

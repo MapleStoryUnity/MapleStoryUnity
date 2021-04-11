@@ -27,8 +27,9 @@ namespace MSU.Test
 
         private void Start()
         {
-            
-        }
+            WzFileManager wzfm = WzFileManager.instance;
 
+            wzfm.OpenWzFile("Map");
+        }
     }
 }

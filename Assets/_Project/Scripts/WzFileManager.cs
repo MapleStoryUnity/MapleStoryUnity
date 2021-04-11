@@ -16,10 +16,10 @@ using MapleLib.WzLib;
 using MapleLib.WzLib.WzProperties;
 using MapleLib.WzLib.WzStructure.Data;
 
-namespace MSU.Test
+namespace MSU
 {
     /// <summary>
-    /// 
+    /// Manages external Wz files.
     /// </summary>
     public class WzFileManager
         : JCS_Managers<WzFileManager>
@@ -34,11 +34,19 @@ namespace MSU.Test
         [SerializeField]
         private List<string> mFilenames = null;
 
+        [Tooltip("Wz file encoding version.")]
+        [SerializeField]
+        private WzMapleVersion mEncVersion = WzMapleVersion.GMS;
+
+        [Tooltip("Version number.")]
+        [SerializeField]
+        private short mVersion = -1;
+
         [Header("** Runtime Variables (WzFileManager) **")]
 
         [Tooltip("Path points to wz directory.")]
         [SerializeField]
-        private string mPaths = null;
+        private string mPath = "../wz/";
 
         /* Setter & Getter */
 
@@ -48,25 +56,22 @@ namespace MSU.Test
         {
             instance = this;
 
-            mPaths = Path.Combine(Application.dataPath, mPaths);
+            mPath = JCS_Path.Combine(Application.dataPath, mPath);
         }
 
-        private bool OpenWzFile(string path, WzMapleVersion encVersion, short version, out WzFile file)
+        public WzFile OpenWzFile(string name)
         {
-            try
-            {
-                WzFile f = new WzFile(path, version, encVersion);
-                wzFiles.Add(f);
-                f.ParseWzFile();
-                file = f;
-                return true;
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("Error initializing " + Path.GetFileName(path) + " (" + e.Message + ").\r\nCheck that the directory is valid and the file is not in use.");
-                file = null;
-                return false;
-            }
+            var filename = name + ".wz";
+            WzFile f = new WzFile(JCS_Path.Combine(mPath, filename), mVersion, mEncVersion);
+            wzFiles.Add(f);
+            f.ParseWzFile();
+            return f;
+        }
+
+        public void UnloadWzFile(WzFile file)
+        {
+            file.Dispose();
+            wzFiles.Remove(file);
         }
     }
 }
