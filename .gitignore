@@ -47,3 +47,6 @@ sysinfo.txt
 
 # ignore PSD
 *.psd
+
+# Ignore wz
+*.wz
