@@ -80,7 +80,7 @@ namespace JCSUnity
         public static string CachePath()
         {
             var gs = JCS_GameSettings.instance;
-            string path = JCS_Utility.PathCombine(Application.persistentDataPath, gs.STREAMING_CACHE_PATH);
+            string path = JCS_Path.Combine(Application.persistentDataPath, gs.STREAMING_CACHE_PATH);
             return path;
         }
 

@@ -6,10 +6,10 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 namespace JCSUnity
 {
@@ -27,7 +27,8 @@ namespace JCSUnity
         [Header("** Runtime Variables (JCS_PacketLostPreventer) **")]
 
         [Tooltip("How fast the packet resend?")]
-        [SerializeField] [Range(0.0f, 1.0f)]
+        [SerializeField] 
+        [Range(0.0f, 1.0f)]
         private float mResendTime = 0.001f;
 
         private float mResendTimer = 0.0f;

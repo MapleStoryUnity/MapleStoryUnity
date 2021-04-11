@@ -157,7 +157,7 @@ namespace JCSUnity
         public static string SavePath()
         {
             var gs = JCS_GameSettings.instance;
-            string path = JCS_Utility.PathCombine(Application.persistentDataPath, gs.SCREENSHOT_PATH);
+            string path = JCS_Path.Combine(Application.persistentDataPath, gs.SCREENSHOT_PATH);
             return path;
         }
 

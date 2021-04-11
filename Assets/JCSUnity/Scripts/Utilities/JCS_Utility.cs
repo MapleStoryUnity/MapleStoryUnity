@@ -1295,23 +1295,5 @@ namespace JCSUnity
             JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
             return null;
         }
-
-        /// <summary>
-        /// Safe way to combine multiple path to one path with slash.
-        /// </summary>
-        /// <param name="list"> List of path. </param>
-        /// <returns> Converted path. </returns>
-        public static string PathCombine(params string[] list)
-        {
-            string result = list[0];
-            for (int index = 1; index < list.Length; ++index)
-            {
-                string path = list[index];
-                result += "/" + path;
-            }
-            result = result.Replace("\\", "/");
-            result = result.Replace("//", "/");
-            return result;
-        }
     }
 }

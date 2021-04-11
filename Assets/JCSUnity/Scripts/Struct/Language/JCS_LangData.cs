@@ -30,6 +30,7 @@ namespace JCSUnity
 
         [Tooltip("String data for this specific language.")]
         [SerializeField]
+        [TextArea]
         private string mData = "";
 
         /* Setter & Getter */
