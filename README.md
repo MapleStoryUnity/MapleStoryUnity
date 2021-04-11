@@ -11,3 +11,7 @@
 </p>
 
 > A framework to build MapleStory MMO RPG games.
+
+## Dependencies
+
+- [UnityWzLib](https://github.com/MapleStoryUnity/UnityWzLib)
