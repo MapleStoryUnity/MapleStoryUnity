@@ -30,7 +30,7 @@ jobs:
       # Request manual activation file
       - name: Request manual activation file
         id: getManualLicenseFile
-        uses: webbertakken/unity-request-manual-activation-file@main
+        uses: game-ci/unity-request-manual-activation-file@main
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
       # Upload artifact (Unity_v20XX.X.XXXX.alf)
@@ -56,7 +56,7 @@ jobs:
           restore-keys: |
             Library-test-project-
             Library-
-      - uses: webbertakken/unity-test-runner@master
+      - uses: game-ci/unity-test-runner@master
         id: testRunner
         with:
           projectPath: ${{ env.PROJECT_PATH }}
@@ -91,7 +91,7 @@ jobs:
           restore-keys: |
             Library-${{ matrix.projectPath }}-
             Library-
-      - uses: webbertakken/unity-builder@v2.0-alpha-6
+      - uses: game-ci/unity-builder@v2.0-alpha-6
         with:
           projectPath: ${{ env.PROJECT_PATH }}
           unityVersion: ${{ env.UNITY_VERSION }}
