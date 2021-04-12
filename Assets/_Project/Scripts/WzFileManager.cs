@@ -26,7 +26,9 @@ namespace MSU
     {
         /* Variables */
 
-        private List<WzFile> wzFiles = new List<WzFile>();
+        private Dictionary<string, WzMainDirectory> mWzDirs = new Dictionary<string, WzMainDirectory>();
+
+        public Dictionary<string, WzFile> mWzFiles = new Dictionary<string, WzFile>();
 
         [Header("** Initialize Variables (WzFileManager) **")]
 
@@ -50,6 +52,10 @@ namespace MSU
 
         /* Setter & Getter */
 
+        private bool HasDataFile { get { return File.Exists(WzPath("Data")); } }
+        public WzMainDirectory GetMainDirectoryByName(string name) { return mWzDirs[name]; }
+        public WzDirectory String { get { return GetMainDirectoryByName("String").MainDir; } }
+
         /* Functions */
 
         private void Awake()
@@ -59,19 +65,71 @@ namespace MSU
             mPath = JCS_Path.Combine(Application.dataPath, mPath);
         }
 
-        public WzFile OpenWzFile(string name)
+        public string WzPath(string name)
         {
-            var filename = name + ".wz";
-            WzFile f = new WzFile(JCS_Path.Combine(mPath, filename), mVersion, mEncVersion);
-            wzFiles.Add(f);
-            f.ParseWzFile();
-            return f;
+            return JCS_Path.Combine(mPath, name + ".wz");
+        }
+
+        public WzFile GetWzFile(string name)
+        {
+            if (!mWzFiles.ContainsKey(name))
+                LoadWzFile(name);
+            return mWzFiles[name];
+        }
+
+        public WzDirectory GetWzDir(string name)
+        {
+            if (!mWzDirs.ContainsKey(name))
+                LoadWzFile(name);
+            return mWzDirs[name].MainDir;
         }
 
         public void UnloadWzFile(WzFile file)
         {
             file.Dispose();
-            wzFiles.Remove(file);
+            mWzFiles.Remove(Path.GetFileNameWithoutExtension(file.name));
+        }
+
+        private bool LoadWzFile(string name)
+        {
+            try
+            {
+                WzFile wzf = new WzFile(WzPath(name), mVersion, mEncVersion);
+                wzf.ParseWzFile();
+                {
+                    mWzFiles[name] = wzf;
+                    mWzDirs[name] = new WzMainDirectory(wzf);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                JCS_Debug.LogError("Error initializing " + name + ".wz (" + e.Message + ").\r\nCheck that the directory is valid and the file is not in use.");
+                return false;
+            }
+        }
+
+        private bool LoadDataWzFile(string name)
+        {
+            try
+            {
+                WzFile wzf = new WzFile(WzPath(name), mEncVersion);
+                wzf.ParseWzFile();
+                {
+                    mWzFiles[name] = wzf;
+                    mWzDirs[name] = new WzMainDirectory(wzf);
+                    foreach (WzDirectory mainDir in wzf.WzDirectory.WzDirectories)
+                    {
+                        mWzDirs[mainDir.Name.ToLower()] = new WzMainDirectory(wzf, mainDir);
+                    }
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                JCS_Debug.LogError("Error initializing " + name + ".wz (" + e.Message + ").\r\nCheck that the directory is valid and the file is not in use.");
+                return false;
+            }
         }
     }
 }
