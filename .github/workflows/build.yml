@@ -77,9 +77,9 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          #- StandaloneOSX
           - StandaloneWindows64
           #- StandaloneLinux64
+          #- StandaloneOSX
     steps:
       - uses: actions/checkout@v2
         with:
