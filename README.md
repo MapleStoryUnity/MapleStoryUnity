@@ -17,3 +17,10 @@
 
 - [UnityWzLib](https://github.com/MapleStoryUnity/UnityWzLib)
 - [JCSUnity](https://github.com/jcs090218/JCSUnity)
+
+## Development
+
+### :mag: Prepare wz files
+
+Make sure you have placed all `.wz` files to `wz` folder from the
+root of the project directory.
