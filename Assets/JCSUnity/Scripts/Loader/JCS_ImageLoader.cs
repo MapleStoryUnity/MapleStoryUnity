@@ -41,6 +41,17 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Create sprite from byte array.
+        /// </summary>
+        /// <param name="data"> Image byte data. </param>
+        /// <returns> sprite object. </returns>
+        public static Sprite Create(byte[] data)
+        {
+            var tex = ConvertToTexture(data);
+            return Create(tex);
+        }
+
+        /// <summary>
         /// Create sprite object.
         /// </summary>
         /// <param name="tex"> image data </param>
