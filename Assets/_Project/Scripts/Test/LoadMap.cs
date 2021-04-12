@@ -53,49 +53,17 @@ namespace MSU.Test
             var sub = s["BaseImg"] as WzSubProperty;
             var bitmap = sub["0"].GetBitmap();
 
-            var bts = ImageToByteArray(bitmap);
-            print(bts);
-            var tex = JCS_ImageLoader.ConvertToTexture(bts);
-            var sprite = JCS_ImageLoader.Create(tex);
+            var bts = Util.ImageToByteArray(bitmap);
+            var sprite = JCS_ImageLoader.Create(bts);
 
             sp.sprite = sprite;
 
             print(bitmap.Width);
+            print(bitmap.Height);
             //print(s["BaseImg"]["0"]["origin"]);
             //print(s["BaseImg"]["0"]["z"]);
         }
 
-        public static byte[] BitmapToByteArray(Bitmap bitmap)
-        {
-
-            BitmapData bmpdata = null;
-
-            try
-            {
-                bmpdata = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, bitmap.PixelFormat);
-                int numbytes = bmpdata.Stride * bitmap.Height;
-                byte[] bytedata = new byte[numbytes];
-                IntPtr ptr = bmpdata.Scan0;
-
-                Marshal.Copy(ptr, bytedata, 0, numbytes);
-
-                return bytedata;
-            }
-            finally
-            {
-                if (bmpdata != null)
-                    bitmap.UnlockBits(bmpdata);
-            }
-
-        }
-
-        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
-        {
-            using (var ms = new MemoryStream())
-            {
-                imageIn.Save(ms, imageIn.RawFormat);
-                return ms.ToArray();
-            }
-        }
+        
     }
 }
