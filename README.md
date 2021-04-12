@@ -15,3 +15,4 @@
 ## Dependencies
 
 - [UnityWzLib](https://github.com/MapleStoryUnity/UnityWzLib)
+- [JCSUnity](https://github.com/jcs090218/JCSUnity)
