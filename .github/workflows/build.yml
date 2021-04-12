@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  pull_request: {}
+  push: { branches: [main, master, develop] }
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  UNITY_VERSION: 2021.1.1f1
+  PROJECT_PATH: .
+
+jobs:
+  checklicense:
+    name: check if UNITY_LICENSE is set in github secrets
+    runs-on: ubuntu-latest
+    outputs:
+      is_unity_license_set: ${{ steps.checklicense_job.outputs.is_unity_license_set }}
+    steps:
+      - name: Check whether unity activation requests should be done
+        id: checklicense_job
+        run: |
+            echo "Skip activation job: ${{ env.UNITY_LICENSE != '' }}"
+            echo "::set-output name=is_unity_license_set::${{ env.UNITY_LICENSE != '' }}"
+  activation:
+    needs: [checklicense]
+    if: needs.checklicense.outputs.is_unity_license_set == 'false'
+    name: Request activation file 🔑
+    runs-on: ubuntu-latest
+    steps:
+      # Request manual activation file
+      - name: Request manual activation file
+        id: getManualLicenseFile
+        uses: webbertakken/unity-request-manual-activation-file@main
+        with:
+          unityVersion: ${{ env.UNITY_VERSION }}
+      # Upload artifact (Unity_v20XX.X.XXXX.alf)
+      - name: Expose as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
+          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
+
+  test:
+    needs: [checklicense]
+    if: needs.checklicense.outputs.is_unity_license_set == 'true'
+    name: Test all modes ✨
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: actions/cache@v1.1.0
+        with:
+          path: Library
+          key: Library-test-project-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-test-project-
+            Library-
+      - uses: webbertakken/unity-test-runner@master
+        id: testRunner
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          unityVersion: ${{ env.UNITY_VERSION }}
+          testMode: all
+          customParameters: "-nographics"
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Test results (all modes)
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
+
+  build:
+    needs: [checklicense]
+    if: needs.checklicense.outputs.is_unity_license_set == 'true'
+    name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          #- StandaloneOSX
+          - StandaloneWindows64
+          #- StandaloneLinux64
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: actions/cache@v1.1.0
+        with:
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      - uses: webbertakken/unity-builder@v2.0-alpha-6
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          unityVersion: ${{ env.UNITY_VERSION }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Build
+          path: build
