@@ -99,28 +99,13 @@ namespace MSU
                 {
                     mWzFiles[name] = wzf;
                     mWzDirs[name] = new WzMainDirectory(wzf);
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                JCS_Debug.LogError("Error initializing " + name + ".wz (" + e.Message + ").\r\nCheck that the directory is valid and the file is not in use.");
-                return false;
-            }
-        }
 
-        private bool LoadDataWzFile(string name)
-        {
-            try
-            {
-                WzFile wzf = new WzFile(WzPath(name), mEncVersion);
-                wzf.ParseWzFile();
-                {
-                    mWzFiles[name] = wzf;
-                    mWzDirs[name] = new WzMainDirectory(wzf);
-                    foreach (WzDirectory mainDir in wzf.WzDirectory.WzDirectories)
+                    if (name == "Data")
                     {
-                        mWzDirs[mainDir.Name.ToLower()] = new WzMainDirectory(wzf, mainDir);
+                        foreach (WzDirectory mainDir in wzf.WzDirectory.WzDirectories)
+                        {
+                            mWzDirs[mainDir.Name.ToLower()] = new WzMainDirectory(wzf, mainDir);
+                        }
                     }
                 }
                 return true;
