@@ -58,8 +58,8 @@ namespace MSU.Test
 
             sp.sprite = sprite;
 
-            print(bitmap.Width);
-            print(bitmap.Height);
+            //print(bitmap.Width);
+            //print(bitmap.Height);
             //print(s["BaseImg"]["0"]["origin"]);
             //print(s["BaseImg"]["0"]["z"]);
         }
