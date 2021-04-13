@@ -21,7 +21,7 @@ using System.IO;
 namespace MSU.Test
 {
     /// <summary>
-    /// Test case for load map.
+    /// Test to load file `Map.wz`.
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
     public class LoadMap
