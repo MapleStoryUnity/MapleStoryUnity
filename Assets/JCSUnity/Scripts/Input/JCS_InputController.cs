@@ -22,6 +22,24 @@ namespace JCSUnity
     public class JCS_InputController
         : MonoBehaviour
     {
+        public static int GAME_PAD_COUNT = 0;  // How many gampad in this game?
+
+        public static int SelectGamepadType = 0;
+        public static string[] GamepadPlatform = {
+            "Select Platform",
+
+            /* Sony Play Station */
+            "PS",
+            "PS2",
+            "PS3",
+            "PS4",
+
+            /* Microsoft XBox */
+            "XBox",
+            "XBox 360",
+            "XBox One",
+        };
+
         /// <summary>
         /// Get the serialize property from Unity's 'InputManager' 
         /// element structure.
@@ -147,10 +165,7 @@ namespace JCSUnity
         /// </summary>
         public static void SetupInputManager()
         {
-            // Add gamepad definitions
-            JCSUnity_EditorWindow jcsunity_ew = JCSUnity_EditorWindow.instance;
-
-            switch (jcsunity_ew.SelectGamepadType)
+            switch (SelectGamepadType)
             {
                 case 0:  /* ==> Select Platform <== */
 
@@ -542,13 +557,11 @@ namespace JCSUnity
         /// </summary>
         public static void SetupPS4Joystick()
         {
-            int gamePadCount = JCSUnity_EditorWindow.instance.GAME_PAD_COUNT;
-
             float defalutSenstivity = JCS_InputSettings.DEFAULT_SENSITIVITY;
             float defaultDead = JCS_InputSettings.DEFAULT_DEAD;
             float defaultGravity = JCS_InputSettings.DEFAULT_GRAVITY;
 
-            for (int joystickNum = 0; joystickNum < gamePadCount; ++joystickNum)
+            for (int joystickNum = 0; joystickNum < GAME_PAD_COUNT; ++joystickNum)
             {
                 foreach (JCS_JoystickButton val in JCS_Utility.GetValues<JCS_JoystickButton>())
                 {
@@ -577,13 +590,11 @@ namespace JCSUnity
         /// </summary>
         public static void SetupXBox360Joystick()
         {
-            int gamePadCount = JCSUnity_EditorWindow.instance.GAME_PAD_COUNT;
-
             float defalutSenstivity = JCS_InputSettings.DEFAULT_SENSITIVITY;
             float defaultDead = JCS_InputSettings.DEFAULT_DEAD;
             float defaultGravity = JCS_InputSettings.DEFAULT_GRAVITY;
 
-            for (int joystickNum = 0; joystickNum < gamePadCount; ++joystickNum)
+            for (int joystickNum = 0; joystickNum < GAME_PAD_COUNT; ++joystickNum)
             {
                 foreach (JCS_JoystickButton val in JCS_Utility.GetValues<JCS_JoystickButton>())
                 {

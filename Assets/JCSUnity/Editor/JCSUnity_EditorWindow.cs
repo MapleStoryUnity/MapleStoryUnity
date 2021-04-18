@@ -27,8 +27,6 @@ namespace JCSUnity
 
         public static JCSUnity_EditorWindow instance = null;
 
-        public int GAME_PAD_COUNT = 0;  // How many gampad in this game?
-
         public string PROJECT_NAME = "";
 
         public const string PROJECT_NAME_LASTING = "_Assets";
@@ -46,32 +44,13 @@ namespace JCSUnity
             "Sprites",
         };
 
-        public int SelectGamepadType = 0;
-        public string[] GamepadPlatform = {
-            "Select Platform",
-
-            /* Sony Play Station */
-            "PS",
-            "PS2",
-            "PS3",
-            "PS4",
-
-            /* Microsoft XBox */
-            "XBox",
-            "XBox 360",
-            "XBox One",
-        };
-
-        private bool mOCSFoldeout = false;      // OCS = One click serialize
-        private bool mBOFoldout = false;        // BO = Bases Object
-        private bool mGUIFoldout = false;
-        private bool m2DFoldout = false;
-        private bool m3DFoldout = false;
-        private bool mARVRFoldout = false;      // ARVR = AR / VR
-
-        private bool mInputFoldout = false;      // Input
-
-        private bool mToolFoldout = false;  // Utitlies
+        private bool mFO_Scene = false;
+        private bool mFO_Basic = false;
+        private bool mFO_GUI = false;
+        private bool mFO_Effect = false;
+        private bool mFO_ARVR = false;
+        private bool mFO_Input = false;
+        private bool mFO_Tool = false;
 
         /* Setter & Getter */
 
@@ -86,69 +65,89 @@ namespace JCSUnity
         {
             JCSUnity_About.ReadINIFile();
 
-            GUILayout.Label("** Editor Settings **", EditorStyles.boldLabel);
+            mFO_Scene = EditorGUILayout.Foldout(mFO_Scene, "Scene");
+            if (mFO_Scene)
+                JCSUnity_EditortUtil.CreateGroup(Part_Scene);
 
-            mOCSFoldeout = EditorGUILayout.Foldout(mOCSFoldeout, "One click serialize");
-            if (mOCSFoldeout)
-                PartOneClickSerialize();
+            mFO_Basic = EditorGUILayout.Foldout(mFO_Basic, "Basic");
+            if (mFO_Basic)
+                JCSUnity_EditortUtil.CreateGroup(Part_Basic);
 
-            mBOFoldout = EditorGUILayout.Foldout(mBOFoldout, "Bases Object");
-            if (mBOFoldout)
-                PartBaseObject();
+            mFO_GUI = EditorGUILayout.Foldout(mFO_GUI, "GUI");
+            if (mFO_GUI)
+                JCSUnity_EditortUtil.CreateGroup(Part_GUI);
 
-            mGUIFoldout = EditorGUILayout.Foldout(mGUIFoldout, "GUI");
-            if (mGUIFoldout)
-                PartGUI();
+            mFO_Effect = EditorGUILayout.Foldout(mFO_Effect, "Effect");
+            if (mFO_Effect)
+                JCSUnity_EditortUtil.CreateGroup(Part_Effect);
 
-            m2DFoldout = EditorGUILayout.Foldout(m2DFoldout, "2D");
-            if (m2DFoldout)
-                Part2D();
+            mFO_ARVR = EditorGUILayout.Foldout(mFO_ARVR, "AR / VR");
+            if (mFO_ARVR)
+                JCSUnity_EditortUtil.CreateGroup(Part_ARVR);
 
-            m3DFoldout = EditorGUILayout.Foldout(m3DFoldout, "3D");
-            if (m3DFoldout)
-                Part3D();
+            mFO_Input = EditorGUILayout.Foldout(mFO_Input, "Input");
+            if (mFO_Input)
+                JCSUnity_EditortUtil.CreateGroup(Part_Input);
 
-            mARVRFoldout = EditorGUILayout.Foldout(mARVRFoldout, "AR / VR");
-            if (mARVRFoldout)
-                PartARVR();
-
-            mInputFoldout = EditorGUILayout.Foldout(mInputFoldout, "Input");
-            if (mInputFoldout)
-                PartInput();
-
-            mToolFoldout = EditorGUILayout.Foldout(mToolFoldout, "Tool");
-            if (mToolFoldout)
-                PartTool();
+            mFO_Tool = EditorGUILayout.Foldout(mFO_Tool, "Tool");
+            if (mFO_Tool)
+                JCSUnity_EditortUtil.CreateGroup(Part_Tool);
         }
 
         /// <summary>
         /// Initialize the one click serialize part buttons.
         /// </summary>
-        private void PartOneClickSerialize()
+        private void Part_Scene()
         {
-            if (GUILayout.Button("Serialize scene to JCSUnity 2D interface"))
-                SerializeToJCSUnity2D();
+            JCSUnity_EditortUtil.BeginHorizontal(() =>
+            {
+                if (GUILayout.Button("Convert to 2D scene"))
+                    SerializeToJCSUnity2D();
 
-            if (GUILayout.Button("Serialize scene to JCSUnity 3D interface"))
-                SerializeToJCSUnity3D();
+                if(GUILayout.Button("Convert to 3D scene"))
+                    SerializeToJCSUnity3D();
+            });
+
         }
 
         /// <summary>
-        /// Initialize the  base object part buttons.
+        /// Initialize the base object part buttons.
         /// </summary>
-        private void PartBaseObject()
+        private void Part_Basic()
         {
-            if (GUILayout.Button("Create JCSUnity setting"))
-                CreateJCSSettings();
+            GUILayout.Label("Managers / Settings", EditorStyles.boldLabel);
 
-            if (GUILayout.Button("Create JCSUnity manager"))
-                CreateJCSManagers();
+            JCSUnity_EditortUtil.BeginHorizontal(() =>
+            {
+                if (GUILayout.Button("Create Settings"))
+                    CreateJCSSettings();
 
-            if (GUILayout.Button("Create JCSUnity canvas"))
+                if (GUILayout.Button("Create Managers"))
+                    CreateJCSManagers();
+            });
+
+            GUILayout.Label("Camera", EditorStyles.boldLabel);
+
+            JCSUnity_EditortUtil.BeginHorizontal(() =>
+            {
+                if (GUILayout.Button("Create 2D camera"))
+                    Create2DCamera();
+
+                if (GUILayout.Button("Create 3D camera"))
+                    Create3DCamera();
+            });
+
+            GUILayout.Label("Canvas", EditorStyles.boldLabel);
+
+            if (GUILayout.Button("Create Canvas"))
                 CreateJCSCanvas();
+
+            GUILayout.Label("Background Music", EditorStyles.boldLabel);
 
             if (GUILayout.Button("Create BGM Player"))
                 CreateJCSBGMPlayer();
+
+            GUILayout.Label("Debug Tools", EditorStyles.boldLabel);
 
             if (GUILayout.Button("Create Debug Tools"))
                 CreateDebugTools();
@@ -157,18 +156,20 @@ namespace JCSUnity
         /// <summary>
         /// Compile the GUI part to Unity's GUI inspector.
         /// </summary>
-        private void PartGUI()
+        private void Part_GUI()
         {
-            GUILayout.Label("** Cursor **");
+            GUILayout.Label("Cursor", EditorStyles.boldLabel);
 
-            if (GUILayout.Button("Create 2D Cursor"))
-                Create2DCurosr();
+            JCSUnity_EditortUtil.BeginHorizontal(() =>
+            {
+                if (GUILayout.Button("Create 2D Cursor"))
+                    Create2DCurosr();
 
-            if (GUILayout.Button("Create 3D Cursor"))
-                Create3DCurosr();
+                if (GUILayout.Button("Create 3D Cursor"))
+                    Create3DCurosr();
+            });
 
-
-            GUILayout.Label("** Panel **");
+            GUILayout.Label("Panel", EditorStyles.boldLabel);
 
             if (GUILayout.Button("Create Base Panel"))
                 CreateBasePanel();
@@ -183,43 +184,27 @@ namespace JCSUnity
                 CreateSlidePanel();
 
 
-            GUILayout.Label("** Undo/Redo **");
+            GUILayout.Label("Undo/Redo", EditorStyles.boldLabel);
 
             if (GUILayout.Button("Create Undo Redo System"))
                 CreateUndoRedoSystem();
         }
 
         /// <summary>
-        /// Compile the 2D part to GUI inspector.
+        /// Compile the Effect inspector.
         /// </summary>
-        private void Part2D()
+        private void Part_Effect()
         {
-            GUILayout.Label("** Camera **");
-
-            if (GUILayout.Button("Create 2D camera"))
-                Create2DCamera();
-
-            GUILayout.Label("** Effects **");
+            GUILayout.Label("Damage Text", EditorStyles.boldLabel);
 
             if (GUILayout.Button("Create mix damage pool"))
                 CreateMixDamageTextPool();
         }
 
         /// <summary>
-        /// Compile the 3D part to GUI inspector.
-        /// </summary>
-        private void Part3D()
-        {
-            GUILayout.Label("** Camera **");
-
-            if (GUILayout.Button("Create 3D camera"))
-                Create3DCamera();
-        }
-
-        /// <summary>
         /// Compile the AR/VR part to GUI inspector.
         /// </summary>
-        private void PartARVR()
+        private void Part_ARVR()
         {
             GUILayout.Label("N/A...");
         }
@@ -227,30 +212,30 @@ namespace JCSUnity
         /// <summary>
         /// Compile the Input part to Input inspector.
         /// </summary>
-        private void PartInput()
+        private void Part_Input()
         {
-            GUILayout.Label("** Game Pad count **");
+            GUILayout.Label("Gamepad", EditorStyles.boldLabel);
 
-            instance.SelectGamepadType = EditorGUILayout.Popup("Gamepad Type", instance.SelectGamepadType, GamepadPlatform);
+            JCS_InputController.SelectGamepadType = EditorGUILayout.Popup("Gamepad Type", JCS_InputController.SelectGamepadType, JCS_InputController.GamepadPlatform);
 
-            instance.GAME_PAD_COUNT = (int)EditorGUILayout.Slider(instance.GAME_PAD_COUNT, 0, JCS_InputSettings.MAX_JOYSTICK_COUNT);
+            JCS_InputController.GAME_PAD_COUNT = (int)EditorGUILayout.Slider("Gamepad Count", JCS_InputController.GAME_PAD_COUNT, 0, JCS_InputSettings.MAX_JOYSTICK_COUNT);
 
-            if (GUILayout.Button("Add Input Manager depends on target gamepad type"))
-                RefreshInputManager();
+            if (GUILayout.Button("Update Input Manager"))
+                UpdateInputManager();
 
-            if (GUILayout.Button("Clear Input Manager Settings"))
+            if (GUILayout.Button("Clear Input Manager"))
                 ClearInputManager();
 
-            if (GUILayout.Button("Add Default Input Manager Settings"))
-                AddDefaultInputManager();
+            if (GUILayout.Button("Revert Default Input Manager Settings"))
+                RevertDefaultInputManager();
         }
 
         /// <summary>
         /// Compile the Tool part to Tool inspector.
         /// </summary>
-        private void PartTool()
+        private void Part_Tool()
         {
-            GUILayout.Label("** Framework /  Project **");
+            GUILayout.Label("Framework /  Project", EditorStyles.boldLabel);
 
             /* Project Name */
             {
@@ -371,8 +356,8 @@ namespace JCSUnity
         /// Create settings for 3d game combine 
         /// with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Input/Add Input Manager depends on target gamepad type", false, 10)]
-        private static void RefreshInputManager()
+        [MenuItem("JCSUnity/Input/Update Input Manager", false, 10)]
+        private static void UpdateInputManager()
         {
             JCS_InputController.SetupInputManager();
         }
@@ -383,8 +368,8 @@ namespace JCSUnity
             JCS_InputController.ClearInputManagerSettings();
         }
 
-        [MenuItem("JCSUnity/Input/Add Default Input Manager Settings", false, 10)]
-        private static void AddDefaultInputManager()
+        [MenuItem("JCSUnity/Input/Revert Default Input Manager Settings", false, 10)]
+        private static void RevertDefaultInputManager()
         {
             JCS_InputController.DefaultInputManagerSettings();
         }
@@ -469,18 +454,12 @@ namespace JCSUnity
 
             if (upToDate)
             {
-                EditorUtility.DisplayDialog(
-                    title,
-                    "Already up to date.",
-                    "Close");
+                EditorUtility.DisplayDialog(title, "Already up to date.", "Close");
             }
             // TODO(jenchieh): not up to date...
             else
             {
-                bool option = EditorUtility.DisplayDialog(
-                    title,
-                    "",
-                    "Close");
+                bool option = EditorUtility.DisplayDialog(title, "", "Close");
 
                 if (option)
                 {

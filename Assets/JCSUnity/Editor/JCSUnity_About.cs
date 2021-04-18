@@ -60,7 +60,7 @@ namespace JCSUnity
         /// </summary>
         public static void ReadINIFile()
         {
-            INI_FILE_PATH = JCS_Path.Combine(Application.dataPath, "/JCSUnity/Editors/ini/");
+            INI_FILE_PATH = JCS_Path.Combine(Application.dataPath, "/JCSUnity/Editor/ini/");
 
             string path = JCS_Path.Combine(INI_FILE_PATH, EDITOR_PROPERTIES_FILENAME);
 

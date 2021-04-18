@@ -331,9 +331,7 @@ button is not allow...");
 #if (UNITY_EDITOR)
             if (instance == null)
             {
-                JCSUnity_EditorWindow jcsunity_ew = JCSUnity_EditorWindow.instance;
-
-                switch (jcsunity_ew.SelectGamepadType)
+                switch (JCS_InputController.SelectGamepadType)
                 {
                     case 0:  /* ==> Select Platform <== */
                         return "";
@@ -398,9 +396,7 @@ button is not allow...");
         /// <returns></returns>
         public static bool IsInvert(JCS_JoystickButton label)
         {
-            JCSUnity_EditorWindow jcsunity_ew = JCSUnity_EditorWindow.instance;
-
-            switch (jcsunity_ew.SelectGamepadType)
+            switch (JCS_InputController.SelectGamepadType)
             {
                 case 0:  /* ==> Select Platform <== */
                     return false;
@@ -448,9 +444,7 @@ button is not allow...");
         /// <returns></returns>
         public static JCS_AxisChannel GetAxisChannel(JCS_JoystickButton label)
         {
-            JCSUnity_EditorWindow jcsunity_ew = JCSUnity_EditorWindow.instance;
-
-            switch (jcsunity_ew.SelectGamepadType)
+            switch (JCS_InputController.SelectGamepadType)
             {
                 case 0:  /* ==> Select Platform <== */
                     break;
@@ -532,9 +526,7 @@ button is not allow...");
         /// <returns></returns>
         public static JCS_AxisType GetAxisType(JCS_JoystickButton label)
         {
-            JCSUnity_EditorWindow jcsunity_ew = JCSUnity_EditorWindow.instance;
-
-            switch (jcsunity_ew.SelectGamepadType)
+            switch (JCS_InputController.SelectGamepadType)
             {
                 case 0:  /* ==> Select Platform <== */
                     break;
