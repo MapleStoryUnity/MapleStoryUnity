@@ -19,6 +19,11 @@ namespace JCSUnity
     /// </summary>
     public static class JCSUnity_EditortUtil
     {
+        public static string FormKey(string name)
+        {
+            return "JCSUnity." + name;
+        }
+
         public static void CreateGroup(EmptyFunction func, bool flexibleSpace = false)
         {
             BeginHorizontal(() =>

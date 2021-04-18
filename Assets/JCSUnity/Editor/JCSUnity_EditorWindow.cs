@@ -27,13 +27,21 @@ namespace JCSUnity
 
         public static JCSUnity_EditorWindow instance = null;
 
+        private static bool prefsLoaded = false;
+
+        private bool mFO_Scene = false;
+        private bool mFO_Basic = false;
+        private bool mFO_GUI = false;
+        private bool mFO_Effect = false;
+        private bool mFO_ARVR = false;
+        private bool mFO_Input = false;
+        private bool mFO_Tool = false;
+
         public string PROJECT_NAME = "";
-
         public const string PROJECT_NAME_LASTING = "_Assets";
-
         public string[] ProjectSubFolders = {
             "Animations",
-            "Editors",
+            "Editor",
             "Materials",
             "Models",
             "Movies",
@@ -43,14 +51,6 @@ namespace JCSUnity
             "Sounds",
             "Sprites",
         };
-
-        private bool mFO_Scene = false;
-        private bool mFO_Basic = false;
-        private bool mFO_GUI = false;
-        private bool mFO_Effect = false;
-        private bool mFO_ARVR = false;
-        private bool mFO_Input = false;
-        private bool mFO_Tool = false;
 
         /* Setter & Getter */
 
@@ -65,6 +65,24 @@ namespace JCSUnity
         {
             JCSUnity_About.ReadINIFile();
 
+            Init();
+            Draw();
+            SavePref();
+        }
+
+        private void Init()
+        {
+            if (prefsLoaded)
+                return;
+
+            JCS_InputController.GAMEPAD_COUNT = EditorPrefs.GetInt(JCSUnity_EditortUtil.FormKey("GAMEPAD_COUNT"), 0);
+            JCS_InputController.SelectGamepadType = EditorPrefs.GetInt(JCSUnity_EditortUtil.FormKey("SelectGamepadType"), 0);
+
+            prefsLoaded = true;
+        }
+
+        private void Draw()
+        {
             mFO_Scene = EditorGUILayout.Foldout(mFO_Scene, "Scene");
             if (mFO_Scene)
                 JCSUnity_EditortUtil.CreateGroup(Part_Scene);
@@ -94,6 +112,12 @@ namespace JCSUnity
                 JCSUnity_EditortUtil.CreateGroup(Part_Tool);
         }
 
+        private void SavePref()
+        {
+            EditorPrefs.SetInt(JCSUnity_EditortUtil.FormKey("GAMEPAD_COUNT"), JCS_InputController.GAMEPAD_COUNT);
+            EditorPrefs.SetInt(JCSUnity_EditortUtil.FormKey("SelectGamepadType"), JCS_InputController.SelectGamepadType);
+        }
+
         /// <summary>
         /// Initialize the one click serialize part buttons.
         /// </summary>
@@ -107,7 +131,6 @@ namespace JCSUnity
                 if(GUILayout.Button("Convert to 3D scene"))
                     SerializeToJCSUnity3D();
             });
-
         }
 
         /// <summary>
@@ -217,17 +240,21 @@ namespace JCSUnity
             GUILayout.Label("Gamepad", EditorStyles.boldLabel);
 
             JCS_InputController.SelectGamepadType = EditorGUILayout.Popup("Gamepad Type", JCS_InputController.SelectGamepadType, JCS_InputController.GamepadPlatform);
+            JCS_InputController.GAMEPAD_COUNT = (int)EditorGUILayout.Slider("Gamepad Count", JCS_InputController.GAMEPAD_COUNT, 0, JCS_InputSettings.MAX_JOYSTICK_COUNT);
 
-            JCS_InputController.GAME_PAD_COUNT = (int)EditorGUILayout.Slider("Gamepad Count", JCS_InputController.GAME_PAD_COUNT, 0, JCS_InputSettings.MAX_JOYSTICK_COUNT);
+            GUILayout.Label("Input Manager", EditorStyles.boldLabel);
 
-            if (GUILayout.Button("Update Input Manager"))
-                UpdateInputManager();
+            JCSUnity_EditortUtil.BeginHorizontal(() =>
+            {
+                if (GUILayout.Button("Update"))
+                    UpdateInputManager();
 
-            if (GUILayout.Button("Clear Input Manager"))
-                ClearInputManager();
+                if (GUILayout.Button("Clear"))
+                    ClearInputManager();
 
-            if (GUILayout.Button("Revert Default Input Manager Settings"))
-                RevertDefaultInputManager();
+                if (GUILayout.Button("Revert"))
+                    RevertDefaultInputManager();
+            });
         }
 
         /// <summary>
@@ -235,7 +262,7 @@ namespace JCSUnity
         /// </summary>
         private void Part_Tool()
         {
-            GUILayout.Label("Framework /  Project", EditorStyles.boldLabel);
+            GUILayout.Label("Project", EditorStyles.boldLabel);
 
             /* Project Name */
             {

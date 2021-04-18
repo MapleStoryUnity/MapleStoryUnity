@@ -22,7 +22,7 @@ namespace JCSUnity
     public class JCS_InputController
         : MonoBehaviour
     {
-        public static int GAME_PAD_COUNT = 0;  // How many gampad in this game?
+        public static int GAMEPAD_COUNT = 0;  // How many gamepad in this game?
 
         public static int SelectGamepadType = 0;
         public static string[] GamepadPlatform = {
@@ -561,7 +561,7 @@ namespace JCSUnity
             float defaultDead = JCS_InputSettings.DEFAULT_DEAD;
             float defaultGravity = JCS_InputSettings.DEFAULT_GRAVITY;
 
-            for (int joystickNum = 0; joystickNum < GAME_PAD_COUNT; ++joystickNum)
+            for (int joystickNum = 0; joystickNum < GAMEPAD_COUNT; ++joystickNum)
             {
                 foreach (JCS_JoystickButton val in JCS_Utility.GetValues<JCS_JoystickButton>())
                 {
@@ -594,7 +594,7 @@ namespace JCSUnity
             float defaultDead = JCS_InputSettings.DEFAULT_DEAD;
             float defaultGravity = JCS_InputSettings.DEFAULT_GRAVITY;
 
-            for (int joystickNum = 0; joystickNum < GAME_PAD_COUNT; ++joystickNum)
+            for (int joystickNum = 0; joystickNum < GAMEPAD_COUNT; ++joystickNum)
             {
                 foreach (JCS_JoystickButton val in JCS_Utility.GetValues<JCS_JoystickButton>())
                 {
