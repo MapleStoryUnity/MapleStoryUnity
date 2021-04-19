@@ -126,10 +126,10 @@ namespace JCSUnity
             JCSUnity_EditortUtil.BeginHorizontal(() =>
             {
                 if (GUILayout.Button("Convert to 2D scene"))
-                    SerializeToJCSUnity2D();
+                    ConvertTo2D();
 
                 if(GUILayout.Button("Convert to 3D scene"))
-                    SerializeToJCSUnity3D();
+                    ConvertTo3D();
             });
         }
 
@@ -143,10 +143,10 @@ namespace JCSUnity
             JCSUnity_EditortUtil.BeginHorizontal(() =>
             {
                 if (GUILayout.Button("Create Settings"))
-                    CreateJCSSettings();
+                    CreateSettings();
 
                 if (GUILayout.Button("Create Managers"))
-                    CreateJCSManagers();
+                    CreateManagers();
             });
 
             GUILayout.Label("Camera", EditorStyles.boldLabel);
@@ -168,7 +168,7 @@ namespace JCSUnity
             GUILayout.Label("Background Music", EditorStyles.boldLabel);
 
             if (GUILayout.Button("Create BGM Player"))
-                CreateJCSBGMPlayer();
+                CreateBGMPlayer();
 
             GUILayout.Label("Debug Tools", EditorStyles.boldLabel);
 
@@ -303,19 +303,19 @@ namespace JCSUnity
         /// <summary>
         /// Serialize the current scene into JCSUnity 2d style.
         /// </summary>
-        [MenuItem("JCSUnity/One Click Serialize/Serialize scene to JCSUnity 2D", false, 2)]
-        private static void SerializeToJCSUnity2D()
+        [MenuItem("JCSUnity/Scene/Convert to 2D scene", false, 2)]
+        private static void ConvertTo2D()
         {
             // create settings
-            CreateJCSSettings();
+            CreateSettings();
 
             // create managers
-            CreateJCSManagers();
+            CreateManagers();
 
             Create2DCamera();
 
             // BGM player
-            CreateJCSBGMPlayer();
+            CreateBGMPlayer();
 
             // create canvas
             GameObject canvasObj = CreateJCSCanvas();
@@ -330,20 +330,20 @@ namespace JCSUnity
         /// <summary>
         /// Serialize the current scene into JCSUnity 3d style.
         /// </summary>
-        [MenuItem("JCSUnity/One Click Serialize/Serialize scene to JCSUnity 3D", false, 2)]
-        private static void SerializeToJCSUnity3D()
+        [MenuItem("JCSUnity/Scene/Convert to 3D scene", false, 2)]
+        private static void ConvertTo3D()
         {
             // create settings
-            CreateJCSSettings();
+            CreateSettings();
 
             // create managers
-            CreateJCSManagers();
+            CreateManagers();
 
             // create 3d camera
             Create3DCamera();
 
             // BGM player
-            CreateJCSBGMPlayer();
+            CreateBGMPlayer();
 
             // create canvas
             CreateJCSCanvas();
@@ -353,8 +353,8 @@ namespace JCSUnity
         /// Create managers for 3d game combine 
         /// with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Bases Object/JCSUnity Manager", false, 10)]
-        private static GameObject CreateJCSManagers()
+        [MenuItem("JCSUnity/Basic/Create Managers", false, 10)]
+        private static GameObject CreateManagers()
         {
             const string manager_path = "JCSUnity_Resources/JCS_Managers";
             GameObject gameObj = CreateHierarchyObject(manager_path);
@@ -368,8 +368,8 @@ namespace JCSUnity
         /// Create settings for 3d game combine 
         /// with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Bases Object/JCSUnity Setting", false, 10)]
-        private static GameObject CreateJCSSettings()
+        [MenuItem("JCSUnity/Basic/Create Settings", false, 10)]
+        private static GameObject CreateSettings()
         {
             const string setting_path = "JCSUnity_Resources/JCS_Settings";
             GameObject gameObj = CreateHierarchyObject(setting_path);
@@ -380,22 +380,46 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// BGM player for game.
+        /// </summary>
+        [MenuItem("JCSUnity/Basic/Create BGM Player", false, 11)]
+        private static void CreateBGMPlayer()
+        {
+            const string player_path = "JCSUnity_Resources/Sound/JCS_BGMPlayer";
+            GameObject gameObj = CreateHierarchyObject(player_path);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create BGM Player");
+        }
+
+        /// <summary>
+        /// Debug tool using in JCSUnity.
+        /// </summary>
+        [MenuItem("JCSUnity/Basic/Create Debug Tools", false, 12)]
+        private static void CreateDebugTools()
+        {
+            const string tools_path = "JCSUnity_Resources/Tools/JCS_Tools";
+            GameObject gameObj = CreateHierarchyObject(tools_path);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create Debug Tools");
+        }
+
+        /// <summary>
         /// Create settings for 3d game combine 
         /// with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Input/Update Input Manager", false, 10)]
+        [MenuItem("JCSUnity/Input/Update", false, 15)]
         private static void UpdateInputManager()
         {
             JCS_InputController.SetupInputManager();
         }
 
-        [MenuItem("JCSUnity/Input/Clear Input Manager Settings", false, 10)]
+        [MenuItem("JCSUnity/Input/Clear", false, 15)]
         private static void ClearInputManager()
         {
             JCS_InputController.ClearInputManagerSettings();
         }
 
-        [MenuItem("JCSUnity/Input/Revert Default Input Manager Settings", false, 10)]
+        [MenuItem("JCSUnity/Input/Revert", false, 15)]
         private static void RevertDefaultInputManager()
         {
             JCS_InputController.DefaultInputManagerSettings();
@@ -421,33 +445,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// BGM player for game.
-        /// </summary>
-        [MenuItem("JCSUnity/Bases Object/JCS_BGMPlayer", false, 11)]
-        private static void CreateJCSBGMPlayer()
-        {
-            const string player_path = "JCSUnity_Resources/Sound/JCS_BGMPlayer";
-            GameObject gameObj = CreateHierarchyObject(player_path);
-
-            Undo.RegisterCreatedObjectUndo(gameObj, "Create BGM Player");
-        }
-
-        /// <summary>
-        /// Debug tool using in JCSUnity.
-        /// </summary>
-        [MenuItem("JCSUnity/Bases Object/Debug Tools", false, 12)]
-        private static void CreateDebugTools()
-        {
-            const string tools_path = "JCSUnity_Resources/Tools/JCS_Tools";
-            GameObject gameObj = CreateHierarchyObject(tools_path);
-
-            Undo.RegisterCreatedObjectUndo(gameObj, "Create Debug Tools");
-        }
-
-        /// <summary>
         /// Create a new project.
         /// </summary>
-        [MenuItem("JCSUnity/Tool/Create project assets folder", false, 13)]
+        [MenuItem("JCSUnity/Tool/Create project assets folder", false, 20)]
         private static void CreateProjectAssetsFolder()
         {
             string parentFolder = "Assets";

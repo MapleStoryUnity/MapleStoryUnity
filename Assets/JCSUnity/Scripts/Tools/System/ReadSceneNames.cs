@@ -7,9 +7,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
 
 /// <summary>
 /// Read all the scene that are put into build setting.
@@ -83,7 +83,7 @@ public class ReadSceneNames
         return temp.ToArray();
     }
 
-    [UnityEditor.MenuItem("CONTEXT/ReadSceneNames/Update Scene Names")]
+    [MenuItem("CONTEXT/ReadSceneNames/Update Scene Names")]
     private static void UpdateNames(UnityEditor.MenuCommand command)
     {
         ReadSceneNames context = (ReadSceneNames)command.context;
@@ -95,5 +95,4 @@ public class ReadSceneNames
         SCENES_IN_BUILD_SETTING = ReadNames();
     }
 }
-
 #endif

@@ -1,5 +1,4 @@
 ﻿#if (UNITY_EDITOR && UNITY_5_3_5)
-
 /**
  * $File: A_to_Z.cs $
  * $Date: $
@@ -40,5 +39,4 @@ public class Z_to_A
         return EditorUtility.NaturalCompare(rhs.name, lhs.name);
     }
 }
-
 #endif

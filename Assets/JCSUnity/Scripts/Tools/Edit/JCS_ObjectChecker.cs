@@ -22,7 +22,6 @@ namespace JCSUnity
 
         public Color wireColor = Color.blue;
 
-
         /* Setter & Getter */
 
         /* Functions */

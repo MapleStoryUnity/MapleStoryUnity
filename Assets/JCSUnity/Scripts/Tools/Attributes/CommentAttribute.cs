@@ -1,11 +1,10 @@
-﻿/**
+﻿#if UNITY_EDITOR
+/**
     Source: http://answers.unity3d.com/questions/444312/having-text-or-notes-in-the-inspector.html
     by Loius
 */
-#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
-using System.Collections;
 
 public class CommentAttribute : PropertyAttribute
 {
