@@ -7,9 +7,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -18,7 +15,7 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
     /// <summary>
-    /// Main Unity Engine's Editor Window for JCSUnity.
+    /// Main editor window for JCSUnity.
     /// </summary>
     public class JCSUnity_EditorWindow
         : EditorWindow
@@ -26,6 +23,15 @@ namespace JCSUnity
         /* Variables*/
 
         public static JCSUnity_EditorWindow instance = null;
+
+        public static string NAME
+        {
+            get
+            {
+                JCSUnity_About.ReadINIFile();
+                return JCSUnity_About.EDITOR_INI["editor_title"];
+            }
+        }
 
         private static bool prefsLoaded = false;
 
@@ -290,13 +296,12 @@ namespace JCSUnity
 
 
         /// <summary>
-        /// Main JCSUnity Editor initialize function.
+        /// Main editor window initialize function.
         /// </summary>
-        [MenuItem("JCSUnity/JCSUnity Editor", false, 1)]
+        [MenuItem("JCSUnity/Window", false, 1)]
         private static void JCSUnityEditor()
         {
-            JCSUnity_EditorWindow window = (JCSUnity_EditorWindow)GetWindow(typeof(JCSUnity_EditorWindow));
-            window.titleContent = new GUIContent(JCSUnity_About.EDITOR_INI["editor_title"]);
+            JCSUnity_EditorWindow window = GetWindow<JCSUnity_EditorWindow>(false, NAME, true);
             window.Show();
         }
 

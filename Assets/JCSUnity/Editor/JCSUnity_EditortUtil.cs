@@ -1,6 +1,6 @@
 #if UNITY_EDITOR
 /**
- * $File: GUILayoutUtil.cs $
+ * $File: JCSUnity_EditortUtil.cs $
  * $Date: 2021-04-18 16:35:05 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -21,7 +21,7 @@ namespace JCSUnity
     {
         public static string FormKey(string name)
         {
-            return "JCSUnity." + name;
+            return JCSUnity_EditorWindow.NAME + "." + name;
         }
 
         public static void CreateGroup(EmptyFunction func, bool flexibleSpace = false)
