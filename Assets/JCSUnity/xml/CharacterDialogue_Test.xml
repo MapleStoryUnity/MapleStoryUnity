@@ -1,7 +1,0 @@
-<DialogueContainer>
-    <Dialogue name="JCS Default Character">
-        <page>Page 1</page>
-        <page>Page 2</page>
-        <page>Page 3</page>
-    </Dialogue>
-</DialogueContainer>
