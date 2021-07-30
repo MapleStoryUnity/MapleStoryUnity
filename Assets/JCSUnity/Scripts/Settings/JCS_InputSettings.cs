@@ -265,8 +265,7 @@ namespace JCSUnity
 
 
             // this should not happens.
-            JCS_Debug.LogWarning(@"Try to get the name with unknown joystick 
-button is not allow...");
+            JCS_Debug.LogWarning(@"Try to get the name with unknown joystick button is not allow...");
             return "";
         }
 
@@ -657,10 +656,7 @@ button is not allow...");
             if (!JCS_Input.IsJoystickConnected())
                 return;
 
-            // 
-            for (int index = 0;
-                index < mJoysticks.Length;
-                ++index)
+            for (int index = 0; index < mTotalGamePadInGame; ++index)
             {
                 JoystickMap joystickMap = GetJoysitckMapByIndex(index);
 
