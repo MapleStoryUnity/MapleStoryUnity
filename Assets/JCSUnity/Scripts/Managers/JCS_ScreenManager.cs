@@ -20,11 +20,9 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_ScreenManager) **")]
+        private const string mResizableScreenPanelPath = "GUI/JCS_ResizableScreenPanel";
 
-        [Tooltip("Invisible object area.")]
-        [SerializeField]
-        private string mResizableScreenPanelPath = "JCSUnity_Resources/GUI/JCS_ResizableScreenPanel";
+        [Header("** Check Variables (JCS_ScreenManager) **")]
 
         [Tooltip("Top resizable screen panel.")]
         [SerializeField]

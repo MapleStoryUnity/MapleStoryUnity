@@ -325,7 +325,7 @@ namespace JCSUnity
             // create canvas
             GameObject canvasObj = CreateJCSCanvas();
 
-            const string desc_path = "JCSUnity_Resources/GUI/Describe Panel";
+            const string desc_path = "GUI/Describe Panel";
             GameObject desc_obj = JCS_Utility.SpawnGameObject(desc_path);
             desc_obj.name = desc_obj.name.Replace("(Clone)", "");
             desc_obj.transform.SetParent(canvasObj.transform);
@@ -361,7 +361,7 @@ namespace JCSUnity
         [MenuItem("JCSUnity/Basic/Create Managers", false, 10)]
         private static GameObject CreateManagers()
         {
-            const string manager_path = "JCSUnity_Resources/JCS_Managers";
+            const string manager_path = "JCS_Managers";
             GameObject gameObj = CreateHierarchyObject(manager_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS Managers");
@@ -376,7 +376,7 @@ namespace JCSUnity
         [MenuItem("JCSUnity/Basic/Create Settings", false, 10)]
         private static GameObject CreateSettings()
         {
-            const string setting_path = "JCSUnity_Resources/JCS_Settings";
+            const string setting_path = "JCS_Settings";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS Settings");
@@ -390,7 +390,7 @@ namespace JCSUnity
         [MenuItem("JCSUnity/Basic/Create BGM Player", false, 11)]
         private static void CreateBGMPlayer()
         {
-            const string player_path = "JCSUnity_Resources/Sound/JCS_BGMPlayer";
+            const string player_path = "Sound/JCS_BGMPlayer";
             GameObject gameObj = CreateHierarchyObject(player_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create BGM Player");
@@ -402,7 +402,7 @@ namespace JCSUnity
         [MenuItem("JCSUnity/Basic/Create Debug Tools", false, 12)]
         private static void CreateDebugTools()
         {
-            const string tools_path = "JCSUnity_Resources/Tools/JCS_Tools";
+            const string tools_path = "Tools/JCS_Tools";
             GameObject gameObj = CreateHierarchyObject(tools_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create Debug Tools");
@@ -435,13 +435,13 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateJCSCanvas()
         {
-            const string canvas_path = "JCSUnity_Resources/LevelDesignUI/JCS_Canvas";
+            const string canvas_path = "LevelDesignUI/JCS_Canvas";
             GameObject canvasObj = CreateHierarchyObject(canvas_path);
 
             Undo.RegisterCreatedObjectUndo(canvasObj, "Create JCS Canvas");
 
 
-            const string eventSystem_path = "JCSUnity_Resources/LevelDesignUI/EventSystem";
+            const string eventSystem_path = "LevelDesignUI/EventSystem";
             GameObject evtSystemObj = CreateHierarchyObject(eventSystem_path);
 
             Undo.RegisterCreatedObjectUndo(evtSystemObj, "Create Event System");
@@ -513,7 +513,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject Create2DCurosr()
         {
-            const string setting_path = "JCSUnity_Resources/GUI/JCS_2DCursor";
+            const string setting_path = "GUI/JCS_2DCursor";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
@@ -528,7 +528,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject Create3DCurosr()
         {
-            const string setting_path = "JCSUnity_Resources/GUI/JCS_3DCursor";
+            const string setting_path = "GUI/JCS_3DCursor";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
@@ -555,7 +555,7 @@ namespace JCSUnity
                 return null;
             }
 
-            const string setting_path = "JCSUnity_Resources/GUI/JCS_BasePanel";
+            const string setting_path = "GUI/JCS_BasePanel";
             GameObject basePanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
             Undo.RegisterCreatedObjectUndo(basePanel, "Create Base Panel");
@@ -583,7 +583,7 @@ namespace JCSUnity
                 return null;
             }
 
-            const string setting_path = "JCSUnity_Resources/GUI/JCS_DialoguePanel";
+            const string setting_path = "GUI/JCS_DialoguePanel";
             GameObject dialoguePanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
             Undo.RegisterCreatedObjectUndo(dialoguePanel, "Create Dialogue Panel");
@@ -619,7 +619,7 @@ namespace JCSUnity
                 return;
             }
 
-            const string settingPath = "JCSUnity_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
+            const string settingPath = "LevelDesignUI/JCS_SlideScreenPanelHolder";
 
             // spawn the pane holder.
             JCS_SlideScreenPanelHolder panelHolder9x9 = CreateHierarchyObjectUnderCanvas(settingPath, jcsCanvas).GetComponent<JCS_SlideScreenPanelHolder>();
@@ -630,7 +630,7 @@ namespace JCSUnity
             int starting_pos_x = -1920;
             int starting_pos_y = 1080;
 
-            const string slidePanelPath = "JCSUnity_Resources/LevelDesignUI/JCS_SlidePanel";
+            const string slidePanelPath = "LevelDesignUI/JCS_SlidePanel";
 
             int index = 0;
 
@@ -664,7 +664,7 @@ namespace JCSUnity
                 }
             }
 
-            const string slideScreenCameraPath = "JCSUnity_Resources/Camera/JCS_2DSlideScreenCamera";
+            const string slideScreenCameraPath = "Camera/JCS_2DSlideScreenCamera";
             JCS_2DSlideScreenCamera slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_2DSlideScreenCamera>();
 
             Undo.RegisterCreatedObjectUndo(slideScreenCamera, "Create 2D Slide Screen Camera");
@@ -692,7 +692,7 @@ namespace JCSUnity
                 return null;
             }
 
-            const string setting_path = "JCSUnity_Resources/GUI/JCS_TweenPanel";
+            const string setting_path = "GUI/JCS_TweenPanel";
             GameObject tweenPanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
             Undo.RegisterCreatedObjectUndo(tweenPanel, "Create Tween Panel");
@@ -709,7 +709,7 @@ namespace JCSUnity
         /// <returns></returns>
         private static GameObject CreateUndoRedoSystem()
         {
-            const string setting_path = "JCSUnity_Resources/GUI/JCS_UndoRedoSystem";
+            const string setting_path = "GUI/JCS_UndoRedoSystem";
             GameObject undoRedoSystem = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(undoRedoSystem, "Create Undo Redo System");
@@ -730,7 +730,7 @@ namespace JCSUnity
         /// </summary>
         private static void Create2DCamera()
         {
-            const string camera_path = "JCSUnity_Resources/Camera/JCS_2DCamera";
+            const string camera_path = "Camera/JCS_2DCamera";
             GameObject gameObj = CreateHierarchyObject(camera_path);
 
             // set camera depth to default -10.
@@ -744,7 +744,7 @@ namespace JCSUnity
         /// </summary>
         private static void CreateMixDamageTextPool()
         {
-            const string setting_path = "JCSUnity_Resources/GUI/DamageText/JCS_MixDamageTextPool";
+            const string setting_path = "GUI/DamageText/JCS_MixDamageTextPool";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create Min Damage Text Pool");
@@ -761,7 +761,7 @@ namespace JCSUnity
         /// </summary>
         private static void Create3DCamera()
         {
-            const string camera_path = "JCSUnity_Resources/Camera/JCS_3DCamera";
+            const string camera_path = "Camera/JCS_3DCamera";
             GameObject gameObj = CreateHierarchyObject(camera_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS 3D Camera");

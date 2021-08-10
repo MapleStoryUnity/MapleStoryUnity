@@ -23,9 +23,9 @@ namespace JCSUnity
     public class JCS_UtilityFunctions 
         : MonoBehaviour
     {
-        private static string IS_CONNECT_DIALOGUE = "JCSUnity_Resources/ForceDialogue/JCS_MessageBox_YesNo";
-        private static string SETTING_PANEL = "JCSUnity_Resources/InGameDialogue/Setting_Panel";
-        private static string TALK_DIALOGUE = "JCSUnity_Resources/InGameDialogue/Conversation_Dialogue";
+        private static string IS_CONNECT_DIALOGUE = "ForceDialogue/JCS_MessageBox_YesNo";
+        private static string SETTING_PANEL = "InGameDialogue/Setting_Panel";
+        private static string TALK_DIALOGUE = "InGameDialogue/Conversation_Dialogue";
 
         /// <summary>
         /// Pause the game.

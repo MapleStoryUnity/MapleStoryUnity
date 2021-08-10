@@ -24,7 +24,7 @@ namespace JCSUnity
 
         public static JCS_Canvas instance = null;
 
-        private static string RESIZE_UI_PATH = "JCSUnity_Resources/LevelDesignUI/ResizeUI";
+        private const string RESIZE_UI_PATH = "LevelDesignUI/ResizeUI";
 
         [Header("** Check Variables (JCS_Canvas) **")]
 
