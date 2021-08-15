@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Accurate platform calculate the movement 
     /// base on the position.
     /// </summary>
-    public class JCS_2DPositionPlatform
-        : MonoBehaviour
+    public class JCS_2DPositionPlatform : MonoBehaviour
     {
         /* Variables */
 

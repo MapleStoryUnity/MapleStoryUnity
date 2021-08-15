@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// 2d portal object.
     /// </summary>
-    public class JCS_2DPortal
-        : MonoBehaviour
+    public class JCS_2DPortal : MonoBehaviour
     {
         /* Variables */
 

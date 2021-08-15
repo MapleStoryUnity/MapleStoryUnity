@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// 
     /// Use mouse control the 3d object to drag and drop the object
     /// </summary>
-    public class JCS_3DDragDropObject
-        : MonoBehaviour
+    public class JCS_3DDragDropObject : MonoBehaviour
     {
         /* Variables */
 

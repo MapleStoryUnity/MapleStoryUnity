@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -15,14 +13,18 @@ namespace JCSUnity
     /// <summary>
     /// Echo out with game pad button
     /// </summary>
-    public class JCS_EchoGamePadButton
-        : JCS_GamePadButton
+    public class JCS_EchoGamePadButton : JCS_GamePadButton
     {
+        /* Variables */
+
         [Header("** Runtime Variables (JCS_EchoGamePadButton) **")]
 
         [Tooltip("String to echo out on the console window.")]
         public string echoString = "echo Hello World!~";
 
+        /* Setter & Getter */
+
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {

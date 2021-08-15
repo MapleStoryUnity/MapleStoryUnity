@@ -6,22 +6,17 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 using System.Net;                                     // Endpoint
 using System.Net.Sockets;                             // Socket namespace
-using System.Text;                                    // Text encoders
-using System.IO;
-using System;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// UDP Socket.
     /// </summary>
-    public class JCS_UDPGameSocket
-        : JCS_GameSocket
+    public class JCS_UDPGameSocket : JCS_GameSocket
     {
         /* Variables */
 

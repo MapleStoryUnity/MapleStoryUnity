@@ -6,8 +6,6 @@
  * $Notice: $
  */
 using UnityEngine;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// Using the version number provided in the game data system could 
     /// update the game patch by just checking the VERSION number.
     /// </summary>
-    public class JCS_PatchManager 
-        : JCS_Managers<JCS_PatchManager>
+    public class JCS_PatchManager : JCS_Managers<JCS_PatchManager>
     {
         /* Variables */
 

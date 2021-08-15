@@ -9,8 +9,6 @@
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
 
@@ -19,8 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// In-App-Purchase manager.
     /// </summary>
-    public class JCS_IAPManager
-        : MonoBehaviour
+    public class JCS_IAPManager : MonoBehaviour
         , IStoreListener
     {
         /* Variables */

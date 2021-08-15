@@ -6,12 +6,10 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
-using System.Runtime.CompilerServices;
 using System.IO;
+using System.Runtime.CompilerServices;
+using UnityEngine;
 
 #if (!NET_STANDARD_2_0 && !NET_4_6)
 namespace System.Runtime.CompilerServices

@@ -6,9 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
@@ -17,8 +14,7 @@ namespace JCSUnity
     /// 
     /// Here show the basic usage of the dialogue script system.
     /// </summary>
-    public class npc2100
-        : JCS_DialogueScript
+    public class npc2100 : JCS_DialogueScript
     {
         /* Variables */
 

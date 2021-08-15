@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Dynamic scene base class.
     /// </summary>
-    public abstract class JCS_DynamicScene
-        : MonoBehaviour
+    public abstract class JCS_DynamicScene : MonoBehaviour
     {
         // interface
     }

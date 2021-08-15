@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Living thing related object.
     /// </summary>
     [RequireComponent(typeof(JCS_2DLiveObjectAnimator))]
-    public class JCS_2DLiveObject
-        : JCS_LiveObject
+    public class JCS_2DLiveObject : JCS_LiveObject
     {
         /* Variables */
 

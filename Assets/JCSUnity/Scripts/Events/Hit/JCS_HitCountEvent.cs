@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// needed to by destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
-    public class JCS_HitCountEvent
-        : MonoBehaviour
+    public class JCS_HitCountEvent : MonoBehaviour
     {
         /* Variables */
 

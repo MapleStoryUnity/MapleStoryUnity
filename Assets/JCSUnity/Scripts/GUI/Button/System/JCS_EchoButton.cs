@@ -6,10 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace JCSUnity
 {
@@ -17,14 +14,18 @@ namespace JCSUnity
     /// Echo out a string on the console window when this
     /// button triggered.
     /// </summary>
-    public class JCS_EchoButton
-        : JCS_Button
+    public class JCS_EchoButton : JCS_Button
     {
+        /* Variables */
+
         [Header("** Runtime Variables (JCS_EchoButton) **")]
 
         [Tooltip("String to echo out on the console window.")]
         public string echoString = "echo Hello World!~";
 
+        /* Setter & Getter */
+
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {

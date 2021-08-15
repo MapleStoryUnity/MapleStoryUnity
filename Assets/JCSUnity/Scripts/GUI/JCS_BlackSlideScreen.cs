@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Black Slide Screen
     /// </summary>
     [RequireComponent(typeof(JCS_TransformTweener))]
-    public class JCS_BlackSlideScreen
-        : MonoBehaviour
+    public class JCS_BlackSlideScreen : MonoBehaviour
     {
         /* Variables */
 

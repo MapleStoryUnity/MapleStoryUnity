@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// 
     /// Reference game => `Monster Hunter`.
     /// </summary>
-    public class JCS_3DCameraPlayer
-        : JCS_3DPlayer
+    public class JCS_3DCameraPlayer : JCS_3DPlayer
     {
         /* Variables */
 

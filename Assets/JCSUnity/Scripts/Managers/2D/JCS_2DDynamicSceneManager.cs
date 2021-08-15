@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Manage all the 2d parallax layer.
     /// </summary>
-    public class JCS_2DDynamicSceneManager
-        : JCS_Managers<JCS_2DDynamicSceneManager>
+    public class JCS_2DDynamicSceneManager : JCS_Managers<JCS_2DDynamicSceneManager>
     {
         /* Variables */
 

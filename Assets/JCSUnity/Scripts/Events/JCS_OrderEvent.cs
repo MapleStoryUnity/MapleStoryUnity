@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Execute an operation in order with interval of time.
     /// </summary>
-    public class JCS_OrderEvent
-        : MonoBehaviour
+    public class JCS_OrderEvent : MonoBehaviour
     {
         /* Variables */
 

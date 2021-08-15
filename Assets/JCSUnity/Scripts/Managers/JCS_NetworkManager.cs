@@ -3,10 +3,10 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: $
+ * $Notice: See LICENSE.txt for modification and distribution information
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +16,7 @@ namespace JCSUnity
     /// NOTE(jenchieh): To use this so the game could possibly become 
     /// the MO/MMO game.
     /// </summary>
-    public class JCS_NetworkManager
-        : JCS_Managers<JCS_NetworkManager>
+    public class JCS_NetworkManager : JCS_Managers<JCS_NetworkManager>
     {
         /* Variables */
 

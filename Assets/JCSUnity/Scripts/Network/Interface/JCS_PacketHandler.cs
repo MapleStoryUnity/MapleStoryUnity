@@ -6,10 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
 
 namespace JCSUnity
 {

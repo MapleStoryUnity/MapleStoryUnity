@@ -7,7 +7,6 @@
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 

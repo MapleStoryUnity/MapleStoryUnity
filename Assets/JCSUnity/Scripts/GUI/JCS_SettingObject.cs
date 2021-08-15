@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// Object need to get the information in order to get the 
     /// correct setting
     /// </summary>
-    public class JCS_SettingObject 
-        : MonoBehaviour
+    public class JCS_SettingObject : MonoBehaviour
     {
         /* Variables */
 

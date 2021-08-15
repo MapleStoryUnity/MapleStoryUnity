@@ -6,16 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Handle all the 2d live object in the scene.
     /// </summary>
-    public class JCS_2DLiveObjectManager
-        : JCS_Managers<JCS_2DLiveObjectManager>
+    public class JCS_2DLiveObjectManager : JCS_Managers<JCS_2DLiveObjectManager>
     {
         /* Variables */
 

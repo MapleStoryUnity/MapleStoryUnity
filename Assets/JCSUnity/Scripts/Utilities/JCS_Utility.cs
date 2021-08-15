@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System;
-using System.Collections;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -17,7 +15,6 @@ using UnityEngine.EventSystems;
 
 using PeterVuorela.Tweener;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Text;
 
 namespace JCSUnity

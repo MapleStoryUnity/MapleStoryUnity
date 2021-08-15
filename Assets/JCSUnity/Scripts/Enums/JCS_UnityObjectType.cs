@@ -10,9 +10,6 @@
  */
 #define TMP_PRO
 
-using UnityEngine;
-using System.Collections;
-
 namespace JCSUnity
 {
     /// <summary>

@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -18,8 +17,7 @@ namespace JCSUnity
     [RequireComponent(typeof(JCS_3DGoStraightAction))]
     [RequireComponent(typeof(JCS_DestroyObjectWithTime))]
     [RequireComponent(typeof(JCS_HitCountEvent))]
-    public class JCS_2DTrackBullet
-        : JCS_Bullet
+    public class JCS_2DTrackBullet : JCS_Bullet
     {
         /* Variables */
 

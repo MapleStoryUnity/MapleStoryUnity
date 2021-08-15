@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 // Starting Version 5.3.0 Unity use SceneManageement 
 // instead of Application on load function call.
@@ -20,8 +19,7 @@ namespace JCSUnity
     /// <summary>
     /// Util Function put here, usually systematic.
     /// </summary>
-    public class JCS_UtilityFunctions 
-        : MonoBehaviour
+    public class JCS_UtilityFunctions : MonoBehaviour
     {
         private static string IS_CONNECT_DIALOGUE = "ForceDialogue/JCS_MessageBox_YesNo";
         private static string SETTING_PANEL = "InGameDialogue/Setting_Panel";

@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -19,8 +18,7 @@ namespace JCSUnity
     [RequireComponent(typeof(JCS_FadeObject))]
     [RequireComponent(typeof(JCS_SimpleTrackAction))]
     [RequireComponent(typeof(JCS_SlideEffect))]
-    public class JCS_LogText
-        : MonoBehaviour
+    public class JCS_LogText : MonoBehaviour
     {
         /* Variables */
 

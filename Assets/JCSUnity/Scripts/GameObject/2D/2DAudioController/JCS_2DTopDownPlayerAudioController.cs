@@ -6,16 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Audio controller specific for top down player.
     /// </summary>
-    public class JCS_2DTopDownPlayerAudioController 
-        : JCS_2DPlayerAudioController
+    public class JCS_2DTopDownPlayerAudioController : JCS_2DPlayerAudioController
     {
         /* Variables */
 

@@ -6,9 +6,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections.Generic;
 using System.IO;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -16,8 +16,7 @@ namespace JCSUnity
     /// Camera class for JCSUnity framework.
     /// </summary>
     [RequireComponent(typeof(Camera))]
-    public abstract class JCS_Camera 
-        : MonoBehaviour
+    public abstract class JCS_Camera : MonoBehaviour
     {
         /* Variables */
 

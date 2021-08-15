@@ -6,19 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
-using System;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Basic hello packet from the server.
     /// </summary>
-    public class JCS_HelloHandler
-        : JCS_PacketHandler
+    public class JCS_HelloHandler : JCS_PacketHandler
     {
 
         /// <summary>

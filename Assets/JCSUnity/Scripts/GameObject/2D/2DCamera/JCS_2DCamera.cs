@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Basic camera for 2d Games.
     /// </summary>
-    public class JCS_2DCamera
-        : JCS_Camera
+    public class JCS_2DCamera : JCS_Camera
     {
         /* Variables */
 

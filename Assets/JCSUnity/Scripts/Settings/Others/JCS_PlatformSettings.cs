@@ -1,5 +1,3 @@
-
-using System;
 /**
 * $File: JCS_PlatformSettings.cs $
 * $Date: 2017-05-02 23:52:09 $
@@ -8,8 +6,6 @@ using System;
 * $Notice: See LICENSE.txt for modification and distribution information 
 *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
 */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,8 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Setting of all the platform type.
     /// </summary>
-    public class JCS_PlatformSettings
-        : JCS_Settings<JCS_PlatformSettings>
+    public class JCS_PlatformSettings : JCS_Settings<JCS_PlatformSettings>
     {
         /* Variables */
 

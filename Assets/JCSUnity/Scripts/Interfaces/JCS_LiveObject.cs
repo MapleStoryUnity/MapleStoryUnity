@@ -7,15 +7,13 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Base class of live object in world.
     /// </summary>
-    public abstract class JCS_LiveObject
-        : MonoBehaviour
+    public abstract class JCS_LiveObject : MonoBehaviour
     {
         /* Variables */
 

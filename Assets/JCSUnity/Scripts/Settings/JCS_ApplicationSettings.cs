@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// Application settings.
     /// </summary>
-    public class JCS_ApplicationSettings
-        : JCS_Settings<JCS_ApplicationSettings>
+    public class JCS_ApplicationSettings : JCS_Settings<JCS_ApplicationSettings>
     {
         /* Variables */
 

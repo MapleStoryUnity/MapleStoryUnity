@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Package data settings.
     /// </summary>
-    public class JCS_PackageDataSettings
-        : JCS_Settings<JCS_PackageDataSettings>
+    public class JCS_PackageDataSettings : JCS_Settings<JCS_PackageDataSettings>
     {
         /* Variables */
 

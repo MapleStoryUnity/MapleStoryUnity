@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System.Net.NetworkInformation;
 
 namespace JCSUnity
 {
@@ -19,8 +17,7 @@ namespace JCSUnity
     /// GUI, so use this carefully!
     /// </summary>
     [RequireComponent(typeof(JCS_PanelRoot))]
-    public class JCS_PanelLayer
-        : JCS_SortingObject
+    public class JCS_PanelLayer : JCS_SortingObject
     {
         /* Variables */
 

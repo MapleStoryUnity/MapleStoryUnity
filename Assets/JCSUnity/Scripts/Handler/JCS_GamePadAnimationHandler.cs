@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// Handle animation using 'JCS_2DAnimator' depends on weather
     /// the game pad is plug or unplugn.
     /// </summary>
-    public class JCS_GamePadAnimationHandler
-    : MonoBehaviour
+    public class JCS_GamePadAnimationHandler : MonoBehaviour
     {
         /* Variables */
 

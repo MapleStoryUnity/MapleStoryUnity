@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// without that class this class is meaningless.
     /// </summary>
     [RequireComponent(typeof(JCS_ButtonSelectionGroup))]
-    public class JCS_ButtonSelectionGroupController
-        : MonoBehaviour
+    public class JCS_ButtonSelectionGroupController : MonoBehaviour
     {
         /* Variables */
 

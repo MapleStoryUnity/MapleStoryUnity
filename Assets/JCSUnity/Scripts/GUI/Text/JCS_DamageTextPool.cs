@@ -6,10 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -19,8 +17,7 @@ namespace JCSUnity
     /// Reusable damage text pool.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_DamageTextPool
-        : MonoBehaviour
+    public class JCS_DamageTextPool : MonoBehaviour
     {
         /* Variables */
 

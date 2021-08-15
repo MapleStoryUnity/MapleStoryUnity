@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace JCSUnity
 {
@@ -21,8 +19,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_TweenerHandler))]
-    public class JCS_TweenPanel
-        : MonoBehaviour
+    public class JCS_TweenPanel : MonoBehaviour
     {
         /* Variables */
 

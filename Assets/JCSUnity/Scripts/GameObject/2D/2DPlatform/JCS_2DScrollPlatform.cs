@@ -6,16 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Scrolling platform tag.
     /// </summary>
-    public class JCS_2DScrollPlatform 
-        : JCS_2DPlatform
+    public class JCS_2DScrollPlatform : JCS_2DPlatform
     {
         /* Variables */
 

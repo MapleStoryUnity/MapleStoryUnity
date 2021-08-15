@@ -6,15 +6,13 @@
  * $Notice: $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Audio controller for player.
     /// </summary>
-    public class JCS_2DSideScrollerPlayerAudioController
-        : JCS_2DPlayerAudioController
+    public class JCS_2DSideScrollerPlayerAudioController : JCS_2DPlayerAudioController
     {
         /* Variables */
 

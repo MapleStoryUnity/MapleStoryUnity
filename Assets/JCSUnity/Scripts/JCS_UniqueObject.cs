@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Singleton patter in Unity scripting layer.
     /// </summary>
-    public class JCS_UniqueObject
-        : MonoBehaviour
+    public class JCS_UniqueObject : MonoBehaviour
     {
         /* Variables */
 

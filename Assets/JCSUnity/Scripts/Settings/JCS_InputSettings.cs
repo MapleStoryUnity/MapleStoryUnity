@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// 
     /// URL(jenchieh): http://wiki.unity3d.com/index.php?title=Xbox360Controller
     /// </summary>
-    public class JCS_InputSettings
-        : JCS_Settings<JCS_InputSettings>
+    public class JCS_InputSettings : JCS_Settings<JCS_InputSettings>
     {
         /* Variables */
 

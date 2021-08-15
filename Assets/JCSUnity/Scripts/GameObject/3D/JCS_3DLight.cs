@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -18,8 +16,7 @@ namespace JCSUnity
     [RequireComponent(typeof(Light))]
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
     [RequireComponent(typeof(JCS_ValueTweener))]
-    public class JCS_3DLight
-        : MonoBehaviour
+    public class JCS_3DLight : MonoBehaviour
     {
         /* Variables */
 

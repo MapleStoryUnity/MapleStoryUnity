@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Enemy that will do circle movement.
     /// </summary>
     [RequireComponent(typeof(JCS_2DCircleAction))]
-    public class JCS_CircleEnemy 
-        : JCS_2DLiveObject
+    public class JCS_CircleEnemy : JCS_2DLiveObject
     {
         /* Variables */
 

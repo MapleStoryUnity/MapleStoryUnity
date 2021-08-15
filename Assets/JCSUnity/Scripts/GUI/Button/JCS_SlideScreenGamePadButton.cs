@@ -6,9 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -16,8 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Button will do the slide screen. (Game Pad)
     /// </summary>
-    public class JCS_SlideScreenGamePadButton
-        : JCS_GamePadButton
+    public class JCS_SlideScreenGamePadButton : JCS_GamePadButton
     {
         /* Variables */
 

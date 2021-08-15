@@ -6,10 +6,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace JCSUnity
 {
@@ -18,8 +17,7 @@ namespace JCSUnity
     /// right scaling.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
-    public class JCS_ResizeUI 
-        : MonoBehaviour
+    public class JCS_ResizeUI : MonoBehaviour
     {
         /* Variables */
 

@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// with in the certain range.
     /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
-    public class JCS_DisableWithCertainRangeEvent
-        : MonoBehaviour
+    public class JCS_DisableWithCertainRangeEvent : MonoBehaviour
     {
         /* Variables */
 

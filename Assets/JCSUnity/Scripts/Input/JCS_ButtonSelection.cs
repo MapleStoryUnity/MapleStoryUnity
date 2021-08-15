@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,8 +21,7 @@ namespace JCSUnity
     /// NOTE(jenchieh): this must use with JCS_ButtonSelectionGroup
     /// class or else is useless.
     /// </summary>
-    public class JCS_ButtonSelection
-        : MonoBehaviour
+    public class JCS_ButtonSelection : MonoBehaviour
     {
         /* Variables */
 

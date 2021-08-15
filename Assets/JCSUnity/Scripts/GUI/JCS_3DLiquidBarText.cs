@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// Object GUI which will do like the counter show.
     /// </summary>
     [RequireComponent(typeof(JCS_3DLiquidBar))]
-    public class JCS_3DLiquidBarText
-        : MonoBehaviour
+    public class JCS_3DLiquidBarText : MonoBehaviour
     {
         /* Variables */
 

@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// When cursor or some trigger active, will show the object 
     /// information on it. This is what this dialogue do.
     /// </summary>
-    public class JCS_CheckableDialogue
-        : JCS_PanelRoot
+    public class JCS_CheckableDialogue : JCS_PanelRoot
     {
         /* Variables */
 

@@ -6,19 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
-using System.Xml.Serialization;
 using System.IO;
-using System;
+using System.Xml.Serialization;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Interface of storing game data as XML format.
     /// </summary>
-    public abstract class JCS_XMLGameData
-        : JCS_GameData
+    public abstract class JCS_XMLGameData : JCS_GameData
     {
         /* Variables */
 

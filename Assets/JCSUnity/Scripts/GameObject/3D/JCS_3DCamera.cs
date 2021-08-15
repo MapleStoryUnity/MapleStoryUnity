@@ -7,9 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
-using System.IO;
 
 namespace JCSUnity
 {
@@ -17,8 +14,7 @@ namespace JCSUnity
     /// Basic camera in 3d game.
     /// </summary>
     [RequireComponent(typeof(AudioListener))]
-    public class JCS_3DCamera
-        : JCS_Camera
+    public class JCS_3DCamera : JCS_Camera
     {
         /* Variables */
 

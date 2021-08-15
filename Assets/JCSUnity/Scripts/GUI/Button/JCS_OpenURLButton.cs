@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -15,8 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Open a URL in the default browser.
     /// </summary>
-    public class JCS_OpenURLButton
-        : JCS_Button
+    public class JCS_OpenURLButton : JCS_Button
     {
         [Header("** Runtime Variables (JCS_OpenURLButton) **")]
 

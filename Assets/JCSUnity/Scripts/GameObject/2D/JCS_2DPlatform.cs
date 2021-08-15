@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Platfrom that player could stand on.
     /// </summary>
-    public class JCS_2DPlatform 
-        : MonoBehaviour
+    public class JCS_2DPlatform : MonoBehaviour
     {
         /* Variables */
 

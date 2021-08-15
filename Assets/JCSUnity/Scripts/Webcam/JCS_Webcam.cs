@@ -6,19 +6,16 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections.Generic;
 using System.IO;
-using UnityEngine.UI;
-using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Webcam object. Must have the texture on it in order to render.
     /// </summary>
-    public class JCS_Webcam
-        : JCS_UnityObject
+    public class JCS_Webcam : JCS_UnityObject
     {
         /* Variables */
 

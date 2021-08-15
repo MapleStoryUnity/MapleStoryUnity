@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,8 +18,7 @@ namespace JCSUnity
     /// server's response had arrived. This usually deal with the 
     /// UDP type communication.
     /// </summary>
-    public class JCS_PacketLostPreventer
-        : JCS_Settings<JCS_PacketLostPreventer>
+    public class JCS_PacketLostPreventer : JCS_Settings<JCS_PacketLostPreventer>
     {
         /* Variables */
 

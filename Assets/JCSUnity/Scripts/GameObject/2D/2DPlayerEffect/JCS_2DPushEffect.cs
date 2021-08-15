@@ -7,17 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
     /// <summary>
     /// This pushes the player.
     /// </summary>
-    public class JCS_2DPushEffect
-    : MonoBehaviour
-    , JCS_2DPlayerEffect
+    public class JCS_2DPushEffect : MonoBehaviour , JCS_2DPlayerEffect
     {
         /* Variables */
 

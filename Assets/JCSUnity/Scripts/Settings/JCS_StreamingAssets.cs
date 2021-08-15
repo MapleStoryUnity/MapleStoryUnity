@@ -20,8 +20,7 @@ namespace JCSUnity
     /// <summary>
     /// Generic streaming assets interface.
     /// </summary>
-    public class JCS_StreamingAssets
-        : JCS_Settings<JCS_StreamingAssets>
+    public class JCS_StreamingAssets : JCS_Settings<JCS_StreamingAssets>
     {
         /* Variables */
 

@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
@@ -15,8 +13,7 @@ namespace JCSUnity
     /// Encoder, just hold the alorigthm to encode the packet before 
     /// being sent to client/server.
     /// </summary>
-    public class JCS_DefaultPacketEncoder
-        : JCS_PacketEncoder
+    public class JCS_DefaultPacketEncoder : JCS_PacketEncoder
     {
 
         /// <summary>

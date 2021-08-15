@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Interface of all the sorting object.
     /// </summary>
-    public abstract class JCS_SortingObject
-        : MonoBehaviour
+    public abstract class JCS_SortingObject : MonoBehaviour
     {
         /* Variables */
 

@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,8 +20,7 @@ namespace JCSUnity
     /// Extension: Lin Yi Chung
     /// Source: https://www.codepile.net/pile/jbed2WV4
     /// </summary>
-    public class JCS_GradientText
-        : BaseMeshEffect
+    public class JCS_GradientText : BaseMeshEffect
     {
         /* Variables */
 

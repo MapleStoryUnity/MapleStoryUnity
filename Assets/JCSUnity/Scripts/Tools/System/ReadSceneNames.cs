@@ -1,4 +1,4 @@
-﻿#if (UNITY_EDITOR)
+﻿#if UNITY_EDITOR
 /**
  * $File: ReadSceneNames.cs $
  * $Date: $
@@ -15,8 +15,7 @@ using UnityEditor;
 /// Read all the scene that are put into build setting.
 /// </summary>
 [ExecuteInEditMode]
-public class ReadSceneNames 
-    : MonoBehaviour
+public class ReadSceneNames : MonoBehaviour
 {
     /* Variables */
 

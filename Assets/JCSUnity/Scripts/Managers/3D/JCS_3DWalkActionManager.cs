@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Manages all the 3D walk action in scene.
     /// </summary>
-    public class JCS_3DWalkActionManager
-        : JCS_Managers<JCS_3DWalkActionManager>
+    public class JCS_3DWalkActionManager : JCS_Managers<JCS_3DWalkActionManager>
     {
         /* Variables */
 

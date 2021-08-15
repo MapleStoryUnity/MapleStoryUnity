@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
@@ -16,8 +14,7 @@ namespace JCSUnity
     /// Use with JCS_RollBtnSelector.
     /// </summary>
     [RequireComponent(typeof(JCS_SimpleTrackAction))]
-    public class JCS_RollSelectorButton
-        : JCS_Button
+    public class JCS_RollSelectorButton : JCS_Button
     {
         /* Variables */
 

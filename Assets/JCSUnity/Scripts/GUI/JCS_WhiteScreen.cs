@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// NOTE(jenchieh): For lightning/flash effect.
     /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
-    public class JCS_WhiteScreen 
-        : MonoBehaviour
+    public class JCS_WhiteScreen  : MonoBehaviour
     {
         /* Variables */
 

@@ -7,16 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Object to create the instance of Game Window.
     /// </summary>
-    public class JCS_GameWindowHandler 
-        : JCS_Settings<JCS_GameWindowHandler>
+    public class JCS_GameWindowHandler : JCS_Settings<JCS_GameWindowHandler>
     {
         /* Variables */
 

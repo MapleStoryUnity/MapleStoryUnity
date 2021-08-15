@@ -3,10 +3,10 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: $
+ * $Notice: See LICENSE.txt for modification and distribution information
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -14,8 +14,7 @@ namespace JCSUnity
     /// Manage of all the music, sound and sfx in the game.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_SoundManager
-        : JCS_Managers<JCS_SoundManager>
+    public class JCS_SoundManager : JCS_Managers<JCS_SoundManager>
     {
         /* Variables */
 

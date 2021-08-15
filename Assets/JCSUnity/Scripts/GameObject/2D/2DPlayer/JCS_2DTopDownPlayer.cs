@@ -6,9 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// Example Player with topdown control.
     /// </summary>
     [RequireComponent(typeof(JCS_2DTopDownPlayerAudioController))]
-    public class JCS_2DTopDownPlayer 
-        : JCS_Player
+    public class JCS_2DTopDownPlayer : JCS_Player
     {
         /* Variables */
 

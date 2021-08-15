@@ -6,18 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Use this to receiving the single from mobile touch input/bufffer.
     /// </summary>
-    public class JCS_MobileMouseEvent
-        : MonoBehaviour
+    public class JCS_MobileMouseEvent : MonoBehaviour
     {
         /* Variables */
 

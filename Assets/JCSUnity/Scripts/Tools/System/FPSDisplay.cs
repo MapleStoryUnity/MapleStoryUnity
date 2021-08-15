@@ -1,6 +1,5 @@
-﻿#if (UNITY_EDITOR)
+﻿#if UNITY_EDITOR
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 // Dave Hampson 

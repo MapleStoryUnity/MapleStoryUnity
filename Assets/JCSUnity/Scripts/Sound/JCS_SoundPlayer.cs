@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// sound effect.
     /// </summary>
     [RequireComponent(typeof(AudioSource))]
-    public class JCS_SoundPlayer 
-        : MonoBehaviour
+    public class JCS_SoundPlayer : MonoBehaviour
     {
         /* Variables */
 

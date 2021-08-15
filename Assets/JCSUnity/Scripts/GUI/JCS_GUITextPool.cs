@@ -7,16 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Text pool using Unity Engine's uGUI system.
     /// </summary>
-    public class JCS_GUITextPool
-        : MonoBehaviour
+    public class JCS_GUITextPool : MonoBehaviour
     {
         /* Variables */
 

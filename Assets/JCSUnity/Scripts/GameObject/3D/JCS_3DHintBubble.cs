@@ -11,8 +11,6 @@
  */
 #define TMP_PRO
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 #if TMP_PRO
@@ -27,8 +25,7 @@ namespace JCSUnity
     [RequireComponent(typeof(TextMeshPro))]
     [RequireComponent(typeof(JCS_TweenerHandler))]
     [RequireComponent(typeof(JCS_FadeObject))]
-    public class JCS_3DHintBubble
-        : MonoBehaviour
+    public class JCS_3DHintBubble : MonoBehaviour
     {
         /* Variables */
 

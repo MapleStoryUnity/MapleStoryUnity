@@ -17,8 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Holding all the information about the time in real life.
     /// </summary>
-    public class JCS_TimeManager
-        : JCS_Managers<JCS_TimeManager>
+    public class JCS_TimeManager : JCS_Managers<JCS_TimeManager>
     {
         /* Variables */
 

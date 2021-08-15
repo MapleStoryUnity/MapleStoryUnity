@@ -6,9 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -21,8 +20,7 @@ namespace JCSUnity
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class JCS_CharacterController2D
-        : MonoBehaviour
+    public class JCS_CharacterController2D : MonoBehaviour
     {
         /* Variables */
 

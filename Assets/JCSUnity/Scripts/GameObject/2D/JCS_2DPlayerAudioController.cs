@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Audio player for specific player type.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_2DPlayerAudioController 
-        : MonoBehaviour
+    public class JCS_2DPlayerAudioController : MonoBehaviour
     {
         /* Variables */
 

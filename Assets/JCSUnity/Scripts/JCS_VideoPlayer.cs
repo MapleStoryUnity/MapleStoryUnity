@@ -7,8 +7,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 /*
  * JCSUnity.JCS_VideoPlayer's MovieTexture is deprecated and no 
@@ -28,8 +28,7 @@ namespace JCSUnity
     /// PC version.
     /// </summary>
     [RequireComponent(typeof(AudioSource))]
-    public class JCS_VideoPlayer
-        : JCS_UnityObject
+    public class JCS_VideoPlayer : JCS_UnityObject
     {
         /* Variables */
 
@@ -217,8 +216,7 @@ namespace JCSUnity
     /// Mobile version.
     /// </summary>
     [RequireComponent(typeof(AudioSource))]
-    public class JCS_VideoPlayer
-        : JCS_UnityObject
+    public class JCS_VideoPlayer : JCS_UnityObject
     {
         /* Variables */
 
@@ -414,8 +412,7 @@ namespace JCSUnity
     /// Browser/WebGL version.
     /// </summary>
     [RequireComponent(typeof(AudioSource))]
-    public class JCS_VideoPlayer
-        : JCS_UnityObject
+    public class JCS_VideoPlayer : JCS_UnityObject
     {
         // TODO(jenchieh): complete this..
     }

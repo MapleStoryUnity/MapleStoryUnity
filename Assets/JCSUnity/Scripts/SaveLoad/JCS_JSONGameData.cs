@@ -6,11 +6,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
 using System.Text;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// Interface to store game data in JSON format.
     /// </summary>
     [System.Serializable]
-    public abstract class JCS_JSONGameData
-        : JCS_GameData
+    public abstract class JCS_JSONGameData : JCS_GameData
     {
         /* Variables */
 

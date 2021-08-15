@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// 
     /// Ex: Star need to contain the attacker info.
     /// </summary>
-    public class JCS_AttackerInfo
-        : MonoBehaviour
+    public class JCS_AttackerInfo : MonoBehaviour
     {
         /* Variables */
 

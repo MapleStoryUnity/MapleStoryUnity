@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(Image))]
     [RequireComponent(typeof(Mask))]
-    public class JCS_Marquee
-        : MonoBehaviour
+    public class JCS_Marquee : MonoBehaviour
     {
         /* Variables */
 

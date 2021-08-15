@@ -11,7 +11,6 @@
  */
 #define TMP_PRO
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,8 +24,7 @@ namespace JCSUnity
     /// <summary>
     /// Text animation that will display text accordingly.
     /// </summary>
-    public class JCS_TextAnimation
-        : MonoBehaviour
+    public class JCS_TextAnimation : MonoBehaviour
     {
         /* Variables */
 

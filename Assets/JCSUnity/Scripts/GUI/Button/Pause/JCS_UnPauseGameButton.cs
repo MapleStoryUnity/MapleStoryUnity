@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// 
     /// ATTENTION: this should have at least one "JCS_Button" with this.
     /// </summary>
-    public class JCS_UnPauseGameButton
-    : MonoBehaviour
+    public class JCS_UnPauseGameButton : MonoBehaviour
     {
         [Header("** Require Variables (JCS_UnPauseGameButton) **")]
 

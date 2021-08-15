@@ -1,6 +1,6 @@
 ﻿#if (UNITY_EDITOR && UNITY_5_3_5)
 /**
- * $File: A_to_Z.cs $
+ * $File: AutoSortHierarchy.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $

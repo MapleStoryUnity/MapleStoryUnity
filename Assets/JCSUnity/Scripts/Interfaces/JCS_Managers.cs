@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// Manager have to be in every scene 
     /// in Unity Engine's scene system.
     /// </summary>
-    public class JCS_Managers<T>
-        : MonoBehaviour
+    public class JCS_Managers<T> : MonoBehaviour
     {
         /* Variables */
 

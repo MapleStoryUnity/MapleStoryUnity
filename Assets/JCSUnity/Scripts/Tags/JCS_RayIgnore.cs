@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Tag of ignoring the item.
     /// </summary>
-    public class JCS_RayIgnore
-        : MonoBehaviour
+    public class JCS_RayIgnore : MonoBehaviour
     {
         /* Variables */
 

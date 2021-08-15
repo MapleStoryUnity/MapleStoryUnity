@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Panel will make sure all the following
     /// child object fit the screen size!
     /// </summary>
-    public class JCS_PanelRoot
-        : JCS_BaseDialogueObject
+    public class JCS_PanelRoot : JCS_BaseDialogueObject
     {
         /* Variables */
 

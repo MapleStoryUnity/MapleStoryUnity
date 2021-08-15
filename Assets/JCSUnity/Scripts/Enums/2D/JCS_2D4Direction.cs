@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,9 +14,9 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_2D4Direction
     {
-        TOP = 0,
-        BOTTOM = 1,
-        RIGHT = 2,
-        LEFT = 3,
+        TOP = 1,
+        BOTTOM = 5,
+        RIGHT = 3,
+        LEFT = 7,
     }
 }

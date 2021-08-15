@@ -7,8 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 
 namespace JCSUnity
 {
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(JCS_GUITextPool))]
-    public class JCS_IGLogSystem
-        : JCS_UnityObject
+    public class JCS_IGLogSystem : JCS_UnityObject
     {
         /* Variables */
 

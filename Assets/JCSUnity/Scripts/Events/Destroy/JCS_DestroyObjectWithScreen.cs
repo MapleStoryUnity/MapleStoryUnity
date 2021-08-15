@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Destroy the gameobject when the object is no longer render 
     /// on the screen.
     /// </summary>
-    public class JCS_DestroyObjectWithScreen
-        : MonoBehaviour
+    public class JCS_DestroyObjectWithScreen : MonoBehaviour
     {
         /* Variables */
 

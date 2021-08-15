@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Check if the object hit something on the list.
     /// </summary>
-    public class JCS_HitListEvent
-        : MonoBehaviour
+    public class JCS_HitListEvent : MonoBehaviour
     {
         /* Variables */
 

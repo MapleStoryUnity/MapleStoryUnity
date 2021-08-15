@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -16,8 +14,7 @@ namespace JCSUnity
     /// Button will listen to the gamepad. Note it compatible with
     /// PC/desktop too.
     /// </summary>
-    public abstract class JCS_GamePadButton
-        : JCS_Button
+    public abstract class JCS_GamePadButton : JCS_Button
     {
         /* Variables */
 

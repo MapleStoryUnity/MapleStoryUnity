@@ -6,16 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Tag been handle by "JCS_SceneManager"
     /// </summary>
-    public class JCS_2DDynamicScene
-        : JCS_DynamicScene
+    public class JCS_2DDynamicScene : JCS_DynamicScene
     {
         /* Variables */
 

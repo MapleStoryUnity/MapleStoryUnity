@@ -1,9 +1,5 @@
-﻿#if (UNITY_EDITOR)
+﻿#if UNITY_EDITOR
 using UnityEngine;
-using System.Collections;
-using System.Text.RegularExpressions;
-using System;
-using System.Text;
 using JCSUnity;
 
 public class CpuTest : MonoBehaviour

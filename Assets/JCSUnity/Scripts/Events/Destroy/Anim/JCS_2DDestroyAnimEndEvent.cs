@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -16,8 +14,7 @@ namespace JCSUnity
     /// Destroy the gameobject after done playing the 2D animation.
     /// </summary>
     [RequireComponent(typeof(JCS_2DAnimation))]
-    public class JCS_2DDestroyAnimEndEvent 
-        : MonoBehaviour
+    public class JCS_2DDestroyAnimEndEvent : MonoBehaviour
     {
         /* Variables */
 

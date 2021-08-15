@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Controller that controls `JCS_TransformLinkedObject` component.
     /// </summary>
-    public class JCS_TransformLinkedObjectController
-    : MonoBehaviour
+    public class JCS_TransformLinkedObjectController : MonoBehaviour
     {
         /* Variables */
 

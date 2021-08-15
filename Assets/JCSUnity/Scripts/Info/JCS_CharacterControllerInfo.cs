@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// detection, etc.
     /// </summary>
     [RequireComponent(typeof(CharacterController))]
-    public class JCS_CharacterControllerInfo
-        : MonoBehaviour
+    public class JCS_CharacterControllerInfo : MonoBehaviour
     {
         /* Variables */
 

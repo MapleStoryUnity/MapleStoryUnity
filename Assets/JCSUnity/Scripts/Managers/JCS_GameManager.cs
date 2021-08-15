@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// Make sure u have this execute first!!!
     /// </summary>
-    public class JCS_GameManager 
-        : JCS_Managers<JCS_GameManager>
+    public class JCS_GameManager : JCS_Managers<JCS_GameManager>
     {
         /* Variables */
 

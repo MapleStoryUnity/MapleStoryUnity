@@ -6,10 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using JCSUnity;
 
 namespace JCSUnity
 {
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// 
     /// SOURCE: https://www.youtube.com/watch?v=yqMIfTWoA8A
     /// </summary>
-    public class JCS_RouteGuageSystem
-        : MonoBehaviour
+    public class JCS_RouteGuageSystem : MonoBehaviour
     {
         /* Variables */
 

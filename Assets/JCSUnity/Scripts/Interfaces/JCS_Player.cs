@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Player base class.
     /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
-    public abstract class JCS_Player 
-        : MonoBehaviour
+    public abstract class JCS_Player : MonoBehaviour
     {
         /* Variables */
 

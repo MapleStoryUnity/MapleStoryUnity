@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Cross Unity's GUI system object.
     /// </summary>
-    public class JCS_GUIObject
-        : MonoBehaviour
+    public class JCS_GUIObject : MonoBehaviour
     {
         /* Variables */
 

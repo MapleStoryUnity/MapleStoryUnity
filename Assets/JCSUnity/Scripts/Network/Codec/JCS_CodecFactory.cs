@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,11 +14,16 @@ namespace JCSUnity
     /// </summary>
     public class JCS_CodecFactory
     {
+        /* Variables */
+
         private static JCS_CodecFactory instance = null;
 
         private JCS_PacketDecoder mDecoder = null;
         private JCS_PacketEncoder mEncoder = null;
 
+        /* Setter & Getter */
+
+        /* Functions */
 
         private JCS_CodecFactory()
         {

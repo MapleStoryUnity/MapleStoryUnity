@@ -5,17 +5,15 @@
  * $Creator: Jen-Chieh Shen $
  * $Notice: $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Manager manage application layer.
     /// </summary>
-    public class JCS_ApplicationManager
-        : JCS_Managers<JCS_ApplicationManager>
+    public class JCS_ApplicationManager : JCS_Managers<JCS_ApplicationManager>
     {
         /* Variables */
 

@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Handle all the portal in the scene.
     /// </summary>
-    public class JCS_PortalManager
-        : JCS_Managers<JCS_PortalManager>
+    public class JCS_PortalManager : JCS_Managers<JCS_PortalManager>
     {
         /* Variables */
 

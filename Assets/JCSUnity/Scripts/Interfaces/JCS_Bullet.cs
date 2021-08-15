@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Bullet base class.
     /// </summary>
     [RequireComponent(typeof(JCS_AttackerInfo))]
-    public abstract class JCS_Bullet
-        : MonoBehaviour
+    public abstract class JCS_Bullet : MonoBehaviour
     {
         /* Variables */
 

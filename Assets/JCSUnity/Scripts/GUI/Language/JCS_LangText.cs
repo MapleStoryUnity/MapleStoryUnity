@@ -11,8 +11,6 @@
  */
 #define TMP_PRO
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,8 +33,7 @@ namespace JCSUnity
     ///   3. Register to `JCS_ApplicationManager`, its' component will take
     ///      case of the rest.
     /// </summary>
-    public class JCS_LangText
-        : MonoBehaviour
+    public class JCS_LangText : MonoBehaviour
     {
         /* Variables */
 

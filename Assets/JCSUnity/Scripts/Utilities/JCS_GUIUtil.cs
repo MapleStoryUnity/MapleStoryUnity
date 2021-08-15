@@ -11,8 +11,6 @@
  */
 #define TMP_PRO
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 

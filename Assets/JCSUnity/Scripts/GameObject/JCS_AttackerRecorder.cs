@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Record down the attacker that attacked
     /// this transform object.
     /// </summary>
-    public class JCS_AttackerRecorder
-        : MonoBehaviour
+    public class JCS_AttackerRecorder : MonoBehaviour
     {
         /* Variables */
 

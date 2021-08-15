@@ -6,16 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Decoder, decode the packet before being use by local end.
     /// </summary>
-    public class JCS_DefaultPacketDecoder
-        : JCS_PacketDecoder
+    public class JCS_DefaultPacketDecoder : JCS_PacketDecoder
     {
 
         /// <summary>

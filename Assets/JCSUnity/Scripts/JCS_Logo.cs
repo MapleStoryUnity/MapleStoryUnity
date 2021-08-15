@@ -6,16 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Logo object for next scene.
     /// </summary>
-    public class JCS_Logo 
-        : MonoBehaviour
+    public class JCS_Logo : MonoBehaviour
     {
         /* Variables */
 

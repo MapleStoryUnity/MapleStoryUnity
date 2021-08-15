@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// A better version of input field handle for uGUI.
     /// </summary>
     [RequireComponent(typeof(InputField))]
-    public class JCS_InputField
-        : MonoBehaviour
+    public class JCS_InputField : MonoBehaviour
     {
         /* Variables */
 

@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// If finding for 2D Liquid bar to do the health bar effect,
     /// please use the "JCS_GUILiquidBar" instead.
     /// </summary>
-    public class JCS_3DLiquidBar
-        : JCS_LiquidBar
+    public class JCS_3DLiquidBar : JCS_LiquidBar
     {
         /* Variables */
 

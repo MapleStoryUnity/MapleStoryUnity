@@ -7,16 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Button will load the target scene.
     /// </summary>
-    public class JCS_LoadSceneButton
-        : JCS_Button
+    public class JCS_LoadSceneButton : JCS_Button
     {
         /* Variables */
 

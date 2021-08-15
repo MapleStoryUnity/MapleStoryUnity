@@ -7,17 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
-using UnityEngine.UI;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Make the game object talkable.
     /// </summary>
-    public class JCS_TalkObject 
-        : MonoBehaviour
+    public class JCS_TalkObject : MonoBehaviour
     {
         /* Variables */
 

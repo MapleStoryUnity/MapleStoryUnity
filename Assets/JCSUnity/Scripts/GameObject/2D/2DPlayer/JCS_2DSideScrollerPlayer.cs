@@ -6,9 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -18,8 +17,7 @@ namespace JCSUnity
     [RequireComponent(typeof(JCS_2DSideScrollerPlayerAudioController))]
     [RequireComponent(typeof(JCS_2DAnimator))]
     [RequireComponent(typeof(JCS_OrderLayerObject))]
-    public class JCS_2DSideScrollerPlayer
-        : JCS_Player
+    public class JCS_2DSideScrollerPlayer : JCS_Player
     {
         /* Variables */
 

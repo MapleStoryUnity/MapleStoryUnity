@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Undo Redo system manager.
     /// </summary>
-    public class JCS_UndoRedoSystem
-        : MonoBehaviour
+    public class JCS_UndoRedoSystem : MonoBehaviour
     {
         /* Variables */
 

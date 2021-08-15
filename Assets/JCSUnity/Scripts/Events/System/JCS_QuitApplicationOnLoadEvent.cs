@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Event that will quit the application.
     /// </summary>
-    public class JCS_QuitApplicationOnLoadEvent
-        : MonoBehaviour
+    public class JCS_QuitApplicationOnLoadEvent : MonoBehaviour
     {
         /* Variables */
 

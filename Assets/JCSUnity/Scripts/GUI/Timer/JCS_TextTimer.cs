@@ -11,8 +11,6 @@
  */
 #define TMP_PRO
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,8 +23,7 @@ namespace JCSUnity
     /// <summary>
     /// Render timer in the text.
     /// </summary>
-    public class JCS_TextTimer
-        : MonoBehaviour
+    public class JCS_TextTimer : MonoBehaviour
     {
         /* Variables */
 

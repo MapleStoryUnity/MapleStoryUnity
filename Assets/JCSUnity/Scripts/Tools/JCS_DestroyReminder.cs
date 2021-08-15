@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Object remind the the current transform 
     /// should be destroy but did not destroyed.
     /// </summary>
-    public class JCS_DestroyReminder
-        : MonoBehaviour
+    public class JCS_DestroyReminder : MonoBehaviour
     {
         /* Variables */
 

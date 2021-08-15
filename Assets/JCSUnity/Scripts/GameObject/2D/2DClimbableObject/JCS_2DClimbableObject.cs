@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// 2DRope, 2DLadder, etc.
     /// </summary>
     [RequireComponent(typeof(JCS_OrderLayerObject))]
-    public abstract class JCS_2DClimbableObject
-        : MonoBehaviour
+    public abstract class JCS_2DClimbableObject : MonoBehaviour
     {
         /* Variables */
 

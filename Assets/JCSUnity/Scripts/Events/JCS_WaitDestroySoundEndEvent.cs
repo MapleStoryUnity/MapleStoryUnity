@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -19,8 +18,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_DestroyReminder))]
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_WaitDestroySoundEndEvent
-        : MonoBehaviour
+    public class JCS_WaitDestroySoundEndEvent : MonoBehaviour
     {
         /* Variables */
 

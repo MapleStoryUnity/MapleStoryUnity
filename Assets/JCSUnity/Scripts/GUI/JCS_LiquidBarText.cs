@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// Text to show the current value for the liquid bar.
     /// </summary>
     [RequireComponent(typeof(JCS_GUILiquidBar))]
-    public class JCS_LiquidBarText
-        : MonoBehaviour
+    public class JCS_LiquidBarText : MonoBehaviour
     {
         /* Variables */
 

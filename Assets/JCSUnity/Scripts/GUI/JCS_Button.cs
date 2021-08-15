@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -18,8 +17,7 @@ namespace JCSUnity
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(Button))]
     [RequireComponent(typeof(Image))]
-    public abstract class JCS_Button
-        : MonoBehaviour
+    public abstract class JCS_Button : MonoBehaviour
     {
         /* Variables */
 

@@ -6,17 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Destroy the gameobject by time.
     /// </summary>
-    public class JCS_DestroyObjectWithTime
-        : MonoBehaviour
+    public class JCS_DestroyObjectWithTime : MonoBehaviour
     {
         /* Variables */
 

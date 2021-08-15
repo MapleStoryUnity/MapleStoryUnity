@@ -7,16 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Base of the webcam related feature handle.
     /// </summary>
-    public class JCS_WebcamButton
-        : JCS_Button
+    public class JCS_WebcamButton : JCS_Button
     {
         /* Variables*/
 

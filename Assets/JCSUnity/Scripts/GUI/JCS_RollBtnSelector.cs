@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// Plz use this transform as the standard.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]       // 不是一定需要的, 不過強制一下好了.
-    public class JCS_RollBtnSelector
-        : MonoBehaviour
+    public class JCS_RollBtnSelector : MonoBehaviour
     {
         /* Variables */
 

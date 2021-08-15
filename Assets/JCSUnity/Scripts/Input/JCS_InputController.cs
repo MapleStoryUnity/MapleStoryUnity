@@ -7,10 +7,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -19,8 +17,7 @@ namespace JCSUnity
     /// 
     /// SOURCE(jenchieh): http://plyoung.appspot.com/blog/manipulating-input-manager-in-script.html
     /// </summary>
-    public class JCS_InputController
-        : MonoBehaviour
+    public class JCS_InputController : MonoBehaviour
     {
         public static int GAMEPAD_COUNT = 0;  // How many gamepad in this game?
 

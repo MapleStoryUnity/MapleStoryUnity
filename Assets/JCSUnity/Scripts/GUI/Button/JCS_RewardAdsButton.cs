@@ -8,8 +8,6 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Reward type of Ads button.
     /// </summary>
-    public class JCS_RewardAdsButton
-        : JCS_Button
+    public class JCS_RewardAdsButton : JCS_Button
     {
         /* Variables */
 

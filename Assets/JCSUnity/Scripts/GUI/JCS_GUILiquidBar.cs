@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// Is specific for Unity Engine's Canvas system.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
-    public class JCS_GUILiquidBar
-        : JCS_LiquidBar
+    public class JCS_GUILiquidBar : JCS_LiquidBar
     {
         /* Variables */
 

@@ -6,9 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace JCSUnity
 {
@@ -16,8 +13,7 @@ namespace JCSUnity
     /// Scrollbar data.
     /// </summary>
     [System.Serializable]
-    public class JCS_ScrollbarData
-        : JCS_UIComponentData
+    public class JCS_ScrollbarData : JCS_UIComponentData
     {
         public float value = 0.0f;
     }

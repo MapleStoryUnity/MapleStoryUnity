@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// a description on it.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
-    public class JCS_CheckableObject
-        : MonoBehaviour
+    public class JCS_CheckableObject : MonoBehaviour
     {
         /* Variables */
 

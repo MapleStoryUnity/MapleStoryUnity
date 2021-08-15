@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Settings for the game that uses the portal.
     /// </summary>
-    public class JCS_PortalSettings
-        : JCS_Settings<JCS_PortalSettings>
+    public class JCS_PortalSettings : JCS_Settings<JCS_PortalSettings>
     {
         /* Variables */
 

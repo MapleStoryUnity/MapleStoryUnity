@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// screen, you definitly need the pause manager to add it onto 
     /// "JCS_Managers" transform in the Hierarchy.
     /// </summary>
-    public class JCS_PauseManager
-        : JCS_Managers<JCS_PauseManager>
+    public class JCS_PauseManager : JCS_Managers<JCS_PauseManager>
     {
         /* Variables */
 

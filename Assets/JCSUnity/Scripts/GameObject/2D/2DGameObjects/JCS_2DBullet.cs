@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -19,8 +18,7 @@ namespace JCSUnity
     [RequireComponent(typeof(JCS_DestroyObjectWithTime))]
     [RequireComponent(typeof(JCS_HitCountEvent))]
     [RequireComponent(typeof(JCS_3DDestroyAnimEffect))]
-    public class JCS_2DBullet
-        : JCS_Bullet
+    public class JCS_2DBullet : JCS_Bullet
     {
         /* Variables */
 

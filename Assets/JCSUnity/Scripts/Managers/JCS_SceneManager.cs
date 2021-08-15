@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
 namespace JCSUnity
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Manage scenes changes.
     /// </summary>
-    public class JCS_SceneManager
-        : JCS_Managers<JCS_SceneManager>
+    public class JCS_SceneManager : JCS_Managers<JCS_SceneManager>
     {
         /* Variables */
 

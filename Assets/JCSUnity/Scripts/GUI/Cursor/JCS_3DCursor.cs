@@ -1,5 +1,4 @@
 ﻿#if (UNITY_EDITOR || UNITY_STANDALONE)
-
 /**
  * $File: JCS_3DCursor.cs $
  * $Date: $
@@ -9,7 +8,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Animator))]
-    public class JCS_3DCursor
-        : MonoBehaviour
+    public class JCS_3DCursor : MonoBehaviour
     {
         /* Variables */
 

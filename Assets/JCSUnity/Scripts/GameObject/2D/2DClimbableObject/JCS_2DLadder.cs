@@ -6,17 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// 2D ladder object, that player could climb on.
     /// </summary>
-    public class JCS_2DLadder
-        : JCS_2DClimbableObject
+    public class JCS_2DLadder : JCS_2DClimbableObject
     {
         /* Variables */
 

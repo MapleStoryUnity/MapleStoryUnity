@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -15,8 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Manage all Climbable object in the scene. (Under Indie manager)
     /// </summary>
-    public class JCS_ClimbableManager
-        : JCS_Managers<JCS_ClimbableManager>
+    public class JCS_ClimbableManager : JCS_Managers<JCS_ClimbableManager>
     {
         /* Variables */
 

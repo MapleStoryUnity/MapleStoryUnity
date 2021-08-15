@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Draw the gizmos on the mesh collider.
     /// </summary>
     [RequireComponent(typeof(MeshCollider))]
-    public class JCS_ObjectChecker
-        : MonoBehaviour
+    public class JCS_ObjectChecker : MonoBehaviour
     {
         /* Variables */
 

@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -19,8 +18,7 @@ namespace JCSUnity
     /// Using JCS_2DCamera for additional help!
     /// </summary>
     [RequireComponent(typeof(AudioListener))]
-    public class JCS_2DMultiTrackCamera 
-        : MonoBehaviour
+    public class JCS_2DMultiTrackCamera : MonoBehaviour
     {
         /* Variables */
 

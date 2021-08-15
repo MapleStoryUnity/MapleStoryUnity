@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Destroy the gameobject after done playing the animation.
     /// </summary>
     [RequireComponent(typeof(Animator))]
-    public class JCS_DestroyAnimEndEvent
-        : MonoBehaviour
+    public class JCS_DestroyAnimEndEvent : MonoBehaviour
     {
         /* Variables */
 

@@ -7,15 +7,13 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Handle liquid bar bar, etc.
     /// </summary>
-    public class JCS_LiquidBarHandler
-        : MonoBehaviour
+    public class JCS_LiquidBarHandler : MonoBehaviour
     {
         /* Variables */
 

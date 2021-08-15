@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Info to plugin to liquid bar, in order to sync to information between 
     /// the value and the GUI layer.
     /// </summary>
-    public class JCS_LiquidBarInfo
-        : MonoBehaviour
+    public class JCS_LiquidBarInfo : MonoBehaviour
     {
         /* Variables */
 

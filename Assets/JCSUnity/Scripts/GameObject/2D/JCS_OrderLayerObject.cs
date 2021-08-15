@@ -6,17 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Object in the in the scene layer.
     /// </summary>
-    public class JCS_OrderLayerObject 
-        : MonoBehaviour
+    public class JCS_OrderLayerObject : MonoBehaviour
     {
         /* Variables */
 

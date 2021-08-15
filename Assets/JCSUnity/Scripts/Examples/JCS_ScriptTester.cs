@@ -1,4 +1,4 @@
-﻿#if (UNITY_EDITOR)
+﻿#if UNITY_EDITOR
 /**
  * $File: JCS_ScriptTester.cs $
  * $Date: $
@@ -8,16 +8,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using JCSUnity;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Tester to test the script system/dialgoue system.
     /// </summary>
-    public class JCS_ScriptTester
-        : MonoBehaviour
+    public class JCS_ScriptTester : MonoBehaviour
     {
         /* Variables */
 

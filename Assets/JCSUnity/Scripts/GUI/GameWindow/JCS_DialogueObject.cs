@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Base class of Game Window.
     /// </summary>
     [RequireComponent(typeof(JCS_GameWindow))]
-    public class JCS_DialogueObject
-        : JCS_PanelRoot
+    public class JCS_DialogueObject : JCS_PanelRoot
     {
         /* Variables */
 

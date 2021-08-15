@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -15,8 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Manages screen action.
     /// </summary>
-    public class JCS_ScreenManager
-        : JCS_Managers<JCS_ScreenManager>
+    public class JCS_ScreenManager : JCS_Managers<JCS_ScreenManager>
     {
         /* Variables */
 

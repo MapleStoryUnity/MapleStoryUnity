@@ -7,16 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Button will do the slide screen.
     /// </summary>
-    public class JCS_SlideScreenButton
-        : JCS_Button
+    public class JCS_SlideScreenButton : JCS_Button
     {
         /* Variables */
 

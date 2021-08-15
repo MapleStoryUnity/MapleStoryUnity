@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Scene will ignore this panel and not brought into next scene.
     /// </summary>
-    public class JCS_IgnoreDialogueObject 
-        : MonoBehaviour
+    public class JCS_IgnoreDialogueObject : MonoBehaviour
     {
         // empty type to ignore panel
 

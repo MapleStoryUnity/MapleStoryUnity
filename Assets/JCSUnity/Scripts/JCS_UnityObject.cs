@@ -12,7 +12,6 @@
 #define TMP_PRO
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if TMP_PRO
@@ -24,8 +23,7 @@ namespace JCSUnity
     /// <summary>
     /// Cross Unity system object.
     /// </summary>
-    public class JCS_UnityObject
-        : MonoBehaviour
+    public class JCS_UnityObject : MonoBehaviour
     {
         /* Variables */
 

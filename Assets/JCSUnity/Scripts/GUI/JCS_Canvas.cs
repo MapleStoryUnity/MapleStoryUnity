@@ -6,9 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(Canvas))]
     [RequireComponent(typeof(RectTransform))]
-    public class JCS_Canvas
-        : MonoBehaviour
+    public class JCS_Canvas : MonoBehaviour
     {
         /* Variables */
 

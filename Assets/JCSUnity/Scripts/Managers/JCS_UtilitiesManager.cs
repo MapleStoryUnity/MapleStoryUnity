@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Manager manage all the utilities in the game.
     /// </summary>
-    public class JCS_UtilitiesManager
-        : JCS_Managers<JCS_UtilitiesManager>
+    public class JCS_UtilitiesManager : JCS_Managers<JCS_UtilitiesManager>
     {
         /* Variables */
 

@@ -6,17 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Button that will take the screenshot from the current gameplay scene.
     /// </summary>
-    public class JCS_ScreenshotButton
-        : JCS_Button
+    public class JCS_ScreenshotButton : JCS_Button
     {
         /* Variables */
 

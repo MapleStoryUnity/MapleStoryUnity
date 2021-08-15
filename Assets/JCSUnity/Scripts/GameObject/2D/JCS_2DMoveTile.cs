@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Moving tile usually as a background.
     /// </summary>
-    public class JCS_2DMoveTile 
-        : MonoBehaviour
+    public class JCS_2DMoveTile : MonoBehaviour
     {
         /* Variables */
 

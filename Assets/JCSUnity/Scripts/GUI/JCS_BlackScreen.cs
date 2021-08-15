@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Black screen gameobject for JCSUnity usage.
     /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
-    public class JCS_BlackScreen 
-        : MonoBehaviour
+    public class JCS_BlackScreen : MonoBehaviour
     {
         /* Variables */
 

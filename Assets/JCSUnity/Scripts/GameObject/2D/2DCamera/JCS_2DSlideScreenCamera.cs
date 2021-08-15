@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     ///
     /// use for switching scene panel.
     /// </summary>
-    public class JCS_2DSlideScreenCamera
-        : MonoBehaviour
+    public class JCS_2DSlideScreenCamera : MonoBehaviour
     {
         /* Variables */
 
@@ -113,6 +111,7 @@ namespace JCSUnity
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
         public AudioClip SwitchSceneSound { get { return this.mSwitchSceneSound; } set { this.mSwitchSceneSound = value; } }
+        public Vector2 CurrentPage { get { return this.mCurrentPage; } }
         public int MinPageX { get { return this.mMinPageX; } set { this.mMinPageX = value; } }
         public int MaxPageX { get { return this.mMaxPageX; } set { this.mMaxPageX = value; } }
         public int MinPageY { get { return this.mMinPageY; } set { this.mMinPageY = value; } }
@@ -168,6 +167,60 @@ namespace JCSUnity
                 SwitchScene(JCS_2D8Direction.BOTTOM_LEFT);
         }
 #endif
+
+        /// <summary>
+        /// Set the page using page index. (Vector 2)
+        /// </summary>
+        /// <param name="page"> Index of the page. </param>
+        public void SetPage(Vector2 page)
+        {
+            SetPageX((int)page.x);
+            SetPageY((int)page.y);
+        }
+
+        /// <summary>
+        /// Set the page using page index. (x-axis)
+        /// </summary>
+        /// <param name="page"> Index of the page. </param>
+        public void SetPageX(int page)
+        {
+            int delta = page - (int)this.mCurrentPage.x;
+
+            if (delta == 0)
+                return;
+
+            int count = JCS_Mathf.AbsoluteValue(delta);
+
+            for (int countX = 0; countX < count; ++countX)
+            {
+                if (JCS_Mathf.IsPositive(delta))
+                    SwitchScene(JCS_2D4Direction.RIGHT);
+                else
+                    SwitchScene(JCS_2D4Direction.LEFT);
+            }
+        }
+
+        /// <summary>
+        /// Set the page using page index. (y-axis)
+        /// </summary>
+        /// <param name="page"> Index of the page. </param>
+        public void SetPageY(int page)
+        {
+            int delta = page - (int)this.mCurrentPage.y;
+
+            if (delta == 0)
+                return;
+
+            int count = JCS_Mathf.AbsoluteValue(delta);
+
+            for (int countY = 0; countY < count; ++countY)
+            {
+                if (JCS_Mathf.IsPositive(delta))
+                    SwitchScene(JCS_2D4Direction.TOP);
+                else
+                    SwitchScene(JCS_2D4Direction.BOTTOM);
+            }
+        }
 
         /// <summary>
         /// Swicth the scene by sliding its with direction.
@@ -246,27 +299,8 @@ namespace JCSUnity
         /// </returns>
         private bool CalculatePage(JCS_2D4Direction direction)
         {
-            Vector2 newPage = mCurrentPage;
-
-            switch (direction)
-            {
-                case JCS_2D4Direction.TOP:
-                    ++newPage.y;
-                    break;
-                case JCS_2D4Direction.BOTTOM:
-                    --newPage.y;
-                    break;
-                case JCS_2D4Direction.RIGHT:
-                    ++newPage.x;
-                    break;
-                case JCS_2D4Direction.LEFT:
-                    --newPage.x;
-                    break;
-            }
-
-            bool canDo = IsValidPage(newPage);
-            if (canDo) mCurrentPage = newPage;
-            return canDo;
+            var direction8 = (JCS_2D8Direction)direction;
+            return CalculatePage(direction8); ;
         }
 
         /// <summary>
@@ -480,31 +514,8 @@ namespace JCSUnity
         /// <param name="towardDirection"> direction to switch scene. </param>
         private void UGUISwitchScene(JCS_2D4Direction towardDirection)
         {
-            // get the Screen Width and Screen Height
-            Vector2 screenSize = GetScreenSize();
-            float screenWidth = screenSize.x;
-            float screenHeight = screenSize.y;
-
-            // make a copy of old position
-            Vector3 newScenePosition = Vector3.zero;
-
-            switch (towardDirection)
-            {
-                case JCS_2D4Direction.TOP:
-                    newScenePosition.y += screenHeight;
-                    break;
-                case JCS_2D4Direction.BOTTOM:
-                    newScenePosition.y -= screenHeight;
-                    break;
-                case JCS_2D4Direction.RIGHT:
-                    newScenePosition.x += screenWidth;
-                    break;
-                case JCS_2D4Direction.LEFT:
-                    newScenePosition.x -= screenWidth;
-                    break;
-            }
-
-            mPanelHolder.AddForce(newScenePosition);
+            JCS_2D8Direction direction = (JCS_2D8Direction)towardDirection;
+            UGUISwitchScene(direction);
         }
 
         /// <summary>
@@ -566,36 +577,8 @@ namespace JCSUnity
         /// <param name="towardDirection"> direction to switch scene. </param>
         private void NGUISwitchScene(JCS_2D4Direction towardDirection)
         {
-            // get the Screen Width and Screen Height
-            Vector2 screenSize = GetScreenSize();
-            float screenWidth = screenSize.x;
-            float screenHeight = screenSize.y;
-
-            // make a copy of old position
-            Vector3 newScenePosition = this.transform.position;
-
-            // apply new position and set to its
-            // position according to the direction
-            // programmer pass in.
-            switch (towardDirection)
-            {
-                case JCS_2D4Direction.TOP:
-                    newScenePosition.y += screenHeight;
-                    break;
-                case JCS_2D4Direction.BOTTOM:
-                    newScenePosition.y -= screenHeight;
-                    break;
-                case JCS_2D4Direction.RIGHT:
-                    newScenePosition.x += screenWidth;
-                    break;
-                case JCS_2D4Direction.LEFT:
-                    newScenePosition.x -= screenWidth;
-                    break;
-            }
-
-            // set this position to new position
-            // so the camera will follow this object!
-            this.transform.position = newScenePosition;
+            JCS_2D8Direction direction = (JCS_2D8Direction)towardDirection;
+            NGUISwitchScene(direction);
         }
 
         /// <summary>

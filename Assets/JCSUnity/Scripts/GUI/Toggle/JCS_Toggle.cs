@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -20,8 +18,7 @@ namespace JCSUnity
     /// Better version of checkbox/toggle GUI.
     /// </summary>
     [RequireComponent(typeof(JCS_ColorTweener))]
-    public class JCS_Toggle
-        : JCS_Button
+    public class JCS_Toggle : JCS_Button
     {
         /* Variables */
 

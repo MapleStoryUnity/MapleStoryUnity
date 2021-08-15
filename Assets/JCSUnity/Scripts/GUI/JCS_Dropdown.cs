@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// A better version of dropdown handle for uGUI.
     /// </summary>
     [RequireComponent(typeof(Dropdown))]
-    public class JCS_Dropdown
-        : MonoBehaviour
+    public class JCS_Dropdown : MonoBehaviour
     {
         /* Variables */
 

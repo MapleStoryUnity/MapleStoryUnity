@@ -7,16 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Handle the scene the better way.
     /// </summary>
-    public class JCS_SceneSettings
-        : JCS_Settings<JCS_SceneSettings>
+    public class JCS_SceneSettings : JCS_Settings<JCS_SceneSettings>
     {
         /* Variables */
 

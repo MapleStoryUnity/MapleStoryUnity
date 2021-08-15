@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// In game item represents cash.
     /// </summary>
-    public class JCS_CashObject
-        : JCS_Item
+    public class JCS_CashObject : JCS_Item
     {
         /* Variables */
 

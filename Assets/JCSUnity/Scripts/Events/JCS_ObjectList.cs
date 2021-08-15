@@ -6,9 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// List of gameobject holder, with some utility functions provided 
     /// messing with list of gameobject.
     /// </summary>
-    public class JCS_ObjectList
-        : MonoBehaviour
+    public class JCS_ObjectList : MonoBehaviour
     {
         /* Variables */
 

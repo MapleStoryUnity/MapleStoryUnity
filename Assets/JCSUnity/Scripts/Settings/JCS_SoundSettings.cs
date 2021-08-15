@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Sound Setting for each theme.
     /// </summary>
-    public class JCS_SoundSettings
-        : JCS_Settings<JCS_SoundSettings>
+    public class JCS_SoundSettings : JCS_Settings<JCS_SoundSettings>
     {
         /* Variables */
 

@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
 namespace JCSUnity
@@ -15,8 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Sound Player that plays BGM.
     /// </summary>
-    public class JCS_BGMPlayer 
-        : JCS_SoundPlayer
+    public class JCS_BGMPlayer : JCS_SoundPlayer
     {
         /* Variables */
 

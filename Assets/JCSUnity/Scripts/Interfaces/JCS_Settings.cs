@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Interface of all setting class.
     /// </summary>
-    public abstract class JCS_Settings<T>
-        : MonoBehaviour
+    public abstract class JCS_Settings<T> : MonoBehaviour
         where T : MonoBehaviour
     {
         /* Variables */

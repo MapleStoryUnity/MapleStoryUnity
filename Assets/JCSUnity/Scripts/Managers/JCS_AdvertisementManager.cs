@@ -9,7 +9,6 @@
  */
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
@@ -26,8 +25,7 @@ namespace JCSUnity
     ///       Technologies.
     /// 
     /// </summary>
-    public class JCS_AdvertisementManager
-        : JCS_Managers<JCS_AdvertisementManager>
+    public class JCS_AdvertisementManager : JCS_Managers<JCS_AdvertisementManager>
         , IUnityAdsListener
     {
         /* Variables */

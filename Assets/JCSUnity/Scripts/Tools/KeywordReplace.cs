@@ -7,20 +7,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-
-//Assets/Editor/KeywordReplace.cs
-using UnityEngine;
 using UnityEditor;
-using System.Collections;
-using System;
+using UnityEngine;
 
 /// <summary>
 /// Source: http://forum.unity3d.com/threads/c-script-template-how-to-make-custom-changes.273191/
 /// Author: hpjohn
 /// Modefied: Jen-Chieh Shen
 /// </summary>
-public class KeywordReplace 
-    : UnityEditor.AssetModificationProcessor
+public class KeywordReplace : UnityEditor.AssetModificationProcessor
 {
     public static void OnWillCreateAsset(string path)
     {

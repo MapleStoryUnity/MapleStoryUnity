@@ -6,17 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// 2D Game Specific game manager.
     /// </summary>
-    public class JCS_2DGameManager
-        : JCS_Managers<JCS_2DGameManager>
+    public class JCS_2DGameManager : JCS_Managers<JCS_2DGameManager>
     {
         /* Variables */
 

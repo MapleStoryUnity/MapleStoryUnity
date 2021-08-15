@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -19,8 +18,7 @@ namespace JCSUnity
     /// jcs panel layer.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
-    public class JCS_GUIComponentLayer
-        : JCS_SortingObject
+    public class JCS_GUIComponentLayer : JCS_SortingObject
     {
         /* Variables */
 

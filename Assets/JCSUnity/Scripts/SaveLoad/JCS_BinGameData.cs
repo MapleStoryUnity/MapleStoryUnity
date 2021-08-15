@@ -8,7 +8,6 @@
  */
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEngine;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// Interface of storing game data as binary format.
     /// </summary>
     [System.Serializable]
-    public abstract class JCS_BinGameData
-        : JCS_GameData
+    public abstract class JCS_BinGameData : JCS_GameData
     {
         /* Variables */
 

@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// UI related settings.
     /// </summary>
-    public class JCS_UISettings 
-        : JCS_Settings<JCS_UISettings>
+    public class JCS_UISettings : JCS_Settings<JCS_UISettings>
     {
         /* Variables */
 

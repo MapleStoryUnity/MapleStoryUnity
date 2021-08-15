@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System.IO;
 
 namespace JCSUnity
 {
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Hold the general game setting.
     /// </summary>
-    public class JCS_GameSettings
-        : JCS_Settings<JCS_GameSettings>
+    public class JCS_GameSettings : JCS_Settings<JCS_GameSettings>
     {
         /* Variables */
 

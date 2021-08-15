@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// Specialize class for panel/dialogue object. This class provide 
     /// more than just the normal panel/dialogue interface.
     /// </summary>
-    public class JCS_GameWindow 
-        : MonoBehaviour
+    public class JCS_GameWindow : MonoBehaviour
     {
         /* Variables */
 

@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Use this to receive the slide input from the device buffer.
     /// </summary>
-    public class JCS_SlideInput
-        : MonoBehaviour
+    public class JCS_SlideInput : MonoBehaviour
     {
         /* Variables */
 

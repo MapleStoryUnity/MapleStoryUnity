@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Disable the gameobject after a certain time.
     /// </summary>
-    public class JCS_DisableWithTimeEvent
-        : MonoBehaviour
+    public class JCS_DisableWithTimeEvent : MonoBehaviour
     {
         /* Variables */
 

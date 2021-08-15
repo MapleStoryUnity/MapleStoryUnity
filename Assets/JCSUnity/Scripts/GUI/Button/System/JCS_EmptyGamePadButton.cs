@@ -6,18 +6,20 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Empty gamepad button.
     /// </summary>
-    public class JCS_EmptyGamePadButton
-        : JCS_GamePadButton
+    public class JCS_EmptyGamePadButton : JCS_GamePadButton
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         public override void JCS_OnClickCallback()
         {
             // empty.

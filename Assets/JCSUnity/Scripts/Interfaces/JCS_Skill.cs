@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Interface of all the skill. The base function will have to
     /// code it yourself.
     /// </summary>
-    public class JCS_Skill
-        : MonoBehaviour
+    public class JCS_Skill : MonoBehaviour
     {
         /* Variables */
 

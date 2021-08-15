@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     [RequireComponent(typeof(JCS_ObjectList))]
     [RequireComponent(typeof(JCS_HitListEvent))]
     [RequireComponent(typeof(JCS_DestroyObjectWithTime))]
-    public class JCS_SplitSpawnEvent
-        : MonoBehaviour
+    public class JCS_SplitSpawnEvent : MonoBehaviour
     {
         /* Variables */
 

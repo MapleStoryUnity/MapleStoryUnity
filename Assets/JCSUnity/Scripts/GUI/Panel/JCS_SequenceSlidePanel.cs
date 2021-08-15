@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -18,8 +17,7 @@ namespace JCSUnity
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(JCS_SlideEffect))]
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_SequenceSlidePanel
-        : MonoBehaviour
+    public class JCS_SequenceSlidePanel : MonoBehaviour
     {
         /* Variables */
 

@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// componenet involved.
     /// </summary>
     [RequireComponent(typeof(CharacterController))]
-    public class JCS_VelocityInfo
-        : MonoBehaviour
+    public class JCS_VelocityInfo : MonoBehaviour
     {
         /* Variables */
 

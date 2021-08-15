@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// Button that have two callback can toggle each other.
     /// </summary>
-    public class JCS_ToggleButton
-        : JCS_Button
+    public class JCS_ToggleButton : JCS_Button
     {
         /* Variables */
 

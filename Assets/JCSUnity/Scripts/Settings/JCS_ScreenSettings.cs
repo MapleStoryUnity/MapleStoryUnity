@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// Screen related settings.
     /// </summary>
-    public class JCS_ScreenSettings
-        : JCS_Settings<JCS_ScreenSettings>
+    public class JCS_ScreenSettings : JCS_Settings<JCS_ScreenSettings>
     {
         /* Variables */
 

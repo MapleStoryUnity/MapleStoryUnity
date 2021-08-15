@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Simulate the hue control.
     /// </summary>
-    public class JCS_HueController
-        : MonoBehaviour
+    public class JCS_HueController : MonoBehaviour
     {
         /* Variables */
 

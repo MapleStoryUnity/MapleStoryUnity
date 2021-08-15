@@ -6,9 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -18,8 +15,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_ServerRequestProcessor))]
     [RequireComponent(typeof(JCS_PacketLostPreventer))]
-    public class JCS_NetworkSettings
-        : JCS_Settings<JCS_NetworkSettings>
+    public class JCS_NetworkSettings : JCS_Settings<JCS_NetworkSettings>
     {
         /* Variables */
 

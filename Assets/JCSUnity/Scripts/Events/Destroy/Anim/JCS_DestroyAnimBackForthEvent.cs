@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// and forth once.
     /// </summary>
     [RequireComponent(typeof(Animator))]
-    public class JCS_DestroyAnimBackForthEvent
-        : MonoBehaviour
+    public class JCS_DestroyAnimBackForthEvent : MonoBehaviour
     {
         /* Variables */
 

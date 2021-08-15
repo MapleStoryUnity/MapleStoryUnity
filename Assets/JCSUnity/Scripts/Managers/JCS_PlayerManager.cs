@@ -6,17 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Take care of all the player in the scene.
     /// </summary>
-    public class JCS_PlayerManager 
-        : JCS_Managers<JCS_PlayerManager>
+    public class JCS_PlayerManager : JCS_Managers<JCS_PlayerManager>
     {
         /* Variables */
 

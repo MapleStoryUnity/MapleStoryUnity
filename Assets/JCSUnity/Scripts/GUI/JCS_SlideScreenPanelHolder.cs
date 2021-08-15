@@ -7,10 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace JCSUnity
 {
@@ -18,8 +14,7 @@ namespace JCSUnity
     /// Slide panel holder.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
-    public class JCS_SlideScreenPanelHolder
-        : MonoBehaviour
+    public class JCS_SlideScreenPanelHolder : MonoBehaviour
     {
         /* Variables */
 

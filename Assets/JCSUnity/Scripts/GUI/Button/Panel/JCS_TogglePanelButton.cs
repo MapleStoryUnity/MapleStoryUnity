@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -15,8 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Button that toggle one panel.
     /// </summary>
-    public class JCS_TogglePanelButton
-        : JCS_ToggleButton
+    public class JCS_TogglePanelButton : JCS_ToggleButton
     {
         /* Variables */
 

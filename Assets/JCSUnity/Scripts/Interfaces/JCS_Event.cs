@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Event base class.
     /// </summary>
-    public abstract class JCS_Event
-        : MonoBehaviour
+    public abstract class JCS_Event : MonoBehaviour
     {
         // empty..
     }

@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Event handle operate the task after a certain time.
     /// </summary>
-    public class JCS_CounterEvent
-        : JCS_Event
+    public class JCS_CounterEvent : JCS_Event
     {
         /* Variables */
 

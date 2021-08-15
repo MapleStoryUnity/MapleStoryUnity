@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Liquid bar object's interface declaration.
     /// </summary>
-    public abstract class JCS_LiquidBar
-        : MonoBehaviour
+    public abstract class JCS_LiquidBar : MonoBehaviour
     {
         /* Variables */
 

@@ -6,9 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -18,8 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Mix dmaage text pool object.
     /// </summary>
-    public class JCS_MixDamageTextPool
-        : MonoBehaviour
+    public class JCS_MixDamageTextPool : MonoBehaviour
     {
         /* Variables */
 

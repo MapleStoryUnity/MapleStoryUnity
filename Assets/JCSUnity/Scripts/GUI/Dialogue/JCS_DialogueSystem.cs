@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -18,8 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Dialogue system core implementation.
     /// </summary>
-    public class JCS_DialogueSystem 
-        : MonoBehaviour
+    public class JCS_DialogueSystem : MonoBehaviour
     {
         /* Variables */
 
