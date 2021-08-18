@@ -7,15 +7,13 @@
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Make object hop for a force.
     /// </summary>
-    public class JCS_HopEffect
-        : JCS_UnityObject
+    public class JCS_HopEffect : JCS_UnityObject
     {
         /* Variables */
 

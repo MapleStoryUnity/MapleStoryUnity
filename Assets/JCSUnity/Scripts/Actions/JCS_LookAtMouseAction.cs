@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// 
     /// SOURCE: http://wiki.unity3d.com/index.php?title=LookAtMouse
     /// </summary>
-    public class JCS_LookAtMouseAction
-        : MonoBehaviour
+    public class JCS_LookAtMouseAction : MonoBehaviour
     {
         /* Variables */
 

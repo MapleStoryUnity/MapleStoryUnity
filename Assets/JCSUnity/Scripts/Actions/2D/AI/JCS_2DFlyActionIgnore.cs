@@ -7,15 +7,13 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Tag for 2D fly action to ignore environment.
     /// </summary>
-    public class JCS_2DFlyActionIgnore
-        : MonoBehaviour
+    public class JCS_2DFlyActionIgnore : MonoBehaviour
     {
         /* Variables */
 

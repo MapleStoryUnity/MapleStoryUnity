@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -20,8 +19,7 @@ namespace JCSUnity
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(JCS_DisableWithAnimEndEvent))]
-    public class JCS_Lightning
-        : JCS_WeatherParticle
+    public class JCS_Lightning : JCS_WeatherParticle
     {
         /* Variables */
 

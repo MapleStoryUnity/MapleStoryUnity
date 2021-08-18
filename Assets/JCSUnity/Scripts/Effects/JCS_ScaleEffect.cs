@@ -8,15 +8,13 @@
  */
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Scale approach to a specific scale value.
     /// </summary>
-    public class JCS_ScaleEffect
-        : JCS_UnityObject
+    public class JCS_ScaleEffect : JCS_UnityObject
     {
         /* Variables */
 

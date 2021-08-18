@@ -6,10 +6,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// Manage all the path finding requests.
     /// </summary>
     [RequireComponent(typeof(JCS_Pathfinding))]
-    public class JCS_PathRequestManager
-        : MonoBehaviour
+    public class JCS_PathRequestManager : MonoBehaviour
     {
         /* Variables */
 

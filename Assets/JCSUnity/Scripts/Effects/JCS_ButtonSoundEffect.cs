@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.EventSystems;
 
 namespace JCSUnity
@@ -20,8 +19,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(EventTrigger))]
-    public class JCS_ButtonSoundEffect
-        : MonoBehaviour
+    public class JCS_ButtonSoundEffect : MonoBehaviour
     {
         /* Variables */
 

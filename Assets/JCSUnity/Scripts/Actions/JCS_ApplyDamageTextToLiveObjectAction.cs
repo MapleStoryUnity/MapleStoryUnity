@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Apply the damage to live object by automatically.
     /// </summary>
     [RequireComponent(typeof(JCS_AttackerInfo))]
-    public class JCS_ApplyDamageTextToLiveObjectAction
-        : MonoBehaviour
+    public class JCS_ApplyDamageTextToLiveObjectAction : MonoBehaviour
     {
         /* Variables */
 

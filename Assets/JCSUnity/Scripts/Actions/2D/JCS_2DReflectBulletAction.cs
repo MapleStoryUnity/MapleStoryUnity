@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Object that reflect the bullet.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPoolAction))]
-    public class JCS_2DReflectBulletAction
-        : MonoBehaviour
+    public class JCS_2DReflectBulletAction : MonoBehaviour
     {
         /* Variables */
 

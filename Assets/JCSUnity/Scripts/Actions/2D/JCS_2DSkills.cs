@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Do not use add this script directly to Unity.
     /// This is for Scripter only file.
     /// </summary>
-    public abstract class JCS_2DSkills
-        : MonoBehaviour
+    public abstract class JCS_2DSkills : MonoBehaviour
     {
         /* Variables */
 

@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// The collider to detect "JCS_DetectAreaObject".
     /// </summary>
-    public class JCS_DetectArea
-        : MonoBehaviour
+    public class JCS_DetectArea : MonoBehaviour
     {
         /* Variables */
 

@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 
 namespace JCSUnity
 {
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Fade object to a particular alpha channel.
     /// </summary>
-    public class JCS_FadeObject
-        : JCS_UnityObject
+    public class JCS_FadeObject : JCS_UnityObject
     {
         /* Variables */
 

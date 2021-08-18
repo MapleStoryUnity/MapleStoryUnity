@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
-    public class JCS_RandomTweenerAction
-        : MonoBehaviour
+    public class JCS_RandomTweenerAction : MonoBehaviour
     {
         /* Variables */
 

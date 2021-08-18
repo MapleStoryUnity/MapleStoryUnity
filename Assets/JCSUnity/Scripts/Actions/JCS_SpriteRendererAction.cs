@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Action flip the sprite renderer to the vector direction.
     /// </summary>
-    public class JCS_SpriteRendererAction
-        : MonoBehaviour
+    public class JCS_SpriteRendererAction : MonoBehaviour
     {
         /* Variables */
 

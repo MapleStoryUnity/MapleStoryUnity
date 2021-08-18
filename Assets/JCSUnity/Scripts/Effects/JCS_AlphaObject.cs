@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Transition with alpha channel.
     /// </summary>
-    public class JCS_AlphaObject
-        : JCS_UnityObject
+    public class JCS_AlphaObject : JCS_UnityObject
     {
         /* Variables */
 

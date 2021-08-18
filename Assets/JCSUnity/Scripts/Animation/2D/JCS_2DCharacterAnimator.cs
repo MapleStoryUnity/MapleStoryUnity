@@ -6,9 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// </summary>
     [Obsolete(@"Old and will be remove in newer version... 
 Use JCS_2DAnimator instead.", true)]
-    public class JCS_2DCharacterAnimator
-        : JCS_I2DAnimator
+    public class JCS_2DCharacterAnimator : JCS_I2DAnimator
     {
         /* Variables */
 

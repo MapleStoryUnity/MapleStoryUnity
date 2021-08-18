@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// One shot object.
     /// </summary>
-    public class JCS_OneShotObject 
-        : MonoBehaviour
+    public class JCS_OneShotObject : MonoBehaviour
     {
         /* Variables */
 

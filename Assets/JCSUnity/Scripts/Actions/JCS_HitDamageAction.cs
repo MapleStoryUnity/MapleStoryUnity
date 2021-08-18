@@ -6,9 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -19,8 +18,7 @@ namespace JCSUnity
     [RequireComponent(typeof(BoxCollider))]
     // Object with this action must be live object!!
     [RequireComponent(typeof(JCS_2DLiveObject))]
-    public class JCS_HitDamageAction
-        : MonoBehaviour
+    public class JCS_HitDamageAction : MonoBehaviour
     {
         /* Variables */
 

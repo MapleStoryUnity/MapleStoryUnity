@@ -15,8 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// Effect that shake the transform in 3D.
     /// </summary>
-    public class JCS_3DShakeEffect
-        : MonoBehaviour
+    public class JCS_3DShakeEffect : MonoBehaviour
     {
         /* Variables*/
 

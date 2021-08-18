@@ -6,10 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using PeterVuorela.Tweener;
 using UnityEngine.Events;
 
 namespace JCSUnity
@@ -22,8 +19,7 @@ namespace JCSUnity
     /// 
     /// Can only use for `float`.
     /// </summary>
-    public class JCS_ValueTweener
-        : MonoBehaviour
+    public class JCS_ValueTweener : MonoBehaviour
     {
         /* Variables */
 

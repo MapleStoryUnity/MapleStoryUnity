@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// of JCS_3DAnimation objects.
     /// </summary>
     [RequireComponent(typeof(Animator))]
-    public class JCS_3DAnimator
-        : MonoBehaviour
+    public class JCS_3DAnimator : MonoBehaviour
     {
         /* Variables */
 

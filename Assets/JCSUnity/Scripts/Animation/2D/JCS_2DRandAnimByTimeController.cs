@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -18,8 +16,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
     [RequireComponent(typeof(JCS_2DAnimator))]
-    public class JCS_2DRandAnimByTimeController
-        : MonoBehaviour
+    public class JCS_2DRandAnimByTimeController : MonoBehaviour
     {
         /* Variables */
 

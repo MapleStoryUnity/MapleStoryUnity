@@ -7,8 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
@@ -16,8 +14,7 @@ namespace JCSUnity
     /// Animator specific for live object.
     /// </summary>
     [RequireComponent(typeof(JCS_2DAnimator))]
-    public class JCS_2DLiveObjectAnimator
-        : JCS_I2DAnimator
+    public class JCS_2DLiveObjectAnimator : JCS_I2DAnimator
     {
         /* Variables */
 

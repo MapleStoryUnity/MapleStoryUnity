@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Effect when reach the destination destroy this gameobject.
     /// </summary>
     [RequireComponent(typeof(JCS_AlphaObject))]
-    public class JCS_DestinationDestroy
-        : JCS_UnityObject
+    public class JCS_DestinationDestroy : JCS_UnityObject
     {
         /* Variables */
 

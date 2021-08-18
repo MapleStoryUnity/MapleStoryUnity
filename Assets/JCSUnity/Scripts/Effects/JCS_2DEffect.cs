@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// 2D effect base class.
     /// </summary>
-    public abstract class JCS_2DEffect
-        : MonoBehaviour
+    public abstract class JCS_2DEffect : MonoBehaviour
     {
         /* Variables */
 

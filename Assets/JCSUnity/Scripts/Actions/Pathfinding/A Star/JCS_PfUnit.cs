@@ -6,16 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Path finding unit.
     /// </summary>
-    public class JCS_PfUnit
-        : MonoBehaviour
+    public class JCS_PfUnit : MonoBehaviour
     {
         /* Variables */
 

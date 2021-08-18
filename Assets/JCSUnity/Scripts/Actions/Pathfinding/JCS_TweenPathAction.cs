@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
-    public class JCS_TweenPathAction
-        : MonoBehaviour
+    public class JCS_TweenPathAction : MonoBehaviour
     {
         /* Variables */
 

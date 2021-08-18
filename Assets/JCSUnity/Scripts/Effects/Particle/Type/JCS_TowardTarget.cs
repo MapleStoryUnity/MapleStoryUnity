@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_DisableWithCertainRangeEvent))]
-    public class JCS_TowardTarget
-        : JCS_Particle
+    public class JCS_TowardTarget : JCS_Particle
     {
         /* Variables */
 

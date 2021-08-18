@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Dead action for live object.
     /// </summary>
     [RequireComponent(typeof(JCS_2DLiveObject))]
-    public class JCS_2DDeadAction
-        : MonoBehaviour
+    public class JCS_2DDeadAction : MonoBehaviour
     {
         /* Variables */
 

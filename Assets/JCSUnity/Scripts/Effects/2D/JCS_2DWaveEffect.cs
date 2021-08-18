@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Effect that make wave effect on the gameobject.
     /// </summary>
-    public class JCS_2DWaveEffect
-        : JCS_2DEffect
+    public class JCS_2DWaveEffect : JCS_2DEffect
     {
         /* Variables */
 

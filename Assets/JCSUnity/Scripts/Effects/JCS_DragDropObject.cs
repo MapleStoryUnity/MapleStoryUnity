@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Drag and drop effect.
     /// </summary>
-    public class JCS_DragDropObject 
-        : MonoBehaviour
+    public class JCS_DragDropObject : MonoBehaviour
     {
         /* Variables */
 

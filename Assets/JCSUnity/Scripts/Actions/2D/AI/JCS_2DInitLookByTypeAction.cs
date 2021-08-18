@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Look at the gameobject depends on the find method.
     /// </summary>
     [RequireComponent(typeof(JCS_AttackerInfo))]
-    public class JCS_2DInitLookByTypeAction
-        : MonoBehaviour
+    public class JCS_2DInitLookByTypeAction : MonoBehaviour
     {
         /* Variables */
 

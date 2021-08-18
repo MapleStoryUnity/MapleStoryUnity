@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// When every item touch this will ignore the collision.
     /// </summary>
-    public class JCS_ItemIgnore
-        : MonoBehaviour
+    public class JCS_ItemIgnore : MonoBehaviour
     {
         /* Variables */
 

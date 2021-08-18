@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System;
 
 namespace JCSUnity
 {
@@ -16,9 +14,7 @@ namespace JCSUnity
     /// Full screen attack.
     /// </summary>
     [RequireComponent(typeof(JCS_AnimPool))]
-    public class JCS_2DFullScreenAtkAction
-        : JCS_2DSkills
-        , JCS_Action
+    public class JCS_2DFullScreenAtkAction : JCS_2DSkills , JCS_Action
     {
         /* Variables */
 

@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Effect that fade the sound.
     /// </summary>
-    public class JCS_FadeSound
-        : MonoBehaviour
+    public class JCS_FadeSound : MonoBehaviour
     {
         /* Variables */
 

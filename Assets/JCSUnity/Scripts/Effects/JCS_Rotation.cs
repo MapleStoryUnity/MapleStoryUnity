@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Do the rotate action depends on axis.
     /// </summary>
-    public class JCS_Rotation
-        : MonoBehaviour
+    public class JCS_Rotation : MonoBehaviour
     {
         /* Variables */
 

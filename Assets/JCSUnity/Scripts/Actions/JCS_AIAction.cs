@@ -7,16 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// AI action interface.
     /// </summary>
-    public abstract class JCS_AIAction
-        : MonoBehaviour
-        , JCS_Action
+    public abstract class JCS_AIAction : MonoBehaviour , JCS_Action
     {
         /* Variables */
 

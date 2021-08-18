@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 
 namespace JCSUnity
 {
@@ -16,8 +14,7 @@ namespace JCSUnity
     /// Effect make this object able to drop items.
     /// </summary>
     [RequireComponent(typeof(JCS_ItemIgnore))]
-    public class JCS_ItemDroppable
-        : MonoBehaviour
+    public class JCS_ItemDroppable : MonoBehaviour
     {
         /* Variables */
 

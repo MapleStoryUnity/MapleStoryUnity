@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
     [RequireComponent(typeof(JCS_VelocityInfo))]
-    public class JCS_2DWalkAction
-        : JCS_AIAction
+    public class JCS_2DWalkAction : JCS_AIAction
     {
         /* Variables */
 

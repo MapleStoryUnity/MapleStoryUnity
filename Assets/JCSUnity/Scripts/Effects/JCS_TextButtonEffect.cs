@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -19,8 +17,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(Button))]
     [RequireComponent(typeof(EventTrigger))]
-    public class JCS_TextButtonEffect
-        : MonoBehaviour
+    public class JCS_TextButtonEffect : MonoBehaviour
     {
         /* Variables */
 

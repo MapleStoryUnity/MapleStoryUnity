@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Do the behaviour on the detection.
     /// </summary>
-    public class JCS_DetectAction
-        : JCS_AIAction
+    public class JCS_DetectAction : JCS_AIAction
     {
         /* Variables */
 

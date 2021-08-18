@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -20,8 +18,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
     [RequireComponent(typeof(JCS_2DAnimPool))]
-    public class JCS_2DDestroyAnimEffect
-        : MonoBehaviour
+    public class JCS_2DDestroyAnimEffect : MonoBehaviour
     {
         /* Variables */
 

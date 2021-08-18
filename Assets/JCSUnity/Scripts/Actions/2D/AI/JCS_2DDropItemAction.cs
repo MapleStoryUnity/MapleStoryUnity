@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Action makes the gameobject drops item.
     /// </summary>
     [RequireComponent(typeof(JCS_ItemDroppable))]
-    public class JCS_2DDropItemAction
-        : MonoBehaviour
+    public class JCS_2DDropItemAction : MonoBehaviour
     {
         /* Variables */
 

@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -18,8 +17,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Rigidbody))]
-    public class JCS_Item
-        : JCS_UnityObject
+    public class JCS_Item : JCS_UnityObject
     {
         /* Variables */
 

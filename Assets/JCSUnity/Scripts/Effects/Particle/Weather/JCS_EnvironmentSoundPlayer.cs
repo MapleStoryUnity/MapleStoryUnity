@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Sound player specific for environment sound.
     /// </summary>
-    public class JCS_EnvironmentSoundPlayer
-        : JCS_SoundPlayer
+    public class JCS_EnvironmentSoundPlayer : JCS_SoundPlayer
     {
         /* Variables */
 

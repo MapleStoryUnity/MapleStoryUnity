@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// The action that moves toward a position.
     /// </summary>
-    public class JCS_SimpleTrackAction
-        : JCS_UnityObject
+    public class JCS_SimpleTrackAction : JCS_UnityObject
     {
         /* Variables */
 

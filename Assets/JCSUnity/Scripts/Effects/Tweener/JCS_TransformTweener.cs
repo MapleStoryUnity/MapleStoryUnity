@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using PeterVuorela.Tweener;
 
 namespace JCSUnity
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Transform tweener.
     /// </summary>
-    public class JCS_TransformTweener
-        : JCS_UnityObject
+    public class JCS_TransformTweener : JCS_UnityObject
     {
         /* Variables */
 

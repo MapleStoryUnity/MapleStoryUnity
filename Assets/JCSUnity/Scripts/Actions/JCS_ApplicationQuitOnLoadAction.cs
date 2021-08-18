@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Close the application when the level is loaded.
     /// </summary>
-    public class JCS_ApplicationQuitOnLoadAction
-        : MonoBehaviour
+    public class JCS_ApplicationQuitOnLoadAction : MonoBehaviour
     {
         /* Variables */
 

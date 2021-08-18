@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Animator Desgin for Unity Engine's Blend Tree system.
     /// </summary>
-    public class JCS_3DBlendTreeAnimator
-        : MonoBehaviour
+    public class JCS_3DBlendTreeAnimator : MonoBehaviour
     {
         /* Variables */
 

@@ -8,7 +8,6 @@
  */
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// Make object to make the smooth slide effect.
     ///     - Could be compose with JCS_TransformTweener class.
     /// </summary>
-    public class JCS_SlideEffect
-        : JCS_UnityObject
+    public class JCS_SlideEffect : JCS_UnityObject
     {
         /* Variables */
 

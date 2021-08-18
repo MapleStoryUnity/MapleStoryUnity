@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Action scale the sprite's gameobject to the vector direction.
     /// </summary>
-    public class JCS_SpriteScaleAction
-        : MonoBehaviour
+    public class JCS_SpriteScaleAction : MonoBehaviour
     {
         /* Variables */
 

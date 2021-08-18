@@ -7,16 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Track a gameobject in 3D space.
     /// </summary>
-    public class JCS_3DTrackAction
-        : MonoBehaviour
-        , JCS_Action
+    public class JCS_3DTrackAction : MonoBehaviour , JCS_Action
     {
         /* Variables */
 

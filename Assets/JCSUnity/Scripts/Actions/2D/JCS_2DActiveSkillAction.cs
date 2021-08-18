@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Spawn a skill and destroy itself after
     /// done displaying the skill effect.
     /// </summary>
-    public class JCS_2DActiveSkillAction
-        : MonoBehaviour
+    public class JCS_2DActiveSkillAction : MonoBehaviour
     {
         /* Variables */
 

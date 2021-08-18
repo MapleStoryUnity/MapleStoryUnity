@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Thorws a gameobject toward another gameobject.
     /// </summary>
-    public class JCS_3DThrowAction
-        : MonoBehaviour
+    public class JCS_3DThrowAction : MonoBehaviour
     {
         /* Variables */
 

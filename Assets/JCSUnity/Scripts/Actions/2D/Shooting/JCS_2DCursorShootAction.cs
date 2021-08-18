@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,9 +14,7 @@ namespace JCSUnity
     /// Shoot a bullet toward the cursor position in 2D space.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
-    public class JCS_2DCursorShootAction
-        : MonoBehaviour
-        , JCS_Action
+    public class JCS_2DCursorShootAction : MonoBehaviour , JCS_Action
     {
         /* Variables */
 

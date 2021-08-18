@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// The component make the bubble movement.
     /// </summary>
     [RequireComponent(typeof(JCS_3DGoStraightAction))]
-    public class JCS_Bubble
-        : JCS_WeatherParticle
+    public class JCS_Bubble : JCS_WeatherParticle
     {
         /* Variables */
 

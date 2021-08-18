@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Spawn transforms at the initialize time.
     /// </summary>
-    public class JCS_BasicInitSpawner
-            : MonoBehaviour
+    public class JCS_BasicInitSpawner : MonoBehaviour
     {
         /* Variables */
 

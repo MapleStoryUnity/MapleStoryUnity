@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -16,8 +14,7 @@ namespace JCSUnity
     /// Effect that spawn a gameobject after this gameobject is destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_TransformPool))]
-    public class JCS_DestroySpawnEffect
-        : MonoBehaviour
+    public class JCS_DestroySpawnEffect : MonoBehaviour
     {
         /* Variables */
 

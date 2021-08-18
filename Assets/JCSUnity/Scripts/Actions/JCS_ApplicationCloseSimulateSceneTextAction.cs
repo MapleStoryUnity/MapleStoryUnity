@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace JCSUnity
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// Text shown in the application close simluate scene.
     /// </summary>
     [RequireComponent(typeof(Text))]
-    public class JCS_ApplicationCloseSimulateSceneTextAction
-        : MonoBehaviour
+    public class JCS_ApplicationCloseSimulateSceneTextAction : MonoBehaviour
     {
         /* Variables */
 

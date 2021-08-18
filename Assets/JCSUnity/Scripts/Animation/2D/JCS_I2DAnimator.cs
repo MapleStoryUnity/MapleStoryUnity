@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(JCS_OrderLayerObject))]
-    public abstract class JCS_I2DAnimator
-        : MonoBehaviour
+    public abstract class JCS_I2DAnimator : MonoBehaviour
     {
         /* Variables */
 

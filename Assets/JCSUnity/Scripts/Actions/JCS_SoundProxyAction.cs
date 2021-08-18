@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// sound is played the gameobject will be destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_DestroyReminder))]
-    public class JCS_SoundProxyAction
-        : MonoBehaviour
+    public class JCS_SoundProxyAction : MonoBehaviour
     {
         /* Variables */
 

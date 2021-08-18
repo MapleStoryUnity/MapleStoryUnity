@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Path finding node.
     /// </summary>
-    public class JCS_PfNode 
-        : IHeapItem<JCS_PfNode>
+    public class JCS_PfNode : IHeapItem<JCS_PfNode>
     {
         /* Variables */
 

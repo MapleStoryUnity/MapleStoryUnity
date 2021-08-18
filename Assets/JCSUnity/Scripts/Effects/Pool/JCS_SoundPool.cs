@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Pool of sound.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_SoundPool
-        : MonoBehaviour
+    public class JCS_SoundPool : MonoBehaviour
     {
         /* Variables */
 

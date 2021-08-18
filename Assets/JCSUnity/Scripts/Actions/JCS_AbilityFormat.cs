@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Ability format.
     /// </summary>
-    public abstract class JCS_AbilityFormat
-        : MonoBehaviour
+    public abstract class JCS_AbilityFormat : MonoBehaviour
     {
         /// <summary>
         /// return minimal damage form the ability

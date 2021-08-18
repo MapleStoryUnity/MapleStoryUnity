@@ -7,16 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Do the circle action.
     /// </summary>
-    public class JCS_2DCircleAction
-        : MonoBehaviour
-        , JCS_Action
+    public class JCS_2DCircleAction : MonoBehaviour , JCS_Action
     {
         /* Variables */
 

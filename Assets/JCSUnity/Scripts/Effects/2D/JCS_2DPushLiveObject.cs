@@ -7,15 +7,13 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Effect that pushes the 2d live object.
     /// </summary>
-    public class JCS_2DPushLiveObject
-        : MonoBehaviour
+    public class JCS_2DPushLiveObject : MonoBehaviour
     {
         /* Variables */
 

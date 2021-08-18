@@ -7,16 +7,14 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
-    /// Handle AI action and allow scripter to use
-    /// to switch the state using State Pattern.
+    /// Handle AI action and allow scripter to use to switch the state using 
+    /// State Pattern.
     /// </summary>
-    public class JCS_2DAIStateSystem
-        : MonoBehaviour
+    public class JCS_2DAIStateSystem : MonoBehaviour
     {
         /* Variables */
 

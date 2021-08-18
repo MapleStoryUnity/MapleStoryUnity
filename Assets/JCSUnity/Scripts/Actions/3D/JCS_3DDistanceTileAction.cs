@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -19,8 +17,7 @@ namespace JCSUnity
     /// back to original position relative to the gameobject that moved.
     /// </summary>
     [RequireComponent(typeof(JCS_3DGoStraightAction))]
-    public class JCS_3DDistanceTileAction
-        : MonoBehaviour
+    public class JCS_3DDistanceTileAction : MonoBehaviour
     {
         /* Variables */
 

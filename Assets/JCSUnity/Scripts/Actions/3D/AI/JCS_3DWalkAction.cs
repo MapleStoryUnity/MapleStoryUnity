@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 #if UNITY_5_4_OR_NEWER
 using UnityEngine.AI;
 #endif
@@ -20,9 +19,7 @@ namespace JCSUnity
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(NavMeshObstacle))]
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
-    public class JCS_3DWalkAction
-        : MonoBehaviour
-        , JCS_Action
+    public class JCS_3DWalkAction : MonoBehaviour , JCS_Action
     {
         /* Variables */
 

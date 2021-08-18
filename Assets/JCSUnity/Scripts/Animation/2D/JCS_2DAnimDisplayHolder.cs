@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -16,8 +14,7 @@ namespace JCSUnity
     /// Hold an animation state for few seconds.
     /// </summary>
     [RequireComponent(typeof(JCS_2DAnimator))]
-    public class JCS_2DAnimDisplayHolder
-        : MonoBehaviour
+    public class JCS_2DAnimDisplayHolder : MonoBehaviour
     {
         /* Variables */
 

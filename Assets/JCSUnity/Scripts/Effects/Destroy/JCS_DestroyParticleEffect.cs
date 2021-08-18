@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_ParticleSystem))]
     [RequireComponent(typeof(JCS_HitListEvent))]
-    public class JCS_DestroyParticleEffect
-        : MonoBehaviour
+    public class JCS_DestroyParticleEffect : MonoBehaviour
     {
         /* Variables */
 

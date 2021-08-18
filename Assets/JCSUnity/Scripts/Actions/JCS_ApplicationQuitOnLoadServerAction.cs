@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -23,8 +21,7 @@ namespace JCSUnity
     /// else the connection would not be clean for this client. Server
     /// could have the fatal processing performance.
     /// </summary>
-    public class JCS_ApplicationQuitOnLoadServerAction
-        : MonoBehaviour
+    public class JCS_ApplicationQuitOnLoadServerAction : MonoBehaviour
     {
         /* Variables */
 

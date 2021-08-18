@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// plz attach this script to any game object, you 
     /// want to simulate the mouse movement check.
     /// </summary>
-    public class JCS_3DMouseMovement
-        : MonoBehaviour
+    public class JCS_3DMouseMovement : MonoBehaviour
     {
         /* Variables */
 

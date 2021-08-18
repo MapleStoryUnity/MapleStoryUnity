@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -16,8 +15,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(JCS_3DGoStraightAction))]
-    public class JCS_RainDrop
-        : JCS_WeatherParticle
+    public class JCS_RainDrop : JCS_WeatherParticle
     {
         /* Variables */
 

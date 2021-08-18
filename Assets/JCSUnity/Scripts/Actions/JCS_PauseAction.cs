@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -20,8 +18,7 @@ namespace JCSUnity
     /// If you are working on game that does not have pause, then 
     /// this script is basically not the good serve for you.
     /// </summary>
-    public class JCS_PauseAction
-        : MonoBehaviour
+    public class JCS_PauseAction : MonoBehaviour
     {
         /* Variables */
 

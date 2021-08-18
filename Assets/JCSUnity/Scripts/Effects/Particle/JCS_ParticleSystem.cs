@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,8 +14,7 @@ namespace JCSUnity
     /// Particle System thats spawns `JCS_Particle` object.
     /// </summary>
     [RequireComponent(typeof(JCS_EnvironmentSoundPlayer))]
-    public class JCS_ParticleSystem
-        : MonoBehaviour
+    public class JCS_ParticleSystem : MonoBehaviour
     {
         /* Variables */
 

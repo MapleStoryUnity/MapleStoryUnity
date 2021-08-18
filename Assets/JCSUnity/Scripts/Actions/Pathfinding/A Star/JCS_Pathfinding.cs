@@ -6,11 +6,10 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -18,8 +17,7 @@ namespace JCSUnity
     /// Path finding core behaviour.
     /// </summary>
     [RequireComponent(typeof(JCS_PfGrid))]
-    public class JCS_Pathfinding
-        : MonoBehaviour
+    public class JCS_Pathfinding : MonoBehaviour
     {
         /* Variables */
 

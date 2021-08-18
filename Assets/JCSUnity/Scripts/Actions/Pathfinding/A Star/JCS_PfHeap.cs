@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System;
 
 namespace JCSUnity
@@ -15,8 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Path finding heap.
     /// </summary>
-    public class JCS_PfHeap<T>
-        where T : IHeapItem<T>
+    public class JCS_PfHeap<T> where T : IHeapItem<T>
     {
         /* Variables */
 

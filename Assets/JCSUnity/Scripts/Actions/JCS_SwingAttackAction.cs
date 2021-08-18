@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
@@ -15,9 +14,7 @@ namespace JCSUnity
     /// Action to do swing attack.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_SwingAttackAction
-        : MonoBehaviour
-        , JCS_Action
+    public class JCS_SwingAttackAction : MonoBehaviour , JCS_Action
     {
         /* Variables */
 

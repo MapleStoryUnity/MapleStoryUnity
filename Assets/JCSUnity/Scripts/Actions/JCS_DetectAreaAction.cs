@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace JCSUnity
 {
@@ -17,8 +15,7 @@ namespace JCSUnity
     /// </summary>
     // NOTE(jenchieh): Anything with can dectect area must be living thing.
     [RequireComponent(typeof(JCS_2DLiveObject))]  
-    public class JCS_DetectAreaAction
-        : MonoBehaviour
+    public class JCS_DetectAreaAction : MonoBehaviour
     {
         /* Variables */
 

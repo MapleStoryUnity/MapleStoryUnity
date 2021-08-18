@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Action that throw the object to a position.
     /// </summary>
-    public class JCS_PushThrowAction
-        : MonoBehaviour
+    public class JCS_PushThrowAction : MonoBehaviour
     {
         /* Variables */
 

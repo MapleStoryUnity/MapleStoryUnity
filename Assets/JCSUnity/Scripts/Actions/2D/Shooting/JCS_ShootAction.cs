@@ -7,8 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace JCSUnity
 {
@@ -23,9 +21,7 @@ namespace JCSUnity
     /// Action that shoot bullets.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPoolAction))]
-    public class JCS_ShootAction
-        : MonoBehaviour
-        , JCS_Action
+    public class JCS_ShootAction : MonoBehaviour , JCS_Action
     {
         /* Variables */
 

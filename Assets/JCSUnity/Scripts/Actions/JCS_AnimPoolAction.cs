@@ -7,16 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Animation pool action.
     /// </summary>
-    public class JCS_AnimPoolAction
-        : MonoBehaviour
-        , JCS_Action
+    public class JCS_AnimPoolAction : MonoBehaviour , JCS_Action
     {
         /* Variables */
 

@@ -7,15 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Effect that does constant wave.
     /// </summary>
-    public class JCS_3DConstWaveEffect
-        : JCS_UnityObject
+    public class JCS_3DConstWaveEffect : JCS_UnityObject
     {
         /* Variables */
 

@@ -7,16 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Action that make gameobject rotates.
     /// </summary>
-    public class JCS_2DRotateAction
-        : MonoBehaviour
-        , JCS_Action
+    public class JCS_2DRotateAction : MonoBehaviour , JCS_Action
     {
         /* Variables */
 
