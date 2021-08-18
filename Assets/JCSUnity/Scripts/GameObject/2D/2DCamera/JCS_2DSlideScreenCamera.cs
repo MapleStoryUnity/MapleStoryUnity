@@ -10,6 +10,9 @@ using UnityEngine;
 
 namespace JCSUnity
 {
+    public delegate void AfterSceneSwitchedCallback(Vector2 page);
+    public delegate void AfterSwipeCallback(Vector2 page);
+
     /// <summary>
     /// Camera for GUI!! not in the game scene.
     ///
@@ -18,6 +21,12 @@ namespace JCSUnity
     public class JCS_2DSlideScreenCamera : MonoBehaviour
     {
         /* Variables */
+
+        // Function call after the scene changed
+        public AfterSceneSwitchedCallback afterSceneSwitched = null;
+
+        // Function call after the user has swiped
+        public AfterSwipeCallback afterSwiped = null;
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_2DSlideScreenCamera) **")]
@@ -228,20 +237,8 @@ namespace JCSUnity
         /// <param name="towardDirection"></param>
         public void SwitchScene(JCS_2D4Direction towardDirection)
         {
-            bool valid = CalculatePage(towardDirection);
-            if (!valid)
-                return;
-
-            switch (mUnityGUIType)
-            {
-                case JCS_UnityGUIType.uGUI_2D:
-                    UGUISwitchScene(towardDirection);
-                    break;
-                case JCS_UnityGUIType.nGUI_3D:
-                    NGUISwitchScene(towardDirection);
-                    break;
-            }
-            PlaySwitchSceneSound();
+            var direction8 = (JCS_2D8Direction)towardDirection;
+            SwitchScene(direction8);
         }
 
         /// <summary>
@@ -263,6 +260,10 @@ namespace JCSUnity
                     NGUISwitchScene(towardDirection);
                     break;
             }
+
+            if (afterSceneSwitched != null)
+                afterSceneSwitched.Invoke(mCurrentPage);
+
             PlaySwitchSceneSound();
         }
 
@@ -288,19 +289,6 @@ namespace JCSUnity
                 canDo = false;
 
             return canDo;
-        }
-
-        /// <summary>
-        /// Calculate the currnet page with DIRECTION.
-        /// </summary>
-        /// <param name="direction"> Page direction. </param>
-        /// <returns>
-        /// Return true, if is under the min/max boundary.
-        /// </returns>
-        private bool CalculatePage(JCS_2D4Direction direction)
-        {
-            var direction8 = (JCS_2D8Direction)direction;
-            return CalculatePage(direction8); ;
         }
 
         /// <summary>
@@ -413,6 +401,9 @@ namespace JCSUnity
                         SwitchScene(JCS_2D4Direction.LEFT);
                     else
                         SwitchScene(JCS_2D4Direction.RIGHT);
+
+                    if (afterSwiped != null)
+                        afterSwiped.Invoke(mCurrentPage);
                 }
 
                 if (!mFreezeY && posDiff.y > target_vs.height)
@@ -421,6 +412,9 @@ namespace JCSUnity
                         SwitchScene(JCS_2D4Direction.BOTTOM);
                     else
                         SwitchScene(JCS_2D4Direction.TOP);
+
+                    if (afterSwiped != null)
+                        afterSwiped.Invoke(mCurrentPage);
                 }
             }
         }
@@ -512,16 +506,6 @@ namespace JCSUnity
         /// UGUI method switch the panel.
         /// </summary>
         /// <param name="towardDirection"> direction to switch scene. </param>
-        private void UGUISwitchScene(JCS_2D4Direction towardDirection)
-        {
-            JCS_2D8Direction direction = (JCS_2D8Direction)towardDirection;
-            UGUISwitchScene(direction);
-        }
-
-        /// <summary>
-        /// UGUI method switch the panel.
-        /// </summary>
-        /// <param name="towardDirection"> direction to switch scene. </param>
         private void UGUISwitchScene(JCS_2D8Direction towardDirection)
         {
             // get the Screen Width and Screen Height
@@ -575,16 +559,6 @@ namespace JCSUnity
         /// NGUI method to switch panel/scene.
         /// </summary>
         /// <param name="towardDirection"> direction to switch scene. </param>
-        private void NGUISwitchScene(JCS_2D4Direction towardDirection)
-        {
-            JCS_2D8Direction direction = (JCS_2D8Direction)towardDirection;
-            NGUISwitchScene(direction);
-        }
-
-        /// <summary>
-        /// NGUI method to switch panel/scene.
-        /// </summary>
-        /// <param name="towardDirection"> direction to switch scene. </param>
         private void NGUISwitchScene(JCS_2D8Direction towardDirection)
         {
             // get the Screen Width and Screen Height
@@ -595,9 +569,8 @@ namespace JCSUnity
             // make a copy of old position
             Vector3 newScenePosition = this.transform.position;
 
-            // apply new position and set to its
-            // position according to the direction
-            // programmer pass in.
+            // Apply new position and set to its position according to the
+            // direction programmer pass in.
             switch (towardDirection)
             {
                 case JCS_2D8Direction.CENTER:
@@ -637,8 +610,8 @@ namespace JCSUnity
                     break;
             }
 
-            // set this position to new position
-            // so the camera will follow this object!
+            // Set this position to new position, so the camera will follow
+            // this object!
             this.transform.position = newScenePosition;
         }
     }
