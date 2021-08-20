@@ -36,8 +36,9 @@ namespace JCSUnity
         private Vector3 mTargetPosition = Vector3.zero;
 
         [Tooltip("Disable with in this range.")]
-        [SerializeField] [Range(0, 1000)]
-        private float mRange = 0;
+        [Range(0.0f, 1000.0f)]
+        [SerializeField]
+        private float mRange = 0.0f;
 
         [Header("** Optional Variables (JCS_DisableWithCertainRangeEvent) **")]
 
@@ -46,8 +47,9 @@ namespace JCSUnity
         private bool mFadeEffect = false;
 
         [Tooltip("Distance starting to fade.")]
-        [SerializeField] [Range(0, 1000)]
-        private float mFadeDistance = 0;
+        [Range(0.0f, 1000.0f)]
+        [SerializeField]
+        private float mFadeDistance = 0.0f;
 
         private bool mFaded = false;
 
@@ -125,11 +127,7 @@ namespace JCSUnity
             if (mTargetTransform == null)
             {
                 if (JCS_GameSettings.instance.DEBUG_MODE)
-                {
-                    JCS_Debug.LogError(
-                        "Cannot set the position without target transform.");
-                }
-
+                    JCS_Debug.LogError("Can't set the position without target transform.");
                 return;
             }
 

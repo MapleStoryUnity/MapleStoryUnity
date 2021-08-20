@@ -6,8 +6,17 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+
+/* NOTE: If you are using `TextMesh Pro` uncomment this line.
+ */
+#define TMP_PRO
+
 using UnityEngine;
 using UnityEngine.UI;
+
+#if TMP_PRO
+using TMPro;
+#endif
 
 namespace JCSUnity
 {
@@ -48,18 +57,7 @@ namespace JCSUnity
 
             this.mAlpha += (mTargetAlpha - mAlpha) / mFadeFriction * Time.deltaTime;
 
-            switch (GetObjectType())
-            {
-                case JCS_UnityObjectType.GAME_OBJECT:
-                    this.mRenderer.material.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
-                    break;
-                case JCS_UnityObjectType.UI:
-                    this.mImage.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
-                    break;
-                case JCS_UnityObjectType.SPRITE:
-                    this.mSpriteRenderer.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
-                    break;
-            }
+            this.LocalAlpha = this.mAlpha;
         }
 
         /// <summary>
@@ -81,6 +79,16 @@ namespace JCSUnity
                     this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
                     this.mRecordColor = this.mSpriteRenderer.color;
                     break;
+                case JCS_UnityObjectType.TEXT:
+                    this.mText = this.GetComponent<Text>();
+                    this.mRecordColor = this.mText.color;
+                    break;
+#if TMP_PRO
+                case JCS_UnityObjectType.TMP:
+                    this.mTextMesh = this.GetComponent<TextMeshPro>();
+                    this.mRecordColor = this.mTextMesh.color;
+                    break;
+#endif
             }
         }
 

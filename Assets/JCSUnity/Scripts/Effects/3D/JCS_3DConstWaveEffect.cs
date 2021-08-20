@@ -142,7 +142,9 @@ namespace JCSUnity
                     }
                     break;
                 case JCS_TransformType.SCALE:
-                    val = LocalScale;
+                    {
+                        val = LocalScale;
+                    }
                     break;
             }
 
@@ -175,7 +177,9 @@ namespace JCSUnity
                     }
                     break;
                 case JCS_TransformType.SCALE:
-                    this.LocalScale = newVal;
+                    {
+                        this.LocalScale = newVal;
+                    }
                     break;
             }
         }
