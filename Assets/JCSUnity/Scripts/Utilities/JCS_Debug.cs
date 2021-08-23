@@ -96,7 +96,7 @@ namespace JCSUnity
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             string filename = Path.GetFileName(file);
             Debug.Log("¶ [" + type + "] { " + filename + " } ( " + line + " ) - " + msg);
 #endif
@@ -192,7 +192,7 @@ namespace JCSUnity
         /// <param name="col"> Color type. </param>
         public static void DrawCollider(BoxCollider2D collider, Color col)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // get width and height information.
             Vector2 boxInfo = JCS_Physics.GetColliderInfo(collider);
 
@@ -223,7 +223,7 @@ namespace JCSUnity
         /// <param name="origin">Provide the origin position. </param>
         public static void DrawCollider(BoxCollider2D collider, Color col, Vector3 origin)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // get width and height information.
             Vector2 boxInfo = JCS_Physics.GetColliderInfo(collider);
 

@@ -71,6 +71,10 @@ namespace JCSUnity
 
         [Header("## Mobile")]
 
+        [Tooltip("If true, allow the mobile swipe action.")]
+        [SerializeField]
+        private bool mInteractableSwipe = true;
+
         [Tooltip("Area space to swipe for previous/next page.")]
         [SerializeField]
         private Vector2 mSwipeArea = new Vector2(0.3f, 0.3f);
@@ -116,6 +120,7 @@ namespace JCSUnity
         public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
         public void SetJCS2DCamera(JCS_2DCamera cam) { this.mJCS_2DCamera = cam; }
         public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
+        public bool InteractableSwipe { get { return this.mInteractableSwipe; } set { this.mInteractableSwipe = value; } }
         public Vector2 SwipeArea { get { return this.mSwipeArea; } set { this.mSwipeArea = value; } }
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
@@ -352,7 +357,7 @@ namespace JCSUnity
 
             bool enableSlidePanel = true;
 
-            if (si.Touched)
+            if (mInteractableSwipe && si.Touched)
             {
                 Vector3 deltaPos = si.DeltaPos;
 
@@ -389,7 +394,7 @@ namespace JCSUnity
 
             mPanelHolder.EnableSlidePanels(enableSlidePanel);
 
-            if (JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
+            if (mInteractableSwipe && JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
             {
                 Vector3 posDiff = si.DragDistance;
                 JCS_ScreenSizef vs = JCS_ScreenSettings.instance.VisibleScreenSize();
