@@ -97,7 +97,7 @@ namespace JCSUnity
             SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
