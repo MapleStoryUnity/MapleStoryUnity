@@ -10,7 +10,7 @@
 namespace JCSUnity
 {
     /// <summary>
-    /// Anchore Presets type.
+    /// Anchor Presets type.
     /// </summary>
     public enum JCS_AnchorPresetsType
     {

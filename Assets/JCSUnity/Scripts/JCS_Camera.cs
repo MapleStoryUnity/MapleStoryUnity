@@ -701,10 +701,9 @@ namespace JCSUnity
                 float bw = bs.width;
                 float bh = bs.height;
 
-                // Width does not need to be calculate, but 
-                // need to set back to the original value.
-                // Hence, the `mRecordOrthographicSize` and
-                // `mRecordFieldOfView` variables.
+                // Width does not need to be calculate, but need to set back
+                // to the original value. Hence, the `mRecordOrthographicSize`
+                // and `mRecordFieldOfView` variables.
                 if (bw > bh)
                 {
                     mCamera.orthographicSize = mRecordOrthographicSize;

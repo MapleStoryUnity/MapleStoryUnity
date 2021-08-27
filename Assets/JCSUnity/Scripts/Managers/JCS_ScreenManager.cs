@@ -42,6 +42,9 @@ namespace JCSUnity
         [Tooltip("Resize screen once on this scene?")]
         public bool RESIZE_SCREEN_THIS_SCENE = false;
 
+        [Tooltip("If true, use resizable panels to hide invalid screen area.")]
+        public bool SPAWN_RESIZABLE_PANELS = true;
+
         [Tooltip("Aspect ratio screen width for this scene you want to resize.")]
         public int ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE = 16;
 
@@ -66,22 +69,25 @@ namespace JCSUnity
         {
             instance = this;
 
-            // Spawn the four aspect screen panels.
-            this.mTopASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-            this.mBottomASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-            this.mLeftASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-            this.mRightASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+            if (SPAWN_RESIZABLE_PANELS)
+            {
+                // Spawn the four aspect screen panels.
+                this.mTopASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mBottomASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mLeftASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mRightASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
 
-            // Set the ASP direction.
-            this.mTopASP.PlaceDirection = JCS_2D4Direction.TOP;
-            this.mBottomASP.PlaceDirection = JCS_2D4Direction.BOTTOM;
-            this.mLeftASP.PlaceDirection = JCS_2D4Direction.LEFT;
-            this.mRightASP.PlaceDirection = JCS_2D4Direction.RIGHT;
+                // Set the ASP direction.
+                this.mTopASP.PlaceDirection = JCS_2D4Direction.TOP;
+                this.mBottomASP.PlaceDirection = JCS_2D4Direction.BOTTOM;
+                this.mLeftASP.PlaceDirection = JCS_2D4Direction.LEFT;
+                this.mRightASP.PlaceDirection = JCS_2D4Direction.RIGHT;
+            }
         }
 
         private void Start()
         {
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            var ss = JCS_ScreenSettings.instance;
 
             if (RESIZE_SCREEN_THIS_SCENE)
             {
@@ -94,13 +100,22 @@ namespace JCSUnity
             }
 
             // Set the panels' color
-            SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
+            if (SPAWN_RESIZABLE_PANELS)
+                SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
         }
 
 #if UNITY_EDITOR
         private void Update()
         {
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            ControlResizablePanels();
+        }
+
+        private void ControlResizablePanels()
+        {
+            if (!SPAWN_RESIZABLE_PANELS)
+                return;
+
+            var ss = JCS_ScreenSettings.instance;
 
             /* Handle color. */
             {

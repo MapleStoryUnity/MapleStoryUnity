@@ -137,7 +137,7 @@ namespace JCSUnity
             // We will expect COM to be one of the UI component from built-in 
             // Unity. If this is true, we resize it's component to match
             // the current screen space.
-            RectTransform rect = com.GetComponent<RectTransform>();
+            var rect = com.GetComponent<RectTransform>();
             FitScreenSize(rect);
         }
 
@@ -150,7 +150,7 @@ namespace JCSUnity
             if (rect == null)
                 return;
 
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            var ss = JCS_ScreenSettings.instance;
             JCS_ScreenSizef screenRaio = ss.ScreenRatio();
 
             Vector3 newScale = rect.localScale;

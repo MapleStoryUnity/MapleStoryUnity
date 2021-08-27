@@ -25,6 +25,23 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_GUIUtil
     {
+        /// <summary>
+        /// UI component that we do not want to mess up with.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsUnityDefinedUI(Component comp)
+        {
+            return (comp.GetComponent<RawImage>() ||
+                comp.GetComponent<Image>() ||
+                comp.GetComponent<Button>() ||
+                comp.GetComponent<Dropdown>() ||
+                comp.GetComponent<Slider>() ||
+                comp.GetComponent<Scrollbar>() ||
+                comp.GetComponent<Text>() ||
+                comp.GetComponent<Toggle>() ||
+                comp.GetComponent<InputField>());
+        }
+
         #region LANGUAGE
         /// <summary>
         /// Set text by system language and language data.

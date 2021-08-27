@@ -22,7 +22,7 @@ namespace JCSUnity
 
         [Tooltip("Next scene to load.")]
         [SerializeField]
-        private string mNextLevel = "JCS_Demo";
+        private string mNextLevel = "JCS_ApplicationCloseSimulate";
 
         [Tooltip("Second to show logo and load to the next scene.")]
         [SerializeField]
@@ -48,9 +48,12 @@ namespace JCSUnity
 
         private void Update()
         {
-            JCS_GameManager.instance.GAME_PAUSE = true;
+            var gm = JCS_GameManager.instance;
+
+            gm.GAME_PAUSE = true;
 
             mDelayTimer += Time.deltaTime;
+
             if (mDelayTime < mDelayTimer)
             {
                 mCycleThrough = true;
@@ -58,7 +61,7 @@ namespace JCSUnity
 
             if (mCycleThrough)
             {
-                JCS_GameManager.instance.GAME_PAUSE = false;
+                gm.GAME_PAUSE = false;
                 JCS_SceneManager.instance.LoadScene(mNextLevel);
             }
         }

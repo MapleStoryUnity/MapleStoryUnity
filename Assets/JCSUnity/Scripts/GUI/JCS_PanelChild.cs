@@ -50,7 +50,7 @@ namespace JCSUnity
             if (mPanelRoot == null)
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
 
-            this.mIsUnityDefinedUI = IsUnityDefinedUI();
+            this.mIsUnityDefinedUI = JCS_GUIUtil.IsUnityDefinedUI(this);
 
             // Rely on "Script Execution Order"
             {
@@ -64,8 +64,9 @@ namespace JCSUnity
 
                 if (!mIsUnityDefinedUI)
                 {
-                    // since we add this script assuming we are 
-                    // int the fit perfect size mode
+                    // since we add this script assuming we are  int the fit
+                    // perfect size mode
+                    //
                     // see "JCS_PanelRoot" -> mFitScreenSize variables
                     AddPanelChild();
                 }
@@ -93,11 +94,10 @@ namespace JCSUnity
                 List<Transform> childs = null;
                 if (!mIsUnityDefinedUI)
                 {
-                    // NOTE: If not the Unity define UI, we need to 
-                    // dettach all the child transform before we can 
-                    // resize it. If we resize it without dettach all 
-                    // child transforms, the children transform will 
-                    // also be scaled/changed.
+                    // NOTE: If not the Unity define UI, we need to  dettach all
+                    // the child transform before we can resize it. If we resize
+                    // it without dettach all child transforms, the children
+                    // transform will also be scaled/changed.
                     // 
                     // 這個有點暴力解法... 不知道為什麼Unity沒有辦法
                     // 在初始化階段一次清乾淨.
@@ -142,26 +142,9 @@ namespace JCSUnity
                 if (child.GetComponent<JCS_PanelChild>() != null)
                     continue;
 
-                JCS_PanelChild panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
+                var panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
                 panelChild.PanelRoot = mPanelRoot;
             }
-        }
-
-        /// <summary>
-        /// UI component that we do not want to mess up with.
-        /// </summary>
-        /// <returns></returns>
-        private bool IsUnityDefinedUI()
-        {
-            return (this.GetComponent<RawImage>() ||
-                this.GetComponent<Image>() ||
-                this.GetComponent<Button>() ||
-                this.GetComponent<Dropdown>() ||
-                this.GetComponent<Slider>() ||
-                this.GetComponent<Scrollbar>() ||
-                this.GetComponent<Text>() ||
-                this.GetComponent<Toggle>() ||
-                this.GetComponent<InputField>());
         }
     }
 }

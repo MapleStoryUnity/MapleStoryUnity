@@ -17,7 +17,7 @@ namespace JCSUnity
         NONE,
 
         // Always make the screen the same as standards.
-        // SEE(jenchieht): 
+        // SEE:
         //   => JCS_ScreenSettings => STANDARD_SCREEN_WIDTH
         //   => JCS_ScreenSettings => STANDARD_SCREEN_HEIGHT
         ALWAYS_STANDARD, 

@@ -212,7 +212,7 @@ namespace JCSUnity
         /// </summary>
         private void DoResizeUI()
         {
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            var ss = JCS_ScreenSettings.instance;
 
             float width = (float)Screen.width;
             float height = (float)Screen.height;

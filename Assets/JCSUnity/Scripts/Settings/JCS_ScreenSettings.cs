@@ -303,16 +303,15 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Always make the screen the same as standards screen
-        /// width and standard screen height.
+        /// Always make the screen the same as standards screen width and 
+        /// standard screen height.
         /// </summary>
         private void DoAlwaysStandard()
         {
             int width = JCS_Screen.width;
             int height = JCS_Screen.height;
 
-            if (width != STANDARD_SCREEN_SIZE.width ||
-                height != STANDARD_SCREEN_SIZE.height)
+            if (width != STANDARD_SCREEN_SIZE.width || height != STANDARD_SCREEN_SIZE.height)
             {
                 JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false, 0);
             }
@@ -333,8 +332,6 @@ namespace JCSUnity
             if (Screen.fullScreen)
                 return;
 
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
-
             int width = JCS_Screen.width;
             int height = JCS_Screen.height;
 
@@ -342,7 +339,7 @@ namespace JCSUnity
             if (PREV_SCREEN_SIZE.width != width)
             {
                 // update the height
-                float heightAccordingToWidth = width / ss.ASPECT_RATIO_SCREEN_SIZE.width * ss.ASPECT_RATIO_SCREEN_SIZE.height;
+                float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_SIZE.width * ASPECT_RATIO_SCREEN_SIZE.height;
                 JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
             }
 
@@ -350,7 +347,7 @@ namespace JCSUnity
             if (PREV_SCREEN_SIZE.height != height)
             {
                 // update the width
-                float widthAccordingToHeight = height / ss.ASPECT_RATIO_SCREEN_SIZE.height * ss.ASPECT_RATIO_SCREEN_SIZE.width;
+                float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_SIZE.height * ASPECT_RATIO_SCREEN_SIZE.width;
                 JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
             }
 
@@ -366,8 +363,7 @@ namespace JCSUnity
             int width = JCS_Screen.width;
             int height = JCS_Screen.height;
 
-            if (CURRENT_SCREEN_SIZE.width == width &&
-                CURRENT_SCREEN_SIZE.height == height)
+            if (CURRENT_SCREEN_SIZE.width == width && CURRENT_SCREEN_SIZE.height == height)
                 return;
 
             if (PREV_SCREEN_SIZE.width == 0.0f || PREV_SCREEN_SIZE.height == 0.0f)
