@@ -20,6 +20,6 @@ namespace JCSUnity
         NORMAL = 0,
 
         SLOW = -1,
-        VERY_SLOW = -2
+        VERY_SLOW = -2,
     }
 }

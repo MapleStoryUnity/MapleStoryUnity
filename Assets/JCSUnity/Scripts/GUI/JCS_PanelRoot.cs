@@ -28,15 +28,8 @@ namespace JCSUnity
         [SerializeField]
         private float mPanelDeltaHeightRatio = 0.0f;
 
-        [Header("** Initialize Variables (JCS_PanelRoot) **")]
-
-        [Tooltip("Type of method to fit the screen size.")]
-        [SerializeField]
-        private JCS_PanelResizeType mResizeType = JCS_PanelResizeType.KEEP_RATIO;
-
         /* Setter & Getter */
 
-        public JCS_PanelResizeType ResizeType { get { return this.mResizeType; } set { this.mResizeType = value; } }
         public float PanelDeltaWidthRatio { get { return this.mPanelDeltaWidthRatio; } }
         public float PanelDeltaHeightRatio { get { return this.mPanelDeltaHeightRatio; } }
 
@@ -57,36 +50,15 @@ namespace JCSUnity
 
         private void DoResize()
         {
-            if (mResizeType == JCS_PanelResizeType.NONE)
-                return;
-
             var screenS = JCS_ScreenSettings.instance;
 
-            float newWidth = 1.0f;
-            float newHeight = 1.0f;
-
-            switch (mResizeType)
-            {
-                case JCS_PanelResizeType.KEEP_RATIO:
-                    {
-                        newWidth = screenS.STARTING_SCREEN_SIZE.width;
-                        newHeight = screenS.STARTING_SCREEN_SIZE.height;
-                    }
-                    break;
-
-                case JCS_PanelResizeType.FIT_ALL:
-                    {
-                        newWidth = Screen.width;
-                        newHeight = Screen.height;
-                    }
-                    break;
-            }
+            JCS_ScreenSizef size = screenS.StartingScreenSize();
 
             float currentWidth = mRectTransform.sizeDelta.x;
             float currentHeight = mRectTransform.sizeDelta.y;
 
-            mPanelDeltaWidthRatio = currentWidth / newWidth;
-            mPanelDeltaHeightRatio = currentHeight / newHeight;
+            mPanelDeltaWidthRatio = currentWidth / size.width;
+            mPanelDeltaHeightRatio = currentHeight / size.height;
 
             /*
              * NOTE(jenchieh): 
@@ -98,7 +70,7 @@ namespace JCSUnity
              */
             {
                 // set the width and height to the new app rect
-                mRectTransform.sizeDelta = new Vector2(newWidth, newHeight);
+                mRectTransform.sizeDelta = new Vector2(size.width, size.height);
             }
 
             FitPerfectSize();

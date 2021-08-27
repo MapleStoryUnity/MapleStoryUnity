@@ -18,6 +18,6 @@ namespace JCSUnity
         DOUBLE_JUMP = 2,
         TRIPLE_JUMP = 3,
         DOUBLE_JUMP_FORCE = 4,
-        TRIPLE_JUMP_FORCE = 5
+        TRIPLE_JUMP_FORCE = 5,
     }
 }

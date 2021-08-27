@@ -19,6 +19,6 @@ namespace JCSUnity
         uGUI_2D,
 
         // 3D GUI
-        nGUI_3D
+        nGUI_3D,
     }
 }

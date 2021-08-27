@@ -22,6 +22,6 @@ namespace JCSUnity
         RAINY,
         SNOWY,
         WINDY,
-        STORM
+        STORM,
     }
 }

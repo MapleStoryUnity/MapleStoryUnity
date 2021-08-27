@@ -17,6 +17,6 @@ namespace JCSUnity
         NONE,
 
         SINGLE_TARGET,
-        MULTI_TARGET
+        MULTI_TARGET,
     }
 }

@@ -18,6 +18,6 @@ namespace JCSUnity
 
         BGM_SOUND,
         SFX_SOUND,
-        SKILLS_SOUND
+        SKILLS_SOUND,
     }
 }

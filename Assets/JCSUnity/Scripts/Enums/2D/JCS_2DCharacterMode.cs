@@ -14,8 +14,8 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_2DCharacterState
     {
-        NORMAL, 
-        CLIMBING, 
-        ATTACK, 
+        NORMAL,
+        CLIMBING,
+        ATTACK,
     };
 }

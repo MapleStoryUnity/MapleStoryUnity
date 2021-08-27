@@ -19,6 +19,6 @@ namespace JCSUnity
         PC,
         MOBILE,
         PS,
-        XBOX
+        XBOX,
     }
 }

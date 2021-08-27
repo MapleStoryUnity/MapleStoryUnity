@@ -27,5 +27,8 @@ namespace JCSUnity
 
         // Resizable whatever.
         RESIZABLE,
+
+        // For those screen does not change! (like mobile)
+        FIT_ALL,
     }
 }

@@ -15,6 +15,6 @@ namespace JCSUnity
     public enum JCS_ClientMode
     {
         LOGIN_SERVER,
-        CHANNEL_SERVER
+        CHANNEL_SERVER,
     }
 }

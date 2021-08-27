@@ -17,6 +17,6 @@ namespace JCSUnity
         FIRST_PAGE,         // page with only next button
         PREV_NEXT_PAGE,     // page with previous and next button
         YES_NO,             // page with yes and no button
-        END_PAGE            // page with only previous button
+        END_PAGE,           // page with only previous button
     }
 }

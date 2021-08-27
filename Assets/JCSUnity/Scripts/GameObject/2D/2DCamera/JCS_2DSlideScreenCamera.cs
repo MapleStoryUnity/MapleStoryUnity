@@ -444,12 +444,14 @@ namespace JCSUnity
             float screenWidth = 0.0f;
             float screenHeight = 0.0f;
 
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            var screenS = JCS_ScreenSettings.instance;
             JCS_Camera cam = JCS_Camera.main;
 
-            JCS_PanelRoot panelRoot = mPanelHolder.slidePanels[0].GetComponent<JCS_PanelRoot>();
+            RectTransform slidePanel = mPanelHolder.slidePanels[0];
+
+            JCS_PanelRoot panelRoot = slidePanel.GetComponent<JCS_PanelRoot>();
             if (panelRoot == null)
-                panelRoot = mPanelHolder.slidePanels[0].GetComponentInParent<JCS_PanelRoot>();
+                panelRoot = slidePanel.GetComponentInParent<JCS_PanelRoot>();
 
             switch (mUnityGUIType)
             {
@@ -457,13 +459,15 @@ namespace JCSUnity
                     {
                         if (panelRoot != null)
                         {
-                            screenWidth = ss.STARTING_SCREEN_SIZE.width;
-                            screenHeight = ss.STARTING_SCREEN_SIZE.height;
+                            JCS_ScreenSizef size = screenS.StartingScreenSize();
+
+                            screenWidth = size.width;
+                            screenHeight = size.height;
                         }
                         else
                         {
-                            screenWidth = ss.STANDARD_SCREEN_SIZE.width;
-                            screenHeight = ss.STANDARD_SCREEN_SIZE.height;
+                            screenWidth = screenS.STANDARD_SCREEN_SIZE.width;
+                            screenHeight = screenS.STANDARD_SCREEN_SIZE.height;
                         }
                     }
                     break;

@@ -19,6 +19,6 @@ namespace JCSUnity
         NONE = 0,
 
         FACE_LEFT = 1,
-        FACE_RIGHT = -1
+        FACE_RIGHT = -1,
     }
 }

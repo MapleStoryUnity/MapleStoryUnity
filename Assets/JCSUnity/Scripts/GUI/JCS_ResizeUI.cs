@@ -63,7 +63,8 @@ namespace JCSUnity
         public bool showResizePanel
         {
             get { return this.mShowResizePanel; }
-            set {
+            set
+            {
                 this.mShowResizePanel = value;
 
                 // Show or Hide?
@@ -131,7 +132,7 @@ namespace JCSUnity
                 // Delete the old one
                 DestroyImmediate(instance.gameObject);
             }
-            
+
 
             instance = this;
 
@@ -212,19 +213,15 @@ namespace JCSUnity
         /// </summary>
         private void DoResizeUI()
         {
-            var ss = JCS_ScreenSettings.instance;
+            var screenS = JCS_ScreenSettings.instance;
 
             float width = (float)Screen.width;
             float height = (float)Screen.height;
 
-            if (ss.ENSURE_INSIDE_SAFE_AREA)
-            {
-                width = (float)JCS_Screen.width;
-                height = (float)JCS_Screen.height;
-            }
+            JCS_ScreenSizef size = screenS.StartingScreenSize();
 
-            mWScale = width / (float)ss.STARTING_SCREEN_SIZE.width;
-            mHScale = height / (float)ss.STARTING_SCREEN_SIZE.height;
+            mWScale = width / size.width;
+            mHScale = height / size.height;
 
             mTargetScale = (mWScale > mHScale) ? mHScale : mWScale;
 

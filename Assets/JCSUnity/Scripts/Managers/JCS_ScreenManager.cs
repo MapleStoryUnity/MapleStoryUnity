@@ -42,19 +42,11 @@ namespace JCSUnity
         [Tooltip("Resize screen once on this scene?")]
         public bool RESIZE_SCREEN_THIS_SCENE = false;
 
-        [Tooltip("If true, use resizable panels to hide invalid screen area.")]
-        public bool SPAWN_RESIZABLE_PANELS = true;
-
         [Tooltip("Aspect ratio screen width for this scene you want to resize.")]
         public int ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE = 16;
 
         [Tooltip("Aspect ratio screen height for this scene you want to resize.")]
         public int ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE = 9;
-
-        [Header("** Runtime Variables (JCS_ScreenManager) **")]
-
-        [Tooltip("Type of the screen handle.")]
-        public JCS_ScreenType SCREEN_TYPE_THIS_SCENE = JCS_ScreenType.RESIZABLE;
 
         /* Setter & Getter */
 
@@ -69,7 +61,7 @@ namespace JCSUnity
         {
             instance = this;
 
-            if (SPAWN_RESIZABLE_PANELS)
+            if (ShouldSpawnResizablePanels())
             {
                 // Spawn the four aspect screen panels.
                 this.mTopASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
@@ -100,7 +92,7 @@ namespace JCSUnity
             }
 
             // Set the panels' color
-            if (SPAWN_RESIZABLE_PANELS)
+            if (ShouldSpawnResizablePanels())
                 SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
         }
 
@@ -112,7 +104,7 @@ namespace JCSUnity
 
         private void ControlResizablePanels()
         {
-            if (!SPAWN_RESIZABLE_PANELS)
+            if (!ShouldSpawnResizablePanels())
                 return;
 
             var ss = JCS_ScreenSettings.instance;
@@ -132,6 +124,21 @@ namespace JCSUnity
             }
         }
 #endif
+
+        /// <summary>
+        /// Return true, if we should use resizalbe panels.
+        /// </summary>
+        public bool ShouldSpawnResizablePanels()
+        {
+            var screenS = JCS_ScreenSettings.instance;
+
+            switch (screenS.SCREEN_TYPE)
+            {
+                case JCS_ScreenType.FIT_ALL:
+                    return false;
+            }
+            return true;
+        }
 
         /// <summary>
         /// Show the resizable panels.

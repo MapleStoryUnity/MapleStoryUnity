@@ -16,6 +16,6 @@ namespace JCSUnity
     {
         IDLE,
         MOVE_UP,
-        MOVE_DOWN
+        MOVE_DOWN,
     };
 }

@@ -16,6 +16,6 @@ namespace JCSUnity
     {
         POSITION,
         ROTATION,
-        SCALE
+        SCALE,
     }
 }

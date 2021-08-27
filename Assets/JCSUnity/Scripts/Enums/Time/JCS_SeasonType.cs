@@ -19,6 +19,6 @@ namespace JCSUnity
         SPRING_3_5,
         SUMMER_6_8,
         FALL_9_11,
-        WINTER_12_2
+        WINTER_12_2,
     }
 }

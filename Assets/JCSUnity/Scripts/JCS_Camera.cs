@@ -356,7 +356,7 @@ namespace JCSUnity
 
 #if (UNITY_EDITOR)
             Vector3 cOrigin = cap.transform.position + cCenter;
-            Debug.DrawLine(cOrigin, 
+            Debug.DrawLine(cOrigin,
                 new Vector3(cOrigin.x, cTopBound, cOrigin.z));
             Debug.DrawLine(cOrigin,
                 new Vector3(cOrigin.x, cBotBound, cOrigin.z));
@@ -397,7 +397,7 @@ namespace JCSUnity
 
             Vector3 gameRect = new Vector3(
                 camToGameDepthDistance * canvasRect.x / camToCanvasDistance,
-                camToGameDepthDistance * canvasRect.y / camToCanvasDistance, 
+                camToGameDepthDistance * canvasRect.y / camToCanvasDistance,
                 0);
 
             // camPos name are named up there.
@@ -437,7 +437,7 @@ namespace JCSUnity
 #endif
 
             if (cRightBound < camLeftBound ||
-                camRightBound < cLeftBound || 
+                camRightBound < cLeftBound ||
                 cTopBound < camBotBound ||
                 camTopBound < cBotBound)
             {
@@ -494,7 +494,7 @@ namespace JCSUnity
 
             // TODO(JenChieh): Not done.
 
-            if ((objRight < camLeft || objLeft > camRight) && 
+            if ((objRight < camLeft || objLeft > camRight) &&
                 (objTop < camBot || objBot > camTop))
             {
                 // out of screen.
@@ -668,22 +668,23 @@ namespace JCSUnity
             SetPosition(vec.x, vec.y, vec.z);
         }
 
-
         /// <summary>
         /// Resize the game if screen size changes.
         /// </summary>
         protected virtual void OnResizeGame()
         {
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            var ss = JCS_ScreenSettings.instance;
+
+            JCS_ScreenSizef size = ss.StartingScreenSize();
 
             float currentScreenRatio = ss.CURRENT_SCREEN_SIZE.width / ss.CURRENT_SCREEN_SIZE.height;
-            float startingScreenRatio = (float)ss.STARTING_SCREEN_SIZE.width / (float)ss.STARTING_SCREEN_SIZE.height;
+            float startingScreenRatio = (float)size.width / (float)size.height;
 
             if (currentScreenRatio > startingScreenRatio)
             {
                 // Set the limit if reach the starting screen ratio.
-                ss.CURRENT_SCREEN_SIZE.width = (float)ss.STARTING_SCREEN_SIZE.width;
-                ss.CURRENT_SCREEN_SIZE.height = (float)ss.STARTING_SCREEN_SIZE.height;
+                ss.CURRENT_SCREEN_SIZE.width = (float)size.width;
+                ss.CURRENT_SCREEN_SIZE.height = (float)size.height;
             }
 
             float prevRatio = ss.PREV_SCREEN_SIZE.width / ss.PREV_SCREEN_SIZE.height;

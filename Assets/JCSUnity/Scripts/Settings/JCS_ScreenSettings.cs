@@ -72,8 +72,8 @@ namespace JCSUnity
         [Tooltip("Standard screen size to calculate the worldspace obejct's camera view.")]
         public JCS_ScreenSize STANDARD_SCREEN_SIZE = new JCS_ScreenSize(1920, 1080);
 
-        [Tooltip("Ensure all UI is inside the safe area.")]
-        public bool ENSURE_INSIDE_SAFE_AREA = false;
+        [Tooltip("Type of the screen handle.")]
+        public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
 
         /* Setter & Getter */
 
@@ -163,6 +163,30 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return the starting screen size by the current screen type.
+        /// </summary>
+        public JCS_ScreenSizef StartingScreenSize()
+        {
+            var screenM = JCS_ScreenManager.instance;
+
+            float newWidth;
+            float newHeight;
+
+            if (screenM.ShouldSpawnResizablePanels())
+            {
+                newWidth = STARTING_SCREEN_SIZE.width;
+                newHeight = STARTING_SCREEN_SIZE.height;
+            }
+            else
+            {
+                newWidth = Screen.width;
+                newHeight = Screen.height;
+            }
+
+            return new JCS_ScreenSizef(newWidth, newHeight);
+        }
+
+        /// <summary>
         /// Return the ratio from expected screen size to actual screen size.
         /// </summary>
         public JCS_ScreenSizef ScreenRatio()
@@ -197,7 +221,7 @@ namespace JCSUnity
             JCS_ScreenSizef blackScreenSize = BlackspaceSize();
             return new JCS_ScreenSizef(
                 JCS_Screen.width - blackScreenSize.width,
-                JCS_Screen.height- blackScreenSize.height);
+                JCS_Screen.height - blackScreenSize.height);
         }
 
         /// <summary>
@@ -281,6 +305,8 @@ namespace JCSUnity
             _new.STANDARD_SCREEN_SIZE = _old.STANDARD_SCREEN_SIZE;
 
             _new.RESIZABLE_PANELS_COLOR = _old.RESIZABLE_PANELS_COLOR;
+
+            _new.SCREEN_TYPE = _old.SCREEN_TYPE;
         }
 
         /// <summary>
@@ -288,7 +314,7 @@ namespace JCSUnity
         /// </summary>
         private void DoScreenType()
         {
-            switch (JCS_ScreenManager.instance.SCREEN_TYPE_THIS_SCENE)
+            switch (SCREEN_TYPE)
             {
                 case JCS_ScreenType.ALWAYS_STANDARD:
                     DoAlwaysStandard();

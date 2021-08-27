@@ -15,6 +15,6 @@ namespace JCSUnity
     public enum JCS_ProtocalType
     {
         TCP,
-        UDP
+        UDP,
     }
 }

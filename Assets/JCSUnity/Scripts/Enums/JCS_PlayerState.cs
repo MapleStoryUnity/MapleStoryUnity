@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_AttackState.cs $
+ * $File: JCS_PlayerState.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -21,7 +21,7 @@ namespace JCSUnity
         ATTACK_02 = 21,
         ATTACK_03 = 22,
         ATTACK_04 = 23,
-        ATTACK_05 = 24
+        ATTACK_05 = 24,
     }
 
     /// <summary>
@@ -43,6 +43,6 @@ namespace JCSUnity
         DANCE = 11,
         SWIM = 12,
         DIE = 13,       // when player is dead. (墓碑!)
-        GHOST = 14      // 當玩家死掉了之後
+        GHOST = 14,     // 當玩家死掉了之後
     }
 }

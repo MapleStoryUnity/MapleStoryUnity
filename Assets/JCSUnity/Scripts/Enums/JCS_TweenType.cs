@@ -45,6 +45,6 @@ namespace JCSUnity
         EASE_IN_OUT_QUART,
         EASE_IN_OUT_EXPO,
         EASE_IN_OUT_ELASTIC,
-        EASE_IN_OUT_BOUNCE
+        EASE_IN_OUT_BOUNCE,
     }
 }

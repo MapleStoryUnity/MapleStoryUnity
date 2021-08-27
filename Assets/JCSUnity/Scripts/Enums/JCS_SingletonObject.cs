@@ -20,6 +20,6 @@ namespace JCSUnity
         JCS_GAMESETTINGS,
         JCS_CANVAS,
         JCS_CAMERA,
-        JCS_PLAYER
+        JCS_PLAYER,
     }
 }

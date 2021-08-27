@@ -29,7 +29,7 @@ namespace JCSUnity
         PLAYER_DIALOGUE,
 
         // application layer
-        SYSTEM_DIALOGUE      // screen from application layer so it have the authroized to break the game
+        SYSTEM_DIALOGUE,      // screen from application layer so it have the authroized to break the game
 
 
         //*** Hight Priority ***//

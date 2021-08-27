@@ -14,8 +14,7 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_PanelType
     {
-        // reset the scale, position and rotation 
-        // every time opens it
+        // reset the scale, position and rotation every time opens it
         RESET_PANEL,            
         RECORD_PANEL,           // single player
 

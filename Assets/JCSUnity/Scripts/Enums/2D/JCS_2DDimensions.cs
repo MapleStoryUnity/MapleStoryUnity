@@ -17,6 +17,6 @@ namespace JCSUnity
         NONE,
 
         HORIZONTAL,
-        VERTICAL
+        VERTICAL,
     }
 }

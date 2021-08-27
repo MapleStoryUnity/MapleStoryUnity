@@ -24,6 +24,6 @@ namespace JCSUnity
         EVENING_17PM_19PM = 5,            // 17 - 19
         NIGHT_19PM_22PM = 6,              // 19 - 22
         LATE_AT_NIGHT_22PM_2AM = 7,       // 22 - 2
-        BEFORE_DAWN_2AM_5AM = 8           // 2 - 5
+        BEFORE_DAWN_2AM_5AM = 8,          // 2 - 5
     }
 }

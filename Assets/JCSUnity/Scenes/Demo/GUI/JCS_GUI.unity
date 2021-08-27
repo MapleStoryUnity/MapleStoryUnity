@@ -871,7 +871,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!1 &125373289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1604,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!1 &209697730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,7 +2806,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!1 &387084812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,7 +3598,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!1 &493965850
 GameObject:
   m_ObjectHideFlags: 0
@@ -7309,7 +7305,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!1 &688828978
 GameObject:
   m_ObjectHideFlags: 0
@@ -8991,7 +8986,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!1 &830015868
 GameObject:
   m_ObjectHideFlags: 0
@@ -9367,7 +9361,6 @@ MonoBehaviour:
   mAsOriginalRotation: 0
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!114 &865629819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10432,7 +10425,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!1 &975456157
 GameObject:
   m_ObjectHideFlags: 0
@@ -11487,7 +11479,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!1 &1102750946
 GameObject:
   m_ObjectHideFlags: 0
@@ -17952,7 +17943,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mResizeType: 1
 --- !u!1 &2068116420
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,6 @@ namespace JCSUnity
         NONE,
 
         FADE_OUT,
-        FADE_IN
+        FADE_IN,
     }
 }
