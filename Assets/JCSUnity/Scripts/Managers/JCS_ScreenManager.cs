@@ -92,8 +92,7 @@ namespace JCSUnity
             }
 
             // Set the panels' color
-            if (ShouldSpawnResizablePanels())
-                SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
+            SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
         }
 
 #if UNITY_EDITOR
@@ -104,9 +103,6 @@ namespace JCSUnity
 
         private void ControlResizablePanels()
         {
-            if (!ShouldSpawnResizablePanels())
-                return;
-
             var ss = JCS_ScreenSettings.instance;
 
             /* Handle color. */
@@ -145,6 +141,9 @@ namespace JCSUnity
         /// </summary>
         public void ShowResizablePanels()
         {
+            if (!ShouldSpawnResizablePanels())
+                return;
+
             this.mTopASP.ShowPanel();
             this.mBottomASP.ShowPanel();
             this.mLeftASP.ShowPanel();
@@ -156,6 +155,9 @@ namespace JCSUnity
         /// </summary>
         public void HideResizablePanels()
         {
+            if (!ShouldSpawnResizablePanels())
+                return;
+
             this.mTopASP.HidePanel();
             this.mBottomASP.HidePanel();
             this.mLeftASP.HidePanel();
@@ -168,6 +170,9 @@ namespace JCSUnity
         /// <param name="newColor"></param>
         public void SetResizablePanelsColor(Color newColor)
         {
+            if (!ShouldSpawnResizablePanels())
+                return;
+
             this.mTopASP.image.color = newColor;
             this.mBottomASP.image.color = newColor;
             this.mLeftASP.image.color = newColor;
