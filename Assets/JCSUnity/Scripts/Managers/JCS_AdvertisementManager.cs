@@ -1,4 +1,8 @@
-#if (UNITY_ANDRIOD || UNITY_IOS)
+/* NOTE: If you are using `Unity Ads` uncomment this line.
+ */
+//#define UNITY_ADS
+
+#if (UNITY_ANDRIOD || UNITY_IOS || UNITY_EDITOR) && UNITY_ADS
 /**
  * $File: JCS_AdvertisementManager.cs $
  * $Date: 2017-04-28 21:48:08 $
@@ -14,6 +18,11 @@ using UnityEngine.Advertisements;
 
 namespace JCSUnity
 {
+    public delegate void AdsDidErrorCallback(string message);
+    public delegate void AdsDidFinishCallback(string placementId, ShowResult showResult);
+    public delegate void AdsDidStartCallback(string placementId);
+    public delegate void AdsReadyCallback(string placementId);
+
     /// <summary>
     /// Handle Advertisment provide by Unity Technologies company.
     /// 
@@ -55,9 +64,9 @@ namespace JCSUnity
         {
             instance = this;
 
-#if (UNITY_ANDROID)
+#if UNITY_ANDROID
             Advertisement.Initialize(ANDRIOD_GAME_ID, mTestMode);
-#elif (UNITY_IOS)
+#elif UNITY_IOS
             Advertisement.Initialize(IOS_GAME_ID, mTestMode);
 #endif
         }
@@ -100,24 +109,41 @@ namespace JCSUnity
 
         //----------------------------------------------------------------------
 
+        public AdsDidErrorCallback adsDidError = null;
+        public AdsDidFinishCallback adsDidFinish = null;
+        public AdsDidStartCallback adsDidStart = null;
+        public AdsReadyCallback adsReady = null;
+
         void IUnityAdsListener.OnUnityAdsDidError(string message)
         {
-            // empty..
+            if (adsDidError == null)
+                return;
+
+            adsDidError.Invoke(message);
         }
 
         void IUnityAdsListener.OnUnityAdsDidFinish(string placementId, ShowResult showResult)
         {
-            // empty..
+            if (adsDidFinish == null)
+                return;
+
+            adsDidFinish.Invoke(placementId, showResult);
         }
 
         void IUnityAdsListener.OnUnityAdsDidStart(string placementId)
         {
-            // empty..
+            if (adsDidStart == null)
+                return;
+
+            adsDidStart.Invoke(placementId);
         }
 
         void IUnityAdsListener.OnUnityAdsReady(string placementId)
         {
-            // empty..
+            if (adsReady == null)
+                return;
+
+            adsReady.Invoke(placementId);
         }
     }
 }

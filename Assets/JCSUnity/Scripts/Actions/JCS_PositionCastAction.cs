@@ -21,12 +21,11 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_PositionCastAction) **")]
 
         [Tooltip("Test this component with key.")]
-        [SerializeField]
-        private bool mTestWithKey = false;
+        public bool testWithKey = false;
 
         [Tooltip("Key to test if cast to screen space.")]
         [SerializeField]
@@ -59,7 +58,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         public Vector3 CastToScreenPosition { get { return this.mCastToScreenPosition; } }
         public Vector3 CastToWorldPosition { get { return this.mCastToWorldPosition; } }
 #endif
@@ -79,10 +78,10 @@ namespace JCSUnity
             }
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
-            if (!mTestWithKey)
+            if (!testWithKey)
                 return;
 
             if (JCS_Input.GetKeyDown(mCastToScreenKey))
@@ -102,8 +101,8 @@ namespace JCSUnity
         /// <returns></returns>
         public Vector3 CastToScreen(Vector3 pos)
         {
-            JCS_Camera jcsCam = JCS_Camera.main;
-            JCS_ResizeUI resizeUI = JCS_ResizeUI.instance;
+            var camera = JCS_Camera.main;
+            var resizeUI = JCS_ResizeUI.instance;
 
             Vector3 positionOffset = mPositionOffset;
 
@@ -118,7 +117,7 @@ namespace JCSUnity
                 case JCS_UnityObjectType.TEXT:
                 case JCS_UnityObjectType.UI:
                     {
-                        Vector2 worldToCanvasSpace = jcsCam.WorldToCanvasSpace(pos);
+                        Vector2 worldToCanvasSpace = camera.WorldToCanvasSpace(pos);
 
                         float targetScale = resizeUI.TargetScale;
 
@@ -146,14 +145,14 @@ namespace JCSUnity
         /// <returns></returns>
         public Vector3 CastToWorld(Vector2 pos)
         {
-            JCS_Camera jcsCam = JCS_Camera.main;
+            var camera = JCS_Camera.main;
 
             switch (GetObjectType())
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
                 case JCS_UnityObjectType.SPRITE:
                     {
-                        this.LocalPosition = jcsCam.CanvasToWorldSpace(pos) + mPositionOffset;
+                        this.LocalPosition = camera.CanvasToWorldSpace(pos) + mPositionOffset;
                     }
                     break;
             }

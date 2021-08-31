@@ -26,7 +26,7 @@ namespace JCSUnity
     public static class JCS_GUIUtil
     {
         /// <summary>
-        /// UI component that we do not want to mess up with.
+        /// Return true if GameObject contains built-in UI components.
         /// </summary>
         /// <returns></returns>
         public static bool IsUnityDefinedUI(Component comp)

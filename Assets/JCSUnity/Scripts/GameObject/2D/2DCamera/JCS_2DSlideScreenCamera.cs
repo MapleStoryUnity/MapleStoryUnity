@@ -55,8 +55,8 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DSlideScreenCamera) **")]
 
-        // Notice important that Designer should know what
-        // Unity GUI type they are going to use!
+        // Notice important that Designer should know what Unity GUI type they
+        // are going to use!
         [Tooltip("GUI type.")]
         [SerializeField]
         private JCS_UnityGUIType mUnityGUIType = JCS_UnityGUIType.nGUI_3D;
@@ -445,13 +445,13 @@ namespace JCSUnity
             float screenHeight = 0.0f;
 
             var screenS = JCS_ScreenSettings.instance;
-            JCS_Camera cam = JCS_Camera.main;
+            var cam = JCS_Camera.main;
 
             RectTransform slidePanel = mPanelHolder.slidePanels[0];
 
-            JCS_PanelRoot panelRoot = slidePanel.GetComponent<JCS_PanelRoot>();
+            var panelRoot = slidePanel.GetComponent<JCS_PanelRoot>();
             if (panelRoot == null)
-                panelRoot = slidePanel.GetComponentInParent<JCS_PanelRoot>();
+                panelRoot = slidePanel.parent.GetComponent<JCS_PanelRoot>();
 
             switch (mUnityGUIType)
             {
