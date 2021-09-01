@@ -35,6 +35,7 @@ namespace JCSUnity
 
         public List<Behaviour> Behaviours { get { return this.mBehaviours; } set { this.mBehaviours = value; } }
         public float time { get { return this.mTime; } set { this.mTime = value; } }
+        public float timer { get { return this.mTimer; } set { this.mTimer = value; } }
 
         /* Functions */
 

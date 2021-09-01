@@ -40,6 +40,7 @@ namespace JCSUnity
         public List<GameObject> GameObjects { get { return this.mGameObjects; } set { this.mGameObjects = value; } }
         public bool EffectSelf { get { return this.mEffectSelf; } set { this.mEffectSelf = value; } }
         public float time { get { return this.mTime; } set { this.mTime = value; } }
+        public float timer { get { return this.mTimer; } set { this.mTimer = value; } }
 
         /* Functions */
 

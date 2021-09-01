@@ -24,11 +24,9 @@ namespace JCSUnity
         [SerializeField]
         private bool mDestroyWhenOutOfScreen = true;
 
-
         /* Setter & Getter */
 
         public bool DestroyWhenOutOfScreen { get { return this.mDestroyWhenOutOfScreen; } set { this.mDestroyWhenOutOfScreen = value; } }
-
 
         /* Functions */
 
