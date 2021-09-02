@@ -31,7 +31,8 @@ namespace JCSUnity
 
         public override void JCS_OnClickCallback()
         {
-            Application.OpenURL(mURL);
+            string url = JCS_Utility.EscapeURL(mURL);
+            Application.OpenURL(url);
         }
     }
 }

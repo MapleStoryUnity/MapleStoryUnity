@@ -15,19 +15,24 @@ namespace JCSUnity
     /// </summary>
     public class JCS_OpenURLButton : JCS_Button
     {
+        /* Variables */
+
         [Header("** Runtime Variables (JCS_OpenURLButton) **")]
 
         [Tooltip("URL to open in the default browser.")]
         [SerializeField]
         private string mURL = "www.your-url.com";
 
+        /* Setter & Getter */
 
         public string URL { get { return this.mURL; } set { this.mURL = value; } }
 
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {
-            Application.OpenURL(mURL);
+            string url = JCS_Utility.EscapeURL(mURL);
+            Application.OpenURL(url);
         }
     }
 }

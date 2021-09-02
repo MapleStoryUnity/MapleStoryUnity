@@ -1292,5 +1292,16 @@ namespace JCSUnity
             JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
             return null;
         }
+
+        /// <summary>
+        /// Simple version of escape url.
+        /// </summary>
+        /// <param name="url"> Url you want to escape. </param>
+        /// <returns> Return the escaped url. </returns>
+        public static string EscapeURL(string url)
+        {
+            url = url.Replace(" ", "%20");
+            return url;
+        }
     }
 }
