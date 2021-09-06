@@ -57,8 +57,8 @@ namespace JCSUnity
             float currentWidth = mRectTransform.sizeDelta.x;
             float currentHeight = mRectTransform.sizeDelta.y;
 
-            mPanelDeltaWidthRatio = currentWidth / size.width;
-            mPanelDeltaHeightRatio = currentHeight / size.height;
+            mPanelDeltaWidthRatio = size.width / currentWidth;
+            mPanelDeltaHeightRatio = size.height / currentHeight;
 
             /*
              * NOTE(jenchieh): 
@@ -96,8 +96,8 @@ namespace JCSUnity
                 float distanceX = newPosition.x - centerPos.x;
                 float distanceY = newPosition.y - centerPos.y;
 
-                newPosition.x = (distanceX / mPanelDeltaWidthRatio);
-                newPosition.y = (distanceY / mPanelDeltaHeightRatio);
+                newPosition.x = (distanceX * mPanelDeltaWidthRatio);
+                newPosition.y = (distanceY * mPanelDeltaHeightRatio);
 
                 // set to the new position
                 mRectTransform.localPosition = newPosition;

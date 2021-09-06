@@ -64,8 +64,8 @@ namespace JCSUnity
                     for (int index = 0; index < mTweenInfos.Count; ++index)
                     {
                         JCS_TweenInfo tt = mTweenInfos[index];
-                        tt.targetValue.x /= mPanelRoot.PanelDeltaWidthRatio;
-                        tt.targetValue.y /= mPanelRoot.PanelDeltaHeightRatio;
+                        tt.targetValue.x *= mPanelRoot.PanelDeltaWidthRatio;
+                        tt.targetValue.y *= mPanelRoot.PanelDeltaHeightRatio;
                     }
                 }
             }

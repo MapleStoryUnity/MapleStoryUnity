@@ -184,7 +184,7 @@ namespace JCSUnity
                 // mPanelRoot will be null is the object isn't
                 // UI game object.
                 if (mPanelRoot != null)
-                    mScaleValue.x /= mPanelRoot.PanelDeltaWidthRatio;
+                    mScaleValue.x *= mPanelRoot.PanelDeltaWidthRatio;
 
                 newTargetScale.x += mScaleValue.x;
             }
@@ -194,7 +194,7 @@ namespace JCSUnity
                 // mPanelRoot will be null is the object isn't
                 // UI game object.
                 if (mPanelRoot != null)
-                    mScaleValue.y /= mPanelRoot.PanelDeltaHeightRatio;
+                    mScaleValue.y *= mPanelRoot.PanelDeltaHeightRatio;
 
                 newTargetScale.y += mScaleValue.y;
             }

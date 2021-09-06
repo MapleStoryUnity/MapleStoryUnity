@@ -73,8 +73,8 @@ namespace JCSUnity
             if (mPanelRoot != null)
             {
                 // Adjust the offset base on the screen size.
-                mPointerOffset.x /= mPanelRoot.PanelDeltaWidthRatio;
-                mPointerOffset.y /= mPanelRoot.PanelDeltaHeightRatio;
+                mPointerOffset.x *= mPanelRoot.PanelDeltaWidthRatio;
+                mPointerOffset.y *= mPanelRoot.PanelDeltaHeightRatio;
             }
         }
 

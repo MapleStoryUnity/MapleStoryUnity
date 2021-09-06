@@ -163,16 +163,41 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true, if we should use resizalbe panels.
+        /// </summary>
+        public bool ShouldSpawnResizablePanels()
+        {
+            switch (SCREEN_TYPE)
+            {
+                case JCS_ScreenType.FIT_ALL:
+                case JCS_ScreenType.MIXED:
+                    return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Return true, if current screen type is responsive.
+        /// </summary>
+        public bool IsResponsive()
+        {
+            switch (SCREEN_TYPE)
+            {
+                case JCS_ScreenType.MIXED:
+                    return true;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Return the starting screen size by the current screen type.
         /// </summary>
         public JCS_ScreenSizef StartingScreenSize()
         {
-            var screenM = JCS_ScreenManager.instance;
-
             float newWidth;
             float newHeight;
 
-            if (screenM.ShouldSpawnResizablePanels())
+            if (ShouldSpawnResizablePanels())
             {
                 newWidth = STARTING_SCREEN_SIZE.width;
                 newHeight = STARTING_SCREEN_SIZE.height;
@@ -314,6 +339,12 @@ namespace JCSUnity
         /// </summary>
         private void DoScreenType()
         {
+            if (!ShouldSpawnResizablePanels())
+            {
+                // These types do not expect resize!
+                return;
+            }    
+
             switch (SCREEN_TYPE)
             {
                 case JCS_ScreenType.ALWAYS_STANDARD:

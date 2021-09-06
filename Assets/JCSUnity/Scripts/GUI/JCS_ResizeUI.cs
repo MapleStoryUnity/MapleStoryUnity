@@ -223,7 +223,7 @@ namespace JCSUnity
             mWScale = width / size.width;
             mHScale = height / size.height;
 
-            mTargetScale = (mWScale > mHScale) ? mHScale : mWScale;
+            mTargetScale = Mathf.Min(mWScale, mHScale);
 
             transform.localScale = Vector3.one * mTargetScale;
         }

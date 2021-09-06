@@ -122,21 +122,6 @@ namespace JCSUnity
 #endif
 
         /// <summary>
-        /// Return true, if we should use resizalbe panels.
-        /// </summary>
-        public bool ShouldSpawnResizablePanels()
-        {
-            var screenS = JCS_ScreenSettings.instance;
-
-            switch (screenS.SCREEN_TYPE)
-            {
-                case JCS_ScreenType.FIT_ALL:
-                    return false;
-            }
-            return true;
-        }
-
-        /// <summary>
         /// Show the resizable panels.
         /// </summary>
         public void ShowResizablePanels()
@@ -177,6 +162,15 @@ namespace JCSUnity
             this.mBottomASP.image.color = newColor;
             this.mLeftASP.image.color = newColor;
             this.mRightASP.image.color = newColor;
+        }
+
+        /// <summary>
+        /// Return true, if we should use resizalbe panels.
+        /// </summary>
+        private bool ShouldSpawnResizablePanels()
+        {
+            var screenS = JCS_ScreenSettings.instance;
+            return screenS.ShouldSpawnResizablePanels();
         }
     }
 }

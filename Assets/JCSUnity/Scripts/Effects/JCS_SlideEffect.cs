@@ -207,7 +207,7 @@ namespace JCSUnity
                         // mPanelRoot will be null is the object isn't
                         // UI game object.
                         if (mPanelRoot != null)
-                            mDistance /= mPanelRoot.PanelDeltaWidthRatio;
+                            mDistance *= mPanelRoot.PanelDeltaWidthRatio;
 
                         newPos.x += mDistance;
                     }
@@ -217,7 +217,7 @@ namespace JCSUnity
                         // mPanelRoot will be null is the object isn't
                         // UI game object.
                         if (mPanelRoot != null)
-                            mDistance /= mPanelRoot.PanelDeltaHeightRatio;
+                            mDistance *= mPanelRoot.PanelDeltaHeightRatio;
 
                         newPos.y += mDistance;
                     }

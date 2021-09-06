@@ -197,7 +197,7 @@ namespace JCSUnity
                     case JCS_2DDimensions.VERTICAL:
                         {
                             if (mPanelRoot != null)
-                                intervalDistance /= mPanelRoot.PanelDeltaWidthRatio;
+                                intervalDistance *= mPanelRoot.PanelDeltaWidthRatio;
 
                             if (isEven)
                                 newPos.y += intervalDistance;
@@ -208,7 +208,7 @@ namespace JCSUnity
                     case JCS_2DDimensions.HORIZONTAL:
                         {
                             if (mPanelRoot != null)
-                                intervalDistance /= mPanelRoot.PanelDeltaHeightRatio;
+                                intervalDistance *= mPanelRoot.PanelDeltaHeightRatio;
 
                             if (isEven)
                                 newPos.x += intervalDistance;
@@ -274,8 +274,8 @@ namespace JCSUnity
 
                 if (mPanelRoot != null)
                 {
-                    scale.x /= mPanelRoot.PanelDeltaWidthRatio;
-                    scale.y /= mPanelRoot.PanelDeltaHeightRatio;
+                    scale.x *= mPanelRoot.PanelDeltaWidthRatio;
+                    scale.y *= mPanelRoot.PanelDeltaHeightRatio;
                 }
 
                 JCS_ScaleEffect se = currentBtn.GetScaleEffect();

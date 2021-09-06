@@ -108,8 +108,8 @@ namespace JCSUnity
 
             if (mPanelRoot != null)
             {
-                positionOffset.x /= mPanelRoot.PanelDeltaWidthRatio;
-                positionOffset.y /= mPanelRoot.PanelDeltaHeightRatio;
+                positionOffset.x *= mPanelRoot.PanelDeltaWidthRatio;
+                positionOffset.y *= mPanelRoot.PanelDeltaHeightRatio;
             }
 
             switch (GetObjectType())

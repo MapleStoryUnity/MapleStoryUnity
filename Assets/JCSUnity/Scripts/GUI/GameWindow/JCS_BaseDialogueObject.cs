@@ -50,6 +50,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public RectTransform rectTransform { get { return this.mRectTransform; } }
         public bool IsVisible { get { return this.mIsVisible; } }
         public bool AsOriginalSize { get { return this.mAsOriginalSize; } set { this.mAsOriginalSize = value; } }
         public bool AsOriginalPosition { get { return this.mAsOriginalPosition; } set { this.mAsOriginalPosition = value; } }

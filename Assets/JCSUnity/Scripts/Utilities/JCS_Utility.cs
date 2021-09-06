@@ -23,6 +23,7 @@ namespace JCSUnity
     public delegate int JCS_Range(int min, int max);
     public delegate void EventTriggerEvent(PointerEventData data);
     public delegate void EventTriggerEventButtonSelection(PointerEventData data, JCS_ButtonSelection selection);
+    public delegate void ReattachCallback(Transform parent);
 
     /// <summary>
     /// All the utility function put here.
@@ -1149,6 +1150,22 @@ namespace JCSUnity
                 // Add to parent.
                 child.SetParent(trans);
             }
+        }
+
+        /// <summary>
+        /// Execution callback after detach and reattach.
+        /// </summary>
+        /// <param name="trans"> Transform you want to detach and reattach after callback. </param>
+        /// <param name="callback"> Callback after detach and before reattach. </param>
+        public static void ReattachSelf(Transform trans, ReattachCallback callback)
+        {
+            var parent = trans.parent;
+            trans.SetParent(null);
+
+            if (callback != null)
+                callback.Invoke(parent);
+
+            trans.SetParent(parent);
         }
 
         /// <summary>

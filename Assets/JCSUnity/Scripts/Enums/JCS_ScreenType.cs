@@ -30,5 +30,8 @@ namespace JCSUnity
 
         // For those screen does not change! (like mobile)
         FIT_ALL,
+
+        // Similar to responsive UI, mixed of the FIT_ALL and RESIZABLE
+        MIXED,
     }
 }
