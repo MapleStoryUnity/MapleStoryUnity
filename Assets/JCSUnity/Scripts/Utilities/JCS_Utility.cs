@@ -1118,7 +1118,7 @@ namespace JCSUnity
             for (int index = 0; index < trans.childCount; ++index)
             {
                 Transform child = trans.GetChild(index);
-                RectTransform rect = child.GetComponent<RectTransform>();
+                var rect = child.GetComponent<RectTransform>();
 
                 if (rect == null)
                     continue;
@@ -1130,6 +1130,34 @@ namespace JCSUnity
             }
 
             return childs;
+        }
+
+        /// <summary>
+        /// Return true, if transform has at least one children.
+        /// </summary>
+        public static bool HasChild(Transform trans)
+        {
+            if (trans == null)
+                return false;
+
+            return trans.childCount != 0;
+        }
+        public static bool HasChild(RectTransform trans)
+        {
+            if (trans == null)
+                return false;
+
+            for (int index = 0; index < trans.childCount; ++index)
+            {
+                Transform child = trans.GetChild(index);
+
+                var rect = child.GetComponent<RectTransform>();
+
+                if (rect != null)
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -1145,7 +1173,7 @@ namespace JCSUnity
         {
             List<Transform> childs = null;
 
-            while (trans.childCount != 0)
+            while (HasChild(trans))
             {
                 List<Transform> tmpChilds = DetachChildren(trans);
 
@@ -1158,7 +1186,7 @@ namespace JCSUnity
         {
             List<RectTransform> childs = null;
 
-            while (trans.childCount != 0)
+            while (HasChild(trans))
             {
                 List<RectTransform> tmpChilds = DetachChildren(trans);
 

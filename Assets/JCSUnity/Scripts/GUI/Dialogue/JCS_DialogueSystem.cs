@@ -138,7 +138,7 @@ namespace JCSUnity
 
         [Tooltip("Button to do select action.")]
         [SerializeField]
-        private JCS_Button[] mSelectBtn= null;
+        private JCS_Button[] mSelectBtn = null;
 
 
         // Text index to make sure 
@@ -222,8 +222,7 @@ namespace JCSUnity
 
             if (mActive)
             {
-                JCS_Debug.LogError(
-                    "Dialogue System is already active... Failed to active another one.");
+                JCS_Debug.LogError("Dialogue System is already active... Failed to active another one.");
                 return;
             }
 
@@ -541,8 +540,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
             if (mNameTag == null)
             {
-                JCS_Debug.LogError(
-                    "Name tag is not assign but u still trying to access?");
+                JCS_Debug.LogError("Name tag is not assign but u still trying to access?");
                 return;
             }
 #endif
@@ -561,8 +559,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
             if (mCenterImage == null)
             {
-                JCS_Debug.LogError(
-                    "Center image call with image component attached...");
+                JCS_Debug.LogError("Center image call with image component attached...");
                 return;
             }
 #endif
@@ -714,14 +711,14 @@ namespace JCSUnity
 
             if (// if the text in not active skip it, and render the 
                 // next possible active selection.
-                !mSelectBtn[mRenderSelectTextIndex].gameObject.activeSelf 
-                || 
+                !mSelectBtn[mRenderSelectTextIndex].gameObject.activeSelf
+                ||
                 // if the text are the same skip it too.
                 (mSelectMessage[mRenderSelectTextIndex] ==
                 mSelectBtn[mRenderSelectTextIndex].ButtonText.text))
             {
                 // set directly to the text box.
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text 
+                mSelectBtn[mRenderSelectTextIndex].ButtonText.text
                     = mSelectMessage[mRenderSelectTextIndex];
 
                 // increament one, start render next selection!
@@ -747,7 +744,7 @@ namespace JCSUnity
             else
             {
                 // do the scrolling
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text 
+                mSelectBtn[mRenderSelectTextIndex].ButtonText.text
                     = mSelectMessage[mRenderSelectTextIndex].Substring(0, mSelectTextIndex);
             }
 
@@ -877,9 +874,7 @@ namespace JCSUnity
         /// <param name="act"></param>
         private void SelectBtnsActive(bool act)
         {
-            for (int index = 0;
-                index < mSelectBtn.Length;
-                ++index)
+            for (int index = 0; index < mSelectBtn.Length; ++index)
             {
                 SelectBtnActive(index, act);
             }
@@ -962,9 +957,7 @@ namespace JCSUnity
             if (mDeclineBtn != null)
                 mDeclineBtn.SetSystemCallback(DeclineBtnCallback);
 
-            for (int index = 0;
-                index < mSelectBtn.Length;
-                ++index)
+            for (int index = 0; index < mSelectBtn.Length; ++index)
             {
                 JCS_Button btn = mSelectBtn[index];
 
@@ -1019,8 +1012,7 @@ because button selection is not attach to all selections in the list...");
             // check if text box null references...
             if (mTextBox == null)
             {
-                JCS_Debug.LogWarning(
-                    "You have the dialogue system in the scene, but u did not assign a text box... Try to delete it?");
+                JCS_Debug.LogWarning("You have the dialogue system in the scene, but u did not assign a text box... Try to delete it?");
                 return;
             }
 
@@ -1083,9 +1075,7 @@ because button selection is not attach to all selections in the list...");
         /// <returns></returns>
         private int FindSelectedButton()
         {
-            for (int index = 0;
-                index < mSelectBtn.Length;
-                ++index)
+            for (int index = 0; index < mSelectBtn.Length; ++index)
             {
                 JCS_Button jcsbtn = mSelectBtn[index];
 
@@ -1208,6 +1198,5 @@ because button selection is not attach to all selections in the list...");
             // reset selections for gamepad selection choice.
             mButtonSelectionGroup.ResetAllSelections();
         }
-
     }
 }
