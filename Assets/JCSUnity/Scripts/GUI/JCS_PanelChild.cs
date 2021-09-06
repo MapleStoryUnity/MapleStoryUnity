@@ -61,7 +61,7 @@ namespace JCSUnity
                         mPanelRoot.PanelDeltaHeightRatio);
                 }
 
-                if (!mIsUnityDefinedUI)
+                if (!mIsUnityDefinedUI || IsResponsive())
                 {
                     // since we add this script assuming we are  int the fit
                     // perfect size mode
@@ -79,12 +79,10 @@ namespace JCSUnity
         /// <param name="yRatio"></param>
         public void FitPerfectSize(float xRatio, float yRatio)
         {
-            var screenS = JCS_ScreenSettings.instance;
-
             /* Do the scale. */
             {
-                List<Transform> childs = null;
-                if (!mIsUnityDefinedUI)
+                List<RectTransform> childs = null;
+                if (!mIsUnityDefinedUI || IsResponsive())
                 {
                     // NOTE: If not the Unity define UI, we need to  dettach all
                     // the child transform before we can resize it. If we resize
@@ -98,7 +96,7 @@ namespace JCSUnity
 
                 Vector3 newScale = mRectTransform.localScale;
 
-                if (screenS.IsResponsive())
+                if (IsResponsive())
                 {
                     float minRatio = Mathf.Min(xRatio, yRatio);
                     newScale.x *= minRatio;
@@ -112,7 +110,7 @@ namespace JCSUnity
 
                 mRectTransform.localScale = newScale;
 
-                if (!mIsUnityDefinedUI)
+                if (!mIsUnityDefinedUI || IsResponsive())
                 {
                     // NOTE: Reattach all the previous child.
                     JCS_Utility.AttachChildren(this.mRectTransform, childs);
@@ -148,6 +146,15 @@ namespace JCSUnity
                 var panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
                 panelChild.PanelRoot = mPanelRoot;
             }
+        }
+
+        /// <summary>
+        /// Wrapper for function `JCS_ScreenSettings.instance.IsResponsive`.
+        /// </summary>
+        private bool IsResponsive()
+        {
+            var screenS = JCS_ScreenSettings.instance;
+            return screenS.IsResponsive();
         }
     }
 }

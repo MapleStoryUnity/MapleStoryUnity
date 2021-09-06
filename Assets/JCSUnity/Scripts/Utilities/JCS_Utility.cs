@@ -1095,7 +1095,7 @@ namespace JCSUnity
         /// </returns>
         public static List<Transform> DetachChildren(Transform trans)
         {
-            List<Transform> childs = new List<Transform>();
+            var childs = new List<Transform>();
 
             for (int index = 0; index < trans.childCount; ++index)
             {
@@ -1105,6 +1105,28 @@ namespace JCSUnity
 
                 // Remove from parent.
                 child.SetParent(null);
+            }
+
+            return childs;
+        }
+        public static List<RectTransform> DetachChildren(RectTransform trans)
+        {
+            var childs = new List<RectTransform>();
+
+            var canvas = JCS_Canvas.instance;
+
+            for (int index = 0; index < trans.childCount; ++index)
+            {
+                Transform child = trans.GetChild(index);
+                RectTransform rect = child.GetComponent<RectTransform>();
+
+                if (rect == null)
+                    continue;
+
+                childs.Add(rect);
+
+                // Remove from parent.
+                child.SetParent(canvas.GetAppRect());
             }
 
             return childs;
@@ -1125,7 +1147,20 @@ namespace JCSUnity
 
             while (trans.childCount != 0)
             {
-                List<Transform> tmpChilds = JCS_Utility.DetachChildren(trans);
+                List<Transform> tmpChilds = DetachChildren(trans);
+
+                childs = MergeList(tmpChilds, childs);
+            }
+
+            return childs;
+        }
+        public static List<RectTransform> ForceDetachChildren(RectTransform trans)
+        {
+            List<RectTransform> childs = null;
+
+            while (trans.childCount != 0)
+            {
+                List<RectTransform> tmpChilds = DetachChildren(trans);
 
                 childs = MergeList(tmpChilds, childs);
             }
@@ -1151,6 +1186,19 @@ namespace JCSUnity
                 child.SetParent(trans);
             }
         }
+        public static void AttachChildren(RectTransform trans, List<RectTransform> childs)
+        {
+            if (trans == null || childs == null)
+                return;
+
+            for (int index = 0; index < childs.Count; ++index)
+            {
+                RectTransform child = childs[index];
+
+                // Add to parent.
+                child.SetParent(trans);
+            }
+        }
 
         /// <summary>
         /// Execution callback after detach and reattach.
@@ -1159,8 +1207,26 @@ namespace JCSUnity
         /// <param name="callback"> Callback after detach and before reattach. </param>
         public static void ReattachSelf(Transform trans, ReattachCallback callback)
         {
+            if (trans == null || callback == null)
+                return;
+
             var parent = trans.parent;
             trans.SetParent(null);
+
+            if (callback != null)
+                callback.Invoke(parent);
+
+            trans.SetParent(parent);
+        }
+        public static void ReattachSelf(RectTransform trans, ReattachCallback callback)
+        {
+            if (trans == null || callback == null)
+                return;
+
+            var canvas = JCS_Canvas.instance;
+
+            var parent = trans.parent;
+            trans.SetParent(canvas.GetAppRect());
 
             if (callback != null)
                 callback.Invoke(parent);
