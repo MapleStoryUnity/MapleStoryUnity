@@ -378,8 +378,8 @@ namespace JCSUnity
                 return JCS_AnchorPresetsType.LEFT_MIDDLE;
             else if (IsAchorPresets(rt, JCS_AnchorPresetsType.LEFT_BOTTOM))
                 return JCS_AnchorPresetsType.LEFT_BOTTOM;
-            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.CENTER_STRETCH))
-                return JCS_AnchorPresetsType.CENTER_STRETCH;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.LEFT_STRETCH))
+                return JCS_AnchorPresetsType.LEFT_STRETCH;
 
             else if (IsAchorPresets(rt, JCS_AnchorPresetsType.CENTER_TOP))
                 return JCS_AnchorPresetsType.CENTER_TOP;

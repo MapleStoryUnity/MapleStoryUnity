@@ -51,7 +51,7 @@ namespace JCSUnity
         /// <summary>
         /// Use insertion sort method to sort the object.
         /// </summary>
-        /// <returns>List of sorted sorting object.</returns>
+        /// <returns> List of sorted sorting object.</returns>
         public T[] InsertionSort()
         {
             for (int i = 0; i < mArray.Length; ++i)

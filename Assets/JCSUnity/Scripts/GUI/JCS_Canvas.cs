@@ -20,8 +20,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public static JCS_Canvas instance = null;
-
         private const string RESIZE_UI_PATH = "LevelDesignUI/ResizeUI";
 
         [Header("** Check Variables (JCS_Canvas) **")]
@@ -30,7 +28,7 @@ namespace JCSUnity
         [SerializeField]
         private Canvas mCanvas = null;
 
-        [Tooltip("Resize UI object.")]
+        [Tooltip("Resize object.")]
         [SerializeField]
         private JCS_ResizeUI mResizeUI = null;
 
@@ -41,70 +39,23 @@ namespace JCSUnity
 
         public RectTransform GetAppRect() { return this.mAppRect; }
         public Canvas GetCanvas() { return this.mCanvas; }
-        public void SetResizeUI(JCS_ResizeUI ui) { this.mResizeUI = ui; }
-        public JCS_ResizeUI GetResizeUI() { return this.mResizeUI; }
+        public JCS_ResizeUI ResizeUI { get { return this.mResizeUI; } }
 
         /* Functions */
 
         private void Awake()
         {
-            if (instance != null)
-            {
-                string black_screen_name = JCS_UISettings.BLACK_SCREEN_NAME;
-                string white_screen_name = JCS_UISettings.WHITE_SCREEN_NAME;
-
-                // cuz the transform list will change while we set the transform to
-                // the transform,
-                List<Transform> readyToSetList = new List<Transform>();
-
-                Transform tempTrans = instance.transform;
-                // so record all the transform
-                for (int index = 0; index < tempTrans.childCount; ++index)
-                {
-                    Transform child = tempTrans.GetChild(index);
-                    if (child.name == black_screen_name ||
-                        child.name == (black_screen_name + "(Clone)"))
-                        continue;
-
-                    if (child.name == white_screen_name ||
-                        child.name == (white_screen_name + "(Clone)"))
-                        continue;
-
-                    if (child.name == "JCS_IgnorePanel")
-                        continue;
-
-                    // TODO(JenChieh): optimize this?
-                    if (child.GetComponent<JCS_IgnoreDialogueObject>() != null)
-                        continue;
-
-                    // add to set list ready to set to the new transform as parent
-                    readyToSetList.Add(child);
-                }
-
-                // set to the new transform
-                foreach (Transform trans in readyToSetList)
-                {
-                    // set parent to the new canvas in the new scene
-                    trans.SetParent(this.transform);
-                }
-
-                // Delete the old one
-                DestroyImmediate(instance.gameObject);
-            }
-
-
-            // attach the new one
-            instance = this;
-
             this.mAppRect = this.GetComponent<RectTransform>();
             this.mCanvas = this.GetComponent<Canvas>();
 
             if (JCS_UISettings.instance.RESIZE_UI)
             {
                 // resizable UI in order to resize the UI correctly
-                JCS_ResizeUI rui = JCS_Utility.SpawnGameObject(RESIZE_UI_PATH).GetComponent<JCS_ResizeUI>();
-                rui.transform.SetParent(this.transform);
+                mResizeUI = JCS_Utility.SpawnGameObject(RESIZE_UI_PATH).GetComponent<JCS_ResizeUI>();
+                mResizeUI.transform.SetParent(this.transform);
             }
+
+            JCS_UIManager.instance.AddCanvas(this);
         }
 
         private void Start()
@@ -123,12 +74,32 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return the `canvas` that is the parent of the `trans` object.
+        /// 
+        /// If `trans` is not relate to any canvas object, we return
+        /// the upmost canvas object by default.
+        /// </summary>
+        public static JCS_Canvas GuessCanvas(Transform trans = null)
+        {
+            if (trans != null)
+            {
+                var canvas = trans.GetComponentInParent<JCS_Canvas>();
+                if (canvas != null)
+                    return canvas;
+            }
+
+            // We return the upperest canvas on the screen.
+            List<JCS_Canvas> canvases = JCS_UIManager.instance.Canvases;
+            return canvases[canvases.Count - 1];
+        }
+
+        /// <summary>
         /// Add component to resize canvas.
         /// </summary>
         /// <param name="com"> Component add to canvas. </param>
         public void AddComponentToResizeCanvas(Component com)
         {
-            Transform newParent = (mResizeUI != null) ? this.mResizeUI.transform : this.mCanvas.transform;
+            Transform newParent = (mResizeUI != null) ? mResizeUI.transform : this.mCanvas.transform;
             if (newParent == null)
                 JCS_Debug.LogError("Attach resize canvas exception: " + com);
             else

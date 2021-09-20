@@ -247,9 +247,9 @@ namespace JCSUnity
                 return;
 
             // Next step: find camera 4 bounds.
-            Camera cam = JCS_Camera.main.GetCamera();
+            Camera cam = main.GetCamera();
 
-            JCS_Canvas jcsCanvas = JCS_Canvas.instance;
+            var canvas = JCS_Canvas.GuessCanvas();
 
             Vector3 camPos = cam.transform.position;
             // only need to know the depth.
@@ -257,7 +257,7 @@ namespace JCSUnity
                 camPos.x = 0.0f;
                 camPos.y = 0.0f;
             }
-            Vector3 canvasPos = JCS_Canvas.instance.transform.position;
+            Vector3 canvasPos = JCS_Canvas.GuessCanvas().transform.position;
             // only need to know the depth.
             {
                 canvasPos.x = 0.0f;
@@ -268,11 +268,11 @@ namespace JCSUnity
             Vector3 gameDepth = new Vector3(0, mGameDepth, 0);
             float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
 
-            Vector2 canvasRect = jcsCanvas.GetAppRect().sizeDelta;
+            Vector2 canvasRect = canvas.GetAppRect().sizeDelta;
             // transfer rect from screen space to world space
             {
-                canvasRect.x *= jcsCanvas.GetAppRect().localScale.x;
-                canvasRect.y *= jcsCanvas.GetAppRect().localScale.y;
+                canvasRect.x *= canvas.GetAppRect().localScale.x;
+                canvasRect.y *= canvas.GetAppRect().localScale.y;
             }
 
             mCamRectSize = new Vector3(
@@ -369,7 +369,7 @@ namespace JCSUnity
             // Next step: find camera 4 bounds.
             Camera cam = JCS_Camera.main.GetCamera();
 
-            JCS_Canvas jcsCanvas = JCS_Canvas.instance;
+            var canvas = JCS_Canvas.GuessCanvas();
 
             Vector3 camPos = cam.transform.position;
             // only need to know the depth.
@@ -377,7 +377,7 @@ namespace JCSUnity
                 camPos.x = 0.0f;
                 camPos.y = 0.0f;
             }
-            Vector3 canvasPos = jcsCanvas.transform.position;
+            Vector3 canvasPos = canvas.transform.position;
             // only need to know the depth.
             {
                 canvasPos.x = 0.0f;
@@ -388,11 +388,11 @@ namespace JCSUnity
             Vector3 gameDepth = new Vector3(0, cap.transform.position.z, 0.0f);
             float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
 
-            Vector2 canvasRect = jcsCanvas.GetAppRect().sizeDelta;
+            Vector2 canvasRect = canvas.GetAppRect().sizeDelta;
             // transfer rect from screen space to world space
             {
-                canvasRect.x *= jcsCanvas.GetAppRect().localScale.x;
-                canvasRect.y *= jcsCanvas.GetAppRect().localScale.y;
+                canvasRect.x *= canvas.GetAppRect().localScale.x;
+                canvasRect.y *= canvas.GetAppRect().localScale.y;
             }
 
             Vector3 gameRect = new Vector3(
@@ -470,7 +470,7 @@ namespace JCSUnity
             float objTop = objPos.y + (objectRect.y / JCS_Mathf.D_HALF);
             float objBot = objPos.y - (objectRect.y / JCS_Mathf.D_HALF);
 
-            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
+            RectTransform appRect = JCS_Canvas.GuessCanvas().GetAppRect();
 
             float camWidth = appRect.sizeDelta.x;
             float camHeight = appRect.sizeDelta.y;
@@ -543,7 +543,7 @@ namespace JCSUnity
             Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);
 
             // Get application rect
-            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
+            RectTransform appRect = JCS_Canvas.GuessCanvas().GetAppRect();
             Vector2 screenRect = appRect.sizeDelta;
 
             float camLeftBorder = camPosToScreen.x - screenRect.x / JCS_Mathf.D_HALF;
@@ -573,7 +573,7 @@ namespace JCSUnity
             Camera cam = GetCamera();
 
             //first you need the RectTransform component of your canvas
-            RectTransform canvasRect = JCS_Canvas.instance.GetAppRect();
+            RectTransform canvasRect = JCS_Canvas.GuessCanvas().GetAppRect();
 
             //then you calculate the position of the UI element
 
@@ -606,7 +606,7 @@ namespace JCSUnity
             Camera cam = GetCamera();
 
             //first you need the RectTransform component of your canvas
-            RectTransform canvasRect = JCS_Canvas.instance.GetAppRect();
+            RectTransform canvasRect = JCS_Canvas.GuessCanvas().GetAppRect();
 
             Vector2 canvasObject_WorldPosition = new Vector2(
                 ((targetCanvasPos.x + (canvasRect.sizeDelta.x * JCS_Mathf.T_HALF)) / canvasRect.sizeDelta.x),

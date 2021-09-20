@@ -325,7 +325,7 @@ namespace JCSUnity
             // create canvas
             GameObject canvasObj = CreateJCSCanvas();
 
-            const string desc_path = "GUI/Describe Panel";
+            const string desc_path = "GUI/JCS Describe Panel";
             GameObject desc_obj = JCS_Utility.SpawnGameObject(desc_path);
             desc_obj.name = desc_obj.name.Replace("(Clone)", "");
             desc_obj.transform.SetParent(canvasObj.transform);
@@ -548,8 +548,8 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateBasePanel()
         {
-            JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
-            if (jcsCanvas == null)
+            JCS_Canvas canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return null;
@@ -576,8 +576,8 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateDialoguePanel()
         {
-            JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
-            if (jcsCanvas == null)
+            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return null;
@@ -604,15 +604,15 @@ namespace JCSUnity
         /// </summary>
         private static void CreateSlidePanel()
         {
-            JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
-            if (jcsCanvas == null)
+            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return;
             }
 
             // find the camera in the scene.
-            JCS_2DCamera cam = (JCS_2DCamera)FindObjectOfType(typeof(JCS_Camera));
+            var cam = (JCS_2DCamera)FindObjectOfType(typeof(JCS_Camera));
             if (cam == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
@@ -622,7 +622,7 @@ namespace JCSUnity
             const string settingPath = "LevelDesignUI/JCS_SlideScreenPanelHolder";
 
             // spawn the pane holder.
-            JCS_SlideScreenPanelHolder panelHolder9x9 = CreateHierarchyObjectUnderCanvas(settingPath, jcsCanvas).GetComponent<JCS_SlideScreenPanelHolder>();
+            JCS_SlideScreenPanelHolder panelHolder9x9 = CreateHierarchyObjectUnderCanvas(settingPath, canvas).GetComponent<JCS_SlideScreenPanelHolder>();
 
             // create the array of panel.
             panelHolder9x9.slidePanels = new RectTransform[9];
@@ -640,7 +640,7 @@ namespace JCSUnity
                 for (int column = 0; column < 3; ++column)
                 {
                     // get the rect transform from the slide panel object.
-                    RectTransform slidePanel = CreateHierarchyObjectUnderCanvas(slidePanelPath, jcsCanvas).GetComponent<RectTransform>();
+                    RectTransform slidePanel = CreateHierarchyObjectUnderCanvas(slidePanelPath, canvas).GetComponent<RectTransform>();
 
                     // set the position into 9x9.
                     Vector3 slidePanelNewPos = slidePanel.localPosition;
@@ -685,8 +685,8 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateTweenPanel()
         {
-            JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
-            if (jcsCanvas == null)
+            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return null;
@@ -796,9 +796,9 @@ namespace JCSUnity
         {
             // since this will be in the editing time.
             // so we don't worry to much about the performance.
-            JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
 
-            return CreateHierarchyObjectUnderCanvas(settingPath, jcsCanvas);
+            return CreateHierarchyObjectUnderCanvas(settingPath, canvas);
         }
 
         /// <summary>
@@ -810,9 +810,9 @@ namespace JCSUnity
         /// <param name="settingPath"> path to spawn </param>
         /// <param name="jcsCanvas"> canvas to set on. </param>
         /// <returns> object just spawned. </returns>
-        private static GameObject CreateHierarchyObjectUnderCanvas(string settingPath, JCS_Canvas jcsCanvas)
+        private static GameObject CreateHierarchyObjectUnderCanvas(string settingPath, JCS_Canvas canvas)
         {
-            if (jcsCanvas == null)
+            if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return null;
@@ -822,7 +822,7 @@ namespace JCSUnity
             GameObject hierarchyObj = CreateHierarchyObject(settingPath);
 
             // set the canvas as parent.
-            hierarchyObj.transform.SetParent(jcsCanvas.transform);
+            hierarchyObj.transform.SetParent(canvas.transform);
 
             // init position.
             hierarchyObj.transform.localPosition = Vector3.zero;

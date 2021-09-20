@@ -102,7 +102,6 @@ namespace JCSUnity
         public Vector3 CastToScreen(Vector3 pos)
         {
             var camera = JCS_Camera.main;
-            var resizeUI = JCS_ResizeUI.instance;
 
             Vector3 positionOffset = mPositionOffset;
 
@@ -118,6 +117,9 @@ namespace JCSUnity
                 case JCS_UnityObjectType.UI:
                     {
                         Vector2 worldToCanvasSpace = camera.WorldToCanvasSpace(pos);
+
+                        var canvas = JCS_Canvas.GuessCanvas();
+                        var resizeUI = canvas.ResizeUI;
 
                         float targetScale = resizeUI.TargetScale;
 

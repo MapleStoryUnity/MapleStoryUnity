@@ -28,6 +28,10 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_UIManager) **")]
 
+        [Tooltip("List of canvas.")]
+        [SerializeField]
+        private List<JCS_Canvas> mCanvases = null;
+
         [Tooltip("Global undo redo system.")]
         [SerializeField]
         private JCS_UndoRedoSystem mGlobalUndoRedoSystem = null;
@@ -58,6 +62,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public List<JCS_Canvas> Canvases { get { return this.mCanvases; } }
         public void SetJCSDialogue(JCS_DialogueType type, JCS_DialogueObject jdo)
         {
             switch (type)
@@ -139,9 +144,8 @@ namespace JCSUnity
         private void Update()
         {
 #if (UNITY_EDITOR)
-            //Test();
+            Test();
 #endif
-
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
 
@@ -183,6 +187,32 @@ namespace JCSUnity
 #endif
 
         /// <summary>
+        /// Add a canvas to the group.
+        /// </summary>
+        public void AddCanvas(JCS_Canvas canvas)
+        {
+            this.mCanvases.Add(canvas);
+            mCanvases = JCS_Utility.RemoveEmptySlotIncludeMissing(mCanvases);
+            mCanvases = SortCanvases_Insertion();
+        }
+        private List<JCS_Canvas> SortCanvases_Insertion()
+        {
+            for (int i = 0; i < mCanvases.Count; ++i)
+            {
+                for (int j = i; j > 0; --j)
+                {
+                    if (mCanvases[j].GetCanvas().sortingOrder < mCanvases[j - 1].GetCanvas().sortingOrder)
+                    {
+                        JCS_Canvas temp = mCanvases[j];
+                        mCanvases[j] = mCanvases[j - 1];
+                        mCanvases[j - 1] = temp;
+                    }
+                }
+            }
+            return mCanvases;
+        }
+
+        /// <summary>
         /// Hide the last open dialogue in the current scene.
         /// </summary>
         public void HideTheLastOpenDialogue()
@@ -210,7 +240,6 @@ namespace JCSUnity
             {
                 GetOpenWindow().First.Value.HideDialogueWithoutSound();
             }
-
         }
 
         /// <summary>

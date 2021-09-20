@@ -32,9 +32,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Tooltip("Is this component the Unity defined UI component?")]
-        [SerializeField]
-        private bool mIsUnityDefinedUI = false;
+        private bool mApplyToChildren = false;
 
         /* Setter & Getter */
 
@@ -49,7 +47,7 @@ namespace JCSUnity
             if (mPanelRoot == null)
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
 
-            this.mIsUnityDefinedUI = JCS_GUIUtil.IsUnityDefinedUI(this);
+            mApplyToChildren = (JCS_GUIUtil.IsAchorPresets(mRectTransform, JCS_AnchorPresetsType.CENTER_MIDDLE));
 
             // Rely on "Script Execution Order"
             {
@@ -61,7 +59,7 @@ namespace JCSUnity
                         mPanelRoot.PanelDeltaHeightRatio);
                 }
 
-                if (!mIsUnityDefinedUI || IsResponsive())
+                if (mApplyToChildren)
                 {
                     // since we add this script assuming we are  int the fit
                     // perfect size mode
@@ -82,7 +80,7 @@ namespace JCSUnity
             /* Do the scale. */
             {
                 List<RectTransform> childs = null;
-                if (!mIsUnityDefinedUI || IsResponsive())
+                if (mApplyToChildren)
                 {
                     // NOTE: If not the Unity define UI, we need to  dettach all
                     // the child transform before we can resize it. If we resize
@@ -110,7 +108,7 @@ namespace JCSUnity
 
                 mRectTransform.localScale = newScale;
 
-                if (!mIsUnityDefinedUI || IsResponsive())
+                if (mApplyToChildren)
                 {
                     // NOTE: Reattach all the previous child.
                     JCS_Utility.AttachChildren(this.mRectTransform, childs);
@@ -126,6 +124,9 @@ namespace JCSUnity
                 // set to the new position
                 mRectTransform.localPosition = newPosition;
             }
+
+            // Record children once to get the render correctly!
+            ReorderChildren();
         }
 
         /// <summary>
@@ -155,6 +156,19 @@ namespace JCSUnity
         {
             var screenS = JCS_ScreenSettings.instance;
             return screenS.IsResponsive();
+        }
+
+        /// <summary>
+        /// Iterate through children and move them all to the last child
+        /// once so the rendering order is preserved.
+        /// </summary>
+        private void ReorderChildren()
+        {
+            for (int count = 0; count < mRectTransform.childCount; ++count)
+            {
+                var trans = mRectTransform.GetChild(count);
+                JCS_Utility.MoveToTheLastChild(trans);
+            }
         }
     }
 }

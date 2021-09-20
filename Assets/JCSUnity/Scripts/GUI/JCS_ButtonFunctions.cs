@@ -116,8 +116,7 @@ namespace JCSUnity
                 return false;
             }
 
-
-            if (JCS_Canvas.instance == null)
+            if (JCS_Canvas.GuessCanvas() == null)
             {
                 JCS_Debug.LogError("No able to spawn Dialogue cuz Canvas are null...");
                 return false;

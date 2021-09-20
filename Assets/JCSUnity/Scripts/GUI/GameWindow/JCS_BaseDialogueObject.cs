@@ -160,22 +160,23 @@ namespace JCSUnity
         /// </summary>
         protected void SetParentObjectByMode()
         {
-            JCS_Canvas jcsCanvas = JCS_Canvas.instance;
+            var canvas = JCS_Canvas.GuessCanvas(this.transform);
+            var resizeUI = canvas.ResizeUI;
 
-            if (jcsCanvas == null)
+            if (canvas == null)
             {
                 JCS_Debug.LogReminder("Doesn't use JCS_Canvas object");
                 return;
             }
 
-            Transform parentObject = null;
+            Transform parentObject;
 
             // if is Resize UI is enable than add Dialogue under resize ui transform
             if (JCS_UISettings.instance.RESIZE_UI)
-                parentObject = jcsCanvas.GetResizeUI().transform;
+                parentObject = resizeUI.transform;
             // Else we add it directly under the Canvas
             else
-                parentObject = jcsCanvas.GetCanvas().transform;
+                parentObject = canvas.GetCanvas().transform;
 
             // set it to parent
             this.gameObject.transform.SetParent(parentObject);

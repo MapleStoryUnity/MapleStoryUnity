@@ -48,7 +48,7 @@ namespace JCSUnity
         private void Start()
         {
             // Set the canvas to be our root.
-            this.transform.SetParent(JCS_Canvas.instance.transform);
+            this.transform.SetParent(JCS_Canvas.GuessCanvas(transform).transform);
 
             // Add panel root without losing the original size.
             {
@@ -88,7 +88,7 @@ namespace JCSUnity
         /// </summary>
         private void SetToScreenEdge()
         {
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            var ss = JCS_ScreenSettings.instance;
 
             Vector2 appRect = new Vector2(ss.STARTING_SCREEN_SIZE.width, ss.STARTING_SCREEN_SIZE.height);
             Vector2 halfAppRect = appRect / 2.0f;

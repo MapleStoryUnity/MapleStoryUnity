@@ -975,7 +975,7 @@ namespace JCSUnity
                 JCS_Debug.Log("You trying to merge the List less then two array");
             }
 
-            List<T> newList = new List<T>();
+            var newList = new List<T>();
 
             for (int index = 0; index < lists.Length; ++index)
             {
@@ -1113,7 +1113,7 @@ namespace JCSUnity
         {
             var childs = new List<RectTransform>();
 
-            var canvas = JCS_Canvas.instance;
+            var canvas = JCS_Canvas.GuessCanvas();
 
             for (int index = 0; index < trans.childCount; ++index)
             {
@@ -1251,7 +1251,7 @@ namespace JCSUnity
             if (trans == null || callback == null)
                 return;
 
-            var canvas = JCS_Canvas.instance;
+            var canvas = JCS_Canvas.GuessCanvas();
 
             var parent = trans.parent;
             trans.SetParent(canvas.GetAppRect());

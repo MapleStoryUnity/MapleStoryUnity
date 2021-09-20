@@ -47,14 +47,18 @@ namespace JCSUnity
         [SerializeField]
         private Vector2 mDragDisplacement = Vector2.zero;
 
-        [Tooltip("Flag to check if drag.")]
+        [Tooltip("Return the current drag state.")]
         [SerializeField]
         private bool mDragging = false;
 
-#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-        [Tooltip("Flag to check if mult touches.")]
+        [Tooltip("How long the user touches the screen.")]
         [SerializeField]
-        private bool mMultiTouches = false;
+        private float mTouchTime = 0.0f;
+
+#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+        [Tooltip("Flag to check if multitouch.")]
+        [SerializeField]
+        private bool mMultiTouch = false;
 
         [Tooltip("Multiple touches distance in average.")]
         [SerializeField]
@@ -83,12 +87,13 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool Touched { get { return this.mTouched; } }
-        public bool Dragging { get { return this.mDragging; } }
         public Vector2 DeltaPos { get { return this.mDeltaPos; } }
         public Vector2 DragDistance { get { return this.mDragDistance; } }
         public Vector2 DragDisplacement { get { return this.mDragDisplacement; } }
+        public bool Dragging { get { return this.mDragging; } }
+        public float TouchTime { get { return this.mTouchTime; } }
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-        public bool MultiTouches { get { return this.mMultiTouches; } }
+        public bool MultiTouch { get { return this.mMultiTouch; } }
         public float TouchDistance { get { return this.mTouchDistance; } }
         public float TouchDistanceDelta { get { return this.mTouchDistanceDelta; } }
         public int DetectTouchCount { get { return this.mDetectTouchCount; } set { this.mDetectTouchCount = value; } }
@@ -151,6 +156,8 @@ namespace JCSUnity
         /// </summary>
         private void WhenTouched()
         {
+            mTouchTime += Time.deltaTime;
+
             Vector3 currPos = Input.mousePosition;
 
             if (mDeltaPos == Vector2.zero && mDragDistance == Vector2.zero)
@@ -190,6 +197,8 @@ namespace JCSUnity
 
             mDeltaPos = Vector2.zero;
 
+            mTouchTime = 0.0f;
+
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
             // If focus, ignore one frame.
             mFocus = false;
@@ -202,10 +211,10 @@ namespace JCSUnity
         /// </summary>
         private void HandleMultiTouches()
         {
-            // Check if multi touches.
+            // Check if multitouch.
             if (Input.touchCount <= 1)
             {
-                this.mMultiTouches = false;
+                this.mMultiTouch = false;
                 this.mTouchDistance = 0.0f;
                 this.mTouchDistanceDelta = 0.0f;
                 return;
@@ -213,7 +222,7 @@ namespace JCSUnity
 
             float sumTotal = 0.0f;
 
-            for (int index = 1; index < Input.touchCount; ++index)
+            for (int index = 1; index < Input.touches.Length; ++index)
             {
                 var firstTouch = Input.touches[index - 1];
                 var currentTouch = Input.touches[index];
@@ -221,18 +230,18 @@ namespace JCSUnity
                 sumTotal += distance;
             }
 
-            float newTouchDistance = sumTotal / (Input.touchCount - 1);
+            float newTouchDistance = sumTotal / Input.touchCount;
 
             // We start apply `delta` value by after the first multi touches.
-            if (this.mMultiTouches)
+            if (this.mMultiTouch)
             {
                 this.mTouchDistanceDelta = newTouchDistance - this.mTouchDistance;
             }
 
             this.mTouchDistance = newTouchDistance;
 
-            // Multi touches starts!
-            this.mMultiTouches = true;
+            // Multi-touch starts!
+            this.mMultiTouch = true;
         }
 #endif
     }

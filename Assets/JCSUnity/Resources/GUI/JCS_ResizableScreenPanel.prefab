@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 222225827041665344}
   - component: {fileID: 114574081109792406}
   - component: {fileID: 114704135058725500}
-  - component: {fileID: 114279717551543722}
   m_Layer: 5
   m_Name: JCS_ResizableScreenPanel
   m_TagString: Untagged
@@ -90,15 +89,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mPlaceDirection: 0
---- !u!114 &114279717551543722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523970421013572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

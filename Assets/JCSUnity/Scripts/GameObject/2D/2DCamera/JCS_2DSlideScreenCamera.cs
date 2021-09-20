@@ -77,7 +77,17 @@ namespace JCSUnity
 
         [Tooltip("Area space to swipe for previous/next page.")]
         [SerializeField]
-        private Vector2 mSwipeArea = new Vector2(0.3f, 0.3f);
+        private Vector2 mSwipeArea = new Vector2(0.5f, 0.5f);
+
+        [Tooltip("If user swipe above this speed, switch to previous/next page automatically. (x-axis)")]
+        [Range(0.0f, 5000.0f)]
+        [SerializeField]
+        private float mSwipeSpeedX = 800.0f;
+
+        [Tooltip("If user swipe above this speed, switch to previous/next page automatically. (y-axis)")]
+        [Range(0.0f, 5000.0f)]
+        [SerializeField]
+        private float mSwipeSpeedY = 800.0f;
 
         [Tooltip("Freeze the x axis sliding action.")]
         [SerializeField]
@@ -122,6 +132,8 @@ namespace JCSUnity
         public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
         public bool InteractableSwipe { get { return this.mInteractableSwipe; } set { this.mInteractableSwipe = value; } }
         public Vector2 SwipeArea { get { return this.mSwipeArea; } set { this.mSwipeArea = value; } }
+        public float SwipeSpeedX { get { return this.mSwipeSpeedX; } set { this.mSwipeSpeedX = value; } }
+        public float SwipeSpeedY { get { return this.mSwipeSpeedY; } set { this.mSwipeSpeedY = value; } }
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
         public AudioClip SwitchSceneSound { get { return this.mSwitchSceneSound; } set { this.mSwitchSceneSound = value; } }
@@ -398,9 +410,15 @@ namespace JCSUnity
             {
                 Vector3 posDiff = si.DragDistance;
                 JCS_ScreenSizef vs = JCS_ScreenSettings.instance.VisibleScreenSize();
-                JCS_ScreenSizef target_vs = new JCS_ScreenSizef(vs.width * mSwipeArea.x, vs.height * mSwipeArea.y);
+                var target_vs = new JCS_ScreenSizef(vs.width * mSwipeArea.x, vs.height * mSwipeArea.y);
 
-                if (!mFreezeX && posDiff.x > target_vs.width)
+                var speedX = si.DragDistance.x / si.TouchTime;
+                var speedY = si.DragDistance.y / si.TouchTime;
+
+                bool reachedX = posDiff.x > target_vs.width;  // distance
+                bool speedExceedX = speedX > mSwipeSpeedX;    // speed
+
+                if (!mFreezeX && (reachedX || speedExceedX))
                 {
                     if (JCS_Mathf.IsPositive(si.DragDisplacement.x))
                         SwitchScene(JCS_2D4Direction.LEFT);
@@ -411,7 +429,10 @@ namespace JCSUnity
                         afterSwiped.Invoke(mCurrentPage);
                 }
 
-                if (!mFreezeY && posDiff.y > target_vs.height)
+                bool reachedY = posDiff.y > target_vs.height;  // distance
+                bool speedExceedY = speedY > mSwipeSpeedY;     // speed
+
+                if (!mFreezeY && (reachedY || speedExceedY))
                 {
                     if (JCS_Mathf.IsPositive(si.DragDisplacement.y))
                         SwitchScene(JCS_2D4Direction.BOTTOM);
