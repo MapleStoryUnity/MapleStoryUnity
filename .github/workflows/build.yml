@@ -7,7 +7,7 @@ on:
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   UNITY_VERSION: 2021.1.1f1
-  PROJECT_PATH: ./Source
+  PROJECT_PATH: .
   ULF_FILE: Unity_v2021.x.ulf
 
 jobs:
