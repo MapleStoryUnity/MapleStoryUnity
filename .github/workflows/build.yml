@@ -1,14 +1,16 @@
-name: CI
+name: Build
 
 on:
   pull_request: {}
   push: { branches: [main, master, develop] }
 
 env:
+  # License
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  ULF_FILE: Unity_v2021.x.ulf
+  # Project
   UNITY_VERSION: 2021.1.1f1
   PROJECT_PATH: .
-  ULF_FILE: Unity_v2021.x.ulf
 
 jobs:
   request_alf:
@@ -58,12 +60,6 @@ jobs:
 
       - name: Install node package, `unity-verify-code`
         run: npm install --global unity-verify-code
-
-      - name: Read alf
-        id: alfRead
-        uses: juliangruber/read-file-action@v1.1.4
-        with:
-          path: ${{ needs.request_alf.outputs.alf }}
 
       - name: Activate the license
         continue-on-error: true
