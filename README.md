@@ -9,8 +9,8 @@
     <a href="https://github.com/MapleStoryUnity/MapleStoryUnity/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/MapleStoryUnity/MapleStoryUnity.svg?logo=github"/></a>
   </p>
   <p align="center">
-    <a href="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/build.yml"><img alt="Build" src="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/build.yml/badge.svg"/></a>
     <a href="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/license.yml"><img alt="License" src="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/license.yml/badge.svg"/></a>
+    <a href="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/build.yml"><img alt="Build" src="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/build.yml/badge.svg"/></a>
   </p>
 </p>
 
