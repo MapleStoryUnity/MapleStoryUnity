@@ -7,78 +7,12 @@ on:
 env:
   # License
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  ULF_FILE: Unity_v2021.x.ulf
   # Project
   UNITY_VERSION: 2021.1.1f1
   PROJECT_PATH: .
 
 jobs:
-  request_alf:
-    name: Request .alf file 🔑
-    runs-on: ubuntu-latest
-    outputs:
-      alf: ${{ steps.output.outputs.alf }}
-    steps:
-      - name: Request manual activation file
-        id: alfFile
-        uses: game-ci/unity-request-activation-file@main
-        with:
-          unityVersion: ${{ env.UNITY_VERSION }}
-
-      # Upload artifact (Unity_v20XX.X.XXXX.alf)
-      - name: Expose as artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: ${{ steps.alfFile.outputs.filePath }}
-          path: ${{ steps.alfFile.outputs.filePath }}
-
-      - name: Output
-        id: output
-        run: |
-          echo "::set-output name=alf::${{ steps.alfFile.outputs.filePath }}"
-
-  acquire_ulf:
-    needs: [request_alf]
-    name: Acquire .ulf file 🔑
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
-    steps:
-      - name: Download .alf artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: ${{ needs.request_alf.outputs.alf }}
-
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install node package, `unity-license-activate`
-        run: npm install --global unity-license-activate
-
-      - name: Install node package, `unity-verify-code`
-        run: npm install --global unity-verify-code
-
-      - name: Activate the license
-        run: unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ needs.request_alf.outputs.alf }}"
-
-      - name: Read ulf
-        id: ulfRead
-        uses: juliangruber/read-file-action@v1.1.4
-        with:
-          path: ${{ env.ULF_FILE }}
-
-      - name: Update secret UNITY_LICENSE
-        uses: hmanzur/actions-set-secret@v2.0.0
-        with:
-          name: 'UNITY_LICENSE'
-          value: '${{ steps.ulfRead.outputs.content }}'
-          token: ${{ secrets.ACCESS_TOKEN }}
-
   checklicense:
-    needs: [acquire_ulf]
     name: check if UNITY_LICENSE is set in github secrets
     runs-on: ubuntu-latest
     outputs:
