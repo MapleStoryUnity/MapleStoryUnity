@@ -7,7 +7,10 @@
     <a href="https://unity3d.com/get-unity/download/archive"><img alt="Unity Engine" src="https://img.shields.io/badge/unity-2021.1.1f1-black.svg?style=flat&logo=unity&cacheSeconds=2592000"/></a>
     <a href="https://docs.unity3d.com/2018.3/Documentation/Manual/ScriptingRuntimeUpgrade.html"><img alt=".NET 4.x Scripting Runtime" src="https://img.shields.io/badge/.NET-4.x-blueviolet.svg?style=flat&cacheSeconds=2592000"/></a>
     <a href="https://github.com/MapleStoryUnity/MapleStoryUnity/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/MapleStoryUnity/MapleStoryUnity.svg?logo=github"/></a>
+  </p>
+  <p align="center">
     <a href="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/build.yml"><img alt="Build" src="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/build.yml/badge.svg"/></a>
+    <a href="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/license.yml"><img alt="License" src="https://github.com/MapleStoryUnity/MapleStoryUnity/actions/workflows/license.yml/badge.svg"/></a>
   </p>
 </p>
 
