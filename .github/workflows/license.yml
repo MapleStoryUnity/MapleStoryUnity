@@ -2,7 +2,7 @@ name: License
 
 on:
   schedule:
-  - cron: "0 0 * * *"
+  - cron: "0 0 * * 1"
   workflow_dispatch:
 
 env:
@@ -61,6 +61,7 @@ jobs:
         run: npm install --global unity-verify-code
 
       - name: Activate the license
+        continue-on-error: true
         run: unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ needs.request_alf.outputs.alf }}"
 
       - name: Read ulf
