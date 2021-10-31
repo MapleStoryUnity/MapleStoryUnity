@@ -3,10 +3,16 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2015 by Shen, Jen-Chieh $
  */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_ANDROID
+using UnityEngine.Android;
+#endif
 
 namespace JCSUnity
 {
@@ -31,6 +37,20 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_LangText> mLangTexts = null;
 
+        [Header("** Initialize Variables (JCS_ApplicationManager) **")]
+
+        [Tooltip("Request permission for camera/webcam.")]
+        [SerializeField]
+        private bool mRequestCamera = false;
+
+        [Tooltip("Request permission for microphone.")]
+        [SerializeField]
+        private bool mRequestMicrophone = false;
+
+        [Tooltip("Request permission for location service.")]
+        [SerializeField]
+        private bool mRequestLocation = false;
+
         [Header("** Runtime Variables (JCS_ApplicationManager) **")]
 
         [Tooltip("This will override platform Type.")]
@@ -51,15 +71,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public SystemLanguage systemLanguage
-        {
-            get { return this.mSystemLanguage; }
-            set
-            {
-                this.mSystemLanguage = value;
-                RefreshLangTexts();
-            }
-        }
+        public bool SimulatePlatformType { get { return this.mSimulatePlatformType; } set { this.mSimulatePlatformType = value; } }
         public JCS_PlatformType PlatformType
         {
             get { return this.mPlatformType; }
@@ -69,6 +81,19 @@ namespace JCSUnity
                 this.mPlatformType = value;
             }
         }
+        public bool SimulateSystemLanguage { get { return this.mSimulateSystemLanguage; } set { this.mSimulateSystemLanguage = value; } }
+        public SystemLanguage systemLanguage
+        {
+            get { return this.mSystemLanguage; }
+            set
+            {
+                this.mSystemLanguage = value;
+                RefreshLangTexts();
+            }
+        }
+        public bool RequestCamera { get { return this.mRequestCamera; } }
+        public bool RequestMicrophone { get { return this.mRequestMicrophone; } }
+        public bool RequestLocation { get { return this.mRequestLocation; } }
 
         /* Functions */
 
@@ -103,25 +128,14 @@ namespace JCSUnity
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 #endif
 
+            StartRequestPermissions();
+
             // done initialize the application layer.
             APP_INITIALIZING = false;
         }
 
-        /// <summary>
-        /// Return true if current platform is personal computer.
-        /// </summary>
-        public bool IsPC()
-        {
-            return (PlatformType == JCS_PlatformType.PC);
-        }
-
-        /// <summary>
-        /// Return true if current platform is mobile phone.
-        /// </summary>
-        public bool IsMobile()
-        {
-            return (PlatformType == JCS_PlatformType.MOBILE);
-        }
+        public bool IsPC() { return (PlatformType == JCS_PlatformType.PC); }
+        public bool IsMobile() { return (PlatformType == JCS_PlatformType.MOBILE); }
 
         /// <summary>
         /// Quit the application
@@ -131,7 +145,8 @@ namespace JCSUnity
             if (fade)
             {
                 // load the quit scene.
-                JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulate");
+                var scenem = JCS_SceneManager.instance;
+                scenem.LoadScene("JCS_ApplicationCloseSimulate");
             }
             else
             {
@@ -156,6 +171,85 @@ namespace JCSUnity
             this.mLangTexts = JCS_Utility.RemoveEmptySlotIncludeMissing(this.mLangTexts);
             foreach (JCS_LangText txt in mLangTexts)
                 txt.Refresh();
+        }
+
+        public void StartRequestCamera() { StartCoroutine("DoRequestCamera"); }
+        public void StartRequestMicrophone() { StartCoroutine("DoRequestMicrophone"); }
+        public void StartRequestLocation() { StartCoroutine("DoRequestLocation"); }
+
+        private IEnumerator DoRequestCamera()
+        {
+#if UNITY_EDITOR
+            // Does nothing..
+#elif UNITY_ANDROID
+            yield return DoRequestUserPermission(Permission.Camera);
+#elif UNITY_IOS
+            yield return DoRequestUserAuthorization(UserAuthorization.WebCam);
+#endif
+            yield break;
+        }
+
+        private IEnumerator DoRequestMicrophone()
+        {
+#if UNITY_EDITOR
+            // Does nothing..
+#elif UNITY_ANDROID
+            yield return DoRequestUserPermission(Permission.Microphone);
+#elif UNITY_IOS
+            yield return DoRequestUserAuthorization(UserAuthorization.Microphone);
+#endif
+            yield break;
+        }
+
+        private IEnumerator DoRequestLocation()
+        {
+#if UNITY_EDITOR
+            // Does nothing..
+#elif UNITY_ANDROID
+            yield return DoRequestUserPermission(Permission.FineLocation);
+#elif UNITY_IOS
+            Input.location.Start();
+#endif
+            yield break;
+        }
+
+#if UNITY_EDITOR
+        // Does nothing..
+#elif UNITY_ANDROID
+        private IEnumerator DoRequestUserPermission(string permission, PermissionCallbacks callback = null)
+        {
+            if (Permission.HasUserAuthorizedPermission(permission))
+                yield break;
+
+            Permission.RequestUserPermission(permission, callback);
+        }
+#elif UNITY_IOS
+        private IEnumerator DoRequestUserAuthorization(UserAuthorization ua)
+        {
+            if (Application.HasUserAuthorization(ua))
+                yield break;
+
+            yield return Application.RequestUserAuthorization(ua);
+        }
+#endif
+
+        /// <summary>
+        /// Iterate through all the services, and enable it by settings.
+        /// </summary>
+        public void StartRequestPermissions()
+        {
+            StartCoroutine("DoRequestPermissions");
+        }
+        private IEnumerator DoRequestPermissions()
+        {
+            if (mRequestCamera)
+                yield return DoRequestCamera();
+
+            if (mRequestMicrophone)
+                yield return DoRequestMicrophone();
+
+            if (mRequestLocation)
+                yield return DoRequestLocation();
         }
     }
 }
