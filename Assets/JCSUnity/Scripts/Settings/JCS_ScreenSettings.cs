@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void OnScreenResize();
+    public delegate void OnScreenEvent();
 
     /// <summary>
     /// Screen related settings.
@@ -19,7 +19,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public OnScreenResize onScreenResize = null;
+        public OnScreenEvent onScreenResize = null;
+        public OnScreenEvent onScreenIdle = null;
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_ScreenManager) **")]
@@ -31,7 +32,7 @@ namespace JCSUnity
         [Header("** Check Variables (JCS_ScreenSettings) **")]
 
         [Tooltip("Screen size when the application starts.")]
-        public JCS_ScreenSize STARTING_SCREEN_SIZE = JCS_ScreenSize.zero;
+        public JCS_ScreenSizef STARTING_SCREEN_SIZE = JCS_ScreenSizef.zero;
 
         [Tooltip("Store the camera orthographic size value over scene.")]
         public float ORTHOGRAPHIC_SIZE = 0.0f;
@@ -204,8 +205,8 @@ namespace JCSUnity
             }
             else
             {
-                newWidth = Screen.width;
-                newHeight = Screen.height;
+                newWidth = JCS_Screen.width;
+                newHeight = JCS_Screen.height;
             }
 
             return new JCS_ScreenSizef(newWidth, newHeight);
@@ -255,8 +256,8 @@ namespace JCSUnity
         /// <param name="starting"> Change the starting screen as well? </param>
         public void ForceAspectScreenOnce(bool starting = false)
         {
-            int width = JCS_Screen.width;
-            int height = JCS_Screen.height;
+            float width = JCS_Screen.width;
+            float height = JCS_Screen.height;
 
             bool smaller = ASPECT_RATIO_SCREEN_SIZE.width > ASPECT_RATIO_SCREEN_SIZE.height;
 
@@ -365,8 +366,8 @@ namespace JCSUnity
         /// </summary>
         private void DoAlwaysStandard()
         {
-            int width = JCS_Screen.width;
-            int height = JCS_Screen.height;
+            float width = JCS_Screen.width;
+            float height = JCS_Screen.height;
 
             if (width != STANDARD_SCREEN_SIZE.width || height != STANDARD_SCREEN_SIZE.height)
             {
@@ -389,8 +390,8 @@ namespace JCSUnity
             if (Screen.fullScreen)
                 return;
 
-            int width = JCS_Screen.width;
-            int height = JCS_Screen.height;
+            float width = JCS_Screen.width;
+            float height = JCS_Screen.height;
 
             // if the user is changing the width
             if (PREV_SCREEN_SIZE.width != width)
@@ -417,11 +418,14 @@ namespace JCSUnity
         /// </summary>
         private void DoResizableScreen()
         {
-            int width = JCS_Screen.width;
-            int height = JCS_Screen.height;
+            float width = JCS_Screen.width;
+            float height = JCS_Screen.height;
 
             if (CURRENT_SCREEN_SIZE.width == width && CURRENT_SCREEN_SIZE.height == height)
+            {
+                if (onScreenIdle != null) onScreenIdle.Invoke();
                 return;
+            }
 
             if (PREV_SCREEN_SIZE.width == 0.0f || PREV_SCREEN_SIZE.height == 0.0f)
             {
@@ -441,8 +445,7 @@ namespace JCSUnity
             CURRENT_SCREEN_SIZE.height = height;
 
             // Do callback.
-            if (onScreenResize != null)
-                onScreenResize.Invoke();
+            if (onScreenResize != null) onScreenResize.Invoke();
         }
     }
 }

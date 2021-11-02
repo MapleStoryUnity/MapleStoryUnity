@@ -8,7 +8,7 @@ public class FPSDisplay : MonoBehaviour
 {
     /* Variables */
 
-    private int m_fontSize = 4;     // Change the Font Size
+    private float mFontSize = 4.0f;     // Change the Font Size
 
     private float deltaTime = 0.0f;
 
@@ -23,14 +23,14 @@ public class FPSDisplay : MonoBehaviour
 
     private void OnGUI()
     {
-        int w = JCS_Screen.width;
-        int h = JCS_Screen.height;
+        float w = JCS_Screen.width;
+        float h = JCS_Screen.height;
 
         GUIStyle style = new GUIStyle();
 
         Rect rect = new Rect(0, 0, w, h * 2 / 100);
         style.alignment = TextAnchor.UpperLeft;
-        style.fontSize = h * m_fontSize / 100;
+        style.fontSize = (int)(h * mFontSize / 100.0f);
         style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
         float msec = deltaTime * 1000.0f;
         float fps = 1.0f / deltaTime;

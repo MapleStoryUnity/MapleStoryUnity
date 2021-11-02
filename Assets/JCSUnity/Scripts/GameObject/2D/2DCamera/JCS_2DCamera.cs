@@ -177,7 +177,7 @@ namespace JCSUnity
                 if (player != null)
                 {
                     // set the camera position
-                    JCS_Camera.main.SetPosition(player.transform.position.x, player.transform.position.y);
+                    main.SetPosition(player.transform.position.x, player.transform.position.y);
                 }
             }
         }

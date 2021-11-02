@@ -165,13 +165,13 @@ namespace JCSUnity
         {
             var screenS = JCS_ScreenSettings.instance;
 
-            float width = (float)Screen.width;
-            float height = (float)Screen.height;
+            float width = (float)JCS_Screen.width;
+            float height = (float)JCS_Screen.height;
 
-            JCS_ScreenSizef size = screenS.StartingScreenSize();
+            JCS_ScreenSizef starting = screenS.StartingScreenSize();
 
-            mWScale = width / size.width;
-            mHScale = height / size.height;
+            mWScale = width / starting.width;
+            mHScale = height / starting.height;
 
             mTargetScale = Mathf.Min(mWScale, mHScale);
 

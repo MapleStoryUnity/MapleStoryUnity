@@ -145,6 +145,9 @@ namespace JCSUnity
 
             JCS_SlideInput slideInput = im.GetGlobalSlideInput();
 
+            if (slideInput == null)
+                return;
+
             foreach (RaycastHit hit in mHits)
             {
                 if (hit.transform == null)
