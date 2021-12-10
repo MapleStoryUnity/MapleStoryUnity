@@ -20,23 +20,22 @@ namespace JCSUnity
         /// Video loader, load an external video file.
         /// </summary>
         /// <param name="vp"> Video player reference. </param>
-        /// <param name="filePath"> directory to the target file. </param>
-        /// <param name="fileName"> file of the video file with extension. </param>
+        /// <param name="path"> directory to the target file. </param>
+        /// <param name="filename"> file of the video file with extension. </param>
         /// <returns> Video player ref. </returns>
-        public static VideoPlayer LoadVideo(VideoPlayer vp, string filePath, string fileName)
+        public static VideoPlayer LoadVideo(VideoPlayer vp, string path, string filename)
         {
-            string fullPath = filePath + fileName;
-
-            return LoadVideo(vp, fullPath);
+            string url = path + filename;
+            return LoadVideo(vp, url);
         }
 
         /// <summary>
         /// Load an external video file.
         /// </summary>
         /// <param name="vp"> Video player reference. </param>
-        /// <param name="fullPath"> Absolute file path to the external video file. </param>
+        /// <param name="url"> Absolute file path to the external video file. </param>
         /// <returns> Video player ref. </returns>
-        public static VideoPlayer LoadVideo(VideoPlayer vp, string fullPath)
+        public static VideoPlayer LoadVideo(VideoPlayer vp, string url)
         {
             VideoPlayer tempVP = vp;
 
@@ -44,7 +43,7 @@ namespace JCSUnity
             // is nice we do not need to consider this too much.
             // We simply just apply the file path to the VideoPlayer's
             // url variable then it should work.
-            vp.url = fullPath;
+            vp.url = url;
 
             return tempVP;
         }

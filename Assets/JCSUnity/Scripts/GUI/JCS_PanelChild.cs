@@ -32,6 +32,8 @@ namespace JCSUnity
         [SerializeField]
         private JCS_PanelRoot mPanelRoot = null;
 
+        [Tooltip("Return true, if applied to children.")]
+        [SerializeField]
         private bool mApplyToChildren = false;
 
         /* Setter & Getter */
@@ -47,7 +49,14 @@ namespace JCSUnity
             if (mPanelRoot == null)
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
 
-            mApplyToChildren = (JCS_GUIUtil.IsAchorPresets(mRectTransform, JCS_AnchorPresetsType.CENTER_MIDDLE));
+            if (IsResponsive())
+            {
+                mApplyToChildren = JCS_GUIUtil.IsAchorPresets(mRectTransform, JCS_AnchorPresetsType.CENTER_MIDDLE);
+            }
+            else
+            {
+                mApplyToChildren = !JCS_GUIUtil.IsUnityDefinedUI(mRectTransform);
+            }
 
             // Rely on "Script Execution Order"
             {

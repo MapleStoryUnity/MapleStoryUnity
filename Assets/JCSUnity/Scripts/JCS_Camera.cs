@@ -110,8 +110,9 @@ namespace JCSUnity
             mRecordFieldOfView = mCamera.fieldOfView;
 
             // add to on screen resize callback.
-            JCS_ScreenSettings.instance.onScreenResize += OnScreenResize;
-            JCS_ScreenSettings.instance.onScreenIdle += OnScreenIdle;
+            var screens = JCS_ScreenSettings.instance;
+            screens.onScreenResize += OnScreenResize;
+            screens.onScreenIdle += OnScreenIdle;
         }
 
         protected virtual void Update()
