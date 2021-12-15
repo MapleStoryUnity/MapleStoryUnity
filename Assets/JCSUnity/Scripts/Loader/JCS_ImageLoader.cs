@@ -6,10 +6,18 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace JCSUnity
 {
+    /// <summary>
+    /// Callback after the image is loaded.
+    /// </summary>
+    /// <param name="tex"> The loaded image in texture. </param>
+    public delegate void ImageLoaded(Texture2D tex);
+
     /// <summary>
     /// Image loader, load image to sprite from resource.
     /// </summary>
@@ -112,21 +120,42 @@ namespace JCSUnity
         /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
         /// <returns> Sprite object. </returns>
         public static Sprite LoadImage(
-            string filePath, 
-            float x, 
-            float y, 
-            float width, 
-            float height, 
+            string filePath,
+            float x,
+            float y,
+            float width,
+            float height,
             float pixelPerUnit = 100.0f)
         {
-            Sprite img = null;
-
             Texture2D tex = LoadTexture(filePath);
 
             // Use custom x/y/width/height values.
-            img = Create(tex, x, y, width, height, pixelPerUnit);
+            Sprite img = Create(tex, x, y, width, height, pixelPerUnit);
 
             return img;
+        }
+
+        /// <summary>
+        /// Load the image from path/url in runtime.
+        /// </summary>
+        /// <param name="url"> Url to the target image file. </param>
+        /// <param name="callback"> Callback after the image is loaded. </param>
+        /// <returns> Coroutine status. </returns>
+        public static IEnumerator LoadImage(string url, ImageLoaded callback)
+        {
+#if UNITY_2018_1_OR_NEWER
+            UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+            yield return request.SendWebRequest();
+            Texture2D tex = ((DownloadHandlerTexture)request.downloadHandler).texture;
+#else
+            WWW request = new WWW(url);
+            yield return request;
+            Texture2D tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
+            request.LoadImageIntoTexture(tex);
+#endif
+
+            if (callback != null)
+                callback.Invoke(tex);
         }
     }
 }
