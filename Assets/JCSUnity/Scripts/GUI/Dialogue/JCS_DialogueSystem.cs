@@ -12,8 +12,6 @@ using UnityEngine.EventSystems;
 
 namespace JCSUnity
 {
-    public delegate void DisposeCallback();
-
     /// <summary>
     /// Dialogue system core implementation.
     /// </summary>
@@ -22,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
         // Callback when successfully dispose the dialogue.
-        public DisposeCallback callback_dispose = null;
+        public EmptyFunction callback_dispose = null;
 
         [Header("** Check Variables (JCS_DialogueSystem) **")]
 

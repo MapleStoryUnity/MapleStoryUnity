@@ -10,16 +10,16 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void ToggleOnCallback();
-    public delegate void ToggleOffCallback();
-    public delegate void OnValueChanged();
-
     /// <summary>
     /// Better version of checkbox/toggle GUI.
     /// </summary>
     [RequireComponent(typeof(JCS_ColorTweener))]
     public class JCS_Toggle : JCS_Button
     {
+        public delegate void ToggleOnCallback();
+        public delegate void ToggleOffCallback();
+        public delegate void OnValueChanged();
+
         /* Variables */
 
         public ToggleOnCallback toggleOnCallback = null;

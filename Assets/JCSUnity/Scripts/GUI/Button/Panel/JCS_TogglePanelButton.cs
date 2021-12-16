@@ -42,8 +42,8 @@ namespace JCSUnity
 
         protected virtual void Start()
         {
-            acitveFunc += ActivePanel;
-            deactiveFunc += DeactivePanel;
+            onActive += ActivePanel;
+            onDeactive += DeactivePanel;
         }
 
         private void ActivePanel()

@@ -10,8 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void ApplicationStartsCallback();
-
     /// <summary>
     /// Application settings.
     /// </summary>
@@ -21,7 +19,7 @@ namespace JCSUnity
 
         // Callback when application starts. This should only run once
         // per application is starts.
-        public ApplicationStartsCallback onApplicationStarts = null;
+        public EmptyFunction onApplicationStarts = null;
 
         [Header("** Check Variables (JCS_ApplicationSettings) **")]
 

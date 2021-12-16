@@ -11,8 +11,6 @@ using UnityEngine.Events;
 
 namespace JCSUnity
 {
-    public delegate void EmptyAction();
-
     /// <summary>
     /// Trigger a event while the time is reached.
     /// </summary>
@@ -21,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
         // action to trigger if the time is reached.
-        public EmptyAction actions = null;
+        public EmptyFunction actions = null;
 
         [Header("** Check Variables (JCS_AdjustTimeTrigger) **")]
 

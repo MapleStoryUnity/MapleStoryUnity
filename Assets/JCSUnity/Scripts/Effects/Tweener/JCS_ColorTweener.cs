@@ -11,9 +11,6 @@ using UnityEngine.Events;
 
 namespace JCSUnity
 {
-    public delegate float TweenDelegate(float t, float b, float c, float d);
-    public delegate void CallBackDelegate();
-
     /// <summary>
     /// Color tweener.
     /// </summary>
@@ -26,7 +23,7 @@ namespace JCSUnity
         private TweenDelegate mEasingBlue = null;
         private TweenDelegate mEasingAlpha = null;
 
-        private CallBackDelegate mColorCallback = null;
+        private EmptyFunction mColorCallback = null;
 
         /**
          * time to calculate the progress.
@@ -208,7 +205,7 @@ namespace JCSUnity
         public bool IgnoreG { get { return this.mIgnoreG; } set { this.mIgnoreG = value; } }
         public bool IgnoreB { get { return this.mIgnoreB; } set { this.mIgnoreB = value; } }
         public bool IgnoreA { get { return this.mIgnoreA; } set { this.mIgnoreA = value; } }
-        public void SetCallback(CallBackDelegate func)
+        public void SetCallback(EmptyFunction func)
         {
             this.mColorCallback = func;
         }

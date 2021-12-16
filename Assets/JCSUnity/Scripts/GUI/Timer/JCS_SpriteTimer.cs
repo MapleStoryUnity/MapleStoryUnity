@@ -10,9 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    // callback when time is up.
-    public delegate void TimeIsUpFunc();
-
     /// <summary>
     /// Timer system using sprite 0 to 9.
     /// </summary>

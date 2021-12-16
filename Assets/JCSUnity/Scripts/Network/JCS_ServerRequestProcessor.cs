@@ -10,14 +10,14 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-    public delegate void ServerRequest(JCS_BinaryReader br, JCS_Client client);
-
     /// <summary>
     /// Process the all server request as callback.
     /// </summary>
     public class JCS_ServerRequestProcessor
         : JCS_Settings<JCS_ServerRequestProcessor>
     {
+        public delegate void ServerRequest(JCS_BinaryReader br, JCS_Client client);
+
         /* Variables */
 
         private List<ServerRequest> mServerRequest = new List<ServerRequest>();

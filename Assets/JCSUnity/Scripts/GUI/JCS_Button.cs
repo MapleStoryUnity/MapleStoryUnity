@@ -21,19 +21,18 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public delegate void CallBackFunc();
         public delegate void CallBackFuncBtn(JCS_Button btn);
         public delegate void CallBackFuncBtnInt(int selection);
 
         // JCSUnity framework only callback, do not override this callback.
-        public CallBackFunc btnSystemCallBack = null;
+        public EmptyFunction btnSystemCallBack = null;
         public CallBackFuncBtn btnSystemCallBackBtn = null;
         public CallBackFuncBtnInt btnSystemCallBackBtnInt = null;
         // for user's callback.
-        public CallBackFunc btnCallBack = null;
+        public EmptyFunction btnCallBack = null;
         public CallBackFuncBtn btnCallBackBtn = null;
 
-        public CallBackFunc interactableCallback = null;
+        public EmptyFunction interactableCallback = null;
 
         [Header("** Check Variables (JCS_Button) **")]
 
@@ -107,9 +106,9 @@ namespace JCSUnity
         public bool IsSelectedInGroup { get { return this.mIsSelectedInGroup; } }
 
         /* Compatible with 1.5.3 version of JCSUnity */
-        public void SetCallback(CallBackFunc func) { this.btnCallBack += func; }
+        public void SetCallback(EmptyFunction func) { this.btnCallBack += func; }
         public void SetCallback(CallBackFuncBtn func) { this.btnCallBackBtn += func; }
-        public void SetSystemCallback(CallBackFunc func) { this.btnSystemCallBack += func; }
+        public void SetSystemCallback(EmptyFunction func) { this.btnSystemCallBack += func; }
         public void SetSystemCallback(CallBackFuncBtn func) { this.btnSystemCallBackBtn += func; }
         public void SetSystemCallback(CallBackFuncBtnInt func, int selection)
         {

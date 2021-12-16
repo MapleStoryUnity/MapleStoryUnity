@@ -17,11 +17,12 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public ToggleFunc acitveFunc = null;
-        public ToggleFunc deactiveFunc = null;
+        public EmptyFunction onActive = null;
+        public EmptyFunction onDeactive = null;
 
         [Header("** Check Variables (JCS_ToggleGamePadButton) **")]
 
+        [Tooltip("Return true if toggle button currently active.")]
         [SerializeField]
         protected bool mActive = false;
 
@@ -72,14 +73,14 @@ namespace JCSUnity
         /// </summary>
         public void DoActiveFunc()
         {
-            if (acitveFunc == null)
+            if (onActive == null)
             {
                 JCS_Debug.LogError("U have not set the ACTIVE function ptr...");
                 return;
             }
 
             // do the action.
-            acitveFunc.Invoke();
+            onActive.Invoke();
         }
 
         /// <summary>
@@ -87,14 +88,14 @@ namespace JCSUnity
         /// </summary>
         public void DoDeactiveFunc()
         {
-            if (deactiveFunc == null)
+            if (onDeactive == null)
             {
                 JCS_Debug.LogError("U have not set the DEACTIVE function ptr...");
                 return;
             }
 
             // do the action.
-            deactiveFunc.Invoke();
+            onDeactive.Invoke();
         }
     }
 }

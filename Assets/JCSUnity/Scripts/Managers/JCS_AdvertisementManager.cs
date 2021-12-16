@@ -18,11 +18,6 @@ using UnityEngine.Advertisements;
 
 namespace JCSUnity
 {
-    public delegate void AdsDidErrorCallback(string message);
-    public delegate void AdsDidFinishCallback(string placementId, ShowResult showResult);
-    public delegate void AdsDidStartCallback(string placementId);
-    public delegate void AdsReadyCallback(string placementId);
-
     /// <summary>
     /// Handle Advertisment provide by Unity Technologies company.
     /// 
@@ -37,6 +32,11 @@ namespace JCSUnity
     public class JCS_AdvertisementManager : JCS_Managers<JCS_AdvertisementManager>
         , IUnityAdsListener
     {
+        public delegate void AdsDidErrorCallback(string message);
+        public delegate void AdsDidFinishCallback(string placementId, ShowResult showResult);
+        public delegate void AdsDidStartCallback(string placementId);
+        public delegate void AdsReadyCallback(string placementId);
+
         /* Variables */
 
         [Header("** Initialize Variables (JCS_AdvertisementManager) **")]

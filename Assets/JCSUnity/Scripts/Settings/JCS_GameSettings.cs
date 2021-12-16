@@ -10,9 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void SavedGameDataDelegate();
-    public delegate void LoadGameDataDelegate();    // NOT USED
-
     /// <summary>
     /// Hold the general game setting.
     /// </summary>
@@ -20,10 +17,10 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public SavedGameDataDelegate SAVE_GAME_DATA_FUNC = null;
-        public LoadGameDataDelegate LOAD_GAME_DATA_FUNC = null; // NOT USED
+        public EmptyFunction SAVE_GAME_DATA_FUNC = null;
+        public EmptyFunction LOAD_GAME_DATA_FUNC = null;  // NOT USED
 
-        public static JCS_XMLGameData GAME_DATA = null;    // NOT USED
+        public static JCS_XMLGameData GAME_DATA = null;  // NOT USED
 
         [Header("** Check Variables (JCS_GameSettings) **")]
 

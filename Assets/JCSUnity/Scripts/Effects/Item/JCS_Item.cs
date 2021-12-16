@@ -10,8 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void PickCallback(Collider other);
-
     /// <summary>
     /// Base class for all the item subclasses.
     /// </summary>
@@ -19,7 +17,11 @@ namespace JCSUnity
     [RequireComponent(typeof(Rigidbody))]
     public class JCS_Item : JCS_UnityObject
     {
+        public delegate void PickedFunction(Collider other);
+
         /* Variables */
+
+        public PickedFunction pickedCallback = DefaultPickCallback;
 
         protected bool mCanPick = true;
         protected BoxCollider mBoxCollider = null;
@@ -75,8 +77,6 @@ object that we target.")]
         [SerializeField]
         protected AudioClip mEffectSound = null;
 
-        protected PickCallback mPickCallback = DefaultPickCallback;
-
         [Header("** Optional Variables (JCS_UnityObject) **")]
 
         [Tooltip("Make item tween to the destination.")]
@@ -95,9 +95,6 @@ object that we target.")]
         public bool CanPick { get { return this.mCanPick; } set { this.mCanPick = value; } }
         public BoxCollider GetBoxCollider() { return this.mBoxCollider; }
         public Collider PickCollider { get { return this.mPickCollider; } set { this.mPickCollider = value; } }
-
-        public void SetPickCallback(PickCallback func) { this.mPickCallback = func; }
-        public PickCallback GetPickCallback() { return this.mPickCallback; }
 
         /* Functions */
 
@@ -216,7 +213,7 @@ object that we target.")]
                 sp.PlayOneShot(mPickSound);
 
             // call item effect.
-            mPickCallback.Invoke(other);
+            pickedCallback.Invoke(other);
 
             /* Play Effect Sound */
             if (mPlayOneShotWhileNotPlayingForEffectSound)

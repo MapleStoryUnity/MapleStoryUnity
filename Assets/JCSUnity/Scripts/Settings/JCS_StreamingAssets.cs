@@ -15,13 +15,13 @@ using UnityEngine.Networking;
 
 namespace JCSUnity
 {
-    public delegate void RequestCallback(string path, bool success);
-
     /// <summary>
     /// Generic streaming assets interface.
     /// </summary>
     public class JCS_StreamingAssets : JCS_Settings<JCS_StreamingAssets>
     {
+        public delegate void RequestCallback(string path, bool success);
+
         /* Variables */
 
         private byte[] REQ_KEY = Encoding.ASCII.GetBytes("WAIT-090218");

@@ -10,9 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void AfterSceneSwitchedCallback(Vector2 page);
-    public delegate void AfterSwipeCallback(Vector2 page);
-
     /// <summary>
     /// Camera for GUI!! not in the game scene.
     ///
@@ -20,6 +17,9 @@ namespace JCSUnity
     /// </summary>
     public class JCS_2DSlideScreenCamera : MonoBehaviour
     {
+        public delegate void AfterSceneSwitchedCallback(Vector2 page);
+        public delegate void AfterSwipeCallback(Vector2 page);
+
         /* Variables */
 
         // Function call after the scene changed

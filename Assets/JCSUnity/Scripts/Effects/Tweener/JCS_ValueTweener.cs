@@ -11,9 +11,6 @@ using UnityEngine.Events;
 
 namespace JCSUnity
 {
-    public delegate void SetValFloat(float newVal);
-    public delegate float GetValFloat();
-
     /// <summary>
     /// Tweener thats tweens one specific variable value.
     /// 
@@ -21,12 +18,15 @@ namespace JCSUnity
     /// </summary>
     public class JCS_ValueTweener : MonoBehaviour
     {
+        public delegate void SetValFloat(float newVal);
+        public delegate float GetValFloat();
+
         /* Variables */
 
         public SetValFloat set_float = null;
         public GetValFloat get_float = null;
 
-        private CallBackDelegate mValueCallback = null;
+        private EmptyFunction mValueCallback = null;
 
         private TweenDelegate mEasingFunc = null;
 

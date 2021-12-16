@@ -13,16 +13,16 @@ using UnityEngine.Networking;
 namespace JCSUnity
 {
     /// <summary>
-    /// Callback after the image is loaded.
-    /// </summary>
-    /// <param name="tex"> The loaded image in texture. </param>
-    public delegate void ImageLoaded(Texture2D tex);
-
-    /// <summary>
     /// Image loader, load image to sprite from resource.
     /// </summary>
     public static class JCS_ImageLoader
     {
+        /// <summary>
+        /// Callback after the image is loaded.
+        /// </summary>
+        /// <param name="tex"> The loaded image in texture. </param>
+        public delegate void ImageLoaded(Texture2D tex);
+
         /// <summary>
         /// Convert byte array to texture object.
         /// </summary>

@@ -10,8 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void OnScreenEvent();
-
     /// <summary>
     /// Screen related settings.
     /// </summary>
@@ -19,8 +17,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public OnScreenEvent onScreenResize = null;
-        public OnScreenEvent onScreenIdle = null;
+        public EmptyFunction onScreenResize = null;
+        public EmptyFunction onScreenIdle = null;
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_ScreenManager) **")]

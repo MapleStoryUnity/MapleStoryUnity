@@ -11,8 +11,6 @@ using UnityEngine.Events;
 
 namespace JCSUnity
 {
-    public delegate void OrderExecution();
-
     /// <summary>
     /// Execute an operation in order with interval of time.
     /// </summary>
@@ -20,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private OrderExecution mExecution = null;
+        private EmptyFunction mExecution = null;
 
         [Header("** Check Variables (JCS_OrderEvent) **")]
 
@@ -60,7 +58,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="intervalTime"> Interval of time to execute each operation. </param>
         /// <param name="evt"> Operation to get execute. </param>
-        public void StartEvent(float intervalTime, OrderExecution evt)
+        public void StartEvent(float intervalTime, EmptyFunction evt)
         {
             this.mIntervalTime = intervalTime;
             this.mExecution = evt;

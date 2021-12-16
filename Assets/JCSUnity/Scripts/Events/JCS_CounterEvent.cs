@@ -9,8 +9,6 @@
 
 namespace JCSUnity
 {
-    public delegate void VoidEvent();
-
     /// <summary>
     /// Event handle operate the task after a certain time.
     /// </summary>

@@ -12,8 +12,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void EmptyFunction();
-
     /// <summary>
     /// Utility for Editor Layout
     /// </summary>

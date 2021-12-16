@@ -10,9 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void DonePlayingAnimation();
-    public delegate void PlayFrameCallback();
-
     /// <summary>
     /// Handle frame by frame animation in the simple way.
     /// </summary>
@@ -21,8 +18,8 @@ namespace JCSUnity
         /* Variables */
 
         // call back when done playing the animation.
-        public DonePlayingAnimation donePlayingAnimCallback = null;
-        public PlayFrameCallback playFrameCallback = null;
+        public EmptyFunction donePlayingAnimCallback = null;
+        public EmptyFunction playFrameCallback = null;
 
         // animator using this animation?
         private JCS_2DAnimator mJCS2DAnimator = null;

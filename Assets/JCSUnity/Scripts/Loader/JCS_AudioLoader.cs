@@ -13,13 +13,17 @@ using UnityEngine.Networking;
 
 namespace JCSUnity
 {
-    public delegate void AudioLoaded(AudioClip ac);
-
     /// <summary>
     /// Audiol loader, load an external audio file.
     /// </summary>
     public static class JCS_AudioLoader
     {
+        /// <summary>
+        /// Callback after the audio is loaded.
+        /// </summary>
+        /// <param name="tex"> The loaded audio. </param>
+        public delegate void AudioLoaded(AudioClip clip);
+
         /// <summary>
         /// Load the audio from path/url in runtime.
         /// </summary>

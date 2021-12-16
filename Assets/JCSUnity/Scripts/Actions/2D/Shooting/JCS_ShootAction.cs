@@ -10,8 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void ShootCallback();
-
     // If the function return
     //              -> true, shoot the bullet.
     //              -> false not able to shoot the bullet.
@@ -73,7 +71,7 @@ namespace JCSUnity
         private JCS_KeyActionType mKeyAct = JCS_KeyActionType.KEY;
 
         // call back after we do shoot action.
-        private ShootCallback mShootCallback = DefualtShootCallback;
+        private EmptyFunction mShootCallback = DefualtShootCallback;
 
         // Check we able to shoot or not
         private CheckAbleToShoot mCheckAbleToShoot = DefualtCheckFunction;
@@ -230,8 +228,8 @@ namespace JCSUnity
         /// Call back during shooting a bullet.
         /// </summary>
         /// <param name="func"> function to set. </param>
-        public void SetShootCallback(ShootCallback func) { this.mShootCallback = func; }
-        public ShootCallback GetShootCallback() { return this.mShootCallback; }
+        public void SetShootCallback(EmptyFunction func) { this.mShootCallback = func; }
+        public EmptyFunction GetShootCallback() { return this.mShootCallback; }
 
         /// <summary>
         /// Function check before shooting the bullet.

@@ -11,10 +11,6 @@ using UnityEngine.Events;
 
 namespace JCSUnity
 {
-    public delegate void SelectionEnable();
-    public delegate void SelectionDisable();
-    public delegate void SelectionActive(bool act);
-
     /// <summary>
     /// One of the button selection for button selection group.
     /// 
@@ -23,11 +19,13 @@ namespace JCSUnity
     /// </summary>
     public class JCS_ButtonSelection : MonoBehaviour
     {
+        public delegate void SelectionActiveEvent(bool act);
+
         /* Variables */
 
-        public SelectionEnable selectionEnable = SelectionEnable;
-        public SelectionDisable selectionDisable = SelectionDisable;
-        public SelectionActive selectionActive = SelectionActive;
+        public EmptyFunction selectionEnable = SelectionEnable;
+        public EmptyFunction selectionDisable = SelectionDisable;
+        public SelectionActiveEvent selectionActive = SelectionActive;
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 

@@ -11,14 +11,14 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void SpawnSequenceAction(int[] damage, Vector3[] pos, float timePerSpawn, int totalSpawn);
-
     /// <summary>
     /// Reusable damage text pool.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_DamageTextPool : MonoBehaviour
     {
+        public delegate void SpawnSequenceAction(int[] damage, Vector3[] pos, float timePerSpawn, int totalSpawn);
+
         /* Variables */
 
         [Header("** Initialize Variables (JCS_DamageTextPool) **")]

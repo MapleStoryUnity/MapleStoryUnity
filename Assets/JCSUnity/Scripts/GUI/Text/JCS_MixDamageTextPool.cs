@@ -11,14 +11,13 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    // Function pointer.
-    public delegate int[] DamageTextSpawnerFP(int minDamage, int maxDamage, Vector3 pos, int hit, int percentOfCritical);
-
     /// <summary>
     /// Mix dmaage text pool object.
     /// </summary>
     public class JCS_MixDamageTextPool : MonoBehaviour
     {
+        public delegate int[] DamageTextSpawnerFP(int minDamage, int maxDamage, Vector3 pos, int hit, int percentOfCritical);
+
         /* Variables */
 
         /// <summary>

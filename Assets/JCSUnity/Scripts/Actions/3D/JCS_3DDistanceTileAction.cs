@@ -10,8 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void ResetCallback();  // Callback when after reset.
-
     /// <summary>
     /// Move a gameobject in certain distance then set the gameobject
     /// back to original position relative to the gameobject that moved.
@@ -21,8 +19,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public ResetCallback beforeResetCallback = null;
-        public ResetCallback afterResetCallback = null;
+        public EmptyFunction beforeResetCallback = null;
+        public EmptyFunction afterResetCallback = null;
 
         private Vector3 mOriginPos = Vector3.zero;
 

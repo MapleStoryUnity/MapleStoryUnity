@@ -20,6 +20,15 @@ using System.Text;
 namespace JCSUnity
 {
     // Function pointer
+    public delegate void EmptyFunction();
+
+    public delegate float TweenDelegate(float t, float b, float c, float d);
+
+    /// <summary>
+    /// Callback when time is up.
+    /// </summary>
+    public delegate void TimeIsUpFunc();
+
     public delegate int JCS_Range(int min, int max);
     public delegate void EventTriggerEvent(PointerEventData data);
     public delegate void EventTriggerEventButtonSelection(PointerEventData data, JCS_ButtonSelection selection);

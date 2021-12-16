@@ -10,8 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void ToggleFunc();
-
     /// <summary>
     /// Button that have two callback can toggle each other.
     /// </summary>
@@ -19,12 +17,12 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public ToggleFunc acitveFunc = null;
-        public ToggleFunc deactiveFunc = null;
+        public EmptyFunction onActive = null;
+        public EmptyFunction onDeactive = null;
 
         [Header("** Runtime Variables (JCS_ToggleButton) **")]
 
-        [Tooltip("Is the toggle button currently active?")]
+        [Tooltip("Return true if toggle button currently active.")]
         [SerializeField]
         protected bool mActive = false;
 
@@ -73,15 +71,14 @@ namespace JCSUnity
         /// </summary>
         public void DoActiveFunc()
         {
-            if (acitveFunc == null)
+            if (onActive == null)
             {
-                JCS_Debug.LogError(
-                    "You have not set the ACTIVE function ptr...");
+                JCS_Debug.LogError("You have not set the ACTIVE function ptr...");
                 return;
             }
 
             // do the action.
-            acitveFunc.Invoke();
+            onActive.Invoke();
         }
 
         /// <summary>
@@ -89,15 +86,14 @@ namespace JCSUnity
         /// </summary>
         public void DoDeactiveFunc()
         {
-            if (deactiveFunc == null)
+            if (onDeactive == null)
             {
-                JCS_Debug.LogError(
-                    "You have not set the DEACTIVE function ptr...");
+                JCS_Debug.LogError("You have not set the DEACTIVE function ptr...");
                 return;
             }
 
             // do the action.
-            deactiveFunc.Invoke();
+            onDeactive.Invoke();
         }
     }
 }

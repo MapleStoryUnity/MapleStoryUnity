@@ -10,9 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void IsFadeOutCallback();
-    public delegate void IsFadeInCallback();
-
     /// <summary>
     /// Fade object to a particular alpha channel.
     /// </summary>
@@ -20,11 +17,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        // callback after fadeout if complete
-        public IsFadeOutCallback fadeOutCallback = DefaultFadeCallback;
-
-        // callback after fade in is complete.
-        public IsFadeInCallback fadeInCallback = DefaultFadeCallback;
+        public EmptyFunction fadeOutCallback = DefaultFadeCallback;
+        public EmptyFunction fadeInCallback = DefaultFadeCallback;
 
         private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
 

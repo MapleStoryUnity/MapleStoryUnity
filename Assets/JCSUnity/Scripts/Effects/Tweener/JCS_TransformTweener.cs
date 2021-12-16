@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private CallBackDelegate mDestinationCallback = null;
+        private EmptyFunction mDestinationCallback = null;
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_TransformTweener) **")]
@@ -277,7 +277,7 @@ namespace JCSUnity
         /// Callback when reach destination.
         /// </summary>
         /// <param name="func"> function pointer </param>
-        public void SetCallback(CallBackDelegate func)
+        public void SetCallback(EmptyFunction func)
         {
             mDestinationCallback = func;
         }
@@ -287,7 +287,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="to"> target vector 3 </param>
         /// <param name="callback"> callback function pointer. </param>
-        public void DoTween(Vector3 to, CallBackDelegate callback = null)
+        public void DoTween(Vector3 to, EmptyFunction callback = null)
         {
             DoTween(to, true, mEasingX, mEasingY, mEasingZ, callback);
         }
@@ -298,7 +298,7 @@ namespace JCSUnity
         /// <param name="to"> target vector 3 </param>
         /// <param name="resetElapsedTime"> reset elapsed time? (default : true) </param>
         /// <param name="callback"> callback function pointer. </param>
-        public void DoTween(Vector3 to, bool resetElapsedTime, CallBackDelegate callback = null)
+        public void DoTween(Vector3 to, bool resetElapsedTime, EmptyFunction callback = null)
         {
             DoTween(to, resetElapsedTime, mEasingX, mEasingY, mEasingZ, callback);
         }
@@ -318,7 +318,7 @@ namespace JCSUnity
             JCS_TweenType typeX,
             JCS_TweenType typeY,
             JCS_TweenType typeZ,
-            CallBackDelegate callback = null)
+            EmptyFunction callback = null)
         {
             DoTween(to, resetElapsedTime, mDurationX, mDurationY, mDurationZ, typeX, typeY, typeZ, callback);
         }
@@ -344,7 +344,7 @@ namespace JCSUnity
             JCS_TweenType typeX,
             JCS_TweenType typeY,
             JCS_TweenType typeZ,
-            CallBackDelegate callback = null)
+            EmptyFunction callback = null)
         {
             Vector3 from = GetSelfTransformTypeVector3();
 
@@ -374,7 +374,7 @@ namespace JCSUnity
             JCS_TweenType typeX,
             JCS_TweenType typeY,
             JCS_TweenType typeZ,
-            CallBackDelegate callback = null)
+            EmptyFunction callback = null)
         {
             TweenDelegate easingX = JCS_Utility.GetEasing(typeX);
             TweenDelegate easingY = JCS_Utility.GetEasing(typeY);
@@ -562,7 +562,7 @@ namespace JCSUnity
             TweenDelegate easingX = null,
             TweenDelegate easingY = null,
             TweenDelegate easingZ = null,
-            CallBackDelegate callback = null)
+            EmptyFunction callback = null)
         {
             mDestinationCallback = callback;
 

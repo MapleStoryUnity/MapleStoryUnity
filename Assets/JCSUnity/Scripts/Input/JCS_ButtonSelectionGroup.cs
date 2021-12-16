@@ -12,8 +12,6 @@ using UnityEngine.EventSystems;
 
 namespace JCSUnity
 {
-    public delegate void SelectionChanged();
-
     /// <summary>
     /// Group certain button and wait for selection instead of 
     /// just using the mouse to select the key. Usually work 
@@ -24,7 +22,7 @@ namespace JCSUnity
         /* Variables */
 
         // Callback triggered when selection has changed.
-        public SelectionChanged selectionChanged = null;
+        public EmptyFunction selectionChanged = null;
 
         /// <summary>
         /// Direction of this control.

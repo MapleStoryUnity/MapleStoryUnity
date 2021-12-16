@@ -35,7 +35,7 @@ namespace JCSUnity
         /// Call back during shooting a bullet.
         /// </summary>
         /// <param name="func"> function to set. </param>
-        public void SetShootCallback(ShootCallback func)
+        public void SetShootCallback(EmptyFunction func)
         {
             this.mShootAction.SetShootCallback(func);
         }

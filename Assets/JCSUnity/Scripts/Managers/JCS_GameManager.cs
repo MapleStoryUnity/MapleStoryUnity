@@ -10,8 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void AfterGameInitializeCallback();
-
     /// <summary>
     /// Make sure u have this execute first!!!
     /// </summary>
@@ -20,7 +18,7 @@ namespace JCSUnity
         /* Variables */
 
         // Callback after the game is done initialize.
-        public AfterGameInitializeCallback afterGameInitializeCallback = null;
+        public EmptyFunction afterGameInitializeCallback = null;
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_GameManager) **")]

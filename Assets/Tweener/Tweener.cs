@@ -11,7 +11,7 @@ namespace PeterVuorela.Tweener
     {
         /* Variables */
 
-        private CallBackDelegate _Callback = null;
+        private EmptyFunction _Callback = null;
 
         private TweenDelegate _Easing = null;
 
@@ -37,7 +37,7 @@ namespace PeterVuorela.Tweener
         /// Callback when reach destination.
         /// </summary>
         /// <param name="func"> function pointer </param>
-        public void SetCallback(CallBackDelegate func)
+        public void SetCallback(EmptyFunction func)
         {
             this._Callback = func;
         }
@@ -53,7 +53,7 @@ namespace PeterVuorela.Tweener
         /// <param name="to">To.</param>
         /// <param name="duration">Duration.</param>
         /// <param name="easing">Easing.</param>
-        public void easeFromTo(float from, float to, bool resetElapsedTime = true, float duration = 1.0f, TweenDelegate easing = null, CallBackDelegate callback = null)
+        public void easeFromTo(float from, float to, bool resetElapsedTime = true, float duration = 1.0f, TweenDelegate easing = null, EmptyFunction callback = null)
         {
             if (easing == null)
                 easing = Easing.Linear;

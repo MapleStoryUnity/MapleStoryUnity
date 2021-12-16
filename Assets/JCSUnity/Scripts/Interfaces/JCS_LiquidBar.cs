@@ -11,8 +11,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-    public delegate void LiquidBar_Callback();  // Callback for liquid bar.
-
     /// <summary>
     /// Liquid bar object's interface declaration.
     /// </summary>
@@ -24,9 +22,9 @@ namespace JCSUnity
         public const float MAX_LIQUID_BAR_VALUE = 999999999;
 
         // When value reachs the minimum value.
-        public LiquidBar_Callback callback_min = null;
+        public EmptyFunction callback_min = null;
         // When value reachs the maximum value.
-        public LiquidBar_Callback callback_max = null;
+        public EmptyFunction callback_max = null;
 
         [Header("** Check Variables (JCS_LiquidBar) **")]
 

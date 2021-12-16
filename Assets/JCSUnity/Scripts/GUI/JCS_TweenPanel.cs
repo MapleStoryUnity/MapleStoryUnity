@@ -10,9 +10,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void ActiveCallback();
-    public delegate void DeactiveCallback();
-
     /// <summary>
     /// Panel with active and deactive in order 
     /// to do back and forth effect.
@@ -21,6 +18,9 @@ namespace JCSUnity
     [RequireComponent(typeof(JCS_TweenerHandler))]
     public class JCS_TweenPanel : MonoBehaviour
     {
+        public delegate void ActiveCallback();
+        public delegate void DeactiveCallback();
+
         /* Variables */
 
         private JCS_TweenerHandler mTweenerHandler = null;
