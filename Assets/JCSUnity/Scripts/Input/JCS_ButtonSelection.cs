@@ -144,7 +144,7 @@ namespace JCSUnity
         public void DoSelection()
         {
             if (mButton != null)
-                mButton.JCS_ButtonClick();
+                mButton.ButtonClick();
 
             if (mSelectedEvent != null)
                 mSelectedEvent.Invoke();
