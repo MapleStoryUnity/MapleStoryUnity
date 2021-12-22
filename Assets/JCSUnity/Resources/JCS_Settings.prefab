@@ -39,6 +39,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5090550958201105578}
   - {fileID: 5090550958532261196}
@@ -58,7 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44537bddf53394d4ba5246f002f0fbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mType: 0
 --- !u!114 &5090550957556680167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,23 +85,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SHOW_RESIZABLE_PANELS: 1
-  STARTING_SCREEN_WIDTH: 0
-  STARTING_SCREEN_HEIGHT: 0
+  STARTING_SCREEN_SIZE:
+    width: 0
+    height: 0
   ORTHOGRAPHIC_SIZE: 0
   FIELD_OF_VIEW: 0
-  CURRENT_SCREEN_WIDTH: 0
-  CURRENT_SCREEN_HEIGHT: 0
-  PREV_SCREEN_WIDTH: 0
-  PREV_SCREEN_HEIGHT: 0
-  ASPECT_RATIO_SCREEN_WIDTH: 0
-  ASPECT_RATIO_SCREEN_HEIGHT: 0
+  PREV_SCREEN_SIZE:
+    width: 0
+    height: 0
+  CURRENT_SCREEN_SIZE:
+    width: 0
+    height: 0
+  ASPECT_RATIO_SCREEN_SIZE:
+    width: 0
+    height: 0
   RESIZE_TO_ASPECT_WHEN_APP_STARTS: 1
   RESIZE_TO_STANDARD_WHEN_APP_STARTS: 0
   RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED: 0
   RESIZE_TO_SMALLER_EDGE: 1
   mResizablePanelsColor: {r: 0, g: 0, b: 0, a: 1}
-  STANDARD_SCREEN_WIDTH: 1920
-  STANDARD_SCREEN_HEIGHT: 1080
+  STANDARD_SCREEN_SIZE:
+    width: 1920
+    height: 1080
+  SCREEN_TYPE: 3
 --- !u!114 &5090550957556680165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada7a7e758427f748bb242893c0130b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  REAL_DATA_PATH: 
+  REAL_SCREENSHOT_PATH: 
+  REAL_WEBCAM_PATH: 
+  REAL_STREAMING_CACHE_PATH: 
   DEBUG_MODE: 0
   THIS_IS_GAME_SCENE: 0
   LEVEL_DESIGN_MODE: 1
@@ -185,15 +195,15 @@ MonoBehaviour:
   TRIBE_DAMAGE_EACH_OTHER: 0
   IGNORE_EACH_OTHER_CHARACTER_CONTROLLER: 1
   STREAMING_BASE_URL: https://wwww.example.com/
-  STREAMING_CACHE_PATH: /JCS_GameData/Cache_StreamingAssets/
-  DATA_PATH: /JCS_GameData/
+  STREAMING_CACHE_PATH: /Data_jcs/Cache_StreamingAssets/
+  DATA_PATH: /Data_jcs/
   DATA_EXTENSION: .jcs
   SAVE_ON_SWITCH_SCENE: 1
   SAVE_ON_EXIT_APP: 1
-  SCREENSHOT_PATH: /JCS_GameData/Screenshot/
+  SCREENSHOT_PATH: /Data_jcs/Screenshot/
   SCREENSHOT_FILENAME: Screenshot_
   SCREENSHOT_EXTENSION: .png
-  WEBCAM_PATH: /JCS_GameData/WebcamShot/
+  WEBCAM_PATH: /Data_jcs/WebcamShot/
   WEBCAM_FILENAME: 
   WEBCAM_EXTENSION: .png
   MIN_DAMAGE: 1
@@ -280,10 +290,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e490bbba26129644858e6c0d8864796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDownloadList: []
-  mRequesting: 0
-  mRequestURL: 
-  mRequestPath: 
+  downloadList: []
+  requesting: 0
+  requestURL: 
+  requestPath: 
   preloadPath: []
 --- !u!1 &5090550958201105579
 GameObject:
@@ -313,6 +323,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5090550959267644780}
   m_RootOrder: 0
@@ -370,6 +381,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5090550959267644780}
   m_RootOrder: 2
@@ -400,6 +412,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5090550959267644780}
   m_RootOrder: 1

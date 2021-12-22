@@ -1,5 +1,5 @@
 /**
- * $File: JCS_GameData.cs $
+ * $File: JCS_AppData.cs $
  * $Date: 2020-07-10 12:15:20 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,10 +11,10 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Base game data structure.
+    /// Base application data structure.
     /// </summary>
     [System.Serializable]
-    public abstract class JCS_GameData
+    public abstract class JCS_AppData
     {
         /// <summary>
         /// Get complete save data path.

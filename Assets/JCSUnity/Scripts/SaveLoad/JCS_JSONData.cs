@@ -1,20 +1,22 @@
-﻿/**
- * $File: JCS_XMLGameData.cs $
- * $Date: $
+/**
+ * $File: JCS_JSONData.cs $
+ * $Date: 2019-10-16 14:26:21 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
- *                   Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information
+ *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
 using System.IO;
-using System.Xml.Serialization;
+using System.Text;
+using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
-    /// Interface of storing game data as XML format.
+    /// Interface to store game data in JSON format.
     /// </summary>
-    public abstract class JCS_XMLGameData : JCS_GameData
+    [System.Serializable]
+    public abstract class JCS_JSONData : JCS_AppData
     {
         /* Variables */
 
@@ -66,8 +68,9 @@ namespace JCSUnity
 
             using (var stream = new FileStream(fullFilePath, FileMode.Create))
             {
-                var XML = new XmlSerializer(typeof(T));
-                XML.Serialize(stream, this);
+                string json = JsonUtility.ToJson(this);
+                byte[] info = new UTF8Encoding(true).GetBytes(json);
+                stream.Write(info, 0, info.Length);
             }
         }
 
@@ -104,10 +107,13 @@ namespace JCSUnity
 
             using (var stream = new FileStream(fullFilePath, FileMode.Open))
             {
-                var xml = new XmlSerializer(typeof(T));
-                return (T)xml.Deserialize(stream);
+                string contents = "";
+                using (var sr = new StreamReader(stream))
+                {
+                    contents = sr.ReadToEnd();
+                }
+                return JsonUtility.FromJson<T>(contents);
             }
         }
-
     }
 }

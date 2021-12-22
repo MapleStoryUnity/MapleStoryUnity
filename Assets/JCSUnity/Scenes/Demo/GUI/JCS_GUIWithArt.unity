@@ -4498,15 +4498,15 @@ MonoBehaviour:
   TRIBE_DAMAGE_EACH_OTHER: 0
   IGNORE_EACH_OTHER_CHARACTER_CONTROLLER: 1
   STREAMING_BASE_URL: https://wwww.example.com/
-  STREAMING_CACHE_PATH: /JCS_GameData/Cache_StreamingAssets/
-  DATA_PATH: /JCS_GameData/
+  STREAMING_CACHE_PATH: /Data_jcs/Cache_StreamingAssets/
+  DATA_PATH: /Data_jcs/
   DATA_EXTENSION: .jcs
   SAVE_ON_SWITCH_SCENE: 1
   SAVE_ON_EXIT_APP: 1
-  SCREENSHOT_PATH: /JCS_ScreenShot/
+  SCREENSHOT_PATH: /Data_jcs/Screenshot/
   SCREENSHOT_FILENAME: Screenshot_
   SCREENSHOT_EXTENSION: .png
-  WEBCAM_PATH: /JCS_GameData/WebcamShot/
+  WEBCAM_PATH: /Data_jcs/WebcamShot/
   WEBCAM_FILENAME: 
   WEBCAM_EXTENSION: .png
   MIN_DAMAGE: 1

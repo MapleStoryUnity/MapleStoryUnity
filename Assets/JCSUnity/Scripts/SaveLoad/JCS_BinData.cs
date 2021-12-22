@@ -1,5 +1,5 @@
 /**
- * $File: JCS_BinGameData.cs $
+ * $File: JCS_BinData.cs $
  * $Date: 2018-06-27 11:03:19 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -15,7 +15,7 @@ namespace JCSUnity
     /// Interface of storing game data as binary format.
     /// </summary>
     [System.Serializable]
-    public abstract class JCS_BinGameData : JCS_GameData
+    public abstract class JCS_BinData : JCS_AppData
     {
         /* Variables */
 
