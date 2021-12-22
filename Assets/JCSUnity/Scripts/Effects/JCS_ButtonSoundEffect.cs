@@ -159,12 +159,12 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
 
             if (mAutoAddEvent)
             {
-                JCS_Utility.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerEnter, JCS_OnMouseOver);
-                JCS_Utility.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerEnter, JCS_OnMouseDoubleClick);
-                JCS_Utility.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerExit, JCS_OnMouseExit);
-                JCS_Utility.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerDown, JCS_OnMouseDown);
-                JCS_Utility.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerUp, JCS_OnMouseUp);
-                JCS_Utility.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerClick, JCS_OnMouseClick);
+                JCS_Util.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerEnter, JCS_OnMouseOver);
+                JCS_Util.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerEnter, JCS_OnMouseDoubleClick);
+                JCS_Util.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerExit, JCS_OnMouseExit);
+                JCS_Util.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerDown, JCS_OnMouseDown);
+                JCS_Util.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerUp, JCS_OnMouseUp);
+                JCS_Util.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerClick, JCS_OnMouseClick);
             }
         }
 
@@ -200,7 +200,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
                 }
 
                 // check if the mouse still over or not
-                if (!JCS_Utility.MouseOverGUI(this.mRectTransform))
+                if (!JCS_Util.MouseOverGUI(this.mRectTransform))
                     mIsOver = false;
             }
         }

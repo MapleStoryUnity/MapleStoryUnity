@@ -34,7 +34,7 @@ namespace JCSUnity
         {
             // everytime it reload the scene.
             // move to the last child make sure everything get cover by this.
-            JCS_Utility.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(this.transform);
 
             this.mStartingPosition = this.transform.localPosition;
         }

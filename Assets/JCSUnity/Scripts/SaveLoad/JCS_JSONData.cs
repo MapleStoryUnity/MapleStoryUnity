@@ -1,4 +1,4 @@
-/**
+﻿/**
  * $File: JCS_JSONData.cs $
  * $Date: 2019-10-16 14:26:21 $
  * $Revision: $

@@ -100,8 +100,8 @@ namespace JCSUnity
                             this.mEventTrigger = this.gameObject.AddComponent<EventTrigger>();
                     }
 
-                    JCS_Utility.AddEventTriggerEvent(mEventTrigger, mActiveEventTriggerType, JCS_OnMouseOver);
-                    JCS_Utility.AddEventTriggerEvent(mEventTrigger, mDeactiveEventTriggerType, JCS_OnMouseExit);
+                    JCS_Util.AddEventTriggerEvent(mEventTrigger, mActiveEventTriggerType, JCS_OnMouseOver);
+                    JCS_Util.AddEventTriggerEvent(mEventTrigger, mDeactiveEventTriggerType, JCS_OnMouseExit);
                 }
             }
 

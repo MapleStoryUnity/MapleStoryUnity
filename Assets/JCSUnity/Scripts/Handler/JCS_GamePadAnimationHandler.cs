@@ -50,7 +50,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            this.animationSets = JCS_Utility.RemoveEmptySlot(this.animationSets);
+            this.animationSets = JCS_Util.RemoveEmptySlot(this.animationSets);
 
             /* Register callback */
             {

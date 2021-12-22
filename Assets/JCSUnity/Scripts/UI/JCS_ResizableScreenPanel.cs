@@ -64,7 +64,7 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-            JCS_Utility.MoveToTheLastChild(this.mRectTransform);
+            JCS_Util.MoveToTheLastChild(this.mRectTransform);
         }
 
         /// <summary>

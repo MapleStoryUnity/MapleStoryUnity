@@ -78,7 +78,7 @@ namespace JCSUnity
                         newScale.x = JCS_Mathf.ToNegative(newScale.x);
                 }
 
-                if (JCS_Utility.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                if (JCS_Util.WithInRange(90, 270, this.transform.localEulerAngles.z))
                     newScale.x = JCS_Mathf.ToReverse(newScale.x);
             }
 
@@ -102,7 +102,7 @@ namespace JCSUnity
                 }
 
                 // TODO(JenChieh): this have not test yet!!!
-                if (JCS_Utility.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                if (JCS_Util.WithInRange(90, 270, this.transform.localEulerAngles.z))
                     newScale.y = JCS_Mathf.ToReverse(newScale.y);
             }
 

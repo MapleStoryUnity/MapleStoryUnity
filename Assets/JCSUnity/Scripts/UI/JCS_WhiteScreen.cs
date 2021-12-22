@@ -85,12 +85,12 @@ namespace JCSUnity
         public void FadeIn(float time)
         {
             mAO.FadeIn(time);
-            JCS_Utility.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(this.transform);
         }
         public void FadeOut(float time)
         {
             mAO.FadeOut(time);
-            JCS_Utility.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(this.transform);
         }
         public bool IsFadeIn()
         {

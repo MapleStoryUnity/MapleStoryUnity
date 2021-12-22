@@ -130,7 +130,7 @@ namespace JCSUnity
             Vector3 direction = Vector3.up;
 
             // get direction according to the type.
-            direction = JCS_Utility.VectorDirection(mLookDirection);
+            direction = JCS_Util.VectorDirection(mLookDirection);
 
             transform.LookAt(lookPoint, direction * (int)mState);
 

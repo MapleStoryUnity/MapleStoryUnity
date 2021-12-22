@@ -91,7 +91,7 @@ namespace JCSUnity
         /// </summary>
         public void UndoComponent()
         {
-            JCS_UndoRedoComponent undoComp = JCS_Utility.ListPopBack(mUndoComp);
+            JCS_UndoRedoComponent undoComp = JCS_Util.ListPopBack(mUndoComp);
 
             if (undoComp == null)
                 return;
@@ -106,7 +106,7 @@ namespace JCSUnity
         /// </summary>
         public void RedoComponent()
         {
-            JCS_UndoRedoComponent redoComp = JCS_Utility.ListPopBack(mRedoComp);
+            JCS_UndoRedoComponent redoComp = JCS_Util.ListPopBack(mRedoComp);
 
             if (redoComp == null)
                 return;

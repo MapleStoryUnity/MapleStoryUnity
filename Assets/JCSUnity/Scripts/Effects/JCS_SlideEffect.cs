@@ -190,8 +190,8 @@ namespace JCSUnity
                             this.mEventTrigger = this.gameObject.AddComponent<EventTrigger>();
                     }
 
-                    JCS_Utility.AddEventTriggerEvent(mEventTrigger, mActiveEventTriggerType, JCS_OnMouseOver);
-                    JCS_Utility.AddEventTriggerEvent(mEventTrigger, mDeactiveEventTriggerType, JCS_OnMouseExit);
+                    JCS_Util.AddEventTriggerEvent(mEventTrigger, mActiveEventTriggerType, JCS_OnMouseOver);
+                    JCS_Util.AddEventTriggerEvent(mEventTrigger, mDeactiveEventTriggerType, JCS_OnMouseExit);
                 }
             }
 
@@ -334,7 +334,7 @@ namespace JCSUnity
         {
             if (GetObjectType() == JCS_UnityObjectType.UI)
             {
-                if (JCS_Utility.MouseOverGUI(this.mRectTransform))
+                if (JCS_Util.MouseOverGUI(this.mRectTransform))
                     return true;
             }
 
@@ -349,7 +349,7 @@ namespace JCSUnity
         {
             if (GetObjectType() == JCS_UnityObjectType.UI)
             {
-                if (JCS_Utility.MouseOverGUI(this.mRectTransform, rootPanel))
+                if (JCS_Util.MouseOverGUI(this.mRectTransform, rootPanel))
                     return true;
             }
 

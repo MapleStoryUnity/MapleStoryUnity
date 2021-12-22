@@ -1035,7 +1035,7 @@ namespace JCSUnity
                 return;
 
             GameObject gameObject = 
-                JCS_Utility.SpawnAnimateObjectDeathEvent(
+                JCS_Util.SpawnAnimateObjectDeathEvent(
                     mJumpAnim[index], 
                     mOrderLayerObject.sortingOrder - 1);
 

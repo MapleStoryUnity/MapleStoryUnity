@@ -24,8 +24,7 @@ namespace MSU.Test
     /// Test to load file `Map.wz`.
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
-    public class LoadMap
-        : MonoBehaviour
+    public class LoadMap : MonoBehaviour
     {
         /* Variables */
 
@@ -63,7 +62,5 @@ namespace MSU.Test
             //print(s["BaseImg"]["0"]["origin"]);
             //print(s["BaseImg"]["0"]["z"]);
         }
-
-        
     }
 }

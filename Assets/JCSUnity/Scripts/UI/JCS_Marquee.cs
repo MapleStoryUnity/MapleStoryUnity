@@ -61,7 +61,7 @@ namespace JCSUnity
             if (mTextContainer == null)
                 mTextContainer = this.GetComponentInChildren<Text>();
 
-            mDistanceTileAction = JCS_Utility.ForceGetComponent<JCS_3DDistanceTileAction>(mTextContainer);
+            mDistanceTileAction = JCS_Util.ForceGetComponent<JCS_3DDistanceTileAction>(mTextContainer);
         }
 
 #if UNITY_EDITOR

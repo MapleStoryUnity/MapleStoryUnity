@@ -240,7 +240,7 @@ built-in Unity Engine.")]
 
                 // spawn the object by transform.
                 // and get the object which we just spawned.
-                spawnTrans = (Transform)JCS_Utility.SpawnGameObject(spawnTrans, this.transform.position);
+                spawnTrans = (Transform)JCS_Util.SpawnGameObject(spawnTrans, this.transform.position);
 
                 // apply random position
                 spawnTrans.transform.position = RandTransform(spawnTrans.position);

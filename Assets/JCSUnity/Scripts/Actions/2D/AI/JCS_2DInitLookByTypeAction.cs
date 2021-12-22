@@ -180,7 +180,7 @@ which to target which not to.")]
                 if (!JCS_GameSettings.instance.TRIBE_DAMAGE_EACH_OTHER)
                 {
                     // check same tribe.
-                    if (JCS_Utility.IsSameTribe(liveObj, owenerLiveObject))
+                    if (JCS_Util.IsSameTribe(liveObj, owenerLiveObject))
                         return false;
                 }
             }

@@ -560,7 +560,7 @@ namespace JCSUnity
 
             for (int joystickNum = 0; joystickNum < GAMEPAD_COUNT; ++joystickNum)
             {
-                foreach (JCS_JoystickButton val in JCS_Utility.GetValues<JCS_JoystickButton>())
+                foreach (JCS_JoystickButton val in JCS_Util.GetValues<JCS_JoystickButton>())
                 {
                     if (val == JCS_JoystickButton.NONE)
                         continue;
@@ -593,7 +593,7 @@ namespace JCSUnity
 
             for (int joystickNum = 0; joystickNum < GAMEPAD_COUNT; ++joystickNum)
             {
-                foreach (JCS_JoystickButton val in JCS_Utility.GetValues<JCS_JoystickButton>())
+                foreach (JCS_JoystickButton val in JCS_Util.GetValues<JCS_JoystickButton>())
                 {
                     if (val == JCS_JoystickButton.NONE)
                         continue;

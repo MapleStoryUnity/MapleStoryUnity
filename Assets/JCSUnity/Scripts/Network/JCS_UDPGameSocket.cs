@@ -284,7 +284,7 @@ namespace JCSUnity
         /// <returns></returns>
         public byte[] GetBytesFromInputBuffer(int start, int len)
         {
-            return JCS_Utility.CopyByteArray(mInputBuff, start, len);
+            return JCS_Util.CopyByteArray(mInputBuff, start, len);
         }
 
         /// <summary>
@@ -295,7 +295,7 @@ namespace JCSUnity
         /// <returns></returns>
         public byte[] GetBytesFromOutputBuffer(int start, int len)
         {
-            return JCS_Utility.CopyByteArray(mOutputBuff, start, len);
+            return JCS_Util.CopyByteArray(mOutputBuff, start, len);
         }
 
         /// <summary>

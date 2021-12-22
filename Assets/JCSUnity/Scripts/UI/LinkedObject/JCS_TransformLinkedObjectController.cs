@@ -123,7 +123,7 @@ namespace JCSUnity
 
             for (int index = startIndex; index < maxIndex; ++index)
             {
-                var newNode = JCS_Utility.SpawnGameObject(mClone) as JCS_TransformLinkedObject;
+                var newNode = JCS_Util.SpawnGameObject(mClone) as JCS_TransformLinkedObject;
 
                 // Set to it centers.
                 {
@@ -149,7 +149,7 @@ namespace JCSUnity
         /// <returns> List of removed linked object. </returns>
         public List<JCS_TransformLinkedObject> RemoveLinked(int n = 1, int startIndex = 0)
         {
-            if (!JCS_Utility.WithInArrayRange(startIndex, mManagedList))
+            if (!JCS_Util.WithInArrayRange(startIndex, mManagedList))
             {
                 JCS_Debug.LogReminder("Can't remove linked node with index lower than 0");
                 return null;
@@ -185,7 +185,7 @@ namespace JCSUnity
 
         private void OrganizedLinked()
         {
-            mManagedList = JCS_Utility.RemoveEmptySlotIncludeMissing(mManagedList);
+            mManagedList = JCS_Util.RemoveEmptySlotIncludeMissing(mManagedList);
 
             for (int index = 0; index < mManagedList.Count; ++index)
             {

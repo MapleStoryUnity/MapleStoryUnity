@@ -171,7 +171,7 @@ namespace JCSUnity
             var gs = JCS_GameSettings.instance;
             var prefix = gs.SCREENSHOT_FILENAME;
             var ext = gs.SCREENSHOT_EXTENSION;
-            return JCS_Utility.LastFileIndex(SavePath(), prefix, ext);
+            return JCS_Util.LastFileIndex(SavePath(), prefix, ext);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace JCSUnity
         /// </summary>
         public static void DeleteAllImages()
         {
-            JCS_Utility.DeleteAllFilesFromDir(SavePath());
+            JCS_Util.DeleteAllFilesFromDir(SavePath());
         }
 
         private Vector3 GameDepthRect(Vector3 depth)
@@ -434,7 +434,7 @@ namespace JCSUnity
         /// </returns>
         public bool CheckInScreenSpace(SpriteRenderer checkTrans)
         {
-            Vector2 objectRect = JCS_Utility.GetSpriteRendererRect(checkTrans);
+            Vector2 objectRect = JCS_Util.GetSpriteRendererRect(checkTrans);
 
             Camera cam = main.GetCamera();
             Vector2 objPos = cam.WorldToViewportPoint(checkTrans.transform.position);

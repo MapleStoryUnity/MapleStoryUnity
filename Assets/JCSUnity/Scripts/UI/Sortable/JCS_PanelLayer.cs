@@ -67,7 +67,7 @@ namespace JCSUnity
                 return;
 
             if (Input.GetKeyDown(mMoveLastKey))
-                JCS_Utility.MoveToTheLastChild(this.transform);
+                JCS_Util.MoveToTheLastChild(this.transform);
         }
 #endif
 
@@ -82,7 +82,7 @@ namespace JCSUnity
                 var layer = arr[index];
 
                 // this will make gui ontop of each other.
-                JCS_Utility.MoveToTheLastChild(layer.transform);
+                JCS_Util.MoveToTheLastChild(layer.transform);
 
                 // make sure is sorted already.
                 layer.Sorted = true;

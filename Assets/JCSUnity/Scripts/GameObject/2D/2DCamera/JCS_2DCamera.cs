@@ -119,7 +119,6 @@ namespace JCSUnity
         [SerializeField]
         private float mMin_Y_PositionInScene = float.NegativeInfinity;
 
-
         /* Setter & Getter */
 
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }

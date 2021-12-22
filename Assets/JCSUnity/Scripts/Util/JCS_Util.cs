@@ -1,5 +1,5 @@
-﻿/**
- * $File: JCS_Utility.cs $
+/**
+ * $File: JCS_Util.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -37,7 +37,7 @@ namespace JCSUnity
     /// <summary>
     /// All the utility function put here.
     /// </summary>
-    public static class JCS_Utility
+    public static class JCS_Util
     {
         /// <summary>
         /// Spawn a gmae object.

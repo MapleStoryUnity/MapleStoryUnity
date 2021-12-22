@@ -111,7 +111,7 @@ namespace JCSUnity
                         sr.flipX = false;
                 }
 
-                if (JCS_Utility.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                if (JCS_Util.WithInRange(90, 270, this.transform.localEulerAngles.z))
                     sr.flipX = !sr.flipX;
             }
 
@@ -135,7 +135,7 @@ namespace JCSUnity
                 }
 
                 // TODO(JenChieh): this have not test yet!!!
-                if (JCS_Utility.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                if (JCS_Util.WithInRange(90, 270, this.transform.localEulerAngles.z))
                     sr.flipY = !sr.flipY;
             }
         }

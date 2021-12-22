@@ -62,7 +62,7 @@ namespace JCSUnity
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
 
             // clean up empty slot.
-            mSpriteRenderers = JCS_Utility.RemoveEmptySlot<SpriteRenderer>(mSpriteRenderers);
+            mSpriteRenderers = JCS_Util.RemoveEmptySlot<SpriteRenderer>(mSpriteRenderers);
         }
 
         private void Start()

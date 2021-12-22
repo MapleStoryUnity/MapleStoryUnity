@@ -28,15 +28,15 @@ namespace JCSUnity
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
 
-            List<RectTransform> childs = JCS_Utility.ForceDetachChildren(this.mRectTransform);
+            List<RectTransform> childs = JCS_Util.ForceDetachChildren(this.mRectTransform);
 
-            JCS_Utility.ReattachSelf(this.mRectTransform, (parent) =>
+            JCS_Util.ReattachSelf(this.mRectTransform, (parent) =>
             {
                 mRectTransform.localScale = Vector3.one;
                 mRectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
             });
 
-            JCS_Utility.AttachChildren(this.mRectTransform, childs);
+            JCS_Util.AttachChildren(this.mRectTransform, childs);
 
             mRectTransform.localPosition = Vector3.zero;
         }

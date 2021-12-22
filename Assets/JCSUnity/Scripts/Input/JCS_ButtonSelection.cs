@@ -35,13 +35,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = false;
 
-
         [Header("** Initialize Variables (JCS_ButtonSelection) **")]
 
         [Tooltip("Deactive this button on Awake time?")]
         [SerializeField]
         private bool mDeactiveAtAwake = true;
-
 
         [Header("** Runtime Variables (JCS_ButtonSelection) **")]
 
@@ -57,7 +55,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_UnityObject[] mEffects = null;
 
-
         [Header("- Button (JCS_ButtonSelection)")]
 
         [Tooltip("Button for selection group to handle.")]
@@ -67,7 +64,6 @@ namespace JCSUnity
         [Tooltip("This gameobject itself is a button and use this button component.")]
         [SerializeField]
         private bool mSelfAsButton = true;
-
 
         [Header("- Full Control (JCS_ButtonSelection)")]
 
@@ -86,7 +82,6 @@ namespace JCSUnity
         [Tooltip("What is the selection ontop of this selection? (Press Left)")]
         [SerializeField]
         private JCS_ButtonSelection mLeftSelection = null;
-
 
         /* Setter & Getter */
 
@@ -110,7 +105,6 @@ namespace JCSUnity
         public JCS_ButtonSelection DownSelection { get { return this.mDownSelection; } set { this.mDownSelection = value; } }
         public JCS_ButtonSelection RightSelection { get { return this.mRightSelection; } set { this.mRightSelection = value; } }
         public JCS_ButtonSelection LeftSelection { get { return this.mLeftSelection; } set { this.mLeftSelection = value; } }
-
 
         /* Functions */
 

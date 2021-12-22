@@ -131,7 +131,7 @@ namespace JCSUnity
                 this.transform.GetChild(index).gameObject.SetActive(true);
             }
 
-            JCS_Utility.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(this.transform);
         }
 
         /// <summary>

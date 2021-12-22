@@ -207,7 +207,7 @@ namespace JCSUnity
             {
                 case JCS_GUIType.INPUT_FIELD:
                     {
-                        JCS_InputFieldData ifd = JCS_Utility.ListPopBack(mIF_Undo);
+                        JCS_InputFieldData ifd = JCS_Util.ListPopBack(mIF_Undo);
 
                         if (ifd == null)
                             break;
@@ -222,7 +222,7 @@ namespace JCSUnity
 
                 case JCS_GUIType.DROP_DOWN:
                     {
-                        JCS_DropdownData ddd = JCS_Utility.ListPopBack(mDD_Undo);
+                        JCS_DropdownData ddd = JCS_Util.ListPopBack(mDD_Undo);
 
                         if (ddd == null)
                             break;
@@ -237,7 +237,7 @@ namespace JCSUnity
 
                 case JCS_GUIType.SLIDER:
                     {
-                        JCS_SliderData sd = JCS_Utility.ListPopBack(mSli_Undo);
+                        JCS_SliderData sd = JCS_Util.ListPopBack(mSli_Undo);
 
                         if (sd == null)
                             break;
@@ -252,7 +252,7 @@ namespace JCSUnity
 
                 case JCS_GUIType.SCROLL_BAR:
                     {
-                        JCS_ScrollbarData sbd = JCS_Utility.ListPopBack(mSB_Undo);
+                        JCS_ScrollbarData sbd = JCS_Util.ListPopBack(mSB_Undo);
 
                         if (sbd == null)
                             break;
@@ -267,7 +267,7 @@ namespace JCSUnity
 
                 case JCS_GUIType.TOGGLE:
                     {
-                        JCS_ToggleData td = JCS_Utility.ListPopBack(mTog_Undo);
+                        JCS_ToggleData td = JCS_Util.ListPopBack(mTog_Undo);
 
                         if (td == null)
                             break;
@@ -308,7 +308,7 @@ namespace JCSUnity
             {
                 case JCS_GUIType.INPUT_FIELD:
                     {
-                        JCS_InputFieldData ifd = JCS_Utility.ListPopBack(mIF_Redo);
+                        JCS_InputFieldData ifd = JCS_Util.ListPopBack(mIF_Redo);
 
                         if (ifd == null)
                             break;
@@ -323,7 +323,7 @@ namespace JCSUnity
 
                 case JCS_GUIType.DROP_DOWN:
                     {
-                        JCS_DropdownData ddd = JCS_Utility.ListPopBack(mDD_Redo);
+                        JCS_DropdownData ddd = JCS_Util.ListPopBack(mDD_Redo);
 
                         if (ddd == null)
                             break;
@@ -338,7 +338,7 @@ namespace JCSUnity
 
                 case JCS_GUIType.SLIDER:
                     {
-                        JCS_SliderData sd = JCS_Utility.ListPopBack(mSli_Redo);
+                        JCS_SliderData sd = JCS_Util.ListPopBack(mSli_Redo);
 
                         if (sd == null)
                             break;
@@ -353,7 +353,7 @@ namespace JCSUnity
 
                 case JCS_GUIType.SCROLL_BAR:
                     {
-                        JCS_ScrollbarData sbd = JCS_Utility.ListPopBack(mSB_Redo);
+                        JCS_ScrollbarData sbd = JCS_Util.ListPopBack(mSB_Redo);
 
                         if (sbd == null)
                             break;
@@ -368,7 +368,7 @@ namespace JCSUnity
 
                 case JCS_GUIType.TOGGLE:
                     {
-                        JCS_ToggleData td = JCS_Utility.ListPopBack(mTog_Redo);
+                        JCS_ToggleData td = JCS_Util.ListPopBack(mTog_Redo);
 
                         if (td == null)
                             break;

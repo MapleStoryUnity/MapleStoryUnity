@@ -133,13 +133,13 @@ namespace JCSUnity
             {
                 // spawn a new game object, 
                 // and get the component
-                JCS_LogText logText = (JCS_LogText)JCS_Utility.SpawnGameObject(mLogText);
+                JCS_LogText logText = (JCS_LogText)JCS_Util.SpawnGameObject(mLogText);
 
                 // add to array
                 mLogTexts.set(count, logText);
 
                 // set parent
-                JCS_Utility.SetParentWithoutLosingInfo(logText.transform, this.transform);
+                JCS_Util.SetParentWithoutLosingInfo(logText.transform, this.transform);
 
                 // NOTE(JenChieh): this might change in
                 // the future.

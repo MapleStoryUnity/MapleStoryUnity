@@ -977,7 +977,7 @@ because button selection is not attach to all selections in the list...");
                         if (eventTrigger == null)
                             eventTrigger = btn.gameObject.AddComponent<EventTrigger>();
 
-                        JCS_Utility.AddEventTriggerEvent(
+                        JCS_Util.AddEventTriggerEvent(
                             eventTrigger,
                             EventTriggerType.PointerEnter,
                             mButtonSelectionGroup.SelectSelection,

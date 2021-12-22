@@ -51,7 +51,7 @@ namespace JCSUnity
             if (JCS_UISettings.instance.RESIZE_UI)
             {
                 // resizable UI in order to resize the UI correctly
-                mResizeUI = JCS_Utility.SpawnGameObject(RESIZE_UI_PATH).GetComponent<JCS_ResizeUI>();
+                mResizeUI = JCS_Util.SpawnGameObject(RESIZE_UI_PATH).GetComponent<JCS_ResizeUI>();
                 mResizeUI.transform.SetParent(this.transform);
             }
 

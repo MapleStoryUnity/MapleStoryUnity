@@ -113,7 +113,7 @@ namespace JCSUnity
             set
             {
                 this.mEasing = value;
-                this.mEasingFunc = JCS_Utility.GetEasing(this.mEasing);
+                this.mEasingFunc = JCS_Util.GetEasing(this.mEasing);
             }
         }
         public UnityEvent UnityCallback { get { return this.mUnityCallback; } set { this.mUnityCallback = value; } }

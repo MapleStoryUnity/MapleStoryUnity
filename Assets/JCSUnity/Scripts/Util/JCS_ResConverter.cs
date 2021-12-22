@@ -45,7 +45,7 @@ namespace JCSUnity
         /// <returns> String data that had been converted. </returns>
         public static string AsText(byte[] data, JCS_CharsetType charset)
         {
-            return JCS_Utility.BytesToString(data, charset);
+            return JCS_Util.BytesToString(data, charset);
         }
     }
 }

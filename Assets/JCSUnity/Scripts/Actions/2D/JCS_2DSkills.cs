@@ -174,7 +174,7 @@ namespace JCSUnity
                 return;
             }
 
-            GameObject obj = JCS_Utility.SpawnAnimateObject(mMainAnim1, mOrderLayer);
+            GameObject obj = JCS_Util.SpawnAnimateObject(mMainAnim1, mOrderLayer);
 
             if (mSamePosition)
                 obj.transform.position = this.transform.position + mAnimPosOffset1;
@@ -208,7 +208,7 @@ namespace JCSUnity
                 return;
             }
 
-            GameObject obj = JCS_Utility.SpawnAnimateObject(mMainAnim2, mOrderLayer + 1);
+            GameObject obj = JCS_Util.SpawnAnimateObject(mMainAnim2, mOrderLayer + 1);
 
             if (mSamePosition)
                 obj.transform.position = this.transform.position + mAnimPosOffset2;

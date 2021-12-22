@@ -70,7 +70,7 @@ namespace JCSUnity
         /// <param name="val">Value to add.</param>
         public void DeltaTargetPosX(float val)
         {
-            mTargetPos = JCS_Utility.IncVecX(mTargetPos, val);
+            mTargetPos = JCS_Util.IncVecX(mTargetPos, val);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace JCSUnity
         /// <param name="val">Value to add.</param>
         public void DeltaTargetPosY(float val)
         {
-            mTargetPos = JCS_Utility.IncVecY(mTargetPos, val);
+            mTargetPos = JCS_Util.IncVecY(mTargetPos, val);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace JCSUnity
         /// <param name="val">Value to add.</param>
         public void DeltaTargetPosZ(float val)
         {
-            mTargetPos = JCS_Utility.IncVecZ(mTargetPos, val);
+            mTargetPos = JCS_Util.IncVecZ(mTargetPos, val);
         }
     }
 }

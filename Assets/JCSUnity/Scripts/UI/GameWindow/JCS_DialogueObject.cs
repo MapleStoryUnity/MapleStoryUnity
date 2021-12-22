@@ -231,7 +231,7 @@ namespace JCSUnity
         /// </summary>
         public void MoveToTheLastChild()
         {
-            JCS_Utility.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(this.transform);
 
             // Once it move to the last child, meaning the window have been focus.
             SwapToTheLastOpenWindowList();

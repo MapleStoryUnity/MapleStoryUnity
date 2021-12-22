@@ -54,7 +54,7 @@ namespace JCSUnity
         {
             SetSprite(mInactiveSprite);
 
-            if (!JCS_Utility.WithInArrayRange(page, mIndicators))
+            if (!JCS_Util.WithInArrayRange(page, mIndicators))
             {
                 JCS_Debug.LogWarning("Page indicators out of range exception");
                 return;
@@ -69,7 +69,7 @@ namespace JCSUnity
         /// <param name="sprite"> The sprite to apply. </param>
         private void SetSprite(Sprite sprite)
         {
-            this.mIndicators = JCS_Utility.RemoveEmptySlotIncludeMissing(this.mIndicators);
+            this.mIndicators = JCS_Util.RemoveEmptySlotIncludeMissing(this.mIndicators);
 
             foreach (Image ind in mIndicators)
             {

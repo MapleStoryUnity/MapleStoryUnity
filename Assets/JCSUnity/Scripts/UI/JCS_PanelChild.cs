@@ -98,7 +98,7 @@ namespace JCSUnity
                     // 
                     // 這個有點暴力解法... 不知道為什麼Unity沒有辦法
                     // 在初始化階段一次清乾淨.
-                    childs = JCS_Utility.ForceDetachChildren(this.mRectTransform);
+                    childs = JCS_Util.ForceDetachChildren(this.mRectTransform);
                 }
 
                 Vector3 newScale = mRectTransform.localScale;
@@ -120,7 +120,7 @@ namespace JCSUnity
                 if (mApplyToChildren)
                 {
                     // NOTE: Reattach all the previous child.
-                    JCS_Utility.AttachChildren(this.mRectTransform, childs);
+                    JCS_Util.AttachChildren(this.mRectTransform, childs);
                 }
             }
 
@@ -176,7 +176,7 @@ namespace JCSUnity
             for (int count = 0; count < mRectTransform.childCount; ++count)
             {
                 var trans = mRectTransform.GetChild(count);
-                JCS_Utility.MoveToTheLastChild(trans);
+                JCS_Util.MoveToTheLastChild(trans);
             }
         }
     }

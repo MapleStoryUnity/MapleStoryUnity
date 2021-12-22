@@ -168,7 +168,7 @@ namespace JCSUnity
         /// </summary>
         public void RefreshLangTexts()
         {
-            this.mLangTexts = JCS_Utility.RemoveEmptySlotIncludeMissing(this.mLangTexts);
+            this.mLangTexts = JCS_Util.RemoveEmptySlotIncludeMissing(this.mLangTexts);
             foreach (JCS_LangText txt in mLangTexts)
                 txt.Refresh();
         }

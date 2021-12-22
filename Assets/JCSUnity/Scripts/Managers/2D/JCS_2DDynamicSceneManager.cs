@@ -33,7 +33,7 @@ namespace JCSUnity
 
             // get all the scene layer in the scene.
             // so it could be manage
-            mJCSOrderLayer = JCS_Utility.FindObjectsOfTypeAllInHierarchy<JCS_OrderLayer>();
+            mJCSOrderLayer = JCS_Util.FindObjectsOfTypeAllInHierarchy<JCS_OrderLayer>();
         }
 
         /// <summary>

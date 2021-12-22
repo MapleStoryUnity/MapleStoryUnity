@@ -125,7 +125,7 @@ namespace JCSUnity
         public void ShowResizePanel()
         {
             if (mImage == null)
-                mImage = JCS_Utility.ForceGetComponent<Image>(this);
+                mImage = JCS_Util.ForceGetComponent<Image>(this);
             else
             {
                 if (mShowResizePanel && mImage.enabled)

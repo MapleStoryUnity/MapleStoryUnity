@@ -29,7 +29,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mCanShoot = true;
 
-
         [Header("** Runtime Variables (JCS_ShootAction) **")]
 
         [Tooltip("Bullet to use.")]
@@ -55,7 +54,6 @@ namespace JCSUnity
         [SerializeField] [Range(1, 50)]
         private int mShootCount = 1;
 
-
         [Header("** Key Variables (JCS_ShootAction) **")]
 
         [Tooltip("Shoot keycode.")]
@@ -76,7 +74,6 @@ namespace JCSUnity
         // Check we able to shoot or not
         private CheckAbleToShoot mCheckAbleToShoot = DefualtCheckFunction;
 
-
         [Header("** Action Settings (JCS_ShootAction) **")]
 
         [Tooltip("Delay time before shooting a bullet.")]
@@ -93,7 +90,6 @@ namespace JCSUnity
 
         private float mActionTimer = 0.0f;
 
-
         [Header("** Auto Shoot Settings (JCS_ShootAction) **")]
 
         [Tooltip("Shoot the bullet depend on the delay time.")]
@@ -109,7 +105,6 @@ namespace JCSUnity
         private float mDelayTime = 1.0f;
 
         private float mDelayTimer = 0.0f;
-
 
         [Header("** Deviation Effect (JCS_ShootAction) **")]
 
@@ -137,7 +132,6 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 359.0f)]
         private float mDeviationRangeZ = 1.0f;
 
-
         [Header("** Random Spawn Effect (JCS_ShootAction) **")]
 
         [Tooltip("Spawn bullet at random position on x-axis.")]
@@ -164,20 +158,17 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 10.0f)]
         private float mRandPosRangeZ = 1.0f;
 
-
         [Header("** Audio Settings (plz use \"JCS_SoundPoolAction\") **")]
 
         [Tooltip("Sound when shoot action occurs.")]
         [SerializeField]
         private JCS_SoundPoolAction mRandomMultiSoundAction = null;
 
-
         [Header("** Ability Format (JCS_ShootAction) **")]
 
         [Tooltip("How much damage apply to other objects.")]
         [SerializeField]
         private JCS_AbilityFormat mAbilityFormat = null;
-
 
         [Header("** Tracking and Detect Area **")]
 
@@ -199,13 +190,11 @@ namespace JCSUnity
         [SerializeField]
         private TrackType mTrackType = TrackType.CLOSEST;
 
-
         [Header("** Optional Variables (JCS_ShootAction) **")]
 
         [Tooltip("Player uses the shoot action.")]
         [SerializeField]
         private JCS_2DSideScrollerPlayer mPlayer = null;
-
 
         /* Setter & Getter */
 
@@ -240,7 +229,6 @@ namespace JCSUnity
         /// <param name="func"> functin to check able to do the shoot action. </param>
         public void SetCheckAbleToShootFunction(CheckAbleToShoot func) { this.mCheckAbleToShoot = func; }
         public CheckAbleToShoot GetCheckAbleToShootFunction() { return this.mCheckAbleToShoot; }
-
 
         /* Functions */
 
@@ -328,7 +316,7 @@ namespace JCSUnity
             Vector3 spawnPos = pos + mSpanwPointOffset;
             spawnPos = RandTransform(spawnPos);
 
-            JCS_Bullet bullet = (JCS_Bullet)JCS_Utility.SpawnGameObject(mBullet, spawnPos, mSpawnPoint.rotation);
+            JCS_Bullet bullet = (JCS_Bullet)JCS_Util.SpawnGameObject(mBullet, spawnPos, mSpawnPoint.rotation);
 
             // no object spawns
             if (bullet == null)
@@ -434,7 +422,7 @@ namespace JCSUnity
             Vector3 spawnPos = pos + mSpanwPointOffset;
             spawnPos = RandTransform(spawnPos);
 
-            JCS_Bullet bullet = (JCS_Bullet)JCS_Utility.SpawnGameObject(mBullet, spawnPos, mSpawnPoint.rotation);
+            JCS_Bullet bullet = (JCS_Bullet)JCS_Util.SpawnGameObject(mBullet, spawnPos, mSpawnPoint.rotation);
 
             // no object spawns
             if (bullet == null)

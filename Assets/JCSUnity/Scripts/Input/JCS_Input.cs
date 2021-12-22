@@ -121,7 +121,6 @@ namespace JCSUnity
         private static void JoystickPluggedDefaultCallback() { JCS_Debug.Log("At least one joystick connected!!!"); }
         private static void JoystickUnPluggedDefaultCallback() { JCS_Debug.Log("No joystick connected..."); }
 
-
         /// <summary>
         /// Main loop for input.
         /// </summary>
@@ -686,7 +685,7 @@ namespace JCSUnity
             }
 
             // loop through the key code list
-            foreach (KeyCode val in JCS_Utility.GetValues<KeyCode>())
+            foreach (KeyCode val in JCS_Util.GetValues<KeyCode>())
             {
                 // if the key is pressed, return it.
                 if (GetKeyByAction(type, val))
@@ -1049,7 +1048,7 @@ namespace JCSUnity
         /// </returns>
         public static bool IsJoystickConnected()
         {
-            return (!JCS_Utility.IsArrayEmpty(Input.GetJoystickNames()));
+            return (!JCS_Util.IsArrayEmpty(Input.GetJoystickNames()));
         }
 
         /// <summary>
@@ -1064,9 +1063,7 @@ namespace JCSUnity
         {
             string[] joystickNames = Input.GetJoystickNames();
 
-            for (int index = 0;
-                index < joystickNames.Length;
-                ++index)
+            for (int index = 0; index < joystickNames.Length; ++index)
             {
                 string joystickName = joystickNames[index];
                 if (name == joystickName)
@@ -1099,9 +1096,7 @@ namespace JCSUnity
             KeyCode[] keys, 
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (GetKey(keys[index], ignorePause))
                     return true;
@@ -1132,9 +1127,7 @@ namespace JCSUnity
             KeyCode[] keys, 
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (GetKeyDown(keys[index], ignorePause))
                     return true;
@@ -1166,9 +1159,7 @@ namespace JCSUnity
             KeyCode[] keys, 
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (GetKeyUp(keys[index], ignorePause))
                     return true;
@@ -1200,9 +1191,7 @@ namespace JCSUnity
             KeyCode[] keys, 
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (!GetKey(keys[index], ignorePause))
                     return false;
@@ -1233,9 +1222,7 @@ namespace JCSUnity
             KeyCode[] keys,
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (!GetKeyDown(keys[index], ignorePause))
                     return false;
@@ -1266,9 +1253,7 @@ namespace JCSUnity
             KeyCode[] keys,
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (!GetKeyUp(keys[index], ignorePause))
                     return false;
@@ -1316,9 +1301,7 @@ namespace JCSUnity
             JCS_JoystickButton[] keys,
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (GetJoystickButton(joystickIndex, keys[index], ignorePause))
                     return true;
@@ -1365,9 +1348,7 @@ namespace JCSUnity
             JCS_JoystickButton[] keys,
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (GetJoystickKeyDown(joystickIndex, keys[index], ignorePause))
                     return true;
@@ -1415,9 +1396,7 @@ namespace JCSUnity
             JCS_JoystickButton[] keys,
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (GetJoystickKeyUp(joystickIndex, keys[index], ignorePause))
                     return true;
@@ -1465,9 +1444,7 @@ namespace JCSUnity
             JCS_JoystickButton[] keys,
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (!GetJoystickButton(joystickIndex, keys[index], ignorePause))
                     return false;
@@ -1514,9 +1491,7 @@ namespace JCSUnity
             JCS_JoystickButton[] keys,
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (!GetJoystickKeyDown(joystickIndex, keys[index], ignorePause))
                     return false;
@@ -1563,9 +1538,7 @@ namespace JCSUnity
             JCS_JoystickButton[] keys,
             bool ignorePause = false)
         {
-            for (int index = 0;
-                index < keys.Length;
-                ++index)
+            for (int index = 0; index < keys.Length; ++index)
             {
                 if (!GetJoystickKeyUp(joystickIndex, keys[index], ignorePause))
                     return false;

@@ -376,9 +376,9 @@ namespace JCSUnity
             JCS_TweenType typeZ,
             EmptyFunction callback = null)
         {
-            TweenDelegate easingX = JCS_Utility.GetEasing(typeX);
-            TweenDelegate easingY = JCS_Utility.GetEasing(typeY);
-            TweenDelegate easingZ = JCS_Utility.GetEasing(typeZ);
+            TweenDelegate easingX = JCS_Util.GetEasing(typeX);
+            TweenDelegate easingY = JCS_Util.GetEasing(typeY);
+            TweenDelegate easingZ = JCS_Util.GetEasing(typeZ);
 
             StartTween(from, to, resetElapsedTime, durationX, durationY, durationZ, easingX, easingY, easingZ, callback);
         }

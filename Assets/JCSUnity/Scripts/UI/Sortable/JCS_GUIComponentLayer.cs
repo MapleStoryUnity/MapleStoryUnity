@@ -59,7 +59,7 @@ namespace JCSUnity
             for (int index = 0; index < arr.Length; ++index)
             {
                 // this will make gui ontop of each other.
-                JCS_Utility.MoveToTheLastChild(arr[index].transform);
+                JCS_Util.MoveToTheLastChild(arr[index].transform);
 
                 // make sure is sorted already.
                 arr[index].Sorted = true;

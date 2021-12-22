@@ -350,7 +350,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
                 index < mNumOfParticle;
                 ++index)
             {
-                JCS_Particle trans = (JCS_Particle)JCS_Utility.SpawnGameObject(mParticle);
+                JCS_Particle trans = (JCS_Particle)JCS_Util.SpawnGameObject(mParticle);
                 mParticles.push(trans);
 
                 // disable the object

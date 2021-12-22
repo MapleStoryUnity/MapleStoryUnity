@@ -348,7 +348,7 @@ just stop there.")]
             bool waveEffect,
             bool destroyFade)
         {
-            JCS_Item newItem = (JCS_Item)JCS_Utility.SpawnGameObject(
+            JCS_Item newItem = (JCS_Item)JCS_Util.SpawnGameObject(
                item,
                this.transform.position,
                this.transform.rotation);
@@ -483,7 +483,7 @@ just stop there.")]
 
                 if (index == 0)
                 {
-                    if (JCS_Utility.WithInRange(0, mItemSet[0].dropRate, dropIndex))
+                    if (JCS_Util.WithInRange(0, mItemSet[0].dropRate, dropIndex))
                     {
                         item = mItemSet[0].item;
                         break;
@@ -498,7 +498,7 @@ just stop there.")]
                 // Loop 2: 20(30-10) ~ 30
                 // Loop 3: 30(60-30) ~ 60
                 // Loop 4: 40(100-60) ~ 100     每個都減掉上一個的Drop Rate!
-                if (JCS_Utility.WithInRange(accumMinDropRate, accumMaxDropRate, dropIndex))
+                if (JCS_Util.WithInRange(accumMinDropRate, accumMaxDropRate, dropIndex))
                 {
                     item = mItemSet[index].item;
                     break;

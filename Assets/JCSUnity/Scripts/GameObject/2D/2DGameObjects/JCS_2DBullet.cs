@@ -181,7 +181,7 @@ namespace JCSUnity
                     // start the effect
                     mGoStraightAction.MoveSpeed += (0.1f - mGoStraightAction.MoveSpeed) / mTimeToAbsorb * Time.deltaTime;
 
-                    if (JCS_Utility.WithInRange(-mAcceptTimeRange, mAcceptTimeRange, mGoStraightAction.MoveSpeed))
+                    if (JCS_Util.WithInRange(-mAcceptTimeRange, mAcceptTimeRange, mGoStraightAction.MoveSpeed))
                     {
                         //mGoStraightAction.MoveSpeed = mRecordMoveSpeed;
 
@@ -221,7 +221,7 @@ namespace JCSUnity
                 mRandDegreeZ);
 
             // apply it.
-            transform.eulerAngles = JCS_Utility.ApplyRandVector3(transform.eulerAngles, randVal, checkers);
+            transform.eulerAngles = JCS_Util.ApplyRandVector3(transform.eulerAngles, randVal, checkers);
 
             // reset timer
             mDegreeTimer = 0;

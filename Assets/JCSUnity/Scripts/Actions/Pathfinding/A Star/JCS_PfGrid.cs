@@ -173,7 +173,7 @@ namespace JCSUnity
                 transform.position -
                 Vector3.right *
                 mGridiWorldSize.x / 2 -
-                JCS_Utility.VectorDirection(mDirection) *
+                JCS_Util.VectorDirection(mDirection) *
                 mGridiWorldSize.y / 2;
 
             for (int x = 0;
@@ -188,7 +188,7 @@ namespace JCSUnity
                         worldBottomLeft +
                         Vector3.right *
                         (x * mNodeDiameter + mNodeRadius) +
-                        JCS_Utility.VectorDirection(mDirection) *
+                        JCS_Util.VectorDirection(mDirection) *
                         (y * mNodeDiameter + mNodeRadius);
 
                     bool walkable = !(Physics.CheckSphere(worldPoint, mNodeRadius, mUnwalkableMask));

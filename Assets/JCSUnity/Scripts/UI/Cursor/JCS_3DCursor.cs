@@ -81,7 +81,7 @@ namespace JCSUnity
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
             this.mAnimator = this.GetComponent<Animator>();
 
-            Vector2 cursorRect = JCS_Utility.GetSpriteRendererRect(mSpriteRenderer);
+            Vector2 cursorRect = JCS_Util.GetSpriteRendererRect(mSpriteRenderer);
             mOffset.x = cursorRect.x / 2.0f;
             mOffset.y = cursorRect.y / 2.0f;
 

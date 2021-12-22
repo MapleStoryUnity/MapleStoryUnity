@@ -156,7 +156,7 @@ namespace JCSUnity
             if (obj == null)
                 return null;
 
-            obj = (JCS_DialogueObject)JCS_Utility.SpawnGameObject(obj);
+            obj = (JCS_DialogueObject)JCS_Util.SpawnGameObject(obj);
             obj.ShowDialogue();
             obj.OpenKey = KeyCode.None;
 
@@ -178,7 +178,7 @@ namespace JCSUnity
                 if (list[index] == null)
                     continue;
 
-                list[index] = (JCS_DialogueObject)JCS_Utility.SpawnGameObject(list[index]);
+                list[index] = (JCS_DialogueObject)JCS_Util.SpawnGameObject(list[index]);
                 list[index].HideDialogue();
             }
 

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * $File: JCS_XMLData.cs $
  * $Date: $
  * $Revision: $

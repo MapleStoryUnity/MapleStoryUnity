@@ -153,7 +153,7 @@ namespace JCSUnity
             if (mPanelHolder == null)
             {
                 // spawn a default one!
-                this.mPanelHolder = JCS_Utility.SpawnGameObject(
+                this.mPanelHolder = JCS_Util.SpawnGameObject(
                     mPanelHolderPath,
                     transform.position,
                     transform.rotation).GetComponent<JCS_SlideScreenPanelHolder>();
@@ -515,7 +515,7 @@ namespace JCSUnity
                 JCS_Debug.LogError("There is not JCS_2DCamera attach to, spawn a default one!");
 
                 // Spawn a Default one!
-                this.mJCS_2DCamera = JCS_Utility.SpawnGameObject(
+                this.mJCS_2DCamera = JCS_Util.SpawnGameObject(
                     JCS_2DCamera.JCS_2DCAMERA_PATH,
                     transform.position,
                     transform.rotation).GetComponent<JCS_2DCamera>();

@@ -25,7 +25,6 @@ namespace JCSUnity
         [SerializeField]
         private float mHeight = 0.0f;
 
-
         [Header("** Runtime Variables (JCS_2DMoveTile) **")]
         
         [Tooltip("How fast this tile moves?")]
@@ -41,7 +40,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsYAxis = false;
 
-
         /* Setter & Getter */
 
         /* Functions */
@@ -50,7 +48,7 @@ namespace JCSUnity
         {
             SpriteRenderer sp = this.GetComponent<SpriteRenderer>();
 
-            Vector2 spriteRect = JCS_Utility.GetSpriteRendererRectWithNoScale(sp);
+            Vector2 spriteRect = JCS_Util.GetSpriteRendererRectWithNoScale(sp);
 
             mWidth = spriteRect.x;
             mHeight = spriteRect.y;

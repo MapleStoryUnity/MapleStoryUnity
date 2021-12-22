@@ -64,10 +64,10 @@ namespace JCSUnity
             if (ShouldSpawnResizablePanels())
             {
                 // Spawn the four aspect screen panels.
-                this.mTopASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                this.mBottomASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                this.mLeftASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                this.mRightASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mTopASP = JCS_Util.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mBottomASP = JCS_Util.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mLeftASP = JCS_Util.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mRightASP = JCS_Util.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
 
                 // Set the ASP direction.
                 this.mTopASP.PlaceDirection = JCS_2D4Direction.TOP;

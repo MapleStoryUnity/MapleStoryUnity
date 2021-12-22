@@ -85,7 +85,7 @@ namespace JCSUnity
                 // get a random animate from pool
                 RuntimeAnimatorController anim = mAnimPoolSupAnim.GetRandomAnim();
 
-                GameObject obj = JCS_Utility.SpawnAnimateObjectDeathEvent(anim, mOrderLayer);
+                GameObject obj = JCS_Util.SpawnAnimateObjectDeathEvent(anim, mOrderLayer);
 
 #if (UNITY_EDITOR)
                 obj.name = "JCS_2DFullScreenAtkAction";

@@ -138,7 +138,7 @@ namespace JCSUnity
         {
             // pop the fade screen.
             string path = JCS_UISettings.FADE_SCREEN_PATH;
-            this.mFadeScreen = JCS_Utility.SpawnGameObject(path).GetComponent<JCS_FadeScreen>();
+            this.mFadeScreen = JCS_Util.SpawnGameObject(path).GetComponent<JCS_FadeScreen>();
         }
 
         private void Update()
@@ -192,7 +192,7 @@ namespace JCSUnity
         public void AddCanvas(JCS_Canvas canvas)
         {
             this.mCanvases.Add(canvas);
-            mCanvases = JCS_Utility.RemoveEmptySlotIncludeMissing(mCanvases);
+            mCanvases = JCS_Util.RemoveEmptySlotIncludeMissing(mCanvases);
             mCanvases = SortCanvases_Insertion();
         }
         private List<JCS_Canvas> SortCanvases_Insertion()

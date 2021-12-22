@@ -161,7 +161,7 @@ namespace JCSUnity
                 this.mEaseTypeR = value;
 
                 // update easing function pointer / function formula.
-                this.mEasingRed = JCS_Utility.GetEasing(mEaseTypeR);
+                this.mEasingRed = JCS_Util.GetEasing(mEaseTypeR);
             }
         }
         public JCS_TweenType EaseTypeG
@@ -172,7 +172,7 @@ namespace JCSUnity
                 this.mEaseTypeG = value;
 
                 // update easing function pointer / function formula.
-                this.mEasingGreen = JCS_Utility.GetEasing(mEaseTypeG);
+                this.mEasingGreen = JCS_Util.GetEasing(mEaseTypeG);
             }
         }
         public JCS_TweenType EaseTypeB
@@ -183,7 +183,7 @@ namespace JCSUnity
                 this.mEaseTypeB = value;
 
                 // update easing function pointer / function formula.
-                this.mEasingBlue = JCS_Utility.GetEasing(mEaseTypeB);
+                this.mEasingBlue = JCS_Util.GetEasing(mEaseTypeB);
             }
         }
         public JCS_TweenType EaseTypeA
@@ -194,7 +194,7 @@ namespace JCSUnity
                 this.mEaseTypeA = value;
 
                 // update easing function pointer / function formula.
-                this.mEasingAlpha = JCS_Utility.GetEasing(mEaseTypeA);
+                this.mEasingAlpha = JCS_Util.GetEasing(mEaseTypeA);
             }
         }
         public float DurationRed { get { return this.mDurationRed; } set { this.mDurationRed = value; } }
@@ -217,10 +217,10 @@ namespace JCSUnity
             base.Awake();
 
             // get all function pointer/formula.
-            this.mEasingRed = JCS_Utility.GetEasing(mEaseTypeR);
-            this.mEasingGreen = JCS_Utility.GetEasing(mEaseTypeG);
-            this.mEasingBlue = JCS_Utility.GetEasing(mEaseTypeB);
-            this.mEasingAlpha = JCS_Utility.GetEasing(mEaseTypeA);
+            this.mEasingRed = JCS_Util.GetEasing(mEaseTypeR);
+            this.mEasingGreen = JCS_Util.GetEasing(mEaseTypeG);
+            this.mEasingBlue = JCS_Util.GetEasing(mEaseTypeB);
+            this.mEasingAlpha = JCS_Util.GetEasing(mEaseTypeA);
         }
 
         private void Update()

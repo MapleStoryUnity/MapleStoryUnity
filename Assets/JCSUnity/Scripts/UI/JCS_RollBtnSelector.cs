@@ -132,7 +132,7 @@ namespace JCSUnity
             mFocusBtn.SetInteractable(true);
 
             // show in front.
-            JCS_Utility.MoveToTheLastChild(mFocusBtn.transform);
+            JCS_Util.MoveToTheLastChild(mFocusBtn.transform);
 
             // Active anim, so can set the focused button to center.
             FindScrollIndex();
@@ -182,7 +182,7 @@ namespace JCSUnity
                 {
                     // the first one (center)
                     mFocusBtn = currentBtn;
-                    JCS_Utility.MoveToTheLastChild(mFocusBtn.transform);
+                    JCS_Util.MoveToTheLastChild(mFocusBtn.transform);
                     currentBtn.SetInteractable(true);
                     mLastScrollIndex = currentBtn.ScrollIndex;
                 }

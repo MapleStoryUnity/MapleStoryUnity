@@ -154,7 +154,7 @@ namespace JCSUnity
 
 #if (UNITY_STANDALONE || UNITY_EDITOR)
             // is is still on top of the image, return it
-            if (JCS_Utility.MouseOverGUI(mRectTransform, mRootPanel))
+            if (JCS_Util.MouseOverGUI(mRectTransform, mRootPanel))
                 return;
 #endif
 

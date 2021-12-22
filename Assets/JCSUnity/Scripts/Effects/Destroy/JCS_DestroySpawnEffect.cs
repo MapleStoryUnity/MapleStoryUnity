@@ -171,7 +171,7 @@ namespace JCSUnity
                 index < mSpawnCount;
                 ++index)
             {
-                Transform newTrans = (Transform)JCS_Utility.SpawnGameObject(mTransformPool.GetRandomObject());
+                Transform newTrans = (Transform)JCS_Util.SpawnGameObject(mTransformPool.GetRandomObject());
 
                 if (mSamePosition)
                     newTrans.position = this.transform.position;
