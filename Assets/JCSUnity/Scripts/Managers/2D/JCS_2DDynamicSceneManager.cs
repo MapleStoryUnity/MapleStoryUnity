@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Manage all the 2d parallax layer.
     /// </summary>
-    public class JCS_2DDynamicSceneManager : JCS_Managers<JCS_2DDynamicSceneManager>
+    public class JCS_2DDynamicSceneManager : JCS_Manager<JCS_2DDynamicSceneManager>
     {
         /* Variables */
 

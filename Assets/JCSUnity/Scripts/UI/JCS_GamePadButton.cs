@@ -11,8 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button will listen to the gamepad. Note it compatible with
-    /// PC/desktop too.
+    /// Button will listen to the gamepad. Note it compatible with PC/desktop as well.
     /// </summary>
     public abstract class JCS_GamePadButton : JCS_Button
     {

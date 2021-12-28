@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Use this to receiving the single from mobile touch input/bufffer.
     /// </summary>
-    public class JCS_MobileMouseEvent : MonoBehaviour
+    public class JCS_MobileMouseEvent : JCS_Instance<JCS_MobileMouseEvent>
     {
         /* Variables */
 
@@ -46,7 +46,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            JCS_InputManager.instance.SetGlobalMobileMouseEvent(this);
+            instance = this;
         }
 
         private void Start()
@@ -94,7 +94,7 @@ namespace JCSUnity
         /// </summary>
         private void Handle_EnterExit()
         {
-            JCS_InputManager im = JCS_InputManager.instance;
+            var im = JCS_InputManager.instance;
 
             // A ray is an infinite line starting at an origin and going into a direction
             // For this we will use our mouse position
@@ -141,9 +141,8 @@ namespace JCSUnity
         /// </summary>
         private void Handle_UpOver()
         {
-            JCS_InputManager im = JCS_InputManager.instance;
-
-            JCS_SlideInput slideInput = im.GetGlobalSlideInput();
+            var im = JCS_InputManager.instance;
+            var slideInput = JCS_SlideInput.instance;
 
             if (slideInput == null)
                 return;
@@ -175,9 +174,8 @@ namespace JCSUnity
         /// </summary>
         private void Handle_DownDrag()
         {
-            JCS_InputManager im = JCS_InputManager.instance;
-
-            JCS_SlideInput slideInput = im.GetGlobalSlideInput();
+            var im = JCS_InputManager.instance;
+            var slideInput = JCS_SlideInput.instance;
 
             if (!slideInput.Touched)
             {

@@ -324,7 +324,7 @@ namespace JCSUnity
         public static Vector3 CanvasMousePosition()
         {
             Vector2 pos;
-            Canvas myCanvas = JCS_Canvas.GuessCanvas().GetCanvas();
+            Canvas myCanvas = JCS_Canvas.GuessCanvas().canvas;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 myCanvas.transform as RectTransform, 

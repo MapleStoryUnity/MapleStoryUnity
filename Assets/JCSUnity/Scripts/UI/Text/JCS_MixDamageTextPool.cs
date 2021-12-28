@@ -88,7 +88,6 @@ namespace JCSUnity
         [Range(0.0f, 300.0f)]
         private float mLeftAlign = 0.0f;
 
-
         private List<int> mSequenceThread = null;
         // Data we need to let Sequence Thread process!
         private List<int[]> mSequenceDamageData = null;
@@ -151,9 +150,7 @@ namespace JCSUnity
                 const float x_distance = 3f;
                 const float y_randDistance = 0.8f;
 
-                for (int count = 0;
-                    count < x_count;
-                    ++count)
+                for (int count = 0; count < x_count; ++count)
                 {
                     DamageTextSpawnerSimple(
                         0,
@@ -338,9 +335,7 @@ namespace JCSUnity
 
             DamageTextType[] types = new DamageTextType[hit];
 
-            for (int index = 0;
-               index < hit;
-               ++index)
+            for (int index = 0; index < hit; ++index)
             {
                 bool isCritical = (algorithm(0, 100) < cirticalChance);
 

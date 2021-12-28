@@ -13,11 +13,11 @@ namespace JCSUnity
     /// <summary>
     /// Manages screen action.
     /// </summary>
-    public class JCS_ScreenManager : JCS_Managers<JCS_ScreenManager>
+    public class JCS_ScreenManager : JCS_Manager<JCS_ScreenManager>
     {
         /* Variables */
 
-        private const string mResizableScreenPanelPath = "GUI/JCS_ResizableScreenPanel";
+        private const string mResizableScreenPanelPath = "UI/JCS_ResizableScreenPanel";
 
         [Header("** Check Variables (JCS_ScreenManager) **")]
 

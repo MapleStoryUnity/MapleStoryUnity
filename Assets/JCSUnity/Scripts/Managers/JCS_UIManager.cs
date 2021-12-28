@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Manage all the dialogue in the scene.
     /// </summary>
-    public class JCS_UIManager : JCS_Managers<JCS_UIManager>
+    public class JCS_UIManager : JCS_Manager<JCS_UIManager>
     {
         /* Variables */
 
@@ -54,7 +54,7 @@ namespace JCSUnity
         // List of all the window that are opened!
         private LinkedList<JCS_DialogueObject> mOpenWindow = null;
 
-        [Header("** General Screen Settings (JCS_UIManager) **")]
+        [Header("** UI Screen Settings (JCS_UIManager) **")]
 
         [Tooltip("Panel that could do the fade loose focus effect.")]
         [SerializeField]
@@ -63,7 +63,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public List<JCS_Canvas> Canvases { get { return this.mCanvases; } }
-        public void SetJCSDialogue(JCS_DialogueType type, JCS_DialogueObject jdo)
+        public void SetDialogue(JCS_DialogueType type, JCS_DialogueObject jdo)
         {
             switch (type)
             {
@@ -201,7 +201,7 @@ namespace JCSUnity
             {
                 for (int j = i; j > 0; --j)
                 {
-                    if (mCanvases[j].GetCanvas().sortingOrder < mCanvases[j - 1].GetCanvas().sortingOrder)
+                    if (mCanvases[j].canvas.sortingOrder < mCanvases[j - 1].canvas.sortingOrder)
                     {
                         JCS_Canvas temp = mCanvases[j];
                         mCanvases[j] = mCanvases[j - 1];
@@ -224,7 +224,7 @@ namespace JCSUnity
             JCS_DialogueObject jdo = GetOpenWindow().Last.Value;
 
             // once it hide it will remove from the list it self!
-            jdo.HideDialogue();
+            jdo.Hide();
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace JCSUnity
 
             while (GetOpenWindow().Count != 0)
             {
-                GetOpenWindow().First.Value.HideDialogueWithoutSound();
+                GetOpenWindow().First.Value.Hide(true);
             }
         }
 

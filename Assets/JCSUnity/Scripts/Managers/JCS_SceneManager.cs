@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Manage scenes changes.
     /// </summary>
-    public class JCS_SceneManager : JCS_Managers<JCS_SceneManager>
+    public class JCS_SceneManager : JCS_Manager<JCS_SceneManager>
     {
         /* Variables */
 
@@ -284,11 +284,7 @@ namespace JCSUnity
         /// <param name="fadeInTime"> time to fade in </param>
         /// <param name="screenColor"> screen color </param>
         /// <param name="keepBGM"> keep background music playing? </param>
-        public void LoadScene(
-            string sceneName, 
-            float fadeInTime, 
-            Color screenColor,
-            bool keepBGM)
+        public void LoadScene(string sceneName, float fadeInTime, Color screenColor, bool keepBGM)
         {
 #if (UNITY_EDITOR)
             // only do this in Editor Mode, 
@@ -350,8 +346,6 @@ namespace JCSUnity
                     }
                     break;
             }
-
-
 
             var ss = JCS_SoundSettings.instance;
 

@@ -17,7 +17,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public static string JCS_2DCAMERA_PATH = "JCSUnity_Framework_Resources/Camera/JCS_2DCamera";
+        public static string JCS_2DCAMERA_PATH = "Camera/JCS_2DCamera";
 
         [Header("** Check Varialbes (JCS_2DCamera) **")]
 

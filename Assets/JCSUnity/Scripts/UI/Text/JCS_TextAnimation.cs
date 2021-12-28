@@ -47,7 +47,6 @@ namespace JCSUnity
         private TextMeshPro mTextMesh = null;
 #endif
 
-
         [Header("** Runtime Variables (JCS_TextAnimation) **")]
 
         [Tooltip("Animation active or not active.")]
@@ -66,7 +65,6 @@ namespace JCSUnity
         // Base timer to display frame.
         private float mFrameTimer = 0.0f;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -76,7 +74,6 @@ namespace JCSUnity
 #endif
         public int CurrentFrame { get { return this.mCurrentFrame; } }
         public float SPF { get { return this.mSPF; } set { this.mSPF = value; } }
-
 
         /* Functions */
 

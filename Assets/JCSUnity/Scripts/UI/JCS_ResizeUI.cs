@@ -92,7 +92,7 @@ namespace JCSUnity
         private void Start()
         {
 #if (UNITY_5_4_OR_NEWER)
-            RectTransform appRect = JCS_Canvas.GuessCanvas().GetAppRect();
+            RectTransform appRect = JCS_Canvas.GuessCanvas().AppRect;
 
             // TODO(jenchieh): unknown reason that something changes this to 
             // somewhere else. (since 5.4.0f3)

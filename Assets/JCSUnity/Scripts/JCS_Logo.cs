@@ -22,7 +22,7 @@ namespace JCSUnity
 
         [Tooltip("Next scene to load.")]
         [SerializeField]
-        private string mNextLevel = "JCS_ApplicationCloseSimulate";
+        private string mNextLevel = "JCS_AppCloseSimulate";
 
         [Tooltip("Second to show logo and load to the next scene.")]
         [SerializeField]

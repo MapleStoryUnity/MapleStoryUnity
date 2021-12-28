@@ -12,8 +12,7 @@ using UnityEditor;
 
 /* no longer support in version 5.4.0f3. */
 
-public class A_to_Z 
-    : BaseHierarchySort
+public class A_to_Z : BaseHierarchySort
 {
 
     public override int Compare(GameObject lhs, GameObject rhs)
@@ -26,8 +25,7 @@ public class A_to_Z
     }
 }
 
-public class Z_to_A 
-    : BaseHierarchySort
+public class Z_to_A : BaseHierarchySort
 {
 
     public override int Compare(GameObject lhs, GameObject rhs)

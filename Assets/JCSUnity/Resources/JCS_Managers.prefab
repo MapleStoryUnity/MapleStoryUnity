@@ -43,10 +43,12 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4000013399643638}
   - {fileID: 2102792924}
   - {fileID: 1678435914}
+  - {fileID: 4161427194650725801}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -62,8 +64,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459ea8803bb23694290d894d24e5c1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SIMULATE_PLATFORM_TYPE: 0
-  PLATFORM_TYPE: 1
+  mSystemLanguage: 42
+  mLangTexts: []
+  mRequestCamera: 0
+  mRequestMicrophone: 0
+  mRequestLocation: 0
+  mSimulatePlatformType: 1
+  mPlatformType: 1
+  mSimulateSystemLanguage: 0
+  mSimulateLanguage: 42
 --- !u!114 &114116482234633012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +85,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a84b523d293cda40b73eb03a25ef83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mResizableScreenPanelPath: JCSUnity_Resources/GUI/JCS_ResizableScreenPanel
   mTopASP: {fileID: 0}
   mBottomASP: {fileID: 0}
   mLeftASP: {fileID: 0}
@@ -84,7 +92,6 @@ MonoBehaviour:
   RESIZE_SCREEN_THIS_SCENE: 0
   ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE: 16
   ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE: 9
-  SCREEN_TYPE_THIS_SCENE: 3
 --- !u!114 &11474736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,12 +161,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSwitchSceneType: 1
-  mPauseGameWhileLoadingScene: 1
-  mJCSBlackScreen: {fileID: 0}
-  mJCSBlackSlideScreen: {fileID: 0}
+  mBlackScreen: {fileID: 0}
+  mBlackSlideScreen: {fileID: 0}
   mAlign: 0
   mPopWhiteScreen: 1
-  mJCSWhiteScreen: {fileID: 0}
+  mWhiteScreen: {fileID: 0}
+  mPauseGameWhileLoadingScene: 1
   mOverrideSetting: 0
   mSceneFadeInTime: 1
   mSceneFadeOutTime: 1
@@ -316,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTestWithKey: 0
+  mCanvases: []
   mGlobalUndoRedoSystem: {fileID: 0}
   mGameUI: {fileID: 0}
   mForceDialogue: {fileID: 0}
@@ -333,8 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3ddae32cc8033418ec9a10bad8be7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSlideInput: {fileID: 0}
-  mMobileMouseEvent: {fileID: 0}
   mSupport_OnMouseEnter: 0
   mSupport_OnMouseExit: 0
   mSupport_OnMouseDown: 1
@@ -423,6 +429,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442828}
   m_RootOrder: 2
@@ -469,6 +476,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442828}
   m_RootOrder: 1
@@ -540,6 +548,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442828}
   m_RootOrder: 0
@@ -573,3 +582,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SORTING_ORDER_INFRONT_OFFSET: 1
   SORTING_ORDER_BEHIND_OFFSET: 1
+--- !u!1 &4502074130992445992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4161427194650725801}
+  - component: {fileID: 3393683539091338131}
+  - component: {fileID: 3255448869455908852}
+  m_Layer: 0
+  m_Name: Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4161427194650725801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4502074130992445992}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 442828}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3393683539091338131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4502074130992445992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9975462fdbe9af647804e6ee6607e51e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mPrePos: {x: 0, y: 0, z: 0}
+  mFocus: 0
+  mTouched: 0
+  mDeltaPos: {x: 0, y: 0}
+  mDragDistance: {x: 0, y: 0}
+  mDragDisplacement: {x: 0, y: 0}
+  mDragging: 0
+  mTouchTime: 0
+  mMultiTouch: 0
+  mTouchDistance: 0
+  mTouchDistanceDelta: 0
+  mMouseType: 0
+  mDetectTouchCount: 1
+--- !u!114 &3255448869455908852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4502074130992445992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a85b9b3b82b6044a7470e1b1714e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCamera: {fileID: 0}
+  mTouchedLastFrame: 0
+  mRaycastDistance: 100

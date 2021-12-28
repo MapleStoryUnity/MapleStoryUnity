@@ -25,18 +25,20 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_SoundSettings) **")]
 
-        [Tooltip("Background Music Mute?")]
+        [Tooltip("If true, mute BGM.")]
         public bool BGM_MUTE = false;
-        [Tooltip("SFX mute?")]
+
+        [Tooltip("If true, mute SFX.")]
         public bool EFFECT_MUTE = false;
-        [Tooltip("Player sound effect mute?")]
+
+        [Tooltip("If true, mute player SFX.")]
         public bool PERFONAL_EFFECT_MUTE = false;
 
         [Tooltip("Background music [Default: 0.4f]")]
         [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
         public float BGM_SOUND = 0.4f;
 
-        [Tooltip("Sound from other player/environment [Default: 0.4f]")]
+        [Tooltip("Sound from other player/environment [Default: 0.4]")]
         [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
         public float SFX_SOUND = 0.4f;
 
@@ -91,10 +93,7 @@ namespace JCSUnity
             SKILLS_SOUND = volume;
             JCS_SoundManager.instance.SetSoundVolume(JCS_SoundSettingType.SKILLS_SOUND, volume);
         }
-        public float GetSkillsSound_Volume()
-        {
-            return SKILLS_SOUND;
-        }
+        public float GetSkillsSound_Volume() { return SKILLS_SOUND; }
         public float GetSoundBaseOnType(JCS_SoundSettingType type)
         {
             switch (type)
@@ -125,13 +124,13 @@ namespace JCSUnity
         /// <returns> timeto fade out the music. </returns>
         public float GetSoundFadeOutTimeBaseOnSetting()
         {
-            JCS_SoundManager jcsSm = JCS_SoundManager.instance;
+            var sm = JCS_SoundManager.instance;
 
             // check if override the setting.
-            if (jcsSm.OverrideSetting)
+            if (sm.OverrideSetting)
             {
                 // return the override value.
-                return jcsSm.SoundFadeOutTime;
+                return sm.SoundFadeOutTime;
             }
 
             // if not override, 
@@ -146,13 +145,13 @@ namespace JCSUnity
         /// <returns> time to fade in the sound </returns>
         public float GetSoundFadeInTimeBaseOnSetting()
         {
-            JCS_SoundManager jcsSm = JCS_SoundManager.instance;
+            var sm = JCS_SoundManager.instance;
 
             // check if override the setting.
-            if (jcsSm.OverrideSetting)
+            if (sm.OverrideSetting)
             {
                 // return the override value.
-                return jcsSm.SoundFadeInTime;
+                return sm.SoundFadeInTime;
             }
 
             // if not override, 

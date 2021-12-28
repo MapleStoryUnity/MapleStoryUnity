@@ -76,7 +76,7 @@ namespace JCSUnity
                 return;
             }
 
-            mGameUI.ShowDialogueWithoutSound();
+            mGameUI.Show(true);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace JCSUnity
                 return;
             }
 
-            mGameUI.HideDialogueWithoutSound();
+            mGameUI.Hide(true);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace JCSUnity
                 return null;
 
             obj = (JCS_DialogueObject)JCS_Util.SpawnGameObject(obj);
-            obj.ShowDialogue();
+            obj.Show();
             obj.OpenKey = KeyCode.None;
 
             return obj;
@@ -179,7 +179,7 @@ namespace JCSUnity
                     continue;
 
                 list[index] = (JCS_DialogueObject)JCS_Util.SpawnGameObject(list[index]);
-                list[index].HideDialogue();
+                list[index].Hide();
             }
 
             return list;

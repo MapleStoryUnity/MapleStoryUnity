@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Handle all the portal in the scene.
     /// </summary>
-    public class JCS_PortalManager : JCS_Managers<JCS_PortalManager>
+    public class JCS_PortalManager : JCS_Manager<JCS_PortalManager>
     {
         /* Variables */
 

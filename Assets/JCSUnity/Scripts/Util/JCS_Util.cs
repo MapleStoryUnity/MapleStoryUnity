@@ -1135,7 +1135,7 @@ namespace JCSUnity
                 childs.Add(rect);
 
                 // Remove from parent.
-                child.SetParent(canvas.GetAppRect());
+                child.SetParent(canvas.AppRect);
             }
 
             return childs;
@@ -1263,7 +1263,7 @@ namespace JCSUnity
             var canvas = JCS_Canvas.GuessCanvas();
 
             var parent = trans.parent;
-            trans.SetParent(canvas.GetAppRect());
+            trans.SetParent(canvas.AppRect);
 
             if (callback != null)
                 callback.Invoke(parent);

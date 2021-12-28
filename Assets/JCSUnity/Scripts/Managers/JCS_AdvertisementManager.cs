@@ -29,7 +29,7 @@ namespace JCSUnity
     ///       Technologies.
     /// 
     /// </summary>
-    public class JCS_AdvertisementManager : JCS_Managers<JCS_AdvertisementManager>
+    public class JCS_AdvertisementManager : JCS_Manager<JCS_AdvertisementManager>
         , IUnityAdsListener
     {
         public delegate void AdsDidErrorCallback(string message);

@@ -175,7 +175,7 @@ namespace JCSUnity
             }
 
             // Refresh the selection.
-            JCS_GUIUtil.Dropdown_RefreshSelection(mDropdown);
+            JCS_UIUtil.Dropdown_RefreshSelection(mDropdown);
         }
 
         /// <summary>

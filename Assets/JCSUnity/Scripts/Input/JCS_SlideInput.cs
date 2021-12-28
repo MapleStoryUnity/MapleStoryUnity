@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Use this to receive the slide input from the device buffer.
     /// </summary>
-    public class JCS_SlideInput : MonoBehaviour
+    public class JCS_SlideInput : JCS_Instance<JCS_SlideInput>
     {
         /* Variables */
 
@@ -105,7 +105,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            JCS_InputManager.instance.SetGlobalSlideInput(this);
+            instance = this;
         }
 
         private void Update()

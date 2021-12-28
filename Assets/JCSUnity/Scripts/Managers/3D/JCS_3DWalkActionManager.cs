@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Manages all the 3D walk action in scene.
     /// </summary>
-    public class JCS_3DWalkActionManager : JCS_Managers<JCS_3DWalkActionManager>
+    public class JCS_3DWalkActionManager : JCS_Manager<JCS_3DWalkActionManager>
     {
         /* Variables */
 

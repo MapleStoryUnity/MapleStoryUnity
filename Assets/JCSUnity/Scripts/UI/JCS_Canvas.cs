@@ -12,7 +12,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Default canvas class for JCSUnity.
+    /// Control of the canvas component.
     /// </summary>
     [RequireComponent(typeof(Canvas))]
     [RequireComponent(typeof(RectTransform))]
@@ -20,26 +20,36 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private const string RESIZE_UI_PATH = "LevelDesignUI/ResizeUI";
+        private const string RESIZE_UI_PATH = "UI/ResizeUI";
+
+        private Canvas mCanvas = null;
+
+        private RectTransform mAppRect = null;  // Application Rect (Window)
 
         [Header("** Check Variables (JCS_Canvas) **")]
-
-        [Tooltip("Canvas object.")]
-        [SerializeField]
-        private Canvas mCanvas = null;
 
         [Tooltip("Resize object.")]
         [SerializeField]
         private JCS_ResizeUI mResizeUI = null;
 
-        // Application Rect (Window)
-        private RectTransform mAppRect = null;
+        [Header("** Runtime Variables (JCS_Canvas) **")]
+
+        [Tooltip("Play sound when active the canvas.")]
+        [SerializeField]
+        private AudioClip mActiveSound = null;
+
+        [Tooltip("Play sound when deactive the canvas.")]
+        [SerializeField]
+        private AudioClip mDeactiveSound = null;
 
         /* Setter & Getter */
 
-        public RectTransform GetAppRect() { return this.mAppRect; }
-        public Canvas GetCanvas() { return this.mCanvas; }
+        public RectTransform AppRect { get { return this.mAppRect; } }
+        public Canvas canvas { get { return this.mCanvas; } }
         public JCS_ResizeUI ResizeUI { get { return this.mResizeUI; } }
+
+        public AudioClip ActiveSound { get { return this.mActiveSound; } set { this.mActiveSound = value; } }
+        public AudioClip DeactiveSound { get { return this.mDeactiveSound; } set { this.mDeactiveSound = value; } }
 
         /* Functions */
 
@@ -66,7 +76,7 @@ namespace JCSUnity
                     return;
 
                 // get the screen width and height
-                Vector2 actualRect = this.GetAppRect().sizeDelta;
+                Vector2 actualRect = this.AppRect.sizeDelta;
 
                 // set it to the right resolution
                 mResizeUI.GetResizeRect().sizeDelta = actualRect;
@@ -110,6 +120,26 @@ namespace JCSUnity
             // the current screen space.
             var rect = com.GetComponent<RectTransform>();
             FitScreenSize(rect);
+        }
+
+        /// <summary>
+        /// Show the canvas so it's visible.
+        /// </summary>
+        public void Show(bool mute = false)
+        {
+            mCanvas.enabled = true;
+            if (!mute)
+                JCS_SoundPlayer.PlayByAttachment(mDeactiveSound, JCS_SoundMethod.PLAY_SOUND);
+        }
+
+        /// <summary>
+        /// Hide the canvas so it's invisible.
+        /// </summary>
+        public void Hide(bool mute = false)
+        {
+            mCanvas.enabled = false;
+            if (!mute)
+                JCS_SoundPlayer.PlayByAttachment(mActiveSound, JCS_SoundMethod.PLAY_SOUND);
         }
 
         /// <summary>

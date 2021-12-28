@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// 2D Game Specific game manager.
     /// </summary>
-    public class JCS_2DGameManager : JCS_Managers<JCS_2DGameManager>
+    public class JCS_2DGameManager : JCS_Manager<JCS_2DGameManager>
     {
         /* Variables */
 

@@ -32,7 +32,6 @@ namespace JCSUnity
         [SerializeField]
         private float mHeight = 0;
 
-
         /* Setter & Getter */
 
         public CharacterController GetCharacterController() { return this.mCharacterController; }
@@ -42,13 +41,11 @@ namespace JCSUnity
         public float HalfWidth { get { return this.Width / 2.0f; } }
         public float HalfHeight { get { return this.Height / 2.0f; } }
 
-
         /* Functions */
 
         private void Awake()
         {
             mCharacterController = this.GetComponent<CharacterController>();
-
 
             Vector2 widthHeight = JCS_Physics.GetColliderWidthHeight(mCharacterController);
 

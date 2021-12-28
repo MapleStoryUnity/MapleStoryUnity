@@ -87,7 +87,7 @@ namespace JCSUnity
             if (mRectTransform == null)
                 return;
 
-            // IMPORTANT(JenChieh): override the resize UI part
+            // IMPORTANT(jenchieh): override the resize UI part
             if (mAsOriginalSize)
                 mRectTransform.localScale = mOriginalScale;
             else
@@ -107,7 +107,7 @@ namespace JCSUnity
         /// <summary>
         /// Destroy this dialgoue object.
         /// </summary>
-        public void DestroyDialogue()
+        public void Destroy()
         {
             // start the app
             JCS_ApplicationManager.APP_PAUSE = false;
@@ -119,11 +119,9 @@ namespace JCSUnity
         /// <summary>
         /// Show the dialogue without the sound.
         /// </summary>
-        public void ShowDialogueWithoutSound()
+        public virtual void Show(bool mute = false)
         {
             mIsVisible = true;
-
-            //this.gameObject.SetActive(true);
 
             // active all the child object
             for (int index = 0; index < this.transform.childCount; ++index)
@@ -137,15 +135,12 @@ namespace JCSUnity
         /// <summary>
         /// Hide the dialogue without the sound.
         /// </summary>
-        public virtual void HideDialogueWithoutSound()
+        public virtual void Hide(bool mute = false)
         {
             if (mRectTransform == null)
                 return;
 
             mIsVisible = false;
-
-            // Instead of disable the object it self, we deactive all the child object.
-            //this.gameObject.SetActive(false);
 
             // deactive all the child object
             for (int index = 0; index < this.transform.childCount; ++index)
@@ -155,8 +150,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Set the parent object base on the 
-        /// fit screen setting.
+        /// Set the parent object base on the fit screen setting.
         /// </summary>
         protected void SetParentObjectByMode()
         {
@@ -176,7 +170,7 @@ namespace JCSUnity
                 parentObject = resizeUI.transform;
             // Else we add it directly under the Canvas
             else
-                parentObject = canvas.GetCanvas().transform;
+                parentObject = canvas.canvas.transform;
 
             // set it to parent
             this.gameObject.transform.SetParent(parentObject);

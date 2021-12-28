@@ -51,11 +51,11 @@ namespace JCSUnity
 
             if (IsResponsive())
             {
-                mApplyToChildren = JCS_GUIUtil.IsAchorPresets(mRectTransform, JCS_AnchorPresetsType.CENTER_MIDDLE);
+                mApplyToChildren = JCS_UIUtil.IsAchorPresets(mRectTransform, JCS_AnchorPresetsType.CENTER_MIDDLE);
             }
             else
             {
-                mApplyToChildren = !JCS_GUIUtil.IsUnityDefinedUI(mRectTransform);
+                mApplyToChildren = !JCS_UIUtil.IsUnityDefinedUI(mRectTransform);
             }
 
             // Rely on "Script Execution Order"

@@ -48,14 +48,14 @@ namespace JCSUnity
 
         private void ActivePanel()
         {
-            JCS_GUIUtil.ActivePanels(mDialogueObjects, mPlaySound);
-            JCS_GUIUtil.ActivePanels(mTweenPanels);
+            JCS_UIUtil.ActivePanels(mDialogueObjects, mPlaySound);
+            JCS_UIUtil.ActivePanels(mTweenPanels);
         }
 
         private void DeactivePanel()
         {
-            JCS_GUIUtil.DeactivePanels(mDialogueObjects, mPlaySound);
-            JCS_GUIUtil.DeactivePanels(mTweenPanels);
+            JCS_UIUtil.DeactivePanels(mDialogueObjects, mPlaySound);
+            JCS_UIUtil.DeactivePanels(mTweenPanels);
         }
     }
 }

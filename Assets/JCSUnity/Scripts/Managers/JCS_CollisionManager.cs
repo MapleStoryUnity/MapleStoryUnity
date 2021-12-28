@@ -14,7 +14,7 @@ namespace JCSUnity
     /// Take care of all the collision that could 
     /// happen in the game.
     /// </summary>
-    public class JCS_CollisionManager : JCS_Managers<JCS_CollisionManager>
+    public class JCS_CollisionManager : JCS_Manager<JCS_CollisionManager>
     {
         /* Variables */
 

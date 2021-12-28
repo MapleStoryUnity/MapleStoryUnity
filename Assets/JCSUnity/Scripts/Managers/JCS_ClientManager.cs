@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Manager manage the clients that connected to this client.
     /// </summary>
-    public class JCS_ClientManager : JCS_Managers<JCS_ClientManager>
+    public class JCS_ClientManager : JCS_Manager<JCS_ClientManager>
     {
         /* Variables */
 

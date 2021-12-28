@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Take care of all the player in the scene.
     /// </summary>
-    public class JCS_PlayerManager : JCS_Managers<JCS_PlayerManager>
+    public class JCS_PlayerManager : JCS_Manager<JCS_PlayerManager>
     {
         /* Variables */
 
@@ -31,8 +31,8 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public JCS_Player GetActivePlayer() { return this.mActivePlayer; }
-        public List<JCS_Player> GetJCSPlayerList() { return this.mPlayers; }
-        public JCS_Player GetJCSPlayerAt(int index) { return this.mPlayers[index]; }
+        public List<JCS_Player> GetPlayerList() { return this.mPlayers; }
+        public JCS_Player GetPlayerAt(int index) { return this.mPlayers[index]; }
 
         /* Functions */
 
@@ -127,15 +127,10 @@ namespace JCSUnity
             if (JCS_GameSettings.instance.PLAYER_IGNORE_EACH_OTHER)
             {
                 // Make all the player ignore each other
-                for (int index = 0;
-                    index < mPlayers.Count;
-                    ++index)
+                for (int index = 0; index < mPlayers.Count; ++index)
                 {
-                    for (int pairIndex = index + 1;
-                        pairIndex < mPlayers.Count;
-                        ++pairIndex)
+                    for (int pairIndex = index + 1; pairIndex < mPlayers.Count; ++pairIndex)
                     {
-
                         Physics.IgnoreCollision(
                                 mPlayers[index].GetCharacterController(),
                                 mPlayers[pairIndex].GetCharacterController(), true);
@@ -155,9 +150,7 @@ namespace JCSUnity
         public void IgnorePhysicsToAllPlayer(Collider cc, bool act = true)
         {
             // Make all the player ignore each other
-            for (int index = 0;
-                index < mPlayers.Count;
-                ++index)
+            for (int index = 0; index < mPlayers.Count; ++index)
             {
                 Physics.IgnoreCollision(
                             mPlayers[index].GetCharacterController(), 
@@ -234,15 +227,13 @@ namespace JCSUnity
         /// <returns> player with the position </returns>
         public JCS_Player FindPlayerByDirection(JCS_2D4Direction direction)
         {
-            if (GetJCSPlayerList().Count == 0)
+            if (GetPlayerList().Count == 0)
             {
-                JCS_Debug.LogError(
-                    "Cannot use the current function cuz the player list in the manager is lower than 0...");
-
+                JCS_Debug.LogError("Can't use the current function cuz the player list in the manager is lower than 0...");
                 return null;
             }
 
-            Vector3 foundPos = GetJCSPlayerAt(0).transform.position;
+            Vector3 foundPos = GetPlayerAt(0).transform.position;
             int foundIndex = 0;
 
             JCS_Player currentPlayer = null;
@@ -251,11 +242,9 @@ namespace JCSUnity
             {
                 case JCS_2D4Direction.TOP:
                     {
-                        for (int index = 1;
-                            index < GetJCSPlayerList().Count;
-                            ++index)
+                        for (int index = 1; index < GetPlayerList().Count; ++index)
                         {
-                            currentPlayer = GetJCSPlayerAt(index);
+                            currentPlayer = GetPlayerAt(index);
 
                             if (foundPos.y < currentPlayer.transform.position.y)
                             {
@@ -269,11 +258,9 @@ namespace JCSUnity
                     break;
                 case JCS_2D4Direction.BOTTOM:
                     {
-                        for (int index = 1;
-                            index < GetJCSPlayerList().Count;
-                            ++index)
+                        for (int index = 1; index < GetPlayerList().Count; ++index)
                         {
-                            currentPlayer = GetJCSPlayerAt(index);
+                            currentPlayer = GetPlayerAt(index);
 
                             if (foundPos.y > currentPlayer.transform.position.y)
                             {
@@ -287,11 +274,9 @@ namespace JCSUnity
                     break;
                 case JCS_2D4Direction.RIGHT:
                     {
-                        for (int index = 1;
-                            index < GetJCSPlayerList().Count;
-                            ++index)
+                        for (int index = 1; index < GetPlayerList().Count; ++index)
                         {
-                            currentPlayer = GetJCSPlayerAt(index);
+                            currentPlayer = GetPlayerAt(index);
 
                             if (foundPos.x < currentPlayer.transform.position.x)
                             {
@@ -305,11 +290,9 @@ namespace JCSUnity
                     break;
                 case JCS_2D4Direction.LEFT:
                     {
-                        for (int index = 1;
-                            index < GetJCSPlayerList().Count;
-                            ++index)
+                        for (int index = 1; index < GetPlayerList().Count; ++index)
                         {
-                            currentPlayer = GetJCSPlayerAt(index);
+                            currentPlayer = GetPlayerAt(index);
 
                             if (foundPos.x > currentPlayer.transform.position.x)
                             {
@@ -323,7 +306,7 @@ namespace JCSUnity
                     break;
             }
 
-            return GetJCSPlayerAt(foundIndex);
+            return GetPlayerAt(foundIndex);
         }
 
         /// <summary>
@@ -339,26 +322,20 @@ namespace JCSUnity
 
             if (players.Count == 0)
             {
-                JCS_Debug.LogError(
-                    "JCS_PlayerManager",
-                     
-                    "Cannot use the current function cuz the player list in the manager is lower than 0...");
-
+                JCS_Debug.LogError("Can't use the current function cuz the player list in the manager is lower than 0...");
                 return null;
             }
 
             Vector3 foundPos = players[0].transform.position;
             int foundIndex = 0;
 
-            JCS_Player currentPlayer = null;
+            JCS_Player currentPlayer;
 
             switch (direction)
             {
                 case JCS_2D4Direction.TOP:
                     {
-                        for (int index = 1;
-                            index < players.Count;
-                            ++index)
+                        for (int index = 1; index < players.Count; ++index)
                         {
                             currentPlayer = players[index];
 
@@ -374,9 +351,7 @@ namespace JCSUnity
                     break;
                 case JCS_2D4Direction.BOTTOM:
                     {
-                        for (int index = 1;
-                            index < players.Count;
-                            ++index)
+                        for (int index = 1; index < players.Count; ++index)
                         {
                             currentPlayer = players[index];
 
@@ -392,9 +367,7 @@ namespace JCSUnity
                     break;
                 case JCS_2D4Direction.RIGHT:
                     {
-                        for (int index = 1;
-                            index < players.Count;
-                            ++index)
+                        for (int index = 1; index < players.Count; ++index)
                         {
                             currentPlayer = players[index];
 
@@ -410,9 +383,7 @@ namespace JCSUnity
                     break;
                 case JCS_2D4Direction.LEFT:
                     {
-                        for (int index = 1;
-                            index < players.Count;
-                            ++index)
+                        for (int index = 1; index < players.Count; ++index)
                         {
                             currentPlayer = players[index];
 

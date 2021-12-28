@@ -21,8 +21,7 @@ namespace MSU
     /// <summary>
     /// Manages external Wz files.
     /// </summary>
-    public class WzFileManager
-        : JCS_Managers<WzFileManager>
+    public class WzFileManager : JCS_Manager<WzFileManager>
     {
         /* Variables */
 

@@ -14,7 +14,7 @@ namespace JCSUnity
     /// Manage of all the music, sound and sfx in the game.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_SoundManager : JCS_Managers<JCS_SoundManager>
+    public class JCS_SoundManager : JCS_Manager<JCS_SoundManager>
     {
         /* Variables */
 
@@ -167,14 +167,12 @@ namespace JCSUnity
         /// <param name="soundClip"> clip to play. </param>
         /// <param name="fadeTime"> time to fade in and out. </param>
         /// <param name="loop"> loop music? </param>
-        public void SwitchBackgroundMusic(
-            AudioClip soundClip, 
-            bool loop = true)
+        public void SwitchBackgroundMusic(AudioClip clip, bool loop = true)
         {
-            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.instance;
 
             SwitchBackgroundMusic(
-                soundClip,
+                clip,
                 ss.GetSoundFadeOutTimeBaseOnSetting(),
                 ss.GetSoundFadeInTimeBaseOnSetting());
         }

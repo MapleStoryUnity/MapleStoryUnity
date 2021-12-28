@@ -6,41 +6,29 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
-    /// UnPause the game with button.
-    /// 
-    /// ATTENTION: this should have at least one "JCS_Button" with this.
+    /// Unpause the game with button.
     /// </summary>
-    public class JCS_UnPauseGameButton : MonoBehaviour
+    public class JCS_UnpauseGameButton : JCS_Button
     {
-        [Header("** Require Variables (JCS_UnPauseGameButton) **")]
+        /* Variables */
 
-        [Tooltip(@"You need this variable in order get the button 
-work properly.")]
-        [SerializeField]
-        private JCS_Button mJCSButton = null;
+        /* Setter & Getter */
 
+        /* Functions */
 
-        private void Awake()
+        public override void OnClick()
         {
-            // try to get the component.
-            if (mJCSButton == null)
-                this.mJCSButton = this.GetComponent<JCS_Button>();
-
-            if (mJCSButton != null)
-            {
-                mJCSButton.SetCallback(UnPauseGame);
-            }
+            UnpauseGame();
         }
 
         /// <summary>
-        /// UnPause the game.
+        /// Unpause the game.
         /// </summary>
-        public void UnPauseGame()
+        public void UnpauseGame()
         {
             // turn on the game pause button.
             JCS_GameManager.instance.GAME_PAUSE = false;

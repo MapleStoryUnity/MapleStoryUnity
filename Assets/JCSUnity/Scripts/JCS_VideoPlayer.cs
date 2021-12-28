@@ -48,7 +48,7 @@ namespace JCSUnity
 
         [Tooltip("Next scene will be loaded.")]
         [SerializeField]
-        private string mSceneName = "JCS_ApplicationCloseSimulate";
+        private string mSceneName = "JCS_AppCloseSimulate";
 
         [Header("- Delay Playback")]
 
@@ -251,7 +251,7 @@ namespace JCSUnity
 
         [Tooltip("Next scene will be loaded.")]
         [SerializeField]
-        private string mSceneName = "JCS_ApplicationCloseSimulate";
+        private string mSceneName = "JCS_AppCloseSimulate";
 
         [Header("- Delay Playback")]
 

@@ -12,7 +12,7 @@ namespace JCSUnity
     /// <summary>
     /// Take care of all the scene layout.
     /// </summary>
-    public class JCS_DynamicSceneManager : JCS_Managers<JCS_DynamicSceneManager>
+    public class JCS_DynamicSceneManager : JCS_Manager<JCS_DynamicSceneManager>
     {
         /* Variables */
 

@@ -14,9 +14,9 @@ namespace JCSUnity
     /// <summary>
     /// If you are working some kind of game that need the pause 
     /// screen, you definitly need the pause manager to add it onto 
-    /// "JCS_Managers" transform in the Hierarchy.
+    /// "JCS_Manager" transform in the Hierarchy.
     /// </summary>
-    public class JCS_PauseManager : JCS_Managers<JCS_PauseManager>
+    public class JCS_PauseManager : JCS_Manager<JCS_PauseManager>
     {
         /* Variables */
 

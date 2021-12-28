@@ -17,7 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Holding all the information about the time in real life.
     /// </summary>
-    public class JCS_TimeManager : JCS_Managers<JCS_TimeManager>
+    public class JCS_TimeManager : JCS_Manager<JCS_TimeManager>
     {
         /* Variables */
 
@@ -102,45 +102,21 @@ namespace JCSUnity
         }
 
         // 晨一般是指5-8点人们起床的时间
-        public static bool isInTheMorning()
-        {
-            return CheckTimeRange(5, 8);
-        }
+        public static bool isInTheMorning() { return CheckTimeRange(5, 8); }
         // 上午是指8-12点工作时间
-        public static bool isMorning()
-        {
-            return CheckTimeRange(8, 12);
-        }
+        public static bool isMorning() { return CheckTimeRange(8, 12); }
         // 中午是指12-14点午休时间
-        public static bool isNoon()
-        {
-            return CheckTimeRange(12, 14);
-        }
+        public static bool isNoon() { return CheckTimeRange(12, 14); }
         // 下午是指14-17(或18)点下午虹作时间
-        public static bool isAfternoon()
-        {
-            return CheckTimeRange(14, 17);
-        }
+        public static bool isAfternoon() { return CheckTimeRange(14, 17); }
         // 傍晚是指晚饭后至19点这段时间
-        public static bool isEvening()
-        {
-            return CheckTimeRange(17, 19);
-        }
+        public static bool isEvening() { return CheckTimeRange(17, 19); }
         // 晚上是指19-22(或23)点晚上娱乐时间
-        public static bool isAtNight()
-        {
-            return CheckTimeRange(19, 22);
-        }
+        public static bool isAtNight() { return CheckTimeRange(19, 22); }
         // 深夜是指22(或23)-次日2(或3)点
-        public static bool isLateAtNight()
-        {
-            return CheckTimeRange(22, 2);
-        }
+        public static bool isLateAtNight() { return CheckTimeRange(22, 2); }
         // 凌晨是指2(或3)-5点之间
-        public static bool isBeforeDawn()
-        {
-            return CheckTimeRange(2, 5);
-        }
+        public static bool isBeforeDawn() { return CheckTimeRange(2, 5); }
 
         /// <summary>
         /// Get the season base on the OS's time's month.
@@ -163,49 +139,25 @@ namespace JCSUnity
         public static bool isSpring()
         {
             string sMonth = DateTime.Now.ToString("MM");
-
-            if (sMonth == "03" ||
-                sMonth == "04" ||
-                sMonth == "05")
-                return true;
-
-            return false;
+            return (sMonth == "03" || sMonth == "04" || sMonth == "05");
         }
         // 6 - 8
         public static bool isSummer()
         {
             string sMonth = DateTime.Now.ToString("MM");
-
-            if (sMonth == "06" ||
-                sMonth == "07" ||
-                sMonth == "08")
-                return true;
-
-            return false;
+            return (sMonth == "06" || sMonth == "07" || sMonth == "08");
         }
         // 9 - 11
         public static bool isFall()
         {
             string sMonth = DateTime.Now.ToString("MM");
-
-            if (sMonth == "09" ||
-                sMonth == "10" ||
-                sMonth == "11")
-                return true;
-
-            return false;
+            return (sMonth == "09" || sMonth == "10" || sMonth == "11");
         }
         // 12 - 2
         public static bool isWinter()
         {
             string sMonth = DateTime.Now.ToString("MM");
-
-            if (sMonth == "12" ||
-                sMonth == "01" ||
-                sMonth == "02")
-                return true;
-
-            return false;
+            return (sMonth == "12" || sMonth == "01" || sMonth == "02");
         }
 
         /// <summary>

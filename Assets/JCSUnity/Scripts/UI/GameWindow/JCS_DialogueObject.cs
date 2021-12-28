@@ -42,11 +42,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Tooltip("Sound when open this dialouge window.")]
+        [Tooltip("Sound when open this window.")]
         [SerializeField]
         private AudioClip mOpenWindowClip = null;
 
-        [Tooltip("Sound when close this dialouge window.")]
+        [Tooltip("Sound when close this window.")]
         [SerializeField]
         private AudioClip mCloseWindowClip = null;
 
@@ -65,16 +65,15 @@ namespace JCSUnity
         /* Functions */
 
 #if !(UNITY_5_4_OR_NEWER)
-        // Called by Unity after a new level was loaded.
         private void OnLevelWasLoaded()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
 
-            JCS_UIManager uim = JCS_UIManager.instance;
+            var uim = JCS_UIManager.instance;
 
             // Once we load the scene we need to let new object 
             // in the scene know about us!
-            uim.SetJCSDialogue(mDialogueType, this);
+            uim.SetDialogue(mDialogueType, this);
 
             // add to open window list if the window is open!
             AddToOpenWindowList();
@@ -94,11 +93,11 @@ namespace JCSUnity
             // function call after version 5.4
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
             {
-                JCS_UIManager uim = JCS_UIManager.instance;
+                var uim = JCS_UIManager.instance;
 
                 // Once we load the scene we need to let new object 
                 // in the scene know about us!
-                uim.SetJCSDialogue(mDialogueType, this);
+                uim.SetDialogue(mDialogueType, this);
 
                 // add to open window list if the window is open!
                 AddToOpenWindowList();
@@ -112,8 +111,7 @@ namespace JCSUnity
 
             base.Awake();
 
-            JCS_SoundSettings ss = JCS_SoundSettings.instance;
-
+            var ss = JCS_SoundSettings.instance;
 
             // Assign Default Audio
             {
@@ -127,9 +125,9 @@ namespace JCSUnity
 
         protected override void Start()
         {
-            JCS_UIManager uim = JCS_UIManager.instance;
+            var uim = JCS_UIManager.instance;
 
-            uim.SetJCSDialogue(mDialogueType, this);
+            uim.SetDialogue(mDialogueType, this);
 
             base.Start();
 
@@ -155,12 +153,12 @@ namespace JCSUnity
             {
                 case JCS_PanelType.RESET_PANEL:
                     {
-                        DestroyDialogue();
+                        Destroy();
                     }
                     break;
                 case JCS_PanelType.RECORD_PANEL:
                     {
-                        HideDialogue();
+                        Hide();
                     }
                     break;
                 case JCS_PanelType.RECORD_PANEL_TO_DATABASE:
@@ -173,43 +171,33 @@ namespace JCSUnity
 
         /// <summary>
         /// Show the dialogue in the game.
-        /// 
-        /// NOTE(jenchieh): this will play the default sound.
         /// </summary>
-        public void ShowDialogue()
+        public override void Show(bool mute = false)
         {
-            ShowDialogueWithoutSound();
+            base.Show(mute);
 
             // set focus dialogue
             if (DialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
-                JCS_UIManager.instance.SetJCSDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
+                JCS_UIManager.instance.SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
 
             // let UIManager know the window is opened
             SwapToTheLastOpenWindowList();
 
-            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mOpenWindowClip, JCS_SoundMethod.PLAY_SOUND);
-        }
-
-        /// <summary>
-        /// Hide the dialogue without the sound.
-        /// </summary>
-        public override void HideDialogueWithoutSound()
-        {
-            base.HideDialogueWithoutSound();
-
-            RemoveFromOpenWindowList();
+            if (!mute)
+                JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mOpenWindowClip, JCS_SoundMethod.PLAY_SOUND);
         }
 
         /// <summary>
         /// Hide the dialogue in the game.
-        /// 
-        /// NOTE(jenchieh): this will play the defualt sound.
         /// </summary>
-        public void HideDialogue()
+        public override void Hide(bool mute = false)
         {
-            HideDialogueWithoutSound();
+            base.Hide(mute);
 
-            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mCloseWindowClip, JCS_SoundMethod.PLAY_SOUND);
+            RemoveFromOpenWindowList();
+
+            if (!mute)
+                JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mCloseWindowClip, JCS_SoundMethod.PLAY_SOUND);
         }
 
         /// <summary>
@@ -218,9 +206,9 @@ namespace JCSUnity
         public void ToggleVisibility()
         {
             if (mIsVisible)
-                HideDialogue();
+                Hide();
             else
-                ShowDialogue();
+                Show();
 
             ResetDialogue();
         }
@@ -272,7 +260,7 @@ namespace JCSUnity
         /// </summary>
         private void SwapToTheLastOpenWindowList()
         {
-            // TODO(JenChieh): optimize
+            // TODO(jenchieh): optimize
 
             // remove the list
             RemoveFromOpenWindowList();

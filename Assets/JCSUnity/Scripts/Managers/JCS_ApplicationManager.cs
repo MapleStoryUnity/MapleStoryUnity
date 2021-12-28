@@ -19,7 +19,7 @@ namespace JCSUnity
     /// <summary>
     /// Manager manage application layer.
     /// </summary>
-    public class JCS_ApplicationManager : JCS_Managers<JCS_ApplicationManager>
+    public class JCS_ApplicationManager : JCS_Manager<JCS_ApplicationManager>
     {
         /* Variables */
 
@@ -146,7 +146,7 @@ namespace JCSUnity
             {
                 // load the quit scene.
                 var scenem = JCS_SceneManager.instance;
-                scenem.LoadScene("JCS_ApplicationCloseSimulate");
+                scenem.LoadScene("JCS_AppCloseSimulate");
             }
             else
             {

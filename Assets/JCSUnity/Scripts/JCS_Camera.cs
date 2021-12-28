@@ -261,7 +261,7 @@ namespace JCSUnity
 
             float camToGameDepthDistance = Vector3.Distance(camPos, depth);
 
-            RectTransform appRect = canvas.GetAppRect();
+            RectTransform appRect = canvas.AppRect;
             Vector2 canvasRect = appRect.sizeDelta;
             // transfer rect from screen space to world space
             {
@@ -445,7 +445,7 @@ namespace JCSUnity
             float objTop = objPos.y + (objectRect.y / JCS_Mathf.D_HALF);
             float objBot = objPos.y - (objectRect.y / JCS_Mathf.D_HALF);
 
-            RectTransform appRect = JCS_Canvas.GuessCanvas().GetAppRect();
+            RectTransform appRect = JCS_Canvas.GuessCanvas().AppRect;
 
             float camWidth = appRect.sizeDelta.x;
             float camHeight = appRect.sizeDelta.y;
@@ -518,7 +518,7 @@ namespace JCSUnity
             Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);
 
             // Get application rect
-            RectTransform appRect = JCS_Canvas.GuessCanvas().GetAppRect();
+            RectTransform appRect = JCS_Canvas.GuessCanvas().AppRect;
             Vector2 screenRect = appRect.sizeDelta;
 
             float camLeftBorder = camPosToScreen.x - screenRect.x / JCS_Mathf.D_HALF;
@@ -548,7 +548,7 @@ namespace JCSUnity
             Camera cam = GetCamera();
 
             //first you need the RectTransform component of your canvas
-            RectTransform canvasRect = JCS_Canvas.GuessCanvas().GetAppRect();
+            RectTransform canvasRect = JCS_Canvas.GuessCanvas().AppRect;
 
             //then you calculate the position of the UI element
 
@@ -581,7 +581,7 @@ namespace JCSUnity
             Camera cam = GetCamera();
 
             //first you need the RectTransform component of your canvas
-            RectTransform canvasRect = JCS_Canvas.GuessCanvas().GetAppRect();
+            RectTransform canvasRect = JCS_Canvas.GuessCanvas().AppRect;
 
             Vector2 canvasObject_WorldPosition = new Vector2(
                 ((targetCanvasPos.x + (canvasRect.sizeDelta.x * JCS_Mathf.T_HALF)) / canvasRect.sizeDelta.x),

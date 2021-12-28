@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Manager manage all the utilities in the game.
     /// </summary>
-    public class JCS_UtilitiesManager : JCS_Managers<JCS_UtilitiesManager>
+    public class JCS_UtilitiesManager : JCS_Manager<JCS_UtilitiesManager>
     {
         /* Variables */
 

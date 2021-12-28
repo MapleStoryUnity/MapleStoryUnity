@@ -59,7 +59,7 @@ namespace JCSUnity
         /// <param name="align"> align type </param>
         public void StartSlideOut(JCS_Align align, float time)
         {
-            Vector2 sizeDelta = JCS_Canvas.GuessCanvas().GetAppRect().sizeDelta;
+            Vector2 sizeDelta = JCS_Canvas.GuessCanvas().AppRect.sizeDelta;
 
             float imageSize = 1200;
             float distanceX = sizeDelta.x + imageSize;

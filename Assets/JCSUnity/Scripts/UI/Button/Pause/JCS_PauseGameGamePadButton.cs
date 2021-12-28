@@ -6,33 +6,23 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Pause the game with button. (Game Pad)
-    /// 
-    /// ATTENTION: this should have at least one "JCS_GamePadButton" with this.
     /// </summary>
-    public class JCS_PauseGameGamePadButton : MonoBehaviour
+    public class JCS_PauseGameGamePadButton : JCS_GamePadButton
     {
-        [Header("** Require Variables (JCS_PauseGameGamePadButton) **")]
+        /* Variables */
 
-        [Tooltip(@"You need this variable in order get the button 
-work properly.")]
-        [SerializeField]
-        private JCS_GamePadButton mJCSGamePadButton = null;
+        /* Setter & Getter */
 
+        /* Functions */
 
-        private void Awake()
+        public override void OnClick()
         {
-            // try to get the component.
-            if (mJCSGamePadButton == null)
-                this.mJCSGamePadButton = this.GetComponent<JCS_GamePadButton>();
-
-            if (mJCSGamePadButton != null)
-                mJCSGamePadButton.SetCallback(PauseGame);
+            PauseGame();
         }
 
         /// <summary>

@@ -18,9 +18,6 @@ namespace JCSUnity
     [RequireComponent(typeof(JCS_TweenerHandler))]
     public class JCS_TweenPanel : MonoBehaviour
     {
-        public delegate void ActiveCallback();
-        public delegate void DeactiveCallback();
-
         /* Variables */
 
         private JCS_TweenerHandler mTweenerHandler = null;
@@ -70,8 +67,8 @@ namespace JCSUnity
         private AudioClip mDeactiveSound = null;
 
         // call backs
-        private ActiveCallback mActiveCallbackFunc = null;
-        private DeactiveCallback mDeactiveCallbackFunc = null;
+        private EmptyFunction mActiveCallbackFunc = null;
+        private EmptyFunction mDeactiveCallbackFunc = null;
 
         /* Setter & Getter */
 
@@ -79,8 +76,8 @@ namespace JCSUnity
         public JCS_TweenerHandler TweenerHandler { get { return this.mTweenerHandler; } }
         public bool OverrideTween { get { return this.mOverrideTween; } set { this.mOverrideTween = value; } }
 
-        public ActiveCallback ActiveCallbackFunc { get { return this.mActiveCallbackFunc; } set { this.mActiveCallbackFunc = value; } }
-        public DeactiveCallback DeactiveCallbackFunc { get { return this.mDeactiveCallbackFunc; } set { this.mDeactiveCallbackFunc = value; } }
+        public EmptyFunction ActiveCallbackFunc { get { return this.mActiveCallbackFunc; } set { this.mActiveCallbackFunc = value; } }
+        public EmptyFunction DeactiveCallbackFunc { get { return this.mDeactiveCallbackFunc; } set { this.mDeactiveCallbackFunc = value; } }
 
         /* Functions */
 
@@ -129,7 +126,7 @@ namespace JCSUnity
             JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mActiveSound, JCS_SoundMethod.PLAY_SOUND_WHILE_NOT_PLAYING);
 
             if (mPanelRoot != null)
-                mPanelRoot.ShowDialogueWithoutSound();
+                mPanelRoot.Show(true);
 
             if (mActiveCallbackFunc != null)
                 mActiveCallbackFunc.Invoke();

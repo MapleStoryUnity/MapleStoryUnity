@@ -53,12 +53,16 @@ namespace JCSUnity
         /// <param name="ac"> Target audio clip. </param>
         /// <param name="method"> Method to play. </param>
         /// <param name="volume"> Sound volume. </param>
-        public static void PlayByAttachment(JCS_SoundPlayer sp, AudioClip ac, JCS_SoundMethod method = JCS_SoundMethod.PLAY_SOUND, float volume = 1.0f)
+        public static void PlayByAttachment(AudioClip clip, JCS_SoundMethod method = JCS_SoundMethod.PLAY_SOUND, float volume = 1.0f)
         {
-            JCS_SoundPlayer useSp = sp;
+            PlayByAttachment(null, clip, method);
+        }
+        public static void PlayByAttachment(JCS_SoundPlayer player, AudioClip clip, JCS_SoundMethod method = JCS_SoundMethod.PLAY_SOUND, float volume = 1.0f)
+        {
+            JCS_SoundPlayer useSp = player;
             if (useSp == null)
                 useSp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
-            useSp.PlayOneShotByMethod(ac, method, volume);
+            useSp.PlayOneShotByMethod(clip, method, volume);
         }
 
         /// <summary>

@@ -42,8 +42,8 @@ namespace JCSUnity
 
         public override void OnClick()
         {
-            JCS_GUIUtil.ActivePanels(mDialogueObjects, mPlaySound);
-            JCS_GUIUtil.ActivePanels(mTweenPanels);
+            JCS_UIUtil.ActivePanels(mDialogueObjects, mPlaySound);
+            JCS_UIUtil.ActivePanels(mTweenPanels);
         }
     }
 }

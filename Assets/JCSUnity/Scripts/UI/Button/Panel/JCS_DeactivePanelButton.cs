@@ -42,8 +42,8 @@ namespace JCSUnity
 
         public override void OnClick()
         {
-            JCS_GUIUtil.DeactivePanels(mDialogueObjects, mPlaySound);
-            JCS_GUIUtil.DeactivePanels(mTweenPanels);
+            JCS_UIUtil.DeactivePanels(mDialogueObjects, mPlaySound);
+            JCS_UIUtil.DeactivePanels(mTweenPanels);
         }
     }
 }

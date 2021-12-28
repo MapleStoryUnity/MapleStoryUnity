@@ -45,7 +45,7 @@ namespace JCSUnity
 #endif
 
         // Path that points to the panel.
-        private string mPanelHolderPath = "JCSUnity_Framework_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
+        private string mPanelHolderPath = "LevelDesignUI/JCS_SlideScreenPanelHolder";
 
         [Header("** Check Variables (JCS_2DSlideScreenCamera) **")]
 
@@ -63,7 +63,7 @@ namespace JCSUnity
 
         [Tooltip("Camera itself.")]
         [SerializeField]
-        private JCS_2DCamera mJCS_2DCamera = null;
+        private JCS_2DCamera m2DCamera = null;
 
         [Tooltip("Slide screen panel holder for this camera.")]
         [SerializeField]
@@ -128,7 +128,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
-        public void SetJCS2DCamera(JCS_2DCamera cam) { this.mJCS_2DCamera = cam; }
+        public void SetJCS2DCamera(JCS_2DCamera cam) { this.m2DCamera = cam; }
         public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
         public bool InteractableSwipe { get { return this.mInteractableSwipe; } set { this.mInteractableSwipe = value; } }
         public Vector2 SwipeArea { get { return this.mSwipeArea; } set { this.mSwipeArea = value; } }
@@ -363,7 +363,7 @@ namespace JCSUnity
         /// </summary>
         private void DoMobileSwipe()
         {
-            JCS_SlideInput si = JCS_InputManager.instance.GetGlobalSlideInput();
+            var si = JCS_SlideInput.instance;
             if (si == null)
                 return;
 
@@ -510,26 +510,26 @@ namespace JCSUnity
         /// </summary>
         private void InitCamera()
         {
-            if (mJCS_2DCamera == null)
+            if (m2DCamera == null)
             {
                 JCS_Debug.LogError("There is not JCS_2DCamera attach to, spawn a default one!");
 
                 // Spawn a Default one!
-                this.mJCS_2DCamera = JCS_Util.SpawnGameObject(
+                this.m2DCamera = JCS_Util.SpawnGameObject(
                     JCS_2DCamera.JCS_2DCAMERA_PATH,
                     transform.position,
                     transform.rotation).GetComponent<JCS_2DCamera>();
             }
 
             // if still null, setting error!!
-            if (mJCS_2DCamera == null)
+            if (m2DCamera == null)
             {
                 JCS_Debug.LogError("The object spawn does not have the `JCS_2DCamera` component");
                 return;
             }
 
             // set target to follow!
-            mJCS_2DCamera.SetFollowTarget(this.transform);
+            m2DCamera.SetFollowTarget(this.transform);
         }
 
         /// <summary>

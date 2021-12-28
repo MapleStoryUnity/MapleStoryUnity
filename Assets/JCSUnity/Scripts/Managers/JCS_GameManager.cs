@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Make sure u have this execute first!!!
     /// </summary>
-    public class JCS_GameManager : JCS_Managers<JCS_GameManager>
+    public class JCS_GameManager : JCS_Manager<JCS_GameManager>
     {
         /* Variables */
 

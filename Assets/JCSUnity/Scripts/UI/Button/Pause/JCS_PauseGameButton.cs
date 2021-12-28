@@ -6,33 +6,23 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Pause the game with button.
-    /// 
-    /// ATTENTION: this should have at least one "JCS_Button" with this.
     /// </summary>
-    public class JCS_PauseGameButton : MonoBehaviour
+    public class JCS_PauseGameButton : JCS_Button
     {
-        [Header("** Require Variables (JCS_PauseGameButton) **")]
+        /* Variables */
 
-        [Tooltip(@"You need this variable in order get the button 
-work properly.")]
-        [SerializeField]
-        private JCS_Button mJCSButton = null;
+        /* Setter & Getter */
 
+        /* Functions */
 
-        private void Awake()
+        public override void OnClick()
         {
-            // try to get the component.
-            if (mJCSButton == null)
-                this.mJCSButton = this.GetComponent<JCS_Button>();
-
-            if (mJCSButton != null)
-                mJCSButton.SetCallback(PauseGame);
+            PauseGame();
         }
 
         /// <summary>
@@ -43,6 +33,5 @@ work properly.")]
             // turn on the game pause button.
             JCS_GameManager.instance.GAME_PAUSE = true;
         }
-
     }
 }

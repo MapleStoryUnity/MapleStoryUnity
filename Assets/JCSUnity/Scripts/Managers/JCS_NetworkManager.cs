@@ -16,7 +16,7 @@ namespace JCSUnity
     /// NOTE(jenchieh): To use this so the game could possibly become 
     /// the MO/MMO game.
     /// </summary>
-    public class JCS_NetworkManager : JCS_Managers<JCS_NetworkManager>
+    public class JCS_NetworkManager : JCS_Manager<JCS_NetworkManager>
     {
         /* Variables */
 

@@ -25,7 +25,7 @@ namespace JCSUnity
 
         [Tooltip("Scene name you want to load the scene.")]
         [SerializeField]
-        private string mSceneName = "JCS_ApplicationCloseSimulate";
+        private string mSceneName = "JCS_AppCloseSimulate";
 
         [Tooltip("Screen color when load the scene.")]
         [SerializeField]
@@ -40,7 +40,6 @@ namespace JCSUnity
         public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
         public Color ScreenColor { get { return this.mScreenColor; } set { this.mScreenColor = value; } }
         public bool KeppBGM { get { return this.mKeppBGM; } set { this.mKeppBGM = value; } }
-
 
         /* Functions */
 
