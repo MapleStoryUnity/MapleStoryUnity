@@ -32,6 +32,12 @@ namespace JCSUnity
         [SerializeField]
         private JCS_ResizeUI mResizeUI = null;
 
+        [Header("** Initialize Variables (JCS_Canvas) **")]
+
+        [Tooltip("If true, show on awake time; otherwise, hide it.")]
+        [SerializeField]
+        private bool mDisplayOnAwake = true;
+
         [Header("** Runtime Variables (JCS_Canvas) **")]
 
         [Tooltip("Play sound when active the canvas.")]
@@ -47,6 +53,8 @@ namespace JCSUnity
         public RectTransform AppRect { get { return this.mAppRect; } }
         public Canvas canvas { get { return this.mCanvas; } }
         public JCS_ResizeUI ResizeUI { get { return this.mResizeUI; } }
+
+        public bool DisplayOnAwake { get { return this.mDisplayOnAwake; } set { this.mDisplayOnAwake = value; } }
 
         public AudioClip ActiveSound { get { return this.mActiveSound; } set { this.mActiveSound = value; } }
         public AudioClip DeactiveSound { get { return this.mDeactiveSound; } set { this.mDeactiveSound = value; } }
@@ -66,6 +74,11 @@ namespace JCSUnity
             }
 
             JCS_UIManager.instance.AddCanvas(this);
+
+            if (mDisplayOnAwake)
+                Show();
+            else
+                Hide();
         }
 
         private void Start()
