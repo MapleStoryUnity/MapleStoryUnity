@@ -4,6 +4,10 @@ on:
   pull_request: {}
   push: { branches: [main, master, develop] }
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   # License
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
