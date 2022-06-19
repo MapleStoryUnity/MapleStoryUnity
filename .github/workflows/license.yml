@@ -10,10 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # License
+  UNITY_VER: 2021.2.14f1
   ULF_FILE: Unity_v2021.x.ulf
-  # Project
-  UNITY_VERSION: 2021.2.0f1
 
 jobs:
   request_alf:
@@ -26,7 +24,7 @@ jobs:
         id: alfFile
         uses: game-ci/unity-request-activation-file@main
         with:
-          unityVersion: ${{ env.UNITY_VERSION }}
+          unityVersion: ${{ env.UNITY_VER }}
 
       # Upload artifact (Unity_v20XX.X.XXXX.alf)
       - name: Expose as artifact
@@ -44,19 +42,16 @@ jobs:
     needs: [request_alf]
     name: Acquire .ulf file 🔑
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
     steps:
       - name: Download .alf artifact
         uses: actions/download-artifact@v2
         with:
           name: ${{ needs.request_alf.outputs.alf }}
 
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16'
 
       - name: Install node package, `unity-license-activate`
         run: npm install --global unity-license-activate
