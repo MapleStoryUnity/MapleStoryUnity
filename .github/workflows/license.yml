@@ -74,4 +74,4 @@ jobs:
         with:
           name: 'UNITY_LICENSE'
           value: '${{ steps.ulfRead.outputs.content }}'
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.PAT }}
