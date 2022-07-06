@@ -1,10 +1,21 @@
-/**
- * $File: Util.cs $
- * $Date: 2021-04-13 00:08:58 $
- * $Revision: $
- * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
- *	                 Copyright © 2021 by Shen, Jen-Chieh $
+/*
+ This file is part of the MapleStory Unity
+
+ Copyright (C) 2021-2022 Shen, Jen-Chieh <jcs090218@gmail.com> 
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License version 3
+ as published by the Free Software Foundation. You may not use, modify
+ or distribute this program under any other version of the
+ GNU Affero General Public License.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 using System.Collections;
 using System.Collections.Generic;
