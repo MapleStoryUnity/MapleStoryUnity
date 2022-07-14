@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  UNITY_VER: 2021.2.14f1
-  ULF_FILE: Unity_v2021.x.ulf
+  UNITY_VER: 2022.1.9f1
+  ULF_FILE: Unity_v2022.x.ulf
 
 jobs:
   request_alf:
