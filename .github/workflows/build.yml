@@ -44,7 +44,7 @@ jobs:
           restore-keys: |
             Library-test-project-
             Library-
-      - uses: game-ci/unity-test-runner@master
+      - uses: game-ci/unity-test-runner@main
         id: testRunner
         with:
           projectPath: ${{ env.PROJECT_PATH }}
@@ -91,7 +91,7 @@ jobs:
             Library-${{ matrix.projectPath }}-
             Library-
 
-      - uses: game-ci/unity-builder@v2.0-alpha-13
+      - uses: game-ci/unity-builder@v2.0.4
         with:
           projectPath: ${{ env.PROJECT_PATH }}
           unityVersion: ${{ env.UNITY_VERSION }}
