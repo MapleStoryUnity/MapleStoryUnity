@@ -190,7 +190,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Trun the current nav mesh to agent.
+        /// Turn the current nav mesh to agent.
         /// </summary>
         public void AgentNow()
         {
@@ -199,7 +199,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Trun the current nav mesh to obstacle.
+        /// Turn the current nav mesh to obstacle.
         /// </summary>
         public void ObstacleNow()
         {

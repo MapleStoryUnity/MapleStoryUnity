@@ -99,7 +99,6 @@ namespace JCSUnity
 
         private SpriteRenderer mCriticalSprite = null;
 
-
         [Header("** Critical Strike Sprite Setting (JCS_DamageText) **")]
 
         [Tooltip("Scale value to critical sprites.")]
@@ -187,9 +186,9 @@ namespace JCSUnity
         {
             this.mSpriteRenderers = new List<SpriteRenderer>();
 
-            if (this.mCriticalSprite == null)
+            if (this.mCriticalSprite == null && transform.name.Contains("(Clone)"))
             {
-                GameObject gm = new GameObject();
+                var gm = new GameObject();
                 this.mCriticalSprite = gm.AddComponent<SpriteRenderer>();
                 gm.transform.SetParent(this.transform);
 #if (UNITY_EDITOR)
@@ -236,22 +235,22 @@ namespace JCSUnity
                 // Add one new digit.
                 if (mSpriteRenderers.Count <= digit - 1)
                 {
-                    GameObject gm = new GameObject();
+                    var gm = new GameObject();
                     SpriteRenderer newSr = gm.AddComponent<SpriteRenderer>();
 
                     // set the parent
                     gm.transform.SetParent(this.transform);
-
-                    // Reset transform values.
-                    gm.transform.localPosition = Vector3.zero;
-                    gm.transform.localEulerAngles = Vector3.zero;
-                    gm.transform.localScale = Vector3.one;
 
                     // add to manage
                     mSpriteRenderers.Add(newSr);
                 }
 
                 SpriteRenderer sr = mSpriteRenderers[digit - 1];
+
+                // Reset transform values.
+                sr.transform.localPosition = Vector3.zero;
+                sr.transform.localEulerAngles = Vector3.zero;
+                sr.transform.localScale = Vector3.one;
 
                 // get single digit
                 int digitNum;
@@ -313,6 +312,11 @@ namespace JCSUnity
             {
                 SpriteRenderer sr = mCriticalSprite;
 
+                // Reset transform values.
+                sr.transform.localPosition = Vector3.zero;
+                sr.transform.localEulerAngles = Vector3.zero;
+                sr.transform.localScale = Vector3.one;
+
                 // 最左邊的空位
                 int theLeftDigitSpace = (totalDigit + 1);
 
@@ -321,8 +325,8 @@ namespace JCSUnity
 
                 sr.sortingOrder = mBaseOrderLayer - theLeftDigitSpace;
 
-                Vector3 newPos = gameObject.transform.localPosition;
-                newPos.x -= mSpacing * theLeftDigitSpace;
+                Vector3 newPos = sr.transform.localPosition;
+                newPos.x = leftPosX - (mSpacing * totalDigit);
 
                 // Adjust a bit so we have a little control
                 // the position of this sprite! (Critical Image)
