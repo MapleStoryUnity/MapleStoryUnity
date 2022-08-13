@@ -19,7 +19,7 @@ namespace JCSUnity
     /// Action that shoot bullets.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPoolAction))]
-    public class JCS_ShootAction : MonoBehaviour , JCS_Action
+    public class JCS_ShootAction : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

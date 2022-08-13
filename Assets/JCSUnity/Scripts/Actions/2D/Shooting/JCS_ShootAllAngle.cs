@@ -14,7 +14,7 @@ namespace JCSUnity
     /// Action that shoot in all angle.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
-    public class JCS_ShootAllAngle : MonoBehaviour , JCS_Action
+    public class JCS_ShootAllAngle : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

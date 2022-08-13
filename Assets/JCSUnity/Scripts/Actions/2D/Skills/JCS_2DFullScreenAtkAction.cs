@@ -14,7 +14,7 @@ namespace JCSUnity
     /// Full screen attack.
     /// </summary>
     [RequireComponent(typeof(JCS_AnimPool))]
-    public class JCS_2DFullScreenAtkAction : JCS_2DSkills , JCS_Action
+    public class JCS_2DFullScreenAtkAction : JCS_2DSkills , JCS_IAction
     {
         /* Variables */
 

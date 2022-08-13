@@ -12,7 +12,7 @@ namespace JCSUnity
     /// <summary>
     /// Interface of the action.
     /// </summary>
-    public interface JCS_Action
+    public interface JCS_IAction
     {
         // interfaces.
     }

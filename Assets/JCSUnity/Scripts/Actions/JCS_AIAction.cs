@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// AI action interface.
     /// </summary>
-    public abstract class JCS_AIAction : MonoBehaviour , JCS_Action
+    public abstract class JCS_AIAction : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

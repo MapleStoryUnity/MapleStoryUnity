@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Look at a transform in 3D space.
     /// </summary>
-    public class JCS_3DLookAtAction : MonoBehaviour , JCS_Action
+    public class JCS_3DLookAtAction : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

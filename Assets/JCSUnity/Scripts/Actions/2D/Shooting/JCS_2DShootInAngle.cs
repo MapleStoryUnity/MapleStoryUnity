@@ -14,7 +14,7 @@ namespace JCSUnity
     /// Do the shoot action in specific angle.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
-    public class JCS_2DShootInAngle : MonoBehaviour , JCS_Action
+    public class JCS_2DShootInAngle : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

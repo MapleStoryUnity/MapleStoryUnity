@@ -12,7 +12,7 @@ namespace JCSUnity
     /// <summary>
     /// UI component data root struct.
     /// </summary>
-    public interface JCS_UIComponentData
+    public interface JCS_IUIComponentData
     {
         // empty..
     }

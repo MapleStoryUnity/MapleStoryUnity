@@ -61,7 +61,8 @@ namespace JCSUnity
         private JCS_Axis mAxis = JCS_Axis.AXIS_X;
 
         [Tooltip("How far the object slides.")]
-        [SerializeField] [Range(-30000, 30000)]
+        [SerializeField]
+        [Range(-30000, 30000)]
         private float mDistance = -50;
 
         [Tooltip("How fast the object slides.")]
@@ -176,8 +177,8 @@ namespace JCSUnity
             if (GetObjectType() == JCS_UnityObjectType.UI ||
                 GetObjectType() == JCS_UnityObjectType.TEXT)
             {
-                // Get panel root, in order to calculate the 
-                // correct distance base on the resolution.
+                // Get panel root, in order to calculate the correct distance
+                // base on the resolution.
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
 
                 if (mAutoAddEvent)
@@ -204,8 +205,8 @@ namespace JCSUnity
             {
                 case JCS_Axis.AXIS_X:
                     {
-                        // mPanelRoot will be null is the object isn't
-                        // UI game object.
+                        // mPanelRoot will be null is the object isn't UI
+                        // gameobject.
                         if (mPanelRoot != null)
                             mDistance *= mPanelRoot.PanelDeltaWidthRatio;
 
@@ -214,8 +215,8 @@ namespace JCSUnity
                     break;
                 case JCS_Axis.AXIS_Y:
                     {
-                        // mPanelRoot will be null is the object isn't
-                        // UI game object.
+                        // mPanelRoot will be null is the object isn't UI
+                        // gameobject.
                         if (mPanelRoot != null)
                             mDistance *= mPanelRoot.PanelDeltaHeightRatio;
 

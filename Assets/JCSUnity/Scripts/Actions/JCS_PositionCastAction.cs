@@ -17,7 +17,7 @@ namespace JCSUnity
     /// Screen: from [0,0] to [Screen.width, Screen.height]
     /// Viewport: from [-1, -1] to [1, 1]
     /// </summary>
-    public class JCS_PositionCastAction : JCS_UnityObject , JCS_Action
+    public class JCS_PositionCastAction : JCS_UnityObject , JCS_IAction
     {
         /* Variables */
 

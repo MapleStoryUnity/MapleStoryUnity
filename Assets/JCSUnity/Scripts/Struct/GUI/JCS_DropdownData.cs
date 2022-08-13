@@ -6,14 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
+using System;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Dropdown data to record it down.
     /// </summary>
-    [System.Serializable]
-    public class JCS_DropdownData : JCS_UIComponentData
+    [Serializable]
+    public class JCS_DropdownData : JCS_IUIComponentData
     {
         public int value = 0;
     }

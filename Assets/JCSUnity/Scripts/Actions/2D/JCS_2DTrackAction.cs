@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Track a gameobject on 2D.
     /// </summary>
-    public class JCS_2DTrackAction : MonoBehaviour , JCS_Action
+    public class JCS_2DTrackAction : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

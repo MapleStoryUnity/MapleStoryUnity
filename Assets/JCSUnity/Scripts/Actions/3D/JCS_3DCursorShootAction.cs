@@ -14,7 +14,7 @@ namespace JCSUnity
     /// Shoot bullet toward the cursor position in 3D space.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
-    public class JCS_3DCursorShootAction : MonoBehaviour , JCS_Action
+    public class JCS_3DCursorShootAction : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

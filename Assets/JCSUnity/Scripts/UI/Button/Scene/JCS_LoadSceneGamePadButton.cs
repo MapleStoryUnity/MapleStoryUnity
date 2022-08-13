@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
@@ -25,7 +26,11 @@ namespace JCSUnity
 
         [Tooltip("Scene name you want to load the scene.")]
         [SerializeField]
-        private string mSceneName = "JCS_AppCloseSimulate";
+        private string mSceneName = "";
+
+        [Tooltip("Reload the current scene, and ignore the target scene name.")]
+        [SerializeField]
+        public bool mReloadScene = false;
 
         [Tooltip("Screen color when load the scene.")]
         [SerializeField]
@@ -38,6 +43,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
+        public bool ReloadScene { get { return this.mReloadScene; } set { this.mReloadScene = value; } }
         public Color ScreenColor { get { return this.mScreenColor; } set { this.mScreenColor = value; } }
         public bool KeppBGM { get { return this.mKeppBGM; } set { this.mKeppBGM = value; } }
 
@@ -54,7 +60,15 @@ namespace JCSUnity
                     return;
             }
 
-            JCS_SceneManager.instance.LoadScene(mSceneName, mScreenColor, mKeppBGM);
+            string sceneName = mSceneName;
+
+            if (mReloadScene)
+            {
+                // assign current scene name
+                sceneName = SceneManager.GetActiveScene().name;
+            }
+
+            JCS_SceneManager.instance.LoadScene(sceneName, mScreenColor, mKeppBGM);
         }
     }
 }

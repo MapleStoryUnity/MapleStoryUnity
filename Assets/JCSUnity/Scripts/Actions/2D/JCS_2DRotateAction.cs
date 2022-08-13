@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Action that make gameobject rotates.
     /// </summary>
-    public class JCS_2DRotateAction : MonoBehaviour , JCS_Action
+    public class JCS_2DRotateAction : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

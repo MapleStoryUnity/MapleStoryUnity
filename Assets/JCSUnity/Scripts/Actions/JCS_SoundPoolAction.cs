@@ -14,7 +14,7 @@ namespace JCSUnity
     /// A pool of audio clips.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_SoundPoolAction : MonoBehaviour , JCS_Action
+    public class JCS_SoundPoolAction : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

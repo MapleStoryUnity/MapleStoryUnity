@@ -29,6 +29,12 @@ namespace JCSUnity
         [Header("** Check Variables (JCS_LiquidBar) **")]
 
         [SerializeField]
+        protected float mMinPos = 0.0f;
+
+        [SerializeField]
+        protected float mMaxPos = 0.0f;
+
+        [SerializeField]
         protected bool mReachMin = false;
 
         [SerializeField]
@@ -66,9 +72,6 @@ namespace JCSUnity
         [Tooltip("Current liquid bar value.")]
         [SerializeField]
         protected float mCurrentValue = 50.0f;
-
-        protected float mMinPos = 0.0f;
-        protected float mMaxPos = 0.0f;
 
         [Header("** Optional Variables (JCS_LiquidBar) **")]
 
@@ -149,21 +152,19 @@ Careful that recover can be damage too.")]
 
         protected virtual void Update()
         {
-            // 1) if the recover effect is off no need to 
-            // get back the recorded recover value. 
+            // 1) if the recover effect is off no need to  get back the recorded
+            // recover value. 
             // 2) check the effect is on/off.
             if (!mRecoverEffect || !mBackToRecordRecoverValue)
                 return;
 
-            // Try to get back the original 
-            // value (which we record down in 
+            // Try to get back the original value (which we record down in 
             // the Awake function).
             this.mRecoverValue += (mRecordValue - mRecoverValue) / mGetBackFriction * Time.deltaTime;
         }
 
         /// <summary>
-        /// Attach 2d live object so it will follow the
-        /// value from this object.
+        /// Attach 2d live object so it will follow the value from this object.
         /// </summary>
         /// <param name="obj"> Info for liquid bar to follow. </param>
         public abstract void AttachInfo(JCS_LiquidBarInfo info);

@@ -19,7 +19,7 @@ namespace JCSUnity
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(NavMeshObstacle))]
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
-    public class JCS_3DWalkAction : MonoBehaviour , JCS_Action
+    public class JCS_3DWalkAction : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

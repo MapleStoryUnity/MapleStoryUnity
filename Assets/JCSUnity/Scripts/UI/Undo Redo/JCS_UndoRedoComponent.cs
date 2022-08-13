@@ -810,7 +810,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="uiComp"></param>
         /// <returns></returns>
-        private bool CheckSameData(JCS_UIComponentData uiComp)
+        private bool CheckSameData(JCS_IUIComponentData uiComp)
         {
             switch (mGUIType)
             {
@@ -837,7 +837,7 @@ namespace JCSUnity
         /// Get the current GUI type's previous data struct container.
         /// </summary>
         /// <returns></returns>
-        private JCS_UIComponentData GetCurrentUIPrevData()
+        private JCS_IUIComponentData GetCurrentUIPrevData()
         {
             switch (mGUIType)
             {

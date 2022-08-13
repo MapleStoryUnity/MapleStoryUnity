@@ -15,7 +15,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     [RequireComponent(typeof(JCS_2DCursorShootAction))]
-    public class JCS_2DSequenceShootActionNoDetection : MonoBehaviour , JCS_Action
+    public class JCS_2DSequenceShootActionNoDetection : MonoBehaviour , JCS_IAction
     {
         /* Variables */
 

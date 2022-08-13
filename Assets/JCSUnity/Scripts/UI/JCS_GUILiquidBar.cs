@@ -49,6 +49,10 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_GUILiquidBar) **")]
 
+        [Tooltip("The panel root object.")]
+        [SerializeField]
+        private JCS_PanelRoot mPanelRoot = null;
+
         [SerializeField]
         private Vector3 mMaskTargetPosition = Vector3.zero;
 
@@ -77,6 +81,10 @@ namespace JCSUnity
             // record down the position
             mRectTransform = this.GetComponent<RectTransform>();
 
+            // Get panel root, in order to calculate the correct distance base
+            // on the resolution.
+            mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+
             if (mMask == null)
             {
                 JCS_Debug.LogError("No mask applied");
@@ -101,8 +109,7 @@ namespace JCSUnity
 
             base.Update();
 
-            // check all components needed are
-            // avaliable.
+            // check all components needed are avaliable.
             if (mMask == null)
                 return;
 
@@ -316,8 +323,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get the container data so it could so the correct 
-        /// position check and value check.
+        /// Get the container data so it could so the correct position check
+        /// and value check.
         /// </summary>
         private void GetContainerData()
         {
@@ -329,8 +336,7 @@ namespace JCSUnity
 
             mMaskTargetPosition = this.mRectTransform.localPosition;
 
-            // find min max position, 
-            // base on the algin side.
+            // find min max position, base on the algin side.
             switch (GetAlign())
             {
                 case JCS_Align.ALIGN_LEFT:
@@ -393,11 +399,15 @@ namespace JCSUnity
             {
                 case JCS_Align.ALIGN_LEFT:
                 case JCS_Align.ALIGN_RIGHT:
-                    mMaskTargetPosition.x = mMinPos + realDistance;
+                    {
+                        mMaskTargetPosition.x = mMinPos + realDistance;
+                    }
                     break;
                 case JCS_Align.ALIGN_BOTTOM:
                 case JCS_Align.ALIGN_TOP:
-                    mMaskTargetPosition.y = mMinPos + realDistance;
+                    {
+                        mMaskTargetPosition.y = mMinPos + realDistance;
+                    }
                     break;
             }
         }
@@ -408,7 +418,34 @@ namespace JCSUnity
         private void TowardToTargetValue()
         {
             Vector3 speed = (mMaskTargetPosition - mMaskRectTransform.localPosition) / mDeltaFriction * Time.deltaTime;
-            mMaskRectTransform.localPosition += speed;
+            Vector3 tmpSpeed = speed;
+
+            // TODO(jenchieh): It's weird that these seem to fix the issue
+            // when resolution isn't the full targeted resoltuion (generally
+            // 1920 x 1080).
+            //
+            // But the speed `mDeltaFriction` doesn't apply; meaning it doesn't
+            // grow in a proportional way with the resolution ratio/scale.
+            if (mPanelRoot != null)
+            {
+                switch (GetAlign())
+                {
+                    case JCS_Align.ALIGN_LEFT:
+                    case JCS_Align.ALIGN_RIGHT:
+                        {
+                            tmpSpeed *= mPanelRoot.PanelDeltaWidthRatio;
+                        }
+                        break;
+                    case JCS_Align.ALIGN_BOTTOM:
+                    case JCS_Align.ALIGN_TOP:
+                        {
+                            tmpSpeed *= mPanelRoot.PanelDeltaHeightRatio;
+                        }
+                        break;
+                }
+            }
+
+            mMaskRectTransform.localPosition += tmpSpeed;
             mRectTransform.localPosition -= speed;
         }
 
