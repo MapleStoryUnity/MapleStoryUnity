@@ -144,9 +144,7 @@ namespace JCSUnity
         /// </returns>
         public static int Dropdown_GetItemIndex(Dropdown dd, string itemName)
         {
-            for (int index = 0;
-                index < dd.options.Count;
-                ++index)
+            for (int index = 0; index < dd.options.Count; ++index)
             {
                 if (itemName == Dropdown_GetItemValue(dd, index))
                     return index;
@@ -262,9 +260,7 @@ namespace JCSUnity
         /// </returns>
         public static int Dropdown_GetItemIndex(JCS_Dropdown dd, string itemName)
         {
-            for (int index = 0;
-                index < dd.DropdownRealTexts.Count;
-                ++index)
+            for (int index = 0; index < dd.DropdownRealTexts.Count; ++index)
             {
                 if (itemName == Dropdown_GetItemValue(dd, index))
                     return index;

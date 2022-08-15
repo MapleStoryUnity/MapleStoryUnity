@@ -91,9 +91,7 @@ namespace JCSUnity
             // disable other un-necessary components
             if (mDisableOtherComponentWhileDie)
             {
-                for (int index = 0;
-                    index < mDisableComponents.Length;
-                    ++index)
+                for (int index = 0; index < mDisableComponents.Length; ++index)
                 {
                     // disable all un-necessary component
                     if (mDisableComponents[index] == null)

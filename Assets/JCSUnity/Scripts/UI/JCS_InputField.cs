@@ -117,9 +117,7 @@ namespace JCSUnity
 
             /* First get the dot string. */
             {
-                for (int count = 1;
-                    count < mDotCount;
-                    ++count)
+                for (int count = 1; count < mDotCount; ++count)
                 {
                     dot += ".";
                 }

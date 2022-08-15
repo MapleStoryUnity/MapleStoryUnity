@@ -44,15 +44,10 @@ namespace JCSUnity
             CharacterController[] controllers = Resources.FindObjectsOfTypeAll<CharacterController>();
 
             // Make all the character controller ignore each other
-            for (int index = 0;
-                index < controllers.Length;
-                ++index)
+            for (int index = 0; index < controllers.Length; ++index)
             {
-                for (int pairIndex = index + 1;
-                    pairIndex < controllers.Length;
-                    ++pairIndex)
+                for (int pairIndex = index + 1; pairIndex < controllers.Length; ++pairIndex)
                 {
-
                     Physics.IgnoreCollision(
                             controllers[index],
                             controllers[pairIndex], true);

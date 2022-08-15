@@ -174,17 +174,13 @@ namespace JCSUnity
         /// </summary>
         private static void ClearJoystickKeymapBuffer()
         {
-            for (int index = 0;
-                index < mJoystickKeyWasPreseed.Count;
-                ++index)
+            for (int index = 0; index < mJoystickKeyWasPreseed.Count; ++index)
             {
                 string idString = mJoystickKeyWasPreseed[index];
                 mJoystickKeyPressed[idString] = true;
             }
 
-            for (int index = 0;
-                index < mJoystickKeyWasReleased.Count;
-                ++index)
+            for (int index = 0; index < mJoystickKeyWasReleased.Count; ++index)
             {
                 string idString = mJoystickKeyWasReleased[index];
                 mJoystickKeyReleased[idString] = true;

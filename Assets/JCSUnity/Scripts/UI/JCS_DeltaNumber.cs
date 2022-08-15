@@ -221,9 +221,7 @@ should disable this effect for best purpose.")]
             if (mIsEnable == act)
                 return;
 
-            for (int index = 0;
-                index < mDigitsRendererSlot.Length;
-                ++index)
+            for (int index = 0; index < mDigitsRendererSlot.Length; ++index)
             {
                 mDigitsRendererSlot[index].LocalEnabled = act;
             }
@@ -281,14 +279,11 @@ should disable this effect for best purpose.")]
             // update interval
             this.mDigitInterval = interval;
 
-            for (int digit = 0;
-                digit < mDigitsRendererSlot.Length;
-                ++digit)
+            for (int digit = 0; digit < mDigitsRendererSlot.Length; ++digit)
             {
                 if (mDigitsRendererSlot[digit] == null)
                 {
-                    JCS_Debug.LogError(
-                        "Digit slot cannot be null references...");
+                    JCS_Debug.LogError("Digit slot cannot be null references");
                     continue;
                 }
 
@@ -315,9 +310,7 @@ should disable this effect for best purpose.")]
             // check the first non zero from the left.
             bool meetNonZero = false;
 
-            for (int digit = mDigitsRendererSlot.Length - 1;
-                digit >= 0;
-                --digit)
+            for (int digit = mDigitsRendererSlot.Length - 1; digit >= 0; --digit)
             {
                 if (mDigitsRendererSlot[digit] == null)
                 {
@@ -476,9 +469,7 @@ should disable this effect for best purpose.")]
         /// <param name="deltaX"></param>
         private void MoveDigits(float deltaX)
         {
-            for (int digit = 0;
-                digit < mDigitsRendererSlot.Length;
-                ++digit)
+            for (int digit = 0; digit < mDigitsRendererSlot.Length; ++digit)
             {
                 if (mDigitsRendererSlot[digit] == null)
                 {

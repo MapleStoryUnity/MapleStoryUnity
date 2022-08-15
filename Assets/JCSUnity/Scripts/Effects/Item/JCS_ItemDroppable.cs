@@ -243,9 +243,7 @@ just stop there.")]
 
                 bool isEven = ((itemDrop % 2) == 0) ? true : false;
 
-                for (index = 0;
-                    index < count;
-                    ++index)
+                for (index = 0; index < count; ++index)
                 {
                     // simple assign the item.
                     JCS_Item item = mustDropItem;

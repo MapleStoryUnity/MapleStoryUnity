@@ -375,9 +375,7 @@ namespace JCSUnity
         /// <param name="vol"> target volume. </param>
         private void SetSoundVolume(JCS_Vector<AudioSource> list, float vol)
         {
-            for (int index = 0;
-                index < list.length;
-                ++index)
+            for (int index = 0; index < list.length; ++index)
             {
                 list.at(index).volume = vol;
             }
@@ -390,9 +388,7 @@ namespace JCSUnity
         /// <param name="act"> target mute action. </param>
         private void SetSoundtMute(JCS_Vector<AudioSource> list, bool act)
         {
-            for (int index = 0;
-                index < list.length;
-                ++index)
+            for (int index = 0; index < list.length; ++index)
             {
                 list.at(index).mute = act;
             }

@@ -221,9 +221,7 @@ built-in Unity Engine.")]
         {
             Transform spawnTrans = null;
 
-            for (int counter = 0;
-                counter < mObjectsToSpawn;
-                ++counter)
+            for (int counter = 0; counter < mObjectsToSpawn; ++counter)
             {
                 // get the random object from the list.
                 spawnTrans = mObjectList.GetRandomObjectFromList();

@@ -239,9 +239,7 @@ namespace JCSUnity
             mButtons = buttons;
 
             // initialzie the scroll index.
-            for (int index = 0;
-                index < mButtons.Length;
-                ++index)
+            for (int index = 0; index < mButtons.Length; ++index)
             {
                 currentBtn = mButtons[index];
 

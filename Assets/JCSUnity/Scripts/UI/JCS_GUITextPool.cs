@@ -53,11 +53,8 @@ namespace JCSUnity
 
             JCS_LogText logText;
 
-            // loop through and see any not active 
-            // log text we can use in the pool
-            for (int index = mLastSpawnPos;
-                index < mNumberOfHandle;
-                ++index)
+            // loop through and see any not active log text we can use in the pool
+            for (int index = mLastSpawnPos; index < mNumberOfHandle; ++index)
             {
                 logText = mLogTexts.at(index);
 
@@ -73,19 +70,15 @@ namespace JCSUnity
 
             }
 
-            // if we get here mean we cycle once but we
-            // did not spawn a text!
-            // so reset the spawn pos and 
-            // try to search agian until we find one!
+            // if we get here mean we cycle once but we did not spawn a text!
+            // so reset the spawn pos and try to search agian until we find one!
             mLastSpawnPos = 0;
 
-            // if function call the second time, 
-            // and try to call the third time, 
-            // exit the function call.
-            // so prevent "stack overflow 
-            // search/infinite function call".
-            // IMPORTANT(JenChieh): it wont spawn damage text this time, 
-            // if this happens.
+            // if function call the second time, and try to call the third time, 
+            // exit the function call. so prevent "stack overflow  search/infinite
+            // function call".
+            //
+            // IMPORTANT(JenChieh): it wont spawn damage text this time, if this happens.
             if (secondSearch)
             {
 #if (UNITY_EDITOR)
@@ -118,21 +111,16 @@ namespace JCSUnity
             }
 
 
-            // NOTE(JenChieh): this might change in
-            // the future.
-            // Get the log system from the 
-            // same transfrom/node.
+            // NOTE(JenChieh): this might change in the future.
+            // Get the log system from the same transfrom/node.
             JCS_IGLogSystem logSystem = this.GetComponent<JCS_IGLogSystem>();
 
 
             mLogTexts = new JCS_Vector<JCS_LogText>(mNumberOfHandle);
 
-            for (int count = 0;
-                count < mNumberOfHandle;
-                ++count)
+            for (int count = 0; count < mNumberOfHandle; ++count)
             {
-                // spawn a new game object, 
-                // and get the component
+                // spawn a new game object, and get the component
                 JCS_LogText logText = (JCS_LogText)JCS_Util.SpawnGameObject(mLogText);
 
                 // add to array
@@ -141,8 +129,7 @@ namespace JCSUnity
                 // set parent
                 JCS_Util.SetParentWithoutLosingInfo(logText.transform, this.transform);
 
-                // NOTE(JenChieh): this might change in
-                // the future.
+                // NOTE(JenChieh): this might change in the future.
                 // set the log system if there is one.
                 logText.SetIGLogSystem(logSystem);
             }

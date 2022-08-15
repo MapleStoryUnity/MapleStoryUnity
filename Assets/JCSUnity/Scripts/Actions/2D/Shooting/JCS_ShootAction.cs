@@ -518,9 +518,7 @@ namespace JCSUnity
         }
         public void ShootWithShootCount(Vector3 pos, Vector3 angle)
         {
-            for (int count = 0;
-                count < ShootCount;
-                ++count)
+            for (int count = 0; count < ShootCount; ++count)
             {
                 JCS_Bullet bullet = Shoot();
 
@@ -660,9 +658,7 @@ namespace JCSUnity
                     if (mCheckAbleToShoot.Invoke())
                     {
                         // Do shooting effect
-                        for (int count = 0;
-                            count < mShootCount;
-                            ++count)
+                        for (int count = 0; count < mShootCount; ++count)
                         {
                             Shoot();
                         }

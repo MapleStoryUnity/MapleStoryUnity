@@ -49,9 +49,7 @@ namespace JCSUnity
         /// </returns>
         public static bool CheckIfComment(string line)
         {
-            for (int index = 0;
-                index < line.Length;
-                ++index)
+            for (int index = 0; index < line.Length; ++index)
             {
                 var ch = line[index];
 

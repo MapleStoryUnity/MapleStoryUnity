@@ -78,9 +78,7 @@ namespace JCSUnity
         /// </summary>
         private void SpawnSupAnim()
         {
-            for (int index = 0;
-                index < mAnimDesity;
-                ++index)
+            for (int index = 0; index < mAnimDesity; ++index)
             {
                 // get a random animate from pool
                 RuntimeAnimatorController anim = mAnimPoolSupAnim.GetRandomAnim();

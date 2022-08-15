@@ -213,9 +213,7 @@ namespace JCSUnity
         /// </param>
         private void ActiveEffects(bool act)
         {
-            for (int index = 0;
-                   index < mEffects.Length;
-                   ++index)
+            for (int index = 0; index < mEffects.Length; ++index)
             {
                 JCS_UnityObject effect = mEffects[index];
 

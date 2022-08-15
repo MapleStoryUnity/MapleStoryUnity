@@ -167,9 +167,7 @@ namespace JCSUnity
         /// </summary>
         private void DoSpawn()
         {
-            for (int index = 0;
-                index < mSpawnCount;
-                ++index)
+            for (int index = 0; index < mSpawnCount; ++index)
             {
                 Transform newTrans = (Transform)JCS_Util.SpawnGameObject(mTransformPool.GetRandomObject());
 

@@ -144,9 +144,7 @@ namespace JCSUnity
         /// <param name="player"></param>
         private void AddSafe(JCS_2DSideScrollerPlayer player)
         {
-            for (int index = 0;
-                index < mSSPlayers.Count;
-                ++index)
+            for (int index = 0; index < mSSPlayers.Count; ++index)
             {
                 // already in here.
                 if (mSSPlayers[index] == player)
@@ -162,9 +160,7 @@ namespace JCSUnity
         /// <param name="player"></param>
         private void RemoveNullPlayerAndSelf(JCS_2DSideScrollerPlayer player = null)
         {
-            for (int index = 0;
-                index < mSSPlayers.Count;
-                ++index)
+            for (int index = 0; index < mSSPlayers.Count; ++index)
             {
                 // remove itself.
                 if (mSSPlayers[index] == null)

@@ -20,6 +20,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        public static JCS_Canvas main = null;
+
         private const string RESIZE_UI_PATH = "UI/ResizeUI";
 
         private Canvas mCanvas = null;
@@ -38,6 +40,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mDisplayOnAwake = true;
 
+        [Tooltip("Resizable screen will be attach to this canvas.")]
+        [SerializeField]
+        private bool mMainCanvas = true;
+
         [Header("** Runtime Variables (JCS_Canvas) **")]
 
         [Tooltip("Play sound when active the canvas.")]
@@ -54,7 +60,8 @@ namespace JCSUnity
         public Canvas canvas { get { return this.mCanvas; } }
         public JCS_ResizeUI ResizeUI { get { return this.mResizeUI; } }
 
-        public bool DisplayOnAwake { get { return this.mDisplayOnAwake; } set { this.mDisplayOnAwake = value; } }
+        public bool DisplayOnAwake { get { return this.mDisplayOnAwake; } }
+        public bool MainCanvas { get { return this.mMainCanvas; } }
 
         public AudioClip ActiveSound { get { return this.mActiveSound; } set { this.mActiveSound = value; } }
         public AudioClip DeactiveSound { get { return this.mDeactiveSound; } set { this.mDeactiveSound = value; } }
@@ -63,6 +70,8 @@ namespace JCSUnity
 
         private void Awake()
         {
+            CheckMainCanvas();
+
             this.mAppRect = this.GetComponent<RectTransform>();
             this.mCanvas = this.GetComponent<Canvas>();
 
@@ -94,6 +103,8 @@ namespace JCSUnity
                 // set it to the right resolution
                 mResizeUI.GetResizeRect().sizeDelta = actualRect;
             }
+
+            NoMainCanvas();
         }
 
         /// <summary>
@@ -111,9 +122,7 @@ namespace JCSUnity
                     return canvas;
             }
 
-            // We return the upperest canvas on the screen.
-            List<JCS_Canvas> canvases = JCS_UIManager.instance.Canvases;
-            return canvases[canvases.Count - 1];
+            return main;
         }
 
         /// <summary>
@@ -153,6 +162,32 @@ namespace JCSUnity
             mCanvas.enabled = false;
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mActiveSound, JCS_SoundMethod.PLAY_SOUND);
+        }
+
+        /// <summary>
+        /// Prompt warning if there are multiple main canvases in the scene.
+        /// </summary>
+        private void CheckMainCanvas()
+        {
+            if (!this.mMainCanvas)
+                return;
+
+            if (main != null)
+            {
+                JCS_Debug.LogWarning("Having multiple main canvases is often not allowed, " + this.gameObject.name);
+                return;
+            }
+
+            main = this;
+        }
+
+        /// <summary>
+        /// Prompt a warning if no main canvas is defined in the scene.
+        /// </summary>
+        private void NoMainCanvas()
+        {
+            if (main) return;
+            JCS_Debug.LogWarning("No main canvas is detected");
         }
 
         /// <summary>

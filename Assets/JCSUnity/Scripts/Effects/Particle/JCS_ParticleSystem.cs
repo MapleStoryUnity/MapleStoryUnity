@@ -295,9 +295,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
 
             if (mDoShotImmediately)
             {
-                for (int count = 0;
-                    count < num;
-                    ++count)
+                for (int count = 0; count < num; ++count)
                 {
                     JCS_Particle particle = SearchAvaliableParticles();
 
@@ -309,9 +307,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             }
             else
             {
-                for (int count = 0;
-                    count < num;
-                    ++count)
+                for (int count = 0; count < num; ++count)
                 {
                     DoSequenceParticle(mDensity);
                 }
@@ -346,9 +342,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
                 return;
             }
 
-            for (int index = 0;
-                index < mNumOfParticle;
-                ++index)
+            for (int index = 0; index < mNumOfParticle; ++index)
             {
                 JCS_Particle trans = (JCS_Particle)JCS_Util.SpawnGameObject(mParticle);
                 mParticles.push(trans);
@@ -434,9 +428,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
                 return null;
             }
 
-            for (int index = mLastAvaliableIndex;
-                index < mParticles.length;
-                ++index)
+            for (int index = mLastAvaliableIndex; index < mParticles.length; ++index)
             {
                 JCS_Particle particle = mParticles.at(index);
                 bool isActive = particle.gameObject.activeInHierarchy;
@@ -470,9 +462,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         /// </summary>
         private void ProccessSequences()
         {
-            for (int processIndex = 0;
-                processIndex < mThread.length;
-                ++processIndex)
+            for (int processIndex = 0; processIndex < mThread.length; ++processIndex)
             {
                 // process all the thread
                 Sequence(processIndex);

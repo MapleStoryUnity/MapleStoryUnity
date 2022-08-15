@@ -256,9 +256,7 @@ namespace JCSUnity
              * NOTE(jenchieh): might need to change this if we there are 
              * more than 30 selections.
              */
-            for (int index = 0;
-                index < mSelections.Count;
-                ++index)
+            for (int index = 0; index < mSelections.Count; ++index)
             {
                 JCS_ButtonSelection bs = mSelections[index];
 

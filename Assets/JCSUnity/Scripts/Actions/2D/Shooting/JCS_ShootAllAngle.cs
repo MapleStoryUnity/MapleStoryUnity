@@ -103,9 +103,7 @@ namespace JCSUnity
             Vector3 newRotation = this.transform.localEulerAngles;
             Vector3 recordRotation = newRotation;
 
-            for (int count = 0;
-                count < 360 / mDegreePerShoot;
-                ++count)
+            for (int count = 0; count < 360 / mDegreePerShoot; ++count)
             {
                 switch (mShootAxis)
                 {

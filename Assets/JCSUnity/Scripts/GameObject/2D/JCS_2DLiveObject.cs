@@ -266,9 +266,7 @@ to get the information from them.")]
                 // we have to calculate the damage before
                 // actually apply the damage to 
                 // this live object.
-                for (int index = 0;
-                index < hit;
-                ++index)
+                for (int index = 0; index < hit; ++index)
                 {
                     int dm = Random.Range(minDamage, maxDamage);
 

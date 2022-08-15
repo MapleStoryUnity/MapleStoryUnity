@@ -47,9 +47,7 @@ namespace JCSUnity
         /// <param name="c"> collder to set to ignore trigger. </param>
         public void IgnoreAllPlatformTrigger(Collider c)
         {
-            for (int index = 0;
-                index < mPlatformList.Count;
-                ++index)
+            for (int index = 0; index < mPlatformList.Count; ++index)
             {
                 Physics.IgnoreCollision(mPlatformList[index].GetPlatformTrigger(), 
                     c, true);
@@ -62,9 +60,7 @@ namespace JCSUnity
         /// <param name="c"> collider to set to ignore collider. </param>
         public void IgnoreAllPlatformCollider(Collider c)
         {
-            for (int index = 0;
-                index < mPlatformList.Count;
-                ++index)
+            for (int index = 0; index < mPlatformList.Count; ++index)
             {
                 Physics.IgnoreCollision(mPlatformList[index].GetPlatformCollider(),
                     c, true);

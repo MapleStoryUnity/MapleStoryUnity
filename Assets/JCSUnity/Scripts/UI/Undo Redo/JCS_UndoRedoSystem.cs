@@ -150,9 +150,7 @@ namespace JCSUnity
         /// </summary>
         public void RecordPrevData()
         {
-            for (int index = 0;
-                index < mAllUndoRedoComp.Count;
-                ++index)
+            for (int index = 0; index < mAllUndoRedoComp.Count; ++index)
             {
                 JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
 
@@ -168,9 +166,7 @@ namespace JCSUnity
         /// </summary>
         public void StopRecordingAll()
         {
-            for (int index = 0;
-                index < mAllUndoRedoComp.Count;
-                ++index)
+            for (int index = 0; index < mAllUndoRedoComp.Count; ++index)
             {
                 JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
 
@@ -186,9 +182,7 @@ namespace JCSUnity
         /// </summary>
         public void StartRecordingAll()
         {
-            for (int index = 0;
-                index < mAllUndoRedoComp.Count;
-                ++index)
+            for (int index = 0; index < mAllUndoRedoComp.Count; ++index)
             {
                 JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
 
@@ -205,9 +199,7 @@ namespace JCSUnity
         public void ClearUndoComp()
         {
             // Clear all undo components' history data.
-            for (int index = 0;
-                index < mUndoComp.Count;
-                ++index)
+            for (int index = 0; index < mUndoComp.Count; ++index)
             {
                 JCS_UndoRedoComponent comp = mUndoComp[index];
 
@@ -227,9 +219,7 @@ namespace JCSUnity
         public void ClearRedoComp()
         {
             // Clear all repo components' history data.
-            for (int index = 0;
-                index < mRedoComp.Count;
-                ++index)
+            for (int index = 0; index < mRedoComp.Count; ++index)
             {
                 JCS_UndoRedoComponent comp = mRedoComp[index];
 
@@ -249,9 +239,7 @@ namespace JCSUnity
         public void ClearAllUndoRedoHistory()
         {
             // Clear all undo/repo components' history data.
-            for (int index = 0;
-                index < mAllUndoRedoComp.Count;
-                ++index)
+            for (int index = 0; index < mAllUndoRedoComp.Count; ++index)
             {
                 JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
 

@@ -96,9 +96,7 @@ namespace JCSUnity
             // set back the local color to record color.
             if (mOrderLayerObject.GetSpriteRenderer() != null)
                 mOrderLayerObject.GetSpriteRenderer().color = mRecordColor;
-            for (int index = 0;
-                index < mOrderLayerObject.SpriteRenderers().Count;
-                ++index)
+            for (int index = 0; index < mOrderLayerObject.SpriteRenderers().Count; ++index)
             {
                 /* 
                  * No need to check null, this will always be there. 

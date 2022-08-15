@@ -186,9 +186,7 @@ namespace JCSUnity
         /// </summary>
         private void ProccessSequences()
         {
-            for (int processIndex = 0;
-                processIndex < mThread.length;
-                ++processIndex)
+            for (int processIndex = 0; processIndex < mThread.length; ++processIndex)
             {
                 // process all the thread
                 Sequence(processIndex);

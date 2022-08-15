@@ -917,9 +917,7 @@ namespace JCSUnity
         /// </summary>
         private void ClearSelectBtnMessage()
         {
-            for (int index = 0;
-                index < mSelectMessage.Length;
-                ++index)
+            for (int index = 0; index < mSelectMessage.Length; ++index)
             {
                 mSelectMessage[index] = "";
                 mSelectBtn[index].ButtonText.text = "";

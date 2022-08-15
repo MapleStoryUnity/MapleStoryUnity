@@ -94,9 +94,7 @@ namespace JCSUnity
                 return;
 
             // set back the local color to record color.
-            for (int index = 0;
-                index < mUnityObjects.Length;
-                ++index)
+            for (int index = 0; index < mUnityObjects.Length; ++index)
             {
                 mUnityObjects[index].LocalColor = mRecordColors[index];
             }
@@ -145,9 +143,7 @@ namespace JCSUnity
             this.mInvicibleTimer = 0;
 
             // record down the current color.
-            for (int index = 0;
-                index < mUnityObjects.Length;
-                ++index)
+            for (int index = 0; index < mUnityObjects.Length; ++index)
             {
                 mRecordColors[index] = mUnityObjects[index].LocalColor;
             }
@@ -175,9 +171,7 @@ namespace JCSUnity
             // set the start is "false"
             if (!mFlashToggle)
             {
-                for (int index = 0;
-                    index < mUnityObjects.Length;
-                    ++index)
+                for (int index = 0; index < mUnityObjects.Length; ++index)
                 {
                     mUnityObjects[index].LocalColor = this.mInvincibleColor;
                 }
@@ -185,9 +179,7 @@ namespace JCSUnity
             }
             else
             {
-                for (int index = 0;
-                    index < mUnityObjects.Length;
-                    ++index)
+                for (int index = 0; index < mUnityObjects.Length; ++index)
                 {
                     mUnityObjects[index].LocalColor = this.mRecordColors[index];
                 }

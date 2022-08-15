@@ -477,9 +477,7 @@ namespace JCSUnity
 
                     mHitBottom = true;
 
-                    for (int index = 0;
-                        index < mBottomColliders.Count;
-                        ++index)
+                    for (int index = 0; index < mBottomColliders.Count; ++index)
                     {
                         Collider2D temp = mBottomColliders[index];
 
@@ -519,9 +517,7 @@ namespace JCSUnity
 
                     mHitTop = true;
 
-                    for (int index = 0;
-                        index < mTopColliders.Count;
-                        ++index)
+                    for (int index = 0; index < mTopColliders.Count; ++index)
                     {
                         Collider2D temp = mTopColliders[index];
 
@@ -561,9 +557,7 @@ namespace JCSUnity
 
                     mHitRight = true;
 
-                    for (int index = 0;
-                        index < mRightColliders.Count;
-                        ++index)
+                    for (int index = 0; index < mRightColliders.Count; ++index)
                     {
                         Collider2D temp = mRightColliders[index];
 
@@ -603,9 +597,7 @@ namespace JCSUnity
 
                     mHitLeft = true;
 
-                    for (int index = 0;
-                        index < mLeftColliders.Count;
-                        ++index)
+                    for (int index = 0; index < mLeftColliders.Count; ++index)
                     {
                         Collider2D temp = mLeftColliders[index];
 

@@ -156,9 +156,7 @@ namespace JCSUnity
 
             JCS_Player p = null;
 
-            for (int index = 0;
-                index < mTargetList.length;
-                ++index)
+            for (int index = 0; index < mTargetList.length; ++index)
             {
                 p = mTargetList.at(index);
 

@@ -168,9 +168,7 @@ animation `attack01/attack02/attack03`, etc.")]
         private AnimationClip FindClip(AnimationClip[] arr, string animClipName)
         {
 
-            for (int index = 0;
-                index < arr.Length;
-                ++index)
+            for (int index = 0; index < arr.Length; ++index)
             {
                 if (arr[index].name == animClipName)
                     return arr[index];

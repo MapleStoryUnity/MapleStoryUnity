@@ -53,9 +53,7 @@ namespace JCSUnity
 
             // add all the ai action into the array.
             JCS_AIAction[] actions = this.GetComponents<JCS_AIAction>();
-            for (int index = 0;
-                index < actions.Length;
-                ++index)
+            for (int index = 0; index < actions.Length; ++index)
             {
                 mAIActions.push(actions[index]);
             }
@@ -150,9 +148,7 @@ namespace JCSUnity
         /// </summary>
         private void DisableActions()
         {
-            for (int index = 0;
-                index < mAIActions.length;
-                ++index)
+            for (int index = 0; index < mAIActions.length; ++index)
             {
                 JCS_AIAction aa = mAIActions.at(index);
                 aa.enabled = false;

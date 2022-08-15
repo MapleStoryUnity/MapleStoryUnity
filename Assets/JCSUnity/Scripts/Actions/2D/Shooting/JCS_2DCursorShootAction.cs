@@ -116,9 +116,7 @@ namespace JCSUnity
                     mShootAction.GetShootCallback().Invoke();
 
                     // shoot a bullet.
-                    for (int count = 0;
-                            count < mShootAction.ShootCount;
-                            ++count)
+                    for (int count = 0; count < mShootAction.ShootCount; ++count)
                     {
                         mShootAction.Shoot();
                     }
