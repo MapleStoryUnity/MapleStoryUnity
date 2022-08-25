@@ -65,28 +65,40 @@ namespace JCSUnity
         /// </summary>
         public override void UpdateUnityData()
         {
+            base.UpdateUnityData();
+
             switch (GetObjectType())
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
-                    this.mRenderer = this.GetComponent<Renderer>();
-                    this.mRecordColor = this.transform.GetComponent<Renderer>().material.color;
+                    {
+                        if (this.mRenderer)
+                            this.mRecordColor = this.mRenderer.material.color;
+                    }
                     break;
                 case JCS_UnityObjectType.UI:
-                    this.mImage = this.GetComponent<Image>();
-                    this.mRecordColor = this.transform.GetComponent<Image>().color;
+                    {
+                        if (this.mImage)
+                            this.mRecordColor = this.mImage.color;
+                    }
                     break;
                 case JCS_UnityObjectType.SPRITE:
-                    this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
-                    this.mRecordColor = this.mSpriteRenderer.color;
+                    {
+                        if (this.mSpriteRenderer)
+                            this.mRecordColor = this.mSpriteRenderer.color;
+                    }
                     break;
                 case JCS_UnityObjectType.TEXT:
-                    this.mText = this.GetComponent<Text>();
-                    this.mRecordColor = this.mText.color;
+                    {
+                        if (this.mText)
+                            this.mRecordColor = this.mText.color;
+                    }
                     break;
 #if TMP_PRO
                 case JCS_UnityObjectType.TMP:
-                    this.mTextMesh = this.GetComponent<TextMeshPro>();
-                    this.mRecordColor = this.mTextMesh.color;
+                    {
+                        if (this.mTextMesh)
+                            this.mRecordColor = this.mTextMesh.color;
+                    }
                     break;
 #endif
             }

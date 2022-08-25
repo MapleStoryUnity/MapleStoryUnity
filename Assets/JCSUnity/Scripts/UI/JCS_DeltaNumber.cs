@@ -54,44 +54,44 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_DeltaNumber) **")]
 
-        [Tooltip(@"Current score rendering..., do not use this to 
+        [Tooltip(@"Current number rendering..., do not use this to 
 check value. Because this will always be animate.")]
         [SerializeField]
-        private int mCurrentScore = 0;
+        private int mCurrentNumber = 0;
 
         [Tooltip("Default null slot. [Default: transparent_256.png]")]
         [SerializeField]
-        private Sprite mScoreNull = null;
-        [Tooltip("Score text 0.")]
+        private Sprite mNumberNull = null;
+        [Tooltip("Number image 0.")]
         [SerializeField]
-        private Sprite mScoreText0 = null;
-        [Tooltip("Score text 1.")]
+        private Sprite mNumberText0 = null;
+        [Tooltip("Number image 1.")]
         [SerializeField]
-        private Sprite mScoreText1 = null;
-        [Tooltip("Score text 2.")]
+        private Sprite mNumberText1 = null;
+        [Tooltip("Number image 2.")]
         [SerializeField]
-        private Sprite mScoreText2 = null;
-        [Tooltip("Score text 3.")]
+        private Sprite mNumberText2 = null;
+        [Tooltip("Number image 3.")]
         [SerializeField]
-        private Sprite mScoreText3 = null;
-        [Tooltip("Score text 4.")]
+        private Sprite mNumberText3 = null;
+        [Tooltip("Number image 4.")]
         [SerializeField]
-        private Sprite mScoreText4 = null;
-        [Tooltip("Score text 5.")]
+        private Sprite mNumberText4 = null;
+        [Tooltip("Number image 5.")]
         [SerializeField]
-        private Sprite mScoreText5 = null;
-        [Tooltip("Score text 6.")]
+        private Sprite mNumberText5 = null;
+        [Tooltip("Number image 6.")]
         [SerializeField]
-        private Sprite mScoreText6 = null;
-        [Tooltip("Score text 7.")]
+        private Sprite mNumberText6 = null;
+        [Tooltip("Number image 7.")]
         [SerializeField]
-        private Sprite mScoreText7 = null;
-        [Tooltip("Score text 8.")]
+        private Sprite mNumberText7 = null;
+        [Tooltip("Number image 8.")]
         [SerializeField]
-        private Sprite mScoreText8 = null;
-        [Tooltip("Score text 9.")]
+        private Sprite mNumberText8 = null;
+        [Tooltip("Number image 9.")]
         [SerializeField]
-        private Sprite mScoreText9 = null;
+        private Sprite mNumberText9 = null;
 
         [Tooltip("Each digit, the more length the more digit.")]
         [SerializeField]
@@ -116,55 +116,56 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private JCS_TextAlign mTextAlign = JCS_TextAlign.RIGHT;
 
-        [Header("- Min/Max Settings (JCS_DeltaNumber)")]
+        [Header("- Min/Max (JCS_DeltaNumber)")]
 
-        [Tooltip("Maxinum score.")]
+        [Tooltip("Maxinum number.")]
         [SerializeField]
-        private int mMaxScore = 999;
+        private int mMaxNumber = 999;
 
-        [Tooltip("Mininum score.")]
+        [Tooltip("Mininum number.")]
         [SerializeField]
-        private int mMinScore = 0;
+        private int mMinNumber = 0;
 
-        [Header("- Delta Animation Settings (JCS_DeltaNumber)")]
+        [Header("- Animation (JCS_DeltaNumber)")]
 
-        [Tooltip(@"This will make the score have the transition 
-between, setting to a new score. If you want the score set directly, you 
+        [Tooltip(@"This will make the number have the transition 
+between, setting to a new number. If you want the number set directly, you 
 should disable this effect for best purpose.")]
         [SerializeField]
-        private bool mDeltaToCurrentScore = false;
+        private bool mDeltaToCurrentNumber = true;
 
-        [Tooltip("Toward to this score, if mDeltaToCurrentScore active.")]
+        [Tooltip("Toward to this number, if mDeltaToCurrentScore active.")]
         [SerializeField]
-        private int mTargetScore = 0;
+        private int mTargetNumber = 0;
 
-        [Tooltip("How fast the score animate.")]
+        [Tooltip("How fast the number animate.")]
         [SerializeField]
         [Range(0.01f, 1.0f)]
-        private float mAnimScoreTime = 0;
+        private float mAnimNumberTime = 0;
 
-        // timer for animation the score
-        private float mAnimScoreTimer = 0;
+        // timer for animation the number
+        private float mAnimNumberTimer = 0;
 
         [Tooltip("How much the delta value add up.")]
-        [SerializeField] [Range(1, 1000)]
+        [SerializeField]
+        [Range(1, 1000)]
         private int mDeltaProduct = 1;
 
         /* Setter & Getter */
 
         public bool IsEnable { get { return this.mIsEnable; } }
         public bool ClearEmptyLeftZero { get { return this.mClearEmptyLeftZero; } set { this.mClearEmptyLeftZero = value; } }
-        public bool DeltaToCurrentScore { get { return this.mDeltaToCurrentScore; } set { this.mDeltaToCurrentScore = value; } }
-        public int TargetScore
+        public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
+        public int TargetNumber
         {
-            get { return this.mTargetScore; }
+            get { return this.mTargetNumber; }
             set
             {
-                this.mTargetScore = value;
+                this.mTargetNumber = value;
 
-                // by setting the delta score will enable the 
-                // delta to current score effect.
-                this.mDeltaToCurrentScore = true;
+                // by setting the delta number will enable the delta to current
+                // number effect.
+                this.mDeltaToCurrentNumber = true;
             }
         }
         public bool VisibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
@@ -186,29 +187,29 @@ should disable this effect for best purpose.")]
             // update interval
             UpdateIntervalForEachDigit();
 
-            // init score to current.
-            UpdateScore();
+            // init number to current.
+            UpdateNumber();
         }
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
-            DoDeltaCurrentScore();
+            DoDeltaCurrentNumber();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
                 return;
 
             if (JCS_Input.GetKey(mDeltaToA))
-                UpdateScore(mDeltaValueA);
+                UpdateNumber(mDeltaValueA);
             if (JCS_Input.GetKey(mDeltaToB))
-                UpdateScore(mDeltaValueB);
+                UpdateNumber(mDeltaValueB);
         }
 #endif
 
@@ -230,43 +231,43 @@ should disable this effect for best purpose.")]
         }
 
         /// <summary>
-        /// Update the score GUI.
+        /// Update the number GUI.
         /// </summary>
-        public void UpdateScore()
+        public void UpdateNumber()
         {
-            UpdateScore(mCurrentScore);
+            UpdateNumber(mCurrentNumber);
         }
 
         /// <summary>
-        /// Update the score GUI
+        /// Update the number GUI
         /// </summary>
-        /// <param name="score"> score apply to show </param>
-        public void UpdateScore(int score, bool anime = false)
+        /// <param name="number"> number apply to show </param>
+        public void UpdateNumber(int number, bool anime = false)
         {
-            int targetScore = score;
+            int targetNumber = number;
 
-            if (targetScore < mMinScore)
-                targetScore = mMinScore;
-            else if (targetScore > mMaxScore)
-                targetScore = mMaxScore;
+            if (targetNumber < mMinNumber)
+                targetNumber = mMinNumber;
+            else if (targetNumber > mMaxNumber)
+                targetNumber = mMaxNumber;
 
-            if (mDeltaToCurrentScore)
+            if (mDeltaToCurrentNumber)
             {
                 if (!anime)
-                    mTargetScore = targetScore;
+                    mTargetNumber = targetNumber;
             }
             else
             {
-                // apply to current score
-                mCurrentScore = targetScore;
+                // apply to current number
+                mCurrentNumber = targetNumber;
             }
 
-            DoScoreGUI(targetScore);
+            DoScoreGUI(targetNumber);
 
             // Do if visible on zero effect.
-            DoVisibleOnZero(targetScore);
+            DoVisibleOnZero(targetNumber);
 
-            DoScoreAlign(targetScore);
+            DoScoreAlign(targetNumber);
 
         }
 
@@ -302,10 +303,10 @@ should disable this effect for best purpose.")]
         }
 
         /// <summary>
-        /// Do the GUI score logic.
+        /// Do the GUI number logic.
         /// </summary>
-        /// <param name="score"> score to apply. </param>
-        private void DoScoreGUI(int score)
+        /// <param name="number"> number to apply. </param>
+        private void DoScoreGUI(int number)
         {
             // check the first non zero from the left.
             bool meetNonZero = false;
@@ -319,7 +320,7 @@ should disable this effect for best purpose.")]
                     continue;
                 }
 
-                int valDigit = JCS_Mathf.GetSingleDigit(digit + 1, score);
+                int valDigit = JCS_Mathf.GetSingleDigit(digit + 1, number);
 
                 mDigitsRendererSlot[digit].LocalSprite = GetSingleDigitSprite(valDigit);
 
@@ -332,50 +333,50 @@ should disable this effect for best purpose.")]
                         meetNonZero = true;
 
                     if (!meetNonZero)
-                        mDigitsRendererSlot[digit].LocalSprite = mScoreNull;
+                        mDigitsRendererSlot[digit].LocalSprite = mNumberNull;
                 }
             }
         }
 
         /// <summary>
-        /// Main algorithm to approach to targe score.
+        /// Main algorithm to approach to targe number.
         /// </summary>
-        private void DoDeltaCurrentScore()
+        private void DoDeltaCurrentNumber()
         {
             // check if the effect active.
-            if (!mDeltaToCurrentScore)
+            if (!mDeltaToCurrentNumber)
                 return;
 
-            // if score the same, return.
-            if (mCurrentScore == mTargetScore)
+            // if number the same, return.
+            if (mCurrentNumber == mTargetNumber)
                 return;
 
-            mAnimScoreTimer += Time.deltaTime;
+            mAnimNumberTimer += Time.deltaTime;
 
             // check if timer reach the time.
-            if (mAnimScoreTimer < mAnimScoreTime)
+            if (mAnimNumberTimer < mAnimNumberTime)
                 return;
 
-            // find out to increase/decrease the score.
-            if (mCurrentScore < mTargetScore)
+            // find out to increase/decrease the number.
+            if (mCurrentNumber < mTargetNumber)
             {
-                mCurrentScore += mDeltaProduct;
+                mCurrentNumber += mDeltaProduct;
 
-                if (mCurrentScore > mTargetScore)
-                    mCurrentScore = mTargetScore;
+                if (mCurrentNumber > mTargetNumber)
+                    mCurrentNumber = mTargetNumber;
             }
             else
             {
-                mCurrentScore -= mDeltaProduct;
+                mCurrentNumber -= mDeltaProduct;
 
-                if (mCurrentScore < mTargetScore)
-                    mCurrentScore = mTargetScore;
+                if (mCurrentNumber < mTargetNumber)
+                    mCurrentNumber = mTargetNumber;
             }
 
-            UpdateScore(mCurrentScore, true);
+            UpdateNumber(mCurrentNumber, true);
 
             // reset timer
-            mAnimScoreTimer = 0;
+            mAnimNumberTimer = 0;
         }
 
         /// <summary>
@@ -387,24 +388,24 @@ should disable this effect for best purpose.")]
         {
             switch (num)
             {
-                case 0: return mScoreText0;
-                case 1: return mScoreText1;
-                case 2: return mScoreText2;
-                case 3: return mScoreText3;
-                case 4: return mScoreText4;
-                case 5: return mScoreText5;
-                case 6: return mScoreText6;
-                case 7: return mScoreText7;
-                case 8: return mScoreText8;
-                case 9: return mScoreText9;
+                case 0: return mNumberText0;
+                case 1: return mNumberText1;
+                case 2: return mNumberText2;
+                case 3: return mNumberText3;
+                case 4: return mNumberText4;
+                case 5: return mNumberText5;
+                case 6: return mNumberText6;
+                case 7: return mNumberText7;
+                case 8: return mNumberText8;
+                case 9: return mNumberText9;
             }
 
             // default return 'zero' sprite.
-            return mScoreText0;
+            return mNumberText0;
         }
 
         /// <summary>
-        /// Do visible on zero effect after updating score.
+        /// Do visible on zero effect after updating number.
         /// </summary>
         private void DoVisibleOnZero(int targetScore)
         {
@@ -420,9 +421,9 @@ should disable this effect for best purpose.")]
                 EnableDigitsRendererSlot(true);
             }
         }
-        
+
         /// <summary>
-        /// Do score align after updating score.
+        /// Do number align after updating number.
         /// </summary>
         private void DoScoreAlign(int targetScore)
         {

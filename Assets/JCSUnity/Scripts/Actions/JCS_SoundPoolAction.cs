@@ -58,7 +58,7 @@ namespace JCSUnity
                 return;
             }
 
-            float soundVolume = JCS_SoundSettings.instance.GetSoundBaseOnType(mSoundSettingType);
+            float soundVolume = JCS_SoundSettings.instance.GetSoundVolume(mSoundSettingType);
             mSoundPlayer.PlayOneShot(mAudioClips[randIndex], soundVolume);
         }
     }

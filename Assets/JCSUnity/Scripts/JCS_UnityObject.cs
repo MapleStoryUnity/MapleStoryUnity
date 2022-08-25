@@ -49,7 +49,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void SetObjectType(JCS_UnityObjectType ob) { this.mObjectType = ob; }
+        public void SetObjectType(JCS_UnityObjectType ob)
+        {
+            this.mObjectType = ob;
+            UpdateUnityData();
+        }
         public JCS_UnityObjectType GetObjectType() { return this.mObjectType; }
         public Image GetImage() { return this.mImage; }
         public Renderer GetRenderer() { return this.mRenderer; }

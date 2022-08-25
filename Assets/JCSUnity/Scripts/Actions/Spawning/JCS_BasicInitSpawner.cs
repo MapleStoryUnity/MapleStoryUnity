@@ -37,7 +37,7 @@ namespace JCSUnity
 
         [Tooltip("Randomize value in x-axis.")]
         [SerializeField]
-        [Range(0.0f, 10.0f)]
+        [Range(0.0f, 300.0f)]
         private float mRandPosRangeX = 1.0f;
 
         [Tooltip("Spawn the item random position, in y-axis.")]
@@ -46,7 +46,7 @@ namespace JCSUnity
 
         [Tooltip("Randomize value in y-axis.")]
         [SerializeField]
-        [Range(0, 10)]
+        [Range(0, 300.0f)]
         private float mRandPosRangeY = 1.0f;
 
         [Tooltip("Spawn the item random position, in z-axis.")]
@@ -55,7 +55,7 @@ namespace JCSUnity
 
         [Tooltip("Randomize value in z-axis.")]
         [SerializeField]
-        [Range(0.0f, 10.0f)]
+        [Range(0.0f, 300.0f)]
         private float mRandPosRangeZ = 1.0f;
 
         [Header("- Randomize Rotation")]
@@ -95,7 +95,7 @@ namespace JCSUnity
 
         [Tooltip("Random scale in range in x-axis.")]
         [SerializeField]
-        [Range(0.0f, 10.0f)]
+        [Range(0.0f, 300.0f)]
         private float mRandScaleRangeX = 0.0f;
 
         [Tooltip("Randomize the scale in y-axis?")]
@@ -104,7 +104,7 @@ namespace JCSUnity
 
         [Tooltip("Random scale in range in y-axis.")]
         [SerializeField]
-        [Range(0.0f, 10.0f)]
+        [Range(0.0f, 300.0f)]
         private float mRandScaleRangeY = 0.0f;
 
         [Tooltip("Randomize the scale in z-axis?")]
@@ -113,7 +113,7 @@ namespace JCSUnity
 
         [Tooltip("Random scale in range in z-axis.")]
         [SerializeField]
-        [Range(0.0f, 10.0f)]
+        [Range(0.0f, 300.0f)]
         private float mRandScaleRangeZ = 0.0f;
 
         /* Setter & Getter */

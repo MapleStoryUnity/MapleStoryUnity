@@ -63,10 +63,8 @@ namespace JCSUnity
 
         /* Functions */
 
-        protected override void Awake()
+        private void Start()
         {
-            base.Awake();
-
             this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
 
             this.mAlphaObject.SetObjectType(this.GetObjectType());

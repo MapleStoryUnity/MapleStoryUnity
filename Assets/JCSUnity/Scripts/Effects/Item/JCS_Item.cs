@@ -157,7 +157,7 @@ object that we target.")]
             if (!mCanPick)
                 return;
 
-            JCS_OneJump joj = this.GetComponent<JCS_OneJump>();
+            var joj = this.GetComponent<JCS_OneJump>();
             if (joj != null)
             {
                 // Only when item is on the ground!
@@ -165,7 +165,7 @@ object that we target.")]
                     return;
             }
 
-            JCS_Player p = other.GetComponent<JCS_Player>();
+            var p = other.GetComponent<JCS_Player>();
 
             if (mAutoPickColliderTouched && p != null)
             {
@@ -197,7 +197,7 @@ object that we target.")]
         }
 
         /// <summary>
-        /// 
+        /// Do pick up item action.
         /// </summary>
         /// <param name="other"></param>
         private void DoPick(Collider other)
@@ -232,7 +232,7 @@ object that we target.")]
         {
             // Throw Action Effect...
             {
-                //JCS_ThrowAction ta = this.gameObject.AddComponent<JCS_ThrowAction>();
+                //var ta = this.gameObject.AddComponent<JCS_ThrowAction>();
                 //ta.SetTargetTransform(other.transform);
                 //ta.ActiveEffect();
             }
@@ -243,6 +243,7 @@ object that we target.")]
                 {
                     // default settings
                     mTweener = this.gameObject.AddComponent<JCS_TransformTweener>();
+                    mTweener.SetObjectType(this.mObjectType);
 
                     mTweener.EasingY = JCS_TweenType.EASE_OUT_BACK;
                     mTweener.DurationX = 2.0f;
@@ -258,14 +259,16 @@ object that we target.")]
             {
                 // default settings
                 mDestinationDestroy = this.gameObject.AddComponent<JCS_DestinationDestroy>();
+                mDestinationDestroy.SetObjectType(this.mObjectType);
+
                 mDestinationDestroy.DestroyDistance = 0.5f;
             }
             mDestinationDestroy.SetTargetTransform(other.transform);
         }
 
         /// <summary>
-        /// If the Pick Collider is not null, 
-        /// then pick it up immediatly while we can pick.
+        /// If the Pick Collider is not null, then pick it up immediatly while 
+        /// we can pick.
         /// </summary>
         private void DoAutoPickWhileCan()
         {

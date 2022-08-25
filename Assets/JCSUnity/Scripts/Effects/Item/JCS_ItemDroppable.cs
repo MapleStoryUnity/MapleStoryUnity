@@ -355,7 +355,7 @@ just stop there.")]
 
             if (isGravity)
             {
-                JCS_OneJump oj = newItem.gameObject.AddComponent<JCS_OneJump>();
+                var oj = newItem.gameObject.AddComponent<JCS_OneJump>();
 
                 float gapDirection = mSpreadGap;
                 if (isEvenIndex)
@@ -402,7 +402,7 @@ just stop there.")]
 
                 if (rotateDrop)
                 {
-                    JCS_ItemRotation irx = newItem.gameObject.AddComponent<JCS_ItemRotation>();
+                    var irx = newItem.gameObject.AddComponent<JCS_ItemRotation>();
                     irx.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
                     irx.Effect = true;
                     irx.RotateDirection = JCS_Vector3Direction.FORWARD;
@@ -411,13 +411,13 @@ just stop there.")]
                     if (mIncludeDepth)
                     {
                         // add rotation on y axis.
-                        JCS_ItemRotation iry = newItem.gameObject.AddComponent<JCS_ItemRotation>();
+                        var iry = newItem.gameObject.AddComponent<JCS_ItemRotation>();
                         iry.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
                         iry.Effect = true;
                         iry.RotateDirection = JCS_Vector3Direction.UP;
 
                         // add rotation on z axis.
-                        JCS_ItemRotation irz = newItem.gameObject.AddComponent<JCS_ItemRotation>();
+                        var irz = newItem.gameObject.AddComponent<JCS_ItemRotation>();
                         irz.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
                         irz.Effect = true;
                         irz.RotateDirection = JCS_Vector3Direction.RIGHT;
@@ -427,14 +427,14 @@ just stop there.")]
 
             if (waveEffect)
             {
-                JCS_3DConstWaveEffect cwe = newItem.gameObject.AddComponent<JCS_3DConstWaveEffect>();
+                var cwe = newItem.gameObject.AddComponent<JCS_3DConstWaveEffect>();
                 cwe.SetObjectType(newItem.GetObjectType());
                 cwe.Effect = true;
             }
 
             if (destroyFade)
             {
-                JCS_DestroyObjectWithTime dowt = newItem.gameObject.AddComponent<JCS_DestroyObjectWithTime>();
+                var dowt = newItem.gameObject.AddComponent<JCS_DestroyObjectWithTime>();
                 dowt.FadeTime = mFadeTime;
                 dowt.DestroyTime = mDestroyTime;
 
@@ -442,13 +442,12 @@ just stop there.")]
 
                 foreach (Renderer rdr in renderers)
                 {
-                    JCS_FadeObject fo = rdr.gameObject.AddComponent<JCS_FadeObject>();
+                    var fo = rdr.gameObject.AddComponent<JCS_FadeObject>();
 
                     dowt.FadeObjects.Add(fo);
 
                     // set the object type the same.
                     fo.SetObjectType(item.GetObjectType());
-                    fo.UpdateUnityData();
                 }
             }
         }

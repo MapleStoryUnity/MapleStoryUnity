@@ -11,6 +11,7 @@
  */
 #define TMP_PRO
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,17 +55,9 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_TextDeltaNumber) **")]
 
-        [Tooltip("Flag to check if is currently effecting.")]
-        [SerializeField]
-        private bool mActive = false;
-
         [Tooltip("Full string to display.")]
         [SerializeField]
         private string mFullString = "";
-
-        [Tooltip("Target number to display, or to delta to.")]
-        [SerializeField]
-        private float mTargetNumber = 0.0f;
 
         [Header("** Initialize Variables (JCS_TextDeltaNumber) **")]
 
@@ -99,7 +92,29 @@ namespace JCSUnity
         [Tooltip("Place you want to round the decimal.")]
         [SerializeField]
         [Range(0, 15)]
-        private int mRoundPlace = 2;
+        private int mRoundPlace = 0;
+
+        [Header("- Min/Max (JCS_TextDeltaNumber)")]
+
+        [Tooltip("Maxinum number.")]
+        [SerializeField]
+        private int mMaxNumber = 999;
+
+        [Tooltip("Mininum number.")]
+        [SerializeField]
+        private int mMinNumber = 0;
+
+        [Header("- Animation (JCS_TextDeltaNumber)")]
+
+        [Tooltip(@"This will make the number have the transition 
+between, setting to a new number. If you want the number set directly, you 
+should disable this effect for best purpose.")]
+        [SerializeField]
+        private bool mDeltaToCurrentNumber = true;
+
+        [Tooltip("Target number to display, or to delta to.")]
+        [SerializeField]
+        private float mTargetNumber = 0.0f;
 
         [Tooltip("How fast the number animate.")]
         [SerializeField]
@@ -115,12 +130,23 @@ namespace JCSUnity
 
         /* Setter/Getter */
 
-        public bool Active { get { return this.mActive; } }
-        public float TargetNumber { get { return this.mTargetNumber; } }
         public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
 #if TMP_PRO
         public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
 #endif
+        public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
+        public float TargetNumber
+        {
+            get { return this.mTargetNumber; }
+            set
+            {
+                this.mTargetNumber = value;
+
+                // by setting the delta number will enable the delta to current
+                // number effect.
+                this.mDeltaToCurrentNumber = true;
+            }
+        }
         public string FullString { get { return this.mFullString; } }
         public int RoundPlace { get { return this.mRoundPlace; } set { this.mRoundPlace = value; } }
         public float CurrentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
@@ -137,7 +163,7 @@ namespace JCSUnity
             TestInput();
 #endif
 
-            DoDeltaCurrentScore();
+            DoDeltaCurrentNumber();
         }
 
 #if UNITY_EDITOR
@@ -154,36 +180,49 @@ namespace JCSUnity
 #endif
 
         /// <summary>
+        /// Update the number GUI.
+        /// </summary>
+        public void UpdateNumber()
+        {
+            UpdateNumber(mCurrentNumber);
+        }
+
+        /// <summary>
         /// Start the text delta number.
         /// </summary>
-        /// <param name="targetNumber"> Number target to delt to. </param>
+        /// <param name="number"> Number target to delt to. </param>
         /// <param name="anime"> Set the number directly. </param>
-        public void UpdateNumber(float targetNumber, bool anime = true)
+        public void UpdateNumber(float number, bool anime = false)
         {
-            this.mTargetNumber = targetNumber;
+            float targetNumber = number;
 
-            if (anime)
-                mActive = true;
+            if (targetNumber < mMinNumber)
+                targetNumber = mMinNumber;
+            else if (targetNumber > mMaxNumber)
+                targetNumber = mMaxNumber;
+
+            if (mDeltaToCurrentNumber)
+            {
+                if (!anime)
+                    mTargetNumber = targetNumber;
+            }
             else
             {
-                mActive = false;  // To ensure, just deactive it.
-                this.mCurrentNumber = targetNumber;
+                // apply to current number
+                mCurrentNumber = targetNumber;
             }
         }
 
         /// <summary>
-        /// Main algorithm to approach to targe score.
+        /// Main algorithm to approach to targe number.
         /// </summary>
-        private void DoDeltaCurrentScore()
+        private void DoDeltaCurrentNumber()
         {
-            if (!mActive)
+            if (!mDeltaToCurrentNumber)
                 return;
 
-            if (System.Math.Round(mTargetNumber, mRoundPlace) == System.Math.Round(mCurrentNumber, mRoundPlace))
-            {
-                mActive = false;
+            if (Math.Round(mTargetNumber, mRoundPlace) == Math.Round(mCurrentNumber, mRoundPlace))
                 return;
-            }
 
             mAnimNumberTimer += Time.deltaTime;
 

@@ -83,10 +83,10 @@ namespace JCSUnity
                 mFullText.text = mLiquidBar.MaxValue.ToString();
 
             if (mCounterTextSprite != null)
-                mCounterTextSprite.UpdateScore((int)mLiquidBar.GetCurrentValue());
+                mCounterTextSprite.UpdateNumber((int)mLiquidBar.GetCurrentValue());
 
             if (mFullTextSprite != null)
-                mFullTextSprite.UpdateScore((int)mLiquidBar.MaxValue);
+                mFullTextSprite.UpdateNumber((int)mLiquidBar.MaxValue);
         }
 
         /// <summary>

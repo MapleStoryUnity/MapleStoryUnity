@@ -91,7 +91,7 @@ namespace JCSUnity
         {
             this.mBGM = music;
 
-            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.instance;
 
             this.mBGM.volume = ss.GetBGM_Volume();
             this.mBGM.mute = ss.BGM_MUTE;
@@ -145,7 +145,7 @@ namespace JCSUnity
                 return;
             }
 
-            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.instance;
 
             // Reset the sound every scene
             SetSFXSoundVolume(ss.GetSFXSound_Volume());
@@ -244,7 +244,7 @@ namespace JCSUnity
             AudioClip oneShotClip,
             AudioClip onStackClip)
         {
-            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.instance;
 
             return PlayOneShotBackgroundMusic(
                 oneShotClip, 
