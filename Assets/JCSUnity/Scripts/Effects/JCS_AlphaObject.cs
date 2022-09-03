@@ -12,11 +12,6 @@
 #define TMP_PRO
 
 using UnityEngine;
-using UnityEngine.UI;
-
-#if TMP_PRO
-using TMPro;
-#endif
 
 namespace JCSUnity
 {

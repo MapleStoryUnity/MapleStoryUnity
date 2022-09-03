@@ -12,11 +12,6 @@
 #define TMP_PRO
 
 using UnityEngine;
-using UnityEngine.UI;
-
-#if TMP_PRO
-using TMPro;
-#endif
 
 namespace JCSUnity
 {
@@ -33,21 +28,9 @@ namespace JCSUnity
     ///   3. Register to `JCS_ApplicationManager`, its' component will take
     ///      case of the rest.
     /// </summary>
-    public class JCS_LangText : MonoBehaviour
+    public class JCS_LangText : JCS_TextObject
     {
         /* Variables */
-
-        [Header("** Initialize Variables (JCS_LangText) **")]
-
-        [Tooltip("Text to display lang data.")]
-        [SerializeField]
-        private Text mText = null;
-
-#if TMP_PRO
-        [Tooltip("Text to display lang data.")]
-        [SerializeField]
-        private TextMeshPro mTextMesh = null;
-#endif
 
         [Tooltip("List of languages with translation data.")]
         [SerializeField]
@@ -55,10 +38,6 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Text text { get { return this.mText; } }
-#if TMP_PRO
-        public TextMeshPro TextMesh { get { return this.mTextMesh; } }
-#endif
         public JCS_LangDataList LangData { get { return this.mLangData; } }
 
         /* Functions */
@@ -74,7 +53,7 @@ namespace JCSUnity
         /// </summary>
         public void Refresh()
         {
-            JCS_UIUtil.SetLangText(this.mLangData, this.mText);
+            JCS_UIUtil.SetLangText(this.mLangData, this.mTextContainer);
 #if TMP_PRO
             JCS_UIUtil.SetLangText(this.mLangData, this.mTextMesh);
 #endif

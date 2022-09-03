@@ -6,25 +6,15 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
-
-/* NOTE: If you are using `TextMesh Pro` uncomment this line.
- */
-#define TMP_PRO
-
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
-#if TMP_PRO
-using TMPro;
-#endif
 
 namespace JCSUnity
 {
     /// <summary>
     /// Text animation that will display text accordingly.
     /// </summary>
-    public class JCS_TextAnimation : MonoBehaviour
+    public class JCS_TextAnimation : JCS_TextObject
     {
         /* Variables */
 
@@ -33,19 +23,6 @@ namespace JCSUnity
         [Tooltip("Frame this animation is currently displayed.")]
         [SerializeField]
         private int mCurrentFrame = 0;
-
-
-        [Header("** Initialize Variables (JCS_TextAnimation) **")]
-
-        [Tooltip("Target text renderer.")]
-        [SerializeField]
-        private Text mTextContainer = null;
-
-#if TMP_PRO
-        [Tooltip("Target text renderer.")]
-        [SerializeField]
-        private TextMeshPro mTextMesh = null;
-#endif
 
         [Header("** Runtime Variables (JCS_TextAnimation) **")]
 
@@ -68,10 +45,6 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
-#if TMP_PRO
-        public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
-#endif
         public int CurrentFrame { get { return this.mCurrentFrame; } }
         public float SPF { get { return this.mSPF; } set { this.mSPF = value; } }
 
@@ -117,12 +90,7 @@ namespace JCSUnity
             else if (this.mCurrentFrame < 0)
                 this.mCurrentFrame = 0;
 
-            if (mTextContainer)
-                mTextContainer.text = textFrame[this.mCurrentFrame];
-#if TMP_PRO
-            if (mTextMesh)
-                mTextMesh.text = textFrame[this.mCurrentFrame];
-#endif
+            text = textFrame[this.mCurrentFrame];
         }
 
         /// <summary>

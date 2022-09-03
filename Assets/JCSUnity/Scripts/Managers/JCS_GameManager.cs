@@ -60,9 +60,9 @@ namespace JCSUnity
             get { return this.mGamePause; }
             set
             {
-                // check if need the game pause the same as the value
-                // previously set. In order to save some perforce by 
-                // enable/disable all the JCS_PauseAction in the game.
+                // check if need the game pause the same as the value previously
+                // set. In order to save some perforce by enable/disable all the
+                // JCS_PauseAction in the game.
                 if (mGamePause != value)
                 {
                     JCS_PauseManager.instance.PauseTheWholeGame(value);
@@ -84,7 +84,7 @@ namespace JCSUnity
         private void Awake()
         {
             instance = this;
-            
+
             SetSpecificGameTypeGameManager();
 
 #if UNITY_EDITOR
@@ -110,13 +110,15 @@ namespace JCSUnity
 
 #if UNITY_EDITOR
         /// <summary>
-        /// Keep set the time to the time scale, 
-        /// so make it make the inspector slide bar can 
-        /// control the time scale of the actual time scale
-        /// from UnityEngine's API "Time class".
+        /// Keep set the time to the time scale, so make it make the inspector
+        /// slide bar can control the time scale of the actual time scale from
+        /// UnityEngine's API "Time class".
         /// </summary>
         private void SetTimeScale()
         {
+            if (!mTestWithKey)
+                return;
+
             Time.timeScale = TIME_SCALE;
         }
 
@@ -142,8 +144,8 @@ namespace JCSUnity
             switch (gs.GAME_TYPE)
             {
                 case JCS_GameType.GAME_2D:
-                        this.gameObject.AddComponent<JCS_2DGameManager>();
-                        break;
+                    this.gameObject.AddComponent<JCS_2DGameManager>();
+                    break;
             }
         }
 

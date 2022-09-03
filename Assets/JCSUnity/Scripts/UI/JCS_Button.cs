@@ -12,7 +12,7 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
     /// <summary>
-    /// Buttton Interface (NGUI)
+    /// Buttton Interface (uGUI)
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(Button))]

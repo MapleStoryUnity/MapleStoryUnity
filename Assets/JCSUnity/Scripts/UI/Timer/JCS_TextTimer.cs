@@ -12,18 +12,13 @@
 #define TMP_PRO
 
 using UnityEngine;
-using UnityEngine.UI;
-
-#if TMP_PRO
-using TMPro;
-#endif
 
 namespace JCSUnity
 {
     /// <summary>
     /// Render timer in the text.
     /// </summary>
-    public class JCS_TextTimer : MonoBehaviour
+    public class JCS_TextTimer : JCS_TextObject
     {
         /* Variables */
 
@@ -37,7 +32,7 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-        [Header("** Check Variables (JCS_SpriteTimer) **")]
+        [Header("** Check Variables (JCS_TextTimer) **")]
 
         [SerializeField]
         private bool mDoTimeIsUpCallback = false;
@@ -50,18 +45,6 @@ namespace JCSUnity
 
         [SerializeField]
         private string mSecondsText = "";
-
-        [Header("** Initialize Variables (JCS_TextTimer) **")]
-
-        [Tooltip("Target text renderer.")]
-        [SerializeField]
-        private Text mTextContainer = null;
-
-#if TMP_PRO
-        [Tooltip("Target text renderer.")]
-        [SerializeField]
-        private TextMeshPro mTextMesh = null;
-#endif
 
         [Header("** Runtime Variables (JCS_TextTimer) **")]
 
@@ -123,10 +106,6 @@ namespace JCSUnity
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
         public bool HideWhenZero { get { return this.mHideWhenZero; } set { this.mHideWhenZero = value; } }
-        public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
-#if TMP_PRO
-        public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
-#endif
         public string DelimiterText { get { return this.mDelimiterText; } set { this.mDelimiterText = value; } }
 
         public AudioClip HourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
@@ -227,12 +206,7 @@ namespace JCSUnity
             DoMinuteUI(minute);
             DoSecondUI(second);
 
-            if (mTextContainer)
-                mTextContainer.text = mHoursText + mMinutesText + mSecondsText;
-#if TMP_PRO
-            if (mTextMesh)
-                mTextMesh.text = mHoursText + mMinutesText + mSecondsText;
-#endif
+            text = mHoursText + mMinutesText + mSecondsText;
         }
 
         /// <summary>

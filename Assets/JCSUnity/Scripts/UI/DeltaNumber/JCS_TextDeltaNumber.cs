@@ -13,11 +13,6 @@
 
 using System;
 using UnityEngine;
-using UnityEngine.UI;
-
-#if TMP_PRO
-using TMPro;
-#endif
 
 namespace JCSUnity
 {
@@ -25,7 +20,7 @@ namespace JCSUnity
     /// Like `JCS_DeltaNumber`, but instead of altering the sprite we
     /// alter text instead.
     /// </summary>
-    public class JCS_TextDeltaNumber : MonoBehaviour
+    public class JCS_TextDeltaNumber : JCS_TextObject
     {
         /* Variables */
 
@@ -58,18 +53,6 @@ namespace JCSUnity
         [Tooltip("Full string to display.")]
         [SerializeField]
         private string mFullString = "";
-
-        [Header("** Initialize Variables (JCS_TextDeltaNumber) **")]
-
-        [Tooltip("Target text renderer.")]
-        [SerializeField]
-        private Text mTextContainer = null;
-
-#if TMP_PRO
-        [Tooltip("Target text renderer.")]
-        [SerializeField]
-        private TextMeshPro mTextMesh = null;
-#endif
 
         [Header("** Runtime Variables (JCS_TextDeltaNumber) **")]
 
@@ -130,10 +113,6 @@ should disable this effect for best purpose.")]
 
         /* Setter/Getter */
 
-        public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
-#if TMP_PRO
-        public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
-#endif
         public float CurrentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
         public float TargetNumber
         {
