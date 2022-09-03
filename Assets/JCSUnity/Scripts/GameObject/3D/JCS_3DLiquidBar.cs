@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_3DLiquidBar) **")]
 
         [Tooltip("Test functionalities works?")]
@@ -68,7 +68,7 @@ namespace JCSUnity
 
         protected void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
@@ -90,7 +90,7 @@ namespace JCSUnity
             TowardToTargetValue();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
@@ -243,12 +243,46 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true, if liquid bar is empty.
+        /// </summary>
+        public override bool IsEmpty()
+        {
+            return mCurrentValue == mMinValue;
+        }
+
+        /// <summary>
+        /// Return true, if liquid bar is full.
+        /// </summary>
+        public override bool IsFull()
+        {
+            return mCurrentValue == mMaxValue;
+        }
+
+        /// <summary>
+        /// Return true, if liquid bar visually is empty.
+        /// </summary>
+        public override bool IsVisuallyEmpty()
+        {
+            return mReachMinVis && IsEmpty();
+        }
+
+        /// <summary>
+        /// Return true, if liquid bar  visually is full.
+        /// </summary>
+        public override bool IsVisuallyFull()
+        {
+            return mReachMaxVis && IsFull();
+        }
+
+        /// <summary>
         /// Check if the value are able to cast.
         /// Mana value must higher than the cast value.
         /// </summary>
         /// <param name="val"> value to cast </param>
-        /// <returns> true: able to cast, 
-        ///           false: not able to cast </returns>
+        /// <returns> 
+        /// true, able to cast, 
+        /// false, not able to cast 
+        /// </returns>
         public override bool IsAbleToCast(float val)
         {
             // able to cast the spell
@@ -381,6 +415,8 @@ namespace JCSUnity
         {
             Vector3 speed = (mMaskTargetPosition - mSpriteMask.transform.localPosition) / mDeltaFriction * Time.deltaTime;
             mSpriteMask.transform.localPosition += speed;
+
+            DoVisuallyCallback();
         }
 
         /// <summary>
@@ -427,6 +463,38 @@ namespace JCSUnity
                     callback_max.Invoke();
 
                 mReachMax = true;
+            }
+        }
+
+        /// <summary>
+        /// Do callback after visualizing liquid bar.
+        /// </summary>
+        private void DoVisuallyCallback()
+        {
+            float distance = Vector3.Distance(mMaskTargetPosition, mSpriteMask.transform.localPosition);
+
+            if (distance > mDistanceThreshold)
+            {
+                mReachMinVis = false;
+                mReachMaxVis = false;
+                return;
+            }
+
+            if (!mReachMinVis && mCurrentValue == mMinValue)
+            {
+                // do min call back.
+                if (callback_min_vis != null)
+                    callback_min_vis.Invoke();
+
+                mReachMinVis = true;
+            }
+
+            if (!mReachMaxVis && mCurrentValue == mMaxValue)
+            {
+                if (callback_max_vis != null)
+                    callback_max_vis.Invoke();
+
+                mReachMaxVis = true;
             }
         }
 

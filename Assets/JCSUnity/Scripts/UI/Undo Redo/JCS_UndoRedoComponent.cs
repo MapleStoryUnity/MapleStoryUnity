@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_UndoRedoComponent) **")]
 
         [Tooltip("Test this component with key?")]
@@ -173,7 +173,7 @@ namespace JCSUnity
             }
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             Test();

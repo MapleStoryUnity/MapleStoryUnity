@@ -78,7 +78,7 @@ namespace JCSUnity
         /// <param name="trans"></param>
         private void PrintName(Transform trans)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (!JCS_GameSettings.instance.DEBUG_MODE)
                 return;
 

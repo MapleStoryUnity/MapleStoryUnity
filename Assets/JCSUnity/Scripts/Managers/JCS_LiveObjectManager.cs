@@ -35,7 +35,7 @@ namespace JCSUnity
         /// </summary>
         private void SetSpecificGameTypeGameManager()
         {
-            JCS_GameSettings gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.instance;
 
             switch (gs.GAME_TYPE)
             {

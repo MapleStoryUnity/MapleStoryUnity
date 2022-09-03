@@ -1,5 +1,5 @@
 /**
- * $File: JCS_HideCanvasGamePadButton.cs $
+ * $File: JCS_HideCanvasGamepadButton.cs $
  * $Date: 2021-12-29 01:23:25 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,13 +11,13 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button to show canvas, so it's invisible on the screen. (Game Pad)
+    /// Button to show canvas, so it's invisible on the screen. (Gamepad)
     /// </summary>
-    public class JCS_HideCanvasGamePadButton : JCS_GamePadButton
+    public class JCS_HideCanvasGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_HideCanvasGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_HideCanvasGamepadButton) **")]
 
         [Tooltip("Array of canvas to hide.")]
         public JCS_Canvas[] canvas = null;

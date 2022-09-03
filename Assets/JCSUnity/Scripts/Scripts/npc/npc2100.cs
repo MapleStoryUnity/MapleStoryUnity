@@ -41,7 +41,7 @@ namespace JCSUnity
                 {
                     jcsDs.SendNextPrev("Make a selection...");
                 }
-                /* For Game Pad/Controller/Joystick. */
+                /* For Gamepad/Controller/Joystick. */
                 {
                     //jcsDs.SendEmpty("Make a selection...");
                 }

@@ -134,7 +134,7 @@ should disable this effect for best purpose.")]
 #if TMP_PRO
         public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
 #endif
-        public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
+        public float CurrentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
         public float TargetNumber
         {
             get { return this.mTargetNumber; }
@@ -147,9 +147,9 @@ should disable this effect for best purpose.")]
                 this.mDeltaToCurrentNumber = true;
             }
         }
+        public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
         public string FullString { get { return this.mFullString; } }
         public int RoundPlace { get { return this.mRoundPlace; } set { this.mRoundPlace = value; } }
-        public float CurrentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
         public string PreString { get { return this.mPreString; } set { this.mPreString = value; } }
         public string PostString { get { return this.mPostString; } set { this.mPostString = value; } }
         public float AnimNumberTime { get { return this.mAnimNumberTime; } set { this.mAnimNumberTime = value; } }

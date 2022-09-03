@@ -168,7 +168,7 @@ namespace JCSUnity
 
 
             GameObject gm = new GameObject();
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             gm.name = "JCS_3DDestroyAnimEffect";
 #endif
 

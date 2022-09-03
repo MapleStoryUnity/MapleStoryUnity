@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_GUITextPool mLogTextPool = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_IGLogSystem) **")]
 
         [Tooltip("Test this component with keys.")]
@@ -51,6 +51,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public float LogSpacing { get { return this.mLogSpacing; } set { this.mLogSpacing = value; } }
+
         /* Functions */
 
         protected override void Awake()
@@ -68,7 +70,7 @@ namespace JCSUnity
             JCS_UtilitiesManager.instance.SetIGLogSystem(this);
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             Test();
@@ -148,11 +150,9 @@ namespace JCSUnity
         /// <param name="spaces"></param>
         public void UpdateSpace(int spaces = 1)
         {
-            JCS_LogText logText = null;
-
             for (int index = 0; index < mRenderLogText.length; ++index)
             {
-                logText = mRenderLogText.at(index);
+                JCS_LogText logText = mRenderLogText.at(index);
 
                 logText.SimpleTrackAction.DeltaTargetPosY(mLogSpacing * spaces);
             }

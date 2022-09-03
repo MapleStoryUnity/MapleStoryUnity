@@ -31,7 +31,7 @@ namespace JCSUnity
             HEAL
         };
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_MixDamageTextPool) **")]
 
         [Tooltip("Test this component with key event.")]
@@ -129,14 +129,14 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             ProccessSequences();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
@@ -246,7 +246,7 @@ namespace JCSUnity
             DamageTextType[] types = new DamageTextType[hit];
 
             // get the game setting first
-            JCS_GameSettings jcsGm = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.instance;
 
             for (int index = 0; index < hit; ++index)
             {
@@ -258,12 +258,12 @@ namespace JCSUnity
                 // Check min max
                 {
                     // 如果小於最下限得值, 就設定為最下限的值
-                    if (damages[index] < jcsGm.MIN_DAMAGE)
-                        damages[index] = jcsGm.MIN_DAMAGE;
+                    if (damages[index] < gs.MIN_DAMAGE)
+                        damages[index] = gs.MIN_DAMAGE;
 
                     // 如果大於最上限得值, 就設定為最上限的值
-                    if (damages[index] > jcsGm.MAX_DAMAGE)
-                        damages[index] = jcsGm.MAX_DAMAGE;
+                    if (damages[index] > gs.MAX_DAMAGE)
+                        damages[index] = gs.MAX_DAMAGE;
                 }
 
                 // see if this damage text a critical damage text?

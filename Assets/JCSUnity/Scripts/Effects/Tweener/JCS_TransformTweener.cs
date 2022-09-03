@@ -20,7 +20,7 @@ namespace JCSUnity
 
         private EmptyFunction mDestinationCallback = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_TransformTweener) **")]
 
         [Tooltip("Test component with key?")]
@@ -205,7 +205,7 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
@@ -243,7 +243,7 @@ namespace JCSUnity
             }
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
@@ -611,7 +611,7 @@ namespace JCSUnity
 
             if (mTargetTransform == null)
             {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 // log string to console cost alost of performance.
                 // so do it only when is debug mode.
                 if (JCS_GameSettings.instance.DEBUG_MODE)

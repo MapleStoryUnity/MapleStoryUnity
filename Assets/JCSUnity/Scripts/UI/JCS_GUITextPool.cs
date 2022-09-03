@@ -24,7 +24,8 @@ namespace JCSUnity
         private JCS_LogText mLogText = null;
 
         [Tooltip("Number of text this text pool handles.")]
-        [SerializeField] [Range(3, 50)]
+        [SerializeField]
+        [Range(1, 300)]
         private int mNumberOfHandle = 10;
 
         // optimize
@@ -67,7 +68,6 @@ namespace JCSUnity
 
                     return logText;
                 }
-
             }
 
             // if we get here mean we cycle once but we did not spawn a text!
@@ -78,14 +78,13 @@ namespace JCSUnity
             // exit the function call. so prevent "stack overflow  search/infinite
             // function call".
             //
-            // IMPORTANT(JenChieh): it wont spawn damage text this time, if this happens.
+            // IMPORTANT(jenchieh): it wont spawn damage text this time, if this happens.
             if (secondSearch)
             {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogWarning(
-                        "Prevent, stack overflow function call.");
+                    JCS_Debug.LogWarning("Prevent, stack overflow function call.");
                 }
 #endif
                 return null;
@@ -104,9 +103,7 @@ namespace JCSUnity
         {
             if (mLogText == null)
             {
-                JCS_Debug.LogReminder( 
-                    "No log text assign in the text pool...");
-
+                JCS_Debug.LogReminder("No log text assign in the text pool...");
                 return;
             }
 
@@ -114,7 +111,6 @@ namespace JCSUnity
             // NOTE(JenChieh): this might change in the future.
             // Get the log system from the same transfrom/node.
             JCS_IGLogSystem logSystem = this.GetComponent<JCS_IGLogSystem>();
-
 
             mLogTexts = new JCS_Vector<JCS_LogText>(mNumberOfHandle);
 

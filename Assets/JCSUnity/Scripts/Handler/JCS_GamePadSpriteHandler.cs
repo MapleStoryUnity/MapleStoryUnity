@@ -1,5 +1,5 @@
 /**
- * $File: JCS_GamePadSpriteHandler.cs $
+ * $File: JCS_GamepadSpriteHandler.cs $
  * $Date: 2017-10-18 13:53:59 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Handle any sprite object when controller callback active.
     /// </summary>
-    public class JCS_GamePadSpriteHandler : MonoBehaviour
+    public class JCS_GamepadSpriteHandler : MonoBehaviour
     {
         /* Variables */
 
@@ -34,12 +34,10 @@ namespace JCSUnity
             public Sprite gamePadSprite;
         };
 
-
-        [Header("** Runtime Variables (JCS_GamePadSpriteHandler) **")]
+        [Header("** Runtime Variables (JCS_GamepadSpriteHandler) **")]
 
         [Tooltip("Any sprite element you want to change depends on controller connection.")]
         public List<SpriteSet> spriteSets = null;
-
 
         /* Setter & Getter */
 

@@ -117,7 +117,7 @@ namespace JCSUnity
             if (mPopWhiteScreen)
                 JCS_UtilityFunctions.PopJCSWhiteScreen();
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // add the tool in editor mode.
             this.gameObject.AddComponent<ReadSceneNames>();
 #endif
@@ -286,7 +286,7 @@ namespace JCSUnity
         /// <param name="keepBGM"> keep background music playing? </param>
         public void LoadScene(string sceneName, float fadeInTime, Color screenColor, bool keepBGM)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // only do this in Editor Mode, 
             // this help level designer to do their job.
             if (!ReadSceneNames.CheckSceneAvailable(sceneName))

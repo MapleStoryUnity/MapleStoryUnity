@@ -23,7 +23,7 @@ namespace JCSUnity
         private Dropdown mDropdown = null;
 
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_Dropdown) **")]
 
         [Tooltip("Test this component with key?")]
@@ -77,7 +77,7 @@ namespace JCSUnity
             this.mDropdown = this.GetComponent<Dropdown>();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             if (!mTestWithKey)

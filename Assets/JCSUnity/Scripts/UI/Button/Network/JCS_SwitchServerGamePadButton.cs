@@ -1,5 +1,5 @@
 /**
- * $File: JCS_SwitchServerGamePadButton.cs $
+ * $File: JCS_SwitchServerGamepadButton.cs $
  * $Date: 2017-10-27 12:19:15 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,14 +11,13 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button when switching the server. For example, switch 
-    /// channel server. (Game Pad)
+    /// Button when switching the server. For example, switch channel server. (Gamepad)
     /// </summary>
-    public class JCS_SwitchServerGamePadButton : JCS_GamePadButton
+    public class JCS_SwitchServerGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_SwitchServerGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_SwitchServerGamepadButton) **")]
 
         [Tooltip("Target host name to switch.")]
         [SerializeField]
@@ -32,13 +31,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mForce = false;
 
-
         /* Setter & Getter */
 
         public int Port { get { return this.mPort; } set { this.mPort = value; } }
         public string Host { get { return this.mHost; } set { this.mHost = value; } }
         public bool Force { get { return this.mForce; } set { this.mForce = value; } }
-
 
         /* Functions */
 

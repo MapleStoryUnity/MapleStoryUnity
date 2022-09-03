@@ -238,11 +238,10 @@ to get the information from them.")]
                 JCS_MixDamageTextPool mixTP = JCS_UtilitiesManager.instance.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                     if (JCS_GameSettings.instance.DEBUG_MODE)
                     {
-                        JCS_Debug.LogError(
-                            "There is no Mix Damage Text Pool in the scene. Consider to grab one?");
+                        JCS_Debug.LogError("There is no Mix Damage Text Pool in the scene. Consider to grab one?");
                     }
 #endif
                     return;

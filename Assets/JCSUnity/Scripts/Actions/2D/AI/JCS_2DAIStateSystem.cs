@@ -39,11 +39,9 @@ namespace JCSUnity
 
         private JCS_Vector<JCS_AIAction> mAIActions = null;
 
-
         /* Setter & Getter */
 
         public JCS_AIMoveActionType GetAIMoveActionType() { return this.mAIMoveActionType; }
-
 
         /* Functions */
 
@@ -59,7 +57,7 @@ namespace JCSUnity
             }
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             if (JCS_Input.GetKeyDown(KeyCode.F))

@@ -127,7 +127,7 @@ use negative scale instead.")]
                 }
 
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 if (mMirrorAnimation.GetObjectType() != JCS_UnityObjectType.SPRITE ||
                     anim.GetObjectType() != JCS_UnityObjectType.SPRITE)
                 {

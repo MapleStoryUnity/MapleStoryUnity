@@ -48,6 +48,18 @@ namespace JCSUnity
             base.Start();
         }
 
+        /// <summary>
+        /// Attempt to get panel root from parent.
+        /// </summary>
+        /// <param name="trans"> Transform use to search. </param>
+        /// <returns> A panel root object. </returns>
+        public static JCS_PanelRoot GetFromParent(Transform trans)
+        {
+            if (trans.parent)
+                return trans.parent.GetComponent<JCS_PanelRoot>();
+            return null;
+        }
+
         private void DoResize()
         {
             var screenS = JCS_ScreenSettings.instance;

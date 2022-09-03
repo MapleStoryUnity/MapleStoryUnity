@@ -291,7 +291,7 @@ namespace JCSUnity
             // if this happens.
             if (secondSearch)
             {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
                     JCS_Debug.LogWarning("Prevent, stack overflow function call.");

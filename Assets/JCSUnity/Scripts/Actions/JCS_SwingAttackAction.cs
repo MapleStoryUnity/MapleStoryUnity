@@ -169,13 +169,13 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
             ProcessInput();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (JCS_Input.GetKeyDown(KeyCode.Alpha1))
@@ -285,7 +285,7 @@ namespace JCSUnity
 
 
             GameObject gm = new GameObject();
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             gm.name = "JCS_SwingAttackAction";
 #endif
             // set the effect transform.

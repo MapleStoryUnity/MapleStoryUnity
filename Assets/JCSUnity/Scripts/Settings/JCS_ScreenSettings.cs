@@ -20,7 +20,7 @@ namespace JCSUnity
         public EmptyFunction onScreenResize = null;
         public EmptyFunction onScreenIdle = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_ScreenManager) **")]
 
         [Tooltip("Show the resizable screen panel in game?")]

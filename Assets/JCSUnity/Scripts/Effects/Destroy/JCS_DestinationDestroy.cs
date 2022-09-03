@@ -75,7 +75,7 @@ namespace JCSUnity
             // check if action triggered?
             if (!mAction || mTargetTransform == null)
             {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                     JCS_Debug.LogError("No target found");
 #endif

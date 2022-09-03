@@ -1,5 +1,5 @@
 /**
- * $File: JCS_GamePadButton.cs $
+ * $File: JCS_GamepadButton.cs $
  * $Date: 2017-10-07 04:37:53 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,11 +13,11 @@ namespace JCSUnity
     /// <summary>
     /// Button will listen to the gamepad. Note it compatible with PC/desktop as well.
     /// </summary>
-    public abstract class JCS_GamePadButton : JCS_Button
+    public abstract class JCS_GamepadButton : JCS_Button
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_GamePadButton) **")]
+        [Header("** Runtime Variables (JCS_GamepadButton) **")]
 
         [Tooltip("Still check input when the game is pause?")]
         [SerializeField]
@@ -37,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         protected KeyCode mKKeyToListen = KeyCode.None;
 
-        [Header("- Game Pad")]
+        [Header("- Gamepad")]
 
         [Tooltip("Key to trigger this button.")]
         [SerializeField]

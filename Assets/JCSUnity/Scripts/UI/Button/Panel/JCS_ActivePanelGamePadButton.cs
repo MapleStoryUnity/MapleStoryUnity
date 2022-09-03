@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ActivePanelGamePadButton.cs $
+ * $File: JCS_ActivePanelGamepadButton.cs $
  * $Date: 2017-10-27 12:32:31 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,13 +11,13 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Active panel button. (Game Pad)
+    /// Active panel button. (Gamepad)
     /// </summary>
-    public class JCS_ActivePanelGamePadButton : JCS_GamePadButton
+    public class JCS_ActivePanelGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_ActivePanelGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_ActivePanelGamepadButton) **")]
 
         [Tooltip("Panels to be active.")]
         [SerializeField]

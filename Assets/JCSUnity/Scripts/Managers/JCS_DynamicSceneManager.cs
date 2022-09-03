@@ -33,7 +33,7 @@ namespace JCSUnity
         /// </summary>
         private void SetSpecificGameTypeDynamicSceneManager()
         {
-            JCS_GameSettings gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.instance;
 
             switch (gs.GAME_TYPE)
             {

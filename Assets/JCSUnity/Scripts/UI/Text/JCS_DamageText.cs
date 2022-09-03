@@ -191,7 +191,7 @@ namespace JCSUnity
                 var gm = new GameObject();
                 this.mCriticalSprite = gm.AddComponent<SpriteRenderer>();
                 gm.transform.SetParent(this.transform);
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 gm.name = "Criticl Sprite";
 #endif
             }
@@ -220,9 +220,8 @@ namespace JCSUnity
             // Number is from `left` to `right`, calculate the very left position.
             float leftPosX = mSpacing * (totalDigit - 1) / 2.0f;
 
-            // if damage lower than equals to one
-            // set digit to 1 in order to get one
-            // "MISS" text!
+            // if damage lower than equals to one set digit to 1 in order to
+            // get one "MISS" text!
             if (damage <= 0)
                 totalDigit = 1;
 
@@ -236,7 +235,7 @@ namespace JCSUnity
                 if (mSpriteRenderers.Count <= digit - 1)
                 {
                     var gm = new GameObject();
-                    SpriteRenderer newSr = gm.AddComponent<SpriteRenderer>();
+                    var newSr = gm.AddComponent<SpriteRenderer>();
 
                     // set the parent
                     gm.transform.SetParent(this.transform);
@@ -328,8 +327,8 @@ namespace JCSUnity
                 Vector3 newPos = sr.transform.localPosition;
                 newPos.x = leftPosX - (mSpacing * totalDigit);
 
-                // Adjust a bit so we have a little control
-                // the position of this sprite! (Critical Image)
+                // Adjust a bit so we have a little control the position of
+                // this sprite! (Critical Image)
                 newPos.x += mSpacingX;
                 newPos.y += mSpacingY;
 

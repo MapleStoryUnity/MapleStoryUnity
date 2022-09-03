@@ -17,7 +17,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_2DAnimSequencePlayer) **")]
 
         public bool testWithKey = false;
@@ -81,7 +81,7 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
@@ -129,7 +129,7 @@ namespace JCSUnity
             ++mAnimCounter;
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!testWithKey)

@@ -122,7 +122,7 @@ namespace JCSUnity
 
         protected virtual void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             DisplayGameDepthCamera();
 #endif
         }
@@ -275,7 +275,7 @@ namespace JCSUnity
                 0);
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Square inside the game editor screen. Display 
         /// the screen width and height in current game depth.
@@ -361,7 +361,7 @@ namespace JCSUnity
             float cRightBound = cap.transform.position.x + cCenter.x + cR;
             float cLeftBound = cap.transform.position.x + cCenter.x - cR;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Vector3 cOrigin = cap.transform.position + cCenter;
             Debug.DrawLine(cOrigin,
                 new Vector3(cOrigin.x, cTopBound, cOrigin.z));
@@ -384,7 +384,7 @@ namespace JCSUnity
             float camRightBound = camPos.x + gameRect.x / JCS_Mathf.D_HALF;
             float camLeftBound = camPos.x - gameRect.x / JCS_Mathf.D_HALF;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Vector3 topLeft = cam.transform.position;
             topLeft.x -= gameRect.x / JCS_Mathf.D_HALF;
             topLeft.y += gameRect.y / JCS_Mathf.D_HALF;
@@ -455,7 +455,7 @@ namespace JCSUnity
             float camTop = camPos.y + (camHeight / JCS_Mathf.D_HALF);
             float camBot = camPos.y - (camHeight / JCS_Mathf.D_HALF);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Vector3 topLeft = new Vector3(objLeft, objTop, 0.0f);
             Vector3 topRight = new Vector3(objRight, objTop, 0.0f);
             Vector3 botRight = new Vector3(objRight, objBot, 0.0f);

@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ShowCanvasGamePadButton.cs $
+ * $File: JCS_ShowCanvasGamepadButton.cs $
  * $Date: 2021-12-29 01:22:16 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,13 +11,13 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button to show canvas, so it's visible on the screen. (Game Pad)
+    /// Button to show canvas, so it's visible on the screen. (Gamepad)
     /// </summary>
-    public class JCS_ShowCanvasGamePadButton : JCS_GamePadButton
+    public class JCS_ShowCanvasGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_ShowCanvasGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_ShowCanvasGamepadButton) **")]
 
         [Tooltip("Array of canvas to show.")]
         public JCS_Canvas[] canvas = null;

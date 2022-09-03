@@ -81,7 +81,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+            this.mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
         }
 
         private void Start()
@@ -92,14 +92,14 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             DoAnim();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (JCS_Input.GetKeyDown(KeyCode.H))

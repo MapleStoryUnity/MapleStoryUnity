@@ -45,7 +45,7 @@ namespace JCSUnity
         private float mRealDurationBlue = 0.0f;
         private float mRealDurationAlpha = 0.0f;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_ColorTweener) **")]
 
         [Tooltip("Test component with key?")]
@@ -225,14 +225,14 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             DoTweening();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

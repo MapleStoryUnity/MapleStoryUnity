@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_PredictCamera) **")]
 
         public bool testWithKey = false;
@@ -231,7 +231,7 @@ namespace JCSUnity
             SetEffectCamera(this.mCamera);
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             Test();

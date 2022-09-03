@@ -87,7 +87,7 @@ namespace JCSUnity
 
             mSpriteRenderer.sortingOrder = mOrderLayer;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             mShowCursor = true;
 #endif
         }

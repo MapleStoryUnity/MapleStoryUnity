@@ -1,5 +1,5 @@
 /**
- * $File: JCS_TogglePanelGamePadButton.cs $
+ * $File: JCS_TogglePanelGamepadButton.cs $
  * $Date: 2020-04-02 12:37:09 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,13 +11,13 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button that toggle one panel. (Game Pad)
+    /// Button that toggle one panel. (Gamepad)
     /// </summary>
-    public class JCS_TogglePanelGamePadButton : JCS_ToggleGamePadButton
+    public class JCS_TogglePanelGamepadButton : JCS_ToggleGamepadButton
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_TogglePanelGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_TogglePanelGamepadButton) **")]
 
         [Tooltip("Panel (dialogue) you want to toggle.")]
         [SerializeField]

@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private JCS_TweenerHandler mTweenerHandler = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_TweenPanel) **")]
 
         [Tooltip("Test this component with key?")]
@@ -87,10 +87,10 @@ namespace JCSUnity
             if (mSoundPlayer == null)
                 this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
-            this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+            this.mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             Test();

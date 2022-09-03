@@ -18,6 +18,12 @@ namespace JCSUnity
     {
         /* Variables */
 
+        [Header("** Check Variables (JCS_LiquidBarInfo) **")]
+
+        [Tooltip("Liquid bar this info object holds.")]
+        [SerializeField]
+        protected JCS_LiquidBar mLiquidBar = null;
+
         [Header("** Runtime Variables (JCS_LiquidBarInfo) **")]
 
         [Tooltip("Tag name to identify the same components.")]
@@ -40,6 +46,8 @@ namespace JCSUnity
         protected int mMaxValue = 100;
 
         /* Setter & Getter */
+
+        public JCS_LiquidBar LiquidBar { get { return this.mLiquidBar; } set { this.mLiquidBar = value; } }
 
         public string TagName { get { return this.mTagName; } set { this.mTagName = value; } }
         public int CurrentValue

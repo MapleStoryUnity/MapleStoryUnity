@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private JCS_FadeObject mAO = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_WhiteScreen) **")]
 
         [Tooltip("Test with the key?")]
@@ -58,7 +58,7 @@ namespace JCSUnity
             mAO.LocalAlpha = 0;
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             Test();

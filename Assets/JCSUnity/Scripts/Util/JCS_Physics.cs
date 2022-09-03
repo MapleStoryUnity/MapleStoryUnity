@@ -211,7 +211,7 @@ namespace JCSUnity
             widthHeight.x = rWidth;
             widthHeight.y = rHeight;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Vector3 right = rect2d.transform.position;
             right.x += widthHeight.x / 2;
 
@@ -432,7 +432,7 @@ namespace JCSUnity
                 distRectLeftToCapCenter,
                 rectTopAndBot);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Debug.DrawLine(
                 new Vector3(
                     rectCenterPos.x - (rectLeftToRight / 2) + distRectLeftToCapCenter,
@@ -573,7 +573,7 @@ namespace JCSUnity
                 distRectLeftToCapCenter,
                 rectTopAndBot);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Debug.DrawLine(
                 new Vector3(
                     rectCenterPos.x - (rectLeftToRight / 2) + distRectLeftToCapCenter,
@@ -813,7 +813,7 @@ namespace JCSUnity
             float rTopBound = rect.transform.position.y + rectCenter.y + (rHeight / 2.0f);
             float cBotBound = cap.transform.position.y + cCenter.y - (cH / 2.0f) - cR;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Debug.DrawLine(rect.transform.position + rectCenter, 
                 new Vector3(
                     rect.transform.position.x,
@@ -918,7 +918,7 @@ namespace JCSUnity
                 distRectLeftToCapCenter, 
                 rectTopAndBot);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Debug.DrawLine(
                 new Vector3(
                     rectCenterPos.x - (rectLeftToRight / 2) + distRectLeftToCapCenter,
@@ -1063,7 +1063,7 @@ namespace JCSUnity
                 Vector2 botRight = new Vector2(r.width, r.height);
                 Vector2 botLeft = new Vector2(r.x, r.height);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 //Debug.DrawLine(topLeft, topCirclePoint);
                 //Debug.DrawLine(topRight, topCirclePoint);
                 //Debug.DrawLine(botRight, topCirclePoint);

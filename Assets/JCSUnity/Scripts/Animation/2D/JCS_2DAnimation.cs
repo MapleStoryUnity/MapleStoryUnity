@@ -24,7 +24,7 @@ namespace JCSUnity
         // animator using this animation?
         private JCS_2DAnimator mJCS2DAnimator = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables Variables (JCS_I2DAnimator) **")]
 
         [Tooltip("Test this component with key.")]
@@ -155,14 +155,14 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             RunAnimation();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

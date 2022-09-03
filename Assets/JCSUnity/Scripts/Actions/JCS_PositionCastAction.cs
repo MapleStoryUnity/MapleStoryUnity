@@ -74,7 +74,7 @@ namespace JCSUnity
             {
                 // Get panel root, in order to calculate the 
                 // correct distance base on the resolution.
-                mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+                mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
             }
         }
 

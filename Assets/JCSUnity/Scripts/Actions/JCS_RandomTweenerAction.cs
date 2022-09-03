@@ -22,7 +22,7 @@ namespace JCSUnity
         private JCS_TransformTweener mTransformTweener = null;
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_RandomTweenerAction) **")]
 
         public Vector3 targetValue = Vector3.zero;
@@ -79,7 +79,7 @@ namespace JCSUnity
 
             mTransformTweener.DoTween(newVal);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             targetValue = newVal;
 #endif
         }

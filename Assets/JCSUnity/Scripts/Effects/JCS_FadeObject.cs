@@ -24,7 +24,7 @@ namespace JCSUnity
 
         private float mAlpha = 1.0f;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_FadeObject) **")]
 
         [Tooltip("Test Fade in/out with key.")]
@@ -88,13 +88,13 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
             DoFade();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

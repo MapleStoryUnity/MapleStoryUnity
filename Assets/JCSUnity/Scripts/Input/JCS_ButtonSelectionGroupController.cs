@@ -67,39 +67,39 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mMLeft = KeyCode.None;
 
-        [Header("- Game Pad")]
+        [Header("- Gamepad")]
 
         [Tooltip("Which device we are listening to?")]
         [SerializeField]
         private JCS_JoystickIndex mGamePadId = JCS_JoystickIndex.FROM_ALL_JOYSTICK;
 
-        [Tooltip("Next selection. (Game Pad)")]
+        [Tooltip("Next selection. (Gamepad)")]
         [SerializeField]
         private JCS_JoystickButton mJNext = JCS_JoystickButton.NONE;
 
-        [Tooltip("Previous selection. (Game Pad)")]
+        [Tooltip("Previous selection. (Gamepad)")]
         [SerializeField]
         private JCS_JoystickButton mJPrev = JCS_JoystickButton.NONE;
 
-        [Tooltip("Okay for this selection. (Game Pad)")]
+        [Tooltip("Okay for this selection. (Gamepad)")]
         [SerializeField]
         private JCS_JoystickButton mJOkay = JCS_JoystickButton.NONE;
 
-        [Header("- Full Control (Game Pad)")]
+        [Header("- Full Control (Gamepad)")]
 
-        [Tooltip("Up select key. (Game Pad)")]
+        [Tooltip("Up select key. (Gamepad)")]
         [SerializeField]
         private JCS_JoystickButton mJUp = JCS_JoystickButton.NONE;
 
-        [Tooltip("Down select key. (Game Pad)")]
+        [Tooltip("Down select key. (Gamepad)")]
         [SerializeField]
         private JCS_JoystickButton mJDown = JCS_JoystickButton.NONE;
 
-        [Tooltip("Right select key. (Game Pad)")]
+        [Tooltip("Right select key. (Gamepad)")]
         [SerializeField]
         private JCS_JoystickButton mJRight = JCS_JoystickButton.NONE;
 
-        [Tooltip("Left select key. (Game Pad)")]
+        [Tooltip("Left select key. (Gamepad)")]
         [SerializeField]
         private JCS_JoystickButton mJLeft = JCS_JoystickButton.NONE;
 

@@ -1,5 +1,5 @@
 /**
- * $File: JCS_EmptyGamePadButton.cs $
+ * $File: JCS_EmptyGamepadButton.cs $
  * $Date: 2017-10-21 13:09:38 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -12,7 +12,7 @@ namespace JCSUnity
     /// <summary>
     /// Empty gamepad button.
     /// </summary>
-    public class JCS_EmptyGamePadButton : JCS_GamePadButton
+    public class JCS_EmptyGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 

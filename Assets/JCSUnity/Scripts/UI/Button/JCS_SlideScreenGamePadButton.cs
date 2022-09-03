@@ -1,5 +1,5 @@
 /**
- * $File: JCS_SlideScreenGamePadButton.cs $
+ * $File: JCS_SlideScreenGamepadButton.cs $
  * $Date: 2018-01-02 09:00:20 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,19 +11,19 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button will do the slide screen. (Game Pad)
+    /// Button will do the slide screen. (Gamepad)
     /// </summary>
-    public class JCS_SlideScreenGamePadButton : JCS_GamePadButton
+    public class JCS_SlideScreenGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_SlideScreenGamePadButton) **")]
+        [Header("** Check Variables (JCS_SlideScreenGamepadButton) **")]
 
         [Tooltip("This action are using `JCS_2DSlideScreenCamera`.")]
         [SerializeField]
         private JCS_2DSlideScreenCamera[] mSlideCameras = null;
 
-        [Header("** Runtime Variables (JCS_SlideScreenGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_SlideScreenGamepadButton) **")]
 
         [Tooltip("Direction you want to go.")]
         [SerializeField]

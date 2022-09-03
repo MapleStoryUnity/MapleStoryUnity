@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private Text mText = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_ApplicationCloseSimulateSceneTextAction) **")]
 
         [SerializeField]
@@ -36,7 +36,7 @@ namespace JCSUnity
         {
             mText = this.GetComponent<Text>();
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             mText.text = mTextShowInEditMode;
 #else
             mText.text = "";

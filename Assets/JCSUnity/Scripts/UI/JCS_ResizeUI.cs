@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private RectTransform mRect = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private Image mImage = null;
 
         [Header("** Helper Variables (JCS_ResizeUI) **")]
@@ -57,7 +57,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         public bool showResizePanel
         {
             get { return this.mShowResizePanel; }
@@ -108,7 +108,7 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (mShowResizePanel)
                 ShowResizePanel();
             else
@@ -118,7 +118,7 @@ namespace JCSUnity
             DoResizeUI();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Show the resize panel, for debugging usage.
         /// </summary>

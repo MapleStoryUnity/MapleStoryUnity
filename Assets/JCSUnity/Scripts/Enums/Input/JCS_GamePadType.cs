@@ -1,5 +1,5 @@
 /**
- * $File: JCS_GamePadType.cs $
+ * $File: JCS_GamepadType.cs $
  * $Date: 2017-10-07 08:00:33 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -12,7 +12,7 @@ namespace JCSUnity
     /// <summary>
     /// List of all known game pad type...
     /// </summary>
-    public enum JCS_GamePadType
+    public enum JCS_GamepadType
     {
         ALL,
 

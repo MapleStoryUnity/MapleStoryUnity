@@ -34,7 +34,7 @@ namespace JCSUnity
                 JCS_Debug.LogReminder(
                      "Object you should destroy but you did not...");
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 gameObject.name = "Object you should destroy but you did not...";
 #endif
             }

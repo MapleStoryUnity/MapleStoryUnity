@@ -115,7 +115,7 @@ namespace JCSUnity
         /// <param name="message"> meesage sending to print. </param>
         private void PrintSendPacket(System.Object message)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (!JCS_GameSettings.instance.DEBUG_MODE)
                 return;
 
@@ -132,7 +132,7 @@ namespace JCSUnity
         /// <param name="message"> message received to print. </param>
         private void PrintRecievedPacket(System.Object message)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (!JCS_GameSettings.instance.DEBUG_MODE)
                 return;
 

@@ -42,7 +42,7 @@ namespace JCSUnity
             if (!JCS_NetworkSettings.instance.ONLINE_MODE)
                 return;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
@@ -52,7 +52,7 @@ namespace JCSUnity
             CheckConnectionWithTime();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (JCS_Input.GetKeyDown(KeyCode.P))

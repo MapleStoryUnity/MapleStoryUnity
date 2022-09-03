@@ -52,7 +52,7 @@ namespace JCSUnity
                 ActiveOnePlayer(JCS_GameManager.instance.GetJCSPlayer());
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             if (JCS_GameSettings.instance.GAME_TYPE == JCS_GameType.GAME_2D)
@@ -60,7 +60,7 @@ namespace JCSUnity
         }
 #endif
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void PlayerManageTest()
         {
             //if (JCS_Input.GetKeyDown(KeyCode.L))

@@ -29,7 +29,7 @@ namespace JCSUnity
             public JCS_Item item;
         };
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_ItemDroppable) **")]
 
         [Tooltip("Test this component with key.")]
@@ -155,7 +155,7 @@ just stop there.")]
 
         /* Functions */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             Test();

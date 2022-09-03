@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables Variables (JCS_2DAnimator) **")]
 
         [Tooltip("Test this component with key.")]
@@ -125,13 +125,13 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
             DoPlayOneShot();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
@@ -178,7 +178,7 @@ namespace JCSUnity
 
             if (mCurrentAnimation == null)
             {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                     JCS_Debug.LogError("Swtich animation failed cuz of null reference animation assigned...");
 #endif

@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_3DCamera) **")]
 
         [Tooltip("Test this component with key?")]
@@ -201,7 +201,7 @@ namespace JCSUnity
 
         protected override void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
             base.LateUpdate();
@@ -270,7 +270,7 @@ namespace JCSUnity
             }
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

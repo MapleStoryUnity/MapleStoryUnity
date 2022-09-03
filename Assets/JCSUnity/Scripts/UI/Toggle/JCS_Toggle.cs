@@ -29,7 +29,7 @@ namespace JCSUnity
 
         private JCS_ColorTweener mColorTweener = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_Toggle) **")]
 
         [Tooltip("Test module with the key?")]
@@ -143,7 +143,7 @@ namespace JCSUnity
             DoToggle();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             if (!mTestWithKey)

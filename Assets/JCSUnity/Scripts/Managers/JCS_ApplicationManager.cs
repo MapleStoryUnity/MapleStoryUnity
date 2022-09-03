@@ -101,7 +101,7 @@ namespace JCSUnity
         {
             APP_QUITTING = true;
 
-            JCS_GameSettings gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.instance;
             if (gs.SAVE_ON_EXIT_APP &&
                 gs.SAVE_GAME_DATA_FUNC != null)
             {

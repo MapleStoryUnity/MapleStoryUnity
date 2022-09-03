@@ -168,7 +168,7 @@ namespace JCSUnity
         };
 
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Varaibles (JCS_InputSettings) **")]
 
         [Tooltip("All joystick's name.")]
@@ -179,7 +179,7 @@ namespace JCSUnity
 
         [Tooltip("Targeting game pad going to use in the game.")]
         [SerializeField]
-        private JCS_GamePadType mTargetGamePad = JCS_GamePadType.XBOX_360;
+        private JCS_GamepadType mTargetGamePad = JCS_GamepadType.XBOX_360;
 
         // How many joystick in the game? Do the mapping for these joysticks.
         private JoystickMap[] mJoysticks = new JoystickMap[MAX_JOYSTICK_COUNT];
@@ -194,7 +194,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_GamePadType TargetGamePad { get { return this.mTargetGamePad; } }
+        public JCS_GamepadType TargetGamePad { get { return this.mTargetGamePad; } }
         public JoystickMap[] Joysticks { get { return this.mJoysticks; } set { this.mJoysticks = value; } }
         public JoystickMap GetJoysitckMapByIndex(int index)
         {
@@ -211,7 +211,7 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // Just assign to it, in order to update the joystick 
             // names array.
             this.joystickNames = Input.GetJoystickNames();
@@ -325,7 +325,7 @@ namespace JCSUnity
         /// the right device driver id. </returns>
         public static string GetPositiveNameByLabel(JCS_JoystickButton label)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (instance == null)
             {
                 switch (JCS_InputController.SelectGamepadType)
@@ -357,35 +357,35 @@ namespace JCSUnity
 #endif
                 switch (instance.TargetGamePad)
                 {
-                    case JCS_GamePadType.ALL:
+                    case JCS_GamepadType.ALL:
                         return "";
 
                     /* Sony Play Station */
-                    case JCS_GamePadType.PS:
+                    case JCS_GamepadType.PS:
                         return "";
-                    case JCS_GamePadType.PS2:
+                    case JCS_GamepadType.PS2:
                         return "";
-                    case JCS_GamePadType.PS3:
+                    case JCS_GamepadType.PS3:
                         return "";
-                    case JCS_GamePadType.PS4:
+                    case JCS_GamepadType.PS4:
                         return GetPositiveNameByLabel_PS4(label);
 
                     /* Microsoft XBox */
-                    case JCS_GamePadType.XBOX:
+                    case JCS_GamepadType.XBOX:
                         return "";
-                    case JCS_GamePadType.XBOX_360:
+                    case JCS_GamepadType.XBOX_360:
                         return GetPositiveNameByLabel_XBox360(label);
-                    case JCS_GamePadType.XBOX_ONE:
+                    case JCS_GamepadType.XBOX_ONE:
                         return "";
                 }
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             }
 #endif
 
             return "";
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Check if any specific button's buffer need to be invert.
         /// </summary>
@@ -433,7 +433,7 @@ namespace JCSUnity
         }
 #endif
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Get axis channel for Unity's built-in InputManager.
         /// </summary>
@@ -515,7 +515,7 @@ namespace JCSUnity
         }
 #endif
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Get the axis type depends on the joystick button label.
         /// </summary>

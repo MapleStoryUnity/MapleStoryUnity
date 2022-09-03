@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ToggleCanvasGamePadButton.cs $
+ * $File: JCS_ToggleCanvasGamepadButton.cs $
  * $Date: 2021-12-29 01:24:48 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,11 +13,11 @@ namespace JCSUnity
     /// <summary>
     /// Button that toggles canvas' visibility.
     /// </summary>
-    public class JCS_ToggleCanvasGamePadButton : JCS_ToggleGamePadButton
+    public class JCS_ToggleCanvasGamepadButton : JCS_ToggleGamepadButton
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_ToggleCanvasGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_ToggleCanvasGamepadButton) **")]
 
         [Tooltip("Array of canvas to toggle its visibility.")]
         public JCS_Canvas[] canvas = null;

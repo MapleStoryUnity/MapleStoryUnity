@@ -1,5 +1,5 @@
 /**
- * $File: JCS_LoadSceneGamePadButton.cs $
+ * $File: JCS_LoadSceneGamepadButton.cs $
  * $Date: 2017-10-27 11:44:51 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -14,11 +14,11 @@ namespace JCSUnity
     /// <summary>
     /// Button will load the target scene. (Gamepad)
     /// </summary>
-    public class JCS_LoadSceneGamePadButton : JCS_GamePadButton
+    public class JCS_LoadSceneGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_LoadSceneGamePadButton) **")]
+        [Header("** Initialize Variables (JCS_LoadSceneGamepadButton) **")]
 
         [Tooltip("Platform you want to target. NONE means all platform, so it will just load the scene")]
         [SerializeField]

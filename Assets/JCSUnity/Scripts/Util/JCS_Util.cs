@@ -40,6 +40,34 @@ namespace JCSUnity
     public static class JCS_Util
     {
         /// <summary>
+        /// Do enable/distance component.
+        /// </summary>
+        /// <param name="comp"> Component reference you want to act. </param>
+        /// <param name="act"> Boolean to assign to enabled variable. </param>
+        public static void EnableComponent(Component comp, bool act)
+        {
+            /* Behaviour */
+            {
+                var behaviour = comp as Behaviour;
+                if (behaviour != null)
+                {
+                    behaviour.enabled = act;
+                    return;
+                }
+            }
+
+            /* Collider */
+            {
+                var collider = comp as Collider;
+                if (collider != null)
+                {
+                    collider.enabled = act;
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
         /// Spawn a gmae object.
         /// </summary>
         /// <param name="objectPath"> path of the game object </param>

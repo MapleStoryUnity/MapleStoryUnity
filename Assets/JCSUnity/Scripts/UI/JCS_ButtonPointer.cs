@@ -68,7 +68,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+            this.mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
 
             if (mPanelRoot != null)
             {

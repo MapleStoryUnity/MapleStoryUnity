@@ -28,7 +28,7 @@ namespace JCSUnity
         private BoxCollider2D mBoxCollider2d = null;
         private SpriteRenderer mSpriteRenderer = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_CharacterController2D) **")]
 
         [Tooltip("")]
@@ -168,7 +168,7 @@ namespace JCSUnity
             mLeftColliders = new List<Collider2D>();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             if (!mControl)
@@ -187,7 +187,7 @@ namespace JCSUnity
             else if (mHitRight && VelX > 0)
                 VelX = 0;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // draw the collider each frame.
             JCS_Debug.DrawCollider(mBoxCollider2d, Color.cyan);
             JCS_Debug.DrawCollider(mBoxCollider2d, Color.blue, mLastFrameColliderPosition);
@@ -241,7 +241,7 @@ namespace JCSUnity
                     right,
                     mBoxInfo.x / 2 + mDetectDistance);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 //Debug.DrawRay(transform.position, right, Color.green);
 #endif
 
@@ -291,7 +291,7 @@ namespace JCSUnity
                     left,
                     mBoxInfo.x / 2 + mDetectDistance);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 //Debug.DrawRay(transform.position, left, Color.green);
 #endif
 
@@ -344,7 +344,7 @@ namespace JCSUnity
                     down,
                     mBoxInfo.y / 2 + mDetectDistance);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 //Debug.DrawRay(transform.position, down, Color.green);
 #endif
 
@@ -394,7 +394,7 @@ namespace JCSUnity
                     top,
                     mBoxInfo.y / 2 + mDetectDistance);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 //Debug.DrawRay(transform.position, top, Color.green);
 #endif
 
@@ -460,7 +460,7 @@ namespace JCSUnity
                     down,
                     mBoxInfo.y / 2 + mDetectDistance);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 //Debug.DrawRay(transform.position, down, Color.green);
 #endif
 
@@ -501,7 +501,7 @@ namespace JCSUnity
                     top,
                     mBoxInfo.y / 2 + mDetectDistance);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 //Debug.DrawRay(transform.position, top, Color.green);
 #endif
 
@@ -540,7 +540,7 @@ namespace JCSUnity
                     right,
                     mBoxInfo.x / 2 + mDetectDistance);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 //Debug.DrawRay(transform.position, right, Color.green);
 #endif
 
@@ -580,7 +580,7 @@ namespace JCSUnity
                     left,
                     mBoxInfo.x / 2 + mDetectDistance);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 //Debug.DrawRay(transform.position, left, Color.green);
 #endif
 
@@ -614,7 +614,7 @@ namespace JCSUnity
 
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             float speed = 2;

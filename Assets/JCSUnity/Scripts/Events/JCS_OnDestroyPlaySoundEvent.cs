@@ -53,7 +53,7 @@ namespace JCSUnity
             // will destroy it self automatically.
             JCS_DestroySoundEndEvent dsee = obj.AddComponent<JCS_DestroySoundEndEvent>();
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             obj.name = "JCS_OnDestroyPlaySoundEvent";
 #endif
             dsee.SetAudioClipAndPlayOneShot(mAudioClip, mSoundSettingType);

@@ -21,24 +21,30 @@ namespace JCSUnity
         public const float MIN_LIQUID_BAR_VALUE = -999999999;
         public const float MAX_LIQUID_BAR_VALUE = 999999999;
 
-        // When value reachs the minimum value.
+        // When value reachs min/max value.
         public EmptyFunction callback_min = null;
-        // When value reachs the maximum value.
         public EmptyFunction callback_max = null;
+
+        // When value reachs min/max value. (visually)
+        public EmptyFunction callback_min_vis = null;
+        public EmptyFunction callback_max_vis = null;
 
         [Header("** Check Variables (JCS_LiquidBar) **")]
 
         [SerializeField]
         protected float mMinPos = 0.0f;
-
         [SerializeField]
         protected float mMaxPos = 0.0f;
 
         [SerializeField]
         protected bool mReachMin = false;
-
         [SerializeField]
         protected bool mReachMax = false;
+
+        [SerializeField]
+        protected bool mReachMinVis = false;
+        [SerializeField]
+        protected bool mReachMaxVis = false;
 
         [Header("** Initilaize Variables (JCS_LiquidBar) **")]
 
@@ -58,6 +64,11 @@ namespace JCSUnity
         [SerializeField]
         [Range(0.01f, 10.0f)]
         protected float mDeltaFriction = 0.2f;
+
+        [Tooltip("Distance threshold to do visualize callback.")]
+        [SerializeField]
+        [Range(0.0001f, 10.0f)]
+        protected float mDistanceThreshold = 0.1f;
 
         [Tooltip("Mininum value of the liquid bar.")]
         [SerializeField]
@@ -126,6 +137,7 @@ Careful that recover can be damage too.")]
         public bool OverrideZero { get { return this.mOverrideZero; } set { this.mOverrideZero = value; } }
 
         public float DeltaFriction { get { return this.mDeltaFriction; } set { this.mDeltaFriction = value; } }
+        public float DistanceThreshold { get { return this.mDistanceThreshold; } set { this.mDistanceThreshold = value; } }
 
         public bool RecoverEffect { get { return this.mRecoverEffect; } set { this.mRecoverEffect = value; } }
         public float TimeToRecover { get { return this.mTimeToRecover; } set { this.mTimeToRecover = value; } }
@@ -148,6 +160,9 @@ Careful that recover can be damage too.")]
             // get the image 
             if (mInfoImage == null)
                 this.mInfoImage = this.GetComponent<Image>();
+
+            if (mInfo != null)
+                mInfo.LiquidBar = this;
         }
 
         protected virtual void Update()
@@ -216,6 +231,26 @@ Careful that recover can be damage too.")]
         /// Full the liquid bar.
         /// </summary>
         public abstract void Full();
+
+        /// <summary>
+        /// Return true, if liquid bar is empty.
+        /// </summary>
+        public abstract bool IsEmpty();
+
+        /// <summary>
+        /// Return true, if liquid bar is full.
+        /// </summary>
+        public abstract bool IsFull();
+
+        /// <summary>
+        /// Return true, if liquid bar visually is empty.
+        /// </summary>
+        public abstract bool IsVisuallyEmpty();
+
+        /// <summary>
+        /// Return true, if liquid bar visually is full.
+        /// </summary>
+        public abstract bool IsVisuallyFull();
 
         /// <summary>
         /// Set the value directly.

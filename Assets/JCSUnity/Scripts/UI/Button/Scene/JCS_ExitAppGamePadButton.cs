@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ExitAppGamePadButton.cs $
+ * $File: JCS_ExitAppGamepadButton.cs $
  * $Date: 2017-10-27 11:56:25 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -12,7 +12,7 @@ namespace JCSUnity
     /// <summary>
     /// Button exit the application. (Gamepad)
     /// </summary>
-    public class JCS_ExitAppGamePadButton : JCS_GamePadButton
+    public class JCS_ExitAppGamepadButton : JCS_GamepadButton
     {
         public override void OnClick()
         {

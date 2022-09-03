@@ -48,7 +48,7 @@ namespace JCSUnity
         /// </summary>
         public static void QuitApplication()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             SceneManager.LoadScene("JCS_AppCloseSimulate");
             JCS_ApplicationManager.APP_PAUSE = true;
 #endif

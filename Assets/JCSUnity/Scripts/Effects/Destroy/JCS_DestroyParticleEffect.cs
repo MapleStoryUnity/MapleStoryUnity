@@ -170,7 +170,7 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
 
 
             GameObject gm = new GameObject();
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             gm.name = "JCS_DestroyParticleEffect";
 #endif
 

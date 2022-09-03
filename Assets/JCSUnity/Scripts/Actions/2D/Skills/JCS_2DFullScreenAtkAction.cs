@@ -85,7 +85,7 @@ namespace JCSUnity
 
                 GameObject obj = JCS_Util.SpawnAnimateObjectDeathEvent(anim, mOrderLayer);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
                 obj.name = "JCS_2DFullScreenAtkAction";
 #endif
 

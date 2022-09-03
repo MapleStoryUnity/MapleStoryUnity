@@ -1,5 +1,5 @@
 /**
- * $File: JCS_DeactivePanelGamePadButton.cs $
+ * $File: JCS_DeactivePanelGamepadButton.cs $
  * $Date: 2017-10-27 12:33:45 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,13 +11,13 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Deactive panel button. (Game Pad)
+    /// Deactive panel button. (Gamepad)
     /// </summary>
-    public class JCS_DeactivePanelGamePadButton : JCS_GamePadButton
+    public class JCS_DeactivePanelGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_DeactivePanelGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_DeactivePanelGamepadButton) **")]
 
         [Tooltip("Panels to be deactive.")]
         [SerializeField]

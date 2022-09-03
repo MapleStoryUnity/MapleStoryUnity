@@ -44,7 +44,7 @@ namespace JCSUnity
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Debug.Log("¶ [INFO] " + msg + " " + 
                 DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " " + 
                 Path.GetFileName(file) + " " + 

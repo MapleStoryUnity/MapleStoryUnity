@@ -1,5 +1,5 @@
 /**
- * $File: JCS_EchoGamePadButton.cs $
+ * $File: JCS_EchoGamepadButton.cs $
  * $Date: 2017-10-23 15:23:06 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,11 +13,11 @@ namespace JCSUnity
     /// <summary>
     /// Echo out with game pad button
     /// </summary>
-    public class JCS_EchoGamePadButton : JCS_GamePadButton
+    public class JCS_EchoGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_EchoGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_EchoGamepadButton) **")]
 
         [Tooltip("String to echo out on the console window.")]
         public string echoString = "echo Hello World!~";

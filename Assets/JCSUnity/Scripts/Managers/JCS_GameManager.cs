@@ -20,7 +20,7 @@ namespace JCSUnity
         // Callback after the game is done initialize.
         public EmptyFunction afterGameInitializeCallback = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_GameManager) **")]
 
         [Tooltip("Test this module?")]
@@ -87,7 +87,7 @@ namespace JCSUnity
             
             SetSpecificGameTypeGameManager();
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // Check time scale
             if (TIME_SCALE != 1)
             {
@@ -99,7 +99,7 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             SetTimeScale();
 
             TestPauseGame();
@@ -108,7 +108,7 @@ namespace JCSUnity
             SetGameDoneInitializeFlag();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Keep set the time to the time scale, 
         /// so make it make the inspector slide bar can 
@@ -137,7 +137,7 @@ namespace JCSUnity
         /// </summary>
         private void SetSpecificGameTypeGameManager()
         {
-            JCS_GameSettings gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.instance;
 
             switch (gs.GAME_TYPE)
             {

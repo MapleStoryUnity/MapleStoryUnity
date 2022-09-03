@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ToggleGamePadButton.cs $
+ * $File: JCS_ToggleGamepadButton.cs $
  * $Date: 2017-10-27 12:05:00 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,16 +11,16 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button that have two callback can toggle each other. (Game Pad)
+    /// Button that have two callback can toggle each other. (Gamepad)
     /// </summary>
-    public class JCS_ToggleGamePadButton : JCS_GamePadButton
+    public class JCS_ToggleGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 
         public EmptyFunction onActive = null;
         public EmptyFunction onDeactive = null;
 
-        [Header("** Check Variables (JCS_ToggleGamePadButton) **")]
+        [Header("** Check Variables (JCS_ToggleGamepadButton) **")]
 
         [Tooltip("Return true if toggle button currently active.")]
         [SerializeField]

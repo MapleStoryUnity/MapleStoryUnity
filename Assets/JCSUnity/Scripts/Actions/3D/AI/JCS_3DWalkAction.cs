@@ -30,7 +30,7 @@ namespace JCSUnity
 
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_3DWalkAction) **")]
 
         [Tooltip("Found the path now.")]
@@ -208,6 +208,22 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true if current action is agent.
+        /// </summary>
+        public bool IsAgent()
+        {
+            return navMeshAgent.enabled && !navMeshObstacle.enabled;
+        }
+
+        /// <summary>
+        /// Return true if current action is obstacle.
+        /// </summary>
+        public bool IsObstacle()
+        {
+            return !navMeshAgent.enabled && navMeshObstacle.enabled;
+        }
+
+        /// <summary>
         /// Target one player and do in target action.
         /// </summary>
         /// <param name="target"> Target we are following. </param>
@@ -259,7 +275,7 @@ namespace JCSUnity
 
             ++mSearchCounter;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             this.mFoundPath = found;
 #endif
 
@@ -287,7 +303,7 @@ namespace JCSUnity
         {
             float remDist = Vector3.Distance(agent.destination, agent.transform.position);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             this.mRemainingDistance = remDist;
 #endif
 

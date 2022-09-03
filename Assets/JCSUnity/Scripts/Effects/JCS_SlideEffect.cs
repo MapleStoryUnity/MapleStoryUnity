@@ -24,7 +24,7 @@ namespace JCSUnity
         private Vector3 mRecordPosition = Vector3.zero;
         private Vector3 mTowardPosition = Vector3.zero;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_SlideEffect) **")]
 
         [Tooltip("Test this component with key?")]
@@ -179,7 +179,7 @@ namespace JCSUnity
             {
                 // Get panel root, in order to calculate the correct distance
                 // base on the resolution.
-                mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+                mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
 
                 if (mAutoAddEvent)
                 {
@@ -235,14 +235,14 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             SlideEffect();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

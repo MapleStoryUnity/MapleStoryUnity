@@ -28,7 +28,7 @@ namespace JCSUnity
         // Function call after the user has swiped
         public AfterSwipeCallback afterSwiped = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_2DSlideScreenCamera) **")]
 
         public bool testWithKey = false;
@@ -162,13 +162,13 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
             DoMobileSwipe();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!testWithKey)

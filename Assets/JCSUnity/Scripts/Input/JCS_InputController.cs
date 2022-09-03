@@ -1,4 +1,4 @@
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
 /**
  * $File: JCS_InputController.cs $
  * $Date: 2017-10-07 06:12:14 $

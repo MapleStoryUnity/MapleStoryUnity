@@ -1,5 +1,5 @@
 /**
- * $File: JCS_GamePadAnimationHandler.cs $
+ * $File: JCS_GamepadAnimationHandler.cs $
  * $Date: 2017-10-31 11:22:17 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -15,7 +15,7 @@ namespace JCSUnity
     /// Handle animation using 'JCS_2DAnimator' depends on weather
     /// the game pad is plug or unplugn.
     /// </summary>
-    public class JCS_GamePadAnimationHandler : MonoBehaviour
+    public class JCS_GamepadAnimationHandler : MonoBehaviour
     {
         /* Variables */
 

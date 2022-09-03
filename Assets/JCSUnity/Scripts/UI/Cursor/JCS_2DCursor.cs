@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_2DCursor) **")]
 
         [SerializeField]
@@ -84,14 +84,14 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             FollowMouse();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

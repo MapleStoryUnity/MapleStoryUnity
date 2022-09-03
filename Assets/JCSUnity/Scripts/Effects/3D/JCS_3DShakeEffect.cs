@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables*/
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_3DShakeEffect) **")]
 
         [Tooltip("Test this component with key.")]
@@ -112,14 +112,14 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             DoEffect();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

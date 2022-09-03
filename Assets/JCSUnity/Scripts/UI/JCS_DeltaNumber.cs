@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_DeltaNumber) **")]
 
         [Tooltip("Test component with key.")]
@@ -53,11 +53,6 @@ namespace JCSUnity
         private int mCurrentDigitCount = 1;
 
         [Header("** Initialize Variables (JCS_DeltaNumber) **")]
-
-        [Tooltip(@"Current number rendering..., do not use this to 
-check value. Because this will always be animate.")]
-        [SerializeField]
-        private int mCurrentNumber = 0;
 
         [Tooltip("Default null slot. [Default: transparent_256.png]")]
         [SerializeField]
@@ -103,6 +98,11 @@ check value. Because this will always be animate.")]
         private float mDigitInterval = 0.5f;
 
         [Header("** Runtime Variables (JCS_DeltaNumber) **")]
+
+        [Tooltip(@"Current number rendering..., do not use this to 
+check value. Because this will always be animate.")]
+        [SerializeField]
+        private int mCurrentNumber = 0;
 
         [Tooltip("Clear all the empty zero from the left.")]
         [SerializeField]
@@ -154,8 +154,7 @@ should disable this effect for best purpose.")]
         /* Setter & Getter */
 
         public bool IsEnable { get { return this.mIsEnable; } }
-        public bool ClearEmptyLeftZero { get { return this.mClearEmptyLeftZero; } set { this.mClearEmptyLeftZero = value; } }
-        public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
+        public int CurrentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
         public int TargetNumber
         {
             get { return this.mTargetNumber; }
@@ -168,6 +167,8 @@ should disable this effect for best purpose.")]
                 this.mDeltaToCurrentNumber = true;
             }
         }
+        public bool ClearEmptyLeftZero { get { return this.mClearEmptyLeftZero; } set { this.mClearEmptyLeftZero = value; } }
+        public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
         public bool VisibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
         public JCS_TextAlign TextAlign { get { return this.mTextAlign; } set { this.mTextAlign = value; } }
 

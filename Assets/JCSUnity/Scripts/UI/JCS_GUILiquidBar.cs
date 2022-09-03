@@ -23,7 +23,7 @@ namespace JCSUnity
         private RectTransform mRectTransform = null;
         private RectTransform mMaskRectTransform = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_GUILiquidBar) **")]
 
         [Tooltip("Test functionalities works?")]
@@ -83,7 +83,7 @@ namespace JCSUnity
 
             // Get panel root, in order to calculate the correct distance base
             // on the resolution.
-            mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+            mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
 
             if (mMask == null)
             {
@@ -103,7 +103,7 @@ namespace JCSUnity
 
         protected void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
@@ -125,7 +125,7 @@ namespace JCSUnity
             TowardToTargetValue();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
@@ -253,6 +253,38 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true, if liquid bar is empty.
+        /// </summary>
+        public override bool IsEmpty()
+        {
+            return mCurrentValue == mMinValue;
+        }
+
+        /// <summary>
+        /// Return true, if liquid bar is full.
+        /// </summary>
+        public override bool IsFull()
+        {
+            return mCurrentValue == mMaxValue;
+        }
+
+        /// <summary>
+        /// Return true, if liquid bar visually is empty.
+        /// </summary>
+        public override bool IsVisuallyEmpty()
+        {
+            return mReachMinVis && IsEmpty();
+        }
+
+        /// <summary>
+        /// Return true, if liquid bar  visually is full.
+        /// </summary>
+        public override bool IsVisuallyFull()
+        {
+            return mReachMaxVis && IsFull();
+        }
+
+        /// <summary>
         /// Delta the current value.
         /// </summary>
         /// <param name="deltaVal"> delta to current value's value </param>
@@ -282,8 +314,10 @@ namespace JCSUnity
         /// Mana value must higher than the cast value.
         /// </summary>
         /// <param name="val"> value to cast </param>
-        /// <returns> true: able to cast, 
-        ///           false: not able to cast </returns>
+        /// <returns> 
+        /// true, able to cast, 
+        /// false, not able to cast 
+        /// </returns>
         public override bool IsAbleToCast(float val)
         {
             // able to cast the spell
@@ -385,8 +419,7 @@ namespace JCSUnity
             if (mCurrentValue < mMinValue || mCurrentValue > mMaxValue)
 
             {
-                JCS_Debug.LogError("Value should with in min(" + mMinValue +
-                    ") ~ max(" + mMaxValue + ") value");
+                JCS_Debug.LogError("Value should with in min(" + mMinValue + ") ~ max(" + mMaxValue + ") value");
                 return;
             }
 
@@ -447,6 +480,8 @@ namespace JCSUnity
 
             mMaskRectTransform.localPosition += tmpSpeed;
             mRectTransform.localPosition -= speed;
+
+            DoVisuallyCallback();
         }
 
         /// <summary>
@@ -477,7 +512,7 @@ namespace JCSUnity
             mReachMin = false;
             mReachMax = false;
 
-            if (mCurrentValue == mMinValue)
+            if (IsEmpty())
             {
                 // do min call back.
                 if (callback_min != null)
@@ -486,13 +521,45 @@ namespace JCSUnity
                 mReachMin = true;
             }
 
-            if (mCurrentValue == mMaxValue)
+            if (IsFull())
             {
 
                 if (callback_max != null)
                     callback_max.Invoke();
 
                 mReachMax = true;
+            }
+        }
+
+        /// <summary>
+        /// Do callback after visualizing liquid bar.
+        /// </summary>
+        private void DoVisuallyCallback()
+        {
+            float distance = Vector3.Distance(mMaskTargetPosition, mMaskRectTransform.localPosition);
+
+            if (distance > mDistanceThreshold)
+            {
+                mReachMinVis = false;
+                mReachMaxVis = false;
+                return;
+            }
+
+            if (!mReachMinVis && IsEmpty())
+            {
+                // do min call back.
+                if (callback_min_vis != null)
+                    callback_min_vis.Invoke();
+
+                mReachMinVis = true;
+            }
+
+            if (!mReachMaxVis && IsFull())
+            {
+                if (callback_max_vis != null)
+                    callback_max_vis.Invoke();
+
+                mReachMaxVis = true;
             }
         }
 

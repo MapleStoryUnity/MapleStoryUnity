@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private bool mEffect = false;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_OneJump) **")]
 
         [Tooltip("Name of the collider that blocks the jump.")]
@@ -184,7 +184,7 @@ just stop there.")]
                     return;
             }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // if is debug mode print this out.
             // in order to know what does item touched and 
             // stop this movement.

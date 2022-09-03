@@ -27,7 +27,7 @@ namespace JCSUnity
         private bool mPlayBack = false;
         private bool mPlayForth = false;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_DestroyAnimBackForthEvent) **")]
 
         [SerializeField]
@@ -67,7 +67,7 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (mTestWithKey)
             {
                 if (JCS_Input.GetKeyDown(mPlayForthKey))

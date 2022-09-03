@@ -150,7 +150,7 @@ which to target which not to.")]
                     this.transform.Rotate(0, 0, 180);
             }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // print out the name.
             if (JCS_GameSettings.instance.DEBUG_MODE)
                 JCS_Debug.PrintName(closestliveObj.transform);

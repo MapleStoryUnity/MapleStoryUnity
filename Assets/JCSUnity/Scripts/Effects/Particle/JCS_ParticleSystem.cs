@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Variables Variables (JCS_ParticleSystem) **")]
 
         [Tooltip("Flag for component testing.")]
@@ -226,7 +226,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
@@ -242,7 +242,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             Freeze();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!testWithKey)

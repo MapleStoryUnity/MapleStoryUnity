@@ -41,7 +41,7 @@ namespace JCSUnity
             GameObject obj = new GameObject();
             JCS_DestroySoundEndEvent dsee = obj.AddComponent<JCS_DestroySoundEndEvent>();
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             obj.name = "JCS_SoundProxyAction";
 #endif
 

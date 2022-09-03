@@ -1,5 +1,5 @@
 /**
- * $File: JCS_PauseGameGamePadButton.cs $
+ * $File: JCS_PauseGameGamepadButton.cs $
  * $Date: 2017-10-27 11:58:09 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -10,9 +10,9 @@
 namespace JCSUnity
 {
     /// <summary>
-    /// Pause the game with button. (Game Pad)
+    /// Pause the game with button. (Gamepad)
     /// </summary>
-    public class JCS_PauseGameGamePadButton : JCS_GamePadButton
+    public class JCS_PauseGameGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 

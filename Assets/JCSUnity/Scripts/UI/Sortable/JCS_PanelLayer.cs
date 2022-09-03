@@ -21,7 +21,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_PanelLayer) **")]
 
         [Tooltip("Test this component.")]
@@ -55,7 +55,7 @@ namespace JCSUnity
             OriganizeChildOrder(jcspls);
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             Test();

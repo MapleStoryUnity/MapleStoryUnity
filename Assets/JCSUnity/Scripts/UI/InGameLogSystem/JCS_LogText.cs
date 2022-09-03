@@ -61,11 +61,9 @@ namespace JCSUnity
             mSimpleTrackAction = this.GetComponent<JCS_SimpleTrackAction>();
             mSlideEffect = this.GetComponent<JCS_SlideEffect>();
 
-            // set the fade out call back, 
-            // so we active from pool, 
-            // and check to see if the object is fade out complete.
-            // if is complete set the active to false (return 
-            // to pool).
+            // set the fade out call back,  so we active from pool, and check
+            // to see if the object is fade out complete. if is complete set
+            // the active to false (return to pool).
             mFadeObject.fadeOutCallback = FadeOutCompleteCallback;
         }
 
@@ -102,9 +100,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Function assgin to FadeObject in order to let
-        /// the object know when the object to deactive, 
-        /// and prepare for next use.
+        /// Function assgin to FadeObject in order to let the object know when
+        /// the object to deactive, and prepare for next use.
         /// </summary>
         private void FadeOutCompleteCallback()
         {

@@ -1,5 +1,5 @@
 /**
- * $File: JCS_OpenURLGamePadButton.cs $
+ * $File: JCS_OpenURLGamepadButton.cs $
  * $Date: 2017-10-27 11:50:47 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,13 +11,13 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Open a URL in the default browser. (Game Pad)
+    /// Open a URL in the default browser. (Gamepad)
     /// </summary>
-    public class JCS_OpenURLGamePadButton : JCS_GamePadButton
+    public class JCS_OpenURLGamepadButton : JCS_GamepadButton
     {
         /* Variables*/
 
-        [Header("** Runtime Variables (JCS_OpenURLGamePadButton) **")]
+        [Header("** Runtime Variables (JCS_OpenURLGamepadButton) **")]
 
         [Tooltip("URL to open in the default browser.")]
         [SerializeField]

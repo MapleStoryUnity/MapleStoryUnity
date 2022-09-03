@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private InputField mInputField = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_InputField) **")]
 
         [Tooltip("Test this component with key?")]
@@ -81,14 +81,14 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             InputFieldFocusedEvent();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

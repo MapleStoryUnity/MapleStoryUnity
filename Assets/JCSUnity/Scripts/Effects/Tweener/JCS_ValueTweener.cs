@@ -38,7 +38,7 @@ namespace JCSUnity
 
         private float mRealDuration = 1.0f;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_ValueTweener) **")]
 
         [Tooltip("Test component with key?")]
@@ -122,14 +122,14 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             UpdateValue();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
