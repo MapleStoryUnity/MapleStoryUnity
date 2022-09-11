@@ -1,5 +1,5 @@
 /**
- * $File: JCS_TextSliderDisplay.cs $
+ * $File: JCS_SliderTextDisplay.cs $
  * $Date: 2022-09-04 01:10:40 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -15,11 +15,11 @@ namespace JCSUnity
     /// <summary>
     /// Text that display slider's value.
     /// </summary>
-    public class JCS_TextSliderDisplay : JCS_TextObject
+    public class JCS_SliderTextDisplay : JCS_TextObject
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_TextSliderDisplay) **")]
+        [Header("** Runtime Variables (JCS_TextSliderDisplay) **")]
 
         [Tooltip("To update the text along with this slider's value.")]
         [SerializeField]
