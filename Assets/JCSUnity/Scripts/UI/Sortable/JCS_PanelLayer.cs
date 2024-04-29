@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_PanelLayer) **")]
+        [Separator("Helper Variables (JCS_PanelLayer)")]
 
         [Tooltip("Test this component.")]
         [SerializeField]

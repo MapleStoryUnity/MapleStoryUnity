@@ -12,6 +12,7 @@
 #define TMP_PRO
 
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -32,7 +33,7 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-        [Header("** Check Variables (JCS_TextTimer) **")]
+        [Separator("Check Variables (JCS_TextTimer)")]
 
         [SerializeField]
         private bool mDoTimeIsUpCallback = false;
@@ -46,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         private string mSecondsText = "";
 
-        [Header("** Runtime Variables (JCS_TextTimer) **")]
+        [Separator("Runtime Variables (JCS_TextTimer)")]
 
         [Tooltip("Timer active or not active.")]
         [SerializeField]
@@ -83,6 +84,10 @@ namespace JCSUnity
         private bool mMinusMinute = false;
         private bool mMinusHour = false;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Sound")]
 
         [Tooltip("Sound played when hours get reduced.")]
@@ -107,6 +112,7 @@ namespace JCSUnity
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
         public bool HideWhenZero { get { return this.mHideWhenZero; } set { this.mHideWhenZero = value; } }
         public string DelimiterText { get { return this.mDelimiterText; } set { this.mDelimiterText = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public AudioClip HourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
         public AudioClip MinuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
@@ -193,7 +199,7 @@ namespace JCSUnity
         public void UpdateTimeUI(float hour, float minute, float second)
         {
 #if TMP_PRO
-            if (mTextContainer == null && mTextMesh == null)
+            if (mTextContainer == null && mTMP_Text == null)
 #else
             if (mTextContainer == null)
 #endif
@@ -287,7 +293,7 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            mCurrentSeconds -= Time.deltaTime;
+            mCurrentSeconds -= JCS_Time.DeltaTime(mDeltaTimeType);
 
             int currentSecond = (int)mCurrentSeconds;
             if (mTrackSecond != currentSecond)
@@ -381,7 +387,7 @@ namespace JCSUnity
                 return;
 
             JCS_SoundManager sm = JCS_SoundManager.instance;
-            sm.GetGlobalSoundPlayer().PlayOneShot(clip);
+            sm.GlobalSoundPlayer().PlayOneShot(clip);
         }
     }
 }

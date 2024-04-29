@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,13 +24,13 @@ namespace JCSUnity
 
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
-        [Header("** Runtime Variables (JCS_2DLight) **")]
+        [Separator("Runtime Variables (JCS_2DLight)")]
 
         [Tooltip("Flag for active this component.")]
         [SerializeField]
         private bool mActive = true;
 
-        [Header("** Min / Max Settings (JCS_2DLight) **")]
+        [Header("- Min / Max")]
 
         [Tooltip("Mininum value of the light can fade.")]
         [SerializeField] [Range(0, 1.0f)]
@@ -54,7 +55,7 @@ namespace JCSUnity
             this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
             this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
-            this.mAdjustTimeTrigger.actions = DoFade;
+            this.mAdjustTimeTrigger.onAction = DoFade;
         }
 
         /// <summary>

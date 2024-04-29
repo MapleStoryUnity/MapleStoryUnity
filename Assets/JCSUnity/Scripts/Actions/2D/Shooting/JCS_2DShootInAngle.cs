@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,8 +21,7 @@ namespace JCSUnity
 
         private JCS_ShootAction mShootAction = null;
 
-
-        [Header("** Runtime Variables (JCS_2DShootInAngle) **")]
+        [Separator("Runtime Variables (JCS_2DShootInAngle)")]
 
         [Tooltip("Degree per bullet shoot.")]
         [SerializeField]
@@ -35,14 +35,12 @@ namespace JCSUnity
         [SerializeField]
         private float mMaxDegree = 240.0f;
 
-
         /* Setter & Getter */
 
         public JCS_ShootAction GetShootAction() { return this.mShootAction; }
         public float DegreePerShoot { get { return this.mDegreePerShoot; } }
         public float MinDegree { get { return this.mMinDegree; } }
         public float MaxDegree { get { return this.mMaxDegree; } }
-
         
         /* Functions */
 

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DPushEffect) **")]
+        [Separator("Runtime Variables (JCS_2DPushEffect)")]
 
         [Tooltip("Direction this effect pushes the player.")]
         [SerializeField]
@@ -27,6 +28,9 @@ namespace JCSUnity
         [SerializeField]
         private float mPushSpeed = 10.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
@@ -38,7 +42,7 @@ namespace JCSUnity
             if (player == null)
                 return;
 
-            player.VelX += mPushSpeed * -(int)mDirection * Time.deltaTime;
+            player.VelX += mPushSpeed * -(int)mDirection * JCS_Time.DeltaTime(mDeltaTimeType);
         }
 
         /// <summary>

@@ -15,6 +15,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -39,7 +40,7 @@ namespace JCSUnity
 
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_AdvertisementManager) **")]
+        [Separator("Initialize Variables (JCS_AdvertisementManager)")]
 
 #if (UNITY_ANDROID)
         [Tooltip("Andriod game id provided by Unity Server window.")]

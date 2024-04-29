@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_2DCircleAction) **")]
+        [Separator("Initialize Variables (JCS_2DCircleAction)")]
 
         [Tooltip("Starting rotation degree.")]
         [SerializeField]
@@ -29,7 +30,7 @@ namespace JCSUnity
 
         private float mRotateDegreeTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_2DCircleAction) **")]
+        [Separator("Runtime Variables (JCS_2DCircleAction)")]
 
         [Tooltip("Do the movement.")]
         [SerializeField]
@@ -51,6 +52,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public float StartingPosition { get { return this.mStartingDegree; } set { this.mStartingDegree = value; } }
@@ -60,6 +65,7 @@ namespace JCSUnity
         public bool DoRotate { get { return this.mDoRotate; } set { this.mDoRotate = value; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -84,7 +90,7 @@ namespace JCSUnity
                 return;
 
             // Do movement
-            this.transform.Translate(Vector3.right * MoveSpeed * Time.deltaTime);
+            this.transform.Translate(Vector3.right * MoveSpeed * JCS_Time.DeltaTime(mDeltaTimeType));
         }
 
         /// <summary>
@@ -95,7 +101,9 @@ namespace JCSUnity
             if (!mDoRotate)
                 return;
 
-            mRotateDegreeTimer += mTurnSpeed * Time.deltaTime;
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
+            mRotateDegreeTimer += mTurnSpeed * dt;
 
             if (mRotateDegreeTimer > mRotateDegree)
             {
@@ -105,7 +113,7 @@ namespace JCSUnity
             }
 
             // Do rotation!
-            this.transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * Time.deltaTime);
+            this.transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * dt);
         }
     }
 }

@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_UpdateSliderGamepadButton) **")]
+        [Separator("Runtime Variables (JCS_UpdateSliderGamepadButton)")]
 
         [Tooltip("Target value to assign to slider list.")]
         [SerializeField]

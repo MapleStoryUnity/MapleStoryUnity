@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_Rotation) **")]
+        [Separator("Runtime Variables (JCS_Rotation)")]
 
         [Tooltip("Do the effect?")]
         [SerializeField]
@@ -32,7 +33,15 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_Vector3Direction mRotateDirection = JCS_Vector3Direction.FORWARD;
 
-        [Header("- Random Effect (JCS_Rotation)")]
+        [Tooltip("Rotate by its transform.")]
+        [SerializeField]
+        protected bool mBySelf = false;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
+        [Header("- Random Effect")]
 
         [Tooltip("Randomize the rotation speed a bit at start.")]
         [SerializeField]
@@ -52,6 +61,8 @@ namespace JCSUnity
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public float RotateSpeed { get { return this.mRotateSpeed; } set { this.mRotateSpeed = value; } }
         public JCS_Vector3Direction RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
+        public bool BySelf { get { return this.mBySelf; } set { this.mBySelf = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -88,34 +99,14 @@ namespace JCSUnity
         /// </summary>
         private void DoRotation()
         {
-            Vector3 rotateDirection = Vector3.zero;
+            Vector3 rotateDirection;
 
-            switch (mRotateDirection)
-            {
-                case JCS_Vector3Direction.FORWARD:
-                    rotateDirection = Vector3.forward;
-                    break;
-                case JCS_Vector3Direction.BACK:
-                    rotateDirection = Vector3.back;
-                    break;
-                case JCS_Vector3Direction.UP:
-                    rotateDirection = Vector3.up;
-                    break;
-                case JCS_Vector3Direction.DOWN:
-                    rotateDirection = Vector3.down;
-                    break;
-                case JCS_Vector3Direction.RIGHT:
-                    rotateDirection = Vector3.right;
-                    break;
-                case JCS_Vector3Direction.LEFT:
-                    rotateDirection = Vector3.left;
-                    break;
-                default:
-                    rotateDirection = Vector3.zero;
-                    break;
-            }
+            if (mBySelf)
+                rotateDirection = JCS_Util.VectorDirection(mRotateDirection, this.transform);
+            else
+                rotateDirection = JCS_Util.VectorDirection(mRotateDirection);
 
-            transform.Rotate(rotateDirection * mRotateSpeed * Time.deltaTime);
+            transform.Rotate(rotateDirection * mRotateSpeed * JCS_Time.DeltaTime(mDeltaTimeType));
         }
 
         /// <summary>

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,20 +18,19 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public static string JCS_2DCAMERA_PATH = "Camera/JCS_2DCamera";
-
-        [Header("** Check Varialbes (JCS_2DCamera) **")]
+        [Separator("Check Varialbes (JCS_2DCamera)")]
 
         [SerializeField]
+        [ReadOnly]
         private Vector3 mTargetPosition = Vector3.zero;
 
-        [Header("** Initialize Variables (JCS_2DCamera) **")]
+        [Separator("Initialize Variables (JCS_2DCamera)")]
 
         [Tooltip("Set the camera's position to the player when the game starts?")]
         [SerializeField]
         private bool mSetToPlayerPositionAtStart = true;
 
-        [Header("** Runtime Variables (JCS_2DCamera) **")]
+        [Separator("Runtime Variables (JCS_2DCamera)")]
 
         //-- Target information
         [Tooltip("Target transform information.")]
@@ -154,15 +154,14 @@ namespace JCSUnity
             // Use player from "JCS_GameManager" as default
             if (this.mTargetTransform == null)
             {
-                JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
+                JCS_Player player = JCS_GameManager.instance.Player;
                 if (player != null)
                     SetFollowTarget(player.transform);
             }
 
             if (mTargetTransform != null)
             {
-                // first assign the target transform's position
-                // to target position.
+                // first assign the target transform's position to target position.
                 mTargetPosition = this.mTargetTransform.position;
 
                 // record the target position
@@ -210,7 +209,7 @@ namespace JCSUnity
                 // to here...
                 mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-                JCS_SlideInput slideInput = JCS_InputManager.instance.GetGlobalSlideInput();
+                var slideInput = JCS_SlideInput.instance;
                 mWheelDegree = slideInput.TouchDistanceDelta;
 #endif
                 ZoomCamera(mWheelDegree);
@@ -228,7 +227,7 @@ namespace JCSUnity
                     this.transform.position.z) / mScrollFriction;
 
                 // Update self position
-                this.transform.position += this.mVelocity * Time.deltaTime;
+                this.transform.position += this.mVelocity * JCS_Time.DeltaTime(mDeltaTimeType);
             }
             // Hard track
             else
@@ -288,8 +287,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 4 boundaries (top, bottom, right, left) that camera
-        /// should not go through.
+        /// 4 boundaries (top, bottom, right, left) that camera should not 
+        /// go through.
+        /// 
         /// check the boundries and do the trick!
         /// </summary>
         private void CameraBoundaries()

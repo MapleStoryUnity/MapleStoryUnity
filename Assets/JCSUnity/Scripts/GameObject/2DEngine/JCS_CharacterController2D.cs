@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -29,7 +30,7 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_CharacterController2D) **")]
+        [Separator("Helper Variables (JCS_CharacterController2D)")]
 
         [Tooltip("")]
         [SerializeField]
@@ -43,47 +44,59 @@ namespace JCSUnity
         private KeyCode mRightKey = KeyCode.RightArrow;
 #endif
 
-        [Header("** Check Variables (JCS_CharacterController2D) **")]
+        [Separator("Check Variables (JCS_CharacterController2D)")]
 
         // STUDY(jenchieh): use this as the composition info?
         [SerializeField]
+        [ReadOnly]
         private Vector3 mVelocity = Vector3.zero;
 
         [Tooltip("Record down the box info from the unity engine.")]
         [SerializeField]
+        [ReadOnly]
         private Vector2 mBoxInfo = Vector2.zero;
 
         [Tooltip("Hit the bottom?")]
         [SerializeField]
+        [ReadOnly]
         private bool mHitBottom = false;
 
         [Tooltip("Hit the top?")]
         [SerializeField]
+        [ReadOnly]
         private bool mHitTop = false;
 
         [Tooltip("Hit the right?")]
         [SerializeField]
+        [ReadOnly]
         private bool mHitRight = false;
 
         [Tooltip("Hit the left?")]
         [SerializeField]
+        [ReadOnly]
         private bool mHitLeft = false;
 
         // holde the bottom collider
         [SerializeField]
+        [ReadOnly]
         private List<Collider2D> mBottomColliders = null;
+
         [SerializeField]
+        [ReadOnly]
         private List<Collider2D> mTopColliders = null;
+
         [SerializeField]
+        [ReadOnly]
         private List<Collider2D> mRightColliders = null;
+
         [SerializeField]
+        [ReadOnly]
         private List<Collider2D> mLeftColliders = null;
 
         // 
         private Vector3 mCurrentFrame = Vector3.zero;
 
-
-        [Header("** Runtime Variables Variables (JCS_CharacterController2D) **")]
+        [Separator("Runtime Variables Variables (JCS_CharacterController2D)")]
 
         [Tooltip("Apply gravity?")]
         [SerializeField]
@@ -108,8 +121,11 @@ namespace JCSUnity
         // record down the last frame position.
         private Vector2 mLastFramePosition = Vector2.zero;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("** Freeze Settings (JCS_CharacterController2D) **")]
+        [Header("- Freeze")]
 
         [Tooltip("Freeze the object in x axis.")]
         [SerializeField]
@@ -120,12 +136,11 @@ namespace JCSUnity
         private bool mFreezeY = false;
 
 
-        [Header("** Optional Settings (JCS_CharacterController2D) **")]
+        [Header("- Optional")]
 
         [Tooltip("Zero out the rotation when collider is trigger.")]
         [SerializeField]
         private bool mZeroRotationWhenIsTrigger = true;
-
 
         /* Setter & Getter */
 
@@ -138,6 +153,8 @@ namespace JCSUnity
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
         public BoxCollider2D GetBoxCollider2D() { return this.mBoxCollider2d; }
         public Rigidbody2D GetRigidbody2D() { return this.mRigidbody2d; }
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public bool HitTop { get { return this.mHitTop; } }
         public bool HitBottom { get { return this.mHitBottom; } }
@@ -216,7 +233,7 @@ namespace JCSUnity
             ApplyGravity();
 
             // apply force base on the velocity.
-            this.transform.position += mVelocity * Time.deltaTime;
+            this.transform.position += mVelocity * JCS_Time.DeltaTime(mDeltaTimeType);
 
             // lastly check the freezing.
             DoFreeze();
@@ -688,7 +705,7 @@ namespace JCSUnity
             if (!isGrounded())
             {
                 // apply gravity
-                mVelocity.y += -JCS_GameConstant.GRAVITY * Time.deltaTime;
+                mVelocity.y += -JCS_GameConstant.GRAVITY * JCS_Time.DeltaTime(mDeltaTimeType);
             }
             else
             {

@@ -33,7 +33,7 @@ namespace JCSUnity
             this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
             this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
-            this.mAdjustTimeTrigger.actions = RandomPlayAnimationInAnimator;
+            this.mAdjustTimeTrigger.onAction = RandomPlayAnimationInAnimator;
         }
 
         /// <summary>

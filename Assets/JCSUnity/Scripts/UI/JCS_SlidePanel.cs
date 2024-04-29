@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,12 +21,13 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-        [Header("** Check Variables (JCS_SlidePanel) **")]
+        [Separator("Check Variables (JCS_SlidePanel)")]
 
         [SerializeField]
+        [ReadOnly]
         private Vector3 mTargetPosition = Vector3.zero;
 
-        [Header("** Runtime Variables (JCS_SlidePanel) **")]
+        [Separator("Runtime Variables (JCS_SlidePanel) ")]
 
         [Tooltip("How fast the this slide panel slide in x axis.")]
         [SerializeField]
@@ -37,12 +39,17 @@ namespace JCSUnity
         [Range(0.01f, 5.0f)]
         private float mSlideFrictionY = 0.2f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public float SlideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
         public float SlideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
         public void SetTargetPosition(Vector3 pos) { this.mTargetPosition = pos; }
         public Vector3 GetTargetPosition() { return this.mTargetPosition; }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -57,8 +64,10 @@ namespace JCSUnity
         {
             Vector3 newPosition = this.mRectTransform.localPosition;
 
-            newPosition.x += (mTargetPosition.x - newPosition.x) / mSlideFrictionX * Time.deltaTime;
-            newPosition.y += (mTargetPosition.y - newPosition.y) / mSlideFrictionY * Time.deltaTime;
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
+            newPosition.x += (mTargetPosition.x - newPosition.x) / mSlideFrictionX * dt;
+            newPosition.y += (mTargetPosition.y - newPosition.y) / mSlideFrictionY * dt;
 
             this.mRectTransform.localPosition = newPosition;
         }

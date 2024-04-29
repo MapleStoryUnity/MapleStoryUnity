@@ -7,6 +7,7 @@
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,33 +22,39 @@ namespace JCSUnity
         public EmptyFunction onScreenIdle = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_ScreenManager) **")]
+        [Separator("Helper Variables (JCS_ScreenManager)")]
 
         [Tooltip("Show the resizable screen panel in game?")]
         public bool SHOW_RESIZABLE_PANELS = true;
 #endif
 
-        [Header("** Check Variables (JCS_ScreenSettings) **")]
+        [Separator("Check Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Screen size when the application starts.")]
+        [ReadOnly]
         public JCS_ScreenSizef STARTING_SCREEN_SIZE = JCS_ScreenSizef.zero;
 
         [Tooltip("Store the camera orthographic size value over scene.")]
+        [ReadOnly]
         public float ORTHOGRAPHIC_SIZE = 0.0f;
 
         [Tooltip("Store the camera filed of view value over scene.")]
+        [ReadOnly]
         public float FIELD_OF_VIEW = 0.0f;
 
         [Tooltip("Previous screen size.")]
+        [ReadOnly]
         public JCS_ScreenSizef PREV_SCREEN_SIZE = JCS_ScreenSizef.zero;
 
         [Tooltip("Current screen size.")]
+        [ReadOnly]
         public JCS_ScreenSizef CURRENT_SCREEN_SIZE = JCS_ScreenSizef.zero;
 
         [Tooltip("Target aspect ratio screen size.")]
+        [ReadOnly]
         public JCS_ScreenSize ASPECT_RATIO_SCREEN_SIZE = JCS_ScreenSize.zero;
 
-        [Header("** Initialize Variables (JCS_ScreenSettings) **")]
+        [Separator("Initialize Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Resize the screen/window to certain aspect when " +
             "the application starts. Aspect ratio can be set at 'JCS_ScreenManager'.")]
@@ -66,7 +73,7 @@ namespace JCSUnity
         [SerializeField]
         private Color mResizablePanelsColor = Color.black;
 
-        [Header("** Runtime Variables (JCS_ScreenSettings) **")]
+        [Separator("Runtime Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Standard screen size to calculate the worldspace obejct's camera view.")]
         public JCS_ScreenSize STANDARD_SCREEN_SIZE = new JCS_ScreenSize(1920, 1080);
@@ -95,7 +102,7 @@ namespace JCSUnity
 
             // This will only run once at the time when 
             // the application is starts.
-            if (!JCS_ApplicationSettings.instance.APPLICATION_STARTS)
+            if (!JCS_AppSettings.instance.APPLICATION_STARTS)
             {
                 // Calculate standard screen width and screen height.
                 {
@@ -146,7 +153,7 @@ namespace JCSUnity
         private void Start()
         {
             // When first run in the application...
-            if (!JCS_ApplicationSettings.instance.APPLICATION_STARTS)
+            if (!JCS_AppSettings.instance.APPLICATION_STARTS)
             {
                 Camera cam = JCS_Camera.main.GetCamera();
 
@@ -267,7 +274,7 @@ namespace JCSUnity
             {
                 // update the height
                 float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_SIZE.width * ASPECT_RATIO_SCREEN_SIZE.height;
-                JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
+                JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false);
 
                 if (starting)
                 {
@@ -279,7 +286,7 @@ namespace JCSUnity
             {
                 // update the width
                 float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_SIZE.height * ASPECT_RATIO_SCREEN_SIZE.width;
-                JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
+                JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false);
 
                 if (starting)
                 {
@@ -295,7 +302,7 @@ namespace JCSUnity
         /// <param name="starting"> Change the starting screen as well? </param>
         public void ForceStandardScreenOnce(bool starting = false)
         {
-            JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false, 0);
+            JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false);
 
             if (starting)
             {
@@ -369,7 +376,7 @@ namespace JCSUnity
 
             if (width != STANDARD_SCREEN_SIZE.width || height != STANDARD_SCREEN_SIZE.height)
             {
-                JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false, 0);
+                JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false);
             }
 
             this.PREV_SCREEN_SIZE.width = width;
@@ -396,7 +403,7 @@ namespace JCSUnity
             {
                 // update the height
                 float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_SIZE.width * ASPECT_RATIO_SCREEN_SIZE.height;
-                JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
+                JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false);
             }
 
             // if the user is changing the height
@@ -404,7 +411,7 @@ namespace JCSUnity
             {
                 // update the width
                 float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_SIZE.height * ASPECT_RATIO_SCREEN_SIZE.width;
-                JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
+                JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false);
             }
 
             this.PREV_SCREEN_SIZE.width = width;

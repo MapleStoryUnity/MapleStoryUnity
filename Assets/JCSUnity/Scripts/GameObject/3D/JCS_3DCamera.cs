@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,24 +20,26 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_3DCamera) **")]
+        [Separator("Helper Variables (JCS_3DCamera)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
         private bool mTestWithKey = false;
 #endif
 
-        [Header("** Check Variables (JCS_3DCamera) **")]
+        [Separator("Check Variables (JCS_3DCamera)")]
 
         [Tooltip("Current tracking position.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mTrackPosition = Vector3.zero;
 
         [Tooltip("Current revolution that do the revolution.")]
         [SerializeField]
+        [ReadOnly]
         private float mCurrentRevolution = 0.0f;
 
-        [Header("** Runtime Variables (JCS_3DCamera) **")]
+        [Separator("Runtime Variables (JCS_3DCamera)")]
 
         [Tooltip("Target we want to look at.")]
         [SerializeField]
@@ -74,7 +77,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mRotateAroundRight = KeyCode.None;
 
-        [Header("** Reset Camera Settings (JCS_3DCamera) **")]
+        [Separator("Reset Camera Settings (JCS_3DCamera)")]
 
         [Tooltip("Key to reset the camera.")]
         [SerializeField]
@@ -228,13 +231,13 @@ namespace JCSUnity
                 // to here...
                 mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-                JCS_SlideInput slideInput = JCS_InputManager.instance.GetGlobalSlideInput();
+                var slideInput = JCS_SlideInput.instance;
                 mWheelDegree = slideInput.TouchDistanceDelta;
 #endif
                 ZoomCamera(mWheelDegree);
             }
 
-            Vector3 newPos = Vector3.forward * mTargetScrollSpeed * Time.deltaTime;
+            Vector3 newPos = Vector3.forward * mTargetScrollSpeed * JCS_Time.DeltaTime(mDeltaTimeType);
 
             // if is valid, do action.
             if (!JCS_Mathf.IsNaN(newPos))
@@ -257,12 +260,14 @@ namespace JCSUnity
             // Fix the speed if reach the distance!
             FixedMinMaxDistance();
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             // asymptotic back to zero
-            mTargetScrollSpeed += (0.0f - mTargetScrollSpeed) / mScrollSpeedFriction * Time.deltaTime;
+            mTargetScrollSpeed += (0.0f - mTargetScrollSpeed) / mScrollSpeedFriction * dt;
 
             // asymptotic revolution
             {
-                float revoDelta = (mTargetRevolution - mCurrentRevolution) / mRotateFriction * Time.deltaTime;
+                float revoDelta = (mTargetRevolution - mCurrentRevolution) / mRotateFriction * dt;
 
                 mCurrentRevolution += revoDelta;
 
@@ -355,7 +360,7 @@ namespace JCSUnity
                 mLastFramePos = currentFramePos;
 
                 // update the transform position
-                this.transform.position += (this.mTrackPosition - this.transform.position) / mSmoothTrackFriction * Time.deltaTime;
+                this.transform.position += (this.mTrackPosition - this.transform.position) / mSmoothTrackFriction * JCS_Time.DeltaTime(mDeltaTimeType);
             }
             // Hard track
             else
@@ -404,7 +409,7 @@ namespace JCSUnity
 
             {
                 // do the delta position formula
-                float deltaHeight = (mTargetHeight - newPos.y) / mUpDownFriction * Time.deltaTime;
+                float deltaHeight = (mTargetHeight - newPos.y) / mUpDownFriction * JCS_Time.DeltaTime(mDeltaTimeType);
 
                 // apply to new position, so get ready to 
                 // apply on the current position.

@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -35,15 +36,16 @@ namespace JCSUnity
 
         public EmptyFunction interactableCallback = null;
 
-        [Header("** Check Variables (JCS_Button) **")]
+        [Separator("Check Variables (JCS_Button)")]
 
         [Tooltip("Record down the selection choice for dialogue system.")]
         [SerializeField]
+        [ReadOnly]
         private int mDialogueSelection = -1;
 
         private bool mInitialized = false;
 
-        [Header("** Optional Variables (JCS_Button) **")]
+        [Separator("Optional Variables (JCS_Button)")]
 
         [Tooltip("text under the button, no necessary.")]
         [SerializeField]
@@ -57,7 +59,7 @@ namespace JCSUnity
         // 'JCS_ButtonSelectionGroup' and 'JCS_ButtonSelection'.
         protected bool mIsSelectedInGroup = false;
 
-        [Header("** Initialize Variables (JCS_Button) **")]
+        [Separator("Initialize Variables (JCS_Button)")]
 
         [Tooltip("Auto add listner to button click event?")]
         [SerializeField]
@@ -67,7 +69,7 @@ namespace JCSUnity
         [SerializeField]
         protected int mDialogueIndex = -1;
 
-        [Header("** Runtime Variables (JCS_Button) **")]
+        [Separator("Runtime Variables (JCS_Button)")]
 
         [Tooltip("Is the button interactable or not. (Default: true)")]
         [SerializeField]

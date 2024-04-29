@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,12 +21,14 @@ namespace JCSUnity
 
         private JCS_RollBtnSelector mRollBtnSelector = null;
 
-        [Header("** Check Variables (JCS_RollSelectorButton) **")]
+        [Separator("Check Variables (JCS_RollSelectorButton)")]
 
         [SerializeField]
+        [ReadOnly]
         private JCS_Button[] btns = null;
 
         [SerializeField]
+        [ReadOnly]
         private int mScrollIndex = 0;
 
         private JCS_SimpleTrackAction mTrackAction = null;

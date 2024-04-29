@@ -7,6 +7,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,9 +17,9 @@ using UnityEngine;
 /// Author: hpjohn
 /// Modefied: Jen-Chieh Shen
 /// </summary>
-public class KeywordReplace : UnityEditor.AssetModificationProcessor
+public class KeywordReplace : AssetModificationProcessor
 {
-    public static void OnWillCreateAsset(string path)
+    private static void OnWillCreateAsset(string path)
     {
         path = path.Replace(".meta", "");
         int index = path.LastIndexOf(".");
@@ -30,21 +32,23 @@ public class KeywordReplace : UnityEditor.AssetModificationProcessor
         if (file != ".cs" && file != ".js" && file != ".boo")
             return;
 
+        if (!File.Exists(path))
+            return;
+
         index = Application.dataPath.LastIndexOf("Assets");
         path = Application.dataPath.Substring(0, index) + path;
-        file = System.IO.File.ReadAllText(path);
+        file = File.ReadAllText(path);
 
-        string dateAndTimeVar = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        string yearTime = System.DateTime.Now.ToString("yyyy");
+        string dateAndTimeVar = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        string yearTime = DateTime.Now.ToString("yyyy");
 
         file = file.Replace("#CREATIONDATE#", dateAndTimeVar + "");
         file = file.Replace("#CREATEYEAR#", yearTime + "");
         file = file.Replace("#PROJECTNAME#", PlayerSettings.productName);
         file = file.Replace("#SMARTDEVELOPERS#", PlayerSettings.companyName);
 
-        System.IO.File.WriteAllText(path, file);
+        File.WriteAllText(path, file);
         AssetDatabase.Refresh();
     }
 }
-
 #endif

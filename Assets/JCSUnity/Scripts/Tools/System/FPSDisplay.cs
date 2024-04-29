@@ -18,7 +18,7 @@ public class FPSDisplay : MonoBehaviour
 
     private void Update()
     {
-        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
     }
 
     private void OnGUI()
@@ -26,7 +26,7 @@ public class FPSDisplay : MonoBehaviour
         float w = JCS_Screen.width;
         float h = JCS_Screen.height;
 
-        GUIStyle style = new GUIStyle();
+        var style = new GUIStyle();
 
         Rect rect = new Rect(0, 0, w, h * 2 / 100);
         style.alignment = TextAnchor.UpperLeft;

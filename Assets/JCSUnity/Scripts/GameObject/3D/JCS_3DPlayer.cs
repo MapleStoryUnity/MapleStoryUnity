@@ -8,6 +8,7 @@
  */
 using System;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_3DPlayer) **")]
+        [Separator("Runtime Variables (JCS_3DPlayer)")]
 
         [Tooltip("How fast it rotates.")]
         [SerializeField]
@@ -41,7 +42,7 @@ namespace JCSUnity
         protected override void FixedUpdate()
         {
             if (!mCharacterController.isGrounded)
-                mVelocity.y -= (JCS_GameConstant.GRAVITY * Time.deltaTime * JCS_GameSettings.instance.GRAVITY_PRODUCT);
+                mVelocity.y -= (JCS_GameConstant.GRAVITY * JCS_Time.DeltaTime(mDeltaTimeType) * JCS_GameSettings.instance.GRAVITY_PRODUCT);
 
             base.FixedUpdate();
         }
@@ -98,10 +99,12 @@ namespace JCSUnity
                 mVelocity.z = 0;
             }
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             if (JCS_Input.GetKey(KeyCode.L))
-                this.transform.Rotate(Vector3.up * mRotateSpeed * Time.deltaTime);
+                this.transform.Rotate(Vector3.up * mRotateSpeed * dt);
             else if (JCS_Input.GetKey(KeyCode.J))
-                this.transform.Rotate(Vector3.up * -mRotateSpeed * Time.deltaTime);
+                this.transform.Rotate(Vector3.up * -mRotateSpeed * dt);
         }
 
         public override void Stand()

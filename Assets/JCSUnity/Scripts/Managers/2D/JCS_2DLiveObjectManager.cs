@@ -8,6 +8,7 @@
  */
 using System.Collections;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DLiveObjectManager) **")]
+        [Separator("Runtime Variables (JCS_2DLiveObjectManager)")]
 
         [Tooltip("All the live object in the scene.")]
         public JCS_2DLiveObject[] LIVE_OBJECT_LIST = null;
@@ -64,7 +65,7 @@ namespace JCSUnity
         {
             while (true)
             {
-                LIVE_OBJECT_LIST = Object.FindObjectsOfType<JCS_2DLiveObject>();
+                LIVE_OBJECT_LIST = JCS_Util.FindObjectsByType(typeof(JCS_2DLiveObject)) as JCS_2DLiveObject[];
                 yield return new WaitForSeconds(time);
             }
         }

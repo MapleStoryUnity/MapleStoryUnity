@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_PredictCamera) **")]
+        [Separator("Helper Variables (JCS_PredictCamera)")]
 
         public bool testWithKey = false;
 
@@ -56,15 +57,17 @@ namespace JCSUnity
         public KeyCode targetRecordKey = KeyCode.None;
 #endif
 
-        [Header("** Check Variables (JCS_PredictCamera) **")]
+        [Separator("Check Variables (JCS_PredictCamera)")]
 
         [SerializeField]
+        [ReadOnly]
         private Transform mRecordFollowTarget = null;
 
         [SerializeField]
+        [ReadOnly]
         private bool mTargetingRecord = true;
 
-        [Header("** Runtime Variables (JCS_PredictCamera) **")]
+        [Separator("Runtime Variables (JCS_PredictCamera)")]
 
         [Tooltip("Camera to apply the effect.")]
         [SerializeField]

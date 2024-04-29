@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_EchoGamepadButton) **")]
+        [Separator("Runtime Variables (JCS_EchoGamepadButton)")]
 
         [Tooltip("String to echo out on the console window.")]
         public string echoString = "echo Hello World!~";

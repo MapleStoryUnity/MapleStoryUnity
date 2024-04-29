@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,13 +21,14 @@ namespace JCSUnity
 
         private float mTimer = 0.0f;
 
-        [Header("** Check Variables (JCS_EnableWithTimeEvent) **")]
+        [Separator("Check Variables (JCS_EnableWithTimeEvent)")]
 
         [Tooltip("Turn it to true when the task is completed.")]
         [SerializeField]
+        [ReadOnly]
         private bool mDone = false;
 
-        [Header("** Runtime Variables (JCS_EnableWithTimeEvent) **")]
+        [Separator("Runtime Variables (JCS_EnableWithTimeEvent)")]
 
         [Tooltip("Components that take effect.")]
         [SerializeField]
@@ -37,12 +39,17 @@ namespace JCSUnity
         [Range(0.0f, 3600.0f)]
         private float mTime = 2.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public bool Done { get { return this.mDone; } }
         public List<Component> Components { get { return this.mComponents; } set { this.mComponents = value; } }
         public float time { get { return this.mTime; } set { this.mTime = value; } }
         public float timer { get { return this.mTimer; } set { this.mTimer = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -51,7 +58,7 @@ namespace JCSUnity
             if (mDone)
                 return;
 
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTime < mTimer)
             {

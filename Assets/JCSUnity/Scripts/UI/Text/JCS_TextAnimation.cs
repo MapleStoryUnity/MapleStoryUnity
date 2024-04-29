@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,13 +19,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Chec Variables (JCS_TextAnimation) **")]
+        [Separator("Check Variables (JCS_TextAnimation)")]
 
         [Tooltip("Frame this animation is currently displayed.")]
         [SerializeField]
+        [ReadOnly]
         private int mCurrentFrame = 0;
 
-        [Header("** Runtime Variables (JCS_TextAnimation) **")]
+        [Separator("Runtime Variables (JCS_TextAnimation)")]
 
         [Tooltip("Animation active or not active.")]
         [SerializeField]
@@ -42,11 +44,16 @@ namespace JCSUnity
         // Base timer to display frame.
         private float mFrameTimer = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public int CurrentFrame { get { return this.mCurrentFrame; } }
         public float SPF { get { return this.mSPF; } set { this.mSPF = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -101,7 +108,7 @@ namespace JCSUnity
             if (textFrame == null)
                 return;
 
-            mFrameTimer += Time.deltaTime;
+            mFrameTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mFrameTimer < mSPF)
                 return;

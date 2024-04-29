@@ -11,8 +11,8 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Object remind the the current transform 
-    /// should be destroy but did not destroyed.
+    /// Object remind the the current transform should be destroy but did 
+    /// not destroyed.
     /// </summary>
     public class JCS_DestroyReminder : MonoBehaviour
     {
@@ -27,15 +27,16 @@ namespace JCSUnity
 
         private void Update()
         {
-            mTimer += Time.deltaTime;
+            mTimer += Time.unscaledDeltaTime;
 
             if (mRemindPerTime < mTimer)
             {
-                JCS_Debug.LogReminder(
-                     "Object you should destroy but you did not...");
+                string msg = "Object you should be destroyed but failed";
+
+                JCS_Debug.LogReminder(msg);
 
 #if UNITY_EDITOR
-                gameObject.name = "Object you should destroy but you did not...";
+                gameObject.name = msg;
 #endif
             }
         }

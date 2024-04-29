@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,13 +22,13 @@ namespace JCSUnity
 
         private Slider mSlider = null;
 
-        [Header("** Initialize Variables (JCS_SoundSlider) **")]
+        [Separator("Initialize Variables (JCS_SoundSlider)")]
 
         [Tooltip("Sound type you would like the slider to control.")]
         [SerializeField]
         private JCS_SoundSettingType mSoundType = JCS_SoundSettingType.NONE;
 
-        /* Setter/Getter */
+        /* Setter & Getter */
 
         public Slider slider { get { return this.mSlider; } }
         public JCS_SoundSettingType SoundType { get { return this.mSoundType; } }
@@ -39,9 +40,17 @@ namespace JCSUnity
             this.mSlider = this.GetComponent<Slider>();
         }
 
-        private void Update()
+        private void LateUpdate()
         {
-            JCS_SoundSettings.instance.SetSoudnVolume(mSoundType, mSlider.value);
+            var sm = JCS_SceneManager.instance;
+
+            if (sm.IsSwitchingScene())
+                return;
+
+            float total = mSlider.maxValue - mSlider.minValue;  // Find total.
+            float val = mSlider.value / total;                  // Convert to 0 to 1 scale.
+
+            JCS_SoundSettings.instance.SetSoudnVolume(mSoundType, val);
         }
     }
 }

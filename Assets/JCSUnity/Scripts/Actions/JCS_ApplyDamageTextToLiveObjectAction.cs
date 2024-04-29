@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,23 +19,29 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_ApplyDamageTextToLiveObjectAction) **")]
+        [Separator("Check Variables (JCS_ApplyDamageTextToLiveObjectAction)")]
 
         [SerializeField]
+        [ReadOnly]
         private bool mInSequence = false;
 
         [SerializeField]
+        [ReadOnly]
         private int mHit = 1;
         
         [SerializeField]
+        [ReadOnly]
         private int mMinDamage = 1;
+
         [SerializeField]
+        [ReadOnly]
         private int mMaxDamage = 5;
 
         [SerializeField]
+        [ReadOnly]
         private int mCriticalChance = 10;
 
-        [Header("** Runtime Variables (JCS_ApplyDamageTextToLiveObjectAction) **")]
+        [Separator("Runtime Variables (JCS_ApplyDamageTextToLiveObjectAction)")]
 
         // Ability Format
         [Tooltip("Ability format for calculation.")]

@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,18 +20,21 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_NetworkSettings) **")]
+        [Separator("Check Variables (JCS_NetworkSettings)")]
 
         [Tooltip(@"Current mode this client in, should be update by the server!")]
+        [ReadOnly]
         public JCS_ClientMode CLIENT_MODE = JCS_ClientMode.LOGIN_SERVER;
 
         [Tooltip("On switching the server?")]
+        [ReadOnly]
         public bool ON_SWITCH_SERVER = false;
 
         [Tooltip("Flag to check if is force switching the server.")]
+        [ReadOnly]
         public bool FORCE_SWITCH_SERVER = false;
 
-        [Header("- Online Game Configuration")]
+        [Separator("Runtime Variables (JCS_NetworkSettings)")]
 
         [Tooltip("Is the current game with online mode active?")]
         public bool ONLINE_MODE = false;

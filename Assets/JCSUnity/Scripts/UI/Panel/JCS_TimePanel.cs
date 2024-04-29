@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,13 +18,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_TimePanel) **")]
+        [Separator("Check Variables (JCS_TimePanel)")]
 
         [Tooltip("Panels going to do the action.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_DialogueObject[] mDialogueObjects = null;
 
-        [Header("** Runtime Variables (JCS_TimePanel) **")]
+        [Separator("Runtime Variables (JCS_TimePanel)")]
 
         [Tooltip("Active on awake.")]
         [SerializeField]
@@ -34,8 +36,13 @@ namespace JCSUnity
         private JCS_PanelActionType mPanelActionType = JCS_PanelActionType.HIDE;
 
         [Tooltip("How long does the panel do the action.")]
-        [SerializeField] [Range(0, 600)]
+        [SerializeField]
+        [Range(0, 600)]
         private float mDoActionTime = 3.0f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         // timer
         private float mDoActionTimer = 0;
@@ -50,6 +57,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool ActiveOnAwake { get { return this.mActiveOnAwake; } set { this.mActiveOnAwake = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -76,7 +84,7 @@ namespace JCSUnity
 
             // do the opposite first
             JCS_PanelActionType oppositeType = FindOppsiteType(mPanelActionType);
-            
+
             foreach (JCS_DialogueObject panel in mDialogueObjects)
                 DoActionForeachPanel(panel, oppositeType);
         }
@@ -90,7 +98,7 @@ namespace JCSUnity
             if (!mActionActive)
                 return;
 
-            mDoActionTimer += Time.deltaTime;
+            mDoActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if time reach.
             if (mDoActionTimer < mDoActionTime)

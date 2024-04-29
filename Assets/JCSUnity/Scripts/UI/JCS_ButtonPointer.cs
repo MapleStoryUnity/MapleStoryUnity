@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,13 +26,13 @@ namespace JCSUnity
 
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Header("** Initialize Variables (JCS_ButtonPointer) **")]
+        [Separator("Initialize Variables (JCS_ButtonPointer)")]
 
         [Tooltip("Button that this pointer could point to.")]
         [SerializeField]
         private JCS_Button[] mButtons = null;
 
-        [Header("** Runtime Variables (JCS_ButtonPointer) **")]
+        [Separator("Runtime Variables (JCS_ButtonPointer)")]
 
         [Tooltip("Do we point to the button that are not active?")]
         [SerializeField]

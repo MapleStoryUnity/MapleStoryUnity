@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -14,11 +15,11 @@ namespace JCSUnity
     /// Full screen attack.
     /// </summary>
     [RequireComponent(typeof(JCS_AnimPool))]
-    public class JCS_2DFullScreenAtkAction : JCS_2DSkills , JCS_IAction
+    public class JCS_2DFullScreenAtkAction : JCS_2DSkills, JCS_IAction
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DFullScreenAtkAction) **")]
+        [Separator("Runtime Variables (JCS_2DFullScreenAtkAction)")]
 
         [Tooltip("Supporting animation pool.")]
         [SerializeField]

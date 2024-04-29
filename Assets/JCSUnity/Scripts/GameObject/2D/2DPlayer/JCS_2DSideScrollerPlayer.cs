@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DSideScrollerPlayer.cs $
  * $Date: $
  * $Revision: $
@@ -8,6 +8,7 @@
  */
 using System;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,18 +26,22 @@ namespace JCSUnity
         protected JCS_OrderLayerObject mOrderLayerObject = null;
 
         //-- Action (Ladder, Rope)
-        [Header("** Check Variables (JCS_2DSideScrollerPlayer) **")]
+        [Separator("Check Variables (JCS_2DSideScrollerPlayer)")]
+
         //-- Facing
         [SerializeField]
+        [ReadOnly]
         private JCS_2DFaceType mFace = JCS_2DFaceType.FACE_LEFT;
 
         //-- Climbing
         [Tooltip("See if there are ladder object so we can climb.")]
         [SerializeField]
+        [ReadOnly]
         private bool mCanLadder = false;
 
         [Tooltip("See if there are rope object so we can climb.")]
         [SerializeField]
+        [ReadOnly]
         private bool mCanRope = false;
 
         [Tooltip("Object that we can climb on.")]
@@ -48,22 +53,22 @@ namespace JCSUnity
 
         [Tooltip("Count of the current jump.")]
         [SerializeField]
+        [ReadOnly]
         private int mJumpCount = 0;
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private JCS_ClimbMoveType mClimbMoveType = JCS_ClimbMoveType.IDLE;
 
-
-        [Header("** Runtime Variables (JCS_2DSideScrollerPlayer) **")]
+        [Separator("Runtime Variables (JCS_2DSideScrollerPlayer)")]
 
         [Tooltip("Character's status.")]
         [SerializeField]
-        private JCS_2DCharacterState mCharacterState
-            = JCS_2DCharacterState.NORMAL;
+        private JCS_2DCharacterState mCharacterState = JCS_2DCharacterState.NORMAL;
 
         //-- Jumping
-        [Header("** Jump Settings (JCS_2DSideScrollerPlayer) **")]
+        [Header("- Jump")]
 
         [Tooltip("Type that this character can do.")]
         [SerializeField]
@@ -88,9 +93,8 @@ namespace JCSUnity
         [SerializeField]
         private bool[] mForceXAfterJump = null;
 
-
         //-- Animator Control
-        [Header("** Animation Settings (JCS_2DSideScrollerPlayer) **")]
+        [Header("- Animation Settings")]
 
         [Tooltip("Animation display when it jump event occurs.")]
         [SerializeField]
@@ -108,9 +112,8 @@ namespace JCSUnity
         // to prevent this happen trigger this for checking.
         private bool mResetingCollision = false;
 
-
         //-- GENERAL
-        [Header("** Other Settings (JCS_2DSideScrollerPlayer) **")]
+        [Header("- Others")]
 
         [Tooltip("")]
         [SerializeField]
@@ -121,8 +124,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mCanDownJump = false;
 
-
-        [Header("** Control Key Settings (JCS_2DSlideScrollerPlayer) **")]
+        [Header("- Control Key")]
 
         [Tooltip("Key press up.")]
         [SerializeField]
@@ -147,8 +149,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mClimbDownKey = KeyCode.DownArrow;
 
-
-        [Header("** Climb Settings (JCS_2DSideScrollerPlayer) **")]
+        [Header("- Climb")]
 
         [SerializeField]
         private bool mAutoClimb = false;
@@ -160,8 +161,7 @@ namespace JCSUnity
         [SerializeField]
         private float mExitClimbForceY = 10;
 
-
-        [Header("** Hit Settings (JCS_2DSideScrollerPlayer) **")]
+        [Header("- Hit")]
 
         [Tooltip("Trigger to enable hit effect.")]
         [SerializeField]
@@ -175,9 +175,7 @@ namespace JCSUnity
         [SerializeField]
         private float mHitVelY = 5;
 
-
         private bool mJustClimbOnTopOfBox = false;
-
 
         /* Setter & Getter */
 
@@ -492,7 +490,7 @@ namespace JCSUnity
             // in air
             else
             {
-                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * Time.deltaTime;
+                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * JCS_Time.DeltaTime(mDeltaTimeType);
             }
 
             if (isAttacking)
@@ -534,7 +532,7 @@ namespace JCSUnity
             // in air
             else
             {
-                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * Time.deltaTime;
+                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * JCS_Time.DeltaTime(mDeltaTimeType);
             }
 
             if (isAttacking)
@@ -672,9 +670,7 @@ namespace JCSUnity
         {
             if (!mHitEffect)
             {
-                JCS_Debug.LogError(
-                    "You call the function without checking the hit effect?");
-
+                JCS_Debug.LogError("You call the function without checking the hit effect?");
                 return;
             }
 
@@ -869,7 +865,7 @@ namespace JCSUnity
             {
                 // apply gravity
                 mVelocity.y -= (JCS_GameConstant.GRAVITY *
-                    Time.deltaTime *
+                    JCS_Time.DeltaTime(mDeltaTimeType) *
                     JCS_GameSettings.instance.GRAVITY_PRODUCT);
 
                 /* TODO!! */

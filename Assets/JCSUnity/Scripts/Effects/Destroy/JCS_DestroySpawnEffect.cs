@@ -7,6 +7,7 @@
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
         private JCS_HitListEvent mHitList = null;
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-        [Header("** Runtime Variables (JCS_TransformPool) **")]
+        [Separator("Runtime Variables (JCS_TransformPool)")]
 
         [Tooltip("How many transform spawn?")]
         [SerializeField]
@@ -114,7 +115,7 @@ namespace JCSUnity
         {
             // if is quitting the application don't spawn object,
             // or else will cause memory leak!
-            if (JCS_ApplicationManager.APP_QUITTING)
+            if (JCS_AppManager.APP_QUITTING)
                 return;
 
             // if switching the scene, don't spawn new gameObject.
@@ -169,7 +170,7 @@ namespace JCSUnity
         {
             for (int index = 0; index < mSpawnCount; ++index)
             {
-                Transform newTrans = (Transform)JCS_Util.SpawnGameObject(mTransformPool.GetRandomObject());
+                Transform newTrans = (Transform)JCS_Util.Instantiate(mTransformPool.GetRandomObject());
 
                 if (mSamePosition)
                     newTrans.position = this.transform.position;

@@ -9,6 +9,7 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -29,13 +30,14 @@ namespace JCSUnity
         // to add the difference between the two frame.
         protected Vector3 mLastFramePos = Vector3.zero;
 
-        [Header("** Check Variables (JCS_Camera) **")]
+        [Separator("Check Variables (JCS_Camera)")]
 
         [Tooltip("Current camera's velocity.")]
         [SerializeField]
+        [ReadOnly]
         protected Vector3 mVelocity = Vector3.zero;
 
-        [Header("** Initialize Variables (JCS_Camera) **")]
+        [Separator("Initialize Variables (JCS_Camera)")]
 
         [Tooltip("Display the camera depth.")]
         [SerializeField]
@@ -45,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         protected Color mGameCamColor = Color.white;
 
-        [Header("** Runtime Variables (JCS_Camera) **")]
+        [Separator("Runtime Variables (JCS_Camera)")]
 
         [Tooltip("Flag to check if currently the camera following the target object.")]
         [SerializeField]
@@ -74,13 +76,17 @@ namespace JCSUnity
         // Record last vertical FOV, so the FOV from camera is still adjustable.
         private float mLastVerticalFOV = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Flag to check if using smooth track, otherwise hard track.")]
         [SerializeField]
         protected bool mSmoothTrack = true;
 
         /* Setter & Getter */
 
-        public Vector3 PositionOffset { get { return this.mPositionOffset; } }
+        public Vector3 PositionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
         public Vector3 CamRectSize { get { return this.mCamRectSize; } set { this.mCamRectSize = value; } }
         public Rect CamRect { get { return this.mCamRect; } }
         public Camera GetCamera() { return this.mCamera; }
@@ -93,6 +99,8 @@ namespace JCSUnity
         public abstract Transform GetFollowTarget();
 
         public float ScreenAspect { get { return (float)mCamera.pixelWidth / (float)mCamera.pixelHeight; } }
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 

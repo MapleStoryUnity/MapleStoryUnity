@@ -27,15 +27,16 @@ namespace JCSUnity
         /// <returns></returns>
         public static bool InitializeApplication()
         {
-            if (!JCS_NetworkSettings.instance.ONLINE_MODE)
+            var ns = JCS_NetworkSettings.instance;
+
+            if (!ns.ONLINE_MODE)
                 return false;
 
             JCS_Debug.Log("Online Mode is enabled");
 
             // Create Connection
             if (!JCS_NetworkSettings.CreateNetwork(
-                JCS_NetworkSettings.instance.HOST_NAME,
-                JCS_NetworkSettings.instance.PORT,
+                ns.HOST_NAME, ns.PORT,
                 JCS_NetworkSettings.GetPresetClientHandler()))
             {
                 // Faild handle

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,10 +18,11 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_2DEffect) **")]
+        [Separator("Check Variables (JCS_2DEffect)")]
 
         [Tooltip("Flag to check if currently the effect active.")]
         [SerializeField]
+        [ReadOnly]
         protected bool mEffect = false;
 
         /* Setter & Getter */

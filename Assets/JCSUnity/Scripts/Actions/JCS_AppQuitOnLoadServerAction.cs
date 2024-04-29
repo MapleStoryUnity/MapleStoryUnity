@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ApplicationQuitOnLoadServerAction.cs $
+ * $File: JCS_AppQuitOnLoadServerAction.cs $
  * $Date: 2017-09-03 14:18:53 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -21,7 +21,7 @@ namespace JCSUnity
     /// else the connection would not be clean for this client. Server
     /// could have the fatal processing performance.
     /// </summary>
-    public class JCS_ApplicationQuitOnLoadServerAction : MonoBehaviour
+    public class JCS_AppQuitOnLoadServerAction : MonoBehaviour
     {
         /* Variables */
 

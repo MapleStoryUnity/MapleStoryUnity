@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,14 +18,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_HitListEvent) **")]
+        [Separator("Check Variables (JCS_HitListEvent)")]
 
         [Tooltip("trigger if this even occurs")]
         [SerializeField]
+        [ReadOnly]
         private bool mIsHit = false;
 
-
-        [Header("** Runtime Variables (JCS_HitListEvent) **")]
+        [Separator("Runtime Variables (JCS_HitListEvent)")]
 
         [Tooltip("List of object will lower 1 hit count.")]
         [SerializeField]
@@ -41,7 +42,6 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool IsHit { get { return this.mIsHit; } set { this.mIsHit = value; } }
-
 
         /* Functions */
 

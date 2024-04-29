@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,12 +18,13 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_PortalSettings) **")]
+        [Separator("Check Variables (JCS_PortalSettings)")]
 
         [Tooltip("Current Portal Lable are.")]
+        [ReadOnly]
         public JCS_PortalLabel SCENE_PORTAL_LABEL = JCS_PortalLabel.NONE;
 
-        [Header("** Initialize Variables (JCS_PortalSettings) **")]
+        [Separator("Initialize Variables (JCS_PortalSettings)")]
 
         [Tooltip("Reset the player position to portal?")]
         public bool RESET_POSITION_AT_START = true;

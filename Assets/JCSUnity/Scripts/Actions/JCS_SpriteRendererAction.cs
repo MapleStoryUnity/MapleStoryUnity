@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
         private Vector3 mLastPosition = Vector3.zero;
 
-        [Header("** Runtime Variables (JCS_SpriteRendererAction) **")]
+        [Separator("Runtime Variables (JCS_SpriteRendererAction)")]
 
         [Tooltip("List of all the sprite renderer components.")]
         [SerializeField]

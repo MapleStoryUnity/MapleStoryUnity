@@ -46,7 +46,7 @@ namespace JCSUnity
             Test();
 #endif
 
-            if (JCS_ApplicationManager.APP_PAUSE)
+            if (JCS_AppManager.APP_PAUSE)
                 return;
 
             CheckConnectionWithTime();
@@ -118,7 +118,7 @@ namespace JCSUnity
             if (!JCS_NetworkSettings.instance.ONLINE_MODE)
                 return;
 
-            mConnectionCounter += Time.deltaTime;
+            mConnectionCounter += Time.unscaledDeltaTime;
 
             if (mConnectionCounter < JCS_NetworkConstant.CONNECT_TIME)
                 return;

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,13 +24,14 @@ namespace JCSUnity
         // the button has been focusing on.
         private JCS_RollSelectorButton mFocusBtn = null;
 
-        [Header("** Check Variables (JCS_RollBtnSelector) **")]
+        [Separator("Check Variables (JCS_RollBtnSelector)")]
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Header("** Initialize Variables (JCS_RollBtnSelector) **")]
+        [Separator("Initialize Variables (JCS_RollBtnSelector)")]
 
         [Tooltip("Array of buttons you want to do in sequence.")]
         [SerializeField]
@@ -42,6 +44,12 @@ namespace JCSUnity
         [Tooltip("Dimension the effect.")]
         [SerializeField]
         private JCS_2DDimensions mDimension = JCS_2DDimensions.VERTICAL;
+
+        [Separator("Runtime Variables (JCS_RollBtnSelector)")]
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.UNSCALED_DELTA_TIME;
 
         [Header("- Asymptotic Order")]
 
@@ -76,6 +84,8 @@ namespace JCSUnity
         private int mScrollIndexCounter = 0;
 
         /* Setter & Getter */
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -156,7 +166,7 @@ namespace JCSUnity
             JCS_RollSelectorButton currentBtn = null;
             int indexCounter = 0;
 
-            JCS_RollSelectorButton[] buttons = new JCS_RollSelectorButton[mButtons.Length];
+            var buttons = new JCS_RollSelectorButton[mButtons.Length];
 
             for (int index = 0; index < mButtons.Length; ++index)
             {
@@ -343,7 +353,7 @@ namespace JCSUnity
             // don't block the first time.
             if (mScrollIndexCounter != 0)
             {
-                mScrollSpacingTimer += Time.deltaTime;
+                mScrollSpacingTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
                 if (mScrollSpacingTimer < mScrollSpacingTime)
                     return;

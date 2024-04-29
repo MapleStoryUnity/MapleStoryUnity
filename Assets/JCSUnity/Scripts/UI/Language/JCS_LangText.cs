@@ -25,7 +25,7 @@ namespace JCSUnity
     ///   2. A list of language definition for correctly displays the target
     ///      system lanauge.
     ///
-    ///   3. Register to `JCS_ApplicationManager`, its' component will take
+    ///   3. Register to `JCS_AppManager`, its' component will take
     ///      case of the rest.
     /// </summary>
     public class JCS_LangText : JCS_TextObject
@@ -44,7 +44,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_ApplicationManager.instance.AddLangText(this);
+            JCS_AppManager.instance.AddLangText(this);
             Refresh();
         }
 
@@ -55,7 +55,7 @@ namespace JCSUnity
         {
             JCS_UIUtil.SetLangText(this.mLangData, this.mTextContainer);
 #if TMP_PRO
-            JCS_UIUtil.SetLangText(this.mLangData, this.mTextMesh);
+            JCS_UIUtil.SetLangText(this.mLangData, this.mTMP_Text);
 #endif
         }
     }

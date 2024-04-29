@@ -988,7 +988,7 @@ namespace JCSUnity
         /// <param name="cap"></param>
         /// <param name="rect"></param>
         /// <returns></returns>
-        public static bool JcsOnTriggerCheck(CharacterController cap, BoxCollider rect)
+        public static bool OnTriggerCheck(CharacterController cap, BoxCollider rect)
         {
             Vector3 rectScale = rect.transform.localScale;
             Vector3 capScale = cap.transform.localScale;

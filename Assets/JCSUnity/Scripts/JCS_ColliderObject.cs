@@ -7,6 +7,7 @@
  *                   Copyright ?2020 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,10 +18,11 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_ColliderObject) **")]
+        [Separator("Check Variables (JCS_ColliderObject)")]
 
         [Tooltip("Type of the current collider.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_ColliderType mColliderType = JCS_ColliderType.NONE;
 
         private CharacterController mCharacterController = null;

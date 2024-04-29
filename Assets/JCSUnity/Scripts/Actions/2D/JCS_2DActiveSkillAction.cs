@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DActiveSkillAction) **")]
+        [Separator("Runtime Variables (JCS_2DActiveSkillAction)")]
 
         [Tooltip("Key to active this skill.")]
         [SerializeField]
@@ -36,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mStayWithActiveTarget = true;
 
-        [Header("** Spawn Settings (JCS_2DActiveSkillAction) **")]
+        [Header("- Spawn")]
 
         [Tooltip("Spawns in the same position.")]
         [SerializeField]
@@ -88,7 +89,6 @@ namespace JCSUnity
             // the active target!
             if (mStayWithActiveTarget)
                 obj.transform.SetParent(this.transform);
-
 
             // add anim death event,
             // so when animation ends destroy itself.

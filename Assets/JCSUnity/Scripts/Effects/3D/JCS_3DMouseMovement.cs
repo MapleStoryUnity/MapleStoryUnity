@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,18 +23,20 @@ namespace JCSUnity
 
         private Vector3 mVelocity = Vector3.zero;
 
-        [Header("** Runtime Variables (JCS_3DMouseMovement) **")]
+        [Separator("Runtime Variables (JCS_3DMouseMovement)")]
 
         [Tooltip("Is this effect active?")]
         [SerializeField]
         private bool mScreenScroll = false;
 
         [Tooltip("Distance to 4 bounds. (Top/Bottom/Right/Left)")]
-        [SerializeField] [Range(0, 0.5f)]
+        [SerializeField]
+        [Range(0, 0.5f)]
         private float mScrollScreenRange = 0.1f;
 
         [Tooltip("Speeed to scroll the screen.")]
-        [SerializeField] [Range(1.0f, 75.0f)]
+        [SerializeField]
+        [Range(1.0f, 75.0f)]
         private float mScrollScreenSpeed = 2.0f;
 
         [Tooltip("Scroll depth direction.")]
@@ -97,7 +100,7 @@ namespace JCSUnity
             //-- check y direction. --//
             if (mouse01.y <= botBound)  // bot bound check
             {
-                
+
                 if (mScrollDepth)
                 {
                     // if the mouse pos reach the bottom bound
@@ -113,7 +116,7 @@ namespace JCSUnity
             }
             else if (mouse01.y >= topBound)     // top bound check
             {
-                
+
                 if (mScrollDepth)
                 {
                     // if the mouse pos reach the top bound

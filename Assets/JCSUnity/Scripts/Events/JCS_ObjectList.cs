@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_ObjectList) **")]
+        [Separator("Runtime Variables (JCS_ObjectList)")]
 
         [Tooltip("List of objects.")]
         [SerializeField]

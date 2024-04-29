@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,13 +21,55 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_PauseManager) **")]
+#if UNITY_EDITOR
+        [Separator("Helper Variables (JCS_PauseManager)")]
+
+        [Tooltip("See curren time scale.")]
+        [SerializeField]
+        [ReadOnly]
+        private float mTimeScale = 1.0f;
+
+        [Tooltip("Test this module?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to toggle game pause/unpause.")]
+        [SerializeField]
+        private KeyCode mToggleGamePause = KeyCode.P;
+
+        [Header("- Increment/Decrement Time")]
+
+        [Tooltip("Key that increment the time.")]
+        [SerializeField]
+        private KeyCode mIncTime = KeyCode.N;
+
+        [Tooltip("Key that decrement the time.")]
+        [SerializeField]
+        private KeyCode mDecTime = KeyCode.M;
+
+        [Tooltip("Delta value to add to the time.")]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
+        private float mTimeDelta = 5.0f;
+#endif
+
+        [Separator("Check Variables (JCS_PauseManager)")]
+
+        [Tooltip("Target time scale.")]
+        [SerializeField]
+        [ReadOnly]
+        private float mTargetTimeScale = 1.0f;
 
         [Tooltip("List of pause action in the scene.")]
         [SerializeField]
+        [ReadOnly]
         private List<JCS_PauseAction> mPauseActions = null;
 
-        [Header("** Runtime Variables (JCS_PauseManager) **")]
+        [Separator("Runtime Variables (JCS_PauseManager)")]
+
+        [Tooltip("The default time scale.")]
+        [SerializeField]
+        private float mDefaultTimeScale = 1.0f;
 
         [Tooltip(@"Time to resize the pause action list, in seconds.
 ATTENTION: this will take certain of performance depends on the pause 
@@ -38,10 +81,30 @@ object you have in the list.")]
         // resize timer.
         private float mResizePauseActionListTimer = 0;
 
+        [Header("- Asymptotic")]
+
+        [Tooltip("Do this scene using the specific setting.")]
+        [SerializeField]
+        private bool mOverrideSetting = false;
+
+        [Tooltip("Pause and unpause with asymptotic transition.")]
+        [SerializeField]
+        private bool mAsymptotic = false;
+
+        [Tooltip("How fast the asymptotic transition?")]
+        [SerializeField]
+        [Range(0.001f, 30.0f)]
+        private float mFriction = 0.2f;
+
         /* Setter & Getter */
 
         public List<JCS_PauseAction> PausesActions { get { return this.mPauseActions; } }
         public float ResizePauseActionListTime { get { return this.mResizePauseActionListTime; } set { this.mResizePauseActionListTime = value; } }
+        public float DefaultTimeScale { get { return this.mDefaultTimeScale; } set { this.mDefaultTimeScale = value; } }
+
+        public bool OverrideSetting { get { return this.mOverrideSetting; } }
+        public bool Asymptotic { get { return this.mAsymptotic; } set { this.mAsymptotic = value; } }
+        public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
 
         /* Functions */
 
@@ -52,8 +115,43 @@ object you have in the list.")]
 
         private void Update()
         {
+#if UNITY_EDITOR
+            mTimeScale = Time.timeScale;
+
+            TestPauseGame();
+#endif
+
             ResizePauseActionListPeriodically();
+            DoAsymp();
         }
+
+#if UNITY_EDITOR
+        private void TestPauseGame()
+        {
+            if (!mTestWithKey)
+                return;
+
+            if (Input.GetKeyDown(mToggleGamePause))
+            {
+                var gm = JCS_GameManager.instance;
+
+                gm.GAME_PAUSE = !gm.GAME_PAUSE;
+            }
+
+            if (Input.GetKeyDown(mIncTime))
+            {
+                Time.timeScale += mTimeDelta;
+
+                mTargetTimeScale = Time.timeScale;
+            }
+            else if (Input.GetKeyDown(mDecTime))
+            {
+                Time.timeScale -= mTimeDelta;
+
+                mTargetTimeScale = Time.timeScale;
+            }
+        }
+#endif
 
         /// <summary>
         /// Add the pause action to the list of pause action list, 
@@ -62,6 +160,36 @@ object you have in the list.")]
         public void AddActionToList(JCS_PauseAction pa)
         {
             mPauseActions.Add(pa);
+        }
+
+        /// <summary>
+        /// Pause the game.
+        /// </summary>
+        public void Pause()
+        {
+            bool asymp = JCS_PauseSettings.instance.AsymptoticBaseOnSetting();
+
+            if (asymp)
+                mTargetTimeScale = 0.0f;
+            else
+                Time.timeScale = 0.0f;
+
+            PauseTheWholeGame(true);
+        }
+
+        /// <summary>
+        /// Unpause the game.
+        /// </summary>
+        public void Unpause()
+        {
+            bool asymp = JCS_PauseSettings.instance.AsymptoticBaseOnSetting();
+
+            if (asymp)
+                mTargetTimeScale = mDefaultTimeScale;
+            else
+                Time.timeScale = mDefaultTimeScale;
+
+            PauseTheWholeGame(false);
         }
 
         /// <summary>
@@ -110,6 +238,24 @@ object you have in the list.")]
 
             // reset timer.
             mResizePauseActionListTimer = 0;
+        }
+
+        /// <summary>
+        /// Do asymptotic pause/unpase transition.
+        /// </summary>
+        private void DoAsymp()
+        {
+            bool asymp = JCS_PauseSettings.instance.AsymptoticBaseOnSetting();
+
+            if (!asymp)
+                return;
+
+            float newTS = Time.timeScale;
+
+            newTS += (mTargetTimeScale - Time.timeScale) / mFriction * Time.unscaledDeltaTime;
+
+            // Prevent lower than 0!
+            Time.timeScale = Mathf.Max(0.0f, newTS);
         }
     }
 }

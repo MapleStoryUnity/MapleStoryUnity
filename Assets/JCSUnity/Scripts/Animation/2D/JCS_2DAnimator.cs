@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables Variables (JCS_2DAnimator) **")]
+        [Separator("Helper Variables Variables (JCS_2DAnimator)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -42,18 +43,21 @@ namespace JCSUnity
         private KeyCode mPlayOneShotAnimKey = KeyCode.F;
 #endif
 
-        [Header("** Check Variables Variables (JCS_2DAnimator) **")]
+        [Separator("Check Variables Variables (JCS_2DAnimator)")]
 
         [Tooltip("Current animation id.")]
         [SerializeField]
+        [ReadOnly]
         private int mCurrentAnimId = 0;
 
         [Tooltip("Current playing animation.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_2DAnimation mCurrentAnimation = null;
 
         [Tooltip("Maxinum frame in the animation.")]
         [SerializeField]
+        [ReadOnly]
         private int mMaxAnimCount = 0;
 
         // Current animation stack.
@@ -62,7 +66,7 @@ namespace JCSUnity
 
         private JCS_2DAnimation mOneShotAnim = null;
 
-        [Header("** Runtime Variables (JCS_2DAnimator) **")]
+        [Separator("Runtime Variables (JCS_2DAnimator)")]
 
         [Tooltip(@"How fast the animation plays.")]
         [SerializeField]
@@ -73,7 +77,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_2DAnimation> mAnimations = null;
 
-        [Header("** Optional Variables (JCS_2DAnimator) **")]
+        [Header("- Optional")]
 
         [Tooltip("Hold animation displayed frame event.")]
         [SerializeField]
@@ -117,7 +121,7 @@ namespace JCSUnity
 
                 // let the animation know there are animator controlling 
                 // the animation.
-                anim.SetJCS2DAnimator(this);
+                anim.SetAnimator(this);
 
                 anim.PlayOnAwake = false;
             }
@@ -158,8 +162,8 @@ namespace JCSUnity
         /// <param name="over"> override the animation? </param>
         /// <param name="oneShot"> Is this animation playing one shot? </param>
         public void DoAnimation(
-            int id, 
-            bool over = false, 
+            int id,
+            bool over = false,
             bool oneShot = false)
         {
             if (!over)
@@ -332,7 +336,7 @@ namespace JCSUnity
             // clean up the stack after the animation is done playing.
 
             /* During the one shot animation, if there are animation change  */
-            if (mOneShotAnim != mCurrentAnimation || 
+            if (mOneShotAnim != mCurrentAnimation ||
                 /* Of the animation done playing. */
                 mCurrentAnimation.IsDonePlaying)
             {

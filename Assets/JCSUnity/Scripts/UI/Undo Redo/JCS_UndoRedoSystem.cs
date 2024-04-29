@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_UndoRedoSystem) **")]
+        [Separator("Helper Variables (JCS_UndoRedoSystem)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -46,19 +47,22 @@ namespace JCSUnity
         private KeyCode mClearAllUndoRedoHistoryKey = KeyCode.J;
 #endif
 
-        [Header("** Check Variables (JCS_UndoRedoSystem) **")]
+        [Separator("Check Variables (JCS_UndoRedoSystem)")]
 
         [Tooltip("All of the undo redo component this system handles.")]
         [SerializeField]
-        private List<JCS_UndoRedoComponent> mAllUndoRedoComp = new List<JCS_UndoRedoComponent>();
+        [ReadOnly]
+        private List<JCS_UndoRedoComponent> mAllUndoRedoComp = new ();
 
         [Tooltip("List of next undo component.")]
         [SerializeField]
-        private List<JCS_UndoRedoComponent> mUndoComp = new List<JCS_UndoRedoComponent>();
+        [ReadOnly]
+        private List<JCS_UndoRedoComponent> mUndoComp = new ();
 
         [Tooltip("List of next redo component.")]
         [SerializeField]
-        private List<JCS_UndoRedoComponent> mRedoComp = new List<JCS_UndoRedoComponent>();
+        [ReadOnly]
+        private List<JCS_UndoRedoComponent> mRedoComp = new ();
 
         /* Setter & Getter */
 

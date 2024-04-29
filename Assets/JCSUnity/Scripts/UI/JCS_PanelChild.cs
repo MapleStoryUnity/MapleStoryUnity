@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 
 namespace JCSUnity
@@ -26,14 +27,16 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-        [Header("** Check Variables (JCS_PanelChild) **")]
+        [Separator("Check Variables (JCS_PanelChild)")]
 
         [Tooltip("Panel root object cache.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
         [Tooltip("Return true, if applied to children.")]
         [SerializeField]
+        [ReadOnly]
         private bool mApplyToChildren = false;
 
         /* Setter & Getter */

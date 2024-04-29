@@ -46,7 +46,7 @@ namespace JCSUnity
         private void OnEnable()
         {
             // if app still initializing then return.
-            if (JCS_ApplicationManager.APP_INITIALIZING)
+            if (JCS_AppManager.APP_INITIALIZING)
                 return;
 
             // when enabled play the sound and animation.

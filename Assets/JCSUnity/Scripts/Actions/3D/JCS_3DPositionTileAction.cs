@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_3DDistanceTileAction) **")]
+        [Separator("Runtime Variables (JCS_3DDistanceTileAction)")]
 
         [Tooltip("Is the action active?")]
         [SerializeField]
@@ -34,7 +35,7 @@ be set to this position in each axis.")]
         [SerializeField]
         private bool mUseLocalPosition = false;
 
-        [Header("** - Max Settings (JCS_3DDistanceTileAction) **")]
+        [Header("- Max")]
 
         [Tooltip("If axis x is over this will get reset.")]
         [SerializeField]
@@ -46,7 +47,7 @@ be set to this position in each axis.")]
         [SerializeField]
         private float mMaxZ = float.PositiveInfinity;
 
-        [Header("** - Min Settings (JCS_3DDistanceTileAction) **")]
+        [Header("- Min")]
 
         [Tooltip("If axis x is over this will get reset.")]
         [SerializeField]

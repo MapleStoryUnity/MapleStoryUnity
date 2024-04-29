@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,12 +24,12 @@ namespace JCSUnity
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_RandomTweenerAction) **")]
+        [Separator("Helper Variables (JCS_RandomTweenerAction)")]
 
         public Vector3 targetValue = Vector3.zero;
 #endif
 
-        [Header("** Runtime Variables (JCS_RandomTweenerAction) **")]
+        [Separator("Runtime Variables (JCS_RandomTweenerAction)")]
 
         [Tooltip("Mininum vector value.")]
         [SerializeField]
@@ -52,7 +53,7 @@ namespace JCSUnity
             this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
             // set effect function pointer.
-            this.mAdjustTimeTrigger.actions = TargetNewVectorValue;
+            this.mAdjustTimeTrigger.onAction = TargetNewVectorValue;
         }
 
         /// <summary>

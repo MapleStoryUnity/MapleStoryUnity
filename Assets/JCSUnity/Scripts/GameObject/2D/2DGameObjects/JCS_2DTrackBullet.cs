@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DTrackBullet.cs $
  * $Date: $
  * $Revision: $
@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,21 +26,18 @@ namespace JCSUnity
         private JCS_2DTrackAction mTrackAction = null;
         private JCS_3DGoStraightAction mGoStraightAction = null;
 
-
-        [Header("** Initialize Varialbes (JCS_2DTrackBullet) **")]
+        [Separator("Initialize Varialbes (JCS_2DTrackBullet)")]
 
         [SerializeField]
         private float mDelayTimeToFollow = 0;
 
         private float mDelayTimeToFollowTimer = 0;
 
-
-        [Header("** Runtime Variables (JCS_2DTrackBullet) **")]
+        [Separator("Runtime Variables (JCS_2DTrackBullet)")]
 
         [Tooltip("Do the action?")]
         [SerializeField]
         private bool mLookAtTarget = true;
-
 
         /* Setter & Getter */
 
@@ -88,7 +86,7 @@ namespace JCSUnity
             if (mTrackAction.TargetTransform == null)
                 return;
 
-            mDelayTimeToFollowTimer += Time.deltaTime;
+            mDelayTimeToFollowTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayTimeToFollow < mDelayTimeToFollowTimer)
             {

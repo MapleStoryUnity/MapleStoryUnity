@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,17 +22,20 @@ namespace JCSUnity
         private Animator mAnimator = null;
         private float mAnimationTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_DestroyAnimEndEvent) **")]
+        [Separator("Runtime Variables (JCS_DestroyAnimEndEvent)")]
 
         [Tooltip("How many times the animation plays before destorying.")]
         [SerializeField]
         private int mLoopTimes = 1;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
         public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
-
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -44,7 +48,7 @@ namespace JCSUnity
         {
             AnimatorStateInfo animatorStateInfo = mAnimator.GetCurrentAnimatorStateInfo(0);
 
-            mAnimationTimer += Time.deltaTime;
+            mAnimationTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mAnimationTimer > animatorStateInfo.length * mLoopTimes)
             {

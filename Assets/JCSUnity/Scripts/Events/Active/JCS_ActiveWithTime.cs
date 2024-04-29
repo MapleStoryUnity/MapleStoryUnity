@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +21,7 @@ namespace JCSUnity
 
         private float mTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_ActiveWithTime) **")]
+        [Separator("Runtime Variables (JCS_ActiveWithTime)")]
 
         [Tooltip("GameObjects that take effect.")]
         [SerializeField]
@@ -31,17 +32,22 @@ namespace JCSUnity
         [Range(0.0f, 3600.0f)]
         private float mTime = 2.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public List<GameObject> GameObjects { get { return this.mGameObjects; } set { this.mGameObjects = value; } }
         public float time { get { return this.mTime; } set { this.mTime = value; } }
         public float timer { get { return this.mTimer; } set { this.mTimer = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
         private void Update()
         {
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTime < mTimer)
             {

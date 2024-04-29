@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -24,13 +25,11 @@ namespace JCSUnity
         // whats on-top of this 'order layer object'.
         private JCS_OrderLayer mOrderLayer = null;
 
-
-        [Header("** Initialize Variables (JCS_OrderLayerObject) **")]
+        [Separator("Initialize Variables (JCS_OrderLayerObject)")]
 
         [Tooltip("Extra sprite renederer you can set.")]
         [SerializeField]
         private List<SpriteRenderer> mSpriteRenderers = null;
-
 
         [Header("- Absolute Layer")]
 
@@ -42,7 +41,6 @@ namespace JCSUnity
         [SerializeField] [Range(-30, 30)]
         private int mAbsotlueLayer = 0;
 
-
         /* Setter & Getter */
 
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
@@ -52,7 +50,6 @@ namespace JCSUnity
         public bool AbsoluteLayerEffect { get { return this.mAbsoluteLayerEffect; } }
         public int AbsotlueLayer { get { return this.mAbsotlueLayer; } }
         public int sortingOrder { get { return this.mOrderLayer.OrderLayer; } }
-
 
         /* Functions */
 

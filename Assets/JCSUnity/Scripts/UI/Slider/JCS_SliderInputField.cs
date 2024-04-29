@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -24,13 +24,13 @@ namespace JCSUnity
 
         private InputField mInputField = null;
 
-        [Header("** Initialize Variables (JCS_SliderInputField) **")]
+        [Separator("Initialize Variables (JCS_SliderInputField)")]
 
         [Tooltip("Update the content type once on start.")]
         [SerializeField]
         private bool mAutoContentType = true;
 
-        [Header("** Runtime Variables (JCS_SliderInputField) **")]
+        [Separator("Runtime Variables (JCS_SliderInputField)")]
 
         [Tooltip("List of sliders you want this input field to control.")]
         public List<Slider> sliders = null;

@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
         private InputField mInputField = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_InputField) **")]
+        [Separator("Helper Variables (JCS_InputField)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -33,17 +34,19 @@ namespace JCSUnity
         private KeyCode mUpdateInputField = KeyCode.U;
 #endif
 
-        [Header("** Check Variables (JCS_InputField) **")]
+        [Separator("Check Variables (JCS_InputField)")]
 
         [Tooltip("Real text data this input field hold.")]
         [SerializeField]
+        [ReadOnly]
         private string mRealText = null;
 
         [Tooltip("Is the input field focused?")]
         [SerializeField]
+        [ReadOnly]
         private bool mIsFocus = false;
 
-        [Header("** Runtime Variables (JCS_InputField) **")]
+        [Separator("Runtime Variables (JCS_InputField)")]
 
         [Tooltip("Max letters shown in the options. Default is 14.")]
         [SerializeField]

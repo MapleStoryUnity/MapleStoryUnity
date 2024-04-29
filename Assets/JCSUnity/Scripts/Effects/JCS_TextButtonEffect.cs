@@ -9,6 +9,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -27,7 +28,7 @@ namespace JCSUnity
 
         private JCS_Button mJCS_Button = null;
 
-        [Header("** Runtime Variables (JCS_TextButtonEffect) **")]
+        [Separator("Runtime Variables (JCS_TextButtonEffect)")]
 
         [Tooltip("Text object to change color.")]
         [SerializeField]

@@ -12,6 +12,7 @@
 #define TMP_PRO
 
 using UnityEngine;
+using MyBox;
 
 #if TMP_PRO
 using TMPro;
@@ -32,7 +33,7 @@ namespace JCSUnity
         private TextMeshPro mTextMesh = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_3DHintBubble) **")]
+        [Separator("Helper Variables (JCS_3DHintBubble)")]
 
         [Tooltip("Test this component with these keys.")]
         [SerializeField]
@@ -48,18 +49,21 @@ namespace JCSUnity
 
 #endif
 
-        [Header("** Check Variables (JCS_3DHintBubble) **")]
+        [Separator("Check Variables (JCS_3DHintBubble)")]
 
         [Tooltip("Flag to check if the hint bubble active.")]
         [SerializeField]
+        [ReadOnly]
         private bool mActive = false;
 
         [Tooltip("Tweener handler to do tween to the hint bubble.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_TweenerHandler mTweenerHandler = null;
 
         [Tooltip("Fade the hint bubble.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_FadeObject mFadeObject = null;
 
         /* Setter & Getter */

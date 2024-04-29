@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
         private JCS_GUITextPool mLogTextPool = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_IGLogSystem) **")]
+        [Separator("Helper Variables (JCS_IGLogSystem)")]
 
         [Tooltip("Test this component with keys.")]
         public bool testWithKey = false;
@@ -40,10 +41,11 @@ namespace JCSUnity
         public string[] textArray = new string[] { "Ok", "Cool?", "Awesome!" };
 #endif
 
-        [Header("** Initialize Variables (JCS_IGLogSystem) **")]
+        [Separator("Initialize Variables (JCS_IGLogSystem)")]
 
         [Tooltip("Space between each log message.")]
-        [SerializeField] [Range(-300.0f, 300.0f)]
+        [SerializeField]
+        [Range(-300.0f, 300.0f)]
         private float mLogSpacing = 1;
 
         // vector of log text rendering on the screen.

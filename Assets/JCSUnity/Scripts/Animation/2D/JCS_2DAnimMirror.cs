@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DAnimMirrorAction) **")]
+        [Separator("Runtime Variables (JCS_2DAnimMirrorAction)")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]

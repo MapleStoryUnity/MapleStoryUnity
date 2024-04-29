@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_DestroyObjectWithScreen) **")]
+        [Separator("Runtime Variables (JCS_DestroyObjectWithScreen)")]
 
         [Tooltip("Trigger event flag.")]
         [SerializeField]

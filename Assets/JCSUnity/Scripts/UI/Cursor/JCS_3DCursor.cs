@@ -8,6 +8,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,7 +24,7 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
         private Animator mAnimator = null;
 
-        [Header("** Runtime Variables (JCS_3DCursor) **")]
+        [Separator("Runtime Variables (JCS_3DCursor)")]
 
         [Tooltip("Show the cursor or not.")]
         [SerializeField] private bool mShowCursor = false;
@@ -40,7 +41,7 @@ namespace JCSUnity
         [Tooltip("Recommand that set this very hight so no object can block the cursor.")]
         [SerializeField] private int mOrderLayer = 100;
 
-        [Header("** Animation Settings (JCS_3DCursor) **")]
+        [Header("- Animation")]
 
         [SerializeField] private JCS_CursorCustomizeType mCursorCustomizeType = JCS_CursorCustomizeType.NORMAL_SELECT;
         [SerializeField] private RuntimeAnimatorController mNormalSelect = null;
@@ -62,11 +63,11 @@ namespace JCSUnity
         [Header("- Other")]
 
         [Tooltip("If the art team do stuff correctly, no need to use this.")]
-        [SerializeField] 
+        [SerializeField]
         private bool mDoOffset = false;
 
         [Tooltip("Will cut the image in halft and pivot to top left.")]
-        [SerializeField] 
+        [SerializeField]
         private Vector2 mOffset = Vector2.zero;
 
         /* Setter & Getter */

@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 /**
  * $File: JCSUnity_EditorWindow.cs $
  * $Date: 2017-01-22 04:42:16 $
@@ -21,6 +20,10 @@ namespace JCSUnity
     {
         /* Variables*/
 
+        public const string MI_BaseName = "Tools/JCSUnity";
+
+        public const int MI_BasePriority = -24;
+
         public static JCSUnity_EditorWindow instance = null;
 
         public static string NAME
@@ -34,16 +37,16 @@ namespace JCSUnity
 
         private static bool prefsLoaded = false;
 
-        private bool mFO_Scene = false;
+        private bool mFO_Project = false;
         private bool mFO_Basic = false;
-        private bool mFO_GUI = false;
+        private bool mFO_Scene = false;
+        private bool mFO_UI = false;
+        private bool mFO_Input = false;
         private bool mFO_Effect = false;
         private bool mFO_ARVR = false;
-        private bool mFO_Input = false;
-        private bool mFO_Tool = false;
 
-        public string PROJECT_NAME = "";
-        public const string PROJECT_NAME_LASTING = "_Assets";
+        public string PROJECT_NAME = "_Project";
+        public const string PROJECT_NAME_SUFFIX = "";
         public string[] ProjectSubFolders = {
             "Animations",
             "Editor",
@@ -88,33 +91,13 @@ namespace JCSUnity
 
         private void Draw()
         {
-            mFO_Scene = EditorGUILayout.Foldout(mFO_Scene, "Scene");
-            if (mFO_Scene)
-                JCSUnity_EditortUtil.CreateGroup(Part_Scene);
-
-            mFO_Basic = EditorGUILayout.Foldout(mFO_Basic, "Basic");
-            if (mFO_Basic)
-                JCSUnity_EditortUtil.CreateGroup(Part_Basic);
-
-            mFO_GUI = EditorGUILayout.Foldout(mFO_GUI, "GUI");
-            if (mFO_GUI)
-                JCSUnity_EditortUtil.CreateGroup(Part_GUI);
-
-            mFO_Effect = EditorGUILayout.Foldout(mFO_Effect, "Effect");
-            if (mFO_Effect)
-                JCSUnity_EditortUtil.CreateGroup(Part_Effect);
-
-            mFO_ARVR = EditorGUILayout.Foldout(mFO_ARVR, "AR / VR");
-            if (mFO_ARVR)
-                JCSUnity_EditortUtil.CreateGroup(Part_ARVR);
-
-            mFO_Input = EditorGUILayout.Foldout(mFO_Input, "Input");
-            if (mFO_Input)
-                JCSUnity_EditortUtil.CreateGroup(Part_Input);
-
-            mFO_Tool = EditorGUILayout.Foldout(mFO_Tool, "Tool");
-            if (mFO_Tool)
-                JCSUnity_EditortUtil.CreateGroup(Part_Tool);
+            mFO_Project = JCSUnity_EditortUtil.Foldout(mFO_Project, "Project", Part_Project, "d_Folder Icon");
+            mFO_Basic = JCSUnity_EditortUtil.Foldout(mFO_Basic, "Basic", Part_Basic, "_Popup");
+            mFO_Scene = JCSUnity_EditortUtil.Foldout(mFO_Scene, "Scene", Part_Scene, "d_ToggleUVOverlay");
+            mFO_UI = JCSUnity_EditortUtil.Foldout(mFO_UI, "UI", Part_UI, "d_UnityEditor.SceneHierarchyWindow");
+            mFO_Input = JCSUnity_EditortUtil.Foldout(mFO_Input, "Input", Part_Input, "d_UnityEditor.GameView");
+            mFO_Effect = JCSUnity_EditortUtil.Foldout(mFO_Effect, "Effect", Part_Effect, "ParticleSystem Gizmo");
+            mFO_ARVR = JCSUnity_EditortUtil.Foldout(mFO_ARVR, "AR / VR", Part_ARVR, "animationvisibilitytoggleon");
         }
 
         private void SavePref()
@@ -133,7 +116,7 @@ namespace JCSUnity
                 if (GUILayout.Button("Convert to 2D scene"))
                     ConvertTo2D();
 
-                if(GUILayout.Button("Convert to 3D scene"))
+                if (GUILayout.Button("Convert to 3D scene"))
                     ConvertTo3D();
             });
         }
@@ -184,7 +167,7 @@ namespace JCSUnity
         /// <summary>
         /// Compile the GUI part to Unity's GUI inspector.
         /// </summary>
-        private void Part_GUI()
+        private void Part_UI()
         {
             GUILayout.Label("Cursor", EditorStyles.boldLabel);
 
@@ -265,10 +248,8 @@ namespace JCSUnity
         /// <summary>
         /// Compile the Tool part to Tool inspector.
         /// </summary>
-        private void Part_Tool()
+        private void Part_Project()
         {
-            GUILayout.Label("Project", EditorStyles.boldLabel);
-
             /* Project Name */
             {
                 // Provide default project name.
@@ -297,17 +278,17 @@ namespace JCSUnity
         /// <summary>
         /// Main editor window initialize function.
         /// </summary>
-        [MenuItem("JCSUnity/Window", false, 1)]
+        [MenuItem(MI_BaseName + "/Window", false, MI_BasePriority + 1)]
         private static void JCSUnityEditor()
         {
-            JCSUnity_EditorWindow window = GetWindow<JCSUnity_EditorWindow>(false, NAME, true);
+            var window = GetWindow<JCSUnity_EditorWindow>(false, NAME, true);
             window.Show();
         }
 
         /// <summary>
         /// Serialize the current scene into 2D style.
         /// </summary>
-        [MenuItem("JCSUnity/Scene/Convert to 2D scene", false, 2)]
+        [MenuItem(MI_BaseName + "/Scene/Convert to 2D scene", false, MI_BasePriority + 2)]
         private static void ConvertTo2D()
         {
             // create settings
@@ -325,7 +306,7 @@ namespace JCSUnity
             GameObject canvasObj = CreateJCSCanvas();
 
             const string desc_path = "UI/JCS Describe Panel";
-            GameObject desc_obj = JCS_Util.SpawnGameObject(desc_path);
+            GameObject desc_obj = JCS_Util.Instantiate(desc_path);
             desc_obj.name = desc_obj.name.Replace("(Clone)", "");
             desc_obj.transform.SetParent(canvasObj.transform);
             desc_obj.transform.localPosition = Vector3.zero;
@@ -334,7 +315,7 @@ namespace JCSUnity
         /// <summary>
         /// Serialize the current scene into 3D style.
         /// </summary>
-        [MenuItem("JCSUnity/Scene/Convert to 3D scene", false, 2)]
+        [MenuItem(MI_BaseName + "/Scene/Convert to 3D scene", false, MI_BasePriority + 2)]
         private static void ConvertTo3D()
         {
             // create settings
@@ -356,7 +337,7 @@ namespace JCSUnity
         /// <summary>
         /// Create managers for 3d game combine with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Basic/Create Managers", false, 10)]
+        [MenuItem(MI_BaseName + "/Basic/Create Managers", false, MI_BasePriority + 10)]
         private static GameObject CreateManagers()
         {
             const string manager_path = "JCS_Managers";
@@ -370,7 +351,7 @@ namespace JCSUnity
         /// <summary>
         /// Create settings for 3d game combine with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Basic/Create Settings", false, 10)]
+        [MenuItem(MI_BaseName + "/Basic/Create Settings", false, MI_BasePriority + 10)]
         private static GameObject CreateSettings()
         {
             const string setting_path = "JCS_Settings";
@@ -384,7 +365,7 @@ namespace JCSUnity
         /// <summary>
         /// BGM player for game.
         /// </summary>
-        [MenuItem("JCSUnity/Basic/Create BGM Player", false, 11)]
+        [MenuItem(MI_BaseName + "/Basic/Create BGM Player", false, MI_BasePriority + 11)]
         private static void CreateBGMPlayer()
         {
             const string player_path = "Sound/JCS_BGMPlayer";
@@ -396,7 +377,7 @@ namespace JCSUnity
         /// <summary>
         /// Debug tool using in JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Basic/Create Debug Tools", false, 12)]
+        [MenuItem(MI_BaseName + "/Basic/Create Debug Tools", false, MI_BasePriority + 12)]
         private static void CreateDebugTools()
         {
             const string tools_path = "Tools/JCS_Tools";
@@ -408,19 +389,19 @@ namespace JCSUnity
         /// <summary>
         /// Create settings for 3d game combine with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Input/Update", false, 15)]
+        [MenuItem(MI_BaseName + "/Input/Update", false, MI_BasePriority + 15)]
         private static void UpdateInputManager()
         {
             JCS_InputController.SetupInputManager();
         }
 
-        [MenuItem("JCSUnity/Input/Clear", false, 15)]
+        [MenuItem(MI_BaseName + "/Input/Clear", false, MI_BasePriority + 15)]
         private static void ClearInputManager()
         {
             JCS_InputController.ClearInputManagerSettings();
         }
 
-        [MenuItem("JCSUnity/Input/Revert", false, 15)]
+        [MenuItem(MI_BaseName + "/Input/Revert", false, MI_BasePriority + 15)]
         private static void RevertDefaultInputManager()
         {
             JCS_InputController.DefaultInputManagerSettings();
@@ -448,11 +429,11 @@ namespace JCSUnity
         /// <summary>
         /// Create a new project.
         /// </summary>
-        [MenuItem("JCSUnity/Tool/Create project assets folder", false, 20)]
+        [MenuItem(MI_BaseName + "/Tool/Create project assets folder", false, MI_BasePriority + 20)]
         private static void CreateProjectAssetsFolder()
         {
             string parentFolder = "Assets";
-            string newFolderName = instance.PROJECT_NAME + PROJECT_NAME_LASTING;
+            string newFolderName = instance.PROJECT_NAME + PROJECT_NAME_SUFFIX;
 
             string assetsPath = Application.dataPath + "/";
             string newProjectPath = assetsPath + newFolderName + "/";
@@ -473,7 +454,7 @@ namespace JCSUnity
         /// <summary>
         /// Update JCSUnity
         /// </summary>
-        [MenuItem("JCSUnity/Check for Update", false, 75)]
+        [MenuItem(MI_BaseName + "/Check for Update", false, MI_BasePriority + 75)]
         private static void UpdateJCSUnity()
         {
             // TODO(jenchieh): check framework need to update or not?
@@ -544,7 +525,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateBasePanel()
         {
-            JCS_Canvas canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
@@ -572,7 +553,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateDialoguePanel()
         {
-            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
@@ -600,16 +581,8 @@ namespace JCSUnity
         /// </summary>
         private static void CreateSlidePanel()
         {
-            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
-            {
-                JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
-                return;
-            }
-
-            // find the camera in the scene.
-            var cam = (JCS_2DCamera)FindObjectOfType(typeof(JCS_Camera));
-            if (cam == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return;
@@ -636,7 +609,7 @@ namespace JCSUnity
                 for (int column = 0; column < 3; ++column)
                 {
                     // get the rect transform from the slide panel object.
-                    RectTransform slidePanel = CreateHierarchyObjectUnderCanvas(slidePanelPath, canvas).GetComponent<RectTransform>();
+                    var slidePanel = CreateHierarchyObjectUnderCanvas(slidePanelPath, canvas).GetComponent<RectTransform>();
 
                     // set the position into 9x9.
                     Vector3 slidePanelNewPos = slidePanel.localPosition;
@@ -656,21 +629,21 @@ namespace JCSUnity
                     // assign to slide panel holder.
                     panelHolder9x9.slidePanels[index] = slidePanel;
 
+                    slidePanel.name = "_SlidePanel_" + index + " (Created) ";
+
                     ++index;
                 }
             }
 
             const string slideScreenCameraPath = "Camera/JCS_2DSlideScreenCamera";
-            JCS_2DSlideScreenCamera slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_2DSlideScreenCamera>();
+            var slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_2DSlideScreenCamera>();
 
             Undo.RegisterCreatedObjectUndo(slideScreenCamera, "Create 2D Slide Screen Camera");
 
-            slideScreenCamera.name = "_2DSlideScreenCamera (Created)";
+            slideScreenCamera.name = "_SlideScreenCamera (Created)";
 
             // set the panel holder.
             slideScreenCamera.PanelHolder = panelHolder9x9;
-
-            slideScreenCamera.SetJCS2DCamera(cam);
 
             // set to default 2d.
             slideScreenCamera.UnityGUIType = JCS_UnityGUIType.uGUI_2D;
@@ -681,7 +654,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateTweenPanel()
         {
-            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
@@ -772,7 +745,7 @@ namespace JCSUnity
         private static GameObject CreateHierarchyObject(string settingPath)
         {
             // spawn the game object.
-            GameObject hierarchyObj = JCS_Util.SpawnGameObject(settingPath);
+            GameObject hierarchyObj = JCS_Util.Instantiate(settingPath);
 
             // take away clone sign.
             hierarchyObj.name = hierarchyObj.name.Replace("(Clone)", "");
@@ -790,7 +763,7 @@ namespace JCSUnity
         {
             // since this will be in the editing time.
             // so we don't worry to much about the performance.
-            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
 
             return CreateHierarchyObjectUnderCanvas(settingPath, canvas);
         }
@@ -832,4 +805,3 @@ namespace JCSUnity
         }
     }
 }
-#endif

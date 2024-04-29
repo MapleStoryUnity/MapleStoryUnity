@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +21,7 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Header("** Runtime Variables (JCS_SoundPoolAction) **")]
+        [Separator("Runtime Variables (JCS_SoundPoolAction)")]
 
         [Tooltip("Pool of audio clips.")]
         [SerializeField]

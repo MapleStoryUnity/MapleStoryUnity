@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -94,16 +94,18 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 48644936accb93e40b6070bad101a678,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -116,7 +118,9 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -152,8 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
+  mDisplayOnAwake: 1
+  mMainCanvas: 1
+  mActiveSound: {fileID: 0}
+  mDeactiveSound: {fileID: 0}
 --- !u!114 &100821019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100821017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -180,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100821017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
@@ -193,6 +200,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &100821021
 Canvas:
   m_ObjectHideFlags: 0
@@ -211,6 +219,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 25
   m_TargetDisplay: 0
@@ -224,6 +233,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 328865408}
   m_Father: {fileID: 0}
@@ -374,7 +384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44537bddf53394d4ba5246f002f0fbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mType: 0
 --- !u!4 &319640138
 Transform:
   m_ObjectHideFlags: 0
@@ -385,6 +394,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -419,6 +429,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1640761240}
   - {fileID: 918948897}
@@ -447,11 +458,11 @@ MonoBehaviour:
   mAsOriginalRotation: 0
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mFitScreenSize: 1
   mDialogueIndex: -1
-  mKeyCode: 0
+  mOpenKey: 0
   mDialogueType: 0
   mPanelType: 0
+  mSoundPlayer: {fileID: 0}
   mOpenWindowClip: {fileID: 0}
   mCloseWindowClip: {fileID: 0}
 --- !u!114 &328865410
@@ -597,6 +608,7 @@ GameObject:
   - component: {fileID: 365046377}
   - component: {fileID: 365046376}
   - component: {fileID: 365046375}
+  - component: {fileID: 365046388}
   m_Layer: 0
   m_Name: JCS_Settings
   m_TagString: Untagged
@@ -686,6 +698,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada7a7e758427f748bb242893c0130b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  REAL_DATA_PATH: 
+  REAL_SCREENSHOT_PATH: 
+  REAL_WEBCAM_PATH: 
+  REAL_STREAMING_CACHE_PATH: 
   DEBUG_MODE: 0
   THIS_IS_GAME_SCENE: 0
   LEVEL_DESIGN_MODE: 1
@@ -696,11 +712,18 @@ MonoBehaviour:
   PLAYER_IGNORE_EACH_OTHER: 1
   TRIBE_DAMAGE_EACH_OTHER: 0
   IGNORE_EACH_OTHER_CHARACTER_CONTROLLER: 1
-  SCREENSHOT_PATH: /JCS_ScreenShot/
-  SCREENSHOT_FILENAME: Screenshot_
-  SAVED_IMG_EXTENSION: .png
+  STREAMING_BASE_URL: https://wwww.example.com/
+  STREAMING_CACHE_PATH: /Data_jcs/Cache_StreamingAssets/
+  DATA_PATH: /Data_jcs/
+  DATA_EXTENSION: .jcs
   SAVE_ON_SWITCH_SCENE: 1
   SAVE_ON_EXIT_APP: 1
+  SCREENSHOT_PATH: /JCS_ScreenShot/
+  SCREENSHOT_FILENAME: Screenshot_
+  SCREENSHOT_EXTENSION: .png
+  WEBCAM_PATH: /Data_jcs/WebcamShot/
+  WEBCAM_FILENAME: 
+  WEBCAM_EXTENSION: .png
   MIN_DAMAGE: 1
   MAX_DAMAGE: 9999999
 --- !u!114 &365046380
@@ -776,23 +799,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SHOW_RESIZABLE_PANELS: 1
-  STARTING_SCREEN_WIDTH: 0
-  STARTING_SCREEN_HEIGHT: 0
+  STARTING_SCREEN_SIZE:
+    width: 0
+    height: 0
   ORTHOGRAPHIC_SIZE: 0
   FIELD_OF_VIEW: 0
-  CURRENT_SCREEN_WIDTH: 0
-  CURRENT_SCREEN_HEIGHT: 0
-  PREV_SCREEN_WIDTH: 0
-  PREV_SCREEN_HEIGHT: 0
-  ASPECT_RATIO_SCREEN_WIDTH: 0
-  ASPECT_RATIO_SCREEN_HEIGHT: 0
+  PREV_SCREEN_SIZE:
+    width: 0
+    height: 0
+  CURRENT_SCREEN_SIZE:
+    width: 0
+    height: 0
+  ASPECT_RATIO_SCREEN_SIZE:
+    width: 0
+    height: 0
   RESIZE_TO_ASPECT_WHEN_APP_STARTS: 1
   RESIZE_TO_STANDARD_WHEN_APP_STARTS: 0
   RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED: 0
   RESIZE_TO_SMALLER_EDGE: 1
   mResizablePanelsColor: {r: 0, g: 0, b: 0, a: 1}
-  STANDARD_SCREEN_WIDTH: 1920
-  STANDARD_SCREEN_HEIGHT: 1080
+  STANDARD_SCREEN_SIZE:
+    width: 1920
+    height: 1080
+  SCREEN_TYPE: 3
 --- !u!114 &365046385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,7 +847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44537bddf53394d4ba5246f002f0fbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mType: 0
 --- !u!4 &365046387
 Transform:
   m_ObjectHideFlags: 0
@@ -829,11 +857,26 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1164187538}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &365046388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365046374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25fce8af46392048949240ce017a69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ASYMPTOTIC: 0
+  FRICTION: 0.2
 --- !u!1 &918948896
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +905,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 328865408}
   m_RootOrder: 1
@@ -880,17 +924,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 918948896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 40
@@ -939,6 +983,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 365046387}
   m_RootOrder: 0
@@ -970,9 +1015,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1508840296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -989,7 +1035,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1508840296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
@@ -1005,6 +1051,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1038,6 +1085,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1896813355}
   m_RootOrder: 0
@@ -1112,6 +1160,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 328865408}
   m_RootOrder: 0
@@ -1133,9 +1182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d33679a7a65a64fa7e4a1f131f0ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mCurrentFrame: 0
   mTextContainer: {fileID: 1640761242}
   mTextMesh: {fileID: 0}
+  mCurrentFrame: 0
   mActive: 1
   textFrame:
   - 'Loading now
@@ -1148,6 +1197,7 @@ MonoBehaviour:
 
     Please wait...'
   mSPF: 0.5
+  mDeltaTimeType: 0
 --- !u!114 &1640761242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,17 +1207,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640761239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 40
@@ -1235,8 +1285,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa49b5ee139699040b4a44e97ef334aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTestWithKey: 0
+  mToggleGamePause: 112
   mPauseActions: []
+  mDefaultTimeScale: 1
   mResizePauseActionListTime: 20
+  mOverrideSetting: 0
+  mAsymptotic: 0
+  mFriction: 0.2
 --- !u!114 &1896813339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1290,8 +1346,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3ddae32cc8033418ec9a10bad8be7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSlideInput: {fileID: 0}
-  mMobileMouseEvent: {fileID: 0}
+  mSupport_OnMouseEnter: 0
+  mSupport_OnMouseExit: 0
+  mSupport_OnMouseDown: 1
+  mSupport_OnMouseUp: 1
+  mSupport_OnMouseOver: 0
+  mSupport_OnMouseDrag: 0
 --- !u!114 &1896813343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,6 +1365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTestWithKey: 0
+  mCanvases: []
   mGlobalUndoRedoSystem: {fileID: 0}
   mGameUI: {fileID: 0}
   mForceDialogue: {fileID: 0}
@@ -1463,12 +1524,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSwitchSceneType: 1
-  mPauseGameWhileLoadingScene: 1
-  mJCSBlackScreen: {fileID: 0}
-  mJCSBlackSlideScreen: {fileID: 0}
+  mBlackScreen: {fileID: 0}
+  mBlackSlideScreen: {fileID: 0}
   mAlign: 0
   mPopWhiteScreen: 1
-  mJCSWhiteScreen: {fileID: 0}
+  mWhiteScreen: {fileID: 0}
+  mPauseGameWhileLoadingScene: 1
   mOverrideSetting: 0
   mSceneFadeInTime: 1
   mSceneFadeOutTime: 1
@@ -1484,9 +1545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbeb25e792087645b19e4cf30c3218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTestWithKey: 0
-  mToggleGamePause: 112
-  TIME_SCALE: 1
   mGamePause: 0
   mGameDoneInitialize: 0
 --- !u!114 &1896813350
@@ -1540,15 +1598,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a84b523d293cda40b73eb03a25ef83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RESIZE_SCREEN_THIS_SCENE: 0
-  ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE: 16
-  ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE: 9
-  SCREEN_TYPE_THIS_SCENE: 3
-  mResizableScreenPanelPath: JCSUnity_Resources/GUI/JCS_ResizableScreenPanel
   mTopASP: {fileID: 0}
   mBottomASP: {fileID: 0}
   mLeftASP: {fileID: 0}
   mRightASP: {fileID: 0}
+  RESIZE_SCREEN_THIS_SCENE: 0
+  ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE: 16
+  ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE: 9
 --- !u!114 &1896813354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1561,8 +1617,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459ea8803bb23694290d894d24e5c1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SIMULATE_PLATFORM_TYPE: 0
-  PLATFORM_TYPE: 1
+  mSystemLanguage: 43
+  mLangTexts: []
+  mRequestCamera: 0
+  mRequestMicrophone: 0
+  mRequestLocation: 0
+  mSimulatePlatformType: 1
+  mPlatformType: 1
+  mSimulateSystemLanguage: 0
+  mSimulateLanguage: 43
 --- !u!4 &1896813355
 Transform:
   m_ObjectHideFlags: 0
@@ -1573,6 +1636,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1527484674}
   m_Father: {fileID: 0}
@@ -1611,9 +1675,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1653,26 +1725,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mVelocity: {x: 0, y: 0, z: 0}
-  mGameDepth: 0
   mDisplayGameDepthCamera: 1
   mGameCamColor: {r: 1, g: 0, b: 0, a: 1}
   mFollowing: 1
   mPositionOffset: {x: 0, y: 2, z: -10}
+  mDeltaTimeType: 0
+  mSmoothTrack: 1
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
   mTargetTransform: {fileID: 0}
-  mHardTrack: 0
   mResetVelocityToZeroWhileNotActive: 0
+  mFrictionX: 0.6
+  mFrictionY: 0.6
   mFreezeInRuntime: 0
   mFreezeX: 0
   mFreezeY: 0
   mFreezeZ: 0
   mZoomEffect: 1
-  mZoomWithMouse: 1
-  mScrollRange: 20
+  mZoomWithMouseOrTouch: 1
+  mScrollRange_Mouse: 2
+  mScrollRange_Touch: 1
   mScrollFriction: 0.6
-  mFrictionX: 0.6
-  mFrictionY: 0.6
   mMax_X_PositionInScene: Infinity
   mMin_X_PositionInScene: -Infinity
   mMax_Y_PositionInScene: Infinity
@@ -1695,6 +1768,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

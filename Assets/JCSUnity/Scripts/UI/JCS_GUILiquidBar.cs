@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -24,7 +25,7 @@ namespace JCSUnity
         private RectTransform mMaskRectTransform = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_GUILiquidBar) **")]
+        [Separator("Helper Variables (JCS_GUILiquidBar)")]
 
         [Tooltip("Test functionalities works?")]
         [SerializeField]
@@ -47,16 +48,18 @@ namespace JCSUnity
         private KeyCode mFixedKey = KeyCode.X;
 #endif
 
-        [Header("** Check Variables (JCS_GUILiquidBar) **")]
+        [Separator("Check Variables (JCS_GUILiquidBar)")]
 
         [Tooltip("The panel root object.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
         [SerializeField]
+        [ReadOnly]
         private Vector3 mMaskTargetPosition = Vector3.zero;
 
-        [Header("** Initialize Variables (JCS_GUILiquidBar) **")]
+        [Separator("Initialize Variables (JCS_GUILiquidBar)")]
 
         [Tooltip("please set this ")]
         [SerializeField]
@@ -450,7 +453,7 @@ namespace JCSUnity
         /// </summary>
         private void TowardToTargetValue()
         {
-            Vector3 speed = (mMaskTargetPosition - mMaskRectTransform.localPosition) / mDeltaFriction * Time.deltaTime;
+            Vector3 speed = (mMaskTargetPosition - mMaskRectTransform.localPosition) / mDeltaFriction * JCS_Time.DeltaTime(mDeltaTimeType);
             Vector3 tmpSpeed = speed;
 
             // TODO(jenchieh): It's weird that these seem to fix the issue
@@ -492,7 +495,7 @@ namespace JCSUnity
             if (!mRecoverEffect)
                 return;
 
-            mRecoverTimer += Time.deltaTime;
+            mRecoverTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mRecoverTimer < mTimeToRecover)
                 return;

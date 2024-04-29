@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -15,20 +16,21 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     [RequireComponent(typeof(JCS_2DCursorShootAction))]
-    public class JCS_2DSequenceShootActionNoDetection : MonoBehaviour , JCS_IAction
+    public class JCS_2DSequenceShootActionNoDetection : MonoBehaviour, JCS_IAction
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_2DCursorShootAction) **")]
+        [Separator("Check Variables (JCS_2DCursorShootAction)")]
 
         [SerializeField]
+        [ReadOnly]
         private JCS_ShootAction mShootAction = null;
 
         [SerializeField]
+        [ReadOnly]
         private JCS_2DCursorShootAction mCursorShootAction = null;
 
-
-        [Header("** Runtime Variables (JCS_2DCursorShootAction) **")]
+        [Separator("Runtime Variables (JCS_2DCursorShootAction)")]
 
         [Tooltip("How many shots in sequence?")]
         [SerializeField]
@@ -40,6 +42,10 @@ namespace JCSUnity
         [Range(0.01f, 0.5f)]
         private float mTimePerShoot = 0.1f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Make the bullet shoots at the position that starts.")]
         [SerializeField]
         private bool mSequenceStay = true;
@@ -48,8 +54,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mKeepShootAngle = true;
 
-
-        [Header("** Shoot Gap Effect (JCS_2DCursorShootAction) **")]
+        [Header("- Shoot Gap")]
 
         [Tooltip("Shoot with gap?")]
         [SerializeField]
@@ -59,12 +64,11 @@ namespace JCSUnity
         [SerializeField]
         private float mShootGap = 0.1f;
 
-
         //** Sequence Data **
-        private JCS_Vector<int> mThread = null;        // main thread
-        private JCS_Vector<float> mTimers = null;           // timer per thread
-        private JCS_Vector<int> mShootCount = null;         // how many shoot should process per thread
-        private JCS_Vector<int> mShootCounter = null;         // counter per thread
+        private JCS_Vector<int> mThread = null;           // main thread
+        private JCS_Vector<float> mTimers = null;         // timer per thread
+        private JCS_Vector<int> mShootCount = null;       // how many shoot should process per thread
+        private JCS_Vector<int> mShootCounter = null;     // counter per thread
         private JCS_Vector<Vector3> mShootPos = null;
         private JCS_Vector<Vector3> mShootAngles = null;
 
@@ -72,6 +76,7 @@ namespace JCSUnity
 
         public int Hit { get { return this.mHit; } set { this.mHit = value; } }
         public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
         public bool KeepShootAngle { get { return this.mKeepShootAngle; } set { this.mKeepShootAngle = value; } }
         public bool ShootGapEffect { get { return this.mShootGapEffect; } set { this.mShootGapEffect = value; } }
@@ -90,7 +95,6 @@ namespace JCSUnity
         {
             this.mShootAction.SetCheckAbleToShootFunction(func);
         }
-
 
         /* Functions */
 
@@ -135,17 +139,13 @@ namespace JCSUnity
         {
             if (mShootAction.Bullet == null)
             {
-                JCS_Debug.LogReminder(
-                    "There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
-
+                JCS_Debug.LogReminder("There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
                 return;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.LogReminder(
-                    "Cannot shoot sequence of bullet with lower than 0 hit...");
-
+                JCS_Debug.LogReminder("Can't shoot sequence of bullet with lower than 0 hit...");
                 return;
             }
 
@@ -203,7 +203,7 @@ namespace JCSUnity
             float newTimer = mTimers.at(processIndex);
 
             // add time to timer
-            newTimer += Time.deltaTime;
+            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if we can shoot or not
             if (mTimePerShoot < newTimer)

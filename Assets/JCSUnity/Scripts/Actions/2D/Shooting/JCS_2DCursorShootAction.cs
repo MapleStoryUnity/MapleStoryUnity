@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,14 +19,13 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_2DCursorShootAction) **")]
+        [Separator("Check Variables (JCS_2DCursorShootAction)")]
 
         [SerializeField]
         private JCS_ShootAction mShootAction = null;
 
         // if this is true, meaning there are other shoot action going on.
         private bool mOverrideShoot = false;
-
 
         /* Setter & Getter */
 
@@ -48,7 +48,6 @@ namespace JCSUnity
         {
             this.mShootAction.SetCheckAbleToShootFunction(func);
         }
-
 
         /* Functions */
 

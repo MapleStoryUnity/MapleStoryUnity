@@ -12,6 +12,7 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -30,21 +31,25 @@ namespace JCSUnity
 
         private RequestCallback requestCallback = null;
 
-        [Header("** Check Variables (JCS_StreamingAssets) **")]
+        [Separator("Check Variables (JCS_StreamingAssets)")]
 
         [Tooltip("List of file that we are going to download as target.")]
+        [ReadOnly]
         public List<string> downloadList = null;
 
         [Tooltip("Flag to see if currently downloading the file.")]
+        [ReadOnly]
         public bool requesting = false;
 
         [Tooltip("Full request URL.")]
+        [ReadOnly]
         public string requestURL = "";
 
         [Tooltip("Request data path.")]
+        [ReadOnly]
         public string requestPath = "";
 
-        [Header("** Initialize Variables (JCS_StreamingAssets) **")]
+        [Separator("Initialize Variables (JCS_StreamingAssets)")]
 
         [Tooltip("Preload streaming assets path.")]
         public List<string> preloadPath = null;

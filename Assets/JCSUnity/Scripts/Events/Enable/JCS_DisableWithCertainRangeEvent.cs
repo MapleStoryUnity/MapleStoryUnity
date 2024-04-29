@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
 
         private JCS_FadeObject mJCSFadeObject = null;
 
-        [Header("** Runtime Variables (JCS_DisableWithCertainRangeEvent) **")]
+        [Separator("Runtime Variables (JCS_DisableWithCertainRangeEvent)")]
 
         [Tooltip("Use local position instead of global position.")]
         [SerializeField]
@@ -40,7 +41,7 @@ namespace JCSUnity
         [SerializeField]
         private float mRange = 0.0f;
 
-        [Header("** Optional Variables (JCS_DisableWithCertainRangeEvent) **")]
+        [Header("- Optional")]
 
         [Tooltip("Fade before disable?")]
         [SerializeField]

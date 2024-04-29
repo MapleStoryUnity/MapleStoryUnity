@@ -8,6 +8,7 @@
  */
 using System.Linq;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,20 +19,23 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_MobileMouseEvent) **")]
+        [Separator("Check Variables (JCS_MobileMouseEvent)")]
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private Camera mCamera = null;
 
         [SerializeField]
+        [ReadOnly]
         private RaycastHit[] mHits = new RaycastHit[0];
 
         [Tooltip("Check if touched last frame.")]
         [SerializeField]
+        [ReadOnly]
         private bool mTouchedLastFrame = false;
 
-        [Header("** Runtime Variables (JCS_MobileMouseEvent) **")]
+        [Separator("Runtime Variables (JCS_MobileMouseEvent)")]
 
         [Tooltip("Distance Raycast shoot.")]
         [SerializeField]

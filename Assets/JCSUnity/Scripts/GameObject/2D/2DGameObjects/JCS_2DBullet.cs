@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DBullet.cs $
  * $Date: $
  * $Revision: $
@@ -24,31 +24,35 @@ namespace JCSUnity
 
         private JCS_3DGoStraightAction mGoStraightAction = null;
 
-        [Header("** Absorb Effect (JCS_2DBullet) **")]
+        [Header("- Absorb Effect")]
 
         [Tooltip("Enable/Disable absorb effect.")]
         [SerializeField] private bool mAbsorbEffect = false;
 
         [Tooltip("Time to absorb the bullet.")]
-        [SerializeField] [Range(0.01f, 5.0f)]
+        [SerializeField]
+        [Range(0.01f, 5.0f)]
         private float mTimeToAbsorb = 0.25f;
 
         [Tooltip("How fast it absorb back.")]
-        [SerializeField] [Range(0.01f, 10.0f)]
+        [SerializeField]
+        [Range(0.01f, 10.0f)]
         private float mAbsorbBackFriction = 0.25f;
 
         [Tooltip("Randomize the time to absorb at init time.")]
-        [SerializeField] [Range(0, 3.0f)]
+        [SerializeField]
+        [Range(0, 3.0f)]
         private float mRandomAbsorbTime = 0.5f;
 
         [Tooltip("Within this range is acceptable to active/deactive the effect.")]
-        [SerializeField] [Range(0.1f, 1.0f)]
+        [SerializeField]
+        [Range(0.1f, 1.0f)]
         private float mAcceptTimeRange = 0.8f;
 
         private float mAbsorbEffectTimer = 0;
         private float mRecordMoveSpeed = 0;
 
-        [Header("** Degree Change Effect (JCS_2DBullet) **")]
+        [Header("- Degree Change")]
 
         [Tooltip("")]
         [SerializeField]
@@ -59,7 +63,8 @@ namespace JCSUnity
         private bool mContinousDegreeChange = false;
 
         [Tooltip("")]
-        [SerializeField] [Range(0.1f, 10.0f)]
+        [SerializeField]
+        [Range(0.1f, 10.0f)]
         private float mTimeToDegreeChange = 0.5f;
 
         // timer in order to know when to do the effect.
@@ -69,51 +74,55 @@ namespace JCSUnity
         [SerializeField]
         private bool mRandDegreeX = false;
         [Tooltip("")]
-        [SerializeField] [Range(0, 360)]
+        [SerializeField]
+        [Range(0, 360)]
         private float mRandDegreeRangeX = 45f;
 
         [Tooltip("")]
         [SerializeField]
         private bool mRandDegreeY = false;
         [Tooltip("")]
-        [SerializeField] [Range(0, 360)]
+        [SerializeField]
+        [Range(0, 360)]
         private float mRandDegreeRangeY = 45f;
 
         [Tooltip("")]
         [SerializeField]
         private bool mRandDegreeZ = false;
         [Tooltip("")]
-        [SerializeField] [Range(0, 360)]
+        [SerializeField]
+        [Range(0, 360)]
         private float mRandDegreeRangeZ = 45f;
 
-
-        [Header("** Init Look by Type Action (JCS_2DBullet) **")]
+        [Header("- Init Look by Type Action")]
 
         [SerializeField]
         private bool mInitLookByTypeAction = false;
 
         [Tooltip("Do this effect periodically?")]
-        [SerializeField] [Range(1, 50)]
+        [SerializeField]
+        [Range(1, 50)]
         private int mContinousLookCount = 1;
 
         // counter see if read the count.
         private int mContinousLookCounter = 0;
 
         [Tooltip("Time until to do the effect or periodically.")]
-        [SerializeField] [Range(0.1f, 10.0f)]
+        [SerializeField]
+        [Range(0.1f, 10.0f)]
         private float mTimeToLook = 0.5f;
 
         [Tooltip("Time do add it to time to look.")]
-        [SerializeField] [Range(0.0f, 3.0f)]
+        [SerializeField]
+        [Range(0.0f, 3.0f)]
         private float mRandomTimeToLook = 0.5f;
 
         // timer in order to know when to do the effect.
         private float mLookTimer = 0;
 
         [Tooltip("If this effect is active plz attach.")]
-        [SerializeField] 
+        [SerializeField]
         private JCS_2DInitLookByTypeAction mInitLookAction = null;
-
 
         /* Setter & Getter */
 
@@ -131,7 +140,6 @@ namespace JCSUnity
                 this.mRecordMoveSpeed = value;
             }
         }
-
 
         /* Functions */
 
@@ -172,9 +180,11 @@ namespace JCSUnity
         /// </summary>
         private void DoAbsorbEffect()
         {
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             if (mAbsorbEffect)
             {
-                mAbsorbEffectTimer += Time.deltaTime;
+                mAbsorbEffectTimer += dt;
 
                 if (mTimeToAbsorb < mAbsorbEffectTimer)
                 {
@@ -192,7 +202,7 @@ namespace JCSUnity
             }
             else
             {
-                mGoStraightAction.MoveSpeed += (mRecordMoveSpeed - mGoStraightAction.MoveSpeed) / mAbsorbBackFriction * Time.deltaTime;
+                mGoStraightAction.MoveSpeed += (mRecordMoveSpeed - mGoStraightAction.MoveSpeed) / mAbsorbBackFriction * dt;
             }
         }
 
@@ -204,15 +214,15 @@ namespace JCSUnity
             if (!mDegreeChangeEffect)
                 return;
 
-            mDegreeTimer += Time.deltaTime;
+            mDegreeTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDegreeTimer < mTimeToDegreeChange)
                 return;
 
             // prepare random
             Vector3 randVal = new Vector3(
-                mRandDegreeRangeX, 
-                mRandDegreeRangeY, 
+                mRandDegreeRangeX,
+                mRandDegreeRangeY,
                 mRandDegreeRangeZ);
 
             JCS_Bool3 checkers = new JCS_Bool3(
@@ -245,7 +255,7 @@ namespace JCSUnity
             if (mInitLookAction == null)
                 return;
 
-            mLookTimer += Time.deltaTime;
+            mLookTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mLookTimer < mTimeToLook)
                 return;

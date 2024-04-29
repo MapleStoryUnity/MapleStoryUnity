@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -31,7 +32,7 @@ namespace JCSUnity
 
         private JCS_DialogueObject mDialogueObject = null;
 
-        [Header("** Initialize Variables (JCS_GameWindow) **")]
+        [Separator("Initialize Variables (JCS_GameWindow)")]
 
         [Tooltip("Drag drop type.")]
         [SerializeField]

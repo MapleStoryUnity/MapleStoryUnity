@@ -20,7 +20,6 @@ namespace JCSUnity
 
         private JCS_ParticleSystem mParticleSystem = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

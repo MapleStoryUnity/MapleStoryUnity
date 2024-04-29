@@ -20,15 +20,13 @@ namespace JCSUnity
 
         private JCS_2DLiveObject mLiveObject = null;
 
-
-        [Header("** Optional Settings (JCS_2DDeadAction) **")]
+        [Header("- Optional")]
 
         [Tooltip("Live object animation.")]
         [SerializeField]
         private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
-
-        [Header("** Sound Settings (JCS_2DDeadAction) **")]
+        [Header("- Sound")]
 
         [Tooltip("Play one shot when this action active.")]
         [SerializeField]
@@ -37,8 +35,7 @@ namespace JCSUnity
         // check to play the die sound.
         private bool mSoundPlayed = false;
 
-
-        [Header("** Effect Setting (JCS_2DDeadAction) **")]
+        [Header("- Effect")]
 
         [Tooltip("Disable unnecessary componenet when died.")]
         [SerializeField]
@@ -52,7 +49,6 @@ namespace JCSUnity
         [SerializeField]
         private MonoBehaviour[] mDisableComponents = null;
 
-        
         /* Setter & Getter */
 
         /* Functions */
@@ -67,8 +63,8 @@ namespace JCSUnity
 
         private void Update()
         {
-            // if still could damage this live object,
-            // mean this object isn't dead yet.
+            // if still could damage this live object, mean this object isn't
+            // dead yet.
             if (0 < mLiveObject.HP)
                 return;
 
@@ -76,7 +72,7 @@ namespace JCSUnity
             if (!mSoundPlayed)
             {
                 // just play one time.
-                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mDieSound);
+                JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mDieSound);
                 mSoundPlayed = true;
             }
 
@@ -105,8 +101,7 @@ namespace JCSUnity
                 mDisableOtherComponentWhileDie = false;
             }
 
-            // if the animation starts,
-            // start timer and check the
+            // if the animation starts, start timer and check the
             // dead animation is end or not.
             if (mLiveObjectAnimator.IsInState(JCS_LiveObjectState.DIE))
             {

@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_UndoRedoComponent) **")]
+        [Separator("Helper Variables (JCS_UndoRedoComponent)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -42,17 +43,19 @@ namespace JCSUnity
         };
 #endif
 
-        [Header("** Check Variables (JCS_UndoRedoComponent) **")]
+        [Separator("Check Variables (JCS_UndoRedoComponent)")]
 
         [Tooltip("Ignore record now.")]
         [SerializeField]
+        [ReadOnly]
         private bool mIgnoreRecord = false;
 
         [Tooltip("Is the current component focused.")]
         [SerializeField]
+        [ReadOnly]
         private bool mIsFocused = false;
 
-        [Header("** Runtime Variables (JCS_UndoRedoComponent) **")]
+        [Separator("Runtime Variables (JCS_UndoRedoComponent)")]
 
         [Tooltip("Undo redo system, if not filled will be use the " +
             "universal undo redo system instead.")]

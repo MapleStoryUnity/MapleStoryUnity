@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DInitLookByTypeAction.cs $
  * $Date: $
  * $Revision: $
@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -36,11 +37,9 @@ namespace JCSUnity
             NEGATIVE
         };
 
-
         private JCS_AttackerInfo mAttackerInfo = null;
 
-
-        [Header("** Runtime Variables (JCS_2DInitLookByTypeAction) **")]
+        [Separator("Runtime Variables (JCS_2DInitLookByTypeAction)")]
 
         [Tooltip("Direction the target looking at.")]
         [SerializeField]
@@ -59,17 +58,14 @@ which to target which not to.")]
         [SerializeField]
         private bool mRotateBack90 = false;
 
-
         // record down the first check.
         private State mDirection = State.NONE;
-
 
         /* Setter & Getter */
 
         public FindMethod Method { get { return this.mMethod; } set { this.mMethod = value; } }
         public bool ActiveEffect { get { return this.mActiveEffect; } set { this.mActiveEffect = value; } }
         public bool UseAttacker { get { return this.mUseAttacker; } set { this.mUseAttacker = value; } }
-
 
         /* Functions */
 
@@ -94,8 +90,7 @@ which to target which not to.")]
             LockOnInit(mMethod);
         }
         /// <summary>
-        /// Lock a gameobject, and look at it.
-        /// So the object will seems like it
+        /// Lock a gameobject, and look at it. So the object will seems like it
         /// "approach/further away" to the object.
         /// </summary>
         /// <param name="method"> method to find. </param>
@@ -158,7 +153,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        ///
+        /// Check if able to target.
         /// </summary>
         /// <param name="liveObj"> object to check </param>
         /// <returns>
@@ -196,7 +191,6 @@ which to target which not to.")]
             // make sure the object can be target/damage.
             if (!liveObj.CanDamage)
                 return false;
-
 
             return true;
         }
@@ -244,8 +238,9 @@ which to target which not to.")]
                 // check if the distance are closer.
                 if (checkingDistance < distance)
                 {
-                    // found another object that are
-                    // closer than the last object we found,
+                    // found another object that are closer than the last object
+                    // we found,
+                    //
                     // Update the distance and object.
                     distance = checkingDistance;
                     targetFound = obj;
@@ -258,8 +253,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        /// Find the closest object and is at the right
-        /// of this object.
+        /// Find the closest object and is at the right of this object.
         /// </summary>
         /// <returns> oject found </returns>
         private JCS_2DLiveObject FindClosestRight()
@@ -308,8 +302,9 @@ which to target which not to.")]
                     // if object is at the right!
                     if (CheckIsRight(obj.transform))
                     {
-                        // found another object that are
-                        // closer than the last object we found,
+                        // found another object that are closer than the last
+                        // object we found,
+                        //
                         // Update the distance and object.
                         distance = checkingDistance;
                         targetFound = obj;
@@ -323,8 +318,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        /// Check the object is at the right side of
-        /// this object.
+        /// Check the object is at the right side of this object.
         /// </summary>
         /// <param name="trans"> object to check </param>
         /// <returns>
@@ -340,8 +334,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        /// Check the object is at the top side of
-        /// this object.
+        /// Check the object is at the top side of this object.
         /// </summary>
         /// <param name="trans"> object to check </param>
         /// <returns>
@@ -357,8 +350,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        /// Find the closest object and is at the left
-        /// of this object.
+        /// Find the closest object and is at the left of this object.
         /// </summary>
         /// <returns> oject found </returns>
         private JCS_2DLiveObject FindClosestLeft()
@@ -422,8 +414,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        /// Find the closest object and is at the top
-        /// of this object.
+        /// Find the closest object and is at the top of this object.
         /// </summary>
         /// <returns> oject found </returns>
         private JCS_2DLiveObject FindClosestTop()
@@ -487,8 +478,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        /// Find the closest object and is at the bottom
-        /// of this object.
+        /// Find the closest object and is at the bottom of this object.
         /// </summary>
         /// <returns> oject found </returns>
         private JCS_2DLiveObject FindClosestBottom()
@@ -537,8 +527,9 @@ which to target which not to.")]
                     // if object is at the right!
                     if (!CheckIsTop(obj.transform))
                     {
-                        // found another object that are
-                        // closer than the last object we found,
+                        // found another object that are closer than the last
+                        // object we found,
+                        //
                         // Update the distance and object.
                         distance = checkingDistance;
                         targetFound = obj;
@@ -546,7 +537,6 @@ which to target which not to.")]
                 }
 
             }
-
 
             return targetFound;
         }

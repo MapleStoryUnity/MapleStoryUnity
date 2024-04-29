@@ -13,6 +13,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 #if TMP_PRO
 using TMPro;
@@ -27,7 +28,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_TextObject) **")]
+        [Separator("Initialize Variables (JCS_TextObject)")]
 
         [Tooltip("Target text renderer.")]
         [SerializeField]
@@ -36,14 +37,14 @@ namespace JCSUnity
 #if TMP_PRO
         [Tooltip("Target text renderer. (TMP)")]
         [SerializeField]
-        protected TextMeshPro mTextMesh = null;
+        protected TMP_Text mTMP_Text = null;
 #endif
 
         /* Setter & Getter */
 
         public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
 #if TMP_PRO
-        public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
+        public TMP_Text TMP_Text { get { return this.mTMP_Text; } set { this.mTMP_Text = value; } }
 #endif
 
         /* Functions */
@@ -55,7 +56,7 @@ namespace JCSUnity
             {
                 if (this.mTextContainer) this.mTextContainer.text = value;
 #if TMP_PRO
-                if (this.mTextMesh) this.mTextMesh.text = value;
+                if (this.mTMP_Text) this.mTMP_Text.text = value;
 #endif
             }
         }

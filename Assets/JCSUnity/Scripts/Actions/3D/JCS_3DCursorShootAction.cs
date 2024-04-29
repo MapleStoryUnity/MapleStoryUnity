@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,12 +19,13 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_3DCursorShootAction) **")]
+        [Separator("Check Variables (JCS_3DCursorShootAction)")]
 
         [SerializeField]
+        [ReadOnly]
         private JCS_ShootAction mShootAction = null;
 
-        [Header("** Runtime Variables (JCS_3DCursorShootAction) **")]
+        [Separator("Runtime Variables (JCS_3DCursorShootAction)")]
 
         [Tooltip("Key code to active this action.")]
         [SerializeField]
@@ -33,10 +35,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Vector3Direction mDirection = JCS_Vector3Direction.UP;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public KeyCode ShooKeyCode { get { return this.mShootKeyCode; } }
         public JCS_Vector3Direction Direction { get { return this.mDirection; } set { this.mDirection = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -84,7 +91,7 @@ namespace JCSUnity
                 Quaternion targetRotation = Quaternion.LookRotation(targetPoint - mShootAction.SpawnPoint.position);
 
                 // Smoothly rotate towards the target point.
-                mShootAction.SpawnPoint.rotation = Quaternion.Slerp(mShootAction.SpawnPoint.rotation, targetRotation, speed * Time.deltaTime);
+                mShootAction.SpawnPoint.rotation = Quaternion.Slerp(mShootAction.SpawnPoint.rotation, targetRotation, speed * JCS_Time.DeltaTime(mDeltaTimeType));
             }
         }
     }

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 5090550957556680191}
   - component: {fileID: 5090550957556680188}
   - component: {fileID: 5090550957556680189}
+  - component: {fileID: 370943722381801435}
   - component: {fileID: 8092299366469891948}
   m_Layer: 0
   m_Name: JCS_Settings
@@ -278,6 +279,20 @@ MonoBehaviour:
     type: 3}
   DEFAULT_CLOSE_WINDOW_CLIP: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5,
     type: 3}
+--- !u!114 &370943722381801435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5090550957556680186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25fce8af46392048949240ce017a69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ASYMPTOTIC: 0
+  FRICTION: 0.2
 --- !u!114 &8092299366469891948
 MonoBehaviour:
   m_ObjectHideFlags: 0

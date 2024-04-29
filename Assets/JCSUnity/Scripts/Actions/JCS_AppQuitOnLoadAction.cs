@@ -1,19 +1,19 @@
 ﻿/**
- * $File: JCS_QuitApplicationOnLoadEvent.cs $
+ * $File: JCS_AppQuitOnLoadAction.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
- *                   Copyright (c) 2016 by Shen, Jen-Chieh $
+ *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 
 namespace JCSUnity
 {
     /// <summary>
-    /// Event that will quit the application.
+    /// Close the application when the level is loaded.
     /// </summary>
-    public class JCS_QuitApplicationOnLoadEvent : MonoBehaviour
+    public class JCS_AppQuitOnLoadAction : MonoBehaviour
     {
         /* Variables */
 
@@ -21,7 +21,7 @@ namespace JCSUnity
 
         /* Functions */
 
-        private void Start()
+        private void Awake()
         {
             Application.Quit();
         }

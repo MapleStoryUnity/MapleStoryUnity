@@ -7,6 +7,7 @@
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,25 +20,29 @@ namespace JCSUnity
 
         private const string mResizableScreenPanelPath = "UI/JCS_ResizableScreenPanel";
 
-        [Header("** Check Variables (JCS_ScreenManager) **")]
+        [Separator("Check Variables (JCS_ScreenManager)")]
 
         [Tooltip("Top resizable screen panel.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_ResizableScreenPanel mTopASP = null;
 
         [Tooltip("Bottom resizable screen panel.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_ResizableScreenPanel mBottomASP = null;
 
         [Tooltip("Left resizable screen panel.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_ResizableScreenPanel mLeftASP = null;
 
         [Tooltip("Right resizable screen panel.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_ResizableScreenPanel mRightASP = null;
 
-        [Header("** Initialize Variables (JCS_ScreenManager) **")]
+        [Separator("Initialize Variables (JCS_ScreenManager)")]
 
         [Tooltip("Resize screen once on this scene?")]
         public bool RESIZE_SCREEN_THIS_SCENE = false;
@@ -64,10 +69,10 @@ namespace JCSUnity
             if (ShouldSpawnResizablePanels())
             {
                 // Spawn the four aspect screen panels.
-                this.mTopASP = JCS_Util.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                this.mBottomASP = JCS_Util.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                this.mLeftASP = JCS_Util.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                this.mRightASP = JCS_Util.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mTopASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mBottomASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mLeftASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                this.mRightASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
 
                 // Set the ASP direction.
                 this.mTopASP.PlaceDirection = JCS_2D4Direction.TOP;

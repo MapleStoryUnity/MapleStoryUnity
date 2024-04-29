@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variable (JCS_TalkObject) **")]
+        [Separator("Initialize Variable (JCS_TalkObject)")]
 
         [Tooltip("Current dialogue script this talk object holds.")]
         [SerializeField]

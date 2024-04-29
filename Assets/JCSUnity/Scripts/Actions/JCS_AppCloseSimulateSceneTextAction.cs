@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_ApplicationCloseSimulateSceneTextAction.cs $
+ * $File: JCS_AppCloseSimulateSceneTextAction.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -15,14 +16,14 @@ namespace JCSUnity
     /// Text shown in the application close simluate scene.
     /// </summary>
     [RequireComponent(typeof(Text))]
-    public class JCS_ApplicationCloseSimulateSceneTextAction : MonoBehaviour
+    public class JCS_AppCloseSimulateSceneTextAction : MonoBehaviour
     {
         /* Variables */
 
         private Text mText = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_ApplicationCloseSimulateSceneTextAction) **")]
+        [Separator("Helper Variables (JCS_AppCloseSimulateSceneTextAction)")]
 
         [SerializeField]
         private string mTextShowInEditMode = "";

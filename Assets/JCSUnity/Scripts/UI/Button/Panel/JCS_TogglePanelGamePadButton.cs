@@ -7,6 +7,7 @@
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_TogglePanelGamepadButton) **")]
+        [Separator("Runtime Variables (JCS_TogglePanelGamepadButton)")]
 
         [Tooltip("Panel (dialogue) you want to toggle.")]
         [SerializeField]

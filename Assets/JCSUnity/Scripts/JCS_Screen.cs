@@ -52,14 +52,14 @@ namespace JCSUnity
         /// <summary>
         /// Safe way to se screen's resolution base on platforms.
         /// </summary>
-        public static void SetResolution(float width, float height, bool fullscreen, int preferredRefreshRate = 0)
+        public static void SetResolution(float width, float height, bool fullscreen)
         {
-            SetResolution((int)width, (int)height, fullscreen, preferredRefreshRate);
+            SetResolution((int)width, (int)height, fullscreen);
         }
-        public static void SetResolution(int width, int height, bool fullscreen, int preferredRefreshRate = 0)
+        public static void SetResolution(int width, int height, bool fullscreen)
         {
 #if !(UNITY_IOS || UNITY_ANDROID)
-            Screen.SetResolution(width, height, fullscreen, preferredRefreshRate);
+            Screen.SetResolution(width, height, fullscreen);
 #endif
         }
     }

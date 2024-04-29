@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,10 +26,11 @@ namespace JCSUnity
 
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Header("** Check Variables (JCS_AspectScreenPanel) **")]
+        [Separator("Check Variables (JCS_AspectScreenPanel)")]
 
         [Tooltip("Type of the Aspect screen panel direction.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_2D4Direction mPlaceDirection = JCS_2D4Direction.TOP;
 
         /* Setter & Getter */

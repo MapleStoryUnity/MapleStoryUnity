@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,24 +20,26 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_UIManager) **")]
+        [Separator("Helper Variables (JCS_UIManager)")]
         
         [Tooltip("Test this component with key?")]
         [SerializeField]
         private bool mTestWithKey = false;
 #endif
 
-        [Header("** Check Variables (JCS_UIManager) **")]
+        [Separator("Check Variables (JCS_UIManager)")]
 
         [Tooltip("List of canvas.")]
         [SerializeField]
+        [ReadOnly]
         private List<JCS_Canvas> mCanvases = null;
 
         [Tooltip("Global undo redo system.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_UndoRedoSystem mGlobalUndoRedoSystem = null;
 
-        [Header("** Initialize Variables (JCS_UIManager) **")]
+        [Separator("Initialize Variables (JCS_UIManager)")]
 
         [Tooltip("Game Play UI (Game Layer - Only One)")]
         [SerializeField]
@@ -54,7 +57,7 @@ namespace JCSUnity
         // List of all the window that are opened!
         private LinkedList<JCS_DialogueObject> mOpenWindow = null;
 
-        [Header("** UI Screen Settings (JCS_UIManager) **")]
+        [Header("- UI Screen")]
 
         [Tooltip("Panel that could do the fade loose focus effect.")]
         [SerializeField]
@@ -138,7 +141,7 @@ namespace JCSUnity
         {
             // pop the fade screen.
             string path = JCS_UISettings.FADE_SCREEN_PATH;
-            this.mFadeScreen = JCS_Util.SpawnGameObject(path).GetComponent<JCS_FadeScreen>();
+            this.mFadeScreen = JCS_Util.Instantiate(path).GetComponent<JCS_FadeScreen>();
         }
 
         private void Update()

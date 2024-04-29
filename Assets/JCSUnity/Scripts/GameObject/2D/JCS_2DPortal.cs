@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DPortal) **")]
+        [Separator("Runtime Variables (JCS_2DPortal)")]
 
         [Tooltip("Is this portal enable to use?")]
         [SerializeField]

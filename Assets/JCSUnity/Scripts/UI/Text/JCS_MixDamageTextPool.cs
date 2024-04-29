@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -32,7 +33,7 @@ namespace JCSUnity
         };
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_MixDamageTextPool) **")]
+        [Separator("Helper Variables (JCS_MixDamageTextPool)")]
 
         [Tooltip("Test this component with key event.")]
         [SerializeField]
@@ -43,7 +44,7 @@ namespace JCSUnity
         private KeyCode mTestKey = KeyCode.N;
 #endif
 
-        [Header("** Initialize Variables (JCS_MixDamageTextPool) **")]
+        [Separator("Initialize Variables (JCS_MixDamageTextPool)")]
 
         [Tooltip("Critical damage text pool.")]
         [SerializeField]
@@ -61,7 +62,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DamageTextPool mHealDamageTextPool = null;
 
-        [Header("** Runtime Variables (JCS_MixDamageTextPool) **")]
+        [Separator("Runtime Variables (JCS_MixDamageTextPool)")]
 
         [Tooltip("Spacing per damage text.")]
         [SerializeField]
@@ -72,7 +73,11 @@ namespace JCSUnity
         [Range(0.0f, 5.0f)]
         private float mTimePerSpawn = 0.1f;
 
-        [Header("** Zigge Right Left Effect (In Sequence)**")]
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
+        [Header("- Zigge Right Left")]
 
         [Tooltip("Do the zigge effect?")]
         [SerializeField]
@@ -102,6 +107,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_DamageTextPool CriticalDamageTextPool { get { return this.mCritDamageTextPool; } }
         public JCS_DamageTextPool NormralDamageTextPool { get { return this.mNormalDamageTextPool; } }
         public JCS_DamageTextPool GetDamageDamageTextPool { get { return this.mGetDamageDamageTextPool; } }
@@ -480,7 +486,7 @@ namespace JCSUnity
         {
             float newTimer = timer;
 
-            newTimer += Time.deltaTime;
+            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTimePerSpawn < newTimer)
             {

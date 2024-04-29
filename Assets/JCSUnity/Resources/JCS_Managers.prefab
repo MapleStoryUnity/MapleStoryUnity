@@ -143,9 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbeb25e792087645b19e4cf30c3218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTestWithKey: 0
-  mToggleGamePause: 112
-  TIME_SCALE: 1
   mGamePause: 0
   mGameDoneInitialize: 0
 --- !u!114 &11439248
@@ -160,12 +157,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ceabc1c1c745c44a60262572a8c61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSwitchSceneType: 1
   mBlackScreen: {fileID: 0}
   mBlackSlideScreen: {fileID: 0}
   mAlign: 0
   mPopWhiteScreen: 1
   mWhiteScreen: {fileID: 0}
+  mSwitchSceneType: 1
   mPauseGameWhileLoadingScene: 1
   mOverrideSetting: 0
   mSceneFadeInTime: 1
@@ -400,8 +397,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa49b5ee139699040b4a44e97ef334aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTimeScale: 1
+  mTestWithKey: 0
+  mToggleGamePause: 112
+  mIncTime: 110
+  mDecTime: 109
+  mTimeDelta: 5
+  mTargetTimeScale: 1
   mPauseActions: []
+  mDefaultTimeScale: 1
   mResizePauseActionListTime: 20
+  mOverrideSetting: 0
+  mAsymptotic: 0
+  mFriction: 0.2
 --- !u!1 &1678435913
 GameObject:
   m_ObjectHideFlags: 0

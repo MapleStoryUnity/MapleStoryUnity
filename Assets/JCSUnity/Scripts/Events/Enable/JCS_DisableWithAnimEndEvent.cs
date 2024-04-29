@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,15 +23,20 @@ namespace JCSUnity
 
         private float mAnimationTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_DisableWithAnimEndEvent) **")]
+        [Separator("Runtime Variables (JCS_DisableWithAnimEndEvent)")]
 
         [Tooltip("Times the animation need to loops to trigger this event.")]
         [SerializeField]
         private uint mLoopTimes = 1;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public uint LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -43,7 +49,7 @@ namespace JCSUnity
         {
             AnimatorStateInfo animatorStateInfo = mAnimator.GetCurrentAnimatorStateInfo(0);
 
-            mAnimationTimer += Time.deltaTime;
+            mAnimationTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mAnimationTimer > animatorStateInfo.length * mLoopTimes)
             {

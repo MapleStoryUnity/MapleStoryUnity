@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,12 +27,12 @@ namespace JCSUnity
 
         private AudioListener mAudioListener = null;
 
-        [Header("** Runtime Variables (JCS_2DMultiTrackCamera) **")]
+        [Separator("Runtime Variables (JCS_2DMultiTrackCamera)")]
 
         [Tooltip("Camera use to do the action.")]
         [SerializeField]
-        private JCS_2DCamera mJCS_2DCamera = null;
-        
+        private JCS_2DCamera mCamera = null;
+
         private float mLastDiffDistanceX = 0;
         private float mLastDiffDistanceY = 0;
 
@@ -44,6 +45,10 @@ namespace JCSUnity
         [Tooltip("How fast the caemra zoom in/out.")]
         [SerializeField]
         private float mCameraFriction = 0.7f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         // Range under this will not do the scale effect,
         // otherwise do the scale effect
@@ -63,42 +68,31 @@ namespace JCSUnity
         [SerializeField]
         private float mMaxFieldOfView = 100;
 
-
         /* Setter & Getter */
 
         public AudioListener GetAudioListener() { return this.mAudioListener; }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public float MinFieldOfView { get { return this.mMinFieldOfView; } set { this.mMinFieldOfView = value; } }
         public float MaxFieldOfView { get { return this.mMaxFieldOfView; } set { this.mMaxFieldOfView = value; } }
-
 
         /* Functions */
 
         protected void Awake()
         {
-
             mTargetList = new JCS_Vector<JCS_Player>();
 
             mAudioListener = this.GetComponent<AudioListener>();
 
             // find the camera in the scene first
-            mJCS_2DCamera = (JCS_2DCamera)FindObjectOfType(typeof(JCS_2DCamera));
+            mCamera = JCS_Util.FindObjectByType(typeof(JCS_2DCamera)) as JCS_2DCamera;
 
-            // if still null spawn a default one!
-            if (mJCS_2DCamera == null)
-            {
-                JCS_Debug.LogError("There is not JCS_2DCamera attach to, spawn a default one!");
+            if (mCamera == null)
+                return;
 
-                // Spawn a Default one!
-                this.mJCS_2DCamera = JCS_Util.SpawnGameObject(
-                    JCS_2DCamera.JCS_2DCAMERA_PATH,
-                    transform.position,
-                    transform.rotation).GetComponent<JCS_2DCamera>();
-            }
-
-            mJCS_2DCamera.SetFollowTarget(this.transform);
+            mCamera.SetFollowTarget(this.transform);
 
             // record down the fild of view
-            mTargetFieldOfView = mJCS_2DCamera.fieldOfView;
+            mTargetFieldOfView = mCamera.fieldOfView;
         }
 
         private void Start()
@@ -108,14 +102,17 @@ namespace JCSUnity
 
         private void Update()
         {
+            if (mCamera == null)
+                return;
+
             this.transform.position = CalculateTheCameraPosition();
 
-            mJCS_2DCamera.fieldOfView += (mTargetFieldOfView - mJCS_2DCamera.fieldOfView) / mCameraFriction * Time.deltaTime;
+            mCamera.fieldOfView += (mTargetFieldOfView - mCamera.fieldOfView) / mCameraFriction * JCS_Time.DeltaTime(mDeltaTimeType);
 
-            if (mJCS_2DCamera.fieldOfView < mMinFieldOfView)
-                mJCS_2DCamera.fieldOfView = mMinFieldOfView;
-            else if (mJCS_2DCamera.fieldOfView > mMaxFieldOfView)
-                mJCS_2DCamera.fieldOfView = mMaxFieldOfView;
+            if (mCamera.fieldOfView < mMinFieldOfView)
+                mCamera.fieldOfView = mMinFieldOfView;
+            else if (mCamera.fieldOfView > mMaxFieldOfView)
+                mCamera.fieldOfView = mMaxFieldOfView;
         }
 
         /// <summary>
@@ -147,9 +144,9 @@ namespace JCSUnity
             if (mTargetList.length == 0)
                 return transform.position;
 
-            float minHeight = 0, 
-                maxHeight = 0, 
-                minWidth = 0, 
+            float minHeight = 0,
+                maxHeight = 0,
+                minWidth = 0,
                 maxWidth = 0;
 
             bool firstAssign = false;

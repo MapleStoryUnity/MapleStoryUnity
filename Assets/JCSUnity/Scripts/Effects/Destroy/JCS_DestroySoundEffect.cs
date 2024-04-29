@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_DestroySoundEffect) **")]
+        [Separator("Runtime Variables (JCS_DestroySoundEffect)")]
 
         [Tooltip("Sound to play when this occurs.")]
         [SerializeField]
@@ -58,7 +59,7 @@ namespace JCSUnity
         {
             // if is quitting the application don't spawn object,
             // or else will cause memory leak!
-            if (JCS_ApplicationManager.APP_QUITTING)
+            if (JCS_AppManager.APP_QUITTING)
                 return;
 
             // if switching the scene, don't spawn new gameObject.

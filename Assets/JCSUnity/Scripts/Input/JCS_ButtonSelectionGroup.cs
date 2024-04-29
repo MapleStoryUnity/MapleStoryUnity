@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -36,14 +37,13 @@ namespace JCSUnity
         };
 
 
-        [Header("** Check Variables (JCS_ButtonSelectionGroup) **")]
+        [Separator("Check Variables (JCS_ButtonSelectionGroup)")]
 
         [Tooltip("Current selecting index.")]
         [SerializeField]
         private int mCurrentSelectIndex = 0;
 
-
-        [Header("** Runtime Variables (JCS_ButtonSelectionGroup) **")]
+        [Separator("Runtime Variables (JCS_ButtonSelectionGroup)")]
 
         [Tooltip("Every time 'OnEnable' function occurs, reset selections.")]
         [SerializeField]
@@ -52,9 +52,6 @@ namespace JCSUnity
         [Tooltip("While reseting the selections this will get choose to be the first selected selection.")]
         [SerializeField]
         private JCS_ButtonSelection mStartingSelection = null;
-
-
-        [Header("** Runtime Variables (JCS_ButtonSelectionGroup) **")]
 
         [Tooltip("List of all the selections this group handle.")]
         [SerializeField]

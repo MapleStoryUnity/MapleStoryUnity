@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,8 +21,7 @@ namespace JCSUnity
 
         private JCS_ItemDroppable mItemDroppable = null;
 
-
-        [Header("** Runtime Variables (JCS_2DDropItemAction) **")]
+        [Separator("Runtime Variables (JCS_2DDropItemAction)")]
 
         [Tooltip("Drop once when the object is dead.")]
         [SerializeField]
@@ -32,11 +32,13 @@ namespace JCSUnity
         private bool mDropByTime = false;
 
         [Tooltip("Time to drop one time.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mTimePerDrop = 0.0f;
 
         [Tooltip("Effect the time every time it drops.")]
-        [SerializeField] [Range(0.0f, 5.0f)]
+        [SerializeField]
+        [Range(0.0f, 5.0f)]
         private float mRandomTimeRange = 0.0f;
 
         // a time combine random + timer per drop value.
@@ -48,14 +50,17 @@ namespace JCSUnity
         // trigger to re-calculate the drop time
         private bool mDroped = false;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
-        public bool DropWhenDies { get { return this.mDropWhenDies; } set {this.mDropWhenDies = value; } }
-        public bool DropByTime { get { return this.mDropByTime; } set {this.mDropByTime = value; } }
-        public float TimePerDrop { get { return this.mTimePerDrop; } set {this.mTimePerDrop = value; } }
-        public float RandomTimeRange { get { return this.mRandomTimeRange; } set {this.mRandomTimeRange = value; } }
-
+        public bool DropWhenDies { get { return this.mDropWhenDies; } set { this.mDropWhenDies = value; } }
+        public bool DropByTime { get { return this.mDropByTime; } set { this.mDropByTime = value; } }
+        public float TimePerDrop { get { return this.mTimePerDrop; } set { this.mTimePerDrop = value; } }
+        public float RandomTimeRange { get { return this.mRandomTimeRange; } set { this.mRandomTimeRange = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -73,7 +78,7 @@ namespace JCSUnity
         {
             // if is quitting the application don't spawn object,
             // or else will cause memory leak!
-            if (JCS_ApplicationManager.APP_QUITTING)
+            if (JCS_AppManager.APP_QUITTING)
                 return;
 
             // if switching the scene, don't spawn new gameObject.
@@ -99,7 +104,7 @@ namespace JCSUnity
 
             ResetTime();
 
-            mDropTimer += Time.deltaTime;
+            mDropTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDropRealTime < mDropTimer)
             {
@@ -113,8 +118,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Once we do the drop item action,
-        /// re-calculate the next drop time.
+        /// Once we do the drop item action, re-calculate the next drop time.
         /// so every time it drop is random.
         /// </summary>
         private void ResetTime()

@@ -6,8 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.Collections;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Note: Fade Time can be set at JCS_SceneSettings. **")]
+        [Separator("Runtime Variables (JCS_Logo)")]
 
         [Tooltip("Next scene to load.")]
         [SerializeField]
@@ -29,11 +29,17 @@ namespace JCSUnity
         [Range(0.0f, 3600.0f)]
         private float mDelayTime = 1.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         private float mDelayTimer = 0.0f;
 
-        private bool mCycleThrough = false;
-
         /* Setter & Getter */
+
+        public string NextLevel { get { return this.mNextLevel; } set { this.mNextLevel = value; } }
+        public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -48,22 +54,10 @@ namespace JCSUnity
 
         private void Update()
         {
-            var gm = JCS_GameManager.instance;
-
-            gm.GAME_PAUSE = true;
-
-            mDelayTimer += Time.deltaTime;
+            mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayTime < mDelayTimer)
-            {
-                mCycleThrough = true;
-            }
-
-            if (mCycleThrough)
-            {
-                gm.GAME_PAUSE = false;
                 JCS_SceneManager.instance.LoadScene(mNextLevel);
-            }
         }
     }
 }

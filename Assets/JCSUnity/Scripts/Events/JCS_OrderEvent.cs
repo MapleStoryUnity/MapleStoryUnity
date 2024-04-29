@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.Events;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,21 +21,27 @@ namespace JCSUnity
 
         private EmptyFunction mExecution = null;
 
-        [Header("** Check Variables (JCS_OrderEvent) **")]
+        [Separator("Check Variables (JCS_OrderEvent)")]
 
         [Tooltip("Flag represent the activation of the event.")]
         [SerializeField]
+        [ReadOnly]
         private bool mActive = false;
 
         [Tooltip("Timer to run through all executions.")]
         [SerializeField]
+        [ReadOnly]
         private float mTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_OrderEvent) **")]
+        [Separator("Runtime Variables (JCS_OrderEvent)")]
 
         [Tooltip("Time for each execution.")]
         [SerializeField]
         private float mIntervalTime = 0.0f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Tooltip("Unity execution event.")]
         [SerializeField]
@@ -44,6 +51,7 @@ namespace JCSUnity
 
         public bool Active { get { return this.mActive; } }
         public float IntervalTime { get { return this.mIntervalTime; } set { this.mIntervalTime = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public UnityEvent unityExecution { get { return this.mUnityExecution; } set { this.mUnityExecution = value; } }
 
         /* Functions */
@@ -82,7 +90,7 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            this.mTimer += Time.deltaTime;
+            this.mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (this.mTimer < this.mIntervalTime)
                 return;

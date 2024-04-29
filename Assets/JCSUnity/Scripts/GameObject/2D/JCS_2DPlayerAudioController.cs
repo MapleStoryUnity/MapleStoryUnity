@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DPlayerAudioController.cs $
  * $Date: $
  * $Revision: $

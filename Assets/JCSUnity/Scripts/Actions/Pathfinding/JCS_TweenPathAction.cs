@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,13 +24,13 @@ namespace JCSUnity
         private JCS_TransformTweener mTransformTweener = null;
         private JCS_AdjustTimeTrigger mAdjustTimerTrigger = null;
 
-        [Header("** Check Variables (JCS_TweenPathAction) **")]
+        [Separator("Check Variables (JCS_TweenPathAction)")]
 
         [Tooltip("Current target point index that this object to going approach.")]
         [SerializeField]
         private int mTargetPointIndex = -1;
 
-        [Header("** Runtime Variables (JCS_TweenPathAction) **")]
+        [Separator("Runtime Variables (JCS_TweenPathAction)")]
 
         [Tooltip("List of points for setting up the path.")]
         [SerializeField]
@@ -61,7 +62,7 @@ namespace JCSUnity
                 JCS_Debug.LogWarning("Path action with 0 path point is not valid");
 #endif
 
-            mAdjustTimerTrigger.actions = DoPath;
+            mAdjustTimerTrigger.onAction = DoPath;
         }
 
         /// <summary>

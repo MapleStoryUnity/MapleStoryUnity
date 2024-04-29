@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_PositionCastAction) **")]
+        [Separator("Helper Variables (JCS_PositionCastAction)")]
 
         [Tooltip("Test this component with key.")]
         public bool testWithKey = false;
@@ -44,13 +45,14 @@ namespace JCSUnity
         private Vector3 mCastToWorldPosition = Vector3.zero;
 #endif
 
-        [Header("** Check Variables (JCS_PositionCastAction) **")]
+        [Separator("Check Variables (JCS_PositionCastAction)")]
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Header("** Runtime Variables (JCS_PositionCastAction) **")]
+        [Separator("Runtime Variables (JCS_PositionCastAction)")]
 
         [Tooltip("Corresponding position offset.")]
         [SerializeField]

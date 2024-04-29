@@ -7,6 +7,8 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using UnityEngine.Events;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,11 +22,19 @@ namespace JCSUnity
         public EmptyFunction onActive = null;
         public EmptyFunction onDeactive = null;
 
-        [Header("** Check Variables (JCS_ToggleGamepadButton) **")]
+        [Separator("Check Variables (JCS_ToggleGamepadButton)")]
 
         [Tooltip("Return true if toggle button currently active.")]
         [SerializeField]
         protected bool mActive = false;
+
+        [Tooltip("Execute this when toggle is on.")]
+        [SerializeField]
+        protected UnityEvent mOnAction = null;
+
+        [Tooltip("Execute this when toggle is off.")]
+        [SerializeField]
+        protected UnityEvent mOffAction = null;
 
         /* Setter & Getter */
 
@@ -40,6 +50,8 @@ namespace JCSUnity
                 }
             }
         }
+        public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
+        public UnityEvent OffAction { get { return this.mOffAction; } set { this.mOffAction = value; } }
 
         /* Functions */
 
@@ -73,14 +85,11 @@ namespace JCSUnity
         /// </summary>
         public void DoActiveFunc()
         {
-            if (onActive == null)
-            {
-                JCS_Debug.LogError("U have not set the ACTIVE function ptr...");
-                return;
-            }
+            if (onActive != null)
+                onActive.Invoke();
 
-            // do the action.
-            onActive.Invoke();
+            if (mOnAction != null)
+                mOnAction.Invoke();
         }
 
         /// <summary>
@@ -88,14 +97,11 @@ namespace JCSUnity
         /// </summary>
         public void DoDeactiveFunc()
         {
-            if (onDeactive == null)
-            {
-                JCS_Debug.LogError("U have not set the DEACTIVE function ptr...");
-                return;
-            }
+            if (onDeactive != null)
+                onDeactive.Invoke();
 
-            // do the action.
-            onDeactive.Invoke();
+            if (mOffAction != null)
+                mOffAction.Invoke();
         }
     }
 }

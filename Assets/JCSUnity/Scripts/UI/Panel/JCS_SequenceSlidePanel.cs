@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,14 +26,14 @@ namespace JCSUnity
         private JCS_SoundPlayer mSoundPlayer = null;
         private RectTransform mRectTransform = null;
 
-        [Header("** Initialize Variables (JCS_SequenceSlidePanel) **")]
+        [Separator("Initialize Variables (JCS_SequenceSlidePanel)")]
 
         [Tooltip(@"Optional choice, instead of using the auto detection. 
 (JCS_EmptyButton are the recommaned default class to use.)")]
         [SerializeField]
         private JCS_Button mToggleOrExitButton = null;
 
-        [Header("** Runtime Variables (JCS_SequenceSlidePanel) **")]
+        [Separator("Runtime Variables (JCS_SequenceSlidePanel)")]
 
         [Tooltip("Sequence of buttons with slide effect component with in the tranform.")]
         [SerializeField]
@@ -41,6 +42,10 @@ namespace JCSUnity
         [Tooltip("Area that also control with this, plz do it manully. (only in children)")]
         [SerializeField]
         private JCS_SlideEffect[] mAreaEffects = null;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("- Spacing")]
 
@@ -77,6 +82,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public float SpaceTime { get { return this.mSpaceTime; } set { this.mSpaceTime = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public AudioClip ActiveClip { get { return this.mActiveClip; } set { this.mActiveClip = value; } }
         public AudioClip DeactiveClip { get { return this.mDeactiveClip; } set { this.mDeactiveClip = value; } }
@@ -190,7 +196,7 @@ namespace JCSUnity
             {
                 mSoundPlayer.PlayOneShot(mActiveClip);
 
-                mSpaceTimer += Time.deltaTime;
+                mSpaceTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
                 if (mSpaceTime < mSpaceTimer)
                 {

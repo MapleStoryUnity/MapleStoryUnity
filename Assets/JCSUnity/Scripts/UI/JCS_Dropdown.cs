@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,9 +23,8 @@ namespace JCSUnity
 
         private Dropdown mDropdown = null;
 
-
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_Dropdown) **")]
+        [Separator("Helper Variables (JCS_Dropdown)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -35,18 +35,19 @@ namespace JCSUnity
         private KeyCode mUpdateDropdown = KeyCode.U;
 #endif
 
-        [Header("** Check Variables (JCS_Dropdown) **")]
+        [Separator("Check Variables (JCS_Dropdown)")]
 
         [Tooltip("Store all the real dropdown texts, not the shortcut version.")]
         [SerializeField]
+        [ReadOnly]
         private List<string> mDropdownRealTexts = null;
 
         [Tooltip("Store all the dropdown texts copy.")]
         [SerializeField]
+        [ReadOnly]
         private List<string> mDropdownBackupTexts = null;
 
-
-        [Header("** Runtime Variables (JCS_Dropdown) **")]
+        [Separator("Runtime Variables (JCS_Dropdown)")]
 
         [Tooltip("Max letters shown in the options. Default is 14.")]
         [SerializeField] [Range(7, 200)]
@@ -59,7 +60,6 @@ namespace JCSUnity
         [Tooltip("Dot is more approach to the second half of the text value.")]
         [SerializeField]
         private bool mApproachSec = false;
-
 
         /* Setter & Getter */
 

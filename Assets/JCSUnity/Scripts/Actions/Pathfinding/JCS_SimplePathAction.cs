@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,13 +26,14 @@ namespace JCSUnity
         private JCS_3DLookAtAction mLookAtAction = null;
         private JCS_AdjustTimeTrigger mAdjustTimerTrigger = null;
 
-        [Header("** Check Variables (JCS_SimplePathAction) **")]
+        [Separator("Check Variables (JCS_SimplePathAction)")]
 
         [Tooltip("Current target point index that this object to going approach.")]
         [SerializeField]
+        [ReadOnly]
         private int mTargetPointIndex = -1;
 
-        [Header("** Runtime Variables (JCS_SimplePathAction) **")]
+        [Separator("Runtime Variables (JCS_SimplePathAction)")]
 
         [Tooltip("List of points for setting up the path.")]
         [SerializeField]
@@ -60,7 +62,7 @@ namespace JCSUnity
             this.mLookAtAction = this.GetComponent<JCS_3DLookAtAction>();
             this.mAdjustTimerTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
-            this.mAdjustTimerTrigger.actions = DoPath;
+            this.mAdjustTimerTrigger.onAction = DoPath;
 
 #if UNITY_EDITOR
             if (mPoints.Count == 0)

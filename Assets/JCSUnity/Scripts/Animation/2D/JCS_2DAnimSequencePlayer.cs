@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_2DAnimSequencePlayer) **")]
+        [Separator("Helper Variables (JCS_2DAnimSequencePlayer)")]
 
         public bool testWithKey = false;
 
@@ -29,17 +30,19 @@ namespace JCSUnity
         public KeyCode stopKey = KeyCode.J;
 #endif
 
-        [Header("** Check Variables (JCS_2DAnimSequencePlayer) **")]
+        [Separator("Check Variables (JCS_2DAnimSequencePlayer)")]
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private JCS_2DAnimation mCurrentAnimation = null;
 
         [Tooltip("Is the animation done playin?")]
         [SerializeField]
+        [ReadOnly]
         private bool mDonePlayingSequence = false;
 
-        [Header("** Runtime Variables (JCS_2DAnimSequencePlayer) **")]
+        [Separator("Runtime Variables (JCS_2DAnimSequencePlayer)")]
 
         [Tooltip("Active this component?")]
         [SerializeField]
@@ -60,6 +63,10 @@ namespace JCSUnity
         // timer for each animation play!
         private float mTimer = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Sequence of animations that played.")]
         [SerializeField]
         private JCS_2DAnimation[] mAnimations = null;
@@ -70,6 +77,7 @@ namespace JCSUnity
         public bool DonePlayingSequence { get { return this.mDonePlayingSequence; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
         public float TimePerAnim { get { return this.mTimePerAnim; } set { this.mTimePerAnim = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -112,7 +120,7 @@ namespace JCSUnity
                 mDonePlayingSequence = false;
             }
 
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if reach the time.
             if (mTimer < mTimePerAnim)

@@ -40,7 +40,7 @@ namespace JCSUnity
         /// <param name="act"></param>
         public static void PasueApplication(bool act = true)
         {
-            JCS_ApplicationManager.APP_PAUSE = act;
+            JCS_AppManager.APP_PAUSE = act;
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace JCSUnity
         {
 #if UNITY_EDITOR
             SceneManager.LoadScene("JCS_AppCloseSimulate");
-            JCS_ApplicationManager.APP_PAUSE = true;
+            JCS_AppManager.APP_PAUSE = true;
 #endif
 
             Application.Quit();
@@ -131,7 +131,7 @@ namespace JCSUnity
         public static void PopJCSBlackScreen()
         {
             string path = JCS_UISettings.BLACK_SCREEN_PATH;
-            JCS_BlackScreen bs = JCS_Util.SpawnGameObject(path).GetComponent<JCS_BlackScreen>();
+            var bs = JCS_Util.Instantiate(path).GetComponent<JCS_BlackScreen>();
 
             if (bs == null)
             {
@@ -148,7 +148,7 @@ namespace JCSUnity
         public static void PopJCSBlackSlideScreen()
         {
             string path = JCS_UISettings.BLACK_SLIDE_SCREEN_PATH;
-            JCS_BlackSlideScreen bs = JCS_Util.SpawnGameObject(path).GetComponent<JCS_BlackSlideScreen>();
+            var bs = JCS_Util.Instantiate(path).GetComponent<JCS_BlackSlideScreen>();
 
             if (bs == null)
             {
@@ -165,7 +165,7 @@ namespace JCSUnity
         public static void PopJCSWhiteScreen()
         {
             string path = JCS_UISettings.WHITE_SCREEN_PATH;
-            JCS_WhiteScreen ws = JCS_Util.SpawnGameObject(path).GetComponent<JCS_WhiteScreen>();
+            var ws = JCS_Util.Instantiate(path).GetComponent<JCS_WhiteScreen>();
 
             if (ws == null)
             {
@@ -200,7 +200,7 @@ namespace JCSUnity
             if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.SYSTEM_DIALOGUE))
                 return;
 
-            JCS_Util.SpawnGameObject(IS_CONNECT_DIALOGUE);
+            JCS_Util.Instantiate(IS_CONNECT_DIALOGUE);
 
             PauseGame(true);
         }
@@ -215,7 +215,7 @@ namespace JCSUnity
             if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.PLAYER_DIALOGUE))
                 return;
 
-            JCS_Util.SpawnGameObject(SETTING_PANEL);
+            JCS_Util.Instantiate(SETTING_PANEL);
 
             //PauseGame(true);
         }
@@ -228,7 +228,7 @@ namespace JCSUnity
             if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.PLAYER_DIALOGUE))
                 return;
 
-            JCS_Util.SpawnGameObject(TALK_DIALOGUE);
+            JCS_Util.Instantiate(TALK_DIALOGUE);
 
             PauseGame(true);
         }

@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -31,7 +32,7 @@ namespace JCSUnity
 
         private List<JCS_2DLiveObject> mLiveObjectList = null;
 
-        [Header("** Runtime Variables (JCS_HitDamageAction) **")]
+        [Separator("Runtime Variables (JCS_HitDamageAction)")]
 
         [Tooltip("When the action occurs, play this sound.")]
         [SerializeField]

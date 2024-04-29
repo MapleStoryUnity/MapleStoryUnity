@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_OneShotObject) **")]
+        [Separator("Runtime Variables (JCS_OneShotObject)")]
 
         [Tooltip("Effect on which axis?")]
         [SerializeField]
@@ -30,6 +31,10 @@ namespace JCSUnity
         [Tooltip("Loop one shot?")]
         [SerializeField]
         private bool mLoop = false;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Tooltip("Force in the last position.")]
         [SerializeField]
@@ -53,6 +58,7 @@ namespace JCSUnity
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public bool EffectOnAwake { get { return this.mEffectOnAwake; } set { this.mEffectOnAwake = value; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool StayAtLastPosition { get { return this.mStayAtLastPosition; } set { this.mStayAtLastPosition = value; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
@@ -73,7 +79,7 @@ namespace JCSUnity
             if (!mEffect)
                 return;
 
-            mDistanceRecorder += JCS_Mathf.AbsoluteValue(mMoveSpeed) * Time.deltaTime;
+            mDistanceRecorder += JCS_Mathf.AbsoluteValue(mMoveSpeed) * JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDistanceRecorder > mDistance)
             {
@@ -119,16 +125,18 @@ namespace JCSUnity
         /// <param name="speed"></param>
         private void DoMovement(JCS_Axis ax, float speed)
         {
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             switch (ax)
             {
                 case JCS_Axis.AXIS_X:
-                    this.transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
+                    this.transform.position += new Vector3(speed, 0, 0) * dt;
                     break;
                 case JCS_Axis.AXIS_Y:
-                    this.transform.position += new Vector3(0, speed, 0) * Time.deltaTime;
+                    this.transform.position += new Vector3(0, speed, 0) * dt;
                     break;
                 case JCS_Axis.AXIS_Z:
-                    this.transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
+                    this.transform.position += new Vector3(0, 0, speed) * dt;
                     break;
             }
         }

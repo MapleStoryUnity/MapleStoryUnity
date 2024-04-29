@@ -7,9 +7,12 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
+    public delegate void Fading(float alpha);
+
     /// <summary>
     /// Fade object to a particular alpha channel.
     /// </summary>
@@ -17,15 +20,17 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public EmptyFunction fadeOutCallback = DefaultFadeCallback;
-        public EmptyFunction fadeInCallback = DefaultFadeCallback;
+        public EmptyFunction onFadeOut = null;
+        public EmptyFunction onFadeIn = null;
+
+        public Fading onFading = null;
 
         private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
 
         private float mAlpha = 1.0f;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_FadeObject) **")]
+        [Separator("Helper Variables (JCS_FadeObject)")]
 
         [Tooltip("Test Fade in/out with key.")]
         [SerializeField]
@@ -37,17 +42,19 @@ namespace JCSUnity
         private KeyCode mFadeOutKey = KeyCode.N;
 #endif
 
-        [Header("** Check Variables (JCS_FadeObject) **")]
+        [Separator("Check Variables (JCS_FadeObject)")]
 
         [Tooltip("Is current fade object doing the effect? (fade in/out)")]
         [SerializeField]
+        [ReadOnly]
         private bool mEffect = false;
 
         [Tooltip("Is current fade object visible?")]
         [SerializeField]
+        [ReadOnly]
         private bool mVisible = true;
 
-        [Header("** Runtime Variables (JCS_FadeObject) **")]
+        [Separator("Runtime Variables (JCS_FadeObject)")]
 
         [Tooltip("How long it fades.")]
         [SerializeField]
@@ -68,13 +75,20 @@ namespace JCSUnity
         [Range(0.0f, 1.0f)]
         private float mFadeOutAmount = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
+        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
+        public bool Visible { get { return this.mVisible; } set { this.mVisible = value; } }
         public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
         public bool OverrideFade { get { return this.mOverrideFade; } set { this.mOverrideFade = value; } }
         public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
         public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
         public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -162,34 +176,7 @@ namespace JCSUnity
             }
 
             // enable the effect component
-            switch (GetObjectType())
-            {
-                // enable the shader
-                case JCS_UnityObjectType.GAME_OBJECT:
-                    {
-                        //this.gameObject.SetActive(true);
-                    }
-                    break;
-                // enable "Image" component
-                case JCS_UnityObjectType.UI:
-                    {
-                        if (mImage != null)
-                            mImage.enabled = true;
-                    }
-                    break;
-                case JCS_UnityObjectType.SPRITE:
-                    {
-                        if (mSpriteRenderer != null)
-                            mSpriteRenderer.enabled = true;
-                    }
-                    break;
-                case JCS_UnityObjectType.TEXT:
-                    {
-                        if (mText != null)
-                            mText.enabled = true;
-                    }
-                    break;
-            }
+            this.LocalEnabled = true;
 
             switch (type)
             {
@@ -231,43 +218,18 @@ namespace JCSUnity
                         // Fade out effect complete
                         if (mAlpha < mFadeOutAmount)
                         {
-                            switch (GetObjectType())
-                            {
-                                case JCS_UnityObjectType.GAME_OBJECT:
-                                    {
-                                        //this.gameObject.SetActive(false);
-                                    }
-                                    break;
-                                case JCS_UnityObjectType.UI:
-                                    {
-                                        if (mImage != null)
-                                            mImage.enabled = false;
-                                    }
-                                    break;
-                                case JCS_UnityObjectType.SPRITE:
-                                    {
-                                        if (mSpriteRenderer != null)
-                                            mSpriteRenderer.enabled = false;
-                                    }
-                                    break;
-                                case JCS_UnityObjectType.TEXT:
-                                    {
-                                        if (mText != null)
-                                            mText.enabled = false;
-                                    }
-                                    break;
-                            }
+                            this.LocalEnabled = false;
 
                             mEffect = false;
 
                             // do fade out callback
-                            if (fadeOutCallback != null)
-                                fadeOutCallback.Invoke();
+                            if (onFadeOut != null)
+                                onFadeOut.Invoke();
 
                             return;
                         }
 
-                        mAlpha -= Time.deltaTime / mFadeTime;
+                        mAlpha -= JCS_Time.DeltaTime(mDeltaTimeType) / mFadeTime;
                     }
                     break;
 
@@ -279,13 +241,13 @@ namespace JCSUnity
                             mEffect = false;
 
                             // do fade in callback
-                            if (fadeInCallback != null)
-                                fadeInCallback.Invoke();
+                            if (onFadeIn != null)
+                                onFadeIn.Invoke();
 
                             return;
                         }
 
-                        mAlpha += Time.deltaTime / mFadeTime;
+                        mAlpha += JCS_Time.DeltaTime(mDeltaTimeType) / mFadeTime;
                     }
                     break;
             }
@@ -293,6 +255,9 @@ namespace JCSUnity
             Color screenColor = this.LocalColor;
             screenColor.a = mAlpha;
             this.LocalColor = screenColor;
+
+            if (onFading != null)
+                onFading.Invoke(mAlpha);
         }
     }
 }

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,7 +24,7 @@ namespace JCSUnity
             Drop,
         };
 
-        [Header("** Runtime Variables (JCS_DragDropObject) **")]
+        [Separator("Runtime Variables (JCS_DragDropObject)")]
 
         [Tooltip("Type of the drag and drop target.")]
         [SerializeField]

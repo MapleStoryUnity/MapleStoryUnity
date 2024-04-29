@@ -8,6 +8,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Test Variables (JCS_ScriptTester) **")]
+        [Separator("Test Variables (JCS_ScriptTester)")]
 
         [Tooltip("Dialogue system use to test. If null will use the default from 'JCS_UtilitiesManager'.")]
         [SerializeField]

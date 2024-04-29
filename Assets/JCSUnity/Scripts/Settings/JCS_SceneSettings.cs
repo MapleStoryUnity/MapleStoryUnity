@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,17 +18,20 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public const float MAX_SCENE_FADEIN_TIME = 5.0f;
-        public const float MIN_SCENE_FADEIN_TIME = 0.0f;
+        [Separator("Check Variables (JCS_SceneSettings)")]
 
-        [Header("** Runtime Variables (JCS_SceneSettings) **")]
+        [Tooltip("True when is switching scene.")]
+        [ReadOnly]
+        public bool SWITCHING_SCENE = false;
 
-        [Tooltip("General Scene fadout time. (For all scene.)")]
-        [Range(MIN_SCENE_FADEIN_TIME, MAX_SCENE_FADEIN_TIME)]
+        [Separator("Runtime Variables (JCS_SceneSettings)")]
+
+        [Tooltip("General Scene fadout time. (For all scene)")]
+        [Range(0.0f, 5.0f)]
         public float SCENE_FADEOUT_TIME = 1.5f;
 
-        [Tooltip("General Scene fadein time. (For all scene.)")]
-        [Range(MIN_SCENE_FADEIN_TIME, MAX_SCENE_FADEIN_TIME)]
+        [Tooltip("General Scene fadein time. (For all scene)")]
+        [Range(0.0f, 5.0f)]
         public float SCENE_FADEIN_TIME = 1.5f;
 
         [Tooltip("Screen color to fade in/out the scene.")]
@@ -43,19 +47,17 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get the real scene fade out time base on
-        /// the scene manager override setting?
+        /// Return the time for fade out the scene base on the settings.
         /// </summary>
-        /// <returns> time to fade out the scene </returns>
-        public float GetSceneFadeOutTimeBaseOnSetting()
+        public float SceneFadeOutTimeBaseOnSetting()
         {
-            JCS_SceneManager jcsSm = JCS_SceneManager.instance;
+            var sm = JCS_SceneManager.instance;
 
             // check if override the setting.
-            if (jcsSm.OverrideSetting)
+            if (sm.OverrideSetting)
             {
                 // return the override value.
-                return jcsSm.SceneFadeOutTime;
+                return sm.SceneFadeOutTime;
             }
 
             // if not override, 
@@ -64,19 +66,17 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get the real scene fade in time base on
-        /// the scene manager override setting?
+        /// Return the time for fade in the scene base on the settings.
         /// </summary>
-        /// <returns> time to fade in the scene </returns>
-        public float GetSceneFadeInTimeBaseOnSetting()
+        public float SceneFadeInTimeBaseOnSetting()
         {
-            JCS_SceneManager jcsSm = JCS_SceneManager.instance;
+            var sm = JCS_SceneManager.instance;
 
             // check if override the setting.
-            if (jcsSm.OverrideSetting)
+            if (sm.OverrideSetting)
             {
                 // return the override value.
-                return jcsSm.SceneFadeInTime;
+                return sm.SceneFadeInTime;
             }
 
             // if not override, 
@@ -97,6 +97,8 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_SceneSettings _old, JCS_SceneSettings _new)
         {
+            _new.SWITCHING_SCENE = _old.SWITCHING_SCENE;
+
             _new.SCENE_FADEIN_TIME = _old.SCENE_FADEIN_TIME;
             _new.SCENE_FADEOUT_TIME = _old.SCENE_FADEOUT_TIME;
             _new.SCREEN_COLOR = _old.SCREEN_COLOR;

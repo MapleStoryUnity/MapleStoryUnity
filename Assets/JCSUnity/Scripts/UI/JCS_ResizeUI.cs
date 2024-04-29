@@ -6,9 +6,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,7 +26,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
         private Image mImage = null;
 
-        [Header("** Helper Variables (JCS_ResizeUI) **")]
+        [Separator("Helper Variables (JCS_ResizeUI)")]
 
         [Tooltip("Show the resize panel during debug?")]
         [SerializeField]
@@ -41,18 +41,21 @@ namespace JCSUnity
         private Sprite mImageSprite = null;
 #endif
 
-        [Header("** Check Variables (JCS_ResizeUI) **")]
+        [Separator("Check Variables (JCS_ResizeUI)")]
 
         [Tooltip("Width scale.")]
         [SerializeField]
+        [ReadOnly]
         private float mWScale = 1.0f;
 
         [Tooltip("Height scale.")]
         [SerializeField]
+        [ReadOnly]
         private float mHScale = 1.0f;
 
         [Tooltip("Target scale.")]
         [SerializeField]
+        [ReadOnly]
         private float mTargetScale = 0.0f;
 
         /* Setter & Getter */

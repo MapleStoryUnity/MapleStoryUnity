@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize (JCS_LangDataList) **")]
+        [Separator("Initialize (JCS_LangDataList)")]
 
         [Tooltip("List of language data.")]
         [SerializeField]

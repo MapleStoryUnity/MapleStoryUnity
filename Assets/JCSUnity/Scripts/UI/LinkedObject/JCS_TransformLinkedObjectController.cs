@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_TransformLinkedObjectController) **")]
+        [Separator("Helper Variables (JCS_TransformLinkedObjectController)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -53,19 +54,20 @@ namespace JCSUnity
         private int mRemoveCount = 1;
 #endif
 
-        [Header("** Check Variables (JCS_TransformLinkedObjectController) **")]
+        [Separator("Check Variables (JCS_TransformLinkedObjectController)")]
 
         [Tooltip("List of all managed transform linked object.")]
         [SerializeField]
+        [ReadOnly]
         private List<JCS_TransformLinkedObject> mManagedList = null;
 
-        [Header("** Initialize Variables (JCS_TransformLinkedObjectController) **")]
+        [Separator("Initialize Variables (JCS_TransformLinkedObjectController)")]
 
         [Tooltip("Main clone linked object.")]
         [SerializeField]
         private JCS_TransformLinkedObject mClone = null;
 
-        [Header("** Runtime Variables (JCS_TransformLinkedObjectController) **")]
+        [Separator("Runtime Variables (JCS_TransformLinkedObjectController)")]
 
         [Tooltip("Transform vector offset for each linked object.")]
         [SerializeField]
@@ -123,7 +125,7 @@ namespace JCSUnity
 
             for (int index = startIndex; index < maxIndex; ++index)
             {
-                var newNode = JCS_Util.SpawnGameObject(mClone) as JCS_TransformLinkedObject;
+                var newNode = JCS_Util.Instantiate(mClone) as JCS_TransformLinkedObject;
 
                 // Set to it centers.
                 {

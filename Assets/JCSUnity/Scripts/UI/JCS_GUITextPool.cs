@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_GUITextPool) **")]
+        [Separator("Initialize Variables (JCS_GUITextPool)")]
 
         [Tooltip("Log text decoration.")]
         [SerializeField]
@@ -117,7 +118,7 @@ namespace JCSUnity
             for (int count = 0; count < mNumberOfHandle; ++count)
             {
                 // spawn a new game object, and get the component
-                JCS_LogText logText = (JCS_LogText)JCS_Util.SpawnGameObject(mLogText);
+                var logText = JCS_Util.Instantiate(mLogText) as JCS_LogText;
 
                 // add to array
                 mLogTexts.set(count, logText);

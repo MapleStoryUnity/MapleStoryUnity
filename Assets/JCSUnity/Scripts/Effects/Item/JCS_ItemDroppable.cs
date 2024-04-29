@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -30,7 +31,7 @@ namespace JCSUnity
         };
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_ItemDroppable) **")]
+        [Separator("Helper Variables (JCS_ItemDroppable)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -41,7 +42,7 @@ namespace JCSUnity
         private KeyCode mDropItemKey = KeyCode.B;
 #endif
 
-        [Header("** Runtime Variables (JCS_ItemDroppable) **")]
+        [Separator("Runtime Variables (JCS_ItemDroppable)")]
 
         [Tooltip(@"Weather or drop will depends on 
 this variables first, before to do the actually 
@@ -142,7 +143,7 @@ just stop there.")]
         [SerializeField]
         private bool mBounceBackfromWall = true;
 
-        [Header("** Audio (JCS_ItemDroppable) **")]
+        [Header("- Audio")]
 
         [Tooltip("Drop Sound.")]
         [SerializeField]
@@ -346,10 +347,10 @@ just stop there.")]
             bool waveEffect,
             bool destroyFade)
         {
-            JCS_Item newItem = (JCS_Item)JCS_Util.SpawnGameObject(
+            var newItem = JCS_Util.Instantiate(
                item,
                this.transform.position,
-               this.transform.rotation);
+               this.transform.rotation) as JCS_Item;
 
             bool isEvenIndex = ((index % 2) == 0) ? true : false;
 
@@ -524,7 +525,7 @@ just stop there.")]
             if (mDropSound == null)
                 return;
 
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mDropSound);
+            JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mDropSound);
         }
     }
 }

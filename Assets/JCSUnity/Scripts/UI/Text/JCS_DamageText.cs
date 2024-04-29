@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -30,7 +31,7 @@ namespace JCSUnity
 
         private bool mActive = false;
 
-        [Header("** Runtime Variables (JCS_DamageText) **")]
+        [Separator("Runtime Variables (JCS_DamageText)")]
 
         [Tooltip("Type of how damage text goes out.")]
         [SerializeField]
@@ -57,7 +58,11 @@ namespace JCSUnity
         [SerializeField]
         private int mBaseOrderLayer = 5;
 
-        [Header("** Caplitaize Effect (JCS_DamageText) **")]
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
+        [Header("- Caplitaize Effect")]
 
         [Tooltip("The first letter will be bigger then other base on the scale variable below.")]
         [SerializeField]
@@ -67,7 +72,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mCapitalLetterScale = new Vector3(2, 2, 2);
 
-        [Header("** Wave Zigge Effect (JCS_DamageText) **")]
+        [Header("- Wave Zigge Effect")]
 
         [Tooltip("Each digit will goes up and down in order.")]
         [SerializeField]
@@ -77,7 +82,7 @@ namespace JCSUnity
         [SerializeField]
         private float mWaveZigge = 0.1f;
 
-        [Header("** Asymptotic Scale Effect (JCS_DamageText) **")]
+        [Header("- Asymptotic Scale Effect (JCS_DamageText)")]
 
         [Tooltip("Do the asymptotic scale effect?")]
         [SerializeField]
@@ -99,7 +104,7 @@ namespace JCSUnity
 
         private SpriteRenderer mCriticalSprite = null;
 
-        [Header("** Critical Strike Sprite Setting (JCS_DamageText) **")]
+        [Header("- Critical Strike Sprite")]
 
         [Tooltip("Scale value to critical sprites.")]
         [SerializeField]
@@ -126,7 +131,7 @@ namespace JCSUnity
         private float mMaxSize = 1.0f;
 
         // Damage Text
-        [Header("** Damage Text Setting (if the game have this kind of feature fill this out!) **")]
+        [Header("- Damage Text Setting (if the game have this kind of feature fill this out!)")]
 
         [Tooltip("Damage text miss.")]
         [SerializeField]
@@ -179,6 +184,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool isActive() { return this.mActive; }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -431,7 +437,7 @@ namespace JCSUnity
         private void MoveUp()
         {
             Vector3 newPos = this.transform.position;
-            newPos.y += mMoveSpeed * Time.deltaTime;
+            newPos.y += mMoveSpeed * JCS_Time.DeltaTime(mDeltaTimeType);
             this.transform.position = newPos;
 
             Fade();
@@ -443,7 +449,7 @@ namespace JCSUnity
         private void Fade()
         {
             Color col = new Color();
-            float fadeValue = mFadeSpeed * Time.deltaTime;
+            float fadeValue = mFadeSpeed * JCS_Time.DeltaTime(mDeltaTimeType);
 
             foreach (SpriteRenderer sr in mSpriteRenderers)
             {

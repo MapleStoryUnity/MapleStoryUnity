@@ -7,6 +7,7 @@
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
 
         private JCS_3DLookAtAction mLookAtAction = null;
 
-        [Header("** Initialize Variables (JCS_3DCameraPlayer) **")]
+        [Separator("Initialize Variables (JCS_3DCameraPlayer)")]
 
         [Tooltip("Object the character want to look at.")]
         [SerializeField]
@@ -32,7 +33,7 @@ namespace JCSUnity
         [Range(0.0f, 50.0f)]
         private float mLookDistance = 5.0f;
 
-        [Header("** Runtime Variables (JCS_3DCameraPlayer) **")]
+        [Separator("Runtime Variables (JCS_3DCameraPlayer)")]
 
         [Tooltip("How hard this player jumps.")]
         [SerializeField]
@@ -89,7 +90,7 @@ namespace JCSUnity
             if (mCharacterController.enabled)
             {
                 // apply force
-                mCharacterController.Move(transform.forward * mVelocity.z * Time.deltaTime);
+                mCharacterController.Move(transform.forward * mVelocity.z * JCS_Time.DeltaTime(mDeltaTimeType));
             }
         }
 
@@ -114,7 +115,7 @@ namespace JCSUnity
             if (mLookPoint == null)
                 return;
 
-            JCS_Camera cam = JCS_Camera.main;
+            var cam = JCS_Camera.main;
 
             Vector3 newPos = this.transform.localPosition;
             Vector3 direction = Vector3.zero;

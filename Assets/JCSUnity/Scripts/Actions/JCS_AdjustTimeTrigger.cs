@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.Events;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,24 +20,27 @@ namespace JCSUnity
         /* Variables */
 
         // action to trigger if the time is reached.
-        public EmptyFunction actions = null;
+        public EmptyFunction onAction = null;
 
-        [Header("** Check Variables (JCS_AdjustTimeTrigger) **")]
+        [Separator("Check Variables (JCS_AdjustTimeTrigger)")]
 
         [Tooltip(@"Time to record down the real time to do one action after 
 we calculate the real time.")]
         [SerializeField]
+        [ReadOnly]
         private float mRealTimeZone = 0.0f;
 
         [Tooltip("Timer to check if reach the real time zone.")]
         [SerializeField]
+        [ReadOnly]
         private float mTimer = 0.0f;
 
         [Tooltip("check if the action trigger.")]
         [SerializeField]
+        [ReadOnly]
         private bool mDidAction = false;
 
-        [Header("** Runtime Variables (JCS_AdjustTimeTrigger) **")]
+        [Separator("Runtime Variables (JCS_AdjustTimeTrigger)")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]
@@ -52,16 +56,21 @@ we calculate the real time.")]
         [Range(0.0f, 20.0f)]
         private float mAdjustTimeZone = 1.5f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Event that will be triggered.")]
         [SerializeField]
-        private UnityEvent mUnityEvents = null;
+        private UnityEvent mOnAction = null;
 
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
-        public UnityEvent UnityEvents { get { return this.mUnityEvents; } set { this.mUnityEvents = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
 
         /* Functions */
 
@@ -94,17 +103,17 @@ we calculate the real time.")]
             if (mDidAction)
                 ResetTimeZone();
 
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mRealTimeZone > mTimer)
                 return;
 
             // active actions.
-            if (actions != null)
-                actions.Invoke();
+            if (onAction != null)
+                onAction.Invoke();
 
-            if (mUnityEvents != null)
-                mUnityEvents.Invoke();
+            if (mOnAction != null)
+                mOnAction.Invoke();
 
             mDidAction = true;
         }

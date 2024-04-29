@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_ItemIgnore) **")]
+        [Separator("Initialize Variables (JCS_ItemIgnore)")]
 
         [Tooltip("Add this effect to all the children from this gameobject.")]
         [SerializeField]

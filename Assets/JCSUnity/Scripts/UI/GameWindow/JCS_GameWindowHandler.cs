@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,26 +18,26 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** System Dialogue **")]
+        [Separator("System Dialogue")]
 
         [Tooltip("System UI instances.")]
         [SerializeField]
         private JCS_DialogueObject[] mSystemUI = null;
 
-        [Header("** Game User Interface **")]
+        [Separator("Game User Interface")]
 
         [Tooltip("Game UI instance.")]
         [SerializeField]
         private JCS_DialogueObject mGameUI = null;
 
-        [Header("** NPC Dialogue **")]
+        [Separator("NPC Dialogue")]
 
         [Tooltip("NPC dialogue instance.")]
         [SerializeField]
         private JCS_DialogueObject mNPCDialogue = null;
 
         // List of all the Game Window we are going to use in the game
-        [Header("** Player Dialogue **")]
+        [Separator("Player Dialogue")]
 
         [Tooltip("Player dialgoue instances.")]
         [SerializeField]
@@ -156,7 +157,7 @@ namespace JCSUnity
             if (obj == null)
                 return null;
 
-            obj = (JCS_DialogueObject)JCS_Util.SpawnGameObject(obj);
+            obj = JCS_Util.Instantiate(obj) as JCS_DialogueObject;
             obj.Show();
             obj.OpenKey = KeyCode.None;
 
@@ -178,7 +179,7 @@ namespace JCSUnity
                 if (list[index] == null)
                     continue;
 
-                list[index] = (JCS_DialogueObject)JCS_Util.SpawnGameObject(list[index]);
+                list[index] = JCS_Util.Instantiate(list[index]) as JCS_DialogueObject;
                 list[index].Hide();
             }
 

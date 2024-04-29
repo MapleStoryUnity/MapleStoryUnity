@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,17 +22,22 @@ namespace JCSUnity
 
         private JCS_FadeType mType = JCS_FadeType.NONE;
 
-        [Header("** Check Variables (JCS_FadeSound) **")]
+        [Separator("Check Variables (JCS_FadeSound)")]
 
         [Tooltip("Do the effect?")]
         [SerializeField]
+        [ReadOnly]
         private bool mEffect = false;
 
-        [Header("** Runtime Variables (JCS_FadeSound) **")]
+        [Separator("Runtime Variables (JCS_FadeSound)")]
 
         [Tooltip("Fade out time.")]
         [SerializeField]
         private float mFadeOutTime = 1.0f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.UNSCALED_DELTA_TIME;
 
         [Tooltip("Fade in time.")]
         [SerializeField]
@@ -44,6 +50,7 @@ namespace JCSUnity
 
         public void SetFadeOutTime(float t) { this.mFadeOutTime = t; }
         public void SetFadeInTime(float t) { this.mFadeInTime = t; }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public AudioSource GetAudioSource() { return this.mAudioSource; }
 
@@ -179,7 +186,7 @@ namespace JCSUnity
             {
                 case JCS_FadeType.FADE_OUT:
                     {
-                        mAudioSource.volume -= mRecordVolume / mFadeOutTime * Time.deltaTime;
+                        mAudioSource.volume -= mRecordVolume / mFadeOutTime * JCS_Time.DeltaTime(mDeltaTimeType);
 
                         if (mAudioSource.volume <= mTargetVolume)
                         {
@@ -190,7 +197,7 @@ namespace JCSUnity
                     break;
                 case JCS_FadeType.FADE_IN:
                     {
-                        mAudioSource.volume += mRecordVolume / mFadeInTime * Time.deltaTime;
+                        mAudioSource.volume += mRecordVolume / mFadeInTime * JCS_Time.DeltaTime(mDeltaTimeType);
 
                         if (mAudioSource.volume >= mTargetVolume)
                         {

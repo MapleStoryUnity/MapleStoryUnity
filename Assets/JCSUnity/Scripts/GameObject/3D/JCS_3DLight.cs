@@ -7,6 +7,7 @@
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,13 +27,13 @@ namespace JCSUnity
 
         private JCS_ValueTweener mValueTweener = null;
 
-        [Header("** Runtime Variables (JCS_3DLight) **")]
+        [Separator("Runtime Variables (JCS_3DLight)")]
 
         [Tooltip("Flag for active this component.")]
         [SerializeField]
         private bool mActive = true;
 
-        [Header("** Min/Max Settings (JCS_3DLight) **")]
+        [Header("- Min/Max")]
 
         [Tooltip("Mininum value of the light's range.")]
         [SerializeField]
@@ -60,7 +61,7 @@ namespace JCSUnity
             this.mValueTweener.set_float = SetLight_Range;
             this.mValueTweener.get_float = GetLight_Range;
 
-            this.mAdjustTimerTrigger.actions = DoRange;
+            this.mAdjustTimerTrigger.onAction = DoRange;
         }
 
         private void SetLight_Range(float newVal) { this.mLight.range = newVal; }

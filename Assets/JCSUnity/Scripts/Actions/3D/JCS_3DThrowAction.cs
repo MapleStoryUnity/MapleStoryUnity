@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_3DThrowAction) **")]
+        [Separator("Helper Variables (JCS_3DThrowAction)")]
 
         [Tooltip("Target to test to throw to.")]
         [SerializeField]
@@ -29,7 +30,8 @@ namespace JCSUnity
         private KeyCode mTestWithVelKey = KeyCode.None;
 
         [Tooltip("Force to hit the target.")]
-        [SerializeField] [Range(0.1f, 300.0f)]
+        [SerializeField]
+        [Range(0.1f, 300.0f)]
         private float mForce = 20.0f;
 
         [Tooltip("Key to use to test using the time function.")]
@@ -37,11 +39,19 @@ namespace JCSUnity
         private KeyCode mTestWithTimeKey = KeyCode.None;
 
         [Tooltip("Target time to hit the target.")]
-        [SerializeField] [Range(1.0f, 10.0f)]
+        [SerializeField]
+        [Range(1.0f, 10.0f)]
         private float mTime = 1.0f;
 #endif
 
-        [Header("** Runtime Variables (JCS_3DThrowAction) **")]
+        [Separator("Check Variables (JCS_3DThrowAction)")]
+
+        [Tooltip("Velocity of the object.")]
+        [SerializeField]
+        [ReadOnly]
+        private Vector3 mVelocity = Vector3.zero;
+
+        [Separator("Runtime Variables (JCS_3DThrowAction)")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]
@@ -52,12 +62,16 @@ namespace JCSUnity
         [Range(0.1f, 30.0f)]
         private float mGravityProduct = 1.0f;
 
-        private Vector3 mVelocity = Vector3.zero;
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public Vector3 Velocity { get { return this.mVelocity; } }
         public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -70,11 +84,13 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             // make it effect by gravity.
-            this.mVelocity.y += -JCS_GameConstant.GRAVITY * mGravityProduct * Time.deltaTime;
+            this.mVelocity.y += -JCS_GameConstant.GRAVITY * mGravityProduct * dt;
 
             // add up velocity.
-            this.transform.position += mVelocity * Time.deltaTime;
+            this.transform.position += mVelocity * dt;
         }
 
 #if UNITY_EDITOR
@@ -106,25 +122,11 @@ namespace JCSUnity
         /// <param name="time"> Time. </param>
         public void ThrowByTime(Vector3 targetPos, float time)
         {
-            float displacementX = Mathf.Abs(targetPos.x - this.transform.position.x);
-            float displacementY = Mathf.Abs(targetPos.y - this.transform.position.y);
-            float displacementZ = Mathf.Abs(targetPos.z - this.transform.position.z);
+            Vector3 displacement = targetPos - this.transform.position;
 
-            /* Displacement include direction, is a vector quantity. */
-            {
-                if (targetPos.x < this.transform.position.x)
-                    displacementX = -displacementX;
-
-                if (targetPos.z < this.transform.position.z)
-                    displacementZ = -displacementZ;
-
-                if (targetPos.y < this.transform.position.y)
-                    displacementY = -displacementY;
-            }
-
-            mVelocity.x = displacementX / time;
-            mVelocity.z = displacementZ / time;
-            mVelocity.y = (displacementY - (-JCS_GameConstant.GRAVITY * mGravityProduct * time * time / 2)) / time;
+            mVelocity.x = displacement.x / time;
+            mVelocity.z = displacement.z / time;
+            mVelocity.y = (displacement.y - (-JCS_GameConstant.GRAVITY * mGravityProduct * time * time / 2)) / time;
 
             // start dropping.
             this.mActive = true;
@@ -149,8 +151,8 @@ namespace JCSUnity
         /// <param name="vel"> velocity to hit the point. </param>
         public void ThrowByForce(Vector3 targetPos, float vel)
         {
-            float distanceX = Mathf.Abs(targetPos.x - this.transform.position.x);
-            float time = distanceX / vel;
+            float distance = Vector3.Distance(targetPos, this.transform.position);
+            float time = distance / vel;
 
             ThrowByTime(targetPos, time);
         }

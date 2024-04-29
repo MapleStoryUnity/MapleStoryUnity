@@ -7,6 +7,7 @@
  *	                 Copyright © 2021 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_ShowCanvasGamepadButton) **")]
+        [Separator("Runtime Variables (JCS_ShowCanvasGamepadButton)")]
 
         [Tooltip("Array of canvas to show.")]
         public JCS_Canvas[] canvas = null;

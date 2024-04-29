@@ -40,7 +40,7 @@ namespace JCSUnity
                 // get all the jcs_panellayer in the scene
                 JCS_GUIComponentLayer[] jcspls = parentObj.GetComponentsInChildren<JCS_GUIComponentLayer>();
 
-                JCS_Sort<JCS_GUIComponentLayer> jcsS = new JCS_Sort<JCS_GUIComponentLayer>();
+                var jcsS = new JCS_Sort<JCS_GUIComponentLayer>();
 
                 jcsS.AddAll(jcspls);
 

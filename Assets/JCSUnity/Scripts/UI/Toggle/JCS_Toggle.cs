@@ -7,6 +7,7 @@
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -30,7 +31,7 @@ namespace JCSUnity
         private JCS_ColorTweener mColorTweener = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_Toggle) **")]
+        [Separator("Helper Variables (JCS_Toggle)")]
 
         [Tooltip("Test module with the key?")]
         [SerializeField]
@@ -45,7 +46,7 @@ namespace JCSUnity
         private KeyCode mToggleInteractable = KeyCode.S;
 #endif
 
-        [Header("** Initialize Variables (JCS_Toggle) **")]
+        [Separator("Initialize Variables (JCS_Toggle)")]
 
         [Tooltip("Set the on/off position the same as the current " +
         "sign's position.")]
@@ -56,8 +57,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mColorSameAsEditingStatus = true;
 
-
-        [Header("** Runtime Variables (JCS_Toggle) **")]
+        [Separator("Runtime Variables (JCS_Toggle)")]
 
         [Tooltip("Sign of this toggle.")]
         [SerializeField]
@@ -75,8 +75,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mOffPos = new Vector3(-20.0f, 0.0f, 0.0f);
 
-
-        [Header("- Color (JCS_Toggle) ")]
+        [Header("- Color")]
 
         [Tooltip("Button color when is on.")]
         [SerializeField]

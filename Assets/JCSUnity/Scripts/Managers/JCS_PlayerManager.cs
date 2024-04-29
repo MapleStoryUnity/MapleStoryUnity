@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,14 +19,16 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_PlayerManager) **")]
+        [Separator("Check Variables (JCS_PlayerManager)")]
 
         [Tooltip("current player that are active")]
         [SerializeField]
+        [ReadOnly]
         private JCS_Player mActivePlayer = null;
 
         [Tooltip("List of all the player in the game.")]
         [SerializeField]
+        [ReadOnly]
         private List<JCS_Player> mPlayers = null;
 
         /* Setter & Getter */
@@ -49,7 +52,7 @@ namespace JCSUnity
             // if the game only allow one play do the function
             // in order to take the effect.
             if (JCS_GameSettings.instance.ACTIVE_ONE_PLAYER)
-                ActiveOnePlayer(JCS_GameManager.instance.GetJCSPlayer());
+                ActiveOnePlayer(JCS_GameManager.instance.Player);
         }
 
 #if UNITY_EDITOR
@@ -408,11 +411,11 @@ namespace JCSUnity
         public void AddAllPlayerToMultiTrack()
         {
             // find the object in the scene.
-            JCS_2DMultiTrackCamera jcs2dmtc = (JCS_2DMultiTrackCamera)FindObjectOfType(typeof(JCS_2DMultiTrackCamera));
+            var mtc = JCS_Util.FindObjectByType(typeof(JCS_2DMultiTrackCamera)) as JCS_2DMultiTrackCamera;
 
             foreach (JCS_Player p in mPlayers)
             {
-                jcs2dmtc.AddTargetToTrackList(p);
+                mtc.AddTargetToTrackList(p);
             }
         }
 
@@ -422,11 +425,11 @@ namespace JCSUnity
         public void RemoveAllPlayerFromMultiTrack()
         {
             // find the object in the scene.
-            JCS_2DMultiTrackCamera jcs2dmtc = (JCS_2DMultiTrackCamera)FindObjectOfType(typeof(JCS_2DMultiTrackCamera));
+            var mtc = JCS_Util.FindObjectByType(typeof(JCS_2DMultiTrackCamera)) as JCS_2DMultiTrackCamera;
 
             foreach (JCS_Player p in mPlayers)
             {
-                jcs2dmtc.RemoveTargetFromTrackList(p);
+                mtc.RemoveTargetFromTrackList(p);
             }
         }
     }

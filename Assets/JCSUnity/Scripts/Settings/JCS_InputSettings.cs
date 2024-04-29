@@ -8,6 +8,7 @@
  */
 using System;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -67,7 +68,7 @@ namespace JCSUnity
         [Serializable]
         public struct JoystickMap
         {
-            [Header("** Check Varaibles (JoystickMap) **")]
+            [Separator("Check Varaibles (JoystickMap)")]
 
             [Tooltip("Right stick x value.")]
             public float stickRightXVal;
@@ -81,8 +82,7 @@ namespace JCSUnity
             [Tooltip("Left stick y value.")]
             public float stickLeftYVal;
 
-
-            [Header("** Initialize Varaibles (JoystickMap) **")]
+            [Separator("Initialize Varaibles (JoystickMap)")]
 
             #region Button
 
@@ -169,13 +169,13 @@ namespace JCSUnity
 
 
 #if UNITY_EDITOR
-        [Header("** Helper Varaibles (JCS_InputSettings) **")]
+        [Separator("Helper Varaibles (JCS_InputSettings)")]
 
         [Tooltip("All joystick's name.")]
         public string[] joystickNames = null;
 #endif
 
-        [Header("** Initialize Varaibles (JCS_InputSettings) **")]
+        [Separator("Initialize Varaibles (JCS_InputSettings)")]
 
         [Tooltip("Targeting game pad going to use in the game.")]
         [SerializeField]
@@ -185,7 +185,7 @@ namespace JCSUnity
         private JoystickMap[] mJoysticks = new JoystickMap[MAX_JOYSTICK_COUNT];
 
 
-        [Header("** Runtime Varaibles (JCS_InputSettings) **")]
+        [Separator("Runtime Varaibles (JCS_InputSettings)")]
 
         [Tooltip("Total maxinum game pad will live in game.")]
         [SerializeField]

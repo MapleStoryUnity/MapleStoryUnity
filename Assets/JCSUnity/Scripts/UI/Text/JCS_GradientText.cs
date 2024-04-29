@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -24,7 +25,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_GradientText) **")]
+        [Separator("Runtime Variables (JCS_GradientText)")]
 
         [Tooltip("Type of the gradient action.")]
         [SerializeField]

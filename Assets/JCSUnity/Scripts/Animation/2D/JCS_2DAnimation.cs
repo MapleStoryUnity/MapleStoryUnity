@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,10 +23,10 @@ namespace JCSUnity
         public EmptyFunction playFrameCallback = null;
 
         // animator using this animation?
-        private JCS_2DAnimator mJCS2DAnimator = null;
+        private JCS_2DAnimator mAnimator = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables Variables (JCS_I2DAnimator) **")]
+        [Separator("Helper Variables Variables (JCS_2DAnimation)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -44,14 +45,16 @@ namespace JCSUnity
         private KeyCode mPauseKey = KeyCode.E;
 #endif
 
-        [Header("** Check Variables (JCS_Animation) **")]
+        [Separator("Check Variables (JCS_Animation)")]
 
         [Tooltip("Frame this animation current playing.")]
         [SerializeField]
+        [ReadOnly]
         private int mCurrentPlayingFrame = 0;
 
         [Tooltip("Maxinum frame in the animation.")]
         [SerializeField]
+        [ReadOnly]
         private int mMaxFrame = 0;
 
         // flag to know if the animation is done.
@@ -59,13 +62,13 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsDonePlaying = false;
 
-        [Header("** Initialize Variables (JCS_Animation) **")]
+        [Separator("Initialize Variables (JCS_Animation)")]
 
         [Tooltip("Starting frame index.")]
         [SerializeField]
         private int mStartingFrame = 0;
 
-        [Header("** Runtime Variables (JCS_Animation) **")]
+        [Separator("Runtime Variables (JCS_Animation)")]
 
         [Tooltip("Do play the animation?")]
         [SerializeField]
@@ -79,6 +82,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mLoop = true;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Sprite displayed when the animation stopped.")]
         [SerializeField]
         private Sprite mNullSprite = null;
@@ -87,9 +94,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mNullSpriteAfterDonePlayingAnim = false;
 
-        [Tooltip("FPS for the animation to play.")]
+        [Tooltip("SPF for the animation to play.")]
         [SerializeField]
-        private float mFramePerSec = 0.1f;
+        [Range(0.0f, 30.0f)]
+        private float mSecPerFrame = 0.1f;
 
         // timer to decide next frame.
         private float mFrameTimer = 0;
@@ -99,14 +107,16 @@ namespace JCSUnity
         private Sprite[] mAnimFrames = null;
 
         [Tooltip("How fast the animation plays.")]
-        [SerializeField] [Range(0.0f, 5.0f)]
+        [SerializeField]
+        [Range(0.0f, 5.0f)]
         private float mAnimationTimeProduction = 1.0f;
 
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool PlayOnAwake { get { return this.mPlayOnAwake; } set { this.mPlayOnAwake = value; } }
-        public int CurrentPlayingFrame {
+        public int CurrentPlayingFrame
+        {
             get { return this.mCurrentPlayingFrame; }
             set
             {
@@ -117,9 +127,10 @@ namespace JCSUnity
             }
         }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         // Is the animation done playing?
         public bool IsDonePlaying { get { return this.mIsDonePlaying; } }
-        public void SetJCS2DAnimator(JCS_2DAnimator jcs2dAnimator) { this.mJCS2DAnimator = jcs2dAnimator; }
+        public void SetAnimator(JCS_2DAnimator animator) { this.mAnimator = animator; }
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
         public Sprite CurrentSprite { get { return this.mAnimFrames[mCurrentPlayingFrame]; } }
         public Sprite NullSprite { get { return this.mNullSprite; } set { this.mNullSprite = value; } }
@@ -132,7 +143,7 @@ namespace JCSUnity
             Awake();
         }
         public Sprite[] GetAnimationFrame() { return this.mAnimFrames; }
-        public float FramePerSec { get { return this.mFramePerSec; } set { this.mFramePerSec = value; } }
+        public float SecPerFrame { get { return this.mSecPerFrame; } set { this.mSecPerFrame = value; } }
 
         /* Functions */
 
@@ -288,6 +299,9 @@ namespace JCSUnity
         /// </param>
         public void PlayFrame(int frame)
         {
+            if (mAnimFrames.Length == 0)
+                return;
+
             this.mCurrentPlayingFrame = frame;
 
             PutAnimInFrame();
@@ -332,16 +346,16 @@ namespace JCSUnity
                 return;
 
             // start the timer.
-            mFrameTimer += Time.deltaTime;
+            mFrameTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // get the time per seconds.
             // NOTE(jenchieh): multiple you own animate production first.
-            float timePerSec = mFramePerSec * mAnimationTimeProduction;
+            float timePerSec = mSecPerFrame * mAnimationTimeProduction;
 
             // if there is animator taking over this animation.
             // times the production time!
-            if (mJCS2DAnimator != null)
-                timePerSec = mFramePerSec * mJCS2DAnimator.AnimationTimeProduction;
+            if (mAnimator != null)
+                timePerSec = mSecPerFrame * mAnimator.AnimationTimeProduction;
 
             // check timer reach the next frame time.
             if (mFrameTimer < timePerSec)

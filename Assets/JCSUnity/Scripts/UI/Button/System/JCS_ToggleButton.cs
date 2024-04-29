@@ -7,6 +7,8 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using UnityEngine.Events;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,17 +22,27 @@ namespace JCSUnity
         public EmptyFunction onActive = null;
         public EmptyFunction onDeactive = null;
 
-        [Header("** Runtime Variables (JCS_ToggleButton) **")]
+        [Separator("Runtime Variables (JCS_ToggleButton)")]
 
         [Tooltip("Return true if toggle button currently active.")]
         [SerializeField]
         protected bool mActive = false;
 
+        [Tooltip("Execute this when toggle is on.")]
+        [SerializeField]
+        protected UnityEvent mOnAction = null;
+
+        [Tooltip("Execute this when toggle is off.")]
+        [SerializeField]
+        protected UnityEvent mOffAction = null;
+
         /* Setter & Getter */
 
-        public bool Active {
+        public bool Active
+        {
             get { return this.mActive; }
-            set {
+            set
+            {
                 if (this.mActive != value)
                 {
                     Toggle();
@@ -38,6 +50,8 @@ namespace JCSUnity
                 }
             }
         }
+        public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
+        public UnityEvent OffAction { get { return this.mOffAction; } set { this.mOffAction = value; } }
 
         /* Functions */
 
@@ -71,14 +85,11 @@ namespace JCSUnity
         /// </summary>
         public void DoActiveFunc()
         {
-            if (onActive == null)
-            {
-                JCS_Debug.LogError("You have not set the ACTIVE function ptr...");
-                return;
-            }
+            if (onActive != null)
+                onActive.Invoke();
 
-            // do the action.
-            onActive.Invoke();
+            if (mOnAction != null)
+                mOnAction.Invoke();
         }
 
         /// <summary>
@@ -86,14 +97,11 @@ namespace JCSUnity
         /// </summary>
         public void DoDeactiveFunc()
         {
-            if (onDeactive == null)
-            {
-                JCS_Debug.LogError("You have not set the DEACTIVE function ptr...");
-                return;
-            }
+            if (onDeactive != null)
+                onDeactive.Invoke();
 
-            // do the action.
-            onDeactive.Invoke();
+            if (mOffAction != null)
+                mOffAction.Invoke();
         }
     }
 }

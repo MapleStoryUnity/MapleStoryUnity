@@ -16,13 +16,17 @@ namespace JCSUnity
     /// </summary>
     public class JCS_XML_Loader
     {
+        /* Variables */
+
         private XmlNodeList mNodeList = null;
         private XmlDocument mXmlFile = null;
 
+        /* Setter & Getter */
 
         public XmlNodeList GetNodeList() { return this.mNodeList; }
         public XmlDocument GetXmlFile() { return this.mXmlFile; }
 
+        /* Functions */
 
         public JCS_XML_Loader(TextAsset file)
         {
@@ -31,6 +35,5 @@ namespace JCSUnity
 
             mNodeList = mXmlFile.GetElementsByTagName("DialogueContainer");
         }
-
     }
 }

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,17 +22,19 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
         private JCS_2DAnimator m2DAnimator = null;
 
-        [Header("** Check Variables (JCS_2DLiveObject) **")]
+        [Separator("Check Variables (JCS_2DLiveObject)")]
 
         [Tooltip("This boolean to check what type of object is this.")]
         [SerializeField]
+        [ReadOnly]
         private bool mIsPlayer = false;
 
         [Tooltip("Is the live object been target?")]
         [SerializeField]
+        [ReadOnly]
         private bool mBeenTarget = false;
 
-        [Header("** Optional Variables (JCS_2DLiveObject) **")]
+        [Separator("Optional Variables (JCS_2DLiveObject)")]
 
         [Tooltip("If the object is player from JCSUnity does not recommand using this object.")]
         [SerializeField]
@@ -46,8 +49,6 @@ this transform as a living object")]
 to get the information from them.")]
         [SerializeField]
         private JCS_AttackerRecorder mAttackRecorder = null;
-
-        private object m2DLiveObjectAnimator;
 
         /* Setter & Getter */
 

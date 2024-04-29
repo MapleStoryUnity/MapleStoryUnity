@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
 
         private Vector3 mVelocity = Vector3.zero;
 
-        [Header("** Runtime Variables (JCS_PushThrowAction) **")]
+        [Separator("Runtime Variables (JCS_PushThrowAction)")]
 
         [Tooltip("Do effect?")]
         [SerializeField]
@@ -33,11 +34,16 @@ namespace JCSUnity
         [SerializeField]
         private float mG = 2.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public float Angle { get { return this.mAngle; } set { this.mAngle = value; } }
         public float G { get { return this.mG; } set { this.mG = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -47,8 +53,10 @@ namespace JCSUnity
             if (!mEffect)
                 return;
 
-            this.mVelocity.y -= mG * Time.deltaTime;
-            this.transform.position += this.mVelocity * Time.deltaTime;
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
+            this.mVelocity.y -= mG * dt;
+            this.transform.position += this.mVelocity * dt;
         }
 
         /// <summary>
@@ -87,11 +95,10 @@ namespace JCSUnity
             // get the force.
             this.mG = force;
 
-            //calculate start velocity
+            // calculate start velocity
             float tan = Mathf.Tan(angle * Mathf.Deg2Rad);
             float h = Mathf.Abs(start.y - target.y);
             float w = Mathf.Abs(target.x - start.x);
-
 
             float vX = Mathf.Sqrt((force * w * w) / (2 * (h + w * tan)));
             float vY = tan * vX;

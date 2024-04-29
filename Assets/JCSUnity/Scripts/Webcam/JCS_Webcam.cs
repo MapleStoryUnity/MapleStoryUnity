@@ -9,6 +9,7 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -29,7 +30,7 @@ namespace JCSUnity
 
         private bool mResumeTrigger = false;
 
-        [Header("** Runtime Variables (JCS_Webcam) **")]
+        [Separator("Runtime Variables (JCS_Webcam)")]
 
         [Tooltip("Manually preserve the size in scene.")]
         [SerializeField]
@@ -48,6 +49,10 @@ namespace JCSUnity
         [SerializeField]
         [Range(0.001f, 5.0f)]
         private float mResumeTime = 3.0f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("- Effect")]
 
@@ -75,6 +80,10 @@ namespace JCSUnity
 
         [Header("- Sound")]
 
+        [Tooltip("Sound player for this component.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
+
         [Tooltip("Sound when taking the screenshot.")]
         [SerializeField]
         private AudioClip mTakePhotoSound = null;
@@ -86,6 +95,7 @@ namespace JCSUnity
         public int FPS { get { return this.mFPS; } set { this.mFPS = value; } }
         public float ResumeTime { get { return this.mResumeTime; } set { this.mResumeTime = value; } }
         public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 #if (UNITY_STANDALONE || UNITY_EDITOR)
         public KeyCode TakePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
 #endif
@@ -191,7 +201,7 @@ namespace JCSUnity
 
             JCS_IO.CreateDirectory(savePath);
 
-            Texture2D snap = new Texture2D(mWebCamTexture.width, mWebCamTexture.height);
+            var snap = new Texture2D(mWebCamTexture.width, mWebCamTexture.height);
             snap.SetPixels(mWebCamTexture.GetPixels());
             snap.Apply();
 
@@ -225,7 +235,7 @@ namespace JCSUnity
             // play sound.
             {
                 var soundm = JCS_SoundManager.instance;
-                JCS_SoundPlayer sp = soundm.GetGlobalSoundPlayer();
+                JCS_SoundPlayer sp = (mSoundPlayer) ? mSoundPlayer : soundm.GlobalSoundPlayer();
                 sp.PlayOneShot(mTakePhotoSound);
             }
 
@@ -365,9 +375,11 @@ namespace JCSUnity
         /// </summary>
         private void DoSplash()
         {
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             if (mResumeTrigger)
             {
-                mResumeTimer += Time.deltaTime;
+                mResumeTimer += dt;
 
                 if (mResumeTime < mResumeTimer)
                 {
@@ -383,7 +395,7 @@ namespace JCSUnity
 
             if (mSplashEffectTrigger)
             {
-                mDelayTimer += Time.deltaTime;
+                mDelayTimer += dt;
 
                 if (mDelayTimer > mDelayTime)
                 {

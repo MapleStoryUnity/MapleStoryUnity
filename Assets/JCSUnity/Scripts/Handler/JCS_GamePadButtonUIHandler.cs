@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,13 +24,13 @@ namespace JCSUnity
         private Image mNormalImage = null;
         private Button mButton = null;
 
-        [Header("** Initialize Variables (JCS_GamepadButtonUIHandler) **")]
+        [Separator("Initialize Variables (JCS_GamepadButtonUIHandler)")]
 
         [Tooltip("Change the selection to sprite swap at awake?")]
         [SerializeField]
         private bool mActiveSpriteSwapAtAwake = true;
 
-        [Header("- Keyboard Settings (JCS_GamepadButtonUIHandler)")]
+        [Header("- Keyboard")]
 
         [Tooltip("Sprite when button is normal. (Keyboard)")]
         [SerializeField]
@@ -47,7 +48,7 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mKDisabledSprite = null;
 
-        [Header("- Gamepad Settings (JCS_GamepadButtonUIHandler)")]
+        [Header("- Gamepad")]
 
         [Tooltip("Sprite when button is normal. (Joystick)")]
         [SerializeField]

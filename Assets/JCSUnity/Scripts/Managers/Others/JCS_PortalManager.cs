@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_PortalManager) **")]
+        [Separator("Initialize Variables (JCS_PortalManager)")]
 
         [Tooltip("All the portal in the scene. Plz setup mannually.")]
         [SerializeField]

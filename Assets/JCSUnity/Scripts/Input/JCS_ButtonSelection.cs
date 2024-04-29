@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.Events;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -29,19 +30,20 @@ namespace JCSUnity
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-        [Header("** Check Variables (JCS_ButtonSelection) **")]
+        [Separator("Check Variables (JCS_ButtonSelection)")]
 
         [Tooltip("Is this selection got active?")]
         [SerializeField]
+        [ReadOnly]
         private bool mActive = false;
 
-        [Header("** Initialize Variables (JCS_ButtonSelection) **")]
+        [Separator("Initialize Variables (JCS_ButtonSelection)")]
 
         [Tooltip("Deactive this button on Awake time?")]
         [SerializeField]
         private bool mDeactiveAtAwake = true;
 
-        [Header("** Runtime Variables (JCS_ButtonSelection) **")]
+        [Separator("Runtime Variables (JCS_ButtonSelection)")]
 
         [Tooltip("Skip this selection?")]
         [SerializeField]
@@ -55,7 +57,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_UnityObject[] mEffects = null;
 
-        [Header("- Button (JCS_ButtonSelection)")]
+        [Header("- Button")]
 
         [Tooltip("Button for selection group to handle.")]
         [SerializeField]
@@ -65,7 +67,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSelfAsButton = true;
 
-        [Header("- Full Control (JCS_ButtonSelection)")]
+        [Header("- Full Control")]
 
         [Tooltip("What is the selection ontop of this selection? (Press Up)")]
         [SerializeField]

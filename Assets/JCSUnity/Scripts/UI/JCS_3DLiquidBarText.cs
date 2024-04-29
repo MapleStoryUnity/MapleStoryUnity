@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
         // Counter with the liquid bar?
         private JCS_3DLiquidBar mLiquidBar = null;
 
-        [Header("** Runtime Variables (JCS_3DLiquidBarText) **")]
+        [Separator("Runtime Variables (JCS_3DLiquidBarText)")]
 
         [Tooltip("Text to do the effect.")]
         [SerializeField]

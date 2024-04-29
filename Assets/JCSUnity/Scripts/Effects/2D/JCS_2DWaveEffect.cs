@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_2DWaveEffect) **")]
+        [Separator("Helper Variables (JCS_2DWaveEffect)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -29,7 +30,7 @@ namespace JCSUnity
         private KeyCode mDoWaveEffectKey = KeyCode.T;
 #endif
 
-        [Header("** Runtime Variables (JCS_2DWaveEffect) **")]
+        [Separator("Runtime Variables (JCS_2DWaveEffect)")]
 
         [Tooltip("Height offset.")]
         [SerializeField]
@@ -56,12 +57,18 @@ namespace JCSUnity
 
         private float mTime = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
 
         [SerializeField]
         private JCS_2DCamera mJCS_2DCamera = null;
 
         /* Setter & Getter */
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -124,7 +131,7 @@ namespace JCSUnity
                 this.mOrigin.y = mJCS_2DCamera.GetTargetTransform().position.y;
             }
 
-            mTime += Time.deltaTime;
+            mTime += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mEffectTime > mTime)
             {

@@ -8,6 +8,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,19 +23,19 @@ namespace JCSUnity
         private JCS_2DAnimator m2DAnimator = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_2DCursor) **")]
+        [Separator("Helper Variables (JCS_2DCursor)")]
 
         [SerializeField]
         private bool mTestWithKey = false;
 #endif
 
-        [Header("** Runtime Variables (JCS_2DCursor) **")]
+        [Separator("Runtime Variables (JCS_2DCursor)")]
 
         [Tooltip("Add on offset to the cursor.")]
         [SerializeField]
         private Vector3 mCursorOffset = Vector3.zero;
 
-        [Header("** Cursor State (JCS_Cursor) **")]
+        [Header("- Cursor State")]
 
         [SerializeField]
         private JCS_CursorCustomizeType mCursorCustomizeType = JCS_CursorCustomizeType.NORMAL_SELECT;

@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_Marquee) **")]
+        [Separator("Helper Variables (JCS_Marquee)")]
 
         [Tooltip("Test this component with key event.")]
         public bool testWithKey = false;
@@ -39,12 +40,13 @@ namespace JCSUnity
         public string msgB = "又是一個廣播~";
 #endif
 
-        [Header("** Check Variables (JCS_Marquee) **")]
+        [Separator("Check Variables (JCS_Marquee)")]
 
         [SerializeField]
+        [ReadOnly]
         private JCS_3DDistanceTileAction mDistanceTileAction = null;
 
-        [Header("** Initialize Variables (JCS_Marquee) **")]
+        [Separator("Initialize Variables (JCS_Marquee)")]
 
         [Tooltip("Text object that is hiddent under mask.")]
         [SerializeField]
@@ -102,13 +104,13 @@ namespace JCSUnity
             {
                 mDistanceTileAction.afterResetCallback = () =>
                 {
-                    mDistanceTileAction.Active = false;
+                    mDistanceTileAction.enabled = false;
                 };
             }
             else
             {
                 mDistanceTileAction.afterResetCallback = null;
-                mDistanceTileAction.Active = true;
+                mDistanceTileAction.enabled = true;
             }
 
             mDistanceTileAction.ResetPosition();

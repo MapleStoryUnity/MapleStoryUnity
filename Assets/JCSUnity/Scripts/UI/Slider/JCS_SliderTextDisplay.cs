@@ -9,6 +9,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_TextSliderDisplay) **")]
+        [Separator("Runtime Variables (JCS_TextSliderDisplay)")]
 
         [Tooltip("To update the text along with this slider's value.")]
         [SerializeField]

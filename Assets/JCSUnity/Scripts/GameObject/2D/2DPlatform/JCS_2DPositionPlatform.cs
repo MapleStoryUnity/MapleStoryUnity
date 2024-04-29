@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DPositionPlatform) **")]
+        [Separator("Runtime Variables (JCS_2DPositionPlatform)")]
 
         [Tooltip("Collider will detect to see if the player could stand ontop of the platform collider.")]
         [SerializeField]
@@ -37,13 +38,11 @@ true meaning the fly action object cannot go throught this platform.")]
         [SerializeField]
         private bool mCannotBeGoThrough = false;
 
-
         /* Setter & Getter */
 
         public BoxCollider GetPlatformTrigger() { return this.mPlatformTrigger; }
         public BoxCollider GetPlatformCollider() { return this.mPlatformCollider; }
         public bool CannotBeGoThrough { get { return this.mCannotBeGoThrough; } }
-
 
         /* Functions */
 

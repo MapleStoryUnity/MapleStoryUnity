@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,7 +26,7 @@ namespace JCSUnity
         private bool mSoundPlayed = false;
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Header("** Runtime Variables (JCS_WaitDestroySoundEndEvent) **")]
+        [Separator("Runtime Variables (JCS_WaitDestroySoundEndEvent)")]
 
         [Tooltip("Audio clip to plays.")]
         [SerializeField]
@@ -49,7 +50,6 @@ namespace JCSUnity
         {
             if (mSoundPlayed)
                 return;
-
 
             mSoundPlayer.PlayOneShot(mAudioClip, mSoundSettingType);
 

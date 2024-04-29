@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,7 +27,7 @@ namespace JCSUnity
 
         private JCS_AlphaObject mAlphaObject = null;
 
-        [Header("** Runtime Variables *(JCS_DestinationDestroy) **")]
+        [Separator("Runtime Variables *(JCS_DestinationDestroy)")]
 
         [Tooltip("Do the action?")]
         [SerializeField]

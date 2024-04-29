@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_DeltaNumber) **")]
+        [Separator("Helper Variables (JCS_DeltaNumber)")]
 
         [Tooltip("Test component with key.")]
         [SerializeField]
@@ -42,17 +43,19 @@ namespace JCSUnity
         private int mDeltaValueB = 64;
 #endif
 
-        [Header("** Check Variables (JCS_DeltaNumber) **")]
+        [Separator("Check Variables (JCS_DeltaNumber)")]
 
         [Tooltip("Is current effect enabled?")]
         [SerializeField]
+        [ReadOnly]
         private bool mIsEnable = true;
 
         [Tooltip("How many visible digit?")]
         [SerializeField]
+        [ReadOnly]
         private int mCurrentDigitCount = 1;
 
-        [Header("** Initialize Variables (JCS_DeltaNumber) **")]
+        [Separator("Initialize Variables (JCS_DeltaNumber)")]
 
         [Tooltip("Default null slot. [Default: transparent_256.png]")]
         [SerializeField]
@@ -97,7 +100,7 @@ namespace JCSUnity
         [Range(0.1f, 4000.0f)]
         private float mDigitInterval = 0.5f;
 
-        [Header("** Runtime Variables (JCS_DeltaNumber) **")]
+        [Separator("Runtime Variables (JCS_DeltaNumber)")]
 
         [Tooltip(@"Current number rendering..., do not use this to 
 check value. Because this will always be animate.")]
@@ -116,7 +119,11 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private JCS_TextAlign mTextAlign = JCS_TextAlign.RIGHT;
 
-        [Header("- Min/Max (JCS_DeltaNumber)")]
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
+        [Header("- Min/Max")]
 
         [Tooltip("Maxinum number.")]
         [SerializeField]
@@ -126,7 +133,7 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private int mMinNumber = 0;
 
-        [Header("- Animation (JCS_DeltaNumber)")]
+        [Header("- Animation")]
 
         [Tooltip(@"This will make the number have the transition 
 between, setting to a new number. If you want the number set directly, you 
@@ -171,6 +178,7 @@ should disable this effect for best purpose.")]
         public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
         public bool VisibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
         public JCS_TextAlign TextAlign { get { return this.mTextAlign; } set { this.mTextAlign = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -352,7 +360,7 @@ should disable this effect for best purpose.")]
             if (mCurrentNumber == mTargetNumber)
                 return;
 
-            mAnimNumberTimer += Time.deltaTime;
+            mAnimNumberTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if timer reach the time.
             if (mAnimNumberTimer < mAnimNumberTime)

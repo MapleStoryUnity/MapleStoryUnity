@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_DetectAction) **")]
+        [Separator("Runtime Variables (JCS_DetectAction)")]
 
         [Tooltip("Do this action?")]
         [SerializeField]
@@ -28,7 +29,8 @@ namespace JCSUnity
         private Transform[] mTargetTransforms = null;
 
         [Tooltip("Range to detect.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mDetectRange = 1.0f;
 
         // Detect one transform?
@@ -88,7 +90,7 @@ namespace JCSUnity
             int count = 0;
             int actualCount = mTargetTransforms.Length;
 
-            for (int index = 0; index < mTargetTransforms.Length;  ++index)
+            for (int index = 0; index < mTargetTransforms.Length; ++index)
             {
                 Transform targetTrans = mTargetTransforms[index];
 

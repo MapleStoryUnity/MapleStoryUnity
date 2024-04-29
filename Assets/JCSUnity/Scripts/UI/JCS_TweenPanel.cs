@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,7 +24,7 @@ namespace JCSUnity
         private JCS_TweenerHandler mTweenerHandler = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_TweenPanel) **")]
+        [Separator("Helper Variables (JCS_TweenPanel)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -36,17 +37,19 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.L;
 #endif
 
-        [Header("** Check Variables (JCS_TweenPanel) **")]
+        [Separator("Check Variables (JCS_TweenPanel)")]
 
         [Tooltip("Is panel active/tweened?")]
         [SerializeField]
+        [ReadOnly]
         private bool mIsActive = false;
 
         [Tooltip("Find root panel layer.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Header("** Runtime Variables (JCS_TweenPanel) **")]
+        [Separator("Runtime Variables (JCS_TweenPanel)")]
 
         [Tooltip("Override the tween animation while is still playing.")]
         [SerializeField]
@@ -54,7 +57,7 @@ namespace JCSUnity
 
         [Header("- Sound")]
 
-        [Tooltip("Sound player for 3D sounds calculation.")]
+        [Tooltip("Sound player for this component.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 

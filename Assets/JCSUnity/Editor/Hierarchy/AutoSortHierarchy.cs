@@ -1,4 +1,4 @@
-﻿#if (UNITY_EDITOR && UNITY_5_3_5)
+﻿#if (UNITY_5_3_5)
 /**
  * $File: AutoSortHierarchy.cs $
  * $Date: $

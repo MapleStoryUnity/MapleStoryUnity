@@ -20,24 +20,9 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public string Copyright = "";
-        public string Version = "";
-
         /* Setter & Getter */
 
         /* Functions */
-
-        private void InitJCSFile()
-        {
-            if (JCS_PackageDataSettings.instance == null)
-            {
-                JCS_Debug.LogError("Failed to load the copyright and version text");
-                return;
-            }
-
-            Copyright = JCS_PackageDataSettings.instance.CopyrightString;
-            Version = JCS_PackageDataSettings.instance.VersionString;
-        }
 
         /// <summary>
         /// Save the game data into xml file format.
@@ -45,7 +30,7 @@ namespace JCSUnity
         /// <typeparam name="T"> type of the data save. </typeparam>
         /// <param name="filePath"> where to save. </param>
         /// <param name="fileName"> name of the file u want to save. </param>
-        public void Save<T>(string filePath, string fileName)
+        public override void Save<T>(string filePath, string fileName)
         {
             string fullFilePath = filePath + fileName;
 
@@ -58,7 +43,7 @@ namespace JCSUnity
         /// <typeparam name="T"> type of the data save. </typeparam>
         /// <param name="filePath"> where to save. </param>
         /// <param name="fileName"> name of the file u want to save. </param>
-        public void Save<T>(string fullFilePath)
+        public override void Save<T>(string fullFilePath)
         {
             string filePath = Path.GetDirectoryName(fullFilePath);
 

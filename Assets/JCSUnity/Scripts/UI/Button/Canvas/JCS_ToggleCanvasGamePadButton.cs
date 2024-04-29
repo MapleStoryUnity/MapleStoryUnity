@@ -7,6 +7,7 @@
  *	                 Copyright © 2021 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_ToggleCanvasGamepadButton) **")]
+        [Separator("Runtime Variables (JCS_ToggleCanvasGamepadButton)")]
 
         [Tooltip("Array of canvas to toggle its visibility.")]
         public JCS_Canvas[] canvas = null;

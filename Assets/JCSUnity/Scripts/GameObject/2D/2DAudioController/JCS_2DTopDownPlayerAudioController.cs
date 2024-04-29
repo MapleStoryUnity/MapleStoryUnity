@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DTopDownPlayerAudioController.cs $
  * $Date: $
  * $Revision: $

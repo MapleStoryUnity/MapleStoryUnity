@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,33 +19,39 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_UndoRedoComponent) **")]
+        [Separator("Check Variables (JCS_UndoRedoComponent)")]
 
         [Tooltip("Input Field component.")]
         [SerializeField]
+        [ReadOnly]
         protected InputField mInputField = null;
 
         [Tooltip("Slider component.")]
         [SerializeField]
+        [ReadOnly]
         protected Slider mSlider = null;
 
         [Tooltip("Toggle component.")]
         [SerializeField]
+        [ReadOnly]
         protected Toggle mToggle = null;
 
         [Tooltip("JCS_Toggle component.")]
         [SerializeField]
+        [ReadOnly]
         protected JCS_Toggle mJCSToggle = null;
 
         [Tooltip("Dropdown component.")]
         [SerializeField]
+        [ReadOnly]
         protected Dropdown mDropdown = null;
 
         [Tooltip("Scrollbar component.")]
         [SerializeField]
+        [ReadOnly]
         protected Scrollbar mScrollBar = null;
 
-        [Header("** Runtime Variables (JCS_UndoRedoComponent) **")]
+        [Separator("Runtime Variables (JCS_UndoRedoComponent)")]
 
         [Tooltip("Select GUI type.")]
         [SerializeField]

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DSkills) **")]
+        [Separator("Runtime Variables (JCS_2DSkills)")]
 
         [Tooltip("While by pressing this key active skill.")]
         [SerializeField]
@@ -66,6 +67,10 @@ namespace JCSUnity
 
         protected float mActionTimer = 0;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Spawn")]
 
         [Tooltip("Spawn the same position as this gameobject.")]
@@ -95,6 +100,8 @@ namespace JCSUnity
         protected AudioClip mHitSound = null;
 
         /* Setter & Getter */
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -126,9 +133,11 @@ namespace JCSUnity
                     mAction = true;
             }
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             if (mAfterDelay)
             {
-                mActionTimer += Time.deltaTime;
+                mActionTimer += dt;
 
                 if (mActiveTime < mActionTimer)
                 {
@@ -145,7 +154,7 @@ namespace JCSUnity
 
             if (mAction && !mAfterDelay)
             {
-                mActionTimer += Time.deltaTime;
+                mActionTimer += dt;
 
                 if (mTimeToActive < mActionTimer)
                 {

@@ -7,6 +7,7 @@
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_HopEffect) **")]
+        [Separator("Helper Variables (JCS_HopEffect)")]
 
         [Tooltip("Test the module with key.")]
         [SerializeField]
@@ -33,19 +34,21 @@ namespace JCSUnity
         private KeyCode mHopKey = KeyCode.A;
 #endif
 
-        [Header("** Check Variables (JCS_HopEffect) **")]
+        [Separator("Check Variables (JCS_HopEffect)")]
 
         [Tooltip("Flag for the effect activation.")]
         [SerializeField]
+        [ReadOnly]
         private bool mActive = false;
 
         [Tooltip("Position before hopping.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mStartingPosition = Vector3.zero;
 
         private float mRealGravity = 0.0f;
 
-        [Header("** Runtime Variables (JCS_HopEffect) **")]
+        [Separator("Runtime Variables (JCS_HopEffect)")]
 
         [Tooltip("How much force to jump away from current position.")]
         [SerializeField]
@@ -61,6 +64,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_Y;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         private Vector3 mVelocity = Vector3.zero;
 
         /* Setter & Getter */
@@ -68,6 +75,7 @@ namespace JCSUnity
         public float Force { get { return this.mForce; } set { this.mForce = value; } }
         public float Gravity { get { return this.mGravity; } set { this.mGravity = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -136,8 +144,10 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             float prevPos = GetLocalPositionByAxis();
-            this.LocalPosition += mVelocity * Time.deltaTime;
+            this.LocalPosition += mVelocity * dt;
             float currPos = GetLocalPositionByAxis();
 
             float startingPos = GetStartingPositionByAxis();
@@ -158,7 +168,7 @@ namespace JCSUnity
                         else
                             mRealGravity = JCS_Mathf.ToPositive(mGravity);
 
-                        mVelocity.x += mRealGravity * Time.deltaTime;
+                        mVelocity.x += mRealGravity * dt;
                     }
                     break;
                 case JCS_Axis.AXIS_Y:
@@ -168,7 +178,7 @@ namespace JCSUnity
                         else
                             mRealGravity = JCS_Mathf.ToPositive(mGravity);
 
-                        mVelocity.y += mRealGravity * Time.deltaTime;
+                        mVelocity.y += mRealGravity * dt;
                     }
                     break;
                 case JCS_Axis.AXIS_Z:
@@ -178,7 +188,7 @@ namespace JCSUnity
                         else
                             mRealGravity = JCS_Mathf.ToPositive(mGravity);
 
-                        mVelocity.z += mRealGravity * Time.deltaTime;
+                        mVelocity.z += mRealGravity * dt;
                     }
                     break;
             }

@@ -11,6 +11,7 @@ using System.Collections;
 using System.Xml;
 using UnityEngine;
 using UnityEngine.Networking;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,18 +22,21 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_TimeManager) **")]
+        [Separator("Check Variables (JCS_TimeManager)")]
 
         [Tooltip("Time range at the current region.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_TimeRange mCurrentTimeRange = JCS_TimeRange.UNKNOWN;
 
         [Tooltip("Season current time.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_SeasonType mCurrentSeasonType = JCS_SeasonType.UNKNOWN;
 
         [Tooltip("Weather current time period.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_WeatherType mCurrentWeatherType = JCS_WeatherType.UNKNOWN;
 
         /* Setter & Getter */

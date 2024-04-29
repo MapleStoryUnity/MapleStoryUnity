@@ -7,6 +7,7 @@
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,12 +22,12 @@ namespace JCSUnity
     [System.Serializable]
     public class JCS_TweenInfo
     {
-        [Header("## Check Variables (JCS_TweenInfo)")]
+        [Separator("Check Variables (JCS_TweenInfo)")]
 
         [Tooltip("Record down the starting value, in order to go back.")]
         public Vector3 startingValue = Vector3.zero;
 
-        [Header("## Runtime Variables (JCS_TweenInfo)")]
+        [Separator("Runtime Variables (JCS_TweenInfo)")]
 
         [Tooltip("Transform tweener we want to use.")]
         public JCS_TransformTweener transformTweener = null;

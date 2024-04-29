@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,12 +20,12 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_DetectAreaAction) **")]
+        [Separator("Check Variables (JCS_DetectAreaAction)")]
 
         [SerializeField]
         private JCS_2DLiveObject mLiveObject = null;
 
-        [Header("** Initialize Variables (JCS_DetectAreaAction) **")]
+        [Separator("Initialize Variables (JCS_DetectAreaAction)")]
 
         [Tooltip("Colliders detected.")]
         [SerializeField]

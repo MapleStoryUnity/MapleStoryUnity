@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -24,11 +25,11 @@ namespace JCSUnity
 
         private Vector3 mOriginPos = Vector3.zero;
 
-        [Header("** Runtime Variables (JCS_3DDistanceTileAction) **")]
+        [Separator("Runtime Variables (JCS_3DDistanceTileAction)")]
 
-        [Tooltip("Is this component active?")]
+        [Tooltip(@"Reset to this position. If this is null, we use original position instead.")]
         [SerializeField]
-        private bool mActive = true;
+        private Transform mResetTrans = null;
 
         [Tooltip("How long this gameobject could travel.")]
         [SerializeField]
@@ -40,7 +41,7 @@ namespace JCSUnity
         private bool mUseLocalPosition = false;
 
         /* Setter & Getter */
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public Transform ResetTrans { get { return this.mResetTrans; } set { this.mResetTrans = value; } }
         public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
         public bool UseLocalPosition { get { return this.mUseLocalPosition; } set { this.mUseLocalPosition = value; } }
 
@@ -59,16 +60,13 @@ namespace JCSUnity
 
         private void Update()
         {
-            if (!mActive)
-                return;
-
             // Find out the distance between the current moved
             // position and the starting position.
-            float distance = 0.0f;
+            float distance;
             if (mUseLocalPosition)
-                distance = Vector3.Distance(this.transform.localPosition, mOriginPos);
+                distance = Vector3.Distance(this.transform.localPosition, GetResetPosition());
             else
-                distance = Vector3.Distance(this.transform.position, mOriginPos);
+                distance = Vector3.Distance(this.transform.position, GetResetPosition());
 
             // check if the distance reach?
             if (distance < mDistance)
@@ -87,12 +85,22 @@ namespace JCSUnity
                 beforeResetCallback.Invoke();
 
             if (mUseLocalPosition)
-                this.transform.localPosition = this.mOriginPos;
+                this.transform.localPosition = GetResetPosition();
             else
-                this.transform.position = this.mOriginPos;
+                this.transform.position = GetResetPosition();
 
             if (afterResetCallback != null)
                 afterResetCallback.Invoke();
+        }
+
+        /// <summary>
+        /// Get the correct reset position base on the variables.
+        /// </summary>
+        private Vector3 GetResetPosition()
+        {
+            if (mResetTrans != null)
+                return mResetTrans.position;
+            return mOriginPos;
         }
     }
 }

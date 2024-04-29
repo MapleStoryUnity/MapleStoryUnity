@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,58 +20,69 @@ namespace JCSUnity
 
         private Vector2 mDragStartPosition = Vector2.zero;
 
-        [Header("** Check Variables (JCS_SlideInput) **")]
+        [Separator("Check Variables (JCS_SlideInput)")]
 
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
         [Tooltip("Previous position.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mPrePos = Vector3.zero;
 
         [Tooltip("Is the application currently focused?")]
         [SerializeField]
+        [ReadOnly]
         private bool mFocus = false;
 #endif
 
         [Tooltip("Is the screen touches?")]
         [SerializeField]
+        [ReadOnly]
         private bool mTouched = false;
 
         [Tooltip("Delta value changes on the screen.")]
         [SerializeField]
+        [ReadOnly]
         private Vector2 mDeltaPos = Vector2.zero;
 
         [Tooltip("Drag distance.")]
         [SerializeField]
+        [ReadOnly]
         private Vector2 mDragDistance = Vector2.zero;
 
         [Tooltip("Drag displacement.")]
         [SerializeField]
+        [ReadOnly]
         private Vector2 mDragDisplacement = Vector2.zero;
 
         [Tooltip("Return the current drag state.")]
         [SerializeField]
+        [ReadOnly]
         private bool mDragging = false;
 
         [Tooltip("How long the user touches the screen.")]
         [SerializeField]
+        [ReadOnly]
         private float mTouchTime = 0.0f;
 
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         [Tooltip("Flag to check if multitouch.")]
         [SerializeField]
+        [ReadOnly]
         private bool mMultiTouch = false;
 
         [Tooltip("Multiple touches distance in average.")]
         [SerializeField]
+        [ReadOnly]
         private float mTouchDistance = 0.0f;
 
         [Tooltip("The multi touches distance delta changes per frame.")]
         [SerializeField]
+        [ReadOnly]
         private float mTouchDistanceDelta = 0.0f;
 #endif
 
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
-        [Header("** Runtime Variables (JCS_SlideInput) **")]
+        [Separator("Runtime Variables (JCS_SlideInput)")]
 
         [Tooltip("Mouse event type of identify the touch event.")]
         [SerializeField]
@@ -78,6 +90,8 @@ namespace JCSUnity
 #endif
 
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+        [Separator("Runtime Variables (JCS_SlideInput)")]
+
         [Tooltip("Touch count that will detect as touched.")]
         [SerializeField]
         [Range(0, 60)]
@@ -156,7 +170,7 @@ namespace JCSUnity
         /// </summary>
         private void WhenTouched()
         {
-            mTouchTime += Time.deltaTime;
+            mTouchTime += Time.unscaledDeltaTime;
 
             Vector3 currPos = Input.mousePosition;
 

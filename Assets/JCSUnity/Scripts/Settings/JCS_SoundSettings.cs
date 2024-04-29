@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,7 +24,7 @@ namespace JCSUnity
         public const float MAX_SOUND_FADEOUT_TIME = 5.0f;
         public const float MIN_SOUND_FADEOUT_TIME = 0.0f;
 
-        [Header("** Runtime Variables (JCS_SoundSettings) **")]
+        [Separator("Runtime Variables (JCS_SoundSettings)")]
 
         [Tooltip("If true, mute BGM.")]
         public bool BGM_MUTE = false;
@@ -57,7 +58,7 @@ namespace JCSUnity
         [Tooltip("Keep BGM current scene?")]
         public bool KEEP_BGM_SWITCH_SCENE = false;
 
-        [Header("** Scene Sound (JCS_SoundSettings) **")]
+        [Header("- Scene Sound")]
 
         [Tooltip("Smoothly switching the sound between the switching the scene.")]
         public bool SMOOTH_SWITCH_SOUND_BETWEEN_SCENE = true;
@@ -66,7 +67,7 @@ namespace JCSUnity
         public AudioClip BACKGROUND_MUSIC = null;
 
         // Window System
-        [Header("** Window System (JCS_SoundSettings) **")]
+        [Header("- Window System")]
 
         [Tooltip("Sound to play when open the window clip.")]
         public AudioClip DEFAULT_OPEN_WINDOW_CLIP = null;

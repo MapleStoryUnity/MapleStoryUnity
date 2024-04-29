@@ -8,20 +8,20 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Reusable damage text pool.
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_DamageTextPool : MonoBehaviour
     {
         public delegate void SpawnSequenceAction(int[] damage, Vector3[] pos, float timePerSpawn, int totalSpawn);
 
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_DamageTextPool) **")]
+        [Separator("Initialize Variables (JCS_DamageTextPool)")]
 
         [Tooltip("Number to handle and spawn at the initialize time.")]
         [SerializeField]
@@ -40,7 +40,7 @@ namespace JCSUnity
 
         private JCS_Vector<JCS_DamageText> mDamageTexts = null;
 
-        [Header("** Runtime Variables (JCS_DamageTextPool) **")]
+        [Separator("Runtime Variables (JCS_DamageTextPool)")]
 
         [Tooltip("Spacing per damage text.")]
         [SerializeField]
@@ -56,13 +56,19 @@ namespace JCSUnity
         [SerializeField]
         private bool mFaceCamera = true;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Sound")]
+
+        [Tooltip("Sound player for this component.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("Sound when spawns.")]
         [SerializeField]
         private AudioClip mHitSound = null;
-
-        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Header("- Zigge Right Left (In Sequence)")]
 
@@ -96,6 +102,7 @@ namespace JCSUnity
         public float SpacingPerText { get { return this.mSpacingPerText; } set { this.mSpacingPerText = value; } }
         public float TimePerSpawn { get { return this.mTimePerSpawn; } set { this.mTimePerSpawn = value; } }
         public bool FaceCamera { get { return this.mFaceCamera; } set { this.mFaceCamera = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public bool ZiggeEffect { get { return this.mZiggeEffect; } set { this.mZiggeEffect = value; } }
         public float RightAlign { get { return this.mRightAlign; } set { this.mRightAlign = value; } }
@@ -320,7 +327,7 @@ namespace JCSUnity
             {
                 // spawn a new game object, 
                 // and get the component
-                JCS_DamageText dt = JCS_Util.SpawnGameObject(
+                var dt = JCS_Util.Instantiate(
                     mDamageText,
                     mDamageText.transform.position,
                     mDamageText.transform.rotation) as JCS_DamageText;
@@ -349,7 +356,7 @@ namespace JCSUnity
         {
             float newTimer = timer;
 
-            newTimer += Time.deltaTime;
+            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTimePerSpawn < newTimer)
             {
@@ -412,17 +419,22 @@ namespace JCSUnity
         /// </summary>
         private void PlayHitSound(AudioClip hitSound)
         {
+            var ss = JCS_SoundSettings.instance;
+            var sm = JCS_SoundManager.instance;
+
+            JCS_SoundPlayer sp = (mSoundPlayer) ? mSoundPlayer : sm.GlobalSoundPlayer();
+
             if (hitSound != null)
             {
                 // play the hit sound provide by passing in.
-                mSoundPlayer.PlayOneShot(hitSound, JCS_SoundSettings.instance.GetSFXSound_Volume());
+                sp.PlayOneShot(hitSound, ss.GetSFXSound_Volume());
             }
             else
             {
                 if (mHitSound != null)
                 {
                     // play the regular assigned by variable's hit sound.
-                    mSoundPlayer.PlayOneShot(mHitSound, JCS_SoundSettings.instance.GetSFXSound_Volume());
+                    sp.PlayOneShot(mHitSound, ss.GetSFXSound_Volume());
                 }
             }
         }

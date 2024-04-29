@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_BasicWaveSpawner) **")]
+        [Separator("Runtime Variables (JCS_BasicWaveSpawner)")]
 
         [Tooltip("Active this component?")]
         [SerializeField]
@@ -45,6 +46,10 @@ namespace JCSUnity
 
         // check if do the spawn?
         private bool mSpawned = false;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("- Randomize Position")]
 
@@ -136,6 +141,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public bool RandPosX { get { return this.mRandPosX; } set { this.mRandPosX = value; } }
         public float RandPosRangeX { get { return this.mRandPosRangeX; } set { this.mRandPosRangeX = value; } }
@@ -191,7 +197,7 @@ namespace JCSUnity
             }
 
             // spawn a object
-            Transform objSpawned = (Transform)JCS_Util.SpawnGameObject(
+            Transform objSpawned = (Transform)JCS_Util.Instantiate(
                 mSpawnList[spawnIndex],
                 this.transform.position);
 
@@ -231,7 +237,7 @@ namespace JCSUnity
             if (mSpawned)
                 ResetTimeZone();
 
-            mSpawnTimer += Time.deltaTime;
+            mSpawnTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mSpawnTimer < mRealSpawnTime)
                 return;

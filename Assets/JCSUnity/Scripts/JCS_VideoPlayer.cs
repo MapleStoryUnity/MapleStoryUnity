@@ -9,6 +9,7 @@
  */
 using System.Collections;
 using UnityEngine;
+using MyBox;
 
 /*
  * JCSUnity.JCS_VideoPlayer's MovieTexture is deprecated and no 
@@ -32,10 +33,11 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_VideoPlayer) **")]
+        [Separator("Runtime Variables (JCS_VideoPlayer)")]
 
         [Tooltip("Moive playback.")]
         [SerializeField]
+        [ReadOnly]
         private MovieTexture mMovieTexture = null;
 
         [Tooltip("")]
@@ -49,6 +51,10 @@ namespace JCSUnity
         [Tooltip("Next scene will be loaded.")]
         [SerializeField]
         private string mSceneName = "JCS_AppCloseSimulate";
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("- Delay Playback")]
 
@@ -195,7 +201,7 @@ namespace JCSUnity
             if (mClipPlayed)
                 return;
 
-            mDelayPlayTimer += Time.deltaTime;
+            mDelayPlayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayPlayTimer < mDelayPlayTime)
                 return;
@@ -220,18 +226,19 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_VideoPlayer) **")]
+        [Separator("Check Variables (JCS_VideoPlayer)")]
 
         [Tooltip("Full path of the clip")]
         [SerializeField]
+        [ReadOnly]
         private string mFullPath = "";
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private AudioSource mAudioSource = null;
 
-
-        [Header("** Runtime Variables (JCS_VideoPlayer) **")]
+        [Separator("Runtime Variables (JCS_VideoPlayer)")]
 
         [Tooltip("Moive playback.")]
         [SerializeField]
@@ -240,7 +247,7 @@ namespace JCSUnity
         [Tooltip("Extension of the movie. If there is one.")]
         [SerializeField]
         private string mMovieExtension = ".mp4";
-        
+
         [Tooltip("Type of input handle during clip playing.")]
         [SerializeField]
         private FullScreenMovieControlMode mFullScreenMovieControlMode = FullScreenMovieControlMode.Full;
@@ -252,6 +259,10 @@ namespace JCSUnity
         [Tooltip("Next scene will be loaded.")]
         [SerializeField]
         private string mSceneName = "JCS_AppCloseSimulate";
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("- Delay Playback")]
 
@@ -269,15 +280,18 @@ namespace JCSUnity
         [Header("*Usage: plz fill the clip time until next scene.")]
 
         [Tooltip("Time to load next scene, in seconds.")]
-        [SerializeField] [Range(0, 59)]
+        [SerializeField]
+        [Range(0, 59)]
         private float mClipHour = 0;
 
         [Tooltip("Time to load next scene, in seconds.")]
-        [SerializeField] [Range(0, 59)]
+        [SerializeField]
+        [Range(0, 59)]
         private float mClipMinute = 0;
 
         [Tooltip("Time to load next scene, in seconds.")]
-        [SerializeField] [Range(0, 59)]
+        [SerializeField]
+        [Range(0, 59)]
         private float mClipSecond = 0;
 
         // real time = mClipHour * 3600 + mClipMinute * 60 + mClipSecond
@@ -292,15 +306,13 @@ namespace JCSUnity
         {
             get
             {
-                JCS_Debug.LogError(
-                    this, "Loop does not work in Andriod Platform...");
+                JCS_Debug.LogError("Loop does not work in Andriod Platform...");
 
                 return false;
             }
             set
             {
-                JCS_Debug.LogError(
-                    this, "Loop does not work in Andriod Platform...");
+                JCS_Debug.LogError("Loop does not work in Andriod Platform...");
             }
         }
         public AudioSource AudioSource { get { return this.mAudioSource; } }
@@ -314,9 +326,9 @@ namespace JCSUnity
             this.mAudioSource = this.GetComponent<AudioSource>();
 
             // load the next scene.
-            mLoadNextSceneTime = 
-                (mClipHour * 3600) + 
-                (mClipMinute * 60) + 
+            mLoadNextSceneTime =
+                (mClipHour * 3600) +
+                (mClipMinute * 60) +
                 mClipSecond;
         }
 
@@ -335,7 +347,7 @@ namespace JCSUnity
         {
             // get the full path of the clip
             mFullPath =
-                mMovieName + 
+                mMovieName +
                 mMovieExtension;
 
             // play the screen movie.
@@ -350,8 +362,7 @@ namespace JCSUnity
         /// </summary>
         public void Pause()
         {
-            JCS_Debug.LogError(
-                    this, "Pause does not work in Andriod Platform...");
+            JCS_Debug.LogError("Pause does not work in Andriod Platform...");
         }
 
         /// <summary>
@@ -359,8 +370,7 @@ namespace JCSUnity
         /// </summary>
         public void Stop()
         {
-            JCS_Debug.LogError(
-                    this, "Stop does not work in Andriod Platform...");
+            JCS_Debug.LogError("Stop does not work in Andriod Platform...");
         }
 
         /// <summary>
@@ -373,7 +383,7 @@ namespace JCSUnity
                 return;
 
             // start the load scene timer.
-            mLoadNextSceneTimer += Time.deltaTime;
+            mLoadNextSceneTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if the clips ends.
             if (mLoadNextSceneTimer < mLoadNextSceneTime)
@@ -391,7 +401,7 @@ namespace JCSUnity
             if (mClipPlayed)
                 return;
 
-            mDelayPlayTimer += Time.deltaTime;
+            mDelayPlayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayPlayTimer < mDelayPlayTime)
                 return;

@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,13 +19,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_TweenPanel) **")]
+        [Separator("Check Variables (JCS_TweenPanel)")]
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Header("** Runtime Variables (JCS_TweenerHandler) **")]
+        [Separator("Runtime Variables (JCS_TweenerHandler)")]
 
         [Tooltip("List of tweener informations.")]
         [SerializeField]

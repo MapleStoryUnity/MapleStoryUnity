@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -37,21 +38,24 @@ namespace JCSUnity
         private float mOnStackFadeInTime = 0;
         private float mOnStackFadeOutTime = 0;
 
-        [Header("** Check Variables (JCS_SoundManager) **")]
+        [Separator("Check Variables (JCS_SoundManager)")]
 
         [Tooltip("Current background music audio source.")]
         [SerializeField]
+        [ReadOnly]
         private AudioSource mBGM = null;
 
         [Tooltip("Current background music is playing.")]
         [SerializeField]
+        [ReadOnly]
         private AudioClip mCurrentBGM = null;
 
         // boolean check if the background music switching.
         [SerializeField]
+        [ReadOnly]
         private bool mSwitchingBGM = false;
 
-        [Header("- General")]
+        [Separator("Runtime Variables (JCS_SoundManager)")]
 
         [Tooltip("Do this scene using the specific setting?")]
         [SerializeField]
@@ -97,7 +101,7 @@ namespace JCSUnity
             this.mBGM.mute = ss.BGM_MUTE;
         }
         public JCS_Vector<AudioSource> GetEffectSounds() { return this.mSFXSounds; }
-        public JCS_SoundPlayer GetGlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
+        public JCS_SoundPlayer GlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
 
         public bool OverrideSetting { get { return this.mOverrideSetting; } }
         public float SoundFadeInTime { get { return this.mSoundFadeInTime; } set { this.mSoundFadeInTime = value; } }
@@ -295,8 +299,11 @@ namespace JCSUnity
         public void PlayOneShotSFXSound(int index)
         {
             AudioSource aud = mSFXSounds.at(index);
+
+            var ss = JCS_SoundSettings.instance;
+
             if (aud.clip != null)
-                aud.PlayOneShot(aud.clip, JCS_SoundSettings.instance.GetSFXSound_Volume());
+                aud.PlayOneShot(aud.clip, ss.GetSFXSound_Volume());
         }
 
         /// <summary>

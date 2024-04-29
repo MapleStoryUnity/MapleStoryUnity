@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,9 +20,10 @@ namespace JCSUnity
 
         private JCS_DetectAreaAction mDetectAreaAction = null;
 
-        [Header("** Check Variables (JCS_DetectArea) **")]
+        [Separator("Check Variables (JCS_DetectArea)")]
 
         [SerializeField]
+        [ReadOnly]
         private Collider mCollider = null;
 
         /* Setter & Getter */

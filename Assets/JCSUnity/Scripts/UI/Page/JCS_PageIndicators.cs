@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_PageIndicators) **")]
+        [Separator("Initialize Variables (JCS_PageIndicators)")]
 
         [Tooltip("List of image containers to display indicators.")]
         [SerializeField]

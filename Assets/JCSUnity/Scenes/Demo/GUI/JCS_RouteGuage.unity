@@ -105,7 +105,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -118,7 +118,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -613,6 +613,7 @@ GameObject:
   - component: {fileID: 712681679}
   - component: {fileID: 712681678}
   - component: {fileID: 712681677}
+  - component: {fileID: 712681690}
   m_Layer: 0
   m_Name: JCS_Settings
   m_TagString: Untagged
@@ -867,6 +868,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &712681690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712681676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25fce8af46392048949240ce017a69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ASYMPTOTIC: 0
+  FRICTION: 0.2
 --- !u!1 &818727264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,9 +1322,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1353,6 +1376,7 @@ MonoBehaviour:
   mGameCamColor: {r: 1, g: 0, b: 0, a: 1}
   mFollowing: 1
   mPositionOffset: {x: 0, y: 1.5, z: -10}
+  mDeltaTimeType: 0
   mSmoothTrack: 1
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
@@ -1543,6 +1567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49b7c1bcd2e07499844da127be038d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_ForceModuleActive: 1
 --- !u!114 &1380056291
 MonoBehaviour:
@@ -1556,6 +1581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -1722,8 +1748,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa49b5ee139699040b4a44e97ef334aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTestWithKey: 0
+  mToggleGamePause: 112
   mPauseActions: []
+  mDefaultTimeScale: 1
   mResizePauseActionListTime: 20
+  mOverrideSetting: 0
+  mAsymptotic: 0
+  mFriction: 0.2
 --- !u!114 &1441349182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1777,8 +1809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3ddae32cc8033418ec9a10bad8be7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSlideInput: {fileID: 0}
-  mMobileMouseEvent: {fileID: 0}
   mSupport_OnMouseEnter: 0
   mSupport_OnMouseExit: 0
   mSupport_OnMouseDown: 1
@@ -1978,9 +2008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbeb25e792087645b19e4cf30c3218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTestWithKey: 0
-  mToggleGamePause: 112
-  TIME_SCALE: 1
   mGamePause: 0
   mGameDoneInitialize: 0
 --- !u!114 &1441349193
@@ -2220,6 +2247,7 @@ MonoBehaviour:
   mOrderLayer: 15
   mDensity: 5
   mWindSpeed: -10
+  mDeltaTimeType: 0
   mRandPosX: 0
   mRandPosY: 0
   mRandPosZ: 0
@@ -2378,8 +2406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
+  mDisplayOnAwake: 1
+  mMainCanvas: 1
+  mActiveSound: {fileID: 0}
+  mDeactiveSound: {fileID: 0}
 --- !u!114 &2090291227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2438,6 +2469,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 25
   m_TargetDisplay: 0

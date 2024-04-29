@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -29,7 +30,7 @@ namespace JCSUnity
         public EmptyFunction callback_min_vis = null;
         public EmptyFunction callback_max_vis = null;
 
-        [Header("** Check Variables (JCS_LiquidBar) **")]
+        [Separator("Check Variables (JCS_LiquidBar)")]
 
         [SerializeField]
         protected float mMinPos = 0.0f;
@@ -46,19 +47,21 @@ namespace JCSUnity
         [SerializeField]
         protected bool mReachMaxVis = false;
 
-        [Header("** Initilaize Variables (JCS_LiquidBar) **")]
+        [Separator("Initialize Variables (JCS_LiquidBar)")]
 
         [Tooltip("Once it set to zero, but still override this.")]
         [SerializeField]
         protected bool mOverrideZero = false;
 
-        [Header("** Initialize Variables (JCS_LiquidBar) **")]
-
         [Tooltip("Align on which side? (top/bottom/right/left)")]
         [SerializeField]
         protected JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
 
-        [Header("** Runtime Variables (JCS_LiquidBar) **")]
+        [Separator("Runtime Variables (JCS_LiquidBar)")]
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Tooltip(@"How fast the liquid bar move approach to target position/value.")]
         [SerializeField]
@@ -84,7 +87,7 @@ namespace JCSUnity
         [SerializeField]
         protected float mCurrentValue = 50.0f;
 
-        [Header("** Optional Variables (JCS_LiquidBar) **")]
+        [Separator("Optional Variables (JCS_LiquidBar)")]
 
         [Tooltip("Liquid bar info that will be use for this liquid bar.")]
         [SerializeField]
@@ -94,7 +97,7 @@ namespace JCSUnity
         [SerializeField]
         protected Image mInfoImage = null;
 
-        [Header("** Asmptotic Recover Effect (JCS_LiquidBar) **")]
+        [Header("- Asmptotic Recover")]
 
         [Tooltip("Enable the recover effect?")]
         [SerializeField]
@@ -136,6 +139,8 @@ Careful that recover can be damage too.")]
 
         public bool OverrideZero { get { return this.mOverrideZero; } set { this.mOverrideZero = value; } }
 
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+
         public float DeltaFriction { get { return this.mDeltaFriction; } set { this.mDeltaFriction = value; } }
         public float DistanceThreshold { get { return this.mDistanceThreshold; } set { this.mDistanceThreshold = value; } }
 
@@ -175,7 +180,7 @@ Careful that recover can be damage too.")]
 
             // Try to get back the original value (which we record down in 
             // the Awake function).
-            this.mRecoverValue += (mRecordValue - mRecoverValue) / mGetBackFriction * Time.deltaTime;
+            this.mRecoverValue += (mRecordValue - mRecoverValue) / mGetBackFriction * JCS_Time.DeltaTime(mDeltaTimeType);
         }
 
         /// <summary>

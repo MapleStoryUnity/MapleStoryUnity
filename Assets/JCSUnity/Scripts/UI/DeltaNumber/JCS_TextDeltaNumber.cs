@@ -13,6 +13,7 @@
 
 using System;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,7 +26,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_TextDeltaNumber) **")]
+        [Separator("Helper Variables (JCS_TextDeltaNumber)")]
 
         [Tooltip("Test component with key.")]
         [SerializeField]
@@ -48,13 +49,13 @@ namespace JCSUnity
         private float mValueB = 10.0f;
 #endif
 
-        [Header("** Check Variables (JCS_TextDeltaNumber) **")]
+        [Separator("Check Variables (JCS_TextDeltaNumber)")]
 
         [Tooltip("Full string to display.")]
         [SerializeField]
         private string mFullString = "";
 
-        [Header("** Runtime Variables (JCS_TextDeltaNumber) **")]
+        [Separator("Runtime Variables (JCS_TextDeltaNumber)")]
 
         [Tooltip("Current number that will turn into string.")]
         [SerializeField]
@@ -77,7 +78,11 @@ namespace JCSUnity
         [Range(0, 15)]
         private int mRoundPlace = 0;
 
-        [Header("- Min/Max (JCS_TextDeltaNumber)")]
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
+        [Header("- Min/Max")]
 
         [Tooltip("Maxinum number.")]
         [SerializeField]
@@ -87,7 +92,7 @@ namespace JCSUnity
         [SerializeField]
         private int mMinNumber = 0;
 
-        [Header("- Animation (JCS_TextDeltaNumber)")]
+        [Header("- Animation")]
 
         [Tooltip(@"This will make the number have the transition 
 between, setting to a new number. If you want the number set directly, you 
@@ -129,6 +134,7 @@ should disable this effect for best purpose.")]
         public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
         public string FullString { get { return this.mFullString; } }
         public int RoundPlace { get { return this.mRoundPlace; } set { this.mRoundPlace = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public string PreString { get { return this.mPreString; } set { this.mPreString = value; } }
         public string PostString { get { return this.mPostString; } set { this.mPostString = value; } }
         public float AnimNumberTime { get { return this.mAnimNumberTime; } set { this.mAnimNumberTime = value; } }
@@ -203,7 +209,7 @@ should disable this effect for best purpose.")]
             if (Math.Round(mTargetNumber, mRoundPlace) == Math.Round(mCurrentNumber, mRoundPlace))
                 return;
 
-            mAnimNumberTimer += Time.deltaTime;
+            mAnimNumberTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mAnimNumberTimer < mAnimNumberTime)
                 return;
@@ -235,7 +241,7 @@ should disable this effect for best purpose.")]
         private void UpdateTextRender()
         {
 #if TMP_PRO
-            if (mTextContainer == null && mTextMesh == null)
+            if (mTextContainer == null && mTMP_Text == null)
 #else
             if (mTextContainer == null)
 #endif
@@ -257,8 +263,8 @@ should disable this effect for best purpose.")]
             if (mTextContainer)
                 mTextContainer.text = mFullString;
 #if TMP_PRO
-            if (mTextMesh)
-                mTextMesh.text = mFullString;
+            if (mTMP_Text)
+                mTMP_Text.text = mFullString;
 #endif
         }
     }

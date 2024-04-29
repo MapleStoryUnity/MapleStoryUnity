@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,19 +22,17 @@ namespace JCSUnity
 
         private JCS_HitListEvent mHitList = null;
 
-
-        [Header("** Runtime Variables (JCS_HitCountEvent) **")]
+        [Separator("Runtime Variables (JCS_HitCountEvent)")]
 
         [Tooltip(@"How many hits needed to destroy this gameobject. 
 (If this is 0 than wont active hit animation event.)")]
-        [SerializeField] [Range(0, 300)]
+        [SerializeField]
+        [Range(0, 300)]
         private uint mHitCount = 1;
-
 
         /* Setter & Getter */
 
         public uint HitCount { get { return this.mHitCount; } set { this.mHitCount = value; } }
-
 
         /* Functions */
 

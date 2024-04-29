@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,7 +26,7 @@ namespace JCSUnity
         // when reach the certain range disable it.
         private JCS_DisableWithCertainRangeEvent mDisableWidthCertainRangeEvent = null;
 
-        [Header("** Runtime Variables (JCS_TowardTarget) **")]
+        [Separator("Runtime Variables (JCS_TowardTarget)")]
 
         [Tooltip("Reverse the particle direction?")]
         [SerializeField]
@@ -36,11 +37,13 @@ namespace JCSUnity
         private Transform mTargetTransform = null;
 
         [Tooltip("Randomly move particle to a certain range.")]
-        [SerializeField] [Range(0.0f, 1000.0f)]
+        [SerializeField]
+        [Range(0.0f, 1000.0f)]
         private float mRange = 10.0f;
 
         [Tooltip("Value adjust the range value, so it will make it more random.")]
-        [SerializeField] [Range(0.0f, 1000.0f)]
+        [SerializeField]
+        [Range(0.0f, 1000.0f)]
         private float mAdjustRange = 0.0f;
 
         [Tooltip("Is a 3D particle?")]
@@ -135,8 +138,8 @@ namespace JCSUnity
         private Vector3 CalculateCirclePosition()
         {
             return CalculateCirclePosition(
-                mTargetTransform.position, 
-                mRange, 
+                mTargetTransform.position,
+                mRange,
                 mAdjustRange);
         }
 
@@ -167,7 +170,7 @@ namespace JCSUnity
             float opp = Mathf.Sin(angle) * hyp;
 
             float adj = JCS_Mathf.PythagoreanTheorem(hyp, opp, JCS_Mathf.TriSides.adj);
-            
+
 
             bool flipX = JCS_Mathf.IsPossible(50);
             if (flipX)

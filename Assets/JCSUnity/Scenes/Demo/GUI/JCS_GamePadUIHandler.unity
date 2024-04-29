@@ -105,7 +105,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -118,7 +118,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49b7c1bcd2e07499844da127be038d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_ForceModuleActive: 1
 --- !u!114 &24489133
 MonoBehaviour:
@@ -168,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -332,8 +334,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
+  mDisplayOnAwake: 1
+  mMainCanvas: 1
+  mActiveSound: {fileID: 0}
+  mDeactiveSound: {fileID: 0}
 --- !u!114 &721491499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,6 +397,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 25
   m_TargetDisplay: 0
@@ -671,9 +677,10 @@ MonoBehaviour:
   mActive: 1
   mPlayOnAwake: 1
   mLoop: 1
+  mDeltaTimeType: 0
   mNullSprite: {fileID: 21300000, guid: c7eced5e94022104d917659ef2734bf4, type: 3}
   mNullSpriteAfterDonePlayingAnim: 0
-  mFramePerSec: 0.1
+  mSecPerFrame: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: 8d9d232049931bd4b9d27b095270c6f9, type: 3}
   - {fileID: 21300000, guid: 59c09f66884988246948a0e947371d8a, type: 3}
@@ -754,6 +761,7 @@ MonoBehaviour:
   mGameCamColor: {r: 1, g: 0, b: 0, a: 1}
   mFollowing: 1
   mPositionOffset: {x: 0, y: 2, z: -10}
+  mDeltaTimeType: 0
   mSmoothTrack: 1
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
@@ -796,9 +804,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -911,9 +927,10 @@ MonoBehaviour:
   mActive: 1
   mPlayOnAwake: 1
   mLoop: 1
+  mDeltaTimeType: 0
   mNullSprite: {fileID: 21300000, guid: c7eced5e94022104d917659ef2734bf4, type: 3}
   mNullSpriteAfterDonePlayingAnim: 0
-  mFramePerSec: 0.1
+  mSecPerFrame: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: ae0126c1db7002949922e300b1e1a0fd, type: 3}
   - {fileID: 21300000, guid: 1c4e088e7b34ba944a7df0a03f7583f8, type: 3}
@@ -1270,6 +1287,7 @@ GameObject:
   - component: {fileID: 1390189977}
   - component: {fileID: 1390189976}
   - component: {fileID: 1390189975}
+  - component: {fileID: 1390189988}
   m_Layer: 0
   m_Name: JCS_Settings
   m_TagString: Untagged
@@ -1524,6 +1542,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1390189988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390189974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25fce8af46392048949240ce017a69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ASYMPTOTIC: 0
+  FRICTION: 0.2
 --- !u!1 &1536242580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,6 +2036,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: JCS_GamePadButtonUIHandlerDemo
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &1822043568
@@ -2486,8 +2519,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa49b5ee139699040b4a44e97ef334aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTestWithKey: 0
+  mToggleGamePause: 112
   mPauseActions: []
+  mDefaultTimeScale: 1
   mResizePauseActionListTime: 20
+  mOverrideSetting: 0
+  mAsymptotic: 0
+  mFriction: 0.2
 --- !u!114 &2085703325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2541,8 +2580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3ddae32cc8033418ec9a10bad8be7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSlideInput: {fileID: 0}
-  mMobileMouseEvent: {fileID: 0}
   mSupport_OnMouseEnter: 0
   mSupport_OnMouseExit: 0
   mSupport_OnMouseDown: 1
@@ -2742,9 +2779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbeb25e792087645b19e4cf30c3218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTestWithKey: 0
-  mToggleGamePause: 112
-  TIME_SCALE: 1
   mGamePause: 0
   mGameDoneInitialize: 0
 --- !u!114 &2085703336

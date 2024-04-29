@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,18 +18,21 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_UtilitiesManager) **")]
+        [Separator("Check Variables (JCS_UtilitiesManager)")]
 
         [Tooltip("Damage text util.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_MixDamageTextPool mMixDamageTextPool = null;
 
         [Tooltip("In Game Log System util.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_IGLogSystem mIGLogSystem = null;
 
         [Tooltip("In Game Dialogue System.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_DialogueSystem mDialogueSystem = null;
 
         /* Setter & Getter */

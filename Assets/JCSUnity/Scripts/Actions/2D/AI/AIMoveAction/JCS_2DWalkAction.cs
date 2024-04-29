@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -31,38 +32,42 @@ namespace JCSUnity
 
         private JCS_VelocityInfo mVelocityInfo = null;
 
-
-        [Header("** Runtime Varaibles (JCS_2DWalkAction) **")]
+        [Separator("Runtime Varaibles (JCS_2DWalkAction)")]
 
         [Tooltip("Speed of the action.")]
         [SerializeField]
         private float mWalkSpeed = 10.0f;
 
         [Tooltip("Possibility to walk LEFT way.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToLeft = 50.0f;
 
         [Tooltip("Possibility to walk RIGHT way.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToRight = 50.0f;
 
         [Tooltip("Possibility to IDLE.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToIdle = 50.0f;
 
         [Tooltip("Possiblity to active this action.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mPossibility = 80.0f;
 
-
-        [Header("** Time Settings (JCS_2DWalkAction) **")]
+        [Header("- Time")]
 
         [Tooltip("Time to do one walk.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mTimeZone = 2.0f;
 
         [Tooltip("Time that will randomly affect the Time Zone.")]
-        [SerializeField] [Range(0.0f, 3.0f)]
+        [SerializeField]
+        [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
         // time to record down the real time to do one walk
@@ -75,8 +80,11 @@ namespace JCSUnity
         // check to see if we can reset our time zone.
         private bool mWalked = false;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("** Action Settings (JCS_2DWalkAction) **")]
+        [Header("- Action")]
 
         [Tooltip("Generate a random walk speed at the initilaize time.")]
         [SerializeField]
@@ -84,11 +92,11 @@ namespace JCSUnity
 
         [Tooltip(@"Addition value to the walk speed. For
 instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
-        [SerializeField] [Range(1, 10)]
+        [SerializeField]
+        [Range(1, 10)]
         private float mRandomWalkSpeedRange = 5;
 
-
-        [Header("** Track Effect (JCS_2DWalkAction) **")]
+        [Header("- Track Effect")]
 
         [Tooltip("If get mad will start tracking the object that make this object mad.")]
         [SerializeField]
@@ -98,13 +106,11 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         [SerializeField]
         private JCS_AttackerRecorder mAttackRecorder = null;
 
-
-        [Header("** Optional Settings (JCS_2DWalkAction) **")]
+        [Header("- Optional")]
 
         [Tooltip("Live object animation.")]
         [SerializeField]
         private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
-
 
         /* Setter & Getter */
 
@@ -119,10 +125,10 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         public float RecordSpeedX { get { return this.mVelocityInfo.RecordSpeed.x; } set { this.mVelocityInfo.RecordSpeedX = value; } }
         public float RecordSpeedY { get { return this.mVelocityInfo.RecordSpeed.y; } set { this.mVelocityInfo.RecordSpeedY = value; } }
         public float RecordSpeedZ { get { return this.mVelocityInfo.RecordSpeed.z; } set { this.mVelocityInfo.RecordSpeedZ = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         // Track Effects
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
-
 
         /* Functions */
 
@@ -162,8 +168,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             if (possibility > mPossibility)
                 return;
 
-            // start the algorithm to see if we
-            // find the direction to do,
+            // start the algorithm to see if we find the direction to do,
             // if not it will just go randomly.
             WalkDirectionPossibility();
         }
@@ -183,12 +188,10 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             {
                 Transform lastAttacker = mAttackRecorder.LastAttacker;
 
-                // if the last attacker does not exist,
-                // do nothing.
+                // if the last attacker does not exist, do nothing.
                 if (lastAttacker != null)
                 {
-                    // if does exist, start following
-                    // the attacker.
+                    // if does exist, start following the attacker.
                     if (lastAttacker.position.x < this.transform.position.x)
                         direction = Status.LEFT;
                     else
@@ -231,8 +234,8 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             // if there are multiple result do randomly
             if (resultCounter >= 2)
                 WalkRandomly();
-            // else if we successfully find the direction,
-            // use the direction algorithm found.
+            // else if we successfully find the direction, use the direction
+            // algorithm found.
             else
                 WalkByStatus(direction);
         }
@@ -330,7 +333,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             if (mWalked)
                 ResetTimeZone();
 
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTimer < mRealTimeZone)
                 return;
@@ -339,8 +342,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         }
 
         /// <summary>
-        /// Algorithm to calculate the time to do
-        /// walk action include direction.
+        /// Algorithm to calculate the time to do walk action include direction.
         /// </summary>
         private void ResetTimeZone()
         {

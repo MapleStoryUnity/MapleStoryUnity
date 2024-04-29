@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_LiveObject) **")]
+        [Separator("Runtime Variables (JCS_LiveObject)")]
 
         [Tooltip(@"Health, Auto add, for better design plz add JCS_LiquidBarInfo manually.")]
         [SerializeField]
@@ -35,12 +36,14 @@ namespace JCSUnity
         protected int mPreCalHP = 0;
 
         [Tooltip("How much damage could knock back?")]
-        [SerializeField] [Range(0, 999999999)]
+        [SerializeField]
+        [Range(0, 999999999)]
         protected int mKB = 0;
 
         // Should we set it to global?
         [Tooltip("How much force to knock back?")]
-        [SerializeField] [Range(1, 200)]
+        [SerializeField]
+        [Range(1, 200)]
         protected float mKnockBackForce = 1;
 
         [Tooltip("Do the damage text effect after damage?")]
@@ -51,7 +54,7 @@ namespace JCSUnity
         [SerializeField]
         protected bool mCanDamage = true;
 
-        [Header("** Optional Variables (JCS_LiveObject) **")]
+        [Separator("Optional Variables (JCS_LiveObject)")]
 
         [Tooltip("Do this live object provide invincible time action?")]
         [SerializeField]

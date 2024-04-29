@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -28,7 +29,7 @@ namespace JCSUnity
         public static string FADE_SCREEN_PATH = "LevelDesignUI/JCS_FadeScreen";
         public static string FADE_SCREEN_NAME = "JCS_FadeScreen";
 
-        [Header("** Initialize Variables (JCS_UISettings) **")]
+        [Separator("Initialize Variables (JCS_UISettings)")]
 
         [Tooltip("Resize the UI in runtime?")]
         public bool RESIZE_UI = true;

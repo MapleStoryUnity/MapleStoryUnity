@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DPlatform) **")]
+        [Separator("Runtime Variables (JCS_2DPlatform)")]
 
         [Tooltip("Platform's collider that player stand on.")]
         [SerializeField]
@@ -44,7 +45,7 @@ namespace JCSUnity
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
+            JCS_Player player = JCS_GameManager.instance.Player;
             if (player == null)
                 return;
 
@@ -58,7 +59,7 @@ namespace JCSUnity
 
         protected virtual void OnTriggerExit(Collider other)
         {
-            JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
+            JCS_Player player = JCS_GameManager.instance.Player;
             if (player == null)
                 return;
 

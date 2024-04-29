@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,7 +24,7 @@ namespace JCSUnity
         private JCS_FadeObject mAO = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_WhiteScreen) **")]
+        [Separator("Helper Variables (JCS_WhiteScreen)")]
 
         [Tooltip("Test with the key?")]
         [SerializeField]
@@ -34,7 +35,7 @@ namespace JCSUnity
         private KeyCode mTestKey = KeyCode.U;
 #endif
 
-        [Header("** Runtime Variables (JCS_WhiteScreen) **")]
+        [Separator("Runtime Variables (JCS_WhiteScreen)")]
 
         [Tooltip("How long it fade out?")]
         [SerializeField]

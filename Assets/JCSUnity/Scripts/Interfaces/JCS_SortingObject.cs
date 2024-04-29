@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_SortingObject) **")]
+        [Separator("Initialize Variables (JCS_SortingObject)")]
 
         [Tooltip(@"With this higher the panel have higher sorthing order. 
 (Higher will be in the front.)")]

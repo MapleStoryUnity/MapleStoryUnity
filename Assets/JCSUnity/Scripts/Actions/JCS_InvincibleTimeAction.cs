@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,11 +23,15 @@ namespace JCSUnity
         private JCS_LiveObject mLiveObject = null;
         private JCS_OrderLayerObject mOrderLayerObject = null;
 
-        [Header("** Runtime Variables (JCS_InvincibleTimeAction) **")]
+        [Separator("Runtime Variables (JCS_InvincibleTimeAction)")]
 
         [Tooltip("How long the invincible time are?")]
         [SerializeField]
         private float mInvicibleTime = 1.0f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         // timer.
         private float mInvicibleTimer = 0.0f;
@@ -34,7 +39,7 @@ namespace JCSUnity
         // trigger the invincible time action?
         private bool mTriggerAction = false;
 
-        [Header("- Flash Effect (JCS_InvincibleTimeAction) ")]
+        [Header("- Flash")]
 
         [Tooltip("Color when is invincible.")]
         [SerializeField]
@@ -64,6 +69,7 @@ namespace JCSUnity
         public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
         // Use to check if this effect is active?
         public bool IsInvincible { get { return this.mTriggerAction; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -81,8 +87,7 @@ namespace JCSUnity
             if (!mTriggerAction)
                 return;
 
-
-            mInvicibleTimer += Time.deltaTime;
+            mInvicibleTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // do flash algorithm.
             DoFlash();
@@ -145,8 +150,8 @@ namespace JCSUnity
 
             // record down the current color.
             if (mOrderLayerObject.GetSpriteRenderer() != null)
-                mRecordColor  = mOrderLayerObject.GetSpriteRenderer().color;
-            else 
+                mRecordColor = mOrderLayerObject.GetSpriteRenderer().color;
+            else
                 mRecordColor = Color.white;
 
             // reset the flash toggle.
@@ -156,7 +161,7 @@ namespace JCSUnity
             mTriggerAction = true;
 
             // play the sound once.
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mTriggerSound);
+            JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mTriggerSound);
         }
 
         /// <summary>
@@ -164,7 +169,7 @@ namespace JCSUnity
         /// </summary>
         private void DoFlash()
         {
-            mFlashTimer += Time.deltaTime;
+            mFlashTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mFlashTime > mFlashTimer)
                 return;

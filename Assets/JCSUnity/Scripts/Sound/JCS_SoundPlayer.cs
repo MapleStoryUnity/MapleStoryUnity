@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
 
         private AudioSource mAudioSource = null;
 
-        [Header("** Runtime Variables (JCS_SoundPlayer) **")]
+        [Separator("Runtime Variables (JCS_SoundPlayer)")]
 
         [Tooltip("Sound setting type for this sound player.")]
         [SerializeField]
@@ -61,7 +62,7 @@ namespace JCSUnity
         {
             JCS_SoundPlayer useSp = player;
             if (useSp == null)
-                useSp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+                useSp = JCS_SoundManager.instance.GlobalSoundPlayer();
             useSp.PlayOneShotByMethod(clip, method, volume);
         }
 
@@ -72,7 +73,7 @@ namespace JCSUnity
         /// <param name="type"></param>
         public void PlayOneShot(AudioClip clip, JCS_SoundSettingType type)
         {
-            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.instance;
 
             float volume = 0;
             switch (type)

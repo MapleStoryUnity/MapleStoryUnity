@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_LoadSceneButton) **")]
+        [Separator("Initialize Variables (JCS_LoadSceneButton)")]
 
         [Tooltip("Platform you want to target. NONE means all platform, so it will just load the scene")]
         [SerializeField]
@@ -56,7 +57,7 @@ namespace JCSUnity
             {
                 // if the button and the platform are not the same, 
                 // dont load the scene and do nothing.
-                if (mPlatformType != JCS_ApplicationManager.instance.PlatformType)
+                if (mPlatformType != JCS_AppManager.instance.PlatformType)
                     return;
             }
 

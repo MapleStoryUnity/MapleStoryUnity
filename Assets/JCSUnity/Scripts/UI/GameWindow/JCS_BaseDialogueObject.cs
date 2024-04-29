@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -30,7 +31,7 @@ namespace JCSUnity
         // Is current dialgoue visible?
         protected bool mIsVisible = false;
 
-        [Header("** Runtime Variables (JCS_BaseDialogueObject) **")]
+        [Separator("Runtime Variables (JCS_BaseDialogueObject)")]
 
         [Tooltip(@"Set the rect transfrom size the same as before playing it.")]
         [SerializeField]
@@ -110,7 +111,7 @@ namespace JCSUnity
         public void Destroy()
         {
             // start the app
-            JCS_ApplicationManager.APP_PAUSE = false;
+            JCS_AppManager.APP_PAUSE = false;
 
             // destroy this dialogue
             Destroy(this.gameObject);

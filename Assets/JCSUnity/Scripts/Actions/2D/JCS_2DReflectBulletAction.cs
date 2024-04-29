@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DReflectBulletAction) **")]
+        [Separator("Runtime Variables (JCS_2DReflectBulletAction)")]
 
         // TODO(jenchieh): not done yet.
         [Tooltip("Force add on after reflect.")]
@@ -39,7 +40,7 @@ degree lower than 90.")]
         [Range(0, 180)]
         private float mRandomReflectDegree = 0;
 
-        [Header("** Random Teleport Effect (JCS_2DReflectBulletAction) **")]
+        [Header("- Random Teleport Effect")]
 
         [Tooltip("Position offset.")]
         [SerializeField] private Vector3 mPosOffset = Vector3.zero;

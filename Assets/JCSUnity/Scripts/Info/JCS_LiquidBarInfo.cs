@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,13 +19,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_LiquidBarInfo) **")]
+        [Separator("Check Variables (JCS_LiquidBarInfo)")]
 
         [Tooltip("Liquid bar this info object holds.")]
         [SerializeField]
+        [ReadOnly]
         protected JCS_LiquidBar mLiquidBar = null;
 
-        [Header("** Runtime Variables (JCS_LiquidBarInfo) **")]
+        [Separator("Runtime Variables (JCS_LiquidBarInfo)")]
 
         [Tooltip("Tag name to identify the same components.")]
         [SerializeField]

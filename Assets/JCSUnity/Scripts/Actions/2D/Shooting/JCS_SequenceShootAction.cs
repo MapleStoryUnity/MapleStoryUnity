@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -14,21 +15,22 @@ namespace JCSUnity
     /// Shoot in Sequence act like damage text.(sequence)
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
-    public class JCS_SequenceShootAction : MonoBehaviour , JCS_IAction
+    public class JCS_SequenceShootAction : MonoBehaviour, JCS_IAction
     {
         /* Variables */
 
         private JCS_ShootAction mShootAction = null;
 
-
-        [Header("** Runtime Variables (JCS_SequenceShootAction) **")]
+        [Separator("Runtime Variables (JCS_SequenceShootAction)")]
 
         [Tooltip("How many shoot in sequence?")]
-        [SerializeField] [Range(1, 30)]
+        [SerializeField]
+        [Range(1, 30)]
         private int mHit = 8;
 
         [Tooltip("Time to a shoot in sequence.")]
-        [SerializeField] [Range(0.01f, 0.5f)]
+        [SerializeField]
+        [Range(0.01f, 0.5f)]
         private float mTimePerShoot = 0.1f;
 
         [Tooltip("Make the action do in sequence.")]
@@ -39,15 +41,17 @@ namespace JCSUnity
         [SerializeField]
         private bool mSequenceStay = true;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("** Optional Variables (JCS_SequenceShootAction) **")]
+        [Header("- Optional")]
 
         [Tooltip("Ability format to use.")]
         [SerializeField]
         private JCS_AbilityFormat mAbilityFormat = null;
 
-
-        [Header("** Action Settings (JCS_SequenceShootAction) **")]
+        [Header("- Action")]
 
         [Tooltip("Time delay before shoot.")]
         [SerializeField]
@@ -63,8 +67,7 @@ namespace JCSUnity
 
         private float mActionTimer = 0.0f;
 
-
-        [Header("** Shoot Gap Effect (JCS_SequenceShootAction) **")]
+        [Header("- Shoot Gap Effect")]
 
         [Tooltip("Shoot with gap?")]
         [SerializeField]
@@ -78,16 +81,14 @@ namespace JCSUnity
 
         private JCS_DetectAreaObject mDetectedObject = null;
 
-
         //** Sequence Data **
-        private JCS_Vector<int> mThread = null;        // main thread
-        private JCS_Vector<float> mTimers = null;           // timer per thread
-        private JCS_Vector<int> mShootCount = null;         // how many shoot should process per thread
-        private JCS_Vector<int> mShootCounter = null;         // counter per thread
+        private JCS_Vector<int> mThread = null;                    // main thread
+        private JCS_Vector<float> mTimers = null;                  // timer per thread
+        private JCS_Vector<int> mShootCount = null;                // how many shoot should process per thread
+        private JCS_Vector<int> mShootCounter = null;              // counter per thread
         private JCS_Vector<Vector3> mShootPos = null;
         private JCS_Vector<Transform> mTargetsPerSequence = null;
         private JCS_Vector<bool> mShootDirection = null;
-
 
         /* Setter & Getter */
 
@@ -95,13 +96,13 @@ namespace JCSUnity
         public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
         public bool InSequenceEffect { get { return this.mInSequenceEffect; } set { this.mInSequenceEffect = value; } }
         public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public void SetShootCallback(EmptyFunction func) { this.mShootAction.SetShootCallback(func); }
         public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } set { this.mAbilityFormat = value; } }
         public float TimeBeforeShoot { get { return this.mTimeBeforeShoot; } set { this.mTimeBeforeShoot = value; } }
         public float TimeDelayAfterShoot { get { return this.mTimeDelayAfterShoot; } set { this.mTimeDelayAfterShoot = value; } }
         public bool ShootGapEffect { get { return this.mShootGapEffect; } set { this.mShootGapEffect = value; } }
         public float ShootGap { get { return this.mShootGap; } set { this.mShootGap = value; } }
-
 
         /* Functions */
 
@@ -140,17 +141,13 @@ namespace JCSUnity
         {
             if (mShootAction.Bullet == null)
             {
-                JCS_Debug.LogReminder(
-                    "There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
-
+                JCS_Debug.LogReminder("There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
                 return;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.LogReminder(
-                    "Cannot shoot sequence of bullet with lower than 0 hit...");
-
+                JCS_Debug.LogReminder("Can't shoot sequence of bullet with lower than 0 hit...");
                 return;
             }
 
@@ -174,7 +171,8 @@ namespace JCSUnity
             // does not found the target to damage
             if (mDetectedObject == null)
                 mTargetsPerSequence.push(null);
-            else {
+            else
+            {
                 // found target to damage, add in to data segment
                 mTargetsPerSequence.push(mDetectedObject.transform);
 
@@ -206,7 +204,6 @@ namespace JCSUnity
                     liveObj.BeenTarget = true;
                 }
             }
-
 
             // thread itself
             mThread.push(mThread.length);
@@ -248,7 +245,7 @@ namespace JCSUnity
             float newTimer = mTimers.at(processIndex);
 
             // add time to timer
-            newTimer += Time.deltaTime;
+            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if we can shoot or not
             if (mTimePerShoot < newTimer)
@@ -295,13 +292,13 @@ namespace JCSUnity
 
                     }
                     // process the sub bullet in sequence
-                    else {
+                    else
+                    {
                         mShootAction.Shoot(spawnPos, direction, mHit, currentShootCount, theSub, mTargetsPerSequence.at(processIndex));
                     }
                 }
                 else
                     mShootAction.Shoot(spawnPos, direction, 1, currentShootCount, false);
-
 
                 ++currentShootCount;
 
@@ -357,9 +354,11 @@ namespace JCSUnity
                 }
             }
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             if (mAfterDelay)
             {
-                mActionTimer += Time.deltaTime;
+                mActionTimer += dt;
 
                 if (mTimeDelayAfterShoot < mActionTimer)
                 {
@@ -376,7 +375,7 @@ namespace JCSUnity
 
             if (mAction && !mAfterDelay)
             {
-                mActionTimer += Time.deltaTime;
+                mActionTimer += dt;
 
                 if (mTimeBeforeShoot < mActionTimer)
                 {
@@ -426,7 +425,6 @@ namespace JCSUnity
                 return null;
             }
 
-
             // get the game setting first
             JCS_GameSettings jcsGm = JCS_GameSettings.instance;
 
@@ -450,7 +448,6 @@ namespace JCSUnity
                         damages[index] = jcsGm.MAX_DAMAGE;
                 }
             }
-
 
             // return the damages we just create!
             return damages;

@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,14 +22,14 @@ namespace JCSUnity
 
         private CharacterController mCharacterController = null;
 
-        [Header("** Check Variables (JCS_VelocityInfo) **")]
+        [Separator("Check Variables (JCS_VelocityInfo)")]
 
         [Tooltip("Velocity for this character controller.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mVelocity = Vector3.zero;
 
-
-        [Header("** Runtime Variables (JCS_VelocityInfo) **")]
+        [Separator("Runtime Variables (JCS_VelocityInfo)")]
 
         [Tooltip("Do this character controll applies gravity.")]
         [SerializeField]
@@ -37,6 +38,10 @@ namespace JCSUnity
         [Tooltip("How fast it get back to original speed?")]
         [SerializeField]
         private float mSpeedFriction = 0.2f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         // 原本速度的變化量
         private Vector3 mMoveSpeed = Vector3.zero;
@@ -56,7 +61,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mFreezeZ = false;
 
-
         /* Setter & Getter */
 
         public CharacterController GetCharacterController() { return this.mCharacterController; }
@@ -68,6 +72,7 @@ namespace JCSUnity
         public float MoveSpeedX { get { return this.mMoveSpeed.x; } set { this.mMoveSpeed.x = value; } }
         public float MoveSpeedY { get { return this.mMoveSpeed.y; } set { this.mMoveSpeed.y = value; } }
         public float MoveSpeedZ { get { return this.mMoveSpeed.z; } set { this.mMoveSpeed.z = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public Vector3 RecordSpeed { get { return this.mRecordSpeed; } set { this.mRecordSpeed = value; } }
         public float RecordSpeedX { get { return this.mRecordSpeed.x; } set { this.mRecordSpeed.x = value; } }
         public float RecordSpeedY { get { return this.mRecordSpeed.y; } set { this.mRecordSpeed.y = value; } }
@@ -77,7 +82,6 @@ namespace JCSUnity
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
         public bool FreezeZ { get { return this.mFreezeZ; } set { this.mFreezeZ = value; } }
-
 
         /* Functions */
 
@@ -91,6 +95,8 @@ namespace JCSUnity
             // do freezing before move the character.
             DoFreeze();
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             if (mCharacterController.enabled)
             {
                 // apply force (moving the character)
@@ -98,7 +104,7 @@ namespace JCSUnity
                  * NOTE(jenchieh): Move function cost so much 
                  * performance.
                  */
-                mCharacterController.Move(Velocity * Time.deltaTime);
+                mCharacterController.Move(Velocity * dt);
             }
 
             // getting back speed
@@ -113,7 +119,7 @@ namespace JCSUnity
                 {
                     VelY -= 
                         JCS_GameConstant.GRAVITY *
-                        Time.deltaTime *
+                        dt *
                         JCS_GameSettings.instance.GRAVITY_PRODUCT;
                 }
                 // if touches the ground set to negative one.
@@ -144,12 +150,9 @@ namespace JCSUnity
 
         private void DoFreeze()
         {
-            if (mFreezeX)
-                VelX = 0;
-            if (mFreezeY)
-                VelY = 0;
-            if (mFreezeZ)
-                VelZ = 0;
+            if (mFreezeX) VelX = 0;
+            if (mFreezeY) VelY = 0;
+            if (mFreezeZ) VelZ = 0;
         }
 
     }

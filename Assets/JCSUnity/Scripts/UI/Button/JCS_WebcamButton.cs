@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,13 +18,14 @@ namespace JCSUnity
     {
         /* Variables*/
 
-        [Header("** Check Variables (JCS_WebcamButton) **")]
+        [Separator("Check Variables (JCS_WebcamButton)")]
 
         [Tooltip("Current webcam image path.")]
         [SerializeField]
+        [ReadOnly]
         private string mCurrentWebcamImagePath = "";
 
-        [Header("** Initialize Variables (JCS_WebcamButton) **")]
+        [Separator("Initialize Variables (JCS_WebcamButton)")]
 
         [Tooltip("Webcam to use.")]
         [SerializeField]
@@ -35,15 +37,6 @@ namespace JCSUnity
         public string CurrentWebcamImagePath { get { return this.mCurrentWebcamImagePath; } }
 
         /* Functions */
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            // try to get the webcam from the scene.
-            if (mWebcam == null)
-                mWebcam = (JCS_Webcam)FindObjectOfType(typeof(JCS_Webcam));
-        }
 
         public override void OnClick()
         {

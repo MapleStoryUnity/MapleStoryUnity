@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,37 +21,19 @@ namespace JCSUnity
         // Callback after the game is done initialize.
         public EmptyFunction afterGameInitializeCallback = null;
 
-#if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_GameManager) **")]
-
-        [Tooltip("Test this module?")]
-        [SerializeField]
-        private bool mTestWithKey = false;
-
-        [Tooltip("Key to toggle game pause/unpause.")]
-        [SerializeField]
-        private KeyCode mToggleGamePause = KeyCode.P;
-
-        // helper tool for level designer to do 
-        // some cool effect in the game.
-        [Tooltip("Adjustable current time scale")]
-        [SerializeField]
-        [Range(0, 1)]
-        public float TIME_SCALE = 1;
-#endif
-
-        [Header("** Check Variable (JCS_GameManager) **")]
+        [Separator("Check Variable (JCS_GameManager)")]
 
         [Tooltip("Is the game pasue?")]
         [SerializeField]
+        [ReadOnly]
         private bool mGamePause = false;
 
         [Tooltip("Is game done initialize?")]
         [SerializeField]
+        [ReadOnly]
         private bool mGameDoneInitialize = false;
 
-        private JCS_Player mJCSPlayer = null;
-        private JCS_GameSettings mJCSGameSettings = null;
+        private JCS_Player mPlayer = null;
 
         /* Setter & Getter */
 
@@ -65,19 +48,18 @@ namespace JCSUnity
                 // JCS_PauseAction in the game.
                 if (mGamePause != value)
                 {
-                    JCS_PauseManager.instance.PauseTheWholeGame(value);
+                    var pm = JCS_PauseManager.instance;
+
+                    if (value)
+                        pm.Pause();
+                    else
+                        pm.Unpause();
                 }
 
                 this.mGamePause = value;
             }
         }
-        public void SetJCSPlayer(JCS_Player player)
-        {
-            this.mJCSPlayer = player;
-        }
-        public JCS_Player GetJCSPlayer() { return this.mJCSPlayer; }
-        public void SetJCSGameSettings(JCS_GameSettings gs) { this.mJCSGameSettings = gs; }
-        public JCS_GameSettings GetJCSGameSettings() { return this.mJCSGameSettings; }
+        public JCS_Player Player { get { return this.mPlayer; } set { this.mPlayer = value; } }
 
         /* Functions */
 
@@ -86,53 +68,13 @@ namespace JCSUnity
             instance = this;
 
             SetSpecificGameTypeGameManager();
-
-#if UNITY_EDITOR
-            // Check time scale
-            if (TIME_SCALE != 1)
-            {
-                JCS_Debug.LogReminder("Current time scale [" + TIME_SCALE + "] isn't one.");
-            }
-#endif
         }
 
 
         private void Update()
         {
-#if UNITY_EDITOR
-            SetTimeScale();
-
-            TestPauseGame();
-#endif
-
             SetGameDoneInitializeFlag();
         }
-
-#if UNITY_EDITOR
-        /// <summary>
-        /// Keep set the time to the time scale, so make it make the inspector
-        /// slide bar can control the time scale of the actual time scale from
-        /// UnityEngine's API "Time class".
-        /// </summary>
-        private void SetTimeScale()
-        {
-            if (!mTestWithKey)
-                return;
-
-            Time.timeScale = TIME_SCALE;
-        }
-
-        private void TestPauseGame()
-        {
-            if (!mTestWithKey)
-                return;
-
-            if (Input.GetKeyDown(mToggleGamePause))
-            {
-                GAME_PAUSE = !GAME_PAUSE;
-            }
-        }
-#endif
 
         /// <summary>
         /// Add specific game manager type.

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_DialogueObject) **")]
+        [Separator("Runtime Variables (JCS_DialogueObject)")]
 
         [Tooltip("Unique index to open the dialogue.")]
         [SerializeField]
@@ -38,7 +39,7 @@ namespace JCSUnity
 
         [Header("- Sound")]
 
-        [Tooltip("Sound player for 3D sounds calculation.")]
+        [Tooltip("Sound player for this component.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -132,7 +133,7 @@ namespace JCSUnity
             base.Start();
 
             // pause the app
-            JCS_ApplicationManager.APP_PAUSE = true;
+            JCS_AppManager.APP_PAUSE = true;
         }
 
         protected void Update()

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +21,7 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-        [Header("** Initialize Variables (JCS_SlideScreenPanelHolder) **")]
+        [Separator("Initialize Variables (JCS_SlideScreenPanelHolder)")]
 
         [Tooltip("How fast the this slide panel slide in x axis.")]
         [SerializeField]

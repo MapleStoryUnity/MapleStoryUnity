@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,14 +18,15 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_RevolutioAction) **")]
+        [Separator("Runtime Variables (JCS_RevolutioAction)")]
 
         [Tooltip("Current angle.")]
         [SerializeField]
         private int mDegree = 0;
 
         [Tooltip("Radius to revolution.")]
-        [SerializeField] [Range(0.0f, 1000.0f)]
+        [SerializeField]
+        [Range(0.0f, 1000.0f)]
         private float mRadius = 10.0f;
 
         [Tooltip("Origin transform.")]

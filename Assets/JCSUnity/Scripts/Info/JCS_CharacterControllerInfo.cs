@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,14 +23,16 @@ namespace JCSUnity
 
         private CharacterController mCharacterController = null;
 
-        [Header("** Check Variables (JCS_CharacterControllerInfo) **")]
+        [Separator("Check Variables (JCS_CharacterControllerInfo)")]
 
         [Tooltip("Width of the character controller.")]
         [SerializeField]
+        [ReadOnly]
         private float mWidth = 0;
 
         [Tooltip("Height of the character controller.")]
         [SerializeField]
+        [ReadOnly]
         private float mHeight = 0;
 
         /* Setter & Getter */

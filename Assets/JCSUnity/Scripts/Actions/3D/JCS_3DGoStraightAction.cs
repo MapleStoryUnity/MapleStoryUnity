@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_3DGoStraightAction) **")]
+        [Separator("Runtime Variables (JCS_3DGoStraightAction)")]
 
         [Tooltip("How fast it moves.")]
         [SerializeField]
@@ -28,7 +29,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_X;
 
-        [Header("- Randomize Settings (JCS_3DGoStraightAction)")]
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
+        [Header("- Randomize")]
 
         [Tooltip(@"Randomize the speed depends on positive
 move speed to negative move speed.")]
@@ -40,10 +45,12 @@ move speed to negative move speed.")]
         [Range(0.0f, 10.0f)]
         private float mRandomSpeedValue = 5.0f;
 
+
         /* Setter & Getter */
 
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool RandomizeSpeedAtStart { get { return this.mRandomizeSpeedAtStart; } set { this.mRandomizeSpeedAtStart = value; } }
         public float RandomSpeedValue { get { return this.mRandomSpeedValue; } set { this.mRandomSpeedValue = value; } }
 
@@ -68,21 +75,23 @@ move speed to negative move speed.")]
         {
             Vector3 newPos = Vector3.zero;
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             switch (mAxis)
             {
                 case JCS_Axis.AXIS_X:
                     {
-                        newPos = Vector3.right * MoveSpeed * Time.deltaTime;
+                        newPos = Vector3.right * MoveSpeed * dt;
                     }
                     break;
                 case JCS_Axis.AXIS_Z:
                     {
-                        newPos = Vector3.forward * MoveSpeed * Time.deltaTime;
+                        newPos = Vector3.forward * MoveSpeed * dt;
                     }
                     break;
                 case JCS_Axis.AXIS_Y:
                     {
-                        newPos = Vector3.up * MoveSpeed * Time.deltaTime;
+                        newPos = Vector3.up * MoveSpeed * dt;
                     }
                     break;
             }

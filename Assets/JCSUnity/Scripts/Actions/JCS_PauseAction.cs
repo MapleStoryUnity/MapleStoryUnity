@@ -6,7 +6,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,13 +24,20 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_PauseAction) **")]
+        [Separator("Check Variables (JCS_PauseAction)")]
+
+        [Tooltip("Record enabled state; make disabled behaviours reamin disabled.")]
+        [SerializeField]
+        [ReadOnly]
+        private List<bool> mRecordEnabled = null;
+
+        [Separator("Runtime Variables (JCS_PauseAction)")]
 
         [Tooltip(@"Select the behaviour component and drag it into the list so the 
 pause manager will take care of the pause object. If you are working on game that 
 does not have pause, then this script is basically not the good serve for you.")]
         [SerializeField]
-        private MonoBehaviour[] mActionList = null;
+        private Behaviour[] mActionList = null;
 
         /* Setter & Getter */
 
@@ -44,12 +53,25 @@ does not have pause, then this script is basically not the good serve for you.")
         /// </summary>
         public void EnableBehaviourInTheList(bool act = true)
         {
-            foreach (MonoBehaviour b in mActionList)
+            // Before pausing.
+            bool pausing = !act;
+
+            if (pausing)
+                mRecordEnabled.Clear();
+
+            int index = 0;
+
+            foreach (Behaviour b in mActionList)
             {
                 if (b == null)
                     continue;
 
-                b.enabled = act;
+                if (pausing)
+                    mRecordEnabled.Add(b.enabled);
+
+                b.enabled = (pausing) ? act : mRecordEnabled[index];
+
+                ++index;
             }
         }
     }

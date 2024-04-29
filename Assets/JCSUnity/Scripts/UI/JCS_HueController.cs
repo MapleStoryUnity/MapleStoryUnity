@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,31 +19,42 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_HueController) **")]
+        [Separator("Check Variables (JCS_HueController)")]
 
         // record down the highest r/g/b color.
-        [SerializeField] [Range(0, 1)]
+        [SerializeField]
+        [Range(0, 1)]
+        [ReadOnly]
         private float mHighestRGB = 0;
 
         [SerializeField]
+        [ReadOnly]
         private Color mTargetColor = Color.white;
 
         [SerializeField]
+        [ReadOnly]
         private Color[] mListColor = null;
 
-        [Header("** Runtime Variables (JCS_HueController) **")]
+        [Separator("Runtime Variables (JCS_HueController)")]
 
         [Tooltip("Any Graphic with color component.")]
         [SerializeField]
         private Graphic mColorGraphic = null;
 
         [Tooltip("How fast the hue changes?")]
-        [SerializeField] [Range(0.01f, 10.0f)]
+        [SerializeField]
+        [Range(0.01f, 10.0f)]
         private float mFriction = 1.0f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         private int mListCounter = 0;
 
         /* Setter & Getter */
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -99,7 +111,7 @@ namespace JCSUnity
         /// </summary>
         private void TowardColor()
         {
-            mColorGraphic.color += (mTargetColor - mColorGraphic.color) / mFriction * Time.deltaTime;
+            mColorGraphic.color += (mTargetColor - mColorGraphic.color) / mFriction * JCS_Time.DeltaTime(mDeltaTimeType);
         }
 
         /// <summary>

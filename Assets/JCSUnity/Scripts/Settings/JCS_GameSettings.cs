@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,26 +18,25 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public EmptyFunction SAVE_GAME_DATA_FUNC = null;
-        public EmptyFunction LOAD_GAME_DATA_FUNC = null;  // NOT USED
-
-        public static JCS_XMLData GAME_DATA = null;  // NOT USED
-
-        [Header("** Check Variables (JCS_GameSettings) **")]
+        [Separator("Check Variables (JCS_GameSettings)")]
 
         [SerializeField]
+        [ReadOnly]
         private string REAL_DATA_PATH = "";
 
         [SerializeField]
+        [ReadOnly]
         private string REAL_SCREENSHOT_PATH = "";
 
         [SerializeField]
+        [ReadOnly]
         private string REAL_WEBCAM_PATH = "";
 
         [SerializeField]
+        [ReadOnly]
         private string REAL_STREAMING_CACHE_PATH = "";
 
-        [Header("** Game Settings (JCS_GameSettings) **")]
+        [Separator("Runtime Variables (JCS_GameSettings)")]
 
         [Tooltip("Debug mode flag.")]
         public bool DEBUG_MODE = true;
@@ -81,20 +81,6 @@ namespace JCSUnity
 
         [Tooltip("Cache streaming assets' data path.")]
         public string STREAMING_CACHE_PATH = "/Data_jcs/Cache_StreamingAssets/";
-
-        [Header("- Save Load")]
-
-        [Tooltip("Data folder path.")]
-        public string DATA_PATH = "/Data_jcs/";
-
-        [Tooltip("Data file extension.")]
-        public string DATA_EXTENSION = ".jcs";
-
-        [Tooltip("Save when switching the scene.")]
-        public bool SAVE_ON_SWITCH_SCENE = true;
-
-        [Tooltip("Save when app exit.")]
-        public bool SAVE_ON_EXIT_APP = true;
 
         [Header("- Screenshot")]
 
@@ -180,11 +166,6 @@ namespace JCSUnity
 
             _new.STREAMING_BASE_URL = _old.STREAMING_BASE_URL;
             _new.STREAMING_CACHE_PATH = _old.STREAMING_CACHE_PATH;
-
-            _new.DATA_PATH = _old.DATA_PATH;
-            _new.DATA_EXTENSION = _old.DATA_EXTENSION;
-            _new.SAVE_ON_EXIT_APP = _old.SAVE_ON_EXIT_APP;
-            _new.SAVE_ON_SWITCH_SCENE = _old.SAVE_ON_SWITCH_SCENE;
 
             _new.SCREENSHOT_PATH = _old.SCREENSHOT_PATH;
             _new.SCREENSHOT_FILENAME = _old.SCREENSHOT_FILENAME;

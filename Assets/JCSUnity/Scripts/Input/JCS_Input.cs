@@ -6,8 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -84,7 +84,7 @@ namespace JCSUnity
     /// <summary>
     /// Unity's Input class re-wrapper.
     /// </summary>
-    public class JCS_Input 
+    public class JCS_Input
     {
         #region DOUBLE_CLICK
         // Boolean to indentify the first click.
@@ -129,7 +129,7 @@ namespace JCSUnity
             #region DOUBLE_CLICK
             if (CLICK)
             {
-                CLICK_TIMER += Time.deltaTime;
+                CLICK_TIMER += Time.unscaledDeltaTime;
 
                 if (CLICK_TIME < CLICK_TIMER)
                 {
@@ -142,6 +142,34 @@ namespace JCSUnity
             DoJoystickCallback();
 
             ClearJoystickKeymapBuffer();
+        }
+
+        /// <summary>
+        /// Execute operations with key state pressed/up/down.
+        /// </summary>
+        /// <param name="key"> Key to press. </param>
+        /// <param name="callback"> Callback after key being pressed. </param>
+        /// <returns> Result key state. </returns>
+        public static bool WithKey(KeyCode key, EmptyFunction callback)
+        {
+            return WithKeyAction(JCS_KeyActionType.KEY, key, callback);
+        }
+        public static bool WithKeyUp(KeyCode key, EmptyFunction callback)
+        {
+            return WithKeyAction(JCS_KeyActionType.KEY_UP, key, callback);
+        }
+        public static bool WithKeyDown(KeyCode key, EmptyFunction callback)
+        {
+            return WithKeyAction(JCS_KeyActionType.KEY_DOWN, key, callback);
+        }
+        private static bool WithKeyAction(JCS_KeyActionType action, KeyCode key, EmptyFunction callback)
+        {
+            if (GetKeyByAction(action, key))
+            {
+                callback.Invoke();
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -198,9 +226,9 @@ namespace JCSUnity
         /// </summary>
         /// <param name="type"> type by JCS_InputType (self-define) </param>
         /// <returns> true: if double click, false nothing happens </returns>
-        public static bool OnMouseDoubleClick(JCS_MouseButton type, bool ignorePause = false)
+        public static bool OnMouseDoubleClick(JCS_MouseButton type)
         {
-            return OnMouseDoubleClick((int)type, ignorePause);
+            return OnMouseDoubleClick((int)type);
         }
         /// <summary>
         /// Check if the user double clicking?
@@ -212,18 +240,18 @@ namespace JCSUnity
 #else
         private
 #endif 
-        static bool OnMouseDoubleClick(int button, bool ignorePause = false)
+        static bool OnMouseDoubleClick(int button)
         {
             // Check first click
             if (!CLICK)
             {
-                if (GetMouseButtonDown(button, ignorePause))
+                if (GetMouseButtonDown(button))
                     CLICK = true;
             }
             // Check double click
             else
             {
-                if (GetMouseButtonDown(button, ignorePause))
+                if (GetMouseButtonDown(button))
                 {
                     CLICK = false;
                     return true;
@@ -237,28 +265,26 @@ namespace JCSUnity
         /// Is the mouse dragging right now?
         /// </summary>
         /// <param name="button"></param>
-        /// <param name="ignorePause"></param>
         /// <returns></returns>
-        public static bool OnMouseDrag(int button, bool ignorePause = false)
+        public static bool OnMouseDrag(int button)
         {
-            return OnMouseDrag((JCS_MouseButton)button, ignorePause);
+            return OnMouseDrag((JCS_MouseButton)button);
         }
         /// <summary>
         /// Is the mouse dragging right now?
         /// </summary>
         /// <param name="button"></param>
-        /// <param name="ignorePause"></param>
         /// <returns></returns>
 #if UNITY_5_4_OR_NEWER  // NOTE: Resolve ambiguous issue.
         public
 #else
         private
 #endif
-        static bool OnMouseDrag(JCS_MouseButton button, bool ignorePause = false)
+        static bool OnMouseDrag(JCS_MouseButton button)
         {
             if (START_DRAGGING)
             {
-                if (GetMouseButton(button, ignorePause))
+                if (GetMouseButton(button))
                 {
                     if (Input.mousePosition != START_DRAG_POINT)
                     {
@@ -281,7 +307,7 @@ namespace JCSUnity
             }
             else
             {
-                if (GetMouseButtonDown(button, ignorePause))
+                if (GetMouseButtonDown(button))
                 {
                     // Record down the mouse position.
                     START_DRAG_POINT = Input.mousePosition;
@@ -323,9 +349,9 @@ namespace JCSUnity
             Canvas myCanvas = JCS_Canvas.GuessCanvas().canvas;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                myCanvas.transform as RectTransform, 
-                Input.mousePosition, 
-                myCanvas.worldCamera, 
+                myCanvas.transform as RectTransform,
+                Input.mousePosition,
+                myCanvas.worldCamera,
                 out pos);
 
             return myCanvas.transform.TransformPoint(pos);
@@ -373,9 +399,9 @@ namespace JCSUnity
 #else
         private
 #endif
-        static bool GetMouseByAction(JCS_KeyActionType act, JCS_MouseButton button, bool ignorePause = false)
+        static bool GetMouseByAction(JCS_KeyActionType act, JCS_MouseButton button)
         {
-            return GetMouseByAction(act, (int)button, ignorePause);
+            return GetMouseByAction(act, (int)button);
         }
         /// <summary>
         /// Get the mouse state by passing it the action.
@@ -386,20 +412,19 @@ namespace JCSUnity
         /// true, the mouse state is correct.
         /// false, the mouse state is incorrect.
         /// </returns>
-        public static bool GetMouseByAction(JCS_KeyActionType act, int button, bool ignorePause = false)
+        public static bool GetMouseByAction(JCS_KeyActionType act, int button)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetMouseButton(button, ignorePause);
+                    return GetMouseButton(button);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetMouseButtonDown(button, ignorePause);
+                    return GetMouseButtonDown(button);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetMouseButtonUp(button, ignorePause);
+                    return GetMouseButtonUp(button);
             }
 
-            JCS_Debug.LogError("This cannot happed");
-            return false;
+            return false;  // This cannot happed
         }
         /// <summary>
         /// Check if the mouse button is down.
@@ -409,9 +434,9 @@ namespace JCSUnity
         /// true, button is down.
         /// false, button is not down.
         /// </returns>
-        public static bool GetMouseButtonDown(JCS_MouseButton button, bool ignorePause = false)
+        public static bool GetMouseButtonDown(JCS_MouseButton button)
         {
-            return GetMouseButtonDown((int)button, ignorePause);
+            return GetMouseButtonDown((int)button);
         }
         /// <summary>
         /// Check if the mouse button is down.
@@ -426,14 +451,8 @@ namespace JCSUnity
 #else
         private
 #endif
-        static bool GetMouseButtonDown(int button, bool ignorePause = false)
+        static bool GetMouseButtonDown(int button)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             if (button == (int)JCS_MouseButton.NONE)
                 return false;
 
@@ -447,9 +466,9 @@ namespace JCSUnity
         /// true, button is pressed.
         /// false, button is not pressed.
         /// </returns>
-        public static bool GetMouseButton(JCS_MouseButton button, bool ignorePause = false)
+        public static bool GetMouseButton(JCS_MouseButton button)
         {
-            return GetMouseButton((int)button, ignorePause);
+            return GetMouseButton((int)button);
         }
         /// <summary>
         /// Check if the mouse button is pressed.
@@ -464,14 +483,8 @@ namespace JCSUnity
 #else
         private
 #endif
-        static bool GetMouseButton(int button, bool ignorePause = false)
+        static bool GetMouseButton(int button)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             if (button == (int)JCS_MouseButton.NONE)
                 return false;
 
@@ -485,9 +498,9 @@ namespace JCSUnity
         /// true, button is up.
         /// false, button is not up.
         /// </returns>
-        public static bool GetMouseButtonUp(JCS_MouseButton button, bool ignorePause = false)
+        public static bool GetMouseButtonUp(JCS_MouseButton button)
         {
-            return GetMouseButtonUp((int)button, ignorePause);
+            return GetMouseButtonUp((int)button);
         }
         /// <summary>
         /// Check if the mouse button is up.
@@ -502,14 +515,8 @@ namespace JCSUnity
 #else
         private
 #endif
-        static bool GetMouseButtonUp(int button, bool ignorePause = false)
+        static bool GetMouseButtonUp(int button)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             if (button == (int)JCS_MouseButton.NONE)
                 return false;
 
@@ -525,20 +532,19 @@ namespace JCSUnity
         /// true, button with current key action is active.
         /// false, button with current key action is not active.
         /// </returns>
-        public static bool GetKeyByAction(JCS_KeyActionType act, KeyCode key, bool ignorePause = false)
+        public static bool GetKeyByAction(JCS_KeyActionType act, KeyCode key)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetKey(key, ignorePause);
+                    return GetKey(key);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetKeyDown(key, ignorePause);
+                    return GetKeyDown(key);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetKeyUp(key, ignorePause);
+                    return GetKeyUp(key);
             }
 
-            JCS_Debug.LogError("This cannot happed, because all states applied.");
-            return false;
+            return false;  // This cannot happens!
         }
         /// <summary>
         /// Is the key down?
@@ -547,14 +553,8 @@ namespace JCSUnity
         /// <returns>
         /// true: key is down, false: vice versa.
         /// </returns>
-        public static bool GetKeyDown(KeyCode key, bool ignorePause = false)
+        public static bool GetKeyDown(KeyCode key)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             return Input.GetKeyDown(key);
         }
         /// <summary>
@@ -564,14 +564,8 @@ namespace JCSUnity
         /// <returns>
         /// true: key is held down, false: vice versa.
         /// </returns>
-        public static bool GetKey(KeyCode key, bool ignorePause = false)
+        public static bool GetKey(KeyCode key)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             return Input.GetKey(key);
         }
         /// <summary>
@@ -579,14 +573,8 @@ namespace JCSUnity
         /// </summary>
         /// <param name="key"> key to check if is key up. </param>
         /// <returns> true: is key up, false: vice versa. </returns>
-        public static bool GetKeyUp(KeyCode key, bool ignorePause = false)
+        public static bool GetKeyUp(KeyCode key)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             return Input.GetKeyUp(key);
         }
 
@@ -603,37 +591,27 @@ namespace JCSUnity
         /// <returns> 
         /// Is either pressed, down, up. or not pressed, down, up. 
         /// </returns>
-        public static bool GetButtonByAction(JCS_KeyActionType act, string buttonName, bool ignorePause = false)
+        public static bool GetButtonByAction(JCS_KeyActionType act, string buttonName)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetButton(buttonName, ignorePause);
+                    return GetButton(buttonName);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetButtonDown(buttonName, ignorePause);
+                    return GetButtonDown(buttonName);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetButtonUp(buttonName, ignorePause);
+                    return GetButtonUp(buttonName);
             }
 
-
-            JCS_Debug.LogError("This cannot happed.");
-
-            // this cannot happens
-            return false;
+            return false;  // this cannot happens
         }
         /// <summary>
         /// Is the button pressed?
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
-        public static bool GetButton(string buttonName, bool ignorePause = false)
+        public static bool GetButton(string buttonName)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             return Input.GetButton(buttonName);
         }
         /// <summary>
@@ -641,14 +619,8 @@ namespace JCSUnity
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
-        public static bool GetButtonDown(string buttonName, bool ignorePause = false)
+        public static bool GetButtonDown(string buttonName)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             return Input.GetButtonDown(buttonName);
         }
         /// <summary>
@@ -656,14 +628,8 @@ namespace JCSUnity
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
-        public static bool GetButtonUp(string buttonName, bool ignorePause = false)
+        public static bool GetButtonUp(string buttonName)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             return Input.GetButtonUp(buttonName);
         }
 
@@ -672,14 +638,8 @@ namespace JCSUnity
         /// </summary>
         /// <param name="type"> type of the key pressed option. </param>
         /// <returns> key u pressed. </returns>
-        public static KeyCode GetAnyKeyByAction(JCS_KeyActionType type, bool ignorePause = false)
+        public static KeyCode GetAnyKeyByAction(JCS_KeyActionType type)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return KeyCode.None;
-            }
-
             // loop through the key code list
             foreach (KeyCode val in JCS_Util.GetValues<KeyCode>())
             {
@@ -702,9 +662,9 @@ namespace JCSUnity
         /// true: key buffer in
         /// false: no key buffer in
         /// </returns>
-        public static bool IsAnyKeyBuffer(JCS_KeyActionType type, bool ignorePause = false)
+        public static bool IsAnyKeyBuffer(JCS_KeyActionType type)
         {
-            KeyCode code = GetAnyKeyByAction(type, ignorePause);
+            KeyCode code = GetAnyKeyByAction(type);
 
             return (code != KeyCode.None);
         }
@@ -716,14 +676,8 @@ namespace JCSUnity
         /// true: somewhere in the key is down.
         /// false: no key is down.
         /// </returns>
-        public static bool GetAnyKeyDown(bool ignorePause = false)
+        public static bool GetAnyKeyDown()
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             return IsAnyKeyBuffer(JCS_KeyActionType.KEY_DOWN);
         }
 
@@ -734,14 +688,8 @@ namespace JCSUnity
         /// true: somewhere the key is pressed.
         /// false: no key is pressed.
         /// </returns>
-        public static bool GetAnyKey(bool ignorePause = false)
+        public static bool GetAnyKey()
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             return IsAnyKeyBuffer(JCS_KeyActionType.KEY);
         }
 
@@ -752,14 +700,8 @@ namespace JCSUnity
         /// true: somewhere in the key is up.
         /// false: no key is up.
         /// </returns>
-        public static bool GetAnyKeyUp(bool ignorePause = false)
+        public static bool GetAnyKeyUp()
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             return IsAnyKeyBuffer(JCS_KeyActionType.KEY_UP);
         }
 
@@ -770,37 +712,31 @@ namespace JCSUnity
         /// <param name="joystickIndex"></param>
         /// <param name="btn"></param>
         /// <returns></returns>
-        public static float GetAxis(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static float GetAxis(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
         {
-            return GetAxis((int)joystickIndex, btn, ignorePause);
+            return GetAxis((int)joystickIndex, btn);
         }
         /// <summary>
         /// Return the joystick buffer.
         /// </summary>
         /// <param name="btn"></param>
         /// <returns></returns>
-        public static float GetAxis(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static float GetAxis(int joystickIndex, JCS_JoystickButton btn)
         {
             if (btn == JCS_JoystickButton.NONE)
                 return 0;
 
             string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
 
-            return GetAxis(idString, ignorePause);
+            return GetAxis(idString);
         }
         /// <summary>
         /// Return the joystick buffer.
         /// </summary>
         /// <param name="name"> name of the joystick name. </param>
         /// <returns> value the joystick tilt. </returns>
-        public static float GetAxis(string name, bool ignorePause = false)
+        public static float GetAxis(string name)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return 0;
-            }
-
             if (name == "")
             {
                 JCS_Debug.LogError("InputManager's name variable cannot be empty string...");
@@ -816,21 +752,21 @@ namespace JCSUnity
         /// <param name="joystickIndex"></param>
         /// <param name="btn"></param>
         /// <returns> buffer pressure from hardware. </returns>
-        public static bool GetJoystickButton(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static bool GetJoystickButton(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
         {
-            return GetJoystickButton((int)joystickIndex, btn, ignorePause);
+            return GetJoystickButton((int)joystickIndex, btn);
         }
         /// <summary>
         /// Check if the button have pressed.
         /// </summary>
         /// <returns></returns>
-        public static bool GetJoystickButton(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static bool GetJoystickButton(int joystickIndex, JCS_JoystickButton btn)
         {
             // check if any joystick connected.
             if (!IsJoystickConnected())
                 return false;
 
-            return GetAxis(joystickIndex, btn, ignorePause) > 0;
+            return GetAxis(joystickIndex, btn) > 0;
         }
 
         /// <summary>
@@ -838,9 +774,9 @@ namespace JCSUnity
         /// </summary>
         /// <param name="idString"> string id </param>
         /// <returns></returns>
-        public static bool GetJoystickButton(string idString, bool ignorePause = false)
+        public static bool GetJoystickButton(string idString)
         {
-            return GetAxis(idString, ignorePause) > 0;
+            return GetAxis(idString) > 0;
         }
 
         /// <summary>
@@ -852,9 +788,9 @@ namespace JCSUnity
         /// true: did pressed.
         /// false: not pressed.
         /// </returns>
-        public static bool GetJoystickKey(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static bool GetJoystickKey(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
         {
-            return GetJoystickKey((int)joystickIndex, btn, ignorePause);
+            return GetJoystickKey((int)joystickIndex, btn);
         }
 
         /// <summary>
@@ -866,15 +802,9 @@ namespace JCSUnity
         /// true: did pressed.
         /// false: not pressed.
         /// </returns>
-        public static bool GetJoystickKey(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static bool GetJoystickKey(int joystickIndex, JCS_JoystickButton btn)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
-            return GetJoystickButton(joystickIndex, btn, ignorePause);
+            return GetJoystickButton(joystickIndex, btn);
         }
 
 
@@ -887,9 +817,9 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyUp(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static bool GetJoystickKeyUp(int joystickIndex, JCS_JoystickButton btn)
         {
-            return GetJoystickKeyUp((JCS_JoystickIndex)joystickIndex, btn, ignorePause);
+            return GetJoystickKeyUp((JCS_JoystickIndex)joystickIndex, btn);
         }
 
         /// <summary>
@@ -901,17 +831,11 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static bool GetJoystickKeyUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
 
-            if (GetJoystickKey(joystickIndex, btn, ignorePause))
+            if (GetJoystickKey(joystickIndex, btn))
             {
                 if (mJoystickKeyReleased.ContainsKey(idString))
                     mJoystickKeyReleased[idString] = false;
@@ -947,9 +871,9 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyDown(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static bool GetJoystickKeyDown(int joystickIndex, JCS_JoystickButton btn)
         {
-            return GetJoystickKeyDown((JCS_JoystickIndex)joystickIndex, btn, ignorePause);
+            return GetJoystickKeyDown((JCS_JoystickIndex)joystickIndex, btn);
         }
 
         /// <summary>
@@ -961,17 +885,11 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
+        public static bool GetJoystickKeyDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
         {
-            if (!ignorePause)
-            {
-                if (JCS_GameManager.instance.GAME_PAUSE)
-                    return false;
-            }
-
             string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
 
-            if (GetJoystickKey(joystickIndex, btn, ignorePause))
+            if (GetJoystickKey(joystickIndex, btn))
             {
                 if (!mJoystickKeyPressed.ContainsKey(idString))
                 {
@@ -1010,26 +928,23 @@ namespace JCSUnity
         /// <param name="act"></param>
         /// <param name="id"></param>
         /// <param name="key"></param>
-        /// <param name="ignorePause"></param>
         /// <returns></returns>
         public static bool GetJoystickKeyByAction(
-            JCS_KeyActionType act, 
+            JCS_KeyActionType act,
             JCS_JoystickIndex id,
-            JCS_JoystickButton key, 
-            bool ignorePause = false)
+            JCS_JoystickButton key)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetJoystickKey(id, key, ignorePause);
+                    return GetJoystickKey(id, key);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetJoystickKeyDown(id, key, ignorePause);
+                    return GetJoystickKeyDown(id, key);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetJoystickKeyUp(id, key, ignorePause);
+                    return GetJoystickKeyUp(id, key);
             }
 
-            JCS_Debug.LogError("This cannot happens...");
-            return false;
+            return false;  // This can't happen!
         }
 
         /// <summary>
@@ -1077,24 +992,19 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, one of the key in the array list is pressed.
         /// false, none of these keys are pressed.
         /// </returns>
-        public static bool OneKeys(
-            List<KeyCode> keys, 
-            bool ignorePause = false)
+        public static bool OneKeys(List<KeyCode> keys)
         {
-            return OneKeys(keys.ToArray(), ignorePause);
+            return OneKeys(keys.ToArray());
         }
-        public static bool OneKeys(
-            KeyCode[] keys, 
-            bool ignorePause = false)
+        public static bool OneKeys(KeyCode[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (GetKey(keys[index], ignorePause))
+                if (GetKey(keys[index]))
                     return true;
             }
 
@@ -1108,24 +1018,19 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, one of the key in the array list is down.
         /// false, none of these keys are down.
         /// </returns>
-        public static bool OneKeysDown(
-            List<KeyCode> keys, 
-            bool ignorePause = false)
+        public static bool OneKeysDown(List<KeyCode> keys)
         {
-            return OneKeysDown(keys.ToArray(), ignorePause);
+            return OneKeysDown(keys.ToArray());
         }
-        public static bool OneKeysDown(
-            KeyCode[] keys, 
-            bool ignorePause = false)
+        public static bool OneKeysDown(KeyCode[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (GetKeyDown(keys[index], ignorePause))
+                if (GetKeyDown(keys[index]))
                     return true;
             }
 
@@ -1140,24 +1045,19 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, one of the key in the array list is up.
         /// false, none of these keys are up.
         /// </returns>
-        public static bool OneKeysUp(
-            List<KeyCode> keys, 
-            bool ignorePause = false)
+        public static bool OneKeysUp(List<KeyCode> keys)
         {
-            return OneKeysUp(keys.ToArray(), ignorePause);
+            return OneKeysUp(keys.ToArray());
         }
-        public static bool OneKeysUp(
-            KeyCode[] keys, 
-            bool ignorePause = false)
+        public static bool OneKeysUp(KeyCode[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (GetKeyUp(keys[index], ignorePause))
+                if (GetKeyUp(keys[index]))
                     return true;
             }
 
@@ -1172,24 +1072,19 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, all of the keys in the array list are pressed.
         /// false, none of these keys are pressed.
         /// </returns>
-        public static bool AllKeys(
-            List<KeyCode> keys,
-            bool ignorePause = false)
+        public static bool AllKeys(List<KeyCode> keys)
         {
-            return AllKeys(keys.ToArray(), ignorePause);
+            return AllKeys(keys.ToArray());
         }
-        public static bool AllKeys(
-            KeyCode[] keys, 
-            bool ignorePause = false)
+        public static bool AllKeys(KeyCode[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (!GetKey(keys[index], ignorePause))
+                if (!GetKey(keys[index]))
                     return false;
             }
 
@@ -1203,24 +1098,19 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, all of the keys in the array list are down.
         /// false, none of these keys are down.
         /// </returns>
-        public static bool AllKeysDown(
-            List<KeyCode> keys,
-            bool ignorePause = false)
+        public static bool AllKeysDown(List<KeyCode> keys)
         {
-            return AllKeysDown(keys.ToArray(), ignorePause);
+            return AllKeysDown(keys.ToArray());
         }
-        public static bool AllKeysDown(
-            KeyCode[] keys,
-            bool ignorePause = false)
+        public static bool AllKeysDown(KeyCode[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (!GetKeyDown(keys[index], ignorePause))
+                if (!GetKeyDown(keys[index]))
                     return false;
             }
 
@@ -1234,24 +1124,19 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, all of the keys in the array list are up.
         /// false, none of these keys are up.
         /// </returns>
-        public static bool AllKeysUp(
-            List<KeyCode> keys,
-            bool ignorePause = false)
+        public static bool AllKeysUp(List<KeyCode> keys)
         {
-            return AllKeysUp(keys.ToArray(), ignorePause);
+            return AllKeysUp(keys.ToArray());
         }
-        public static bool AllKeysUp(
-            KeyCode[] keys,
-            bool ignorePause = false)
+        public static bool AllKeysUp(KeyCode[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (!GetKeyUp(keys[index], ignorePause))
+                if (!GetKeyUp(keys[index]))
                     return false;
             }
 
@@ -1266,40 +1151,27 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, one of the key in the array list is pressed.
         /// false, none of these keys are pressed.
         /// </returns>
-        public static bool OneJoystickButtons(
-            int joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool OneJoystickButtons(int joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+            return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys.ToArray());
         }
-        public static bool OneJoystickButtons(
-            JCS_JoystickIndex joystickIndex, 
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool OneJoystickButtons(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return OneJoystickButtons(joystickIndex, keys.ToArray(), ignorePause);
+            return OneJoystickButtons(joystickIndex, keys.ToArray());
         }
-        public static bool OneJoystickButtons(
-            int joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool OneJoystickButtons(int joystickIndex, JCS_JoystickButton[] keys)
         {
-            return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+            return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys);
         }
-        public static bool OneJoystickButtons(
-            JCS_JoystickIndex joystickIndex, 
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool OneJoystickButtons(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (GetJoystickButton(joystickIndex, keys[index], ignorePause))
+                if (GetJoystickButton(joystickIndex, keys[index]))
                     return true;
             }
 
@@ -1313,40 +1185,27 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, one of the key in the array list is down.
         /// false, none of these keys are down.
         /// </returns>
-        public static bool OneJoystickKeysDown(
-            int joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool OneJoystickKeysDown(int joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return OneJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+            return OneJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys.ToArray());
         }
-        public static bool OneJoystickKeysDown(
-            JCS_JoystickIndex joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool OneJoystickKeysDown(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return OneJoystickKeysDown(joystickIndex, keys.ToArray(), ignorePause);
+            return OneJoystickKeysDown(joystickIndex, keys.ToArray());
         }
-        public static bool OneJoystickKeysDown(
-            int joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool OneJoystickKeysDown(int joystickIndex, JCS_JoystickButton[] keys)
         {
-            return OneJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+            return OneJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys);
         }
-        public static bool OneJoystickKeysDown(
-            JCS_JoystickIndex joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool OneJoystickKeysDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (GetJoystickKeyDown(joystickIndex, keys[index], ignorePause))
+                if (GetJoystickKeyDown(joystickIndex, keys[index]))
                     return true;
             }
 
@@ -1361,40 +1220,27 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, one of the key in the array list is up.
         /// false, none of these keys are up.
         /// </returns>
-        public static bool OneJoystickKeysUp(
-            int joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool OneJoystickKeysUp(int joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return OneJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+            return OneJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys.ToArray());
         }
-        public static bool OneJoystickKeysUp(
-            JCS_JoystickIndex joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool OneJoystickKeysUp(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return OneJoystickKeysUp(joystickIndex, keys.ToArray(), ignorePause);
+            return OneJoystickKeysUp(joystickIndex, keys.ToArray());
         }
-        public static bool OneJoystickKeysUp(
-            int joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool OneJoystickKeysUp(int joystickIndex, JCS_JoystickButton[] keys)
         {
-            return OneJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+            return OneJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys);
         }
-        public static bool OneJoystickKeysUp(
-            JCS_JoystickIndex joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool OneJoystickKeysUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (GetJoystickKeyUp(joystickIndex, keys[index], ignorePause))
+                if (GetJoystickKeyUp(joystickIndex, keys[index]))
                     return true;
             }
 
@@ -1409,40 +1255,27 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, all of the keys in the array list are pressed.
         /// false, none of these keys are pressed.
         /// </returns>
-        public static bool AllJoystickButtons(
-            int joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool AllJoystickButtons(int joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return AllJoystickButtons((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+            return AllJoystickButtons((JCS_JoystickIndex)joystickIndex, keys.ToArray());
         }
-        public static bool AllJoystickButtons(
-            JCS_JoystickIndex joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool AllJoystickButtons(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return AllJoystickButtons(joystickIndex, keys.ToArray(), ignorePause);
+            return AllJoystickButtons(joystickIndex, keys.ToArray());
         }
-        public static bool AllJoystickButtons(
-            int joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool AllJoystickButtons(int joystickIndex, JCS_JoystickButton[] keys)
         {
-            return AllJoystickButtons((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+            return AllJoystickButtons((JCS_JoystickIndex)joystickIndex, keys);
         }
-        public static bool AllJoystickButtons(
-            JCS_JoystickIndex joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool AllJoystickButtons(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (!GetJoystickButton(joystickIndex, keys[index], ignorePause))
+                if (!GetJoystickButton(joystickIndex, keys[index]))
                     return false;
             }
 
@@ -1456,40 +1289,27 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, all of the keys in the array list are down.
         /// false, none of these keys are down.
         /// </returns>
-        public static bool AllJoystickKeysDown(
-            int joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool AllJoystickKeysDown(int joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return AllJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+            return AllJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys.ToArray());
         }
-        public static bool AllJoystickKeysDown(
-            JCS_JoystickIndex joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool AllJoystickKeysDown(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return AllJoystickKeysDown(joystickIndex, keys.ToArray(), ignorePause);
+            return AllJoystickKeysDown(joystickIndex, keys.ToArray());
         }
-        public static bool AllJoystickKeysDown(
-            int joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool AllJoystickKeysDown(int joystickIndex, JCS_JoystickButton[] keys)
         {
-            return AllJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+            return AllJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys);
         }
-        public static bool AllJoystickKeysDown(
-            JCS_JoystickIndex joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool AllJoystickKeysDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (!GetJoystickKeyDown(joystickIndex, keys[index], ignorePause))
+                if (!GetJoystickKeyDown(joystickIndex, keys[index]))
                     return false;
             }
 
@@ -1503,40 +1323,27 @@ namespace JCSUnity
         /// else returns false.
         /// </summary>
         /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
         /// <returns> 
         /// true, all of the keys in the array list are up.
         /// false, none of these keys are up.
         /// </returns>
-        public static bool AllJoystickKeysUp(
-            int joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool AllJoystickKeysUp(int joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return AllJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+            return AllJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys.ToArray());
         }
-        public static bool AllJoystickKeysUp(
-            JCS_JoystickIndex joystickIndex,
-            List<JCS_JoystickButton> keys,
-            bool ignorePause = false)
+        public static bool AllJoystickKeysUp(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
         {
-            return AllJoystickKeysUp(joystickIndex, keys.ToArray(), ignorePause);
+            return AllJoystickKeysUp(joystickIndex, keys.ToArray());
         }
-        public static bool AllJoystickKeysUp(
-            int joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool AllJoystickKeysUp(int joystickIndex, JCS_JoystickButton[] keys)
         {
-            return AllJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+            return AllJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys);
         }
-        public static bool AllJoystickKeysUp(
-            JCS_JoystickIndex joystickIndex,
-            JCS_JoystickButton[] keys,
-            bool ignorePause = false)
+        public static bool AllJoystickKeysUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
         {
             for (int index = 0; index < keys.Length; ++index)
             {
-                if (!GetJoystickKeyUp(joystickIndex, keys[index], ignorePause))
+                if (!GetJoystickKeyUp(joystickIndex, keys[index]))
                     return false;
             }
 
@@ -1544,7 +1351,7 @@ namespace JCSUnity
         }
 
 
-#region CTRL
+        #region CTRL
 
         /// <summary>
         /// Is one the ctrl key pressed?
@@ -1619,9 +1426,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region ALT
+        #region ALT
 
         /// <summary>
         /// Is one the alt key pressed?
@@ -1694,9 +1501,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region SHIFT
+        #region SHIFT
 
         /// <summary>
         /// Is one the shift key pressed?
@@ -1769,9 +1576,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region CTRL_SHIFT
+        #region CTRL_SHIFT
         /// <summary>
         /// Check if the 'key' and the ctrl and shift key is pressed.
         /// </summary>
@@ -1819,9 +1626,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region ALT_CTRL
+        #region ALT_CTRL
         /// <summary>
         /// Check if the 'key' and the ctrl and alt key is pressed.
         /// </summary>
@@ -1869,9 +1676,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region ALT_SHIFT
+        #region ALT_SHIFT
         /// <summary>
         /// Check if the 'key' and the alt and shift key is pressed.
         /// </summary>
@@ -1919,9 +1726,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region ALT_CTRL_SHIFT
+        #region ALT_CTRL_SHIFT
 
         /// <summary>
         /// Check if the 'key', alt, shift and ctrl key is pressed.
@@ -1971,7 +1778,7 @@ namespace JCSUnity
             return GetKeyUp(key);
         }
 
-#endregion
+        #endregion
 
         /// <summary>
         /// Get key with certain combination.

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,20 +18,22 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_CashObject) **")]
+        [Separator("Initialize Variables (JCS_CashObject)")]
 
         [Tooltip("Value represent to this cash object.")]
-        [SerializeField] [Range(1, 99999999)]
+        [SerializeField]
+        [Range(1, 99999999)]
         protected int mCashValue = 1;
 
-        [Header("** Randomize Value Settings ** (JCS_CashObject) ")]
+        [Header("- Randomize")]
 
         [Tooltip("Randomize the cash value at init time?")]
         [SerializeField]
         protected bool mRandomizeCashValueEffect = false;
 
         [Tooltip("How much it effect the actual cash value.")]
-        [SerializeField] [Range(0, 500)]
+        [SerializeField]
+        [Range(0, 500)]
         protected int mRandomizeCashValue = 0;
 
         /* Setter & Getter */
@@ -46,7 +49,7 @@ namespace JCSUnity
             base.Awake();
 
             // no effect happens
-            if (!RandomizeCashValueEffect || 
+            if (!RandomizeCashValueEffect ||
                 mRandomizeCashValue == 0)
                 return;
 

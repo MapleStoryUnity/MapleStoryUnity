@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -33,21 +34,24 @@ namespace JCSUnity
             public Transform spriteTransform;
         };
 
-        [Header("** Check Variables (JCS_RouteGuageSystem) **")]
+        [Separator("Check Variables (JCS_RouteGuageSystem)")]
 
         [Tooltip("Distance between the starting line and goal.")]
         [SerializeField]
+        [ReadOnly]
         private float mRealDistance = 0;
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private float mSpriteDistance = 0;
 
         [Tooltip("Ratio between real distance and sprite ditance.")]
         [SerializeField]
+        [ReadOnly]
         private float mDistanceRatio = 0;
 
-        [Header("** Initialize Variables (JCS_RouteGuageSystem) **")]
+        [Separator("Initialize Variables (JCS_RouteGuageSystem)")]
 
         [Tooltip("Starting line position.")]
         [SerializeField]
@@ -65,7 +69,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mSpriteGoalTransform = null;
 
-        [Header("** Runtime Variables (JCS_RouteGuageSystem) **")]
+        [Separator("Runtime Variables (JCS_RouteGuageSystem)")]
 
         [Tooltip("All the player forms.")]
         [SerializeField]

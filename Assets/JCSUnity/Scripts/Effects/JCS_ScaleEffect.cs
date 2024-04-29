@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.EventSystems;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,21 +23,24 @@ namespace JCSUnity
         private Vector3 mRecordScale = Vector3.zero;
         private Vector3 mTargetScale = Vector3.zero;
 
-        [Header("** Check Variables (JCS_ScaleEffect) **")]
+        [Separator("Check Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Is the current component doing the effect now?")]
         [SerializeField]
+        [ReadOnly]
         private bool mEffect = false;
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private EventTrigger mEventTrigger = null;
 
-        [Header("** Initialize Variables (JCS_ScaleEffect) **")]
+        [Separator("Initialize Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Do scale in x axis.")]
         [SerializeField]
@@ -58,7 +62,13 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mScaleFriction = new Vector3(0.2f, 0.2f, 0.2f);
 
-        [Header("- UI (JCS_ScaleEffect)")]
+        [Separator("Runtime Variables (JCS_ScaleEffect)")]
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
+        [Header("- UI")]
 
         [Tooltip("Add event to event trigger system.")]
         [SerializeField]
@@ -77,6 +87,7 @@ namespace JCSUnity
         public Vector3 RecordScale { get { return this.mRecordScale; } set { this.mRecordScale = value; } }
         public Vector3 TowardScale { get { return this.mTowardScale; } set { this.mTowardScale = value; } }
         public Vector3 GetScaleValue() { return this.mScaleValue; }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -215,9 +226,11 @@ namespace JCSUnity
         {
             Vector3 newScale = this.transform.localScale;
 
-            newScale.x += (mTargetScale.x - newScale.x) / mScaleFriction.x * Time.deltaTime;
-            newScale.y += (mTargetScale.y - newScale.y) / mScaleFriction.y * Time.deltaTime;
-            newScale.z += (mTargetScale.z - newScale.z) / mScaleFriction.y * Time.deltaTime;
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
+            newScale.x += (mTargetScale.x - newScale.x) / mScaleFriction.x * dt;
+            newScale.y += (mTargetScale.y - newScale.y) / mScaleFriction.y * dt;
+            newScale.z += (mTargetScale.z - newScale.z) / mScaleFriction.y * dt;
 
             this.transform.localScale = newScale;
         }

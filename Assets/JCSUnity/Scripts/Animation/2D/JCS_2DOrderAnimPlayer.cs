@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,13 +22,14 @@ namespace JCSUnity
 
         private JCS_2DAnimator mAnimator = null;
 
-        [Header("** Check Variables (JCS_2DOrderAnimPlayer) **")]
+        [Separator("Check Variables (JCS_2DOrderAnimPlayer)")]
 
         [Tooltip("Current playing animation's id.")]
         [SerializeField]
+        [ReadOnly]
         private int mCurrentAnimationId = 0;
 
-        [Header("** Runtime Variables (JCS_2DOrderAnimPlayer) **")]
+        [Separator("Runtime Variables (JCS_2DOrderAnimPlayer)")]
 
         [Tooltip("Is the animation working?")]
         [SerializeField]

@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -38,7 +39,7 @@ namespace JCSUnity
         };
 
 
-        [Header("** Runtime Variables (JCS_GamePadSpriteHandler) **")]
+        [Separator("Runtime Variables (JCS_GamePadSpriteHandler)")]
 
         [Tooltip("Any animation element you want to change depends on controller connection.")]
         public List<AnimationSet> animationSets = null;

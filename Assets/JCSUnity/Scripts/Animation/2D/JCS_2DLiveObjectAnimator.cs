@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,15 +21,17 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-        [Header("** Check Variables (JCS_2DLiveObjectAnimator) **")]
+        [Separator("Check Variables (JCS_2DLiveObjectAnimator)")]
 
         [SerializeField]
+        [ReadOnly]
         protected string mCurrentStateName = "";
 
         [SerializeField]
+        [ReadOnly]
         protected JCS_LiveObjectState mCurrentState = JCS_LiveObjectState.STAND;
 
-        [Header("** Initialize Variables (JCS_2DLiveObjectAnimator) **")]
+        [Separator("Initialize Variables (JCS_2DLiveObjectAnimator)")]
 
         [Tooltip(@"Override the current animation, start from the beginning.")]
         [SerializeField]

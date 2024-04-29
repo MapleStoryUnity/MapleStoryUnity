@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DTopDownPlayer.cs $
  * $Date: $
  * $Revision: $

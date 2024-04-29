@@ -7,6 +7,7 @@
 *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
 */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_PlatformSettings) **")]
+        [Separator("Runtime Variables (JCS_PlatformSettings)")]
 
         [Tooltip("How much push down ward if down jump triggered.")]
         [Range(0, 1)]

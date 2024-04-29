@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DLadder.cs $
  * $Date: $
  * $Revision: $
@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variable (JCS_2DLadder) **")]
+        [Separator("Check Variable (JCS_2DLadder)")]
 
         [SerializeField]
         protected List<JCS_2DSideScrollerPlayer> mSSPlayers = null;

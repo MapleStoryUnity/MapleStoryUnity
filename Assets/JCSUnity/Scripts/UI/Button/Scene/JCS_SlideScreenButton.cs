@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,13 +18,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_SlideScreenButton) **")]
+        [Separator("Check Variables (JCS_SlideScreenButton)")]
 
         [Tooltip("This action are using `JCS_2DSlideScreenCamera`.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_2DSlideScreenCamera[] mSlideCameras = null;
 
-        [Header("** Runtime Variables (JCS_SlideScreenButton) **")]
+        [Separator("Runtime Variables (JCS_SlideScreenButton)")]
 
         [Tooltip("Direction you want to move.")]
         [SerializeField] private JCS_2D8Direction mDirection = JCS_2D8Direction.TOP;
@@ -32,6 +34,10 @@ namespace JCSUnity
         [SerializeField]
         [Range(1, 5)]
         private int mCount = 1;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("- Sound")]
 
@@ -59,6 +65,7 @@ namespace JCSUnity
         public JCS_2D8Direction Direction { get { return this.mDirection; } }
         public int Count { get { return this.mCount; } }
         public float DelayTime { get { return this.mDelayTime; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -70,7 +77,7 @@ namespace JCSUnity
                 mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             // try to get it from the scene by type.
-            this.mSlideCameras = (JCS_2DSlideScreenCamera[])FindObjectsOfType(typeof(JCS_2DSlideScreenCamera));
+            this.mSlideCameras = JCS_Util.FindObjectsByType(typeof(JCS_2DSlideScreenCamera)) as JCS_2DSlideScreenCamera[];
         }
 
         private void Update()
@@ -78,7 +85,7 @@ namespace JCSUnity
             if (!mStartDelay)
                 return;
 
-            mDelayTimer += Time.deltaTime;
+            mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayTime < mDelayTimer)
             {

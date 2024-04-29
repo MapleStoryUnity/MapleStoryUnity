@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,15 +22,11 @@ namespace JCSUnity
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-        [Header("** Runtime Variables (JCS_ButtonSelectionGroupController) **")]
+        [Separator("Runtime Variables (JCS_ButtonSelectionGroupController)")]
 
         [Tooltip("Active key listener?")]
         [SerializeField]
         private bool mActive = true;
-
-        [Tooltip("JCSUnity key would not work with game pause, ignore it?")]
-        [SerializeField]
-        private bool mIgnoreGamePause = false;
 
         [Tooltip("Key type of this controller.")]
         [SerializeField]
@@ -166,7 +163,6 @@ namespace JCSUnity
         public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } }
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public bool IgnoreGamePause { get { return this.mIgnoreGamePause; } set { this.mIgnoreGamePause = value; } }
 
         public KeyCode MNext { get { return this.mMNext; } set { this.mMNext = value; } }
         public KeyCode MMPrev { get { return this.mMNext; } set { this.mMNext = value; } }
@@ -273,8 +269,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveNext()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMNext, mIgnoreGamePause) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJNext, mIgnoreGamePause);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMNext) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJNext);
         }
 
         /// <summary>
@@ -283,8 +279,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActivePrev()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMPrev, mIgnoreGamePause) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJPrev, mIgnoreGamePause);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMPrev) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJPrev);
         }
 
         /// <summary>
@@ -293,8 +289,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveOkay()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMOkay, mIgnoreGamePause) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJOkay, mIgnoreGamePause);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMOkay) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJOkay);
         }
 
         /// <summary>
@@ -303,8 +299,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveUp()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMUp, mIgnoreGamePause) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJUp, mIgnoreGamePause);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMUp) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJUp);
         }
 
         /// <summary>
@@ -313,8 +309,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveDown()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMDown, mIgnoreGamePause) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJDown, mIgnoreGamePause);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMDown) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJDown);
         }
 
         /// <summary>
@@ -323,8 +319,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveRight()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMRight, mIgnoreGamePause) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJRight, mIgnoreGamePause);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMRight) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJRight);
         }
 
         /// <summary>
@@ -333,8 +329,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveLeft()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMLeft, mIgnoreGamePause) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJLeft, mIgnoreGamePause);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMLeft) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJLeft);
         }
 
         /* Play the next sound. */
@@ -342,7 +338,7 @@ namespace JCSUnity
         {
             if (mNextSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mNextSound, mNextSoundMethod);
         }
 
@@ -351,7 +347,7 @@ namespace JCSUnity
         {
             if (mPrevSound == null)
                 return; 
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mPrevSound, mPrevSoundMethod);
         }
 
@@ -360,7 +356,7 @@ namespace JCSUnity
         {
             if (mOkaySound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mOkaySound, mOkaySoundMethod);
         }
 
@@ -369,7 +365,7 @@ namespace JCSUnity
         {
             if (mUpSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mUpSound, mUpSoundMethod);
         }
 
@@ -378,7 +374,7 @@ namespace JCSUnity
         {
             if (mDownSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mDownSound, mDownSoundMethod);
         }
 
@@ -387,7 +383,7 @@ namespace JCSUnity
         {
             if (mRightSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mRightSound, mRightSoundMethod);
         }
 
@@ -396,7 +392,7 @@ namespace JCSUnity
         {
             if (mLeftSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mLeftSound, mLeftSoundMethod);
         }
     }

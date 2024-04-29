@@ -12,6 +12,7 @@
 #define TMP_PRO
 
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,7 +27,7 @@ namespace JCSUnity
 
         private float mAlpha = 1;
 
-        [Header("** Runtime Variables (JCS_AlphaObject) **")]
+        [Separator("Runtime Variables (JCS_AlphaObject)")]
 
         [Tooltip("Alpha value trying to approach. (0 ~ 1)")]
         [SerializeField]
@@ -38,10 +39,15 @@ namespace JCSUnity
         [Range(0.1f, 5.0f)]
         private float mFadeFriction = 1.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public float TargetAlpha { get { return this.mTargetAlpha; } set { this.mTargetAlpha = value; } }
         public float FadeFriction { get { return this.mFadeFriction; } set { this.mFadeFriction = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -50,7 +56,7 @@ namespace JCSUnity
             if (mAlpha == mTargetAlpha)
                 return;
 
-            this.mAlpha += (mTargetAlpha - mAlpha) / mFadeFriction * Time.deltaTime;
+            this.mAlpha += (mTargetAlpha - mAlpha) / mFadeFriction * JCS_Time.DeltaTime(mDeltaTimeType);
 
             this.LocalAlpha = this.mAlpha;
         }

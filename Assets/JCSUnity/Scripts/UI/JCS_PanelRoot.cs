@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,14 +19,16 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_PanelRoot) **")]
+        [Separator("Check Variables (JCS_PanelRoot)")]
 
         [Tooltip("Delta ratio change of the screen width.")]
         [SerializeField]
+        [ReadOnly]
         private float mPanelDeltaWidthRatio = 0.0f;
 
         [Tooltip("Delta ratio change of the screen height.")]
         [SerializeField]
+        [ReadOnly]
         private float mPanelDeltaHeightRatio = 0.0f;
 
         /* Setter & Getter */

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -76,6 +77,28 @@ namespace JCSUnity
                 str = str.Split('.')[1];
 
             return 1.0f / Mathf.Pow(10.0f, str.Length);
+        }
+
+        /// <summary>
+        /// Choose one object from the list.
+        /// </summary>
+        /// <typeparam name="T"> Type of the object. </typeparam>
+        /// <param name="inArray"> The list or array to choose from. </param>
+        /// <returns> The chosen object from the list or array. </returns>
+        public static T ChooseOne<T>(T[] inArray)
+        {
+            int index = Range(0, inArray.Length);
+            return inArray[index];
+        }
+        public static T ChooseOne<T>(List<T> inList)
+        {
+            int index = Range(0, inList.Count);
+            return inList[index];
+        }
+        public static T ChooseOneE<T>(params T[] args)  // Ellipsis
+        {
+            int index = Range(0, args.Length);
+            return args[index];
         }
     }
 }

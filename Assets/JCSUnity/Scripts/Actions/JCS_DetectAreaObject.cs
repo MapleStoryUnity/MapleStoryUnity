@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_DetectAreaObject) **")]
+        [Separator("Check Variables (JCS_DetectAreaObject)")]
 
         [SerializeField]
         private JCS_2DLiveObject mLiveObject = null;

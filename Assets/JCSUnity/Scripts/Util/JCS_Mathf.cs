@@ -26,6 +26,45 @@ namespace JCSUnity
         public const float Deg2Rad = Mathf.PI / 180.0f;
 
         /// <summary>
+        /// Returns the smallest integer greater to or equal to f.
+        /// </summary>
+        public static float Ceil(float f) { return Mathf.Ceil(f); }
+        public static Vector2 Ceil(Vector2 vec)
+        {
+            return new Vector2(Ceil(vec.x), Ceil(vec.y));
+        }
+        public static Vector3 Ceil(Vector3 vec)
+        {
+            return new Vector3(Ceil(vec.x), Ceil(vec.y), Ceil(vec.z));
+        }
+
+        /// <summary>
+        /// Returns the largest integer smaller than or equal to f.
+        /// </summary>
+        public static float Floor(float f) { return Mathf.Floor(f); }
+        public static Vector2 Floor(Vector2 vec)
+        {
+            return new Vector2(Floor(vec.x), Floor(vec.y));
+        }
+        public static Vector3 Floor(Vector3 vec)
+        {
+            return new Vector3(Floor(vec.x), Floor(vec.y), Floor(vec.z));
+        }
+
+        /// <summary>
+        /// Returns f rounded to the nearest integer.
+        /// </summary>
+        public static float Round(float f) { return Mathf.Round(f); }
+        public static Vector2 Round(Vector2 vec)
+        {
+            return new Vector2(Round(vec.x), Round(vec.y));
+        }
+        public static Vector3 Round(Vector3 vec)
+        {
+            return new Vector3(Round(vec.x), Round(vec.y), Round(vec.z));
+        }
+
+        /// <summary>
         /// Absolute the value.
         /// </summary>
         /// <param name="val"> value to absolute </param>

@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Package Data Settings (JCS_PackageDataSettings) **")]
+        [Separator("Initialize Variables (JCS_PackageDataSettings)")]
 
         [Tooltip("Package Data copyright information.")]
         public string CopyrightString = "Copyright 2017 JCSUnity, Taiwan";

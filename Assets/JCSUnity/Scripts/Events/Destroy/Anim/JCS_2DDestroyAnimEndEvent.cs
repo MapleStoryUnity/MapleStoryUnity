@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +21,7 @@ namespace JCSUnity
 
         private JCS_2DAnimation m2DAnimation = null;
 
-        [Header("** Runtime Variables (JCS_2DDestroyAnimEndEvent) **")]
+        [Separator("Runtime Variables (JCS_2DDestroyAnimEndEvent)")]
 
         [Tooltip("How many times the animation plays before destorying.")]
         [SerializeField]
@@ -29,11 +30,9 @@ namespace JCSUnity
         // Loop count.
         private int mLoopCount = 0;
 
-
         /* Setter & Getter */
 
         public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
-
 
         /* Functions */
 

@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -31,10 +32,11 @@ namespace JCSUnity
             SWIM
         };
 
-        [Header("** Check Variables (JCS_AIStateSystem) **")]
+        [Separator("Check Variables (JCS_AIStateSystem)")]
 
         [Tooltip("State of the AI move action.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_AIMoveActionType mAIMoveActionType = JCS_AIMoveActionType.NONE;
 
         private JCS_Vector<JCS_AIAction> mAIActions = null;
@@ -84,7 +86,7 @@ namespace JCSUnity
                     {
                         // try to get the component on this transform.
                         JCS_2DWalkAction wa = this.GetComponent<JCS_2DWalkAction>();
-                        if (wa == null)     // if nothing here.
+                        if (wa == null)  // if nothing here.
                         {
                             // add it on to it
                             wa = this.gameObject.AddComponent<JCS_2DWalkAction>();

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
         protected CharacterController mCharacterController = null;
         protected JCS_CharacterControllerInfo mCharacterControllerInfo = null;
 
-        [Header("** Runtime Variables (JCS_Player) **")]
+        [Separator("Runtime Variables (JCS_Player)")]
 
         [Tooltip("How fast this player moves.")]
         [SerializeField]
@@ -36,6 +37,10 @@ namespace JCSUnity
         [SerializeField]
         protected bool mIsControllable = true;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public bool GetIsControllable() { return this.mIsControllable; }
@@ -47,6 +52,7 @@ namespace JCSUnity
         public CharacterController GetCharacterController() { return this.mCharacterController; }
         public JCS_CharacterControllerInfo CharacterControllerInfo { get { return this.mCharacterControllerInfo; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -59,7 +65,7 @@ namespace JCSUnity
         protected virtual void Start()
         {
             // set Execute order lower than "JCS_GameManager"
-            JCS_GameManager.instance.SetJCSPlayer(this);
+            JCS_GameManager.instance.Player = this;
 
             // Player Manager will take care of all the player
             JCS_PlayerManager.instance.AddPlayerToManage(this);
@@ -80,7 +86,7 @@ namespace JCSUnity
             if (mCharacterController.enabled)
             {
                 // apply force
-                mCharacterController.Move(mVelocity * Time.deltaTime);
+                mCharacterController.Move(mVelocity * JCS_Time.DeltaTime(mDeltaTimeType));
             }
         }
 

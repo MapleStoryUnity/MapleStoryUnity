@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -27,7 +28,7 @@ namespace JCSUnity
          */
         private JCS_OrderLayerObject mOrderLayerObject = null;
 
-        [Header("** Initilaize Variable (JCS_2DClimbableObject) **")]
+        [Separator("Initilaize Variable (JCS_2DClimbableObject)")]
 
         [Tooltip("Ground/Platform the ladder lean on.")]
         [SerializeField]

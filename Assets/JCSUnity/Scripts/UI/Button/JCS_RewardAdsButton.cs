@@ -14,6 +14,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -24,7 +25,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_RewardAdsButton) **")]
+        [Separator("Runtime Variables (JCS_RewardAdsButton)")]
 
         [Tooltip("Time to delay the ads shows.")]
         [SerializeField]

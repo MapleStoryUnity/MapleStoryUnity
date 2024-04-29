@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Variables Variables (JCS_ParticleSystem) **")]
+        [Separator("Variables Variables (JCS_ParticleSystem)")]
 
         [Tooltip("Flag for component testing.")]
         public bool testWithKey = false;
@@ -38,7 +39,7 @@ namespace JCSUnity
         public int oneShotParticleCount = 10;
 #endif
 
-        [Header("** Initialize Variables (JCS_ParticleSystem) **")]
+        [Separator("Initialize Variables (JCS_ParticleSystem)")]
 
         [Tooltip("Number of particle this particle system hold.")]
         [SerializeField]
@@ -48,7 +49,7 @@ namespace JCSUnity
         private JCS_Vector<JCS_Particle> mParticles = null;
         private int mLastAvaliableIndex = 0;
 
-        [Header("** Runtime Variables (JCS_ParticleSystem) **")]
+        [Separator("Runtime Variables (JCS_ParticleSystem)")]
 
         [Tooltip("Particle you want to spawn.")]
         [SerializeField]
@@ -75,6 +76,10 @@ namespace JCSUnity
         [SerializeField]
         [Range(-180, 179)]
         private float mWindSpeed = 0;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("- Position")]
 
@@ -188,6 +193,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         public JCS_Particle Particle { get { return this.mParticle; } set { this.mParticle = value; } }
         public int Density { get { return this.mDensity; } set { this.mDensity = value; } }
         public float WindSpeed { get { return this.mWindSpeed; } set { this.mWindSpeed = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool AlwaysTheSameScale { get { return this.mAlwaysTheSameScale; } set { this.mAlwaysTheSameScale = value; } }
         public bool SetChild { get { return this.mSetChild; } set { this.mSetChild = value; } }
         public bool SetToSamePositionWhenActive { get { return this.mSetToSamePositionWhenActive; } set { this.mSetToSamePositionWhenActive = value; } }
@@ -344,7 +350,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
 
             for (int index = 0; index < mNumOfParticle; ++index)
             {
-                JCS_Particle trans = (JCS_Particle)JCS_Util.SpawnGameObject(mParticle);
+                var trans = JCS_Util.Instantiate(mParticle) as JCS_Particle;
                 mParticles.push(trans);
 
                 // disable the object
@@ -385,7 +391,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             if (mParticle == null)
                 return;
 
-            mSequenceTimer += Time.deltaTime;
+            mSequenceTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // NOTE(jenchieh): magic number...
             float time = JCS_Random.Range(0.5f, 1.0f);
@@ -479,7 +485,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             float newTimer = mTimers.at(processIndex);
 
             // add time to timer
-            newTimer += Time.deltaTime;
+            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if we can do the particle or not
             if (mTimeAParticle < newTimer)
