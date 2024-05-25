@@ -51,35 +51,35 @@ namespace JCSUnity
         private void OnTriggerEnter(Collider other)
         {
             // check if anything we target are in there
-            JCS_DetectAreaObject jcsDo = other.GetComponent<JCS_DetectAreaObject>();
-            if (jcsDo == null)
+            var dao = other.GetComponent<JCS_DetectAreaObject>();
+            if (dao == null)
                 return;
 
             // if cannot damage
-            if (!jcsDo.GetLiveObject().CanDamage)
+            if (!dao.GetLiveObject().CanDamage)
                 return;
 
             if (!JCS_GameSettings.instance.TRIBE_DAMAGE_EACH_OTHER)
             {
                 // if both player does not need to add in to list.
                 // or if both enemy does not need to add in to list.
-                if (jcsDo.GetLiveObject().IsPlayer == mDetectAreaAction.GetLiveObject().IsPlayer)
+                if (dao.GetLiveObject().IsPlayer == mDetectAreaAction.GetLiveObject().IsPlayer)
                     return;
             }
 
             // add it to the list
-            mDetectAreaAction.AddDetectedObject(jcsDo);
+            mDetectAreaAction.AddDetectedObject(dao);
         }
 
         private void OnTriggerExit(Collider other)
         {
             // if the target thing left
-            JCS_DetectAreaObject jcsDo = other.GetComponent<JCS_DetectAreaObject>();
-            if (jcsDo == null)
+            var dao = other.GetComponent<JCS_DetectAreaObject>();
+            if (dao == null)
                 return;
 
             // remove from the list.
-            mDetectAreaAction.RemoveDetectedObject(jcsDo);
+            mDetectAreaAction.RemoveDetectedObject(dao);
         }
     }
 }

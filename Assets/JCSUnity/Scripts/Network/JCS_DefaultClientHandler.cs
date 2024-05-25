@@ -36,9 +36,9 @@ namespace JCSUnity
 
             // using byte reader for the stream.
             BinaryReader br = new BinaryReader(stream);
-            JCS_BinaryReader jcsbr = new JCS_BinaryReader(br);
+            var jbr = new JCS_BinaryReader(br);
 
-            short packetId = jcsbr.ReadShort();
+            short packetId = jbr.ReadShort();
             /**
              * NOTE(jenchieh): packet responded does not need a handler 
              * to handle to response. I think is good if we have it inside 
@@ -52,7 +52,7 @@ namespace JCSUnity
 
             JCS_Client client = JCS_ClientManager.LOCAL_CLIENT;
 
-            if (IsPacketOutdated(jcsbr, client, packetId))
+            if (IsPacketOutdated(jbr, client, packetId))
                 return;
 
             // handler depends on the client/server mode.
@@ -65,10 +65,10 @@ namespace JCSUnity
             {
                 // set the client and packet data buffer sequence.
                 packetHandler.Client = client;
-                packetHandler.PacketData = jcsbr;
+                packetHandler.PacketData = jbr;
 
                 // register request.
-                JCS_ServerRequestProcessor.instance.RegisterRequest(packetHandler.handlePacket, jcsbr, client);
+                JCS_ServerRequestProcessor.instance.RegisterRequest(packetHandler.handlePacket, jbr, client);
             }
             else
             {
@@ -82,18 +82,18 @@ namespace JCSUnity
         /// <summary>
         /// Is packet outdated by the packet number.
         /// </summary>
-        /// <param name="jcsbr">binary read to read the packet number.</param>
+        /// <param name="jbr">binary read to read the packet number.</param>
         /// <param name="client">client to check if the packet is out-dated.</param>
         /// <param name="packetId">packet id use to get the packet number.</param>
         /// <returns>true, is out-dated. false, is newest packet.</returns>
-        private bool IsPacketOutdated(JCS_BinaryReader jcsbr, JCS_Client client, short packetId)
+        private bool IsPacketOutdated(JCS_BinaryReader jbr, JCS_Client client, short packetId)
         {
             // Check if the server need to check the packet No type of server.
             // UDP is one of the protocol type that does need to check
             // the packet by packet number. (order issue)
             if (client.IsOrderCheckServer())
             {
-                long packetNumber = jcsbr.ReadLong();
+                long packetNumber = jbr.ReadLong();
                 if (client.GetPacketNumber(packetId) > packetNumber)
                 {
                     // No need to do any process, because the packet has been 

@@ -63,7 +63,7 @@ namespace JCSUnity
         public InputField inputField { get { return this.mInputField; } }
         public Slider slider { get { return this.mSlider; } }
         public Toggle toggle { get { return this.mToggle; } }
-        public JCS_Toggle jcsToggle { get { return this.mJCSToggle; } }
+        public JCS_Toggle jToggle { get { return this.mJCSToggle; } }
         public Dropdown dropdown { get { return this.mDropdown; } }
         public Scrollbar scrollbar { get { return this.mScrollBar; } }
 

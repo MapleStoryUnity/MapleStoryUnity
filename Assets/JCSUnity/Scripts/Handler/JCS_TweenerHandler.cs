@@ -19,9 +19,25 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_TweenPanel)")]
+#if UNITY_EDITOR
+        [Separator("Helper Variables (JCS_TweenerHandler)")]
 
-        [Tooltip("")]
+        [Tooltip("Test component with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to active tween to starting value.")]
+        [SerializeField]
+        private KeyCode mTweenToStart = KeyCode.J;
+
+        [Tooltip("Key to active tween to target value.")]
+        [SerializeField]
+        private KeyCode mTweenToTarget = KeyCode.K;
+#endif
+
+        [Separator("Check Variables (JCS_TweenerHandler)")]
+
+        [Tooltip("Optional panel root.")]
         [SerializeField]
         [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
@@ -72,6 +88,20 @@ namespace JCSUnity
                 }
             }
         }
+
+#if UNITY_EDITOR
+        private void Update()
+        {
+            if (!mTestWithKey)
+                return;
+
+            if (Input.GetKeyDown(mTweenToStart))
+                DoAllTweenToStartValue();
+
+            if (Input.GetKeyDown(mTweenToTarget))
+                DoAllTweenToTargetValue();
+        }
+#endif
 
         /// <summary>
         /// Check if done tweeening for all tweeners.

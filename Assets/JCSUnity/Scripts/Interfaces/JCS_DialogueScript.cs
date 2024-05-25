@@ -46,7 +46,7 @@ namespace JCSUnity
                 return this.mDialogueSystem;
             }
         }
-        protected JCS_DialogueSystem jcsDs { get { return this.DialogueSystem; } }
+        protected JCS_DialogueSystem ds { get { return this.DialogueSystem; } }
 
         public Sprite CenterSprite { get { return this.mCenterSprite; } }
         public Sprite LeftSprite { get { return this.mLeftSprite; } }

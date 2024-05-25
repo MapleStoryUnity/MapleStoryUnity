@@ -55,7 +55,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mActive = false;
 
-        [Tooltip("")]
+        [Tooltip("List of select messages.")]
         [SerializeField]
         [ReadOnly]
         private string[] mSelectMessage = null;
@@ -72,6 +72,8 @@ namespace JCSUnity
         [SerializeField]
         [ReadOnly]
         private int mRenderSelectTextIndex = 0;
+
+        private bool mActiveThisFrame = false;
 
         [Separator("Initialize Variables (JCS_DialogueSystem)")]
 
@@ -153,7 +155,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Button[] mSelectBtn = null;
 
-
         // Text index to make sure 
         // each character in the textbox.
         private int mTextIndex = 0;
@@ -194,8 +195,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            // try to get transfrom by 
-            // it own current transfrom.
+            // try to get transfrom by it own current transfrom.
             if (mPanelTrans == null)
                 mPanelTrans = this.GetComponent<RectTransform>();
 
@@ -205,9 +205,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            InitTextBox();
             InitBtnsSet();
-            InitImageSet();
 
             // create the array with the same length with the button call.
             mSelectMessage = new string[mSelectBtn.Length];
@@ -222,6 +220,8 @@ namespace JCSUnity
             ScrollText();
 
             ScrollSelectBtnText();
+
+            mActiveThisFrame = false;
         }
 
         /// <summary>
@@ -256,6 +256,7 @@ namespace JCSUnity
 
             // otherwise active the dialogue
             mActive = true;
+            mActiveThisFrame = true;
 
             // run the first action.
             RunAction();
@@ -494,6 +495,7 @@ namespace JCSUnity
 
             // de-active dialogue system.
             mActive = false;
+            mActiveThisFrame = false;
 
             // Check initialize to ignore dispose called at the very beginning!
             if (JCS_GameManager.instance.GAME_DONE_INITIALIZE && callback_dispose != null)
@@ -631,6 +633,20 @@ namespace JCSUnity
         public void DecPage()
         {
             --mDialogueScript.Status;
+        }
+
+        /// <summary>
+        /// Continue with default condition.
+        /// </summary>
+        public void NextOrDispose()
+        {
+            if (!mActive || mActiveThisFrame)
+                return;
+
+            NextBtnCallback();
+
+            if (mMessage == "")
+                Dispose();
         }
 
         /// <summary>
@@ -1000,36 +1016,6 @@ because button selection is not attach to all selections in the list...");
         }
 
         /// <summary>
-        /// Intialize the images.
-        /// </summary>
-        private void InitImageSet()
-        {
-            if (mCenterImage != null)
-                mCenterImage.transform.SetParent(this.transform);
-
-            if (mLeftImage != null)
-                mLeftImage.transform.SetParent(this.transform);
-
-            if (mRightImage != null)
-                mRightImage.transform.SetParent(this.transform);
-        }
-
-        /// <summary>
-        /// Initialize the text box.
-        /// </summary>
-        private void InitTextBox()
-        {
-            // check if text box null references...
-            if (mTextBox == null)
-            {
-                JCS_Debug.LogWarning("You have the dialogue system in the scene, but u did not assign a text box... Try to delete it?");
-                return;
-            }
-
-            mTextBox.transform.SetParent(this.transform);
-        }
-
-        /// <summary>
         /// Run the script once.
         /// </summary>
         private void RunAction()
@@ -1087,12 +1073,12 @@ because button selection is not attach to all selections in the list...");
         {
             for (int index = 0; index < mSelectBtn.Length; ++index)
             {
-                JCS_Button jcsbtn = mSelectBtn[index];
+                JCS_Button btn = mSelectBtn[index];
 
-                if (jcsbtn == null || jcsbtn.ButtonSelection == null)
+                if (btn == null || btn.ButtonSelection == null)
                     continue;
 
-                if (jcsbtn.ButtonSelection.Active)
+                if (btn.ButtonSelection.Active)
                     return index;
             }
 

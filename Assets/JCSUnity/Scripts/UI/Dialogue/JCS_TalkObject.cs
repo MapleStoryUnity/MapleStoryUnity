@@ -32,12 +32,12 @@ namespace JCSUnity
         {
             if (JCS_Input.OnMouseDoubleClick(JCS_MouseButton.LEFT))
             {
-                JCS_DialogueSystem jcsDs = JCS_UtilitiesManager.instance.GetDialogueSystem();
+                JCS_DialogueSystem ds = JCS_UtilitiesManager.instance.GetDialogueSystem();
 
-                if (jcsDs != null)
+                if (ds != null)
                 {
                     // active dialogue system.
-                    jcsDs.ActiveDialogue(mDialogueScript);
+                    ds.ActiveDialogue(mDialogueScript);
                 }
             }
         }

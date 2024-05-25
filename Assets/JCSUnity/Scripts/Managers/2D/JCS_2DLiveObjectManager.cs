@@ -45,9 +45,9 @@ namespace JCSUnity
         public void DestroyAllLiveObject()
         {
             // Destroy all the live object in the scene.
-            JCS_2DLiveObject[] jcsLiveObjects = Resources.FindObjectsOfTypeAll<JCS_2DLiveObject>();
+            JCS_2DLiveObject[] los = Resources.FindObjectsOfTypeAll<JCS_2DLiveObject>();
 
-            foreach (JCS_2DLiveObject lo in jcsLiveObjects)
+            foreach (JCS_2DLiveObject lo in los)
             {
                 // NOTE(JenChieh): kill the object that are clone!
                 // or else it will effect the prefab object...

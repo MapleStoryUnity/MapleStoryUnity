@@ -26,36 +26,36 @@ namespace JCSUnity
         {
             // if quest complete
             if (mode == -1)
-                jcsDs.Dispose();
+                ds.Dispose();
 
             if (Status == -1)
             {
-                jcsDs.SendNext("Hello World");
-                jcsDs.SendNameTag("Name 01");
+                ds.SendNext("Hello World");
+                ds.SendNameTag("Name 01");
 
-                jcsDs.SendLeftImage(LeftSprite);
+                ds.SendLeftImage(LeftSprite);
             }
             else if (Status == 0)
             {
                 /* For Mouse. */
                 {
-                    jcsDs.SendNextPrev("Make a selection...");
+                    ds.SendNextPrev("Make a selection...");
                 }
                 /* For Gamepad/Controller/Joystick. */
                 {
-                    //jcsDs.SendEmpty("Make a selection...");
+                    //ds.SendEmpty("Make a selection...");
                 }
 
-                //jcsDs.SendChoice(0, "Selection 01");
-                jcsDs.SendChoice(1, "Selection 02");
-                jcsDs.SendChoice(2, "Selection 03");
-                jcsDs.SendChoice(3, "Selection 04");
-                jcsDs.SendChoice(4, "Selection 05");
-                jcsDs.SendChoice(5, "Selection 06");
+                //ds.SendChoice(0, "Selection 01");
+                ds.SendChoice(1, "Selection 02");
+                ds.SendChoice(2, "Selection 03");
+                ds.SendChoice(3, "Selection 04");
+                ds.SendChoice(4, "Selection 05");
+                ds.SendChoice(5, "Selection 06");
 
-                jcsDs.SendNameTag("Name 02");
+                ds.SendNameTag("Name 02");
 
-                jcsDs.SendRightImage(RightSprite);
+                ds.SendRightImage(RightSprite);
             }
             else if (Status == 1)
             {
@@ -83,11 +83,11 @@ namespace JCSUnity
                         msg = "You made selection 01.";
                         break;
                 }
-                jcsDs.SendNextPrev(msg);
+                ds.SendNextPrev(msg);
             }
             else if (Status == 2)
             {
-                jcsDs.SendYesNo("...");
+                ds.SendYesNo("...");
             }
             else if (Status == 3)
             {
@@ -103,7 +103,7 @@ namespace JCSUnity
                         msg = "You press No button!!! n(_ _)n";
                         break;
                 }
-                jcsDs.SendOk(msg);
+                ds.SendOk(msg);
             }
         }
     }

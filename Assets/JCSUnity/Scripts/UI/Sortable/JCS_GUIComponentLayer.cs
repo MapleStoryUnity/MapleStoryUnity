@@ -14,8 +14,7 @@ namespace JCSUnity
     /// Sort the GUI components so they will have correct 
     /// render order.
     /// 
-    /// NOTE(jenchieh): This will only do under the 
-    /// jcs panel layer.
+    /// NOTE(jenchieh): This will only do under the panel layer.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class JCS_GUIComponentLayer : JCS_SortingObject
@@ -37,16 +36,16 @@ namespace JCSUnity
 
             if (parentObj != null)
             {
-                // get all the jcs_panellayer in the scene
-                JCS_GUIComponentLayer[] jcspls = parentObj.GetComponentsInChildren<JCS_GUIComponentLayer>();
+                // get all the panel layers in the scene
+                JCS_GUIComponentLayer[] compLayers = parentObj.GetComponentsInChildren<JCS_GUIComponentLayer>();
 
-                var jcsS = new JCS_Sort<JCS_GUIComponentLayer>();
+                var sortedCompLayers = new JCS_Sort<JCS_GUIComponentLayer>();
 
-                jcsS.AddAll(jcspls);
+                sortedCompLayers.AddAll(compLayers);
 
-                jcspls = jcsS.InsertionSort();
+                compLayers = sortedCompLayers.InsertionSort();
 
-                OriganizeChildOrder(jcspls);
+                OriganizeChildOrder(compLayers);
             }
         }
 

@@ -16,7 +16,7 @@ namespace JCSUnity
     /// 2D animate cursor.
     /// </summary>
     [RequireComponent(typeof(JCS_2DAnimator))]
-    public class JCS_2DCursor : MonoBehaviour
+    public class JCS_2DCursor : JCS_Cursor
     {
         /* Variables */
 
@@ -62,8 +62,10 @@ namespace JCSUnity
 
         /* Functions */
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
 
             m2DAnimator.Animations.Add(mNormalSelect);
@@ -160,5 +162,4 @@ namespace JCSUnity
         }
     }
 }
-
 #endif

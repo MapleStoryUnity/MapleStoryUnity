@@ -55,6 +55,10 @@ namespace JCSUnity
 
         [Separator("Check Variables (JCS_PauseManager)")]
 
+        [Tooltip("Set to true if game is paused.")]
+        [SerializeField]
+        private bool mPaused = false;
+
         [Tooltip("Target time scale.")]
         [SerializeField]
         [ReadOnly]
@@ -98,6 +102,7 @@ object you have in the list.")]
 
         /* Setter & Getter */
 
+        public bool Paused { get { return this.mPaused; } }
         public List<JCS_PauseAction> PausesActions { get { return this.mPauseActions; } }
         public float ResizePauseActionListTime { get { return this.mResizePauseActionListTime; } set { this.mResizePauseActionListTime = value; } }
         public float DefaultTimeScale { get { return this.mDefaultTimeScale; } set { this.mDefaultTimeScale = value; } }
@@ -111,6 +116,12 @@ object you have in the list.")]
         private void Awake()
         {
             instance = this;
+        }
+
+        private void Start()
+        {
+            // Make sure the time scale is reset every new scene.
+            ResetState();
         }
 
         private void Update()
@@ -160,6 +171,17 @@ object you have in the list.")]
         public void AddActionToList(JCS_PauseAction pa)
         {
             mPauseActions.Add(pa);
+        }
+
+        /// <summary>
+        /// Reset pause state.
+        /// </summary>
+        public void ResetState()
+        {
+            mTargetTimeScale = mDefaultTimeScale;
+            Time.timeScale = mDefaultTimeScale;
+
+            PauseTheWholeGame(false);
         }
 
         /// <summary>
@@ -213,6 +235,8 @@ object you have in the list.")]
 
             // resize the list once.
             RemoveNullRefInPauseActionList();
+
+            mPaused = act;
         }
 
         /// <summary>

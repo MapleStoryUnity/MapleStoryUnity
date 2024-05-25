@@ -775,7 +775,7 @@ namespace JCSUnity
         /// Save O(n) time complexity during editing time.
         /// </summary>
         /// <param name="settingPath"> path to spawn </param>
-        /// <param name="jcsCanvas"> canvas to set on. </param>
+        /// <param name="canvas"> canvas to set on. </param>
         /// <returns> object just spawned. </returns>
         private static GameObject CreateHierarchyObjectUnderCanvas(string settingPath, JCS_Canvas canvas)
         {

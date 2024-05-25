@@ -174,7 +174,7 @@ namespace JCSUnity
 
                 if (currentBtn == null)
                 {
-                    JCS_Debug.LogError("Missing jcs_button assign in the inspector");
+                    JCS_Debug.LogError("Missing button assign in the inspector");
                     continue;
                 }
 

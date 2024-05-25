@@ -68,6 +68,10 @@ namespace JCSUnity
             // set to Sound Manager in order to get manage
             JCS_SoundManager.instance.SetBackgroundMusic(GetAudioSource());
 
+            // In 2023.2.19f1, the loop will be turned off for some reason.
+            // Let's force BGM to run loop!
+            GetAudioSource().loop = true;
+
             var ss = JCS_SoundSettings.instance;
 
             if (!ss.KEEP_BGM_SWITCH_SCENE)

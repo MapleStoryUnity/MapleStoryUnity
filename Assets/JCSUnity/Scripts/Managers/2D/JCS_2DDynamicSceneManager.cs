@@ -45,14 +45,14 @@ namespace JCSUnity
         /// <returns></returns>
         public JCS_OrderLayer GetOrderLayerByOrderLayerIndex(int orderLayerIndex)
         {
-            foreach (JCS_OrderLayer jcsol in mJCSOrderLayer)
+            foreach (JCS_OrderLayer ol in mJCSOrderLayer)
             {
-                if (jcsol == null)
+                if (ol == null)
                     continue;
 
                 // find the order layer with the index passed in!
-                if (jcsol.OrderLayer == orderLayerIndex)
-                    return jcsol;
+                if (ol.OrderLayer == orderLayerIndex)
+                    return ol;
             }
 
             return null;
@@ -61,20 +61,20 @@ namespace JCSUnity
         /// <summary>
         /// Set the object into the scene layer in the scene.
         /// </summary>
-        /// <param name="jcsOlo"> this keyword does not pass through, use this function will do. </param>
+        /// <param name="olo"> this keyword does not pass through, use this function will do. </param>
         /// <param name="orderLayerIndex"> index of scene layer </param>
-        public void SetObjectParentToOrderLayerByOrderLayerIndex(JCS_OrderLayerObject jcsOlo, int orderLayerIndex)
+        public void SetObjectParentToOrderLayerByOrderLayerIndex(JCS_OrderLayerObject olo, int orderLayerIndex)
         {
-            SetObjectParentToOrderLayerByOrderLayerIndex(ref jcsOlo, orderLayerIndex);
+            SetObjectParentToOrderLayerByOrderLayerIndex(ref olo, orderLayerIndex);
         }
         /// <summary>
         /// Set the object into the scene layer in the scene.
         /// </summary>
-        /// <param name="jcsOlo"> object u want to set to that specific scene layer </param>
+        /// <param name="olo"> object u want to set to that specific scene layer </param>
         /// <param name="orderLayerIndex"> index of scene layer </param>
-        public void SetObjectParentToOrderLayerByOrderLayerIndex(ref JCS_OrderLayerObject jcsOlo, int orderLayerIndex)
+        public void SetObjectParentToOrderLayerByOrderLayerIndex(ref JCS_OrderLayerObject olo, int orderLayerIndex)
         {
-            if (jcsOlo == null)
+            if (olo == null)
             {
                 JCS_Debug.LogWarning(
                     "The 'JCS_OrderLayerObject' object you trying to set is null references...");
@@ -82,9 +82,9 @@ namespace JCSUnity
             }
 
             // get the order layer by order layer index!
-            JCS_OrderLayer jcsol = GetOrderLayerByOrderLayerIndex(orderLayerIndex);
+            JCS_OrderLayer ol = GetOrderLayerByOrderLayerIndex(orderLayerIndex);
 
-            if (jcsol == null)
+            if (ol == null)
             {
                 JCS_Debug.LogWarning(
                     "Did not find the layer you willing to set to..., Layer Index: " + orderLayerIndex);
@@ -92,10 +92,10 @@ namespace JCSUnity
             }
 
             // set parent
-            jcsOlo.transform.SetParent(jcsol.transform);
+            olo.transform.SetParent(ol.transform);
 
             // set order layer to the pass in object.
-            jcsOlo.SetOrderLayer(orderLayerIndex);
+            olo.SetOrderLayer(orderLayerIndex);
         }
     }
 }

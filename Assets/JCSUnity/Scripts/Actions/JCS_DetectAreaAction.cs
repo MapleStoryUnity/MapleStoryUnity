@@ -73,25 +73,25 @@ namespace JCSUnity
         /// <summary>
         /// If detect a target add it to list.
         /// </summary>
-        /// <param name="jcsDo"></param>
-        public void AddDetectedObject(JCS_DetectAreaObject jcsDo)
+        /// <param name="dao"></param>
+        public void AddDetectedObject(JCS_DetectAreaObject dao)
         {
-            if (jcsDo == null)
+            if (dao == null)
                 return;
 
-            mDetectedObjects.push(jcsDo);
+            mDetectedObjects.push(dao);
         }
         /// <summary>
         /// If detected target leave the area,
         /// remove from list.
         /// </summary>
-        /// <param name="jcsDo"></param>
-        public void RemoveDetectedObject(JCS_DetectAreaObject jcsDo)
+        /// <param name="dao"></param>
+        public void RemoveDetectedObject(JCS_DetectAreaObject dao)
         {
-            if (jcsDo == null)
+            if (dao == null)
                 return;
 
-            mDetectedObjects.slice(jcsDo);
+            mDetectedObjects.slice(dao);
         }
 
         /// <summary>

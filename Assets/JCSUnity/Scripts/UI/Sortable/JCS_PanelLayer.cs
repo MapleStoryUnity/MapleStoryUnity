@@ -44,16 +44,16 @@ namespace JCSUnity
             if (this.Sorted)
                 return;
 
-            // get all the jcs_panellayer in the scene
-            JCS_PanelLayer[] jcspls = (JCS_PanelLayer[])Resources.FindObjectsOfTypeAll(typeof(JCS_PanelLayer));
+            // get all the panel layers in the scene
+            var pls = (JCS_PanelLayer[])Resources.FindObjectsOfTypeAll(typeof(JCS_PanelLayer));
 
-            var jcsS = new JCS_Sort<JCS_PanelLayer>();
+            var sortedPls = new JCS_Sort<JCS_PanelLayer>();
 
-            jcsS.AddAll(jcspls);
+            sortedPls.AddAll(pls);
 
-            jcspls = jcsS.InsertionSort();
+            pls = sortedPls.InsertionSort();
 
-            OriganizeChildOrder(jcspls);
+            OriganizeChildOrder(pls);
         }
 
 #if UNITY_EDITOR

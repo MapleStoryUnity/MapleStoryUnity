@@ -109,8 +109,8 @@ just stop there.")]
 
         private void OnTriggerEnter(Collider other)
         {
-            var jcsiw = other.GetComponent<JCS_ItemWall>();
-            if (jcsiw != null)
+            var iw = other.GetComponent<JCS_ItemWall>();
+            if (iw != null)
             {
                 // no longer moving along x-axis or z-axis.
                 {

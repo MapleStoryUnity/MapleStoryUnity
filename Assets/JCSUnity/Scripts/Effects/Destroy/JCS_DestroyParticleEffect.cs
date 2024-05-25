@@ -169,74 +169,73 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
             if (!onTrigger)
                 return;
 
-
-            GameObject gm = new GameObject();
+            var gm = new GameObject();
 #if UNITY_EDITOR
             gm.name = "JCS_DestroyParticleEffect";
 #endif
 
-            JCS_ParticleSystem jcsps = gm.AddComponent<JCS_ParticleSystem>();
+            var ps = gm.AddComponent<JCS_ParticleSystem>();
 
             if (mSamePosition)
-                jcsps.transform.position = this.transform.position;
+                ps.transform.position = this.transform.position;
             if (mSameRotation)
-                jcsps.transform.rotation = this.transform.rotation;
+                ps.transform.rotation = this.transform.rotation;
             if (mSameScale)
-                jcsps.transform.localScale = this.transform.localScale;
+                ps.transform.localScale = this.transform.localScale;
 
             // Random Effect
             if (mRandPos)
-                AddRandomPosition(jcsps);
+                AddRandomPosition(ps);
             if (mRandRot)
-                AddRandomRotation(jcsps);
+                AddRandomRotation(ps);
             if (mRandScale)
-                AddRandomScale(jcsps);
+                AddRandomScale(ps);
 
             // copy and paste component to new one.
             {
-                jcsps.Particle = mParticleSystem.Particle;
-                jcsps.NumOfParticle = mParticleSystem.NumOfParticle;
+                ps.Particle = mParticleSystem.Particle;
+                ps.NumOfParticle = mParticleSystem.NumOfParticle;
 
-                jcsps.Active = mParticleSystem.Active;
-                jcsps.ActiveThread = mParticleSystem.ActiveThread;
-                jcsps.OrderLayer = mParticleSystem.OrderLayer;
-                jcsps.Density = mParticleSystem.Density;
-                jcsps.WindSpeed = mParticleSystem.WindSpeed;
+                ps.Active = mParticleSystem.Active;
+                ps.ActiveThread = mParticleSystem.ActiveThread;
+                ps.OrderLayer = mParticleSystem.OrderLayer;
+                ps.Density = mParticleSystem.Density;
+                ps.WindSpeed = mParticleSystem.WindSpeed;
 
-                jcsps.AlwaysTheSameScale = mParticleSystem.AlwaysTheSameScale;
+                ps.AlwaysTheSameScale = mParticleSystem.AlwaysTheSameScale;
 
-                jcsps.FreezeX = mParticleSystem.FreezeX;
-                jcsps.FreezeY = mParticleSystem.FreezeY;
-                jcsps.FreezeZ = mParticleSystem.FreezeZ;
+                ps.FreezeX = mParticleSystem.FreezeX;
+                ps.FreezeY = mParticleSystem.FreezeY;
+                ps.FreezeZ = mParticleSystem.FreezeZ;
 
-                jcsps.RandPosX = mParticleSystem.RandPosX;
-                jcsps.RandPosY = mParticleSystem.RandPosY;
-                jcsps.RandPosZ = mParticleSystem.RandPosZ;
+                ps.RandPosX = mParticleSystem.RandPosX;
+                ps.RandPosY = mParticleSystem.RandPosY;
+                ps.RandPosZ = mParticleSystem.RandPosZ;
 
-                jcsps.RandAngleX = mParticleSystem.RandAngleX;
-                jcsps.RandAngleY = mParticleSystem.RandAngleY;
-                jcsps.RandAngleZ = mParticleSystem.RandAngleZ;
+                ps.RandAngleX = mParticleSystem.RandAngleX;
+                ps.RandAngleY = mParticleSystem.RandAngleY;
+                ps.RandAngleZ = mParticleSystem.RandAngleZ;
 
-                jcsps.RandScaleX = mParticleSystem.RandScaleX;
-                jcsps.RandScaleY = mParticleSystem.RandScaleY;
-                jcsps.RandScaleZ = mParticleSystem.RandScaleZ;
+                ps.RandScaleX = mParticleSystem.RandScaleX;
+                ps.RandScaleY = mParticleSystem.RandScaleY;
+                ps.RandScaleZ = mParticleSystem.RandScaleZ;
 
-                jcsps.DoShotImmediately = mParticleSystem.DoShotImmediately;
+                ps.DoShotImmediately = mParticleSystem.DoShotImmediately;
 
-                jcsps.SetChild = mParticleSystem.SetChild;
-                jcsps.SetToSamePositionWhenActive = mParticleSystem.SetToSamePositionWhenActive;
+                ps.SetChild = mParticleSystem.SetChild;
+                ps.SetToSamePositionWhenActive = mParticleSystem.SetToSamePositionWhenActive;
             }
 
             // spawn the particle immediately.
-            jcsps.SpawnParticles();
+            ps.SpawnParticles();
 
             // spawn the particle.
-            jcsps.PlayOneShot();
+            ps.PlayOneShot();
 
 
             if (mDestroyByTime)
             {
-                JCS_DestroyObjectWithTime dowt = gm.AddComponent<JCS_DestroyObjectWithTime>();
+                var dowt = gm.AddComponent<JCS_DestroyObjectWithTime>();
                 dowt.DestroyTime = mDestroyTime;
             }
             else

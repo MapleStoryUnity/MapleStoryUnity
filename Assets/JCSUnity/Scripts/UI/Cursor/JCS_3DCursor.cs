@@ -17,7 +17,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Animator))]
-    public class JCS_3DCursor : MonoBehaviour
+    public class JCS_3DCursor : JCS_Cursor
     {
         /* Variables */
 
@@ -25,9 +25,6 @@ namespace JCSUnity
         private Animator mAnimator = null;
 
         [Separator("Runtime Variables (JCS_3DCursor)")]
-
-        [Tooltip("Show the cursor or not.")]
-        [SerializeField] private bool mShowCursor = false;
 
         [Tooltip("Add on offset to the cursor.")]
         [SerializeField]
@@ -77,8 +74,10 @@ namespace JCSUnity
 
         /* Functions */
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
             this.mAnimator = this.GetComponent<Animator>();
 
@@ -87,24 +86,11 @@ namespace JCSUnity
             mOffset.y = cursorRect.y / 2.0f;
 
             mSpriteRenderer.sortingOrder = mOrderLayer;
-
-#if UNITY_EDITOR
-            mShowCursor = true;
-#endif
         }
 
         private void LateUpdate()
         {
             FollowMouse();
-        }
-
-        private void OnApplicationFocus(bool focusStatus)
-        {
-            // when get focus do check to not show the cursor
-            if (focusStatus)
-            {
-                Cursor.visible = mShowCursor;
-            }
         }
 
         /// <summary>
@@ -281,5 +267,4 @@ namespace JCSUnity
         }
     }
 }
-
 #endif

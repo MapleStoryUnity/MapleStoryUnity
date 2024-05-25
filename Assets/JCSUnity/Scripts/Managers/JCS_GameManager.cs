@@ -23,11 +23,6 @@ namespace JCSUnity
 
         [Separator("Check Variable (JCS_GameManager)")]
 
-        [Tooltip("Is the game pasue?")]
-        [SerializeField]
-        [ReadOnly]
-        private bool mGamePause = false;
-
         [Tooltip("Is game done initialize?")]
         [SerializeField]
         [ReadOnly]
@@ -40,23 +35,21 @@ namespace JCSUnity
         public bool GAME_DONE_INITIALIZE { get { return this.mGameDoneInitialize; } }
         public bool GAME_PAUSE
         {
-            get { return this.mGamePause; }
+            get { return JCS_PauseManager.instance.Paused; }
             set
             {
+                var pm = JCS_PauseManager.instance;
+
                 // check if need the game pause the same as the value previously
                 // set. In order to save some perforce by enable/disable all the
                 // JCS_PauseAction in the game.
-                if (mGamePause != value)
+                if (pm.Paused != value)
                 {
-                    var pm = JCS_PauseManager.instance;
-
                     if (value)
                         pm.Pause();
                     else
                         pm.Unpause();
                 }
-
-                this.mGamePause = value;
             }
         }
         public JCS_Player Player { get { return this.mPlayer; } set { this.mPlayer = value; } }

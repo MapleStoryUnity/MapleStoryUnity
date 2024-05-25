@@ -45,21 +45,21 @@ namespace JCSUnity
         /// </summary>
         private void SetPlayerToPortalByLabel()
         {
-            JCS_PortalSettings jcsPs = JCS_PortalSettings.instance;
+            var ps = JCS_PortalSettings.instance;
 
             // check manager exists?
-            if (jcsPs == null)
+            if (ps == null)
                 return;
 
             // check effect enable?
-            if (!jcsPs.RESET_POSITION_AT_START)
+            if (!ps.RESET_POSITION_AT_START)
                 return;
 
             mPortals = JCS_Util.RemoveEmptySlotIncludeMissing<JCS_2DPortal>(mPortals);
 
             foreach (JCS_2DPortal portal in mPortals)
             {
-                if (portal.PortalLabel == jcsPs.SCENE_PORTAL_LABEL)
+                if (portal.PortalLabel == ps.SCENE_PORTAL_LABEL)
                 {
                     // get the player
                     JCS_Player player = JCS_PlayerManager.instance.GetActivePlayer();
