@@ -70,16 +70,16 @@ namespace JCSUnity
             if (this.mText == null)
                 this.mText = this.GetComponentInChildren<Text>();
 
-            JCS_Util.AddEventTriggerEvent(mEventTrigger, 
+            JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, 
                 EventTriggerType.PointerEnter, 
                 OnPointerEnter);
-            JCS_Util.AddEventTriggerEvent(mEventTrigger,
+            JCS_UIUtil.AddEventTriggerEvent(mEventTrigger,
                 EventTriggerType.PointerExit,
                 OnPointerExit);
-            JCS_Util.AddEventTriggerEvent(mEventTrigger,
+            JCS_UIUtil.AddEventTriggerEvent(mEventTrigger,
                 EventTriggerType.PointerDown,
                 OnPointerDown);
-            JCS_Util.AddEventTriggerEvent(mEventTrigger,
+            JCS_UIUtil.AddEventTriggerEvent(mEventTrigger,
                 EventTriggerType.PointerUp,
                 OnPointerUp);
 

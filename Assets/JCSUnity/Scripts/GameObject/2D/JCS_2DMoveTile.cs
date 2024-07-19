@@ -57,7 +57,7 @@ namespace JCSUnity
         {
             var sp = this.GetComponent<SpriteRenderer>();
 
-            Vector2 spriteRect = JCS_Util.GetSpriteRendererRectWithNoScale(sp);
+            Vector2 spriteRect = JCS_UIUtil.GetSpriteRendererRectWithNoScale(sp);
 
             mWidth = spriteRect.x;
             mHeight = spriteRect.y;

@@ -442,7 +442,7 @@ namespace JCSUnity
         /// </returns>
         public bool CheckInScreenSpace(SpriteRenderer checkTrans)
         {
-            Vector2 objectRect = JCS_Util.GetSpriteRendererRect(checkTrans);
+            Vector2 objectRect = JCS_UIUtil.GetSpriteRendererRect(checkTrans);
 
             Camera cam = main.GetCamera();
             Vector2 objPos = cam.WorldToViewportPoint(checkTrans.transform.position);
@@ -464,10 +464,10 @@ namespace JCSUnity
             float camBot = camPos.y - (camHeight / JCS_Mathf.D_HALF);
 
 #if UNITY_EDITOR
-            Vector3 topLeft = new Vector3(objLeft, objTop, 0.0f);
-            Vector3 topRight = new Vector3(objRight, objTop, 0.0f);
-            Vector3 botRight = new Vector3(objRight, objBot, 0.0f);
-            Vector3 botLeft = new Vector3(objLeft, objBot, 0.0f);
+            var topLeft = new Vector3(objLeft, objTop, 0.0f);
+            var topRight = new Vector3(objRight, objTop, 0.0f);
+            var botRight = new Vector3(objRight, objBot, 0.0f);
+            var botLeft = new Vector3(objLeft, objBot, 0.0f);
 
             Debug.DrawLine(topLeft, topRight);
             Debug.DrawLine(topLeft, botLeft);
