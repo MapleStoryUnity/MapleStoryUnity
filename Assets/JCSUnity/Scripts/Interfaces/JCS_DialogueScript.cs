@@ -41,7 +41,7 @@ namespace JCSUnity
             get
             {
                 if (mDialogueSystem == null)
-                    mDialogueSystem = JCS_UtilitiesManager.instance.GetDialogueSystem();
+                    mDialogueSystem = JCS_UtilManager.instance.GetDialogueSystem();
 
                 return this.mDialogueSystem;
             }
@@ -57,7 +57,7 @@ namespace JCSUnity
         protected virtual void Start()
         {
             // get dialogue system. (singleton)
-            mDialogueSystem = JCS_UtilitiesManager.instance.GetDialogueSystem();
+            mDialogueSystem = JCS_UtilManager.instance.GetDialogueSystem();
         }
 
         /// <summary>

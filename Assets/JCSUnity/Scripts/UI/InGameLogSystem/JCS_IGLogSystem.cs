@@ -69,7 +69,7 @@ namespace JCSUnity
         private void Start()
         {
             // set to utility manager.
-            JCS_UtilitiesManager.instance.SetIGLogSystem(this);
+            JCS_UtilManager.instance.SetIGLogSystem(this);
         }
 
 #if UNITY_EDITOR

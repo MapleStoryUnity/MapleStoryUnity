@@ -76,7 +76,7 @@ namespace JCSUnity
             this.mAppRect = this.GetComponent<RectTransform>();
             this.mCanvas = this.GetComponent<Canvas>();
 
-            if (JCS_UISettings.instance.RESIZE_UI)
+            if (JCS_UISettings.instance.RESIZE_UI && !JCS_ScreenSettings.instance.IsNone())
             {
                 // resizable UI in order to resize the UI correctly
                 mResizeUI = JCS_Util.Instantiate(RESIZE_UI_PATH).GetComponent<JCS_ResizeUI>();
@@ -93,7 +93,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            if (JCS_UISettings.instance.RESIZE_UI)
+            if (JCS_UISettings.instance.RESIZE_UI && !JCS_ScreenSettings.instance.IsNone())
             {
                 if (mResizeUI == null)
                     return;

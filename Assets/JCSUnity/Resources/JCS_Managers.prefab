@@ -40,6 +40,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135910}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -50,7 +51,6 @@ Transform:
   - {fileID: 1678435914}
   - {fileID: 4161427194650725801}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11496914
 MonoBehaviour:
@@ -143,7 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbeb25e792087645b19e4cf30c3218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mGamePause: 0
   mGameDoneInitialize: 0
 --- !u!114 &11439248
 MonoBehaviour:
@@ -157,13 +156,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ceabc1c1c745c44a60262572a8c61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mNextSceneName: 
   mBlackScreen: {fileID: 0}
   mBlackSlideScreen: {fileID: 0}
   mAlign: 0
   mPopWhiteScreen: 1
   mWhiteScreen: {fileID: 0}
   mSwitchSceneType: 1
-  mPauseGameWhileLoadingScene: 1
   mOverrideSetting: 0
   mSceneFadeInTime: 1
   mSceneFadeOutTime: 1
@@ -190,6 +189,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -359,6 +359,7 @@ MonoBehaviour:
   mMixDamageTextPool: {fileID: 0}
   mIGLogSystem: {fileID: 0}
   mDialogueSystem: {fileID: 0}
+  mSpriteTransparent: {fileID: 21300000, guid: c7eced5e94022104d917659ef2734bf4, type: 3}
 --- !u!114 &11461692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +404,7 @@ MonoBehaviour:
   mIncTime: 110
   mDecTime: 109
   mTimeDelta: 5
+  mPaused: 0
   mTargetTimeScale: 1
   mPauseActions: []
   mDefaultTimeScale: 1
@@ -434,13 +436,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678435913}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442828}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4065819051853472555
 MonoBehaviour:
@@ -481,13 +483,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102792923}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442828}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3569791717532981135
 MonoBehaviour:
@@ -553,13 +555,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000012022687026}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442828}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114000014013781274
 MonoBehaviour:
@@ -615,13 +617,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4502074130992445992}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442828}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3393683539091338131
 MonoBehaviour:
@@ -643,11 +645,7 @@ MonoBehaviour:
   mDragDisplacement: {x: 0, y: 0}
   mDragging: 0
   mTouchTime: 0
-  mMultiTouch: 0
-  mTouchDistance: 0
-  mTouchDistanceDelta: 0
   mMouseType: 0
-  mDetectTouchCount: 1
 --- !u!114 &3255448869455908852
 MonoBehaviour:
   m_ObjectHideFlags: 0

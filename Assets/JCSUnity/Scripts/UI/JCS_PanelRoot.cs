@@ -42,8 +42,11 @@ namespace JCSUnity
         {
             base.Awake();
 
-            // NOTE: not sure is this the correct position for the code or not.
-            DoResize();
+            if (!JCS_ScreenSettings.instance.IsNone())
+            {
+                // NOTE: not sure is this the correct position for the code or not.
+                DoResize();
+            }
         }
 
         protected override void Start()

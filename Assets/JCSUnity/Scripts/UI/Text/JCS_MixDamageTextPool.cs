@@ -130,7 +130,7 @@ namespace JCSUnity
         private void Start()
         {
             // set to global!
-            JCS_UtilitiesManager.instance.SetMixDamageTextPool(this);
+            JCS_UtilManager.instance.SetMixDamageTextPool(this);
         }
 
         private void Update()

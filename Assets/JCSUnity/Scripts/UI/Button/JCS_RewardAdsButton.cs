@@ -55,7 +55,7 @@ namespace JCSUnity
             }
 
             // start reward video.
-            JCS_AdvertisementManager.instance.StartDelayRewardVideo(
+            JCS_AdsManager.instance.StartDelayRewardVideo(
                 mDelayTime,
                 mRewardCallback);
         }

@@ -236,7 +236,7 @@ to get the information from them.")]
             if (mDamageTextEffect)
             {
 
-                JCS_MixDamageTextPool mixTP = JCS_UtilitiesManager.instance.GetMixDamageTextPool();
+                JCS_MixDamageTextPool mixTP = JCS_UtilManager.instance.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
 #if UNITY_EDITOR
@@ -299,7 +299,7 @@ to get the information from them.")]
             if (mDamageTextEffect)
             {
 
-                JCS_MixDamageTextPool mixTP = JCS_UtilitiesManager.instance.GetMixDamageTextPool();
+                JCS_MixDamageTextPool mixTP = JCS_UtilManager.instance.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
                     JCS_Debug.LogError(

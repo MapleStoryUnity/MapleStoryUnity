@@ -41,7 +41,7 @@ namespace JCSUnity
         {
             // use default.
             if (mDialogueSystem == null)
-                mDialogueSystem = JCS_UtilitiesManager.instance.GetDialogueSystem();
+                mDialogueSystem = JCS_UtilManager.instance.GetDialogueSystem();
         }
 
         private void Update()

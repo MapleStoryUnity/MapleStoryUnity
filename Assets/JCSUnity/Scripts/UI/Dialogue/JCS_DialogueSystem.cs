@@ -200,7 +200,7 @@ namespace JCSUnity
                 mPanelTrans = this.GetComponent<RectTransform>();
 
             // set to manager to get manage.
-            JCS_UtilitiesManager.instance.SetDiaglogueSystem(this);
+            JCS_UtilManager.instance.SetDiaglogueSystem(this);
         }
 
         private void Start()

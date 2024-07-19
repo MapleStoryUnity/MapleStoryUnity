@@ -4,7 +4,7 @@
 
 #if (UNITY_ANDRIOD || UNITY_IOS || UNITY_EDITOR) && UNITY_ADS
 /**
- * $File: JCS_AdvertisementManager.cs $
+ * $File: JCS_AdsManager.cs $
  * $Date: 2017-04-28 21:48:08 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -30,7 +30,7 @@ namespace JCSUnity
     ///       Technologies.
     /// 
     /// </summary>
-    public class JCS_AdvertisementManager : JCS_Manager<JCS_AdvertisementManager>
+    public class JCS_AdsManager : JCS_Manager<JCS_AdsManager>
         , IUnityAdsListener
     {
         public delegate void AdsDidErrorCallback(string message);
@@ -40,7 +40,7 @@ namespace JCSUnity
 
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_AdvertisementManager)")]
+        [Separator("Initialize Variables (JCS_AdsManager)")]
 
 #if (UNITY_ANDROID)
         [Tooltip("Andriod game id provided by Unity Server window.")]

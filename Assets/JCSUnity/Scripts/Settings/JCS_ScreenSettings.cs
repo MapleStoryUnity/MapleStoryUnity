@@ -175,6 +175,7 @@ namespace JCSUnity
         {
             switch (SCREEN_TYPE)
             {
+                case JCS_ScreenType.NONE:
                 case JCS_ScreenType.FIT_ALL:
                 case JCS_ScreenType.MIXED:
                     return false;
@@ -193,6 +194,15 @@ namespace JCSUnity
                     return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Return true if current screen type is none.
+        /// </summary>
+        /// <returns></returns>
+        public bool IsNone()
+        {
+            return SCREEN_TYPE == JCS_ScreenType.NONE;
         }
 
         /// <summary>
