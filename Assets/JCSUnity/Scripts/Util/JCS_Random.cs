@@ -87,16 +87,19 @@ namespace JCSUnity
         /// <returns> The chosen object from the list or array. </returns>
         public static T ChooseOne<T>(T[] inArray)
         {
+            if (inArray.Length == 0) return default(T);
             int index = Range(0, inArray.Length);
             return inArray[index];
         }
         public static T ChooseOne<T>(List<T> inList)
         {
+            if (inList.Count == 0) return default(T);
             int index = Range(0, inList.Count);
             return inList[index];
         }
         public static T ChooseOneE<T>(params T[] args)  // Ellipsis
         {
+            if (args.Length == 0) return default(T);
             int index = Range(0, args.Length);
             return args[index];
         }

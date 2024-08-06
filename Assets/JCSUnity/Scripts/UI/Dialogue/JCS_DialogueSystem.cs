@@ -20,8 +20,12 @@ namespace JCSUnity
     {
         /* Variables */
 
+        private bool mInitialized = false;
+
+        private JCS_DialogueScript mPreselectingScript = null;
+
         // Callback when successfully dispose the dialogue.
-        public EmptyFunction callback_dispose = null;
+        public EmptyFunction onDispose = null;
 
         [Separator("Check Variables (JCS_DialogueSystem)")]
 
@@ -101,11 +105,19 @@ namespace JCSUnity
 
         [Tooltip("Name tag.")]
         [SerializeField]
-        private Text mNameTag = null;
+        private JCS_TextObject mNameTag = null;
 
         [Tooltip("Main text GUI component to scroll.")]
         [SerializeField]
-        private Text mTextBox = null;
+        private JCS_TextObject mTextBox = null;
+
+        [Tooltip("Complete text before run action.")]
+        [SerializeField]
+        private bool mCompleteTextBeforeAction = false;
+
+        [Tooltip("Complete text before run action on button's event.")]
+        [SerializeField]
+        private bool mCompleteTextBeforeActionOnButton = false;
 
         [Tooltip("Speed of scrolling the text.")]
         [SerializeField]
@@ -181,7 +193,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public bool Active { get { return this.mActive; } }
+        public bool Scrolling { get { return this.mScrolling; } }
+        public bool ScrollingSelectBtnText { get { return this.mScrollingSelectBtnText; } }
+        public bool Skip { get { return this.mSkip; } }
+
         public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
+        public bool CompleteTextBeforeAction { get { return this.mCompleteTextBeforeAction; } set { this.mCompleteTextBeforeAction = value; } }
+        public bool CompleteTextBeforeActionOnButton { get { return this.mCompleteTextBeforeActionOnButton; } set { this.mCompleteTextBeforeActionOnButton = value; } }
         public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
         public string SelectStringFront { get { return this.mSelectStringFront; } }
@@ -212,6 +231,19 @@ namespace JCSUnity
 
             // dispose at the beginning of the game.
             Dispose();
+
+            mInitialized = true;
+
+            // When initialize and we already have preselected script; meaning
+            // we tried to activate the script last frame but weren't able to do so.
+            //
+            // Activate it now!
+            if (mPreselectingScript != null)
+            {
+                ActiveDialogue(mPreselectingScript);
+
+                mPreselectingScript = null;  // clear it.
+            }
         }
 
         private void LateUpdate()
@@ -227,16 +259,25 @@ namespace JCSUnity
         /// <summary>
         /// Start the dialogue, in other word same as start a conversation.
         /// </summary>
-        /// <param name="script">
-        /// Script to use to run the dialogue.
-        /// </param>
+        /// <param name="script"> Script to use to run the dialogue. </param>
         public void ActiveDialogue(JCS_DialogueScript script)
         {
+            if (!mInitialized)
+            {
+                // Assign to prepare to use it in the next frame's activation.
+                mPreselectingScript = script;
+
+                // Activate it on the next frame!
+                this.gameObject.SetActive(true);
+
+                return;
+            }
+
             mDialogueScript = script;
 
             if (mActive)
             {
-                JCS_Debug.LogError("Dialogue System is already active... Failed to active another one.");
+                JCS_Debug.LogError("Dialogue System is already active!");
                 return;
             }
 
@@ -484,7 +525,6 @@ namespace JCSUnity
             // disable the exit button!
             ExitBtnActive(false);
 
-
             // dis-attach the script.
             mDialogueScript = null;
 
@@ -498,8 +538,8 @@ namespace JCSUnity
             mActiveThisFrame = false;
 
             // Check initialize to ignore dispose called at the very beginning!
-            if (JCS_GameManager.instance.GAME_DONE_INITIALIZE && callback_dispose != null)
-                callback_dispose.Invoke();
+            if (JCS_GameManager.instance.GAME_DONE_INITIALIZE && onDispose != null)
+                onDispose.Invoke();
 
             // Play the dispose dialogue sound.
             JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mDisposeSound);
@@ -556,7 +596,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mNameTag == null)
             {
-                JCS_Debug.LogError("Name tag is not assign but u still trying to access?");
+                JCS_Debug.LogError("Name tag doesn't exist!");
                 return;
             }
 #endif
@@ -575,7 +615,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mCenterImage == null)
             {
-                JCS_Debug.LogError("Center image call with image component attached");
+                JCS_Debug.LogError("Image (center) doesn't exist");
                 return;
             }
 #endif
@@ -593,7 +633,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mLeftImage == null)
             {
-                JCS_Debug.LogError("Left image call with image component attached");
+                JCS_Debug.LogError("Image (left) doesn't exist");
                 return;
             }
 #endif
@@ -611,7 +651,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mRightImage == null)
             {
-                JCS_Debug.LogError("Right image call with image component attached");
+                JCS_Debug.LogError("Image (right) doesn't exist");
                 return;
             }
 #endif
@@ -638,15 +678,57 @@ namespace JCSUnity
         /// <summary>
         /// Continue with default condition.
         /// </summary>
-        public void NextOrDispose()
+        /// <returns> Return true if successful continue the dialogue. </returns>
+        public bool NextOrDispose()
         {
             if (!mActive || mActiveThisFrame)
-                return;
+                return false;
+
+            if (SkipToEnd(mCompleteTextBeforeAction))
+                return false;
 
             NextBtnCallback();
 
             if (mMessage == "")
+            {
                 Dispose();
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Return true if the dialogue system is still animating the text.
+        /// </summary>
+        public bool IsScrolling()
+        {
+            return this.mScrolling || this.mScrollingSelectBtnText;
+        }
+
+        /// <summary>
+        /// Skip the current text scroll.
+        /// </summary>
+        public bool SkipToEnd()
+        {
+            if (IsScrolling())
+            {
+                mSkip = true;
+
+                return true;
+            }
+
+            return false;
+        }
+        public bool SkipToEnd(bool flag)
+        {
+            if (flag && IsScrolling())
+            {
+                SkipToEnd();
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -667,7 +749,7 @@ namespace JCSUnity
                 return;
 
             // reset timer
-            mScrollTimer = 0;
+            mScrollTimer = 0.0f;
 
             if (mMessage == mTextBox.text)
             {
@@ -684,6 +766,7 @@ namespace JCSUnity
 
                 // reset text index counter
                 mTextIndex = 0;
+
                 return;
             }
 
@@ -691,6 +774,9 @@ namespace JCSUnity
             {
                 // set directly to the text box.
                 mTextBox.text = mMessage;
+
+                // set the rest to the selections.
+                CompleteSelectionsScroll();
 
                 mSkip = false;
 
@@ -723,7 +809,7 @@ namespace JCSUnity
                 return;
 
             // reset timer
-            mScrollTimer = 0;
+            mScrollTimer = 0.0f;
 
             if (mSelectBtn.Length <= mRenderSelectTextIndex)
             {
@@ -735,7 +821,6 @@ namespace JCSUnity
 
                 return;
             }
-
 
             if (// if the text in not active skip it, and render the 
                 // next possible active selection.
@@ -760,9 +845,8 @@ namespace JCSUnity
 
             if (mSkip)
             {
-                // set directly to the text box.
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text
-                   = mSelectMessage[mRenderSelectTextIndex];
+                // set the rest to the selections.
+                CompleteSelectionsScroll();
 
                 mSkip = false;
 
@@ -778,6 +862,17 @@ namespace JCSUnity
 
             // increament the index
             ++mSelectTextIndex;
+        }
+
+        /// <summary>
+        /// Complete the selection scroll text immediately.
+        /// </summary>
+        private void CompleteSelectionsScroll()
+        {
+            for (int index = mRenderSelectTextIndex; index < mSelectBtn.Length; ++index)
+            {
+                mSelectBtn[index].ButtonText.text = mSelectMessage[index];
+            }
         }
 
         /// <summary>
@@ -996,8 +1091,8 @@ namespace JCSUnity
                 {
                     if (btn.ButtonSelection == null)
                     {
-                        JCS_Debug.LogWarning(@"Cannot make hover select 
-because button selection is not attach to all selections in the list...");
+                        JCS_Debug.LogWarning(@"Cannot make hover select  because 
+button selection is not attach to all selections in the list!");
                     }
                     else
                     {
@@ -1089,47 +1184,58 @@ because button selection is not attach to all selections in the list...");
             return -1;
         }
 
-
         /// <summary>
-        /// What if "Next Button" clicked?
+        /// Callback for button `Next`.
         /// </summary>
         private void NextBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
 
             RunAction();
         }
         /// <summary>
-        /// What if "Previous Button" clicked?
+        /// Callback for button `Previous`.
         /// </summary>
         private void PreviousBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             DecPage();
 
             RunAction();
         }
         /// <summary>
-        /// What if "Yes Button" clicked?
+        /// Callback for button `Yes`.
         /// </summary>
         private void YesBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
             Selection = 1;
 
             RunAction();
         }
         /// <summary>
-        /// What if "No Button" clicked?
+        /// Callback for button `No`.
         /// </summary>
         private void NoBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
             Selection = 0;
 
             RunAction();
         }
         /// <summary>
-        /// What if "Ok Button" clicked?
+        /// Callback for button `Ok`.
         /// </summary>
         private void OkBtnCallback()
         {
@@ -1137,7 +1243,7 @@ because button selection is not attach to all selections in the list...");
             Dispose();
         }
         /// <summary>
-        /// What if "Exit Button" clicked?
+        /// Callback for button `Exit`.
         /// </summary>
         private void ExitBtnCallback()
         {
@@ -1145,32 +1251,40 @@ because button selection is not attach to all selections in the list...");
             Dispose();
         }
         /// <summary>
-        /// What if "Accept Button" clicked?
+        /// Callback for button `Accept`.
         /// </summary>
         private void AcceptBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
             Selection = 1;
 
             RunAction();
         }
         /// <summary>
-        /// What if "Decline Button" clicked?
+        /// Callback for button `Decline`.
         /// </summary>
         private void DeclineBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
             Selection = 0;
 
             RunAction();
         }
         /// <summary>
-        /// What if "Selection Button" clicked?
+        /// Callback for button `Select`.
         /// </summary>
         private void SelectBtnCallback()
         {
-            // inc a page.
-            ++mDialogueScript.Status;
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
+            IncPage();
 
             RunAction();
         }

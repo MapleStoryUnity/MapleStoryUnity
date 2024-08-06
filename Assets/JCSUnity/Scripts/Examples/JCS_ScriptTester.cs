@@ -32,6 +32,9 @@ namespace JCSUnity
         public KeyCode DisposeKey = KeyCode.Q;
         public KeyCode RunScriptKey = KeyCode.W;
 
+        public KeyCode NextOrDispose = KeyCode.N;
+
+        public KeyCode SkipKey = KeyCode.E;
 
         /* Setter & Getter */
 
@@ -53,6 +56,10 @@ namespace JCSUnity
                 mDialogueSystem.Dispose();
             if (JCS_Input.GetKeyDown(RunScriptKey))
                 mDialogueSystem.ActiveDialogue(mTestDialogueScript);
+            if (JCS_Input.GetKeyDown(NextOrDispose))
+                mDialogueSystem.NextOrDispose();
+            if (JCS_Input.GetKeyDown(SkipKey))
+                print(mDialogueSystem.SkipToEnd());
         }
     }
 }

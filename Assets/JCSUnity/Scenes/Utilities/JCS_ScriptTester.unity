@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -895,6 +894,8 @@ MonoBehaviour:
   mTestDialogueScript: {fileID: 1098634727}
   DisposeKey: 113
   RunScriptKey: 119
+  NextOrDispose: 110
+  SkipKey: 101
 --- !u!4 &1098634726
 Transform:
   m_ObjectHideFlags: 0
@@ -1288,6 +1289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JCS_DialogueSystem (Game Pad)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657870147620464614, guid: c7ea891da8aadd741a2b75f708a50d65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

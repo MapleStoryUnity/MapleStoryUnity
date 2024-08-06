@@ -283,14 +283,15 @@ namespace JCSUnity
         /// Tween to the color.
         /// </summary>
         /// <param name="inToColor"> target color </param>
-        public void DoTween(Color inToColor)
+        public void DoTween(Color inToColor, EmptyFunction func = null)
         {
             DoTween(
                 inToColor,
                 this.mEaseTypeR,
                 this.mEaseTypeG,
                 this.mEaseTypeB,
-                this.mEaseTypeR);
+                this.mEaseTypeR,
+                func);
         }
 
         /// <summary>
@@ -306,7 +307,8 @@ namespace JCSUnity
             JCS_TweenType inTweenTypeR,
             JCS_TweenType inTweenTypeG,
             JCS_TweenType inTweenTypeB,
-            JCS_TweenType inTweenTypeA)
+            JCS_TweenType inTweenTypeA,
+            EmptyFunction func = null)
         {
             DoTween(
                 this.LocalColor,
@@ -318,7 +320,8 @@ namespace JCSUnity
                 this.mDurationRed,
                 this.mDurationGreen,
                 this.mDurationBlue,
-                this.mDurationAlpha);
+                this.mDurationAlpha,
+                func);
         }
 
         /// <summary>
@@ -344,7 +347,8 @@ namespace JCSUnity
             float inDurationR,
             float inDurationG,
             float inDurationB,
-            float inDurationA)
+            float inDurationA,
+            EmptyFunction func = null)
         {
             this.mFromColor = inFromColor;
             this.mTargetColor = inToColor;
@@ -363,6 +367,8 @@ namespace JCSUnity
             this.mEasingG = true;
             this.mEasingB = true;
             this.mEasingA = true;
+
+            SetCallback(func);
         }
 
         /// <summary>
@@ -513,7 +519,6 @@ namespace JCSUnity
             // check if any still easing.
             if (mEasingA || mEasingR || mEasingG || mEasingB)
                 return;
-
 
             // trigger callback.
             if (mColorCallback != null)
