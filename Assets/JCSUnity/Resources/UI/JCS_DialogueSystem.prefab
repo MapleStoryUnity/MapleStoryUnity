@@ -2338,7 +2338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &984955064616139632
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2451,8 +2451,6 @@ MonoBehaviour:
   mRightImage: {fileID: 6546777816282174048}
   mNameTag: {fileID: 827766543013699587}
   mTextBox: {fileID: 6267707290331941680}
-  mCompleteTextBeforeAction: 0
-  mCompleteTextBeforeActionOnButton: 0
   mScrollTime: 0.01
   mDeltaTimeType: 0
   mPanelTrans: {fileID: 0}
@@ -2472,6 +2470,10 @@ MonoBehaviour:
   - {fileID: 526192977114094584}
   - {fileID: 7604726519187752915}
   mButtonSelectionGroup: {fileID: 1527436958594954669}
+  mCompleteTextBeforeAction: 0
+  mCompleteTextBeforeActionOnButton: 0
+  mAutoProgress: 0
+  mAutoDelay: 2
   mActiveSound: {fileID: 0}
   mDisposeSound: {fileID: 0}
 --- !u!1 &4528894428773322394

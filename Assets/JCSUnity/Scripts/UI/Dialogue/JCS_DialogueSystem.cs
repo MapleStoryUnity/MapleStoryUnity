@@ -111,14 +111,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TextObject mTextBox = null;
 
-        [Tooltip("Complete text before run action.")]
-        [SerializeField]
-        private bool mCompleteTextBeforeAction = false;
-
-        [Tooltip("Complete text before run action on button's event.")]
-        [SerializeField]
-        private bool mCompleteTextBeforeActionOnButton = false;
-
         [Tooltip("Speed of scrolling the text.")]
         [SerializeField]
         [Range(0.01f, 10.0f)]
@@ -175,13 +167,36 @@ namespace JCSUnity
         private string mSelectStringFront = "#L" + 0 + "##b";
         private string mSelectStringBack = "#k#l";
 
-        [Header("- Optional Variables")]
+        [Header("Controller")]
 
         [Tooltip("Button selection group for this dialogue system.")]
         [SerializeField]
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-        [Header("- Sound")]
+        [Header("Completing")]
+
+        [Tooltip("Complete text before run action.")]
+        [SerializeField]
+        private bool mCompleteTextBeforeAction = false;
+
+        [Tooltip("Complete text before run action on button's event.")]
+        [SerializeField]
+        private bool mCompleteTextBeforeActionOnButton = false;
+
+        [Header("Auto")]
+
+        [Tooltip("If true, auto progress the dialgoue.")]
+        [SerializeField]
+        private bool mAutoProgress = false;
+
+        [Tooltip("Delay before start the next text popup.")]
+        [SerializeField]
+        [Range(0.0f, 30.0f)]
+        private float mAutoDelay = 2.0f;
+
+        private float mAutoTimer = 0.0f;
+
+        [Header("Sound")]
 
         [Tooltip("Sound plays when active dialogue.")]
         [SerializeField]
@@ -199,14 +214,16 @@ namespace JCSUnity
         public bool Skip { get { return this.mSkip; } }
 
         public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
-        public bool CompleteTextBeforeAction { get { return this.mCompleteTextBeforeAction; } set { this.mCompleteTextBeforeAction = value; } }
-        public bool CompleteTextBeforeActionOnButton { get { return this.mCompleteTextBeforeActionOnButton; } set { this.mCompleteTextBeforeActionOnButton = value; } }
         public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
         public string SelectStringFront { get { return this.mSelectStringFront; } }
         public string SelectStringBack { get { return this.mSelectStringBack; } }
-        public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
 
+        public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
+        public bool CompleteTextBeforeAction { get { return this.mCompleteTextBeforeAction; } set { this.mCompleteTextBeforeAction = value; } }
+        public bool CompleteTextBeforeActionOnButton { get { return this.mCompleteTextBeforeActionOnButton; } set { this.mCompleteTextBeforeActionOnButton = value; } }
+        public bool AutoProgress { get { return this.mAutoProgress; } set { this.mAutoProgress = value; } }
+        public float AutoDelay { get { return this.AutoDelay; } set { this.mAutoDelay = value; } }
         public AudioClip AcitveSound { get { return this.mActiveSound; } set { this.mActiveSound = value; } }
         public AudioClip DisposeSound { get { return this.mDisposeSound; } set { this.mDisposeSound = value; } }
 
@@ -252,6 +269,8 @@ namespace JCSUnity
             ScrollText();
 
             ScrollSelectBtnText();
+
+            DoAuto();
 
             mActiveThisFrame = false;
         }
@@ -550,6 +569,9 @@ namespace JCSUnity
         /// </summary>
         public void ResetStats()
         {
+            mScrollTimer = 0.0f;
+            mAutoTimer = 0.0f;
+
             mScrolling = false;
             mSkip = false;
             mTextIndex = 0;
@@ -873,6 +895,28 @@ namespace JCSUnity
             {
                 mSelectBtn[index].ButtonText.text = mSelectMessage[index];
             }
+        }
+
+        /// <summary>
+        /// Automatically start the next text popup.
+        /// </summary>
+        private void DoAuto()
+        {
+            if (!mAutoProgress)
+                return;
+
+            if (IsScrolling())
+                return;
+
+            mAutoTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+
+            if (mAutoTimer < mAutoDelay)
+                return;
+
+            // Reset timer.
+            mAutoTimer = 0.0f;
+
+            NextOrDispose();
         }
 
         /// <summary>
