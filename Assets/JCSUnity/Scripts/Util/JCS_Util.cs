@@ -261,19 +261,19 @@ namespace JCSUnity
         /// <param name="val"></param>
         /// <param name="x"></param>
         /// <returns></returns>
-        public static Vector3 SetVecX(ref Vector3 val, float x)
+        public static Vector3 SetVecX(Vector3 val, float x)
         {
-            return SetVec3(ref val, x, val.y, val.z);
+            return SetVec3(val, x, val.y, val.z);
         }
-        public static Vector3 SetVecY(ref Vector3 val, float y)
+        public static Vector3 SetVecY(Vector3 val, float y)
         {
-            return SetVec3(ref val, val.x, y, val.z);
+            return SetVec3(val, val.x, y, val.z);
         }
-        public static Vector3 SetVecZ(ref Vector3 val, float z)
+        public static Vector3 SetVecZ(Vector3 val, float z)
         {
-            return SetVec3(ref val, val.x, val.y, z);
+            return SetVec3(val, val.x, val.y, z);
         }
-        public static Vector3 SetVec3(ref Vector3 val, float x, float y, float z)
+        public static Vector3 SetVec3(Vector3 val, float x, float y, float z)
         {
             Vector3 newVec = val;
 
@@ -959,7 +959,7 @@ namespace JCSUnity
             Vector3 parentVal = trans.parent.transform.localEulerAngles;
 
             inEulerAngles = SetVec3(
-                ref inEulerAngles,
+                inEulerAngles,
                 parentVal.x * inEulerAngles.x,
                 parentVal.y * inEulerAngles.y,
                 parentVal.z * inEulerAngles.z);

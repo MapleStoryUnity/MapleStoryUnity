@@ -87,10 +87,6 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_DialogueSystem)")]
 
-        [Tooltip("Default character image sprite.")]
-        [SerializeField]
-        private Sprite mTransparentSprite = null;
-
         [Tooltip("Image displayed at the center.")]
         [SerializeField]
         private Image mCenterImage = null;
@@ -273,6 +269,44 @@ namespace JCSUnity
             DoAuto();
 
             mActiveThisFrame = false;
+        }
+
+        /// <summary>
+        /// Return true if the dialgoue system is visible.
+        /// </summary>
+        public bool IsVisible()
+        {
+            return mPanelTrans.gameObject.activeSelf;
+        }
+
+        /// <summary>
+        /// Show the dialogue.
+        /// </summary>
+        public void Show(bool act = true)
+        {
+            PanelActive(act);
+        }
+
+        /// <summary>
+        /// Hide the dialogue.
+        /// </summary>
+        public void Hide()
+        {
+            Show(false);
+        }
+
+        /// <summary>
+        /// Toggle between show and hide.
+        /// </summary>
+        public void ToggleVisiblity()
+        {
+            if (!mActive)
+                return;
+
+            if (IsVisible())
+                Hide();
+            else
+                Show();
         }
 
         /// <summary>
@@ -591,9 +625,11 @@ namespace JCSUnity
             ClearSelectBtnMessage();
 
             // reset images
-            SendCenterImage(mTransparentSprite);
-            SendLeftImage(mTransparentSprite);
-            SendRightImage(mTransparentSprite);
+            var transSprite = JCS_UIUtil.SpriteTransparent();
+
+            SendCenterImage(transSprite);
+            SendLeftImage(transSprite);
+            SendRightImage(transSprite);
 
             ResetButtonSelectionGroup();
         }
@@ -706,6 +742,9 @@ namespace JCSUnity
             if (!mActive || mActiveThisFrame)
                 return false;
 
+            if (!IsVisible())
+                return false;
+
             if (SkipToEnd(mCompleteTextBeforeAction))
                 return false;
 
@@ -735,6 +774,9 @@ namespace JCSUnity
         {
             if (IsScrolling())
             {
+                // immediately call it on the next frame.
+                mScrollTimer = mScrollTime;
+
                 mSkip = true;
 
                 return true;

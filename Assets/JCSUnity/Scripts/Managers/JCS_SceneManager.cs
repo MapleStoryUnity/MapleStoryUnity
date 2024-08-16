@@ -110,20 +110,20 @@ namespace JCSUnity
             {
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
-                        JCS_UtilityFunctions.PopJCSBlackScreen();
+                        JCS_UtilFunctions.PopJCSBlackScreen();
                     }
                     break;
 
                 case JCS_SwitchSceneType.SLIDE_SCREEN:
                     {
-                        JCS_UtilityFunctions.PopJCSBlackSlideScreen();
+                        JCS_UtilFunctions.PopJCSBlackSlideScreen();
                     }
                     break;
             }
 
             // Pop white screen depends on game needs.
             if (mPopWhiteScreen)
-                JCS_UtilityFunctions.PopJCSWhiteScreen();
+                JCS_UtilFunctions.PopJCSWhiteScreen();
 
 #if UNITY_EDITOR
             // add the tool in editor mode.

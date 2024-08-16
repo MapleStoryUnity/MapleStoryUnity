@@ -155,7 +155,7 @@ namespace JCSUnity
             // Exit in game diagloue not in game UI!!
             // (Admin input)
             if (Input.GetKeyDown(KeyCode.Escape))
-                JCS_UtilityFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
+                JCS_UtilFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
 #endif
         }
 
@@ -166,13 +166,13 @@ namespace JCSUnity
                 return;
 
             //if (JCS_Input.GetKeyDown(KeyCode.A))
-            //    JCS_UtilityFunctions.PopIsConnectDialogue();
+            //    JCS_UtilFunctions.PopIsConnectDialogue();
             //if (JCS_Input.GetKeyDown(KeyCode.S))
-            //    JCS_UtilityFunctions.PopSettingDialogue();
+            //    JCS_UtilFunctions.PopSettingDialogue();
             //if (JCS_Input.GetKeyDown(KeyCode.D))
-            //    JCS_UtilityFunctions.PopInGameUI();
+            //    JCS_UtilFunctions.PopInGameUI();
             //if (JCS_Input.GetKeyDown(KeyCode.F))
-            //    JCS_UtilityFunctions.PopTalkDialogue();
+            //    JCS_UtilFunctions.PopTalkDialogue();
 
             if (JCS_Input.GetKeyDown(KeyCode.A))
             {

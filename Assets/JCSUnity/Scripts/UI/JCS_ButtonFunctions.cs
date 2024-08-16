@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_UtilityFunctions.cs $
+ * $File: JCS_UtilFunctions.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -19,7 +19,7 @@ namespace JCSUnity
     /// <summary>
     /// Util Function put here, usually systematic.
     /// </summary>
-    public class JCS_UtilityFunctions : MonoBehaviour
+    public class JCS_UtilFunctions : MonoBehaviour
     {
         private static string IS_CONNECT_DIALOGUE = "ForceDialogue/JCS_MessageBox_YesNo";
         private static string SETTING_PANEL = "InGameDialogue/Setting_Panel";

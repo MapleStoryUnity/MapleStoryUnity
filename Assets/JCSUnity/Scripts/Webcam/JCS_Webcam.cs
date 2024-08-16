@@ -215,10 +215,10 @@ namespace JCSUnity
 
             if (mSplash)
             {
-                JCS_SceneManager sm = JCS_SceneManager.instance;
+                var sm = JCS_SceneManager.instance;
 
                 if (sm.GetWhiteScreen() == null)
-                    JCS_UtilityFunctions.PopJCSWhiteScreen();
+                    JCS_UtilFunctions.PopJCSWhiteScreen();
 
                 sm.GetWhiteScreen().FadeIn();
 
