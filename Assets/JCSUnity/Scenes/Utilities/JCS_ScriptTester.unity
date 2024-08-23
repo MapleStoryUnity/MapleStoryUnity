@@ -1290,6 +1290,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: JCS_DialogueSystem (Game Pad)
       objectReference: {fileID: 0}
+    - target: {fileID: 7657870147620464614, guid: c7ea891da8aadd741a2b75f708a50d65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1407,6 +1412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JCS_DialogueSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431048296620540127, guid: 11e5c739135b1e34d8a1164d3c66f6f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
