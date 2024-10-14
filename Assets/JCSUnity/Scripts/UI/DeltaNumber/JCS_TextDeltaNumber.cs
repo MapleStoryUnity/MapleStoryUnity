@@ -116,7 +116,7 @@ should disable this effect for best purpose.")]
         [Range(0.01f, 1000.0f)]
         private float mDeltaProduct = 1;
 
-        /* Setter/Getter */
+        /* Setter & Getter */
 
         public float CurrentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
         public float TargetNumber

@@ -623,7 +623,7 @@ namespace JCSUnity
                     Image panelImage = slidePanel.GetComponent<Image>();
                     if (panelImage != null)
                     {
-                        panelImage.color = JCS_Random.RandomColor();
+                        panelImage.color = JCS_Random.PickColor();
                     }
 
                     // assign to slide panel holder.

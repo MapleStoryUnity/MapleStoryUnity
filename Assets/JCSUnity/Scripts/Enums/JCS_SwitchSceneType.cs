@@ -14,9 +14,9 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_SwitchSceneType
     {
-        NONE,
-
-        BLACK_SCREEN,
-        SLIDE_SCREEN,
+        NONE,          /* 不做任何處理 */
+        CUSTOM,        /* 客製 */
+        BLACK_SCREEN,  /* 黑屏 */
+        SLIDE_SCREEN,  /* 滑屏 */
     }
 }

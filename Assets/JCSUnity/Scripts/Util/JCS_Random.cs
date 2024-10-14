@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace JCSUnity
@@ -59,7 +60,7 @@ namespace JCSUnity
         /// Return a random color.
         /// </summary>
         /// <returns> random color object. </returns>
-        public static Color RandomColor(float a = 1.0f)
+        public static Color PickColor(float a = 1.0f)
         {
             return new Color(Range(0.0f, 1.0f), Range(0.0f, 1.0f), Range(0.0f, 1.0f), a);
         }
@@ -102,6 +103,18 @@ namespace JCSUnity
             if (args.Length == 0) return default(T);
             int index = Range(0, args.Length);
             return args[index];
+        }
+
+        /// <summary>
+        /// Return a random enum value.
+        /// </summary>
+        /// <typeparam name="T"> The enum type. </typeparam>
+        /// <returns> The enum value that has been randomly chosen. </returns>
+        public static T EnumValue<T>()
+        {
+            var r = new System.Random();
+            var v = System.Enum.GetValues(typeof(T));
+            return (T)v.GetValue(r.Next(v.Length));
         }
     }
 }

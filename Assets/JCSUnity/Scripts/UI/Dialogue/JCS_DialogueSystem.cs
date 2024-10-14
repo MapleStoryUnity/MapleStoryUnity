@@ -310,6 +310,38 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Run the script once.
+        /// </summary>
+        public void RunAction()
+        {
+            if (!mActive)
+                return;
+
+            /*
+             * NOTE(jenchieh): If there is selections occurs
+             * in last status, then we make sure the hover working
+             * for selecting the selection.
+             * 
+             * If I hover the selection 5, then selection should 
+             * be 5 even I did notclick on selection five. Next
+             * button should just know the selection should be 
+             * five for next 'RunAction'.
+             */
+            MakeHoverSelections();
+
+            // initialize every run (before running the script)
+            ResetStats();
+
+            // run the script
+            mDialogueScript.Action(Mode, Type, Selection);
+
+            // reset mode,type,selection before next action
+            Mode = 0;
+            Type = -1;
+            Selection = -1;
+        }
+
+        /// <summary>
         /// Start the dialogue, in other word same as start a conversation.
         /// </summary>
         /// <param name="script"> Script to use to run the dialogue. </param>
@@ -892,10 +924,10 @@ namespace JCSUnity
                 ||
                 // if the text are the same skip it too.
                 (mSelectMessage[mRenderSelectTextIndex] ==
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text))
+                mSelectBtn[mRenderSelectTextIndex].ItText.text))
             {
                 // set directly to the text box.
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text
+                mSelectBtn[mRenderSelectTextIndex].ItText.text
                     = mSelectMessage[mRenderSelectTextIndex];
 
                 // increament one, start render next selection!
@@ -920,7 +952,7 @@ namespace JCSUnity
             else
             {
                 // do the scrolling
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text
+                mSelectBtn[mRenderSelectTextIndex].ItText.text
                     = mSelectMessage[mRenderSelectTextIndex].Substring(0, mSelectTextIndex);
             }
 
@@ -935,7 +967,7 @@ namespace JCSUnity
         {
             for (int index = mRenderSelectTextIndex; index < mSelectBtn.Length; ++index)
             {
-                mSelectBtn[index].ButtonText.text = mSelectMessage[index];
+                mSelectBtn[index].ItText.text = mSelectMessage[index];
             }
         }
 
@@ -1131,7 +1163,7 @@ namespace JCSUnity
             for (int index = 0; index < mSelectMessage.Length; ++index)
             {
                 mSelectMessage[index] = "";
-                mSelectBtn[index].ButtonText.text = "";
+                mSelectBtn[index].ItText.text = "";
             }
         }
 
@@ -1194,38 +1226,6 @@ button selection is not attach to all selections in the list!");
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Run the script once.
-        /// </summary>
-        private void RunAction()
-        {
-            if (!mActive)
-                return;
-
-            /*
-             * NOTE(jenchieh): If there is selections occurs
-             * in last status, then we make sure the hover working
-             * for selecting the selection.
-             * 
-             * If I hover the selection 5, then selection should 
-             * be 5 even I did notclick on selection five. Next
-             * button should just know the selection should be 
-             * five for next 'RunAction'.
-             */
-            MakeHoverSelections();
-
-            // initialize every run (before running the script)
-            ResetStats();
-
-            // run the script
-            mDialogueScript.Action(Mode, Type, Selection);
-
-            // reset mode,type,selection before next action
-            Mode = 0;
-            Type = -1;
-            Selection = -1;
         }
 
         /// <summary>

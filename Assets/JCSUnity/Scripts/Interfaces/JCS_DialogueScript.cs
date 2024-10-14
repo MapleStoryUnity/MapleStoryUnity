@@ -86,13 +86,13 @@ namespace JCSUnity
         /// <param name="selection"></param>
         public virtual void End(int mode, int type, int selection)
         {
-
+            // ..
         }
 
         /// <summary>
-        /// Rset status.
+        /// Reset the action.
         /// </summary>
-        public void ResetAction()
+        public virtual void ResetAction()
         {
             Status = -1;
         }

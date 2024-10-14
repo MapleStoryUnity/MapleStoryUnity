@@ -118,7 +118,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = CheckSingleton(instance, this);
+            instance = CheckInstance(instance, this);
 
             REAL_DATA_PATH = JCS_AppData.SavePath();
             REAL_SCREENSHOT_PATH = JCS_Camera.SavePath();

@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        /* Setter/Getter */
+        /* Setter & Getter */
 
         /* Functions */
 

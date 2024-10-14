@@ -125,10 +125,7 @@ namespace JCSUnity
             mIsVisible = true;
 
             // active all the child object
-            for (int index = 0; index < this.transform.childCount; ++index)
-            {
-                this.transform.GetChild(index).gameObject.SetActive(true);
-            }
+            JCS_Util.SetActiveChildren(this.transform, true);
 
             JCS_Util.MoveToTheLastChild(this.transform);
         }
@@ -144,10 +141,7 @@ namespace JCSUnity
             mIsVisible = false;
 
             // deactive all the child object
-            for (int index = 0; index < this.transform.childCount; ++index)
-            {
-                this.transform.GetChild(index).gameObject.SetActive(false);
-            }
+            JCS_Util.SetActiveChildren(this.transform, false);
         }
 
         /// <summary>

@@ -165,6 +165,9 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool Animating { get { return (mEasingR || mEasingG || mEasingB || mEasingA); } }
+        public Color ProgressionColor { get { return mProgressionColor; } }
+        public Color ProgressPctColor { get { return mProgressPctColor; } }
+        public Color TargetColor { get { return mTargetColor; } }
         public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_TweenType EaseTypeR
         {

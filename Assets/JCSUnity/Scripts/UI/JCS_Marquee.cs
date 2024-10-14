@@ -52,7 +52,7 @@ namespace JCSUnity
         [SerializeField]
         private Text mTextContainer = null;
 
-        /* Setter/Getter */
+        /* Setter & Getter */
 
         public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
 

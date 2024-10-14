@@ -20,9 +20,13 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_ActivePanelGamepadButton)")]
 
+        [Tooltip("Transform to be active.")]
+        [SerializeField]
+        private Transform[] mTransforms = null;
+
         [Tooltip("Panels to be active.")]
         [SerializeField]
-        private JCS_DialogueObject[] mDialogueObjects = null;
+        private JCS_PanelRoot[] mPanelRoots = null;
 
         [Tooltip("Tween Panels to be active.")]
         [SerializeField]
@@ -34,7 +38,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_DialogueObject[] DialogueObjects { get { return this.mDialogueObjects; } }
+        public Transform[] transforms { get { return this.mTransforms; } }
+        public JCS_PanelRoot[] PanelRoots { get { return this.mPanelRoots; } }
         public JCS_TweenPanel[] TweenPanels { get { return this.mTweenPanels; } }
 
         public bool PlaySound { get { return this.mPlaySound; } set { this.mPlaySound = value; } }
@@ -43,7 +48,9 @@ namespace JCSUnity
 
         public override void OnClick()
         {
-            JCS_UIUtil.ActivePanels(mDialogueObjects, mPlaySound);
+            JCS_Util.SetActive(mTransforms, true);
+
+            JCS_UIUtil.ActivePanels(mPanelRoots, mPlaySound);
             JCS_UIUtil.ActivePanels(mTweenPanels);
         }
     }

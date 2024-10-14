@@ -137,6 +137,35 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Set active according to it's type.
+        /// </summary>
+        public static void SetActive(List<Transform> transforms, bool act)
+        {
+            SetActive(transforms.ToArray(), act);
+        }
+        public static void SetActive(Transform[] transforms, bool act)
+        {
+            foreach (Transform trans in transforms)
+            {
+                if (trans == null)
+                    continue;
+
+                trans.gameObject.SetActive(act);
+            }
+        }
+
+        /// <summary>
+        /// Set active to all children.
+        /// </summary>
+        public static void SetActiveChildren(Transform transform, bool act)
+        {
+            for (int index = 0; index < transform.childCount; ++index)
+            {
+                transform.GetChild(index).gameObject.SetActive(act);
+            }
+        }
+
+        /// <summary>
         /// Check the value within the range plus acceptable range.
         /// </summary>
         /// <param name="range"></param>

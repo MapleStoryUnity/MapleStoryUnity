@@ -11,6 +11,7 @@
  */
 #define TMP_PRO
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MyBox;
@@ -27,6 +28,8 @@ namespace JCSUnity
     public class JCS_UnityObject : MonoBehaviour
     {
         /* Variables */
+
+        private Material mMaterial = null;
 
         [Separator("Initialize Variables (JCS_Unityobject)")]
 
@@ -48,6 +51,16 @@ namespace JCSUnity
         protected TextMeshPro mTextMesh = null;
 #endif
 
+        [Header("Material")]
+
+        [Tooltip("Make material clone.")]
+        [SerializeField]
+        private bool mMakeUnique = false;
+
+        [Tooltip("Shader's color properties.")]
+        [SerializeField]
+        private List<string> mColorProps = null;
+
         /* Setter & Getter */
 
         public void SetObjectType(JCS_UnityObjectType ob)
@@ -56,6 +69,7 @@ namespace JCSUnity
             UpdateUnityData();
         }
         public JCS_UnityObjectType GetObjectType() { return this.mObjectType; }
+        public Material GetMaterial() { return this.mMaterial; }
         public Image GetImage() { return this.mImage; }
         public Renderer GetRenderer() { return this.mRenderer; }
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
@@ -64,6 +78,8 @@ namespace JCSUnity
 #if TMP_PRO
         public TextMeshPro GetTextMesh() { return this.mTextMesh; }
 #endif
+        public bool MakeUnique { get { return this.mMakeUnique; } set { this.mMakeUnique = value; } }
+        public List<string> ColorProps { get { return this.mColorProps; } set { this.mColorProps = value; } }
 
         /* Functions */
 
@@ -96,6 +112,56 @@ namespace JCSUnity
 #if TMP_PRO
                 case JCS_UnityObjectType.TMP:
                     this.mTextMesh = this.GetComponent<TextMeshPro>();
+                    break;
+#endif
+            }
+
+            UpdateMaterial();
+        }
+
+        /// <summary>
+        /// Make unique material.
+        /// </summary>
+        public virtual void UpdateMaterial(bool force = false)
+        {
+            if (!mMakeUnique && !force)
+                return;
+
+            switch (GetObjectType())
+            {
+                case JCS_UnityObjectType.GAME_OBJECT:
+                    {
+                        mMaterial = Instantiate(mRenderer.material);
+                        mRenderer.material = mMaterial;
+                    }
+                    break;
+                case JCS_UnityObjectType.UI:
+                    {
+                        if (mImage != null)
+                        {
+                            mMaterial = Instantiate(mImage.material);
+                            mImage.material = mMaterial;
+                        }
+                    }
+                    break;
+                case JCS_UnityObjectType.SPRITE:
+                    {
+                        mMaterial = Instantiate(mSpriteRenderer.material);
+                        mSpriteRenderer.material = mMaterial;
+                    }
+                    break;
+                case JCS_UnityObjectType.TEXT:
+                    {
+                        mMaterial = Instantiate(mText.material);
+                        mText.material = mMaterial;
+                    }
+                    break;
+#if TMP_PRO
+                case JCS_UnityObjectType.TMP:
+                    {
+                        mMaterial = Instantiate(mTextMesh.material);
+                        mTextMesh.material = mMaterial;
+                    }
                     break;
 #endif
             }
@@ -501,6 +567,63 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return the possible material.
+        /// </summary>
+        public Material LocalMaterial
+        {
+            get 
+            {
+                if (mMaterial == null)
+                    UpdateMaterial();
+
+                return this.mMaterial; 
+            }
+            set { this.mMaterial = value; }
+        }
+
+        /// <summary>
+        /// Return the possible material color.
+        /// </summary>
+        private Color GetColor()
+        {
+            foreach (string prop in mColorProps)
+            {
+                return this.mRenderer.material.GetColor(prop);
+            }
+
+            try
+            {
+                return this.mRenderer.material.color;
+            }
+            catch
+            {
+                // ignore
+            }
+
+            return Color.white;
+        }
+
+        /// <summary>
+        /// Update the material color.
+        /// </summary>
+        private void SetColor(Color val)
+        {
+            foreach (string prop in mColorProps)
+            {
+                this.mRenderer.material.SetColor(prop, val);
+            }
+
+            try
+            {
+                this.mRenderer.material.color = val;
+            }
+            catch
+            {
+                // ignore
+            }
+        }
+
+        /// <summary>
         /// Get current type's color
         /// </summary>
         public Color LocalColor
@@ -510,7 +633,7 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer.material.color;
+                        return this.GetColor();
                     case JCS_UnityObjectType.UI:
                         return this.mImage.color;
                     case JCS_UnityObjectType.SPRITE:
@@ -532,7 +655,7 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.mRenderer.material.color = value;
+                        this.SetColor(value);
                         return;
                     case JCS_UnityObjectType.UI:
                         this.mImage.color = value;
@@ -564,7 +687,7 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer.material.color.a;
+                        return this.GetColor().a;
                     case JCS_UnityObjectType.UI:
                         return this.mImage.color.a;
                     case JCS_UnityObjectType.SPRITE:
@@ -590,7 +713,7 @@ namespace JCSUnity
                         {
                             newColor = this.mRenderer.material.color;
                             newColor.a = value;
-                            this.mRenderer.material.color = newColor;
+                            SetColor(newColor);
                         }
                         return;
                     case JCS_UnityObjectType.UI:
@@ -638,7 +761,7 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer.material.color.r;
+                        return this.GetColor().r;
                     case JCS_UnityObjectType.UI:
                         return this.mImage.color.r;
                     case JCS_UnityObjectType.SPRITE:
@@ -664,7 +787,7 @@ namespace JCSUnity
                         {
                             newColor = this.mRenderer.material.color;
                             newColor.r = value;
-                            this.mRenderer.material.color = newColor;
+                            SetColor(newColor);
                         }
                         return;
                     case JCS_UnityObjectType.UI:
@@ -712,7 +835,7 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer.material.color.g;
+                        return this.GetColor().g;
                     case JCS_UnityObjectType.UI:
                         return this.mImage.color.g;
                     case JCS_UnityObjectType.SPRITE:
@@ -738,7 +861,7 @@ namespace JCSUnity
                         {
                             newColor = this.mRenderer.material.color;
                             newColor.g = value;
-                            this.mRenderer.material.color = newColor;
+                            SetColor(newColor);
                         }
                         return;
                     case JCS_UnityObjectType.UI:
@@ -786,7 +909,7 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer.material.color.b;
+                        return this.GetColor().b;
                     case JCS_UnityObjectType.UI:
                         return this.mImage.color.b;
                     case JCS_UnityObjectType.SPRITE:
@@ -812,7 +935,7 @@ namespace JCSUnity
                         {
                             newColor = this.mRenderer.material.color;
                             newColor.b = value;
-                            this.mRenderer.material.color = newColor;
+                            SetColor(newColor);
                         }
                         return;
                     case JCS_UnityObjectType.UI:

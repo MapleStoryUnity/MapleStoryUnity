@@ -173,6 +173,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public Tweener TweenerX { get { return this.mTweenerX; } }
+        public Tweener TweenerY { get { return this.mTweenerY; } }
+        public Tweener TweenerZ { get { return this.mTweenerZ; } }
+
         public bool IsDoneTweening { get { return this.mIsDoneTweening; } }
         public bool DoneTweenX { get { return this.mDoneTweenX; } }
         public bool DoneTweenY { get { return this.mDoneTweenY; } }

@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Singleton patter in Unity scripting layer.
+    /// Singleton pattern in scripting layer.
     /// </summary>
     public class JCS_UniqueObject : MonoBehaviour
     {

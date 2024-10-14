@@ -68,7 +68,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = CheckSingleton(instance, this);
+            instance = CheckInstance(instance, this);
 
             this.mServerRequestProcessor = this.GetComponent<JCS_ServerRequestProcessor>();
             this.mPacketLostPreventer = this.GetComponent<JCS_PacketLostPreventer>();

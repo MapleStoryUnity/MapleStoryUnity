@@ -6,9 +6,18 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+
+/* NOTE: If you are using `TextMesh Pro` uncomment this line.
+ */
+#define TMP_PRO
+
 using UnityEngine;
 using UnityEngine.UI;
 using MyBox;
+
+#if TMP_PRO
+using TMPro;
+#endif
 
 namespace JCSUnity
 {
@@ -49,7 +58,7 @@ namespace JCSUnity
 
         [Tooltip("text under the button, no necessary.")]
         [SerializeField]
-        protected Text mButtonText = null;
+        protected JCS_TextObject mItText = null;
 
         [Tooltip("Button Selection for if the button that are in the group.")]
         [SerializeField]
@@ -105,7 +114,7 @@ namespace JCSUnity
                 SetInteractable();
             }
         }
-        public Text ButtonText { get { return this.mButtonText; } }
+        public JCS_TextObject ItText { get { return this.mItText; } }
         public JCS_ButtonSelection ButtonSelection { get { return this.mButtonSelection; } set { this.mButtonSelection = value; } }
         public bool IsSelectedInGroup { get { return this.mIsSelectedInGroup; } }
 
@@ -145,8 +154,16 @@ namespace JCSUnity
             this.mImage = this.GetComponent<Image>();
 
             // try to get the text from the child.
-            if (mButtonText == null)
-                mButtonText = this.GetComponentInChildren<Text>();
+            if (mItText == null)
+                mItText = this.GetComponent<JCS_TextObject>();
+
+            if (mItText != null)
+            {
+                if (mItText.TextContainer == null)
+                    mItText.TextContainer = this.GetComponentInChildren<Text>();
+                if (mItText.TMP_Text == null)
+                    mItText.TMP_Text = this.GetComponentInChildren<TMP_Text>();
+            }
 
             if (mAutoListener)
             {

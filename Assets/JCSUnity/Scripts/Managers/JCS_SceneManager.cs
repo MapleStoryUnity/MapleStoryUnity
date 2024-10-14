@@ -19,6 +19,11 @@ namespace JCSUnity
     {
         /* Variables */
 
+        public EmptyFunction onSwitchSceneInit = null;
+        public EmptyFunction onSwitchSceneLoad = null;
+        public EmptyBoolFunction onSwitchSceneIn = null;
+        public EmptyBoolFunction onSwitchSceneOut = null;
+
         // Async loading scene operation. (thread)
         private AsyncOperation mAsyncOperation = null;
 
@@ -141,6 +146,12 @@ namespace JCSUnity
 
             switch (mSwitchSceneType)
             {
+                case JCS_SwitchSceneType.CUSTOM:
+                    {
+                        if (onSwitchSceneInit != null)
+                            onSwitchSceneInit.Invoke();
+                    }
+                    break;
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
                         // get the current screen color.
@@ -304,10 +315,10 @@ namespace JCSUnity
             }
 #endif
 
-            var scenes = JCS_SceneSettings.instance;
+            var scs = JCS_SceneSettings.instance;
 
             // if is loading already, dont load it agian
-            if (scenes.SWITCHING_SCENE)
+            if (scs.SWITCHING_SCENE)
                 return;
 
             // set the next scene name
@@ -327,6 +338,13 @@ namespace JCSUnity
 
             switch (mSwitchSceneType)
             {
+                case JCS_SwitchSceneType.CUSTOM:
+                    {
+                        if (onSwitchSceneLoad != null)
+                            onSwitchSceneLoad.Invoke();
+                    }
+                    break;
+
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
                         // move to the last child in order
@@ -357,14 +375,14 @@ namespace JCSUnity
                     break;
             }
 
-            var ss = JCS_SoundSettings.instance;
+            var sos = JCS_SoundSettings.instance;
 
-            ss.KEEP_BGM_SWITCH_SCENE = keepBGM;
+            sos.KEEP_BGM_SWITCH_SCENE = keepBGM;
 
             if (!keepBGM)
             {
                 // start fading sound
-                if (ss.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
+                if (sos.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
                 {
                     // get the component.
                     if (mFadeSound == null)
@@ -378,7 +396,7 @@ namespace JCSUnity
             }
 
             // start check to switch scene or not
-            scenes.SWITCHING_SCENE = true;
+            scs.SWITCHING_SCENE = true;
         }
 
         /// <summary>
@@ -488,14 +506,33 @@ namespace JCSUnity
         /// </summary>
         private void DoSwitchScene()
         {
-            var scenes = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.instance;
 
             // check if during the switch scene?
-            if (!scenes.SWITCHING_SCENE)
+            if (!ss.SWITCHING_SCENE)
                 return;
 
             switch (mSwitchSceneType)
             {
+                case JCS_SwitchSceneType.CUSTOM:
+                    {
+                        if (onSwitchSceneIn != null)
+                        {
+                            if (onSwitchSceneIn.Invoke())
+                            {
+                                // load the scene if is ready
+                                mAsyncOperation.allowSceneActivation = true;
+                            }
+                        }
+
+                        if (onSwitchSceneOut != null)
+                        {
+                            if (onSwitchSceneOut.Invoke())
+                                ss.SWITCHING_SCENE = false;
+                        }
+                    }
+                    break;
+
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
                         if (mBlackScreen.IsFadeIn())
@@ -508,7 +545,7 @@ namespace JCSUnity
 
                         if (inNewScene && mBlackScreen.IsFadeOut())
                         {
-                            scenes.SWITCHING_SCENE = false;
+                            ss.SWITCHING_SCENE = false;
                         }
                     }
                     break;

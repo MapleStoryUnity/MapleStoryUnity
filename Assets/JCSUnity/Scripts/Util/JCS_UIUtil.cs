@@ -585,9 +585,9 @@ namespace JCSUnity
         /// <summary>
         /// Active panels in array.
         /// </summary>
-        public static void ActivePanels(JCS_DialogueObject[] dos, bool sound)
+        public static void ActivePanels(JCS_PanelRoot[] dos, bool sound)
         {
-            foreach (JCS_DialogueObject panel in dos)
+            foreach (JCS_PanelRoot panel in dos)
             {
                 if (panel != null)
                 {
@@ -604,13 +604,12 @@ namespace JCSUnity
             }
         }
 
-
         /// <summary>
         /// Deactive panels in array.
         /// </summary>
-        public static void DeactivePanels(JCS_DialogueObject[] dos, bool sound)
+        public static void DeactivePanels(JCS_PanelRoot[] dos, bool sound)
         {
-            foreach (JCS_DialogueObject panel in dos)
+            foreach (JCS_PanelRoot panel in dos)
             {
                 if (panel != null)
                 {

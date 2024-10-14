@@ -67,11 +67,11 @@ namespace JCSUnity
 
         [SerializeField]
         [ReadOnly]
-        private float mStartingValue = -0.0f;
+        private float mStartingValue = 0.0f;
 
         [SerializeField]
         [ReadOnly]
-        private float mTargetValue = -0.0f;
+        private float mTargetValue = 0.0f;
 
         [Tooltip("Check if is done animation.")]
         [SerializeField]

@@ -127,7 +127,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = CheckSingleton(instance, this);
+            instance = CheckInstance(instance, this);
         }
 
         /// <summary>

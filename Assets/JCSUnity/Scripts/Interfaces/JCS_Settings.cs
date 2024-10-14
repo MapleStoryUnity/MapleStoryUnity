@@ -13,12 +13,10 @@ namespace JCSUnity
     /// <summary>
     /// Interface of all setting class.
     /// </summary>
-    public abstract class JCS_Settings<T> : MonoBehaviour
+    public abstract class JCS_Settings<T> : JCS_Instance<T>
         where T : MonoBehaviour
     {
         /* Variables */
-
-        public static T instance = default(T);
 
         /* Setter & Getter */
 
@@ -29,7 +27,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="_old"> old instance. </param>
         /// <param name="_new"> new instance. </param>
-        protected T CheckSingleton(T _old, T _new)
+        protected T CheckInstance(T _old, T _new)
         {
             if (_old != null)
             {
