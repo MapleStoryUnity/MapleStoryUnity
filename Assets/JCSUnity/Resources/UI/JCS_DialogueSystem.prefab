@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 6262121236916706463}
   - component: {fileID: 4617863502539174835}
   - component: {fileID: 8118655119276377663}
+  - component: {fileID: 1370199816428591844}
   - component: {fileID: 7604726519187752915}
   - component: {fileID: 7791969589762789707}
   m_Layer: 5
@@ -203,6 +204,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1370199816428591844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278768895983286807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTextContainer: {fileID: 0}
+  mTMP_Text: {fileID: 0}
 --- !u!114 &7604726519187752915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -540,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -840,7 +855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -1370,7 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -1464,6 +1479,7 @@ GameObject:
   - component: {fileID: 3125394772613318333}
   - component: {fileID: 8036595616450345811}
   - component: {fileID: 9186762499011154349}
+  - component: {fileID: 51863325109427542}
   - component: {fileID: 8028899472869899861}
   - component: {fileID: 695904910309088437}
   m_Layer: 5
@@ -1576,6 +1592,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &51863325109427542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624304655210932434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTextContainer: {fileID: 0}
+  mTMP_Text: {fileID: 0}
 --- !u!114 &8028899472869899861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1589,7 +1619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -1711,6 +1741,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
 --- !u!1 &2159243370133405210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,6 +1755,7 @@ GameObject:
   - component: {fileID: 1379027922874875142}
   - component: {fileID: 1966321238952592053}
   - component: {fileID: 4282318081319462653}
+  - component: {fileID: 3391247057729729488}
   - component: {fileID: 7020587301713527430}
   - component: {fileID: 2032367205404608193}
   m_Layer: 5
@@ -1835,6 +1868,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3391247057729729488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159243370133405210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTextContainer: {fileID: 0}
+  mTMP_Text: {fileID: 0}
 --- !u!114 &7020587301713527430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1848,7 +1895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -2083,6 +2130,7 @@ GameObject:
   - component: {fileID: 1515616796509758646}
   - component: {fileID: 3315574053725611244}
   - component: {fileID: 6044775015930541511}
+  - component: {fileID: 215599741007377910}
   - component: {fileID: 526192977114094584}
   - component: {fileID: 4993486165130765398}
   m_Layer: 5
@@ -2195,6 +2243,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &215599741007377910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3818690810564575556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTextContainer: {fileID: 0}
+  mTMP_Text: {fileID: 0}
 --- !u!114 &526192977114094584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2208,7 +2270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -2452,7 +2514,7 @@ MonoBehaviour:
   mTextBox: {fileID: 6267707290331941680}
   mScrollTime: 0.01
   mDeltaTimeType: 0
-  mPanelTrans: {fileID: 0}
+  mPanelTrans: {fileID: 3359068487512866979}
   mOkBtn: {fileID: 4920190722270744894}
   mExitBtn: {fileID: 7581509963973178257}
   mYesBtn: {fileID: 5864234861211038112}
@@ -2468,6 +2530,7 @@ MonoBehaviour:
   - {fileID: 8458313105987517967}
   - {fileID: 526192977114094584}
   - {fileID: 7604726519187752915}
+  mProgressOnHidden: 0
   mButtonSelectionGroup: {fileID: 1527436958594954669}
   mCompleteTextBeforeAction: 0
   mCompleteTextBeforeActionOnButton: 0
@@ -2848,7 +2911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -3034,6 +3097,7 @@ GameObject:
   - component: {fileID: 8092643767424977425}
   - component: {fileID: 5842498838732082959}
   - component: {fileID: 3264917412988433196}
+  - component: {fileID: 4944707648216272516}
   - component: {fileID: 5369465059770988589}
   - component: {fileID: 2780199722325256135}
   m_Layer: 5
@@ -3146,6 +3210,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4944707648216272516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283002755509044437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTextContainer: {fileID: 0}
+  mTMP_Text: {fileID: 0}
 --- !u!114 &5369465059770988589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3159,7 +3237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -3327,7 +3405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -3544,7 +3622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -3765,7 +3843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -3940,6 +4018,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
 --- !u!1 &7266112596231555442
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,6 +4109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
 --- !u!1 &7619404399947977023
 GameObject:
   m_ObjectHideFlags: 0
@@ -4412,6 +4494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
 --- !u!1 &8024554669926591794
 GameObject:
   m_ObjectHideFlags: 0
@@ -4547,7 +4631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -4643,6 +4727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
 --- !u!1 &8683537783107839370
 GameObject:
   m_ObjectHideFlags: 0
@@ -4732,6 +4818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
 --- !u!1 &9222916628055024769
 GameObject:
   m_ObjectHideFlags: 0
@@ -4744,6 +4832,7 @@ GameObject:
   - component: {fileID: 5754082612063144368}
   - component: {fileID: 2288890882533189966}
   - component: {fileID: 8365938387170018457}
+  - component: {fileID: 8120964657303016609}
   - component: {fileID: 8458313105987517967}
   - component: {fileID: 832079965382516661}
   m_Layer: 5
@@ -4856,6 +4945,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8120964657303016609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9222916628055024769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTextContainer: {fileID: 0}
+  mTMP_Text: {fileID: 0}
 --- !u!114 &8458313105987517967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4869,7 +4972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1

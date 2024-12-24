@@ -172,7 +172,7 @@ namespace JCSUnity
             {
                 JCS_GameManager gm = JCS_GameManager.instance;
 
-                gm.afterGameInitializeCallback += RecordPrevData;
+                gm.onAfterInitialize += RecordPrevData;
             }
         }
 

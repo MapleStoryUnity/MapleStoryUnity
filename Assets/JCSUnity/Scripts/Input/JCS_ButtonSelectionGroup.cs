@@ -203,7 +203,7 @@ namespace JCSUnity
         {
             if (hoverCheck)
             {
-                if (JCS_Util.WithInArrayRange(selectionIndex, mSelections))
+                if (JCS_Util.WithInRange(selectionIndex, mSelections))
                 {
                     if (mSelections[selectionIndex].Skip)
                         return;
@@ -214,7 +214,7 @@ namespace JCSUnity
             if (mCurrentSelectIndex == selectionIndex)
                 return;
 
-            if (JCS_Util.WithInArrayRange(mCurrentSelectIndex, mSelections))
+            if (JCS_Util.WithInRange(mCurrentSelectIndex, mSelections))
             {
                 // disable current active selection.
                 mSelections[mCurrentSelectIndex].Active = false;
@@ -222,7 +222,7 @@ namespace JCSUnity
 
             this.mCurrentSelectIndex = selectionIndex;
 
-            this.mCurrentSelectIndex = JCS_Util.LoopInArray(this.mCurrentSelectIndex, mSelections);
+            this.mCurrentSelectIndex = JCS_Util.LoopIn(this.mCurrentSelectIndex, mSelections);
 
             // active the new active selection.
             mSelections[mCurrentSelectIndex].Active = true;

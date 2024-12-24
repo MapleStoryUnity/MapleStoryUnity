@@ -58,8 +58,8 @@ namespace JCSUnity
             this.mAdjustTimerTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
             this.mValueTweener = this.GetComponent<JCS_ValueTweener>();
 
-            this.mValueTweener.set_float = SetLight_Range;
-            this.mValueTweener.get_float = GetLight_Range;
+            this.mValueTweener.onValueChange = SetLight_Range;
+            this.mValueTweener.onValueReturn = GetLight_Range;
 
             this.mAdjustTimerTrigger.onAction = DoRange;
         }

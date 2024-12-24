@@ -24,8 +24,8 @@ namespace JCSUnity
 
         /* Variables */
 
-        public SetValFloat set_float = null;
-        public GetValFloat get_float = null;
+        public SetValFloat onValueChange = null;
+        public GetValFloat onValueReturn = null;
 
         private EmptyFunction mValueCallback = null;
 
@@ -156,7 +156,7 @@ namespace JCSUnity
         /// </summary>
         public void DoTween(float to)
         {
-            DoTween(this.get_float.Invoke(), to, this.mDuration, this.mEasing);
+            DoTween(this.onValueReturn.Invoke(), to, this.mDuration, this.mEasing);
         }
         public void DoTwenn(float from, float to)
         {
@@ -184,7 +184,7 @@ namespace JCSUnity
         /// <returns></returns>
         private bool CheckValid()
         {
-            return (set_float != null && get_float != null);
+            return (onValueChange != null && onValueReturn != null);
         }
 
         /// <summary>
@@ -222,14 +222,14 @@ namespace JCSUnity
 
                 this.mProgressPct = mTimeElapsed / mRealDuration;
 
-                this.set_float.Invoke(this.mProgression);
+                this.onValueChange.Invoke(this.mProgression);
 
                 this.mTimeElapsed += JCS_Time.DeltaTime(mDeltaTimeType);
             }
             else
             {
                 this.mProgression = this.mTargetValue;
-                this.set_float.Invoke(this.mProgression);
+                this.onValueChange.Invoke(this.mProgression);
 
                 this.mAnimating = false;
                 this.mTimeElapsed = 0.0f;

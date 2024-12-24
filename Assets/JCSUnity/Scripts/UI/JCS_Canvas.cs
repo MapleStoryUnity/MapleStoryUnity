@@ -166,6 +166,18 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Toggle the canvas' visibility.
+        /// </summary>
+        /// <param name="mute"> True to mute the sound. </param>
+        public void ToggleVisibility(bool mute = false)
+        {
+            if (mCanvas.enabled)
+                Hide(mute);
+            else
+                Show(mute);
+        }
+
+        /// <summary>
         /// Prompt warning if there are multiple main canvases in the scene.
         /// </summary>
         private void CheckMainCanvas()

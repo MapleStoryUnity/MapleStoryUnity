@@ -195,7 +195,7 @@ namespace JCSUnity
         /// With in array range. (Array)
         /// </summary>
         /// <returns></returns>
-        public static bool WithInArrayRange<T>(int index, T[] arr)
+        public static bool WithInRange<T>(int index, T[] arr)
         {
             return index >= 0 && index < arr.Length;
         }
@@ -204,7 +204,7 @@ namespace JCSUnity
         /// With in array range. (List)
         /// </summary>
         /// <returns></returns>
-        public static bool WithInArrayRange<T>(int index, List<T> arr)
+        public static bool WithInRange<T>(int index, List<T> arr)
         {
             return index >= 0 && index < arr.Count;
         }
@@ -216,7 +216,7 @@ namespace JCSUnity
         /// <param name="index"> Index </param>
         /// <param name="arr"> Array. </param>
         /// <returns> index that looped. </returns>
-        public static int LoopInArray<T>(int index, T[] arr)
+        public static int LoopIn<T>(int index, T[] arr)
         {
             // loop through the array, if at the tail of the array set it to head.
             if (index < 0)
@@ -234,7 +234,7 @@ namespace JCSUnity
         /// <param name="index"> Index </param>
         /// <param name="arr"> List. </param>
         /// <returns> index that looped. </returns>
-        public static int LoopInArray<T>(int index, List<T> arr)
+        public static int LoopIn<T>(int index, List<T> arr)
         {
             // loop through the array, if at the tail of the array set it to head.
             if (index < 0)

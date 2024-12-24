@@ -151,7 +151,7 @@ namespace JCSUnity
         /// <returns> List of removed linked object. </returns>
         public List<JCS_TransformLinkedObject> RemoveLinked(int n = 1, int startIndex = 0)
         {
-            if (!JCS_Util.WithInArrayRange(startIndex, mManagedList))
+            if (!JCS_Util.WithInRange(startIndex, mManagedList))
             {
                 JCS_Debug.LogReminder("Can't remove linked node with index lower than 0");
                 return null;

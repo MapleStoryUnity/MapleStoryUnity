@@ -19,20 +19,20 @@ namespace JCSUnity
         /* Variables */
 
         // Callback after the game is done initialize.
-        public EmptyFunction afterGameInitializeCallback = null;
+        public EmptyFunction onAfterInitialize = null;
 
         [Separator("Check Variable (JCS_GameManager)")]
 
         [Tooltip("Is game done initialize?")]
         [SerializeField]
         [ReadOnly]
-        private bool mGameDoneInitialize = false;
+        private bool mDoneInitialize = false;
 
         private JCS_Player mPlayer = null;
 
         /* Setter & Getter */
 
-        public bool GAME_DONE_INITIALIZE { get { return this.mGameDoneInitialize; } }
+        public bool DONE_INITIALIZE { get { return this.mDoneInitialize; } }
         public bool GAME_PAUSE
         {
             get { return JCS_PauseManager.instance.Paused; }
@@ -66,7 +66,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            SetGameDoneInitializeFlag();
+            SetDoneInitializeFlag();
         }
 
         /// <summary>
@@ -87,15 +87,15 @@ namespace JCSUnity
         /// <summary>
         /// Set the game done initialize flag.
         /// </summary>
-        private void SetGameDoneInitializeFlag()
+        private void SetDoneInitializeFlag()
         {
-            if (this.mGameDoneInitialize)
+            if (this.mDoneInitialize)
                 return;
 
-            this.mGameDoneInitialize = true;
+            this.mDoneInitialize = true;
 
-            if (afterGameInitializeCallback != null)
-                afterGameInitializeCallback.Invoke();
+            if (onAfterInitialize != null)
+                onAfterInitialize.Invoke();
         }
     }
 }

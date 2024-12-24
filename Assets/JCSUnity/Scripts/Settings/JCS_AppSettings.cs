@@ -72,7 +72,7 @@ namespace JCSUnity
         {
             // If already starts we don't need to enable the flag.
             if (!APPLICATION_STARTS)
-                JCS_GameManager.instance.afterGameInitializeCallback += DoApplicationStart;
+                JCS_GameManager.instance.onAfterInitialize += DoApplicationStart;
         }
 
         /// <summary>

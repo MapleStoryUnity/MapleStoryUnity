@@ -87,7 +87,7 @@ namespace JCSUnity
             float dt = JCS_Time.DeltaTime(mDeltaTimeType);
 
             // make it effect by gravity.
-            this.mVelocity.y += -JCS_GameConstant.GRAVITY * mGravityProduct * dt;
+            this.mVelocity.y += JCS_Constants.GRAVITY * mGravityProduct * dt;
 
             // add up velocity.
             this.transform.position += mVelocity * dt;
@@ -126,7 +126,7 @@ namespace JCSUnity
 
             mVelocity.x = displacement.x / time;
             mVelocity.z = displacement.z / time;
-            mVelocity.y = (displacement.y - (-JCS_GameConstant.GRAVITY * mGravityProduct * time * time / 2)) / time;
+            mVelocity.y = (displacement.y - (JCS_Constants.GRAVITY * mGravityProduct * time * time / 2)) / time;
 
             // start dropping.
             this.mActive = true;

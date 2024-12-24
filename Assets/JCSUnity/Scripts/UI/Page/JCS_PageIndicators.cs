@@ -55,7 +55,7 @@ namespace JCSUnity
         {
             SetSprite(mInactiveSprite);
 
-            if (!JCS_Util.WithInArrayRange(page, mIndicators))
+            if (!JCS_Util.WithInRange(page, mIndicators))
             {
                 JCS_Debug.LogWarning("Page indicators out of range exception");
                 return;

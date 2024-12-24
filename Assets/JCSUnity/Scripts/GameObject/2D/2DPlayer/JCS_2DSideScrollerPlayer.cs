@@ -864,7 +864,7 @@ namespace JCSUnity
             if (!isGrounded())
             {
                 // apply gravity
-                mVelocity.y -= (JCS_GameConstant.GRAVITY *
+                mVelocity.y += (JCS_Constants.GRAVITY *
                     JCS_Time.DeltaTime(mDeltaTimeType) *
                     JCS_GameSettings.instance.GRAVITY_PRODUCT);
 

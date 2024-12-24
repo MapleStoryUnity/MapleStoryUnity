@@ -99,11 +99,11 @@ namespace JCSUnity
         [SerializeField]
         private Image mRightImage = null;
 
-        [Tooltip("Name tag.")]
+        [Tooltip("Text box to display names.")]
         [SerializeField]
         private JCS_TextObject mNameTag = null;
 
-        [Tooltip("Main text GUI component to scroll.")]
+        [Tooltip("Text box to display content messages.")]
         [SerializeField]
         private JCS_TextObject mTextBox = null;
 
@@ -163,6 +163,10 @@ namespace JCSUnity
         private string mSelectStringFront = "#L" + 0 + "##b";
         private string mSelectStringBack = "#k#l";
 
+        [Tooltip("Allow dialogue even the dialogue is hidden.")]
+        [SerializeField]
+        private bool mProgressOnHidden = false;
+
         [Header("Controller")]
 
         [Tooltip("Button selection group for this dialogue system.")]
@@ -208,6 +212,22 @@ namespace JCSUnity
         public bool Scrolling { get { return this.mScrolling; } }
         public bool ScrollingSelectBtnText { get { return this.mScrollingSelectBtnText; } }
         public bool Skip { get { return this.mSkip; } }
+        public bool ProgressOnHidden { get { return this.mProgressOnHidden; } set { this.mProgressOnHidden = value; } }
+
+        public Image CenterImage { get { return this.mCenterImage; } }
+        public Image LeftImage { get { return this.mLeftImage; } }
+        public Image RightImage { get { return this.mRightImage; } }
+        public JCS_TextObject NameTag { get { return this.mNameTag; } }
+        public JCS_TextObject TextBox { get { return this.mTextBox; } }
+        public RectTransform PanelTrans { get { return this.mPanelTrans; } }
+        public JCS_Button OkBtn { get { return this.mOkBtn; } }
+        public JCS_Button ExitBtn { get { return this.mExitBtn; } }
+        public JCS_Button YesBtn { get { return this.mYesBtn; } }
+        public JCS_Button NoBtn { get { return this.mNoBtn; } }
+        public JCS_Button PreviousBtn { get { return this.mPreviousBtn; } }
+        public JCS_Button NextBtn { get { return this.mNextBtn; } }
+        public JCS_Button AcceptBtn { get { return this.mAcceptBtn; } }
+        public JCS_Button DeclineBtn { get { return this.mDeclineBtn; } }
 
         public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
         public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
@@ -623,7 +643,7 @@ namespace JCSUnity
             mActiveThisFrame = false;
 
             // Check initialize to ignore dispose called at the very beginning!
-            if (JCS_GameManager.instance.GAME_DONE_INITIALIZE && onDispose != null)
+            if (JCS_GameManager.instance.DONE_INITIALIZE && onDispose != null)
                 onDispose.Invoke();
 
             // Play the dispose dialogue sound.
@@ -646,7 +666,10 @@ namespace JCSUnity
             mRenderSelectTextIndex = 0;
             mSelectTextIndex = 0;
 
-            // reset message.
+            // clear name tag
+            mNameTag.text = "";
+
+            // clear text box
             mMessage = "";
             mTextBox.text = "";
 
@@ -766,21 +789,57 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Continue with default condition.
+        /// Go to previous page of the dialogue.
         /// </summary>
-        /// <returns> Return true if successful continue the dialogue. </returns>
-        public bool NextOrDispose()
+        public bool Previous()
         {
             if (!mActive || mActiveThisFrame)
                 return false;
 
-            if (!IsVisible())
+            if (!mProgressOnHidden)
+            {
+                if (!IsVisible())
+                    return false;
+            }
+
+            if (SkipToEnd(mCompleteTextBeforeAction))
                 return false;
+
+            PreviousBtnCallback();
+
+            return true;
+        }
+
+        /// <summary>
+        /// Go to next page of the dialogue.
+        /// </summary>
+        public bool Next()
+        {
+            if (!mActive || mActiveThisFrame)
+                return false;
+
+            if (!mProgressOnHidden)
+            {
+                if (!IsVisible())
+                    return false;
+            }
 
             if (SkipToEnd(mCompleteTextBeforeAction))
                 return false;
 
             NextBtnCallback();
+
+            return true;
+        }
+
+        /// <summary>
+        /// Like `Next` function but dispose it when possible.
+        /// </summary>
+        /// <returns> Return true if successful continue the dialogue. </returns>
+        public bool NextOrDispose()
+        {
+            if (!Next())
+                return false;
 
             if (mMessage == "")
             {

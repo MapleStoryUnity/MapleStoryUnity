@@ -117,8 +117,8 @@ namespace JCSUnity
             {
                 if (!isGrounded)
                 {
-                    VelY -= 
-                        JCS_GameConstant.GRAVITY *
+                    VelY +=
+                        JCS_Constants.GRAVITY *
                         dt *
                         JCS_GameSettings.instance.GRAVITY_PRODUCT;
                 }

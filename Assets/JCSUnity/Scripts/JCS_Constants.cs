@@ -1,5 +1,5 @@
-﻿/**
- * $File: JCS_GameConstant.cs $
+/**
+ * $File: JCS_Constants.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -12,9 +12,9 @@ namespace JCSUnity
     /// <summary>
     /// Hold all the game constant here.
     /// </summary>
-    public static class JCS_GameConstant 
+    public static class JCS_Constants
     {
-        public static float GRAVITY = 9.81f;
+        public static float GRAVITY = -9.81f;
 
     }
 }

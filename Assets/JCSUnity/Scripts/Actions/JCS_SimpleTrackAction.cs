@@ -20,6 +20,10 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_SimpleTrackAction)")]
 
+        [Tooltip("Target transform; if null use target position instead.")]
+        [SerializeField]
+        private Transform mTarget = null;
+
         [Tooltip("Target position to track.")]
         [SerializeField]
         private Vector3 mTargetPos = Vector3.zero;
@@ -45,6 +49,14 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreZ = false;
 
+        [Tooltip("Use local variables for target instead.")]
+        [SerializeField]
+        private bool mLocalTarget = false;
+
+        [Tooltip("Use local variables for self instead.")]
+        [SerializeField]
+        private bool mLocalSelf = false;
+
         /* Setter & Getter */
 
         public Vector3 TargetPosition { get { return this.mTargetPos; } set { this.mTargetPos = value; } }
@@ -53,21 +65,33 @@ namespace JCSUnity
         public bool IgnoreX { get { return this.mIgnoreX; } set { this.mIgnoreX = value; } }
         public bool IgnoreY { get { return this.mIgnoreY; } set { this.mIgnoreY = value; } }
         public bool IgnoreZ { get { return this.mIgnoreZ; } set { this.mIgnoreZ = value; } }
+        public bool LocalTarget { get { return this.mLocalTarget; } set { this.mLocalTarget = value; } }
+        public bool LocalSelf { get { return this.mLocalSelf; } set { this.mLocalSelf = value; } }
 
         /* Functions */
 
         private void Update()
         {
-            Vector3 tempTargetPost = mTargetPos;
+            Vector3 newPos = mTargetPos;
+
+            if (mTarget)
+            {
+                newPos = (mLocalTarget) ? mTarget.transform.localPosition : mTarget.transform.position;
+            }
 
             if (mIgnoreX)
-                tempTargetPost.x = this.LocalPosition.x;
+                newPos.x = (mLocalSelf) ? LocalPosition.x : Position.x;
             if (mIgnoreY)
-                tempTargetPost.y = this.LocalPosition.y;
+                newPos.y = (mLocalSelf) ? LocalPosition.y : Position.y;
             if (mIgnoreZ)
-                tempTargetPost.z = this.LocalPosition.z;
+                newPos.z = (mLocalSelf) ? LocalPosition.z : Position.z;
 
-            this.LocalPosition += (tempTargetPost - LocalPosition) / mFriction * JCS_Time.DeltaTime(mDeltaTimeType);
+            float time = JCS_Time.DeltaTime(mDeltaTimeType);
+
+            if (mLocalSelf)
+                this.LocalPosition += (newPos - LocalPosition) / mFriction * time;
+            else
+                this.Position += (newPos - Position) / mFriction * time;
         }
 
         /// <summary>

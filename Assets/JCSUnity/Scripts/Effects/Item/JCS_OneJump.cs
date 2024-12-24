@@ -104,7 +104,7 @@ just stop there.")]
             float dt = JCS_Time.DeltaTime(mDeltaTimeType);
 
             this.transform.position += mVelocity * dt;
-            mVelocity.y += -JCS_GameConstant.GRAVITY * dt * mItemGravity;
+            mVelocity.y += JCS_Constants.GRAVITY * dt * mItemGravity;
         }
 
         private void OnTriggerEnter(Collider other)
