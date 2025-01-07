@@ -231,7 +231,7 @@ namespace JCSUnity
             float maxDistance, 
             JCS_Vector3Direction inDirection)
         {
-            Vector3 direction = cap.transform.TransformDirection(JCS_Util.VectorDirection(inDirection));
+            Vector3 direction = cap.transform.TransformDirection(JCS_Vector.Direction(inDirection));
 
             RaycastHit[] hits = Physics.RaycastAll(cap.transform.position, direction, maxDistance);
 

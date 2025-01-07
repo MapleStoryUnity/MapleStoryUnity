@@ -28,18 +28,18 @@ namespace JCSUnity
         private Transform mLastAttacker= null;
 
         // Record all the attacker attack this enemy!
-        private JCS_Vector<Transform> mAttackers = null;
+        private JCS_Vec<Transform> mAttackers = null;
 
         /* Setter & Getter */
 
         public Transform LastAttacker { get { return this.mLastAttacker; } set { this.mLastAttacker = value; } }
-        public JCS_Vector<Transform> GetAttackers() { return this.mAttackers; }
+        public JCS_Vec<Transform> GetAttackers() { return this.mAttackers; }
 
         /* Functions */
 
         private void Awake()
         {
-            mAttackers = new JCS_Vector<Transform>();
+            mAttackers = new JCS_Vec<Transform>();
         }
     }
 }

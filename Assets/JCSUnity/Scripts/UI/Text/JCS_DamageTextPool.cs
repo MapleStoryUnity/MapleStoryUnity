@@ -38,7 +38,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DamageText mDamageText = null;
 
-        private JCS_Vector<JCS_DamageText> mDamageTexts = null;
+        private JCS_Vec<JCS_DamageText> mDamageTexts = null;
 
         [Separator("Runtime Variables (JCS_DamageTextPool)")]
 
@@ -318,7 +318,7 @@ namespace JCSUnity
         /// </summary>
         private void InitDamageTextToArray()
         {
-            mDamageTexts = new JCS_Vector<JCS_DamageText>(mNumberOfHandle);
+            mDamageTexts = new JCS_Vec<JCS_DamageText>(mNumberOfHandle);
 
             if (mDamageText == null)
                 return;

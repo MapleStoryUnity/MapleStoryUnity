@@ -67,7 +67,7 @@ namespace JCSUnity
         {
             float speed = 10;
 
-            Vector3 direction = JCS_Util.VectorDirection(mDirection);
+            Vector3 direction = JCS_Vector.Direction(mDirection);
 
             // Generate a plane that intersects the transform's position with an upwards normal.
             Plane playerPlane = new Plane(direction, mShootAction.SpawnPoint.position);

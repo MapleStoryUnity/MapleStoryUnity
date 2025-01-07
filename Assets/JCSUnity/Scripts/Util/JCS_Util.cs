@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
@@ -35,6 +34,388 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Util
     {
+        #region Parse
+
+        /// <summary>
+        /// Is the string the valid number to parse.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsNumberString(string str)
+        {
+            double test;
+            return (double.TryParse(str, out test));
+        }
+
+        /// <summary>
+        /// Parse `str` to integer, return `defaultValue` if failed.
+        /// </summary>
+        public static int Parse(string str, int defaultValue)
+        {
+            int result;
+
+            if (int.TryParse(str, out result))
+                return int.Parse(str);
+
+            return defaultValue;
+        }
+
+        /// <summary>
+        /// Parse `str` to float, return `defaultValue` if failed.
+        /// </summary>
+        public static float Parse(string str, float defaultValue)
+        {
+            float result;
+
+            if (float.TryParse(str, out result))
+                return float.Parse(str);
+
+            return defaultValue;
+        }
+
+        /// <summary>
+        /// Parse `str` to boolean, return `defaultValue` if failed.
+        /// </summary>
+        public static bool Parse(string str, bool defaultValue)
+        {
+            bool result;
+
+            if (bool.TryParse(str, out result))
+                return bool.Parse(str);
+
+            return defaultValue;
+        }
+
+        #endregion
+
+        #region Enum
+
+        /// <summary>
+        /// Enum typed version casting.
+        /// Source: http://stackoverflow.com/questions/972307/can-you-loop-through-all-enum-values
+        /// </summary>
+        public static IEnumerable<T> GetValues<T>()
+        {
+            return System.Enum.GetValues(typeof(T)).Cast<T>();
+        }
+
+        /// <summary>
+        /// Return the length of an enumerator.
+        /// </summary>
+        /// <typeparam name="T"> Enum type. </typeparam>
+        /// <returns> Size of the enum listed. </returns>
+        public static int EnumSize<T>()
+        {
+            return System.Enum.GetNames(typeof(T)).Length;
+        }
+
+        #endregion
+
+        #region Array
+
+        /// <summary>
+        /// Check the value within the range plus acceptable range.
+        /// </summary>
+        /// <param name="range"></param>
+        /// <param name="acceptRange"></param>
+        /// <param name="currentVal"></param>
+        /// <returns></returns>
+        public static bool WithInAcceptRange(float range, float acceptRange, float currentVal)
+        {
+            return WithInRange(range - acceptRange, range + acceptRange, currentVal);
+        }
+
+        /// <summary>
+        /// Check the value within the range.
+        /// </summary>
+        /// <param name="minRange"></param>
+        /// <param name="maxRange"></param>
+        /// <param name="currentVal"></param>
+        /// <returns></returns>
+        public static bool WithInRange(float minRange, float maxRange, float currentVal)
+        {
+            if (currentVal >= minRange && currentVal <= maxRange)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// With in array range. (Array)
+        /// </summary>
+        /// <returns></returns>
+        public static bool WithInRange<T>(int index, T[] arr)
+        {
+            return index >= 0 && index < arr.Length;
+        }
+
+        /// <summary>
+        /// With in array range. (List)
+        /// </summary>
+        /// <returns></returns>
+        public static bool WithInRange<T>(int index, List<T> arr)
+        {
+            return index >= 0 && index < arr.Count;
+        }
+
+        /// <summary>
+        /// Loop in an array. (Array)
+        /// </summary>
+        /// <typeparam name="T"> Type. </typeparam>
+        /// <param name="index"> Index </param>
+        /// <param name="arr"> Array. </param>
+        /// <returns> index that looped. </returns>
+        public static int LoopIn<T>(int index, T[] arr)
+        {
+            // loop through the array, if at the tail of the array set it to head.
+            if (index < 0)
+                index = arr.Length - 1;
+            // loop through the array, if at head of the array we set it to the tail.
+            else if (index >= arr.Length)
+                index = 0;
+            return index;
+        }
+
+        /// <summary>
+        /// Loop in an array. (List)
+        /// </summary>
+        /// <typeparam name="T"> Type. </typeparam>
+        /// <param name="index"> Index </param>
+        /// <param name="arr"> List. </param>
+        /// <returns> index that looped. </returns>
+        public static int LoopIn<T>(int index, List<T> arr)
+        {
+            // loop through the array, if at the tail of the array set it to head.
+            if (index < 0)
+                index = arr.Count - 1;
+            // loop through the array, if at head of the array we set it to the tail.
+            else if (index >= arr.Count)
+                index = 0;
+
+            return index;
+        }
+
+        /// <summary>
+        /// Merge multiple arrays into one array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static T[] MergeArrays<T>(params T[][] arrList)
+        {
+            if (arrList.Length <= 1)
+            {
+                JCS_Debug.Log("You trying to merge the array less then two array");
+            }
+
+            int arrLen = 0;
+            foreach (var arr in arrList)
+                arrLen += arr.Length;
+
+            // first combine the first two array.
+            T[] data = MergeArrays2<T>(arrList[0], arrList[1]);
+
+            // combine the rest.
+            for (int index = 2; index < arrList.Length; ++index)
+            {
+                data = MergeArrays2<T>(data, arrList[index]);
+            }
+            return data;
+        }
+
+        /// <summary>
+        /// Merging two array and return the new array.
+        /// </summary>
+        /// <typeparam name="T"> Type of the array. </typeparam>
+        /// <param name="arr1"> First array. </param>
+        /// <param name="arr2"> Second array. </param>
+        /// <returns> Merged array. </returns>
+        public static T[] MergeArrays2<T>(T[] arr1, T[] arr2)
+        {
+            T[] data = new T[arr1.Length + arr2.Length];
+
+            System.Array.Copy(arr1, data, arr1.Length);
+            System.Array.Copy(arr2, 0, data, arr1.Length, arr2.Length);
+
+            return data;
+        }
+
+        /// <summary>
+        /// Merging two list and return the new list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lists"></param>
+        /// <returns></returns>
+        public static List<T> MergeList<T>(params List<T>[] lists)
+        {
+            if (lists.Length <= 1)
+            {
+                JCS_Debug.Log("You trying to merge the List less then two array");
+            }
+
+            var newList = new List<T>();
+
+            for (int index = 0; index < lists.Length; ++index)
+            {
+                // Loop through all list.
+                List<T> list = lists[index];
+
+                if (list == null)
+                    continue;
+
+                for (int listIndex = 0; listIndex < list.Count; ++listIndex)
+                {
+                    // Loop through item.
+                    T item = list[listIndex];
+
+                    newList.Add(item);
+                }
+            }
+
+            return newList;
+        }
+
+        /// <summary>
+        /// Copy byte array to another byte array memory space.
+        /// </summary>
+        /// <param name="inBuf"> byte array to copy. </param>
+        /// <param name="start"> Starting index to copy. </param>
+        /// <param name="len"> Length to copy. </param>
+        /// <returns> byte array that are created in new memroy space. </returns>
+        public static byte[] CopyByteArray(byte[] inBuf, int start, int len)
+        {
+            byte[] bytes = new byte[len];
+
+            for (int count = 0; count < len; ++count)
+            {
+                bytes[count] = inBuf[count];
+            }
+
+            return bytes;
+        }
+
+        /// <summary>
+        /// Check if the list empty.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static bool IsArrayEmpty(string[] list)
+        {
+            for (int index = 0; index < list.Length; ++index)
+            {
+                if (list[index] != "")
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Pop the last value from the list.
+        /// </summary>
+        public static T ListPopFront<T>(List<T> list)
+        {
+            if (list.Count == 0)
+                return default(T);
+
+            T data = list[0];
+
+            list.RemoveAt(0);
+
+            return data;
+        }
+
+        /// <summary>
+        /// Pop the last value from the list.
+        /// </summary>
+        public static T ListPopBack<T>(List<T> list)
+        {
+            if (list.Count == 0)
+                return default(T);
+
+            int lastIndex = list.Count - 1;
+
+            T data = list[lastIndex];
+
+            list.RemoveAt(lastIndex);
+
+            return data;
+        }
+
+        #endregion
+
+        #region String
+
+        /// <summary>
+        /// Convert byte array to string by charset type.
+        /// </summary>
+        /// <param name="data"> Byte array data to convert to string data. </param>
+        /// <param name="charset"> Target charset type. </param>
+        /// <returns> String data that had been converted. </returns>
+        public static string BytesToString(byte[] data, JCS_CharsetType charset)
+        {
+            switch (charset)
+            {
+                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetString(data);
+                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetString(data);
+                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetString(data);
+                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetString(data);
+                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetString(data);
+                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
+                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
+            }
+            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
+            return null;
+        }
+
+        /// <summary>
+        /// Convert string to byte array by charset type.
+        /// </summary>
+        /// <param name="data"> String data to convert to byte array. </param>
+        /// <param name="charset"> Target charset type. </param>
+        /// <returns> Byte array that had been converted. </returns>
+        public static byte[] StringToBytes(string data, JCS_CharsetType charset)
+        {
+            switch (charset)
+            {
+                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetBytes(data);
+                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetBytes(data);
+                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetBytes(data);
+                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetBytes(data);
+                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetBytes(data);
+                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
+                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
+            }
+            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
+            return null;
+        }
+
+        /// <summary>
+        /// Simple version of escape url.
+        /// </summary>
+        /// <param name="url"> Url you want to escape. </param>
+        /// <returns> Return the escaped url. </returns>
+        public static string EscapeURL(string url)
+        {
+            url = url.Replace(" ", "%20");
+            return url;
+        }
+
+        #endregion
+
+        #region JSON
+
+        /// <summary>
+        /// Return JSON by passing serializable object.
+        /// </summary>
+        /// <param name="obj"> Object that are serializable. </param>
+        /// <returns> JSON string. </returns>
+        public static string ToJson<T>(T obj)
+        {
+            return JsonUtility.ToJson(obj);
+        }
+
+        #endregion
+
         /// <summary>
         /// Do enable/distance component.
         /// </summary>
@@ -166,87 +547,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check the value within the range plus acceptable range.
-        /// </summary>
-        /// <param name="range"></param>
-        /// <param name="acceptRange"></param>
-        /// <param name="currentVal"></param>
-        /// <returns></returns>
-        public static bool WithInAcceptRange(float range, float acceptRange, float currentVal)
-        {
-            return WithInRange(range - acceptRange, range + acceptRange, currentVal);
-        }
-
-        /// <summary>
-        /// Check the value within the range.
-        /// </summary>
-        /// <param name="minRange"></param>
-        /// <param name="maxRange"></param>
-        /// <param name="currentVal"></param>
-        /// <returns></returns>
-        public static bool WithInRange(float minRange, float maxRange, float currentVal)
-        {
-            if (currentVal >= minRange && currentVal <= maxRange)
-                return true;
-            return false;
-        }
-
-        /// <summary>
-        /// With in array range. (Array)
-        /// </summary>
-        /// <returns></returns>
-        public static bool WithInRange<T>(int index, T[] arr)
-        {
-            return index >= 0 && index < arr.Length;
-        }
-
-        /// <summary>
-        /// With in array range. (List)
-        /// </summary>
-        /// <returns></returns>
-        public static bool WithInRange<T>(int index, List<T> arr)
-        {
-            return index >= 0 && index < arr.Count;
-        }
-
-        /// <summary>
-        /// Loop in an array. (Array)
-        /// </summary>
-        /// <typeparam name="T"> Type. </typeparam>
-        /// <param name="index"> Index </param>
-        /// <param name="arr"> Array. </param>
-        /// <returns> index that looped. </returns>
-        public static int LoopIn<T>(int index, T[] arr)
-        {
-            // loop through the array, if at the tail of the array set it to head.
-            if (index < 0)
-                index = arr.Length - 1;
-            // loop through the array, if at head of the array we set it to the tail.
-            else if (index >= arr.Length)
-                index = 0;
-            return index;
-        }
-
-        /// <summary>
-        /// Loop in an array. (List)
-        /// </summary>
-        /// <typeparam name="T"> Type. </typeparam>
-        /// <param name="index"> Index </param>
-        /// <param name="arr"> List. </param>
-        /// <returns> index that looped. </returns>
-        public static int LoopIn<T>(int index, List<T> arr)
-        {
-            // loop through the array, if at the tail of the array set it to head.
-            if (index < 0)
-                index = arr.Count - 1;
-            // loop through the array, if at head of the array we set it to the tail.
-            else if (index >= arr.Count)
-                index = 0;
-
-            return index;
-        }
-
-        /// <summary>
         /// Spawn an animate object.
         /// </summary>
         /// <param name="anim"> anim assign </param>
@@ -282,68 +582,6 @@ namespace JCSUnity
             daee.LoopTimes = loopTimes;
 
             return gm;
-        }
-
-        /// <summary>
-        /// Set the vector value.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        public static Vector3 SetVecX(Vector3 val, float x)
-        {
-            return SetVec3(val, x, val.y, val.z);
-        }
-        public static Vector3 SetVecY(Vector3 val, float y)
-        {
-            return SetVec3(val, val.x, y, val.z);
-        }
-        public static Vector3 SetVecZ(Vector3 val, float z)
-        {
-            return SetVec3(val, val.x, val.y, z);
-        }
-        public static Vector3 SetVec3(Vector3 val, float x, float y, float z)
-        {
-            Vector3 newVec = val;
-
-            newVec.x = x;
-            newVec.y = y;
-            newVec.z = z;
-
-            val = newVec;
-
-            return newVec;
-        }
-
-        /// <summary>
-        /// Add the vector value.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        public static Vector3 IncVecX(Vector3 val, float x)
-        {
-            return IncVec3(val, x, 0, 0);
-        }
-        public static Vector3 IncVecY(Vector3 val, float y)
-        {
-            return IncVec3(val, 0, y, 0);
-        }
-        public static Vector3 IncVecZ(Vector3 val, float z)
-        {
-            return IncVec3(val, 0, 0, z);
-        }
-        public static Vector3 IncVec3(Vector3 val, float x, float y = 0, float z = 0)
-        {
-            Vector3 newVec = val;
-
-            newVec.x += x;
-            newVec.y += y;
-            newVec.z += z;
-
-            val = newVec;
-
-            return newVec;
         }
 
         /// <summary>
@@ -410,248 +648,6 @@ namespace JCSUnity
             trans.localPosition = recordPos;
             trans.localScale = recordScale;
             trans.localRotation = recordRot;
-        }
-
-        /// <summary>
-        /// Return direction of Unity's Vector system.
-        /// </summary>
-        /// <param name="direction"> Target direction. </param>
-        /// <returns> Direction vector. </returns>
-        public static Vector3 VectorDirection(JCS_Vector3Direction direction)
-        {
-            switch (direction)
-            {
-                case JCS_Vector3Direction.CENTER: return Vector3.zero;
-                case JCS_Vector3Direction.UP: return Vector3.up;
-                case JCS_Vector3Direction.DOWN: return Vector3.down;
-                case JCS_Vector3Direction.FORWARD: return Vector3.forward;
-                case JCS_Vector3Direction.BACK: return Vector3.back;
-                case JCS_Vector3Direction.RIGHT: return Vector3.right;
-                case JCS_Vector3Direction.LEFT: return Vector3.left;
-
-                case JCS_Vector3Direction.FORWARD_LEFT:
-                    return new Vector3(-1, 0, 1);
-                case JCS_Vector3Direction.FORWARD_RIGHT:
-                    return new Vector3(1, 0, 1);
-
-                case JCS_Vector3Direction.BACK_LEFT:
-                    return new Vector3(-1, 0, -1);
-                case JCS_Vector3Direction.BACK_RIGHT:
-                    return new Vector3(1, 0, -1);
-
-                case JCS_Vector3Direction.UP_LEFT:
-                    return new Vector3(-1, 1, 0);
-                case JCS_Vector3Direction.UP_RIGHT:
-                    return new Vector3(1, 1, 0);
-
-                case JCS_Vector3Direction.FORWARD_UP:
-                    return new Vector3(0, 1, 1);
-                case JCS_Vector3Direction.FORWARD_DOWN:
-                    return new Vector3(0, -1, 1);
-
-                case JCS_Vector3Direction.BACK_UP:
-                    return new Vector3(0, 1, -1);
-                case JCS_Vector3Direction.BACK_DOWN:
-                    return new Vector3(0, -1, -1);
-
-                case JCS_Vector3Direction.DOWN_LEFT:
-                    return new Vector3(-1, -1, 0);
-                case JCS_Vector3Direction.DOWN_RIGHT:
-                    return new Vector3(1, -1, 0);
-
-                case JCS_Vector3Direction.FORWARD_UP_LEFT:
-                    return new Vector3(-1, 1, 1);
-                case JCS_Vector3Direction.FORWARD_UP_RIGHT:
-                    return new Vector3(1, 1, 1);
-
-                case JCS_Vector3Direction.FORWARD_DOWN_LEFT:
-                    return new Vector3(-1, -1, 1);
-                case JCS_Vector3Direction.FORWARD_DOWN_RIGHT:
-                    return new Vector3(1, -1, 1);
-
-                case JCS_Vector3Direction.BACK_UP_LEFT:
-                    return new Vector3(-1, 1, -1);
-                case JCS_Vector3Direction.BACK_UP_RIGHT:
-                    return new Vector3(1, 1, -1);
-
-                case JCS_Vector3Direction.BACK_DOWN_LEFT:
-                    return new Vector3(-1, -1, -1);
-                case JCS_Vector3Direction.BACK_DOWN_RIGHT:
-                    return new Vector3(1, -1, -1);
-            }
-
-            // this cannot happens
-            return Vector3.zero;
-        }
-
-        /// <summary>
-        /// Get the vector base on the transform's rotation.
-        /// </summary>
-        /// <param name="direction"> Target direction. </param>
-        /// <param name="trans"> 
-        /// Target transform use to calculate the vector, and where we get the 
-        /// rotation from. 
-        /// </param>
-        /// <returns> Direction vector. </returns>
-        public static Vector3 VectorDirection(JCS_Vector3Direction direction, Transform trans)
-        {
-            switch (direction)
-            {
-                case JCS_Vector3Direction.CENTER: return Vector3.zero;
-
-                case JCS_Vector3Direction.UP: return trans.up;
-                case JCS_Vector3Direction.DOWN: return -trans.up;
-
-                case JCS_Vector3Direction.FORWARD: return trans.forward;
-                case JCS_Vector3Direction.BACK: return -trans.forward;
-
-                case JCS_Vector3Direction.RIGHT: return trans.right;
-                case JCS_Vector3Direction.LEFT: return -trans.right;
-
-                case JCS_Vector3Direction.FORWARD_LEFT:
-                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
-                        + VectorDirection(JCS_Vector3Direction.LEFT, trans);
-                case JCS_Vector3Direction.FORWARD_RIGHT:
-                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
-                        + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
-
-                case JCS_Vector3Direction.BACK_LEFT:
-                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
-                        + VectorDirection(JCS_Vector3Direction.LEFT, trans);
-                case JCS_Vector3Direction.BACK_RIGHT:
-                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
-                        + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
-
-                case JCS_Vector3Direction.UP_LEFT:
-                    return VectorDirection(JCS_Vector3Direction.UP, trans)
-                        + VectorDirection(JCS_Vector3Direction.LEFT, trans);
-                case JCS_Vector3Direction.UP_RIGHT:
-                    return VectorDirection(JCS_Vector3Direction.UP, trans)
-                        + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
-
-                case JCS_Vector3Direction.FORWARD_UP:
-                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
-                        + VectorDirection(JCS_Vector3Direction.UP, trans);
-                case JCS_Vector3Direction.FORWARD_DOWN:
-                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
-                        + VectorDirection(JCS_Vector3Direction.DOWN, trans);
-
-                case JCS_Vector3Direction.BACK_UP:
-                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
-                       + VectorDirection(JCS_Vector3Direction.UP, trans);
-                case JCS_Vector3Direction.BACK_DOWN:
-                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
-                       + VectorDirection(JCS_Vector3Direction.DOWN, trans);
-
-                case JCS_Vector3Direction.DOWN_LEFT:
-                    return VectorDirection(JCS_Vector3Direction.DOWN, trans)
-                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
-                case JCS_Vector3Direction.DOWN_RIGHT:
-                    return VectorDirection(JCS_Vector3Direction.DOWN, trans)
-                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
-
-                case JCS_Vector3Direction.FORWARD_UP_LEFT:
-                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
-                        + VectorDirection(JCS_Vector3Direction.UP, trans)
-                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
-                case JCS_Vector3Direction.FORWARD_UP_RIGHT:
-                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
-                        + VectorDirection(JCS_Vector3Direction.UP, trans)
-                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
-
-                case JCS_Vector3Direction.FORWARD_DOWN_LEFT:
-                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
-                        + VectorDirection(JCS_Vector3Direction.DOWN, trans)
-                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
-                case JCS_Vector3Direction.FORWARD_DOWN_RIGHT:
-                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
-                        + VectorDirection(JCS_Vector3Direction.DOWN, trans)
-                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
-
-                case JCS_Vector3Direction.BACK_UP_LEFT:
-                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
-                        + VectorDirection(JCS_Vector3Direction.UP, trans)
-                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
-                case JCS_Vector3Direction.BACK_UP_RIGHT:
-                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
-                        + VectorDirection(JCS_Vector3Direction.UP, trans)
-                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
-
-                case JCS_Vector3Direction.BACK_DOWN_LEFT:
-                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
-                        + VectorDirection(JCS_Vector3Direction.DOWN, trans)
-                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
-                case JCS_Vector3Direction.BACK_DOWN_RIGHT:
-                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
-                        + VectorDirection(JCS_Vector3Direction.DOWN, trans)
-                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
-            }
-
-            // this cannot happens
-            return Vector3.zero;
-        }
-
-        /// <summary>
-        /// Add random value to Vector3
-        /// </summary>
-        /// <param name="trans"> transfrorm u want to apply. </param>
-        /// <param name="randVec"> value for each axis. </param>
-        /// <param name="checks"> check for eaxh axis. </param>
-        /// <returns> transform result. </returns>
-        public static Vector3 ApplyRandVector3(Vector3 trans, Vector3 randVec, JCS_Bool3 checks)
-        {
-            Vector3 tempVec = trans;
-
-            if (checks.check1)
-            {
-                float val = JCS_Random.Range(-randVec.x, randVec.x);
-                tempVec = IncVecX(tempVec, val);
-            }
-
-            if (checks.check2)
-            {
-                float val = JCS_Random.Range(-randVec.y, randVec.y);
-                tempVec = IncVecY(tempVec, val);
-            }
-
-            if (checks.check3)
-            {
-                float val = JCS_Random.Range(-randVec.z, randVec.z);
-                tempVec = IncVecZ(tempVec, val);
-            }
-
-            trans = tempVec;
-
-            return tempVec;
-        }
-
-
-        /// <summary>
-        /// Check if the object are the same tribe.
-        /// </summary>
-        /// <param name="liveObj1"> obj one </param>
-        /// <param name="liveObj2"> obj two </param>
-        /// <returns>
-        /// true: same tribe
-        /// false: not the same tribe
-        /// </returns>
-        public static bool IsSameTribe(JCS_2DLiveObject liveObj1, JCS_2DLiveObject liveObj2)
-        {
-            if (liveObj1 == null || liveObj2 == null)
-                return false;
-
-            // if both player does not need to add in to list.
-            // or if both enemy does not need to add in to list.
-            return (liveObj1.IsPlayer == liveObj2.IsPlayer);
-        }
-
-        /// <summary>
-        /// Enum typed version casting.
-        /// Source: http://stackoverflow.com/questions/972307/can-you-loop-through-all-enum-values
-        /// </summary>
-        public static IEnumerable<T> GetValues<T>()
-        {
-            return System.Enum.GetValues(typeof(T)).Cast<T>();
         }
 
         /// <summary>
@@ -970,201 +966,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Multiply all the parent localEulerAngles to get the correct 
-        /// description of the transform information. 
-        /// 
-        /// ATTENTION(jenchieh): This will cause some performance, use 
-        /// it wisely.
-        /// </summary>
-        /// <param name="trans"> transform we want to get from and use 
-        /// it for parent. </param>
-        /// <param name="inEulerAngles"> use to store the result. </param>
-        /// <returns> Accumilate the result. </returns>
-        public static Vector3 GetFinalLocalEulerAngles(Transform trans, ref Vector3 inEulerAngles)
-        {
-            if (trans.parent == null)
-                return inEulerAngles;
-
-            Vector3 parentVal = trans.parent.transform.localEulerAngles;
-
-            inEulerAngles = SetVec3(
-                inEulerAngles,
-                parentVal.x * inEulerAngles.x,
-                parentVal.y * inEulerAngles.y,
-                parentVal.z * inEulerAngles.z);
-
-            return GetFinalLocalEulerAngles(trans.parent, ref inEulerAngles);
-        }
-
-        /// <summary>
-        /// Merge multiple arrays into one array.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static T[] MergeArrays<T>(params T[][] arrList)
-        {
-            if (arrList.Length <= 1)
-            {
-                JCS_Debug.Log("You trying to merge the array less then two array");
-            }
-
-            int arrLen = 0;
-            foreach (var arr in arrList)
-                arrLen += arr.Length;
-
-            // first combine the first two array.
-            T[] data = MergeArrays2<T>(arrList[0], arrList[1]);
-
-            // combine the rest.
-            for (int index = 2; index < arrList.Length; ++index)
-            {
-                data = MergeArrays2<T>(data, arrList[index]);
-            }
-            return data;
-        }
-
-        /// <summary>
-        /// Merging two array and return the new array.
-        /// </summary>
-        /// <typeparam name="T"> Type of the array. </typeparam>
-        /// <param name="arr1"> First array. </param>
-        /// <param name="arr2"> Second array. </param>
-        /// <returns> Merged array. </returns>
-        public static T[] MergeArrays2<T>(T[] arr1, T[] arr2)
-        {
-            T[] data = new T[arr1.Length + arr2.Length];
-
-            System.Array.Copy(arr1, data, arr1.Length);
-            System.Array.Copy(arr2, 0, data, arr1.Length, arr2.Length);
-
-            return data;
-        }
-
-        /// <summary>
-        /// Merging two list and return the new list.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="lists"></param>
-        /// <returns></returns>
-        public static List<T> MergeList<T>(params List<T>[] lists)
-        {
-            if (lists.Length <= 1)
-            {
-                JCS_Debug.Log("You trying to merge the List less then two array");
-            }
-
-            var newList = new List<T>();
-
-            for (int index = 0; index < lists.Length; ++index)
-            {
-                // Loop through all list.
-                List<T> list = lists[index];
-
-                if (list == null)
-                    continue;
-
-                for (int listIndex = 0; listIndex < list.Count; ++listIndex)
-                {
-                    // Loop through item.
-                    T item = list[listIndex];
-
-                    newList.Add(item);
-                }
-            }
-
-            return newList;
-        }
-
-        /// <summary>
-        /// Copy byte array to another byte array memory space.
-        /// </summary>
-        /// <param name="inBuf"> byte array to copy. </param>
-        /// <param name="start"> Starting index to copy. </param>
-        /// <param name="len"> Length to copy. </param>
-        /// <returns> byte array that are created in new memroy space. </returns>
-        public static byte[] CopyByteArray(byte[] inBuf, int start, int len)
-        {
-            byte[] bytes = new byte[len];
-
-            for (int count = 0; count < len; ++count)
-            {
-                bytes[count] = inBuf[count];
-            }
-
-            return bytes;
-        }
-
-        /// <summary>
-        /// Return the length of an enumerator.
-        /// </summary>
-        /// <typeparam name="T"> Enum type. </typeparam>
-        /// <returns> Size of the enum listed. </returns>
-        public static int EnumSize<T>()
-        {
-            return System.Enum.GetNames(typeof(T)).Length;
-        }
-
-        /// <summary>
-        /// Check if the list empty.
-        /// </summary>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static bool IsArrayEmpty(string[] list)
-        {
-            for (int index = 0; index < list.Length; ++index)
-            {
-                if (list[index] != "")
-                    return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Pop the last value from the list.
-        /// </summary>
-        public static T ListPopFront<T>(List<T> list)
-        {
-            if (list.Count == 0)
-                return default(T);
-
-            T data = list[0];
-
-            list.RemoveAt(0);
-
-            return data;
-        }
-
-        /// <summary>
-        /// Pop the last value from the list.
-        /// </summary>
-        public static T ListPopBack<T>(List<T> list)
-        {
-            if (list.Count == 0)
-                return default(T);
-
-            int lastIndex = list.Count - 1;
-
-            T data = list[lastIndex];
-
-            list.RemoveAt(lastIndex);
-
-            return data;
-        }
-
-        /// <summary>
-        /// Is the string the valid number to parse.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public static bool IsNumberString(string str)
-        {
-            double test;
-            return (double.TryParse(str, out test));
-        }
-
-        /// <summary>
         /// Detttach all the child from one transform.
         /// </summary>
         /// <param name="trans"> transform you want to remove all 
@@ -1341,15 +1142,7 @@ namespace JCSUnity
             trans.SetParent(parent);
         }
 
-        /// <summary>
-        /// Return JSON by passing serializable object.
-        /// </summary>
-        /// <param name="obj"> Object that are serializable. </param>
-        /// <returns> JSON string. </returns>
-        public static string ToJson<T>(T obj)
-        {
-            return JsonUtility.ToJson(obj);
-        }
+        #region Scene
 
         /// <summary>
         /// Check current scene's with NAME.
@@ -1386,110 +1179,25 @@ namespace JCSUnity
             return false;
         }
 
-        /// <summary>
-        /// Method to do search directory and get the last file index.
-        /// </summary>
-        /// <param name="path"> path to search index. </param>
-        /// <param name="prefixStr"> Filen name prefix. </param>
-        /// <param name="ext"> Filen name extension. </param>
-        /// <returns></returns>
-        public static int LastFileIndex(string path, string prefixStr, string ext)
-        {
-            JCS_IO.CreateDirectory(path);
-
-            var gs = JCS_GameSettings.instance;
-
-            string fileName = "";
-            string curExt = "";
-            int last_saved_screenshot = -1;
-
-            foreach (string file in Directory.GetFiles(path))
-            {
-                fileName = Path.GetFileNameWithoutExtension(file);
-                curExt = Path.GetExtension(file);
-
-                // check if is the .png file 
-                // (screen shot can only be image file)
-                if (!curExt.Equals(ext))
-                    continue;
-
-                int index = fileName.IndexOf(prefixStr);
-                int len = prefixStr.Length;
-                string startOfString = fileName.Substring(0, index);
-                string endOfString = fileName.Substring(index + len);
-                string cleanPath = startOfString + endOfString;
-
-                last_saved_screenshot = System.Int32.Parse(cleanPath);
-            }
-
-            return last_saved_screenshot;
-        }
+        #endregion
 
         /// <summary>
-        /// Delete all files in directory.
+        /// Check if the object are the same tribe.
         /// </summary>
-        /// <param name="dirPath"> Target delete directory. </param>
-        public static void DeleteAllFilesFromDir(string dirPath)
+        /// <param name="liveObj1"> obj one </param>
+        /// <param name="liveObj2"> obj two </param>
+        /// <returns>
+        /// true: same tribe
+        /// false: not the same tribe
+        /// </returns>
+        public static bool IsSameTribe(JCS_2DLiveObject liveObj1, JCS_2DLiveObject liveObj2)
         {
-            DirectoryInfo di = new DirectoryInfo(dirPath);
+            if (liveObj1 == null || liveObj2 == null)
+                return false;
 
-            foreach (FileInfo file in di.GetFiles())
-                file.Delete();
-        }
-
-        /// <summary>
-        /// Convert byte array to string by charset type.
-        /// </summary>
-        /// <param name="data"> Byte array data to convert to string data. </param>
-        /// <param name="charset"> Target charset type. </param>
-        /// <returns> String data that had been converted. </returns>
-        public static string BytesToString(byte[] data, JCS_CharsetType charset)
-        {
-            switch (charset)
-            {
-                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetString(data);
-                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetString(data);
-                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetString(data);
-                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetString(data);
-                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetString(data);
-                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
-                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
-            }
-            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
-            return null;
-        }
-
-        /// <summary>
-        /// Convert string to byte array by charset type.
-        /// </summary>
-        /// <param name="data"> String data to convert to byte array. </param>
-        /// <param name="charset"> Target charset type. </param>
-        /// <returns> Byte array that had been converted. </returns>
-        public static byte[] StringToBytes(string data, JCS_CharsetType charset)
-        {
-            switch (charset)
-            {
-                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetBytes(data);
-                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetBytes(data);
-                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetBytes(data);
-                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetBytes(data);
-                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetBytes(data);
-                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
-                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
-            }
-            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
-            return null;
-        }
-
-        /// <summary>
-        /// Simple version of escape url.
-        /// </summary>
-        /// <param name="url"> Url you want to escape. </param>
-        /// <returns> Return the escaped url. </returns>
-        public static string EscapeURL(string url)
-        {
-            url = url.Replace(" ", "%20");
-            return url;
+            // if both player does not need to add in to list.
+            // or if both enemy does not need to add in to list.
+            return (liveObj1.IsPlayer == liveObj2.IsPlayer);
         }
     }
 }

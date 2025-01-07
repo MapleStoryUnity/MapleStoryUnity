@@ -32,7 +32,7 @@ namespace JCSUnity
         // optimize
         private int mLastSpawnPos = 0;
 
-        private JCS_Vector<JCS_LogText> mLogTexts = null;
+        private JCS_Vec<JCS_LogText> mLogTexts = null;
 
         /* Setter & Getter */
 
@@ -113,7 +113,7 @@ namespace JCSUnity
             // Get the log system from the same transfrom/node.
             JCS_IGLogSystem logSystem = this.GetComponent<JCS_IGLogSystem>();
 
-            mLogTexts = new JCS_Vector<JCS_LogText>(mNumberOfHandle);
+            mLogTexts = new JCS_Vec<JCS_LogText>(mNumberOfHandle);
 
             for (int count = 0; count < mNumberOfHandle; ++count)
             {

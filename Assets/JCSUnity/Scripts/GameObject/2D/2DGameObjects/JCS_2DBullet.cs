@@ -231,7 +231,7 @@ namespace JCSUnity
                 mRandDegreeZ);
 
             // apply it.
-            transform.eulerAngles = JCS_Util.ApplyRandVector3(transform.eulerAngles, randVal, checkers);
+            transform.eulerAngles = JCS_Vector.ApplyRandVector3(transform.eulerAngles, randVal, checkers);
 
             // reset timer
             mDegreeTimer = 0;

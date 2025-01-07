@@ -65,12 +65,12 @@ namespace JCSUnity
         private float mShootGap = 0.1f;
 
         //** Sequence Data **
-        private JCS_Vector<int> mThread = null;           // main thread
-        private JCS_Vector<float> mTimers = null;         // timer per thread
-        private JCS_Vector<int> mShootCount = null;       // how many shoot should process per thread
-        private JCS_Vector<int> mShootCounter = null;     // counter per thread
-        private JCS_Vector<Vector3> mShootPos = null;
-        private JCS_Vector<Vector3> mShootAngles = null;
+        private JCS_Vec<int> mThread = null;           // main thread
+        private JCS_Vec<float> mTimers = null;         // timer per thread
+        private JCS_Vec<int> mShootCount = null;       // how many shoot should process per thread
+        private JCS_Vec<int> mShootCounter = null;     // counter per thread
+        private JCS_Vec<Vector3> mShootPos = null;
+        private JCS_Vec<Vector3> mShootAngles = null;
 
         /* Setter & Getter */
 
@@ -108,12 +108,12 @@ namespace JCSUnity
             mShootAction.OverrideShoot = true;
             mCursorShootAction.OverrideShoot = true;
 
-            mThread = new JCS_Vector<int>();
-            mTimers = new JCS_Vector<float>();
-            mShootCount = new JCS_Vector<int>();
-            mShootCounter = new JCS_Vector<int>();
-            mShootPos = new JCS_Vector<Vector3>();
-            mShootAngles = new JCS_Vector<Vector3>();
+            mThread = new JCS_Vec<int>();
+            mTimers = new JCS_Vec<float>();
+            mShootCount = new JCS_Vec<int>();
+            mShootCounter = new JCS_Vec<int>();
+            mShootPos = new JCS_Vec<Vector3>();
+            mShootAngles = new JCS_Vec<Vector3>();
         }
 
         private void Update()

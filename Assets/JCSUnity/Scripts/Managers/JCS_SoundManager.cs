@@ -22,10 +22,10 @@ namespace JCSUnity
         private AudioListener mAudioListener = null;
 
         // environment, ui, etc.
-        private JCS_Vector<AudioSource> mSFXSounds = null;
+        private JCS_Vec<AudioSource> mSFXSounds = null;
 
         // personal stuff, personal skill, personal jump walk, etc.
-        private JCS_Vector<AudioSource> mSkillsSounds = null;
+        private JCS_Vec<AudioSource> mSkillsSounds = null;
 
         private JCS_SoundPlayer mGlobalSoundPlayer = null;
 
@@ -100,7 +100,7 @@ namespace JCSUnity
             this.mBGM.volume = ss.GetBGM_Volume();
             this.mBGM.mute = ss.BGM_MUTE;
         }
-        public JCS_Vector<AudioSource> GetEffectSounds() { return this.mSFXSounds; }
+        public JCS_Vec<AudioSource> GetEffectSounds() { return this.mSFXSounds; }
         public JCS_SoundPlayer GlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
 
         public bool OverrideSetting { get { return this.mOverrideSetting; } }
@@ -135,8 +135,8 @@ namespace JCSUnity
             // try to get component, this is not guarantee.
             this.mJCSFadeSound = this.GetComponent<JCS_FadeSound>();
 
-            mSFXSounds = new JCS_Vector<AudioSource>();
-            mSkillsSounds = new JCS_Vector<AudioSource>();
+            mSFXSounds = new JCS_Vec<AudioSource>();
+            mSkillsSounds = new JCS_Vec<AudioSource>();
 
             mGlobalSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
@@ -380,7 +380,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="list"> list of the audio source </param>
         /// <param name="vol"> target volume. </param>
-        private void SetSoundVolume(JCS_Vector<AudioSource> list, float vol)
+        private void SetSoundVolume(JCS_Vec<AudioSource> list, float vol)
         {
             for (int index = 0; index < list.length; ++index)
             {
@@ -393,7 +393,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="list"> list of the audio source. </param>
         /// <param name="act"> target mute action. </param>
-        private void SetSoundtMute(JCS_Vector<AudioSource> list, bool act)
+        private void SetSoundtMute(JCS_Vec<AudioSource> list, bool act)
         {
             for (int index = 0; index < list.length; ++index)
             {
@@ -424,7 +424,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="list"> List of audio source. </param>
         /// <param name="sound"> audio source to add into list. </param>
-        private void AssignSoundToList(JCS_Vector<AudioSource> list, AudioSource sound)
+        private void AssignSoundToList(JCS_Vec<AudioSource> list, AudioSource sound)
         {
             if (sound == null)
             {

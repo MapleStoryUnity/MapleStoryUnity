@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private JCS_Vector<JCS_Player> mTargetList = null;
+        private JCS_Vec<JCS_Player> mTargetList = null;
 
         private AudioListener mAudioListener = null;
 
@@ -79,7 +79,7 @@ namespace JCSUnity
 
         protected void Awake()
         {
-            mTargetList = new JCS_Vector<JCS_Player>();
+            mTargetList = new JCS_Vec<JCS_Player>();
 
             mAudioListener = this.GetComponent<AudioListener>();
 

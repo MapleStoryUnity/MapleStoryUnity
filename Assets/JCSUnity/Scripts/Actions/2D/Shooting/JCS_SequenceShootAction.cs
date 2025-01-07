@@ -82,13 +82,13 @@ namespace JCSUnity
         private JCS_DetectAreaObject mDetectedObject = null;
 
         //** Sequence Data **
-        private JCS_Vector<int> mThread = null;                    // main thread
-        private JCS_Vector<float> mTimers = null;                  // timer per thread
-        private JCS_Vector<int> mShootCount = null;                // how many shoot should process per thread
-        private JCS_Vector<int> mShootCounter = null;              // counter per thread
-        private JCS_Vector<Vector3> mShootPos = null;
-        private JCS_Vector<Transform> mTargetsPerSequence = null;
-        private JCS_Vector<bool> mShootDirection = null;
+        private JCS_Vec<int> mThread = null;                    // main thread
+        private JCS_Vec<float> mTimers = null;                  // timer per thread
+        private JCS_Vec<int> mShootCount = null;                // how many shoot should process per thread
+        private JCS_Vec<int> mShootCounter = null;              // counter per thread
+        private JCS_Vec<Vector3> mShootPos = null;
+        private JCS_Vec<Transform> mTargetsPerSequence = null;
+        private JCS_Vec<bool> mShootDirection = null;
 
         /* Setter & Getter */
 
@@ -113,13 +113,13 @@ namespace JCSUnity
             // override the shoot effect in the base one.
             mShootAction.OverrideShoot = true;
 
-            mThread = new JCS_Vector<int>();
-            mTimers = new JCS_Vector<float>();
-            mShootCount = new JCS_Vector<int>();
-            mShootCounter = new JCS_Vector<int>();
-            mShootPos = new JCS_Vector<Vector3>();
-            mTargetsPerSequence = new JCS_Vector<Transform>();
-            mShootDirection = new JCS_Vector<bool>();
+            mThread = new JCS_Vec<int>();
+            mTimers = new JCS_Vec<float>();
+            mShootCount = new JCS_Vec<int>();
+            mShootCounter = new JCS_Vec<int>();
+            mShootPos = new JCS_Vec<Vector3>();
+            mTargetsPerSequence = new JCS_Vec<Transform>();
+            mShootDirection = new JCS_Vec<bool>();
 
             // try to get the ability format.
             if (mAbilityFormat == null)

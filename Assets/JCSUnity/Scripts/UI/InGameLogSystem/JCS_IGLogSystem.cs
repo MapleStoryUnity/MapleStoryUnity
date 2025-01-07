@@ -49,7 +49,7 @@ namespace JCSUnity
         private float mLogSpacing = 1;
 
         // vector of log text rendering on the screen.
-        private JCS_Vector<JCS_LogText> mRenderLogText = null;
+        private JCS_Vec<JCS_LogText> mRenderLogText = null;
 
         /* Setter & Getter */
 
@@ -63,7 +63,7 @@ namespace JCSUnity
 
             this.mLogTextPool = this.GetComponent<JCS_GUITextPool>();
 
-            mRenderLogText = new JCS_Vector<JCS_LogText>();
+            mRenderLogText = new JCS_Vec<JCS_LogText>();
         }
 
         private void Start()

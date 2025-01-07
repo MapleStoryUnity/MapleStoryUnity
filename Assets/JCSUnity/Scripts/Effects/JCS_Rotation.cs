@@ -102,9 +102,9 @@ namespace JCSUnity
             Vector3 rotateDirection;
 
             if (mBySelf)
-                rotateDirection = JCS_Util.VectorDirection(mRotateDirection, this.transform);
+                rotateDirection = JCS_Vector.Direction(mRotateDirection, this.transform);
             else
-                rotateDirection = JCS_Util.VectorDirection(mRotateDirection);
+                rotateDirection = JCS_Vector.Direction(mRotateDirection);
 
             transform.Rotate(rotateDirection * mRotateSpeed * JCS_Time.DeltaTime(mDeltaTimeType));
         }

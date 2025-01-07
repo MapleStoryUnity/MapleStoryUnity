@@ -203,21 +203,21 @@ namespace JCSUnity
 
 
             // randomize the position a bit.
-            Vector3 randPos = JCS_Util.ApplyRandVector3(
+            Vector3 randPos = JCS_Vector.ApplyRandVector3(
                 // use the current spawner position.
                 objSpawned.transform.position,
                 new Vector3(mRandPosRangeX, mRandPosRangeY, mRandPosRangeZ),
                 new JCS_Bool3(mRandPosX, mRandPosY, mRandPosZ));
 
             // randomize the rotation a bit.
-            Vector3 randRot = JCS_Util.ApplyRandVector3(
+            Vector3 randRot = JCS_Vector.ApplyRandVector3(
                 // use the current spawner position.
                 objSpawned.transform.eulerAngles,
                 new Vector3(mRandRotRangeX, mRandRotRangeY, mRandRotRangeZ),
                 new JCS_Bool3(mRandRotationX, mRandRotationY, mRandRotationZ));
 
             // randomize the rotation a bit.
-            Vector3 randScale = JCS_Util.ApplyRandVector3(
+            Vector3 randScale = JCS_Vector.ApplyRandVector3(
                 // use the current spawner position.
                 objSpawned.transform.localScale,
                 new Vector3(mRandScaleRangeX, mRandScaleRangeY, mRandScaleRangeZ),

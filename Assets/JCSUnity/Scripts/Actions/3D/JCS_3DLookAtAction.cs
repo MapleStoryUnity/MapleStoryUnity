@@ -127,7 +127,7 @@ namespace JCSUnity
 
             Vector3 lookPoint = mTargetTransform.position;
             // get direction according to the type.
-            Vector3 direction = JCS_Util.VectorDirection(mLookDirection);
+            Vector3 direction = JCS_Vector.Direction(mLookDirection);
 
             transform.LookAt(lookPoint, direction * (int)mState);
 
@@ -159,7 +159,7 @@ namespace JCSUnity
             if (forward == Vector3.zero)
                 return;
 
-            Vector3 direction = JCS_Util.VectorDirection(mLookDirection);
+            Vector3 direction = JCS_Vector.Direction(mLookDirection);
 
             Quaternion dir = Quaternion.LookRotation(forward, direction * (int)mState);
 

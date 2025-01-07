@@ -179,7 +179,7 @@ namespace JCSUnity
             var gs = JCS_GameSettings.instance;
             var prefix = gs.SCREENSHOT_FILENAME;
             var ext = gs.SCREENSHOT_EXTENSION;
-            return JCS_Util.LastFileIndex(SavePath(), prefix, ext);
+            return JCS_IO.LastFileIndex(SavePath(), prefix, ext);
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace JCSUnity
         /// </summary>
         public static void DeleteAllImages()
         {
-            JCS_Util.DeleteAllFilesFromDir(SavePath());
+            JCS_IO.DeleteAllFilesFromDir(SavePath());
         }
 
         private Vector3 GameDepthRect(Vector3 depth)

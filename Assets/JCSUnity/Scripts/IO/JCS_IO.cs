@@ -119,5 +119,56 @@ namespace JCSUnity
             Directory.CreateDirectory(path);
             return true;
         }
+
+        /// <summary>
+        /// Method to do search directory and get the last file index.
+        /// </summary>
+        /// <param name="path"> path to search index. </param>
+        /// <param name="prefixStr"> Filen name prefix. </param>
+        /// <param name="ext"> Filen name extension. </param>
+        /// <returns></returns>
+        public static int LastFileIndex(string path, string prefixStr, string ext)
+        {
+            CreateDirectory(path);
+
+            var gs = JCS_GameSettings.instance;
+
+            string fileName = "";
+            string curExt = "";
+            int last_saved_screenshot = -1;
+
+            foreach (string file in Directory.GetFiles(path))
+            {
+                fileName = Path.GetFileNameWithoutExtension(file);
+                curExt = Path.GetExtension(file);
+
+                // check if is the .png file 
+                // (screen shot can only be image file)
+                if (!curExt.Equals(ext))
+                    continue;
+
+                int index = fileName.IndexOf(prefixStr);
+                int len = prefixStr.Length;
+                string startOfString = fileName.Substring(0, index);
+                string endOfString = fileName.Substring(index + len);
+                string cleanPath = startOfString + endOfString;
+
+                last_saved_screenshot = System.Int32.Parse(cleanPath);
+            }
+
+            return last_saved_screenshot;
+        }
+
+        /// <summary>
+        /// Delete all files in directory.
+        /// </summary>
+        /// <param name="dirPath"> Target delete directory. </param>
+        public static void DeleteAllFilesFromDir(string dirPath)
+        {
+            DirectoryInfo di = new DirectoryInfo(dirPath);
+
+            foreach (FileInfo file in di.GetFiles())
+                file.Delete();
+        }
     }
 }

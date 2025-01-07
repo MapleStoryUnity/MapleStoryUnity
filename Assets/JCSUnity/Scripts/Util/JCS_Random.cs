@@ -115,5 +115,17 @@ namespace JCSUnity
             var v = System.Enum.GetValues(typeof(T));
             return (T)v.GetValue(r.Next(v.Length));
         }
+
+        /// <summary>
+        /// Return a random point in bounds.
+        /// </summary>
+        /// <param name="bounds"> The bounds object. </param>
+        public static Vector3 PointInBounds(Bounds bounds)
+        {
+            return new Vector3(
+                Range(bounds.min.x, bounds.max.x),
+                Range(bounds.min.y, bounds.max.y),
+                Range(bounds.min.z, bounds.max.z));
+        }
     }
 }

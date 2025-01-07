@@ -39,7 +39,7 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_AIMoveActionType mAIMoveActionType = JCS_AIMoveActionType.NONE;
 
-        private JCS_Vector<JCS_AIAction> mAIActions = null;
+        private JCS_Vec<JCS_AIAction> mAIActions = null;
 
         /* Setter & Getter */
 
@@ -49,7 +49,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mAIActions = new JCS_Vector<JCS_AIAction>();
+            this.mAIActions = new JCS_Vec<JCS_AIAction>();
 
             // add all the ai action into the array.
             JCS_AIAction[] actions = this.GetComponents<JCS_AIAction>();

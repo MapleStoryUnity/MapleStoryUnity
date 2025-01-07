@@ -31,7 +31,7 @@ namespace JCSUnity
         [SerializeField]
         private Collider[] mDetectCollider = null;
 
-        private JCS_Vector<JCS_DetectAreaObject> mDetectedObjects = null;
+        private JCS_Vec<JCS_DetectAreaObject> mDetectedObjects = null;
 
         /* Setter & Getter */
 
@@ -67,7 +67,7 @@ namespace JCSUnity
             }
 
             // create list to manage all detected object
-            mDetectedObjects = new JCS_Vector<JCS_DetectAreaObject>();
+            mDetectedObjects = new JCS_Vec<JCS_DetectAreaObject>();
         }
 
         /// <summary>

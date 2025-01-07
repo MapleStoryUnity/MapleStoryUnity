@@ -46,7 +46,7 @@ namespace JCSUnity
         [Range(50, 5000)]
         private int mNumOfParticle = 50;
 
-        private JCS_Vector<JCS_Particle> mParticles = null;
+        private JCS_Vec<JCS_Particle> mParticles = null;
         private int mLastAvaliableIndex = 0;
 
         [Separator("Runtime Variables (JCS_ParticleSystem)")]
@@ -176,14 +176,14 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         private bool mSetToSamePositionWhenActive = true;
 
         //-- Thread
-        private JCS_Vector<int> mThread = null;
-        private JCS_Vector<float> mTimers = null;           // timer per thread
-        private JCS_Vector<int> mParticleCount = null;         // how many shoot should process per thread
-        private JCS_Vector<int> mParticleCounter = null;         // counter per thread
+        private JCS_Vec<int> mThread = null;
+        private JCS_Vec<float> mTimers = null;           // timer per thread
+        private JCS_Vec<int> mParticleCount = null;         // how many shoot should process per thread
+        private JCS_Vec<int> mParticleCounter = null;         // counter per thread
 
         /* Setter & Getter */
 
-        public JCS_Vector<JCS_Particle> GetParticles() { return this.mParticles; }
+        public JCS_Vec<JCS_Particle> GetParticles() { return this.mParticles; }
 
         // Binds.
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -215,12 +215,12 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
 
         private void Awake()
         {
-            mParticles = new JCS_Vector<JCS_Particle>();
+            mParticles = new JCS_Vec<JCS_Particle>();
 
-            mThread = new JCS_Vector<int>();
-            mTimers = new JCS_Vector<float>();
-            mParticleCount = new JCS_Vector<int>();
-            mParticleCounter = new JCS_Vector<int>();
+            mThread = new JCS_Vec<int>();
+            mTimers = new JCS_Vec<float>();
+            mParticleCount = new JCS_Vec<int>();
+            mParticleCounter = new JCS_Vec<int>();
 
             mFreezePos = this.transform.position;
         }
