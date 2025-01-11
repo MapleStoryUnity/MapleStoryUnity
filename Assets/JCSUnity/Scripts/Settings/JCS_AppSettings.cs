@@ -62,7 +62,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = CheckInstance(instance, this);
+            CheckInstance(this);
 
             if (SET_FRAME_RATE)
                 Application.targetFrameRate = FRAME_RATE;

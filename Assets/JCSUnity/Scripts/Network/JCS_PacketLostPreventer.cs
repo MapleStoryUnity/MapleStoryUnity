@@ -50,7 +50,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = CheckInstance(instance, this);
+            CheckInstance(this);
         }
 
         private void LateUpdate()

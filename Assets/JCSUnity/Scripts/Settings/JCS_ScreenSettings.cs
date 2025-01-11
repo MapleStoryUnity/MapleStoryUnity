@@ -98,7 +98,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = CheckInstance(instance, this);
+            CheckInstance(this);
 
             // This will only run once at the time when 
             // the application is starts.

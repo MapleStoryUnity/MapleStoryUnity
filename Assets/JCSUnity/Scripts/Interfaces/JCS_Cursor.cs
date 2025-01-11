@@ -32,7 +32,7 @@ namespace JCSUnity
 
         protected virtual void Awake()
         {
-            instance = CheckInstance(instance, this);
+            CheckInstance(this);
 
 #if UNITY_EDITOR
             mShowCursor = true;

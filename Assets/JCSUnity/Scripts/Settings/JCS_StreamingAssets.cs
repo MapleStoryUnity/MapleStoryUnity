@@ -60,7 +60,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = CheckInstance(instance, this);
+            CheckInstance(this);
 
             downloadList = preloadPath;
         }

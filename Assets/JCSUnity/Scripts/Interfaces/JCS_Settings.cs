@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Interface of all setting class.
     /// </summary>
-    public abstract class JCS_Settings<T> : JCS_Instance<T>
+    public abstract class JCS_Settings<T> : JCS_InstanceNew<T>
         where T : MonoBehaviour
     {
         /* Variables */
@@ -23,34 +23,12 @@ namespace JCSUnity
         /* Functions */
 
         /// <summary>
-        /// Force the setting object singleton.
+        /// Check singleton for keep the new one.
         /// </summary>
-        /// <param name="_old"> old instance. </param>
-        /// <param name="_new"> new instance. </param>
-        protected T CheckInstance(T _old, T _new)
-        {
-            if (_old != null)
-            {
-                TransferData(_old, _new);
-
-                // Delete the old one
-                Destroy(_old.gameObject);
-            }
-
-            return _new;
-        }
-
-        /// <summary>
-        /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
-        /// I would like to use own define to transfer the old instance
-        /// to the newer instance.
-        /// 
-        /// Every time when unity load the scene. The script have been
-        /// reset, in order not to lose the original setting.
-        /// transfer the data from old instance to new instance.
-        /// </summary>
-        /// <param name="_old"> old instance </param>
         /// <param name="_new"> new instance </param>
-        protected abstract void TransferData(T _old, T _new);
+        protected virtual void CheckInstance(T _new)
+        {
+            base.CheckInstance(_new, true);
+        }
     }
 }
