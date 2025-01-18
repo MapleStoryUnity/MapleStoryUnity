@@ -17,6 +17,8 @@ using UnityEngine.Android;
 
 namespace JCSUnity
 {
+    public delegate void OnSystemLanguageChanged(SystemLanguage language);
+
     /// <summary>
     /// Manager manage application layer.
     /// </summary>
@@ -27,6 +29,9 @@ namespace JCSUnity
         public static bool APP_PAUSE = false;
         public static bool APP_QUITTING = false;
         public static bool APP_INITIALIZING = true;
+
+        // Execute after the system language has changed.
+        public OnSystemLanguageChanged onSystemLanguageChanged = null;
 
         [Separator("Check Variables (JCS_AppManager)")]
 
@@ -92,6 +97,9 @@ namespace JCSUnity
             {
                 this.mSystemLanguage = value;
                 RefreshLangTexts();
+
+                if (onSystemLanguageChanged != null)
+                    onSystemLanguageChanged.Invoke(value);
             }
         }
         public bool RequestCamera { get { return this.mRequestCamera; } }

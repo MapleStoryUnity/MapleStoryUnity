@@ -49,6 +49,10 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_Camera)")]
 
+        [Tooltip("Target transform information.")]
+        [SerializeField]
+        protected Transform mTargetTransform = null;
+
         [Tooltip("Flag to check if currently the camera following the target object.")]
         [SerializeField]
         protected bool mFollowing = true;
@@ -95,8 +99,8 @@ namespace JCSUnity
         public bool Following { get { return this.mFollowing; } set { this.mFollowing = value; } }
         public bool SmoothTrack { get { return this.mSmoothTrack; } set { this.mSmoothTrack = value; } }
 
-        public abstract void SetFollowTarget(Transform trans);
-        public abstract Transform GetFollowTarget();
+        public virtual void SetFollowTarget(Transform trans) { this.mTargetTransform = trans; }
+        public virtual Transform GetFollowTarget() { return mTargetTransform; }
 
         public float ScreenAspect { get { return (float)mCamera.pixelWidth / (float)mCamera.pixelHeight; } }
 

@@ -41,10 +41,6 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_3DCamera)")]
 
-        [Tooltip("Target we want to look at.")]
-        [SerializeField]
-        private Transform mTargetTransform = null;
-
         [Tooltip("Targeting revolution.")]
         [SerializeField]
         private float mTargetRevolution = 0.0f;

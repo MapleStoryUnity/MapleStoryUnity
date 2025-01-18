@@ -32,11 +32,6 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_2DCamera)")]
 
-        //-- Target information
-        [Tooltip("Target transform information.")]
-        [SerializeField]
-        private Transform mTargetTransform = null;
-
         [Tooltip("Set velocity to zero while the follow not active.")]
         [SerializeField]
         private bool mResetVelocityToZeroWhileNotActive = false;

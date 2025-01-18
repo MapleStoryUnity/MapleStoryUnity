@@ -8,7 +8,7 @@
  */
 using System.IO;
 using System.Text;
-using UnityEngine;
+using Newtonsoft.Json;
 
 namespace JCSUnity
 {
@@ -25,11 +25,11 @@ namespace JCSUnity
         /* Functions */
 
         /// <summary>
-        /// Save the game data into xml file format.
+        /// Save the applicatiion data into JSON file format.
         /// </summary>
         /// <typeparam name="T"> type of the data save. </typeparam>
         /// <param name="filePath"> where to save. </param>
-        /// <param name="fileName"> name of the file u want to save. </param>
+        /// <param name="fileName"> name of the file you want to save. </param>
         public override void Save<T>(string filePath, string fileName)
         {
             string fullFilePath = filePath + fileName;
@@ -38,11 +38,11 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Save the game data into xml file format.
+        /// Save the applicatiion data into JSON file format.
         /// </summary>
         /// <typeparam name="T"> type of the data save. </typeparam>
         /// <param name="filePath"> where to save. </param>
-        /// <param name="fileName"> name of the file u want to save. </param>
+        /// <param name="fileName"> name of the file you want to save. </param>
         public override void Save<T>(string fullFilePath)
         {
             string filePath = Path.GetDirectoryName(fullFilePath);
@@ -53,20 +53,20 @@ namespace JCSUnity
 
             using (var stream = new FileStream(fullFilePath, FileMode.Create))
             {
-                string json = JsonUtility.ToJson(this);
+                string json = JsonConvert.SerializeObject(this);
                 byte[] info = new UTF8Encoding(true).GetBytes(json);
                 stream.Write(info, 0, info.Length);
             }
         }
 
         /// <summary>
-        /// Load the game data from a directory file path.
+        /// Load the applicatiion data from a directory file path.
         /// </summary>
-        /// <typeparam name="T"> type of the game data u want to load. </typeparam>
+        /// <typeparam name="T"> type of the applicatiion data you want to load. </typeparam>
         /// <param name="filePath"> file directory, location, path. </param>
-        /// <param name="fileName"> name of the file u want to load. </param>
+        /// <param name="fileName"> name of the file you want to load. </param>
         /// <returns>
-        /// Full game data. If the file does not exists returns 
+        /// Full applicatiion data. If the file does not exists returns 
         /// null references.
         /// </returns>
         public static T LoadFromFile<T>(string filePath, string fileName)
@@ -77,12 +77,12 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Load the game data from a directory file path.
+        /// Load the applicatiion data from a directory file path.
         /// </summary>
-        /// <typeparam name="T"> type of the game data u want to load. </typeparam>
+        /// <typeparam name="T"> type of the applicatiion data you want to load. </typeparam>
         /// <param name="fullFilePath"> file path to the file. </param>
         /// <returns>
-        /// Full game data. If the file does not exists returns 
+        /// Full applicatiion data. If the file does not exists returns 
         /// null references.
         /// </returns>
         public static T LoadFromFile<T>(string fullFilePath)
@@ -97,7 +97,7 @@ namespace JCSUnity
                 {
                     contents = sr.ReadToEnd();
                 }
-                return JsonUtility.FromJson<T>(contents);
+                return JsonConvert.DeserializeObject<T>(contents);
             }
         }
     }
