@@ -53,7 +53,7 @@ namespace JCSUnity
 
             using (var stream = new FileStream(fullFilePath, FileMode.Create))
             {
-                string json = JsonConvert.SerializeObject(this);
+                string json = JsonConvert.SerializeObject(this, Formatting.Indented);
                 byte[] info = new UTF8Encoding(true).GetBytes(json);
                 stream.Write(info, 0, info.Length);
             }
