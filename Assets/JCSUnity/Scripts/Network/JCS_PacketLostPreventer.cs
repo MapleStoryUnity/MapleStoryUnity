@@ -161,8 +161,8 @@ namespace JCSUnity
         /// </summary>
         private void TrackPacket()
         {
-            if (JCS_NetworkSettings.GetGameSocket() != null &&
-                !JCS_NetworkSettings.GetGameSocket().IsConnected())
+            if (JCS_NetworkSettings.GetSocket() != null &&
+                !JCS_NetworkSettings.GetSocket().IsConnected())
                 return;
 
             mResendTimer += Time.unscaledDeltaTime;
@@ -200,7 +200,7 @@ namespace JCSUnity
                 JCS_Packet packet = mWaitingPackets[index];
 
                 // re-send the packet
-                JCS_NetworkSettings.GetGameSocket().SendPacket(packet.GetBytes());
+                JCS_NetworkSettings.GetSocket().SendPacket(packet.GetBytes());
             }
         }
         

@@ -1,5 +1,5 @@
 /**
- * $File: JCS_GameSocket.cs $
+ * $File: JCS_Socket.cs $
  * $Date: 2017-08-31 16:01:58 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -12,7 +12,7 @@ namespace JCSUnity
     /// <summary>
     /// Socket Interface.
     /// </summary>
-    public interface JCS_GameSocket
+    public interface JCS_Socket
     {
         /// <summary>
         /// Connect to the server.

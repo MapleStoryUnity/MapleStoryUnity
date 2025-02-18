@@ -51,7 +51,7 @@ namespace JCSUnity
         [Tooltip("Channel count in this game.")]
         public int CHANNEL_COUNT = 1;
 
-        private static JCS_GameSocket GAME_SOCKET = null;
+        private static JCS_Socket SOCKET = null;
         private static JCS_ClientHandler PRESET_CLIENT_HANDLER = null;
 
         private JCS_ServerRequestProcessor mServerRequestProcessor = null;
@@ -97,8 +97,7 @@ namespace JCSUnity
             return CreateNetwork(hostname, port, GetPresetClientHandler());
         }
 
-        /// <returns></returns>
-        /// /// <summary>
+        /// <summary>
         /// Create the socket and connect to the host and 
         /// port provided.
         /// </summary>
@@ -108,18 +107,18 @@ namespace JCSUnity
         /// <returns> Sucess or vice versa. </returns>
         public static bool CreateNetwork(string hostname, int port, JCS_ClientHandler handler)
         {
-            if (GAME_SOCKET != null)
+            if (SOCKET != null)
                 return false;
 
             if (instance.PROTOCAL_TYPE == JCS_ProtocalType.TCP)
             {
-                GAME_SOCKET = new JCS_TCPGameSocket(handler);
-                GAME_SOCKET.Connect(hostname, port);
+                SOCKET = new JCS_TCPSocket(handler);
+                SOCKET.Connect(hostname, port);
             }
             else if (instance.PROTOCAL_TYPE == JCS_ProtocalType.UDP)
             {
-                GAME_SOCKET = new JCS_UDPGameSocket(handler);
-                GAME_SOCKET.Connect(hostname, port);
+                SOCKET = new JCS_UDPSocket(handler);
+                SOCKET.Connect(hostname, port);
             }
 
             return true;
@@ -130,20 +129,20 @@ namespace JCSUnity
         /// </summary>
         public static void CloseSocket()
         {
-            if (GAME_SOCKET == null)
+            if (SOCKET == null)
                 return;
 
-            GAME_SOCKET.Close();
-            GAME_SOCKET = null;
+            SOCKET.Close();
+            SOCKET = null;
         }
 
         /// <summary>
-        /// Return the Game socket we are using.
+        /// Return the socket we are using.
         /// </summary>
         /// <returns> socket. </returns>
-        public static JCS_GameSocket GetGameSocket()
+        public static JCS_Socket GetSocket()
         {
-            return GAME_SOCKET;
+            return SOCKET;
         }
 
         /// <summary>

@@ -29,8 +29,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private Material mMaterial = null;
-
         [Separator("Initialize Variables (JCS_Unityobject)")]
 
         [Tooltip("Type of the Unity game object.")]
@@ -69,7 +67,6 @@ namespace JCSUnity
             UpdateUnityData();
         }
         public JCS_UnityObjectType GetObjectType() { return this.mObjectType; }
-        public Material GetMaterial() { return this.mMaterial; }
         public Image GetImage() { return this.mImage; }
         public Renderer GetRenderer() { return this.mRenderer; }
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
@@ -131,36 +128,31 @@ namespace JCSUnity
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
                     {
-                        mMaterial = Instantiate(mRenderer.material);
-                        mRenderer.material = mMaterial;
+                        mRenderer.material = Instantiate(mRenderer.material);
                     }
                     break;
                 case JCS_UnityObjectType.UI:
                     {
                         if (mImage != null)
                         {
-                            mMaterial = Instantiate(mImage.material);
-                            mImage.material = mMaterial;
+                            mImage.material = Instantiate(mImage.material);
                         }
                     }
                     break;
                 case JCS_UnityObjectType.SPRITE:
                     {
-                        mMaterial = Instantiate(mSpriteRenderer.material);
-                        mSpriteRenderer.material = mMaterial;
+                        mSpriteRenderer.material = Instantiate(mSpriteRenderer.material);
                     }
                     break;
                 case JCS_UnityObjectType.TEXT:
                     {
-                        mMaterial = Instantiate(mText.material);
-                        mText.material = mMaterial;
+                        mText.material = Instantiate(mText.material);
                     }
                     break;
 #if TMP_PRO
                 case JCS_UnityObjectType.TMP:
                     {
-                        mMaterial = Instantiate(mTextMesh.material);
-                        mTextMesh.material = mMaterial;
+                        mTextMesh.material = Instantiate(mTextMesh.material);
                     }
                     break;
 #endif
@@ -237,7 +229,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get Current type's transform
+        /// Get Current type's transform.
         /// </summary>
         public Transform LocalTransform
         {
@@ -260,6 +252,57 @@ namespace JCSUnity
 
                 JCS_Debug.LogError("Return default local position (This should not happens)");
                 return this.transform;
+            }
+        }
+
+        /// <summary>
+        /// Return the current type's material.
+        /// </summary>
+        public Material LocalMaterial
+        {
+            get
+            {
+                switch (GetObjectType())
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return this.mRenderer.material;
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.material;
+                    case JCS_UnityObjectType.UI:
+                        return this.mImage.material;
+                    case JCS_UnityObjectType.TEXT:
+                        return this.mText.material;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.material;
+#endif
+                }
+
+                return null;
+            }
+
+            set
+            {
+                switch (GetObjectType())
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        this.mRenderer.material = value;
+                        break;
+                    case JCS_UnityObjectType.SPRITE:
+                        this.mSpriteRenderer.material = value;
+                        break;
+                    case JCS_UnityObjectType.UI:
+                        this.mImage.material = value;
+                        break;
+                    case JCS_UnityObjectType.TEXT:
+                        this.mText.material = value;
+                        break;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh.material = value;
+                        break;
+#endif
+                }
             }
         }
 
@@ -564,21 +607,6 @@ namespace JCSUnity
 #endif
                 }
             }
-        }
-
-        /// <summary>
-        /// Return the possible material.
-        /// </summary>
-        public Material LocalMaterial
-        {
-            get 
-            {
-                if (mMaterial == null)
-                    UpdateMaterial();
-
-                return this.mMaterial; 
-            }
-            set { this.mMaterial = value; }
         }
 
         /// <summary>

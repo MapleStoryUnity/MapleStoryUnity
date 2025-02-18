@@ -53,7 +53,7 @@ namespace JCSUnity
         {
             foreach (string prop in mShaderProps)
             {
-                this.mRenderer.material.SetFloat(prop, val);
+                this.LocalMaterial.SetFloat(prop, val);
             }
         }
 
@@ -64,7 +64,7 @@ namespace JCSUnity
         {
             foreach (string prop in mShaderProps)
             {
-                return this.mRenderer.material.GetFloat(prop);
+                return this.LocalMaterial.GetFloat(prop);
             }
 
             return 0.0f;

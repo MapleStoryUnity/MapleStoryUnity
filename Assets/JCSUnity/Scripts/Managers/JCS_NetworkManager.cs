@@ -63,7 +63,7 @@ namespace JCSUnity
                 bytesSend[2] = (byte)'l';
                 bytesSend[3] = (byte)'L';
                 bytesSend[4] = (byte)'o';
-                JCS_NetworkSettings.GetGameSocket().SendPacket(bytesSend);
+                JCS_NetworkSettings.GetSocket().SendPacket(bytesSend);
             }
 
             if (JCS_Input.GetKeyDown(KeyCode.O))
@@ -79,7 +79,7 @@ namespace JCSUnity
                 bytesSend[7] = (byte)',';
                 bytesSend[8] = (byte)'.';
                 bytesSend[9] = (byte)'/';
-                JCS_NetworkSettings.GetGameSocket().SendPacket(bytesSend);
+                JCS_NetworkSettings.GetSocket().SendPacket(bytesSend);
             }
 
         }

@@ -1,11 +1,11 @@
-﻿/**
-* $File: JCS_TCPGameSocket.cs $
-* $Date: 2017-08-21 16:38:46 $
-* $Revision: $
-* $Creator: Jen-Chieh Shen $
-* $Notice: See LICENSE.txt for modification and distribution information 
-*	                 Copyright (c) 2017 by Shen, Jen-Chieh $
-*/
+/**
+ * $File: JCS_UDPSocket.cs $
+ * $Date: 2017-08-30 18:20:10 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
+ */
 using System;
 using System.Net;                                     // Endpoint
 using System.Net.Sockets;                             // Socket namespace
@@ -14,9 +14,9 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Socket Descriptor holder.
+    /// UDP Socket.
     /// </summary>
-    public class JCS_TCPGameSocket : JCS_GameSocket
+    public class JCS_UDPSocket : JCS_Socket
     {
         /* Variables */
 
@@ -43,7 +43,7 @@ namespace JCSUnity
 
         /* Functions */
 
-        public JCS_TCPGameSocket(JCS_ClientHandler handler = null)
+        public JCS_UDPSocket(JCS_ClientHandler handler = null)
         {
             if (handler != null)
                 SetHandler(handler);
@@ -61,15 +61,17 @@ namespace JCSUnity
             try
             {
                 // Close the socket if it is still open
-                if (mSocket != null && mSocket.Connected)
+                if (mSocket != null)
                 {
-                    mSocket.Shutdown(SocketShutdown.Both);
                     System.Threading.Thread.Sleep(10);
-                    mSocket.Close();
+                    Close();
                 }
 
                 // Create the socket object
-                mSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                mSocket = new Socket(
+                    AddressFamily.InterNetwork,
+                    SocketType.Dgram,
+                    ProtocolType.Udp);
 
                 // Define the Server address and port
                 IPEndPoint epServer = new IPEndPoint(IPAddress.Parse(hostname), port);
@@ -102,7 +104,9 @@ namespace JCSUnity
             // Check if we were sucessfull
             try
             {
+                // Complete the connection. 
                 sock.EndConnect(ar);
+
                 if (sock.Connected)
                     SetupRecieveCallback(sock);
                 else
@@ -116,25 +120,45 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get the new data and send it out to all other connections. 
-        /// Note: If not data was recieved the connection has probably 
-        /// died.
+        /// Setup the callback for recieved data and loss of conneciton
+        /// </summary>
+        public void SetupRecieveCallback(Socket sock)
+        {
+            try
+            {
+                AsyncCallback recieveData = new AsyncCallback(OnReceiveData);
+                // Begin receiving the data from the remote device.
+                sock.BeginReceive(
+                    mInputBuff,
+                    0,
+                    mInputBuff.Length,
+                    SocketFlags.None,
+                    recieveData,
+                    sock);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Setup Recieve Callback failed!: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// When receive the data.
         /// </summary>
         /// <param name="ar"></param>
-        public void OnReceiveData(IAsyncResult ar)
+        private void OnReceiveData(IAsyncResult ar)
         {
             // Socket was the passed in object
             Socket sock = (Socket)ar.AsyncState;
 
-            // Check if we got any data
             try
             {
-                int nBytesRec = sock.EndReceive(ar);
+                // Read data from the remote device.
+                int bytesRead = sock.EndReceive(ar);
 
-                if (nBytesRec > 0)
+                if (bytesRead > 0)
                 {
-                    // Set decode Charset!
-                    byte[] buffer = GetBytesFromInputBuffer(0, nBytesRec);
+                    byte[] buffer = GetBytesFromInputBuffer(0, bytesRead);
 
                     // send buffer to decoder and get the decrypted packet
                     byte[] decryptedBuffer = (byte[])JCS_CodecFactory.GetInstance().GetDecoder().Decode(buffer);
@@ -142,31 +166,32 @@ namespace JCSUnity
                     // invoke data to handler.
                     if (mClientHandler != null)
                         mClientHandler.MessageReceived(decryptedBuffer);
-
-                    // WARNING : The following line is NOT thread safe. Invoke is
-                    //m_lbRecievedData.Items.Add( sRecieved );
-                    //Invoke(m_AddMessage, new string[] { sRecieved });
-
-                    // If the connection is still usable restablish the callback
-                    SetupRecieveCallback(sock);
                 }
                 else
                 {
-                    // If no data was recieved then the connection is probably dead
-                    Console.WriteLine("Client {0}, disconnected", sock.RemoteEndPoint);
-                    sock.Shutdown(SocketShutdown.Both);
-                    sock.Close();
+                    // ..
+                    Debug.Log("Receive buffer that length is lower than 0.");
                 }
             }
             catch (Exception ex)
             {
-                Debug.LogError("Unusual error druing Recieve!: " + ex.Message);
+                // If no data was recieved then the connection is probably dead
+                Debug.LogError("Server OnReceive failed: " + ex.Message);
+                Close();
+            }
 
-                if (!SocketConnected(mSocket))
-                {
-                    mSocket.Close();
-                    JCS_NetworkManager.SERVER_CLOSE = true;
-                }
+            SetupRecieveCallback(sock);
+        }
+
+        /// <summary>
+        /// Close the socket the safe way.
+        /// </summary>
+        public void Close()
+        {
+            if (mSocket != null && mSocket.Connected)
+            {
+                mSocket.Shutdown(SocketShutdown.Both);
+                mSocket.Close();
             }
         }
 
@@ -176,7 +201,6 @@ namespace JCSUnity
         /// <param name="ar"></param>
         public void OnSendData(IAsyncResult ar)
         {
-            // Socket was the passed in object
             Socket sock = (Socket)ar.AsyncState;
 
             try
@@ -199,7 +223,7 @@ namespace JCSUnity
                 else
                 {
                     // If no data was recieved then the connection is probably dead
-                    Console.WriteLine("Client {0}, disconnected", sock.RemoteEndPoint);
+                    Console.WriteLine("Client {0}, disconnected");
                     sock.Shutdown(SocketShutdown.Both);
                     sock.Close();
                 }
@@ -214,6 +238,42 @@ namespace JCSUnity
                     JCS_NetworkManager.SERVER_CLOSE = true;
                 }
             }
+        }
+
+        /// <summary>
+        /// Send the packet to the other end.
+        /// </summary>
+        /// <param name="buffer"> buffer stream to send. </param>
+        public bool SendPacket(byte[] buffer)
+        {
+            if (mSocket == null)
+            {
+                Debug.Log("Must be connected to Send a message");
+                return false;
+            }
+
+            if (buffer == null)
+                return false;
+
+            byte[] encryptedBuffer = (byte[])JCS_CodecFactory.GetInstance().GetEncoder().Encode(buffer);
+
+            try
+            {
+                mSocket.BeginSend(
+                    encryptedBuffer,
+                    0,
+                    encryptedBuffer.Length,
+                    0,
+                    new AsyncCallback(OnSendData),
+                    mSocket);
+            }
+            catch (Exception ex)
+            {
+                Debug.Log("Send Message Failed!: " + ex.Message);
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -254,77 +314,12 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Setup the callback for recieved data and loss of conneciton
-        /// </summary>
-        public void SetupRecieveCallback(Socket sock)
-        {
-            try
-            {
-                AsyncCallback recieveData = new AsyncCallback(OnReceiveData);
-                sock.BeginReceive(mInputBuff, 0, mInputBuff.Length, SocketFlags.None, recieveData, sock);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError("Setup Recieve Callback failed!: " + ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Close the socekt the safe way.
-        /// </summary>
-        public void Close()
-        {
-            if (mSocket != null && mSocket.Connected)
-            {
-                mSocket.Shutdown(SocketShutdown.Both);
-                mSocket.Close();
-            }
-        }
-
-        /// <summary>
         /// Check is connected to the server or not.
         /// </summary>
         /// <returns></returns>
         public bool IsConnected()
         {
             return mSocket.Connected;
-        }
-
-        /// <summary>
-        /// Send a sequence of byte to server.
-        /// </summary>
-        /// <param name="buffer"> byte array to send. </param>
-        /// <returns> boolean to check if success. </returns>
-        public bool SendPacket(byte[] buffer)
-        {
-            if (mSocket == null || !mSocket.Connected)
-            {
-                Debug.Log("Must be connected to Send a message");
-                return false;
-            }
-
-            if (buffer == null)
-                return false;
-
-            byte[] encryptedBuffer = (byte[])JCS_CodecFactory.GetInstance().GetEncoder().Encode(buffer);
-
-            try
-            {
-                mSocket.BeginSend(
-                    encryptedBuffer, 
-                    0, 
-                    encryptedBuffer.Length, 
-                    0, 
-                    new AsyncCallback(OnSendData), 
-                    mSocket);
-            }
-            catch (Exception ex)
-            {
-                Debug.Log("Send Message Failed!: " + ex.Message);
-                return false;
-            }
-
-            return true;
         }
     }
 }

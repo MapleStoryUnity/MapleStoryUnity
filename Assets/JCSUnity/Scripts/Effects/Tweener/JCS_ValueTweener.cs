@@ -158,11 +158,11 @@ namespace JCSUnity
         {
             DoTween(this.onValueReturn.Invoke(), to, this.mDuration, this.mEasing);
         }
-        public void DoTwenn(float from, float to)
+        public void DoTween(float from, float to)
         {
             DoTween(from, to, this.mDuration, this.mEasing);
         }
-        public void DoTwenn(float from, float to, float duration)
+        public void DoTween(float from, float to, float duration)
         {
             DoTween(from, to, duration, this.mEasing);
         }
