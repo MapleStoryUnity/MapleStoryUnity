@@ -40,11 +40,15 @@ namespace JCSUnity
         private float mRealDuration = 1.0f;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_ValueTweener)")]
+        [Separator("Helper Variables (JCS_FloatTweener)")]
 
         [Tooltip("Test component with key?")]
         [SerializeField]
         private bool mTestWithKey = false;
+
+        [Tooltip("The current value used for the test.")]
+        [SerializeField]
+        private float mTestCurrentValue = 0.0f;
 
         [Tooltip("Key to active tween to point A.")]
         [SerializeField]
@@ -63,7 +67,7 @@ namespace JCSUnity
         private float mTweenToB = 5.0f;
 #endif
 
-        [Separator("Check Variables (JCS_ValueTweener)")]
+        [Separator("Check Variables (JCS_FloatTweener)")]
 
         [SerializeField]
         [ReadOnly]
@@ -78,7 +82,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mAnimating = false;
 
-        [Separator("Runtime Variables (JCS_ValueTweener)")]
+        [Separator("Runtime Variables (JCS_FloatTweener)")]
 
         [Tooltip("Do the tween effect?")]
         [SerializeField]
@@ -128,6 +132,24 @@ namespace JCSUnity
         public UnityEvent UnityCallback { get { return this.mUnityCallback; } set { this.mUnityCallback = value; } }
 
         /* Functions */
+
+#if UNITY_EDITOR
+        private void Awake()
+        {
+            if (!mTestWithKey)
+                return;
+
+            onValueChange += (val) =>
+            {
+                mTestCurrentValue = val;
+            };
+
+            onValueReturn += () =>
+            {
+                return mTestCurrentValue;
+            };
+        }
+#endif
 
         private void LateUpdate()
         {

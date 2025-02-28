@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_ItemPickable.cs $
+ * $File: JCS_Item.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -252,7 +252,7 @@ object that we target.")]
                     mTweener.DurationZ = 0;
                     mTweener.StopTweenDistance = 0.2f;
                 }
-                mTweener.DoTweenContinue(other.transform);
+                mTweener.DoTweenContinue(other.GetComponent<JCS_UnityObject>());
             }
 
 

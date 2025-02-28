@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Effect that shake the transform in 3D.
     /// </summary>
-    public class JCS_3DShakeEffect : MonoBehaviour
+    public class JCS_3DShakeEffect : JCS_UnityObject
     {
         /* Variables*/
 
@@ -227,6 +227,7 @@ namespace JCSUnity
         {
             switch (this.mTransformType)
             {
+                /* Transform */
                 case JCS_TransformType.POSITION:
                     this.transform.position += shakeDelta;
                     break;
@@ -235,6 +236,31 @@ namespace JCSUnity
                     break;
                 case JCS_TransformType.SCALE:
                     this.transform.localScale += shakeDelta;
+                    break;
+                /* RectTransform */
+                case JCS_TransformType.ANCHOR_MIN:
+                    mRectTransform.anchorMin += (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.ANCHOR_MAX:
+                    mRectTransform.anchorMax += (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.SIZE_DELTA:
+                    mRectTransform.sizeDelta += (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.PIVOT:
+                    mRectTransform.pivot += (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION:
+                    mRectTransform.anchoredPosition += (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION_3D:
+                    mRectTransform.anchoredPosition3D += shakeDelta;
+                    break;
+                case JCS_TransformType.OFFSET_MIN:
+                    mRectTransform.offsetMin += (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.OFFSET_MAX:
+                    mRectTransform.offsetMax += (Vector2)shakeDelta;
                     break;
             }
         }
@@ -247,6 +273,7 @@ namespace JCSUnity
         {
             switch (this.mTransformType)
             {
+                /* Transform */
                 case JCS_TransformType.POSITION:
                     this.transform.position -= shakeDelta;
                     break;
@@ -255,6 +282,31 @@ namespace JCSUnity
                     break;
                 case JCS_TransformType.SCALE:
                     this.transform.localScale -= shakeDelta;
+                    break;
+                /* RectTransform */
+                case JCS_TransformType.ANCHOR_MIN:
+                    mRectTransform.anchorMin -= (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.ANCHOR_MAX:
+                    mRectTransform.anchorMax -= (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.SIZE_DELTA:
+                    mRectTransform.sizeDelta -= (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.PIVOT:
+                    mRectTransform.pivot -= (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION:
+                    mRectTransform.anchoredPosition -= (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION_3D:
+                    mRectTransform.anchoredPosition3D -= shakeDelta;
+                    break;
+                case JCS_TransformType.OFFSET_MIN:
+                    mRectTransform.offsetMin -= (Vector2)shakeDelta;
+                    break;
+                case JCS_TransformType.OFFSET_MAX:
+                    mRectTransform.offsetMax -= (Vector2)shakeDelta;
                     break;
             }
         }

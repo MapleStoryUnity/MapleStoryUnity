@@ -34,7 +34,7 @@ namespace JCSUnity
 
         [Tooltip("Move toward this target.")]
         [SerializeField]
-        private Transform mTargetTransform = null;
+        private JCS_UnityObject mTarget = null;
 
         [Tooltip("Randomly move particle to a certain range.")]
         [SerializeField]
@@ -53,10 +53,10 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool ReverseDirection { get { return this.mReverseDirection; } set { this.mReverseDirection = value; } }
-        public void SetTargetTransfrom(Transform trans)
+        public void SetTarget(JCS_UnityObject trans)
         {
             // update target position.
-            this.mTargetTransform = trans;
+            this.mTarget = trans;
         }
         public float Range { get { return this.mRange; } set { this.mRange = value; } }
         public float AdjustRange { get { return this.mAdjustRange; } set { this.mAdjustRange = value; } }
@@ -75,7 +75,7 @@ namespace JCSUnity
 
         private void OnEnable()
         {
-            if (mTargetTransform == null)
+            if (mTarget == null)
             {
                 JCS_Debug.LogError("Can't set calculated circle position with null target transform");
                 return;
@@ -91,17 +91,17 @@ namespace JCSUnity
             if (mReverseDirection)
             {
                 // set the target transform.
-                this.mDisableWidthCertainRangeEvent.SetTargetTransfrom(null);
+                this.mDisableWidthCertainRangeEvent.SetTarget(null);
                 this.mDisableWidthCertainRangeEvent.TargetPosition = newPos;
 
                 // starting position.
-                SetPosition(this.mTargetTransform.position);
+                SetPosition(this.mTarget.transform.position);
             }
             else
             {
                 // set the target transform.
-                this.mJCSTweener.SetTargetTransform(this.mTargetTransform);
-                this.mDisableWidthCertainRangeEvent.SetTargetTransfrom(this.mTargetTransform);
+                this.mJCSTweener.SetTarget(this.mTarget);
+                this.mDisableWidthCertainRangeEvent.SetTarget(this.mTarget);
 
                 // starting position.
                 SetPosition(newPos);
@@ -128,7 +128,7 @@ namespace JCSUnity
                 mJCSTweener.DoTween(newPos);
             }
             else
-                mJCSTweener.DoTweenContinue(this.mTargetTransform);
+                mJCSTweener.DoTweenContinue(this.mTarget);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace JCSUnity
         private Vector3 CalculateCirclePosition()
         {
             return CalculateCirclePosition(
-                mTargetTransform.position,
+                mTarget.transform.position,
                 mRange,
                 mAdjustRange);
         }
@@ -153,7 +153,7 @@ namespace JCSUnity
         /// <returns></returns>
         private Vector3 CalculateCirclePosition(Vector3 targetPos, float range, float adjRange = 0)
         {
-            Vector3 newPos = mTargetTransform.position;
+            Vector3 newPos = mTarget.transform.position;
 
             // set up the unknown angle
             // ÀH¾÷"¤º¨¤"

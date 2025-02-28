@@ -60,8 +60,12 @@ namespace JCSUnity
             for (int index = 0; index < mTweenInfos.Count; ++index)
             {
                 JCS_TweenInfo ti = mTweenInfos[index];
+
+                RectTransform rt = ti.transformTweener.GetRectTransform();
+
                 switch (ti.transformTweener.TweenType)
                 {
+                    /* Transform */
                     case JCS_TransformType.POSITION:
                         ti.startingValue = ti.transformTweener.LocalPosition;
                         break;
@@ -70,6 +74,31 @@ namespace JCSUnity
                         break;
                     case JCS_TransformType.SCALE:
                         ti.startingValue = ti.transformTweener.LocalScale;
+                        break;
+                    /* RectTransform */
+                    case JCS_TransformType.ANCHOR_MIN:
+                        ti.startingValue = rt.anchorMin;
+                        break;
+                    case JCS_TransformType.ANCHOR_MAX:
+                        ti.startingValue = rt.anchorMax;
+                        break;
+                    case JCS_TransformType.SIZE_DELTA:
+                        ti.startingValue = rt.sizeDelta;
+                        break;
+                    case JCS_TransformType.PIVOT:
+                        ti.startingValue = rt.pivot;
+                        break;
+                    case JCS_TransformType.ANCHOR_POSITION:
+                        ti.startingValue = rt.anchoredPosition;
+                        break;
+                    case JCS_TransformType.ANCHOR_POSITION_3D:
+                        ti.startingValue = rt.anchoredPosition3D;
+                        break;
+                    case JCS_TransformType.OFFSET_MIN:
+                        ti.startingValue = rt.offsetMin;
+                        break;
+                    case JCS_TransformType.OFFSET_MAX:
+                        ti.startingValue = rt.offsetMax;
                         break;
                 }
             }

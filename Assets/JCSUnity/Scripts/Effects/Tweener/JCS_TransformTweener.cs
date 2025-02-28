@@ -49,9 +49,9 @@ namespace JCSUnity
         private KeyCode mContinueKeyTween = KeyCode.C;
 #endif
 
-        private Tweener mTweenerX = new Tweener();
-        private Tweener mTweenerY = new Tweener();
-        private Tweener mTweenerZ = new Tweener();
+        private Tweener mTweenerX = new();
+        private Tweener mTweenerY = new();
+        private Tweener mTweenerZ = new();
 
         [Separator("Check Variables (JCS_TransformTweener)")]
 
@@ -62,12 +62,12 @@ namespace JCSUnity
         [Tooltip("Whats the target we tween to?")]
         [SerializeField]
         [ReadOnly]
-        private Transform mTargetTransform = null;
+        private JCS_UnityObject mTarget = null;
 
         // use to check if the target transform move or not.
         private Vector3 mRecordTargetTransformValue = Vector3.zero;
 
-        private Transform mRecordTransform = null;
+        private JCS_UnityObject mRecordTarget = null;
 
         [Tooltip("Flag to check if done tweening on x-axis.")]
         [SerializeField]
@@ -197,8 +197,8 @@ namespace JCSUnity
         public JCS_TweenType EasingY { get { return this.mEasingY; } set { this.mEasingY = value; } }
         public JCS_TweenType EasingZ { get { return this.mEasingZ; } set { this.mEasingZ = value; } }
 
-        public void SetTargetTransform(Transform trans) { this.mTargetTransform = trans; }
-        public Transform RecordTransform { get { return this.mRecordTransform; } }
+        public void SetTarget(JCS_UnityObject trans) { this.mTarget = trans; }
+        public JCS_UnityObject RecordTarget { get { return this.mRecordTarget; } }
         public bool DestroyWhenDoneTweening { get { return this.mDestroyWhenDoneTweening; } set { this.mDestroyWhenDoneTweening = value; } }
         public JCS_TransformType TweenType { get { return this.mTweenType; } set { this.mTweenType = value; } }
 
@@ -272,7 +272,7 @@ namespace JCSUnity
                 DoTween(mTweenToB);
 
             if (Input.GetKey(mContinueKeyTween))
-                DoTweenContinue(mTargetTransform);
+                DoTweenContinue(mTarget);
         }
 #endif
 
@@ -404,11 +404,11 @@ namespace JCSUnity
         /// Continue Tween to this target's position.
         /// </summary>
         /// <param name="target"> target's transform </param>
-        public void DoTweenContinue(Transform target)
+        public void DoTweenContinue(JCS_UnityObject target)
         {
-            SetTargetTransform(target);
+            SetTarget(target);
 
-            mRecordTransform = target;
+            mRecordTarget = target;
 
             // reset record
             mRecordTargetTransformValue = Vector3.zero;
@@ -426,6 +426,7 @@ namespace JCSUnity
 
             switch (mTweenType)
             {
+                /* Transform */
                 case JCS_TransformType.POSITION:
                     {
                         if (mTrackAsLocalSelf)
@@ -445,6 +446,31 @@ namespace JCSUnity
                 case JCS_TransformType.SCALE:
                     val = LocalScale;
                     break;
+                /* RectTransform */
+                case JCS_TransformType.ANCHOR_MIN:
+                    val = mRectTransform.anchorMin;
+                    break;
+                case JCS_TransformType.ANCHOR_MAX:
+                    val = mRectTransform.anchorMax;
+                    break;
+                case JCS_TransformType.SIZE_DELTA:
+                    val = mRectTransform.sizeDelta;
+                    break;
+                case JCS_TransformType.PIVOT:
+                    val = mRectTransform.pivot;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION:
+                    val = mRectTransform.anchoredPosition;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION_3D:
+                    val = mRectTransform.anchoredPosition3D;
+                    break;
+                case JCS_TransformType.OFFSET_MIN:
+                    val = mRectTransform.offsetMin;
+                    break;
+                case JCS_TransformType.OFFSET_MAX:
+                    val = mRectTransform.offsetMax;
+                    break;
             }
             return val;
         }
@@ -457,6 +483,7 @@ namespace JCSUnity
         {
             switch (mTweenType)
             {
+                /* Transform */
                 case JCS_TransformType.POSITION:
                     {
                         if (mTrackAsLocalSelf)
@@ -476,6 +503,31 @@ namespace JCSUnity
                 case JCS_TransformType.SCALE:
                     LocalScale = newVal;
                     break;
+                /* RectTransform */
+                case JCS_TransformType.ANCHOR_MIN:
+                    mRectTransform.anchorMin = newVal;
+                    break;
+                case JCS_TransformType.ANCHOR_MAX:
+                    mRectTransform.anchorMax = newVal;
+                    break;
+                case JCS_TransformType.SIZE_DELTA:
+                    mRectTransform.sizeDelta = newVal;
+                    break;
+                case JCS_TransformType.PIVOT:
+                    mRectTransform.pivot = newVal;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION:
+                    mRectTransform.anchoredPosition = newVal;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION_3D:
+                    mRectTransform.anchoredPosition3D = newVal;
+                    break;
+                case JCS_TransformType.OFFSET_MIN:
+                    mRectTransform.offsetMin = newVal;
+                    break;
+                case JCS_TransformType.OFFSET_MAX:
+                    mRectTransform.offsetMax = newVal;
+                    break;
             }
         }
 
@@ -488,26 +540,54 @@ namespace JCSUnity
         {
             Vector3 val = Vector3.zero;
 
+            RectTransform rt = mTarget.GetRectTransform();
+
             switch (mTweenType)
             {
+                /* Transform */
                 case JCS_TransformType.POSITION:
                     {
                         if (mTrackAsLocalTarget)
-                            val = mTargetTransform.localPosition;
+                            val = mTarget.transform.localPosition;
                         else
-                            val = mTargetTransform.position;
+                            val = mTarget.transform.position;
                     }
                     break;
                 case JCS_TransformType.ROTATION:
                     {
                         if (mTrackAsLocalTarget)
-                            val = mTargetTransform.localEulerAngles;
+                            val = mTarget.transform.localEulerAngles;
                         else
-                            val = mTargetTransform.eulerAngles;
+                            val = mTarget.transform.eulerAngles;
                     }
                     break;
                 case JCS_TransformType.SCALE:
-                    val = mTargetTransform.localScale;
+                    val = mTarget.transform.localScale;
+                    break;
+                /* RectTransform */
+                case JCS_TransformType.ANCHOR_MIN:
+                    val = rt.anchorMin;
+                    break;
+                case JCS_TransformType.ANCHOR_MAX:
+                    val = rt.anchorMax;
+                    break;
+                case JCS_TransformType.SIZE_DELTA:
+                    val = rt.sizeDelta;
+                    break;
+                case JCS_TransformType.PIVOT:
+                    val = rt.pivot;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION:
+                    val = rt.anchoredPosition;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION_3D:
+                    val = rt.anchoredPosition3D;
+                    break;
+                case JCS_TransformType.OFFSET_MIN:
+                    val = rt.offsetMin;
+                    break;
+                case JCS_TransformType.OFFSET_MAX:
+                    val = rt.offsetMax;
                     break;
             }
             return val;
@@ -607,7 +687,7 @@ namespace JCSUnity
                 resetElapsedTime,
                 durationY,
                 easingY,
-                DoneTweeningY, 
+                DoneTweeningY,
                 mDeltaTimeType);
 
             // Sets The Position From -> To
@@ -629,14 +709,14 @@ namespace JCSUnity
             if (!mContinueTween)
                 return;
 
-            if (mTargetTransform == null)
+            if (mTarget == null)
             {
 #if UNITY_EDITOR
                 // log string to console cost alost of performance.
                 // so do it only when is debug mode.
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogError("Start the tween but the target transform are null");
+                    JCS_Debug.LogError("Start the tween but the target is null");
                 }
 #endif
 

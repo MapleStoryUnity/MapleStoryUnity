@@ -14,8 +14,19 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_TransformType
     {
+        /* Transform */
         POSITION,
         ROTATION,
         SCALE,
+
+        /* RectTransform */
+        ANCHOR_MIN,
+        ANCHOR_MAX,
+        SIZE_DELTA,
+        PIVOT,
+        ANCHOR_POSITION,
+        ANCHOR_POSITION_3D,
+        OFFSET_MIN,
+        OFFSET_MAX,
     }
 }

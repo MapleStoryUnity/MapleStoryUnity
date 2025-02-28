@@ -133,6 +133,7 @@ namespace JCSUnity
 
             switch (mTransformType)
             {
+                /* Transform */
                 case JCS_TransformType.POSITION:
                     {
                         if (!local)
@@ -154,6 +155,31 @@ namespace JCSUnity
                         val = LocalScale;
                     }
                     break;
+                /* RectTransform */
+                case JCS_TransformType.ANCHOR_MIN:
+                    val = mRectTransform.anchorMin;
+                    break;
+                case JCS_TransformType.ANCHOR_MAX:
+                    val = mRectTransform.anchorMax;
+                    break;
+                case JCS_TransformType.SIZE_DELTA:
+                    val = mRectTransform.sizeDelta;
+                    break;
+                case JCS_TransformType.PIVOT:
+                    val = mRectTransform.pivot;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION:
+                    val = mRectTransform.anchoredPosition;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION_3D:
+                    val = mRectTransform.anchoredPosition3D;
+                    break;
+                case JCS_TransformType.OFFSET_MIN:
+                    val = mRectTransform.offsetMin;
+                    break;
+                case JCS_TransformType.OFFSET_MAX:
+                    val = mRectTransform.offsetMax;
+                    break;
             }
 
             return val;
@@ -168,6 +194,7 @@ namespace JCSUnity
         {
             switch (mTransformType)
             {
+                /* Transform */
                 case JCS_TransformType.POSITION:
                     {
                         if (!local)
@@ -188,6 +215,31 @@ namespace JCSUnity
                     {
                         this.LocalScale = newVal;
                     }
+                    break;
+                /* RectTransform */
+                case JCS_TransformType.ANCHOR_MIN:
+                    mRectTransform.anchorMin = newVal;
+                    break;
+                case JCS_TransformType.ANCHOR_MAX:
+                    mRectTransform.anchorMax = newVal;
+                    break;
+                case JCS_TransformType.SIZE_DELTA:
+                    mRectTransform.sizeDelta = newVal;
+                    break;
+                case JCS_TransformType.PIVOT:
+                    mRectTransform.pivot = newVal;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION:
+                    mRectTransform.anchoredPosition = newVal;
+                    break;
+                case JCS_TransformType.ANCHOR_POSITION_3D:
+                    mRectTransform.anchoredPosition3D = newVal;
+                    break;
+                case JCS_TransformType.OFFSET_MIN:
+                    mRectTransform.offsetMin = newVal;
+                    break;
+                case JCS_TransformType.OFFSET_MAX:
+                    mRectTransform.offsetMax = newVal;
                     break;
             }
         }

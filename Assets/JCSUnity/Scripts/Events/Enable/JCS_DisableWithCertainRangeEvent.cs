@@ -30,7 +30,7 @@ namespace JCSUnity
 
         [Tooltip("Target check with in the range.")]
         [SerializeField]
-        private Transform mTargetTransform = null;
+        private JCS_UnityObject mTarget = null;
 
         [Tooltip("Target position, do not have to pass in transform.")]
         [SerializeField]
@@ -58,10 +58,10 @@ namespace JCSUnity
 
         public bool FadeEffect { get { return this.mFadeEffect; } set { this.mFadeEffect = value; } }
         public Vector3 TargetPosition { get { return this.mTargetPosition; } set { this.mTargetPosition = value; } }
-        public void SetTargetTransfrom(Transform trans)
+        public void SetTarget(JCS_UnityObject trans)
         {
             // update target position.
-            this.mTargetTransform = trans;
+            this.mTarget = trans;
 
             // update the target position too.
             this.mTargetPosition = this.transform.position;
@@ -125,21 +125,22 @@ namespace JCSUnity
         /// </summary>
         private void UpdateTargetPosition()
         {
-            if (mTargetTransform == null)
+            if (mTarget == null)
             {
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                     JCS_Debug.LogError("Can't set the position without target transform.");
+
                 return;
             }
 
             if (mUseLocal)
             {
-                mTargetPosition = mTargetTransform.localPosition;
+                mTargetPosition = mTarget.transform.localPosition;
             }
             else
             {
                 // get the target position.
-                mTargetPosition = mTargetTransform.position;
+                mTargetPosition = mTarget.transform.position;
             }
         }
 

@@ -22,6 +22,7 @@ namespace JCSUnity
         /* Variables */
 
         private JCS_TransformTweener mTransformTweener = null;
+
         private JCS_AdjustTimeTrigger mAdjustTimerTrigger = null;
 
         [Separator("Check Variables (JCS_TweenPathAction)")]
@@ -34,7 +35,7 @@ namespace JCSUnity
 
         [Tooltip("List of points for setting up the path.")]
         [SerializeField]
-        private List<Transform> mPoints = null;
+        private List<JCS_UnityObject> mPoints = null;
 
         [Tooltip("Random the path by randomizing the target point.")]
         [SerializeField]
@@ -46,7 +47,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<Transform> Points { get { return this.mPoints; } }
+        public List<JCS_UnityObject> Points { get { return this.mPoints; } }
         public bool Random { get { return this.mRandom; } set { this.mRandom = value; } }
         public bool ContinueTween { get { return this.mContinueTween; } set { this.mContinueTween = value; } }
 
@@ -96,7 +97,7 @@ namespace JCSUnity
             if (mContinueTween)
                 mTransformTweener.DoTweenContinue(mPoints[mTargetPointIndex]);
             else
-                mTransformTweener.DoTween(mPoints[mTargetPointIndex].position);
+                mTransformTweener.DoTween(mPoints[mTargetPointIndex].transform.position);
         }
     }
 }
