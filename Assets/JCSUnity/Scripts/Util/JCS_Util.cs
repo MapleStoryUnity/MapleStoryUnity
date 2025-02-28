@@ -111,7 +111,7 @@ namespace JCSUnity
 
         #endregion
 
-        #region Array
+        #region List
 
         /// <summary>
         /// Check the value within the range plus acceptable range.
@@ -341,550 +341,6 @@ namespace JCSUnity
             return data;
         }
 
-        #endregion
-
-        #region String
-
-        /// <summary>
-        /// Convert byte array to string by charset type.
-        /// </summary>
-        /// <param name="data"> Byte array data to convert to string data. </param>
-        /// <param name="charset"> Target charset type. </param>
-        /// <returns> String data that had been converted. </returns>
-        public static string BytesToString(byte[] data, JCS_CharsetType charset)
-        {
-            switch (charset)
-            {
-                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetString(data);
-                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetString(data);
-                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetString(data);
-                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetString(data);
-                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetString(data);
-                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
-                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
-            }
-            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
-            return null;
-        }
-
-        /// <summary>
-        /// Convert string to byte array by charset type.
-        /// </summary>
-        /// <param name="data"> String data to convert to byte array. </param>
-        /// <param name="charset"> Target charset type. </param>
-        /// <returns> Byte array that had been converted. </returns>
-        public static byte[] StringToBytes(string data, JCS_CharsetType charset)
-        {
-            switch (charset)
-            {
-                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetBytes(data);
-                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetBytes(data);
-                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetBytes(data);
-                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetBytes(data);
-                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetBytes(data);
-                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
-                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
-            }
-            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
-            return null;
-        }
-
-        /// <summary>
-        /// Simple version of escape url.
-        /// </summary>
-        /// <param name="url"> Url you want to escape. </param>
-        /// <returns> Return the escaped url. </returns>
-        public static string EscapeURL(string url)
-        {
-            url = url.Replace(" ", "%20");
-            return url;
-        }
-
-        #endregion
-
-        #region JSON
-
-        /// <summary>
-        /// Return JSON by passing serializable object.
-        /// </summary>
-        /// <param name="obj"> Object that are serializable. </param>
-        /// <returns> JSON string. </returns>
-        public static string ToJson<T>(T obj)
-        {
-            return JsonUtility.ToJson(obj);
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Do enable/distance component.
-        /// </summary>
-        /// <param name="comp"> Component reference you want to act. </param>
-        /// <param name="act"> Boolean to assign to enabled variable. </param>
-        public static void EnableComponent(Component comp, bool act)
-        {
-            /* Behaviour */
-            {
-                var behaviour = comp as Behaviour;
-                if (behaviour != null)
-                {
-                    behaviour.enabled = act;
-                    return;
-                }
-            }
-
-            /* Collider */
-            {
-                var collider = comp as Collider;
-                if (collider != null)
-                {
-                    collider.enabled = act;
-                    return;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Force to get a component, if not found we will add one then.
-        /// </summary>
-        /// <typeparam name="T"> Got or Added component. </typeparam>
-        /// <param name="mb"> Any MonoBehaviour. </param>
-        /// <returns>
-        /// Got or new added component.
-        /// </returns>
-        public static T ForceGetComponent<T>(Component component)
-            where T : Component
-        {
-            T target = component.GetComponent<T>();
-
-            // Did found! great just returns it.
-            if (target != null)
-                return target;
-
-            // Sadly, we have to add it ourselves.
-            target = component.gameObject.AddComponent<T>();
-
-            // Returns the new added component.
-            return target;
-        }
-
-        /// <summary>
-        /// Spawn a gmae object.
-        /// </summary>
-        /// <param name="objectPath"> path of the game object </param>
-        /// <param name="position"> position of the game object spawn </param>
-        /// <param name="rotation"> rotation of the game object spawn </param>
-        /// <returns></returns>
-        public static GameObject Instantiate(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
-        {
-            return MonoBehaviour.Instantiate(Resources.Load<GameObject>(objectPath), position, rotation) as GameObject;
-        }
-
-        /// <summary>
-        /// Spawn a gmae object.
-        /// </summary>
-        /// <param name="trans"></param>
-        /// <param name="position"></param>
-        /// <param name="rotation"></param>
-        /// <returns></returns>
-        public static UnityEngine.Object Instantiate(UnityEngine.Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
-        {
-            if (trans == null) return null;
-            return MonoBehaviour.Instantiate(trans, position, rotation);
-        }
-
-        /// <summary>
-        /// Retrieves the first active loaded object of Type type.
-        /// </summary>
-        public static Object FindObjectByType(System.Type type)
-        {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindFirstObjectByType(type);
-#else
-            return UnityEngine.Object.FindObjectOfType(type);
-#endif
-        }
-
-        /// <summary>
-        /// Retrieves a list of all loaded objects of Type type.
-        /// </summary>
-        public static Object[] FindObjectsByType(System.Type type)
-        {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
-#else
-            return UnityEngine.Object.FindObjectsOfType(type);
-#endif
-        }
-
-        /// <summary>
-        /// Set active according to it's type.
-        /// </summary>
-        public static void SetActive(List<Transform> transforms, bool act)
-        {
-            SetActive(transforms.ToArray(), act);
-        }
-        public static void SetActive(Transform[] transforms, bool act)
-        {
-            foreach (Transform trans in transforms)
-            {
-                if (trans == null)
-                    continue;
-
-                trans.gameObject.SetActive(act);
-            }
-        }
-
-        /// <summary>
-        /// Set active to all children.
-        /// </summary>
-        public static void SetActiveChildren(Transform transform, bool act)
-        {
-            for (int index = 0; index < transform.childCount; ++index)
-            {
-                transform.GetChild(index).gameObject.SetActive(act);
-            }
-        }
-
-        /// <summary>
-        /// Spawn an animate object.
-        /// </summary>
-        /// <param name="anim"> anim assign </param>
-        /// <param name="orderLayer"> sorting order </param>
-        /// <returns> object spawned. </returns>
-        public static GameObject SpawnAnimateObject(RuntimeAnimatorController anim, int orderLayer = 15)
-        {
-            GameObject gm = new GameObject();
-
-            SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
-            sr.sortingOrder = orderLayer;
-            Animator animator = gm.AddComponent<Animator>();
-            animator.runtimeAnimatorController = anim;
-
-            return gm;
-        }
-
-        /// <summary>
-        /// Spawn a animate object with the death event, 
-        /// so after the animate was played serval loop times
-        /// the object will be destroyed.
-        /// </summary>
-        /// <param name="anim"> animation u want to play </param>
-        /// <param name="orderLayer"> sorting order  </param>
-        /// <param name="loopTimes"> loop times </param>
-        /// <returns> object spawned. </returns>
-        public static GameObject SpawnAnimateObjectDeathEvent(RuntimeAnimatorController anim, int orderLayer = 15, int loopTimes = 1)
-        {
-            GameObject gm = SpawnAnimateObject(anim, orderLayer);
-
-            JCS_DestroyAnimEndEvent daee = gm.AddComponent<JCS_DestroyAnimEndEvent>();
-
-            daee.LoopTimes = loopTimes;
-
-            return gm;
-        }
-
-        /// <summary>
-        /// Active all the child in a transform.
-        /// </summary>
-        /// <param name="trans"> transform to do the effect. </param>
-        /// <param name="act"> action to the effect </param>
-        public static void SetActiveToAllChildren(Transform trans, bool act)
-        {
-            Transform child = null;
-
-            for (int index = 0; index < trans.childCount; ++index)
-            {
-                child = trans.GetChild(index);
-                child.gameObject.SetActive(act);
-            }
-        }
-
-        /// <summary>
-        /// Move the object to the last child of the Unty's
-        /// tree system(Hierarchy) transform.
-        /// </summary>
-        /// <param name="trans"></param>
-        public static void MoveToTheLastChild(Transform trans)
-        {
-            Transform parent = trans.parent;
-
-            Vector3 recordPos = trans.localPosition;
-            Vector3 recordScale = trans.localScale;
-            Quaternion recordRot = trans.localRotation;
-
-            // This part will mess up the transform so we record all we need and 
-            // set it back.
-            {
-                trans.SetParent(null);
-                trans.SetParent(parent);
-            }
-
-            // here we set it back!
-            trans.localPosition = recordPos;
-            trans.localScale = recordScale;
-            trans.localRotation = recordRot;
-        }
-
-        /// <summary>
-        /// Set the transform to onther transform in the
-        /// hierarchy and without losing the info.
-        /// Info: 
-        ///     position, rotation, scale, etc.
-        /// </summary>
-        /// <param name="trans"> transform to set to parent transform </param>
-        /// <param name="parent"> parent transform </param>
-        public static void SetParentWithoutLosingInfo(Transform trans, Transform parent)
-        {
-            Vector3 recordPos = trans.localPosition;
-            Vector3 recordScale = trans.localScale;
-            Quaternion recordRot = trans.localRotation;
-
-            {
-                trans.SetParent(parent);
-            }
-
-            // here we set it back!
-            trans.localPosition = recordPos;
-            trans.localScale = recordScale;
-            trans.localRotation = recordRot;
-        }
-
-        /// <summary>
-        /// Set eabled/disabled to all component in a transform.
-        /// </summary>
-        /// <param name="trans"> transform to apply the effect. </param>
-        /// <param name="act"> enable or disable? </param>
-        public static void SetEnableAllComponents(Transform trans, bool act)
-        {
-            foreach (var component in trans.GetComponents<MonoBehaviour>())
-            {
-                component.enabled = act;
-            }
-        }
-
-        /// <summary>
-        /// Destroy all the 'TYPE' object in the scene.
-        /// </summary>
-        public static void DestroyAllTypeObjectInScene<T>()
-            where T : MonoBehaviour
-        {
-            // Destroy all the live object in the scene.
-            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
-
-            foreach (T e in rrEnemy)
-            {
-                // NOTE(JenChieh): kill the object that are clone!
-                // or else it will effect the prefab object...
-                if (e.gameObject.name.Contains("(Clone)"))
-                    MonoBehaviour.Destroy(e.gameObject);
-            }
-        }
-
-        /// <summary>
-        /// Destroy all the 'TYPE' object in the scene.
-        /// </summary>
-        public static void DestroyImmediateAllTypeObjectInScene<T>()
-            where T : MonoBehaviour
-        {
-            // Destroy all the live object in the scene.
-            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
-
-            foreach (T e in rrEnemy)
-            {
-                // NOTE(JenChieh): kill the object that are clone!
-                // or else it will effect the prefab object...
-                if (e.gameObject.name.Contains("(Clone)"))
-                    MonoBehaviour.DestroyImmediate(e.gameObject);
-            }
-        }
-
-        /// <summary>
-        /// Find all the objects that are clone in the scene by type.
-        /// </summary>
-        /// <typeparam name="T"> Type to find. </typeparam>
-        /// <returns> Type array. </returns>
-        public static T[] FindCloneObjectsOfTypeAll<T>()
-            where T : MonoBehaviour
-        {
-            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
-
-            T[] cleanArr = new T[typeArr.Length];
-            int length = 0;
-
-            foreach (T obj in typeArr)
-            {
-                if (obj.gameObject.name.Contains("(Clone)"))
-                {
-                    cleanArr[length] = obj;
-                    ++length;
-                }
-            }
-
-            return cleanArr;
-        }
-
-        /// <summary>
-        /// Find all the objects that are not clone in the scene by type.
-        /// </summary>
-        /// <typeparam name="T"> Type to find. </typeparam>
-        /// <returns> Type array. </returns>
-        public static T[] FindNotCloneObjectsOfTypeAll<T>()
-            where T : MonoBehaviour
-        {
-            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
-
-            T[] cleanArr = new T[typeArr.Length];
-            int length = 0;
-
-            foreach (T obj in typeArr)
-            {
-                if (!obj.gameObject.name.Contains("(Clone)"))
-                {
-                    cleanArr[length] = obj;
-                    ++length;
-                }
-            }
-
-            return cleanArr;
-        }
-
-        /// <summary>
-        /// Find all objects that only ACTIVE in hierarchy.
-        /// </summary>
-        /// <typeparam name="T"> Type to find. </typeparam>
-        /// <returns> type array, object only in Hierarcrchy. </returns>
-        public static T[] FindObjectsOfTypeAllInHierarchy<T>()
-             where T : MonoBehaviour
-        {
-            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
-
-            T[] cleanArr = new T[typeArr.Length];
-            int length = 0;
-
-            foreach (T obj in typeArr)
-            {
-                if (obj.gameObject.activeInHierarchy)
-                {
-                    cleanArr[length] = obj;
-                    ++length;
-                }
-            }
-
-            return cleanArr;
-        }
-
-        /// <summary>
-        /// Return the easing function pointer base on tweener type.
-        /// </summary>
-        /// <param name="type"> type of the tween formula </param>
-        /// <returns> function pointer </returns>
-        public static TweenDelegate GetEasing(JCS_TweenType type)
-        {
-            TweenDelegate easing = null;
-
-            switch (type)
-            {
-                // default to linear
-                case JCS_TweenType.LINEAR:
-                    easing = Easing.Linear;
-                    break;
-
-                case JCS_TweenType.EASE_IN_SINE:
-                    easing = Easing.SineEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_CUBIC:
-                    easing = Easing.CubicEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_QUINT:
-                    easing = Easing.QuintEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_CIRC:
-                    easing = Easing.CircEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_BACK:
-                    easing = Easing.BackEaseIn;
-                    break;
-                case JCS_TweenType.EASE_OUT_SINE:
-                    easing = Easing.SineEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_CUBIC:
-                    easing = Easing.CubicEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_QUINT:
-                    easing = Easing.QuintEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_CIRC:
-                    easing = Easing.CircEaseOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_BACK:
-                    easing = Easing.BackEaseOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_SINE:
-                    easing = Easing.SineEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_CUBIC:
-                    easing = Easing.CubicEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_QUINT:
-                    easing = Easing.QuintEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_CIRC:
-                    easing = Easing.CircEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_BACK:
-                    easing = Easing.BackEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_QUAD:
-                    easing = Easing.QuadEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_QUART:
-                    easing = Easing.QuartEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_EXPO:
-                    easing = Easing.ExpoEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_ELASTIC:
-                    easing = Easing.ElasticEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_BOUNCE:
-                    easing = Easing.BounceEaseIn;
-                    break;
-                case JCS_TweenType.EASE_OUT_QUAD:
-                    easing = Easing.QuadEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_QUART:
-                    easing = Easing.QuartEaseOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_EXPO:
-                    easing = Easing.ExpoEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_ELASTIC:
-                    easing = Easing.ElasticEaseOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_BOUNCE:
-                    easing = Easing.BounceEaseOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_QUAD:
-                    easing = Easing.QuadEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_QUART:
-                    easing = Easing.QuartEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_EXPO:
-                    easing = Easing.ExpoEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_ELASTIC:
-                    easing = Easing.ElasticEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_BOUNCE:
-                    easing = Easing.BounceEaseInOut;
-                    break;
-            }
-
-            return easing;
-        }
-
         /// <summary>
         /// Fill slots with initialize value type by length.
         /// </summary>
@@ -963,6 +419,247 @@ namespace JCSUnity
             }
 
             return newArray;
+        }
+
+        #endregion
+
+        #region String
+
+        /// <summary>
+        /// Convert byte array to string by charset type.
+        /// </summary>
+        /// <param name="data"> Byte array data to convert to string data. </param>
+        /// <param name="charset"> Target charset type. </param>
+        /// <returns> String data that had been converted. </returns>
+        public static string BytesToString(byte[] data, JCS_CharsetType charset)
+        {
+            switch (charset)
+            {
+                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetString(data);
+                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetString(data);
+                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetString(data);
+                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetString(data);
+                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetString(data);
+                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
+                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
+            }
+            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
+            return null;
+        }
+
+        /// <summary>
+        /// Convert string to byte array by charset type.
+        /// </summary>
+        /// <param name="data"> String data to convert to byte array. </param>
+        /// <param name="charset"> Target charset type. </param>
+        /// <returns> Byte array that had been converted. </returns>
+        public static byte[] StringToBytes(string data, JCS_CharsetType charset)
+        {
+            switch (charset)
+            {
+                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetBytes(data);
+                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetBytes(data);
+                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetBytes(data);
+                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetBytes(data);
+                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetBytes(data);
+                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
+                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
+            }
+            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
+            return null;
+        }
+
+        /// <summary>
+        /// Simple version of escape url.
+        /// </summary>
+        /// <param name="url"> Url you want to escape. </param>
+        /// <returns> Return the escaped url. </returns>
+        public static string EscapeURL(string url)
+        {
+            url = url.Replace(" ", "%20");
+            return url;
+        }
+
+        #endregion
+
+        #region JSON
+
+        /// <summary>
+        /// Return JSON by passing serializable object.
+        /// </summary>
+        /// <param name="obj"> Object that are serializable. </param>
+        /// <returns> JSON string. </returns>
+        public static string ToJson<T>(T obj)
+        {
+            return JsonUtility.ToJson(obj);
+        }
+
+        #endregion
+
+        #region Component
+
+        /// <summary>
+        /// Do enable/distance component.
+        /// </summary>
+        /// <param name="comp"> Component reference you want to act. </param>
+        /// <param name="act"> Boolean to assign to enabled variable. </param>
+        public static void EnableComponent(Component comp, bool act)
+        {
+            /* Behaviour */
+            {
+                var behaviour = comp as Behaviour;
+                if (behaviour != null)
+                {
+                    behaviour.enabled = act;
+                    return;
+                }
+            }
+
+            /* Collider */
+            {
+                var collider = comp as Collider;
+                if (collider != null)
+                {
+                    collider.enabled = act;
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Force to get a component, if not found we will add one then.
+        /// </summary>
+        /// <typeparam name="T"> Got or Added component. </typeparam>
+        /// <param name="mb"> Any MonoBehaviour. </param>
+        /// <returns>
+        /// Got or new added component.
+        /// </returns>
+        public static T ForceGetComponent<T>(Component component)
+            where T : Component
+        {
+            T target = component.GetComponent<T>();
+
+            // Did found! great just returns it.
+            if (target != null)
+                return target;
+
+            // Sadly, we have to add it ourselves.
+            target = component.gameObject.AddComponent<T>();
+
+            // Returns the new added component.
+            return target;
+        }
+
+        /// <summary>
+        /// Set eabled/disabled to all component in a transform.
+        /// </summary>
+        /// <param name="trans"> transform to apply the effect. </param>
+        /// <param name="act"> enable or disable? </param>
+        public static void SetEnableAllComponents(Transform trans, bool act)
+        {
+            foreach (var component in trans.GetComponents<MonoBehaviour>())
+            {
+                component.enabled = act;
+            }
+        }
+
+        #endregion
+
+        #region Transform & Children
+
+        /// <summary>
+        /// Set active according to it's type.
+        /// </summary>
+        public static void SetActive(List<Transform> transforms, bool act)
+        {
+            SetActive(transforms.ToArray(), act);
+        }
+        public static void SetActive(Transform[] transforms, bool act)
+        {
+            foreach (Transform trans in transforms)
+            {
+                if (trans == null)
+                    continue;
+
+                trans.gameObject.SetActive(act);
+            }
+        }
+
+        /// <summary>
+        /// Set active to all children.
+        /// </summary>
+        public static void SetActiveChildren(Transform transform, bool act)
+        {
+            for (int index = 0; index < transform.childCount; ++index)
+            {
+                transform.GetChild(index).gameObject.SetActive(act);
+            }
+        }
+
+        /// <summary>
+        /// Active all the child in a transform.
+        /// </summary>
+        /// <param name="trans"> transform to do the effect. </param>
+        /// <param name="act"> action to the effect </param>
+        public static void SetActiveToAllChildren(Transform trans, bool act)
+        {
+            Transform child = null;
+
+            for (int index = 0; index < trans.childCount; ++index)
+            {
+                child = trans.GetChild(index);
+                child.gameObject.SetActive(act);
+            }
+        }
+
+        /// <summary>
+        /// Move the object to the last child of the Unty's
+        /// tree system(Hierarchy) transform.
+        /// </summary>
+        /// <param name="trans"></param>
+        public static void MoveToTheLastChild(Transform trans)
+        {
+            Transform parent = trans.parent;
+
+            Vector3 recordPos = trans.localPosition;
+            Vector3 recordScale = trans.localScale;
+            Quaternion recordRot = trans.localRotation;
+
+            // This part will mess up the transform so we record all we need and 
+            // set it back.
+            {
+                trans.SetParent(null);
+                trans.SetParent(parent);
+            }
+
+            // here we set it back!
+            trans.localPosition = recordPos;
+            trans.localScale = recordScale;
+            trans.localRotation = recordRot;
+        }
+
+        /// <summary>
+        /// Set the transform to onther transform in the
+        /// hierarchy and without losing the info.
+        /// Info: 
+        ///     position, rotation, scale, etc.
+        /// </summary>
+        /// <param name="trans"> transform to set to parent transform </param>
+        /// <param name="parent"> parent transform </param>
+        public static void SetParentWithoutLosingInfo(Transform trans, Transform parent)
+        {
+            Vector3 recordPos = trans.localPosition;
+            Vector3 recordScale = trans.localScale;
+            Quaternion recordRot = trans.localRotation;
+
+            {
+                trans.SetParent(parent);
+            }
+
+            // here we set it back!
+            trans.localPosition = recordPos;
+            trans.localScale = recordScale;
+            trans.localRotation = recordRot;
         }
 
         /// <summary>
@@ -1142,6 +839,333 @@ namespace JCSUnity
             trans.SetParent(parent);
         }
 
+        #endregion
+
+        #region Spawning
+
+        /// <summary>
+        /// Spawn a gmae object.
+        /// </summary>
+        /// <param name="objectPath"> path of the game object </param>
+        /// <param name="position"> position of the game object spawn </param>
+        /// <param name="rotation"> rotation of the game object spawn </param>
+        /// <returns></returns>
+        public static GameObject Instantiate(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+        {
+            return MonoBehaviour.Instantiate(Resources.Load<GameObject>(objectPath), position, rotation) as GameObject;
+        }
+
+        /// <summary>
+        /// Spawn a gmae object.
+        /// </summary>
+        /// <param name="trans"></param>
+        /// <param name="position"></param>
+        /// <param name="rotation"></param>
+        /// <returns></returns>
+        public static UnityEngine.Object Instantiate(UnityEngine.Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+        {
+            if (trans == null) return null;
+            return MonoBehaviour.Instantiate(trans, position, rotation);
+        }
+
+        /// <summary>
+        /// Retrieves the first active loaded object of Type type.
+        /// </summary>
+        public static Object FindObjectByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindFirstObjectByType(type);
+#else
+            return UnityEngine.Object.FindObjectOfType(type);
+#endif
+        }
+
+        /// <summary>
+        /// Retrieves a list of all loaded objects of Type type.
+        /// </summary>
+        public static Object[] FindObjectsByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
+#else
+            return UnityEngine.Object.FindObjectsOfType(type);
+#endif
+        }
+
+        /// <summary>
+        /// Spawn an animate object.
+        /// </summary>
+        /// <param name="anim"> anim assign </param>
+        /// <param name="orderLayer"> sorting order </param>
+        /// <returns> object spawned. </returns>
+        public static GameObject SpawnAnimateObject(RuntimeAnimatorController anim, int orderLayer = 15)
+        {
+            GameObject gm = new GameObject();
+
+            SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = orderLayer;
+            Animator animator = gm.AddComponent<Animator>();
+            animator.runtimeAnimatorController = anim;
+
+            return gm;
+        }
+
+        /// <summary>
+        /// Spawn a animate object with the death event, 
+        /// so after the animate was played serval loop times
+        /// the object will be destroyed.
+        /// </summary>
+        /// <param name="anim"> animation u want to play </param>
+        /// <param name="orderLayer"> sorting order  </param>
+        /// <param name="loopTimes"> loop times </param>
+        /// <returns> object spawned. </returns>
+        public static GameObject SpawnAnimateObjectDeathEvent(RuntimeAnimatorController anim, int orderLayer = 15, int loopTimes = 1)
+        {
+            GameObject gm = SpawnAnimateObject(anim, orderLayer);
+
+            JCS_DestroyAnimEndEvent daee = gm.AddComponent<JCS_DestroyAnimEndEvent>();
+
+            daee.LoopTimes = loopTimes;
+
+            return gm;
+        }
+
+        #endregion
+
+        #region Destroy
+
+        /// <summary>
+        /// Destroy all the 'TYPE' object in the scene.
+        /// </summary>
+        public static void DestroyAllTypeObjectInScene<T>()
+            where T : MonoBehaviour
+        {
+            // Destroy all the live object in the scene.
+            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
+
+            foreach (T e in rrEnemy)
+            {
+                // NOTE(JenChieh): kill the object that are clone!
+                // or else it will effect the prefab object...
+                if (e.gameObject.name.Contains("(Clone)"))
+                    MonoBehaviour.Destroy(e.gameObject);
+            }
+        }
+
+        /// <summary>
+        /// Destroy all the 'TYPE' object in the scene.
+        /// </summary>
+        public static void DestroyImmediateAllTypeObjectInScene<T>()
+            where T : MonoBehaviour
+        {
+            // Destroy all the live object in the scene.
+            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
+
+            foreach (T e in rrEnemy)
+            {
+                // NOTE(JenChieh): kill the object that are clone!
+                // or else it will effect the prefab object...
+                if (e.gameObject.name.Contains("(Clone)"))
+                    MonoBehaviour.DestroyImmediate(e.gameObject);
+            }
+        }
+
+        #endregion
+
+        #region Finding
+
+        /// <summary>
+        /// Find all the objects that are clone in the scene by type.
+        /// </summary>
+        /// <typeparam name="T"> Type to find. </typeparam>
+        /// <returns> Type array. </returns>
+        public static T[] FindCloneObjectsOfTypeAll<T>()
+            where T : MonoBehaviour
+        {
+            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
+
+            T[] cleanArr = new T[typeArr.Length];
+            int length = 0;
+
+            foreach (T obj in typeArr)
+            {
+                if (obj.gameObject.name.Contains("(Clone)"))
+                {
+                    cleanArr[length] = obj;
+                    ++length;
+                }
+            }
+
+            return cleanArr;
+        }
+
+        /// <summary>
+        /// Find all the objects that are not clone in the scene by type.
+        /// </summary>
+        /// <typeparam name="T"> Type to find. </typeparam>
+        /// <returns> Type array. </returns>
+        public static T[] FindNotCloneObjectsOfTypeAll<T>()
+            where T : MonoBehaviour
+        {
+            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
+
+            T[] cleanArr = new T[typeArr.Length];
+            int length = 0;
+
+            foreach (T obj in typeArr)
+            {
+                if (!obj.gameObject.name.Contains("(Clone)"))
+                {
+                    cleanArr[length] = obj;
+                    ++length;
+                }
+            }
+
+            return cleanArr;
+        }
+
+        /// <summary>
+        /// Find all objects that only ACTIVE in hierarchy.
+        /// </summary>
+        /// <typeparam name="T"> Type to find. </typeparam>
+        /// <returns> type array, object only in Hierarcrchy. </returns>
+        public static T[] FindObjectsOfTypeAllInHierarchy<T>()
+             where T : MonoBehaviour
+        {
+            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
+
+            T[] cleanArr = new T[typeArr.Length];
+            int length = 0;
+
+            foreach (T obj in typeArr)
+            {
+                if (obj.gameObject.activeInHierarchy)
+                {
+                    cleanArr[length] = obj;
+                    ++length;
+                }
+            }
+
+            return cleanArr;
+        }
+
+        #endregion
+
+        #region Effect
+
+        /// <summary>
+        /// Return the easing function pointer base on tweener type.
+        /// </summary>
+        /// <param name="type"> type of the tween formula </param>
+        /// <returns> function pointer </returns>
+        public static TweenDelegate GetEasing(JCS_TweenType type)
+        {
+            TweenDelegate easing = null;
+
+            switch (type)
+            {
+                // default to linear
+                case JCS_TweenType.LINEAR:
+                    easing = Easing.Linear;
+                    break;
+
+                case JCS_TweenType.EASE_IN_SINE:
+                    easing = Easing.SineEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_CUBIC:
+                    easing = Easing.CubicEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_QUINT:
+                    easing = Easing.QuintEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_CIRC:
+                    easing = Easing.CircEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_BACK:
+                    easing = Easing.BackEaseIn;
+                    break;
+                case JCS_TweenType.EASE_OUT_SINE:
+                    easing = Easing.SineEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_CUBIC:
+                    easing = Easing.CubicEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_QUINT:
+                    easing = Easing.QuintEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_CIRC:
+                    easing = Easing.CircEaseOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_BACK:
+                    easing = Easing.BackEaseOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_SINE:
+                    easing = Easing.SineEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_CUBIC:
+                    easing = Easing.CubicEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_QUINT:
+                    easing = Easing.QuintEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_CIRC:
+                    easing = Easing.CircEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_BACK:
+                    easing = Easing.BackEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_QUAD:
+                    easing = Easing.QuadEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_QUART:
+                    easing = Easing.QuartEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_EXPO:
+                    easing = Easing.ExpoEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_ELASTIC:
+                    easing = Easing.ElasticEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_BOUNCE:
+                    easing = Easing.BounceEaseIn;
+                    break;
+                case JCS_TweenType.EASE_OUT_QUAD:
+                    easing = Easing.QuadEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_QUART:
+                    easing = Easing.QuartEaseOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_EXPO:
+                    easing = Easing.ExpoEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_ELASTIC:
+                    easing = Easing.ElasticEaseOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_BOUNCE:
+                    easing = Easing.BounceEaseOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_QUAD:
+                    easing = Easing.QuadEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_QUART:
+                    easing = Easing.QuartEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_EXPO:
+                    easing = Easing.ExpoEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_ELASTIC:
+                    easing = Easing.ElasticEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_BOUNCE:
+                    easing = Easing.BounceEaseInOut;
+                    break;
+            }
+
+            return easing;
+        }
+
+        #endregion
+
         #region Scene
 
         /// <summary>
@@ -1181,6 +1205,46 @@ namespace JCSUnity
 
         #endregion
 
+        #region Animation
+
+        /// <summary>
+        /// Sets the weight of the layer at the given name.
+        /// 
+        /// Similar to `Animationr.SetLayerWeight` but accept string name.
+        /// </summary>
+        public static void SetLayerWeight(Animator ator, string name, float val)
+        {
+            int index = ator.GetLayerIndex(name);
+
+            SetLayerWeight(ator, index, val);
+        }
+        // For compatibility.
+        public static void SetLayerWeight(Animator ator, int index, float val)
+        {
+            ator.SetLayerWeight(index, val);
+        }
+
+        /// <summary>
+        /// Returns the weight of the layer at the specified name.
+        /// 
+        /// Similar to `Animationr.SetLayerWeight` but accept string name.
+        /// </summary>
+        public static float GetLayerWeight(Animator ator, string name)
+        {
+            int index = ator.GetLayerIndex(name);
+
+            return GetLayerWeight(ator, index);
+        }
+        // For compatibility.
+        public static float GetLayerWeight(Animator ator, int index)
+        {
+            return ator.GetLayerWeight(index);
+        }
+
+        #endregion
+
+        #region Gameplay
+
         /// <summary>
         /// Check if the object are the same tribe.
         /// </summary>
@@ -1199,5 +1263,7 @@ namespace JCSUnity
             // or if both enemy does not need to add in to list.
             return (liveObj1.IsPlayer == liveObj2.IsPlayer);
         }
+
+        #endregion
     }
 }

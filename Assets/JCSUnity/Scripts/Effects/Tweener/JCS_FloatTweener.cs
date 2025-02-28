@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ValueTweener.cs $
+ * $File: JCS_FloatTweener.cs $
  * $Date: 2020-04-18 20:45:08 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -17,15 +17,15 @@ namespace JCSUnity
     /// 
     /// Can only use for `float`.
     /// </summary>
-    public class JCS_ValueTweener : MonoBehaviour
+    public class JCS_FloatTweener : MonoBehaviour
     {
-        public delegate void SetValFloat(float newVal);
-        public delegate float GetValFloat();
+        public delegate void SetFloat(float newVal);
+        public delegate float GetFloat();
 
         /* Variables */
 
-        public SetValFloat onValueChange = null;
-        public GetValFloat onValueReturn = null;
+        public SetFloat onValueChange = null;
+        public GetFloat onValueReturn = null;
 
         private EmptyFunction mValueCallback = null;
 
