@@ -20,12 +20,16 @@ namespace JCSUnity
     {
         /* Variables */
 
+        // Callback when successfully dispose the dialogue.
+        public EmptyFunction onDispose = null;
+
+        // Callback determine when the dialogue system suppose to be
+        // disposed when executing the function `NextOrDispose`.
+        public EmptyBoolFunction onNextOrDisposeCondition = null;
+
         private bool mInitialized = false;
 
         private JCS_DialogueScript mPreselectingScript = null;
-
-        // Callback when successfully dispose the dialogue.
-        public EmptyFunction onDispose = null;
 
         [Separator("Check Variables (JCS_DialogueSystem)")]
 
@@ -805,7 +809,7 @@ namespace JCSUnity
             if (SkipToEnd(mCompleteTextBeforeAction))
                 return false;
 
-            PreviousBtnCallback();
+            OnPreviousBtn();
 
             return true;
         }
@@ -827,7 +831,7 @@ namespace JCSUnity
             if (SkipToEnd(mCompleteTextBeforeAction))
                 return false;
 
-            NextBtnCallback();
+            OnNextBtn();
 
             return true;
         }
@@ -841,9 +845,14 @@ namespace JCSUnity
             if (!Next())
                 return false;
 
-            if (mMessage == "")
+            bool dispose = (onNextOrDisposeCondition != null) ?
+                onNextOrDisposeCondition.Invoke() :
+                mMessage == "";  // The fallback condition; when text is empty.
+
+            if (dispose)
             {
                 Dispose();
+
                 return false;
             }
 
@@ -1232,28 +1241,28 @@ namespace JCSUnity
         private void InitBtnsSet()
         {
             if (mOkBtn != null)
-                mOkBtn.SetSystemCallback(OkBtnCallback);
+                mOkBtn.SetSystemCallback(OnOkBtn);
 
             if (mNoBtn != null)
-                mNoBtn.SetSystemCallback(NoBtnCallback);
+                mNoBtn.SetSystemCallback(OnNoBtn);
 
             if (mYesBtn != null)
-                mYesBtn.SetSystemCallback(YesBtnCallback);
+                mYesBtn.SetSystemCallback(OnYesBtn);
 
             if (mNextBtn != null)
-                mNextBtn.SetSystemCallback(NextBtnCallback);
+                mNextBtn.SetSystemCallback(OnNextBtn);
 
             if (mPreviousBtn != null)
-                mPreviousBtn.SetSystemCallback(PreviousBtnCallback);
+                mPreviousBtn.SetSystemCallback(OnPreviousBtn);
 
             if (mExitBtn != null)
-                mExitBtn.SetSystemCallback(ExitBtnCallback);
+                mExitBtn.SetSystemCallback(OnExitBtn);
 
             if (mAcceptBtn != null)
-                mAcceptBtn.SetSystemCallback(AcceptBtnCallback);
+                mAcceptBtn.SetSystemCallback(OnAcceptBtn);
 
             if (mDeclineBtn != null)
-                mDeclineBtn.SetSystemCallback(DeclineBtnCallback);
+                mDeclineBtn.SetSystemCallback(OnDeclineBtn);
 
             for (int index = 0; index < mSelectBtn.Length; ++index)
             {
@@ -1268,8 +1277,8 @@ namespace JCSUnity
                 {
                     if (btn.ButtonSelection == null)
                     {
-                        JCS_Debug.LogWarning(@"Cannot make hover select  because 
-button selection is not attach to all selections in the list!");
+                        JCS_Debug.LogWarning(@"Cannot make hover select 
+because button selection is not attach to all selections in the list!");
                     }
                     else
                     {
@@ -1332,7 +1341,7 @@ button selection is not attach to all selections in the list!");
         /// <summary>
         /// Callback for button `Next`.
         /// </summary>
-        private void NextBtnCallback()
+        private void OnNextBtn()
         {
             if (SkipToEnd(mCompleteTextBeforeActionOnButton))
                 return;
@@ -1341,10 +1350,11 @@ button selection is not attach to all selections in the list!");
 
             RunAction();
         }
+
         /// <summary>
         /// Callback for button `Previous`.
         /// </summary>
-        private void PreviousBtnCallback()
+        private void OnPreviousBtn()
         {
             if (SkipToEnd(mCompleteTextBeforeActionOnButton))
                 return;
@@ -1353,10 +1363,11 @@ button selection is not attach to all selections in the list!");
 
             RunAction();
         }
+
         /// <summary>
         /// Callback for button `Yes`.
         /// </summary>
-        private void YesBtnCallback()
+        private void OnYesBtn()
         {
             if (SkipToEnd(mCompleteTextBeforeActionOnButton))
                 return;
@@ -1366,10 +1377,11 @@ button selection is not attach to all selections in the list!");
 
             RunAction();
         }
+
         /// <summary>
         /// Callback for button `No`.
         /// </summary>
-        private void NoBtnCallback()
+        private void OnNoBtn()
         {
             if (SkipToEnd(mCompleteTextBeforeActionOnButton))
                 return;
@@ -1379,26 +1391,29 @@ button selection is not attach to all selections in the list!");
 
             RunAction();
         }
+
         /// <summary>
         /// Callback for button `Ok`.
         /// </summary>
-        private void OkBtnCallback()
+        private void OnOkBtn()
         {
             // when exit button happens, exit the dialogue box.
             Dispose();
         }
+
         /// <summary>
         /// Callback for button `Exit`.
         /// </summary>
-        private void ExitBtnCallback()
+        private void OnExitBtn()
         {
             // when exit button happens, exit the dialogue box.
             Dispose();
         }
+
         /// <summary>
         /// Callback for button `Accept`.
         /// </summary>
-        private void AcceptBtnCallback()
+        private void OnAcceptBtn()
         {
             if (SkipToEnd(mCompleteTextBeforeActionOnButton))
                 return;
@@ -1408,10 +1423,11 @@ button selection is not attach to all selections in the list!");
 
             RunAction();
         }
+
         /// <summary>
         /// Callback for button `Decline`.
         /// </summary>
-        private void DeclineBtnCallback()
+        private void OnDeclineBtn()
         {
             if (SkipToEnd(mCompleteTextBeforeActionOnButton))
                 return;
@@ -1421,10 +1437,11 @@ button selection is not attach to all selections in the list!");
 
             RunAction();
         }
+
         /// <summary>
         /// Callback for button `Select`.
         /// </summary>
-        private void SelectBtnCallback()
+        private void OnSelectBtn()
         {
             if (SkipToEnd(mCompleteTextBeforeActionOnButton))
                 return;
@@ -1438,7 +1455,7 @@ button selection is not attach to all selections in the list!");
         private void SelectionInt(int selection)
         {
             Selection = selection;
-            SelectBtnCallback();
+            OnSelectBtn();
         }
 
         /// <summary>

@@ -305,11 +305,7 @@ namespace JCSUnity
             // create canvas
             GameObject canvasObj = CreateJCSCanvas();
 
-            const string desc_path = "UI/JCS Describe Panel";
-            GameObject desc_obj = JCS_Util.Instantiate(desc_path);
-            desc_obj.name = desc_obj.name.Replace("(Clone)", "");
-            desc_obj.transform.SetParent(canvasObj.transform);
-            desc_obj.transform.localPosition = Vector3.zero;
+            CreateDescribePanel(canvasObj);
         }
 
         /// <summary>
@@ -331,7 +327,21 @@ namespace JCSUnity
             CreateBGMPlayer();
 
             // create canvas
-            CreateJCSCanvas();
+            GameObject canvasObj = CreateJCSCanvas();
+
+            CreateDescribePanel(canvasObj);
+        }
+
+        private static void CreateDescribePanel(GameObject parent)
+        {
+            const string desc_path = "UI/JCS Describe Panel";
+
+            GameObject desc_obj = JCS_Util.Instantiate(desc_path);
+            desc_obj.name = desc_obj.name.Replace("(Clone)", "");
+
+            desc_obj.transform.SetParent(parent.transform);
+            desc_obj.transform.localPosition = Vector3.zero;
+            desc_obj.transform.localScale = Vector3.one;
         }
 
         /// <summary>
@@ -412,12 +422,24 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateJCSCanvas()
         {
+            /* Canvas */
             const string canvas_path = "UI/JCS_Canvas";
             GameObject canvasObj = CreateHierarchyObject(canvas_path);
 
+            var canvas = canvasObj.GetComponent<Canvas>();
+            {
+                // auto assign camera.
+                canvas.worldCamera = Camera.main;
+
+                // Place canvas somewhere closer to the camera.
+                //
+                // `10.0f` is just a good number for the plane distance.
+                canvas.planeDistance = 10.0f;
+            }
+
             Undo.RegisterCreatedObjectUndo(canvasObj, "Create JCS Canvas");
 
-
+            /* Event System */
             const string eventSystem_path = "UI/EventSystem";
             GameObject evtSystemObj = CreateHierarchyObject(eventSystem_path);
 
@@ -582,13 +604,14 @@ namespace JCSUnity
         private static void CreateSlidePanel()
         {
             var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
+
             if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return;
             }
 
-            const string settingPath = "LevelDesignUI/JCS_SlideScreenPanelHolder";
+            const string settingPath = "UI/System/JCS_SlideScreenPanelHolder";
 
             // spawn the pane holder.
             JCS_SlideScreenPanelHolder panelHolder9x9 = CreateHierarchyObjectUnderCanvas(settingPath, canvas).GetComponent<JCS_SlideScreenPanelHolder>();
@@ -599,7 +622,7 @@ namespace JCSUnity
             int starting_pos_x = -1920;
             int starting_pos_y = 1080;
 
-            const string slidePanelPath = "LevelDesignUI/JCS_SlidePanel";
+            const string slidePanelPath = "UI/System/JCS_SlidePanel";
 
             int index = 0;
 
@@ -620,7 +643,8 @@ namespace JCSUnity
                     // set scale to one.
                     slidePanel.localScale = Vector3.one;
 
-                    Image panelImage = slidePanel.GetComponent<Image>();
+                    var panelImage = slidePanel.GetComponent<Image>();
+
                     if (panelImage != null)
                     {
                         panelImage.color = JCS_Random.PickColor();
@@ -655,6 +679,7 @@ namespace JCSUnity
         private static GameObject CreateTweenPanel()
         {
             var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
+
             if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
