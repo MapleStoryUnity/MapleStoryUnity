@@ -16,14 +16,15 @@
 
 > A framework to build MapleStory MMO RPG games.
 
-## Dependencies
+## 📌 Dependencies
 
 - [UnityWzLib](https://github.com/MapleStoryUnity/UnityWzLib)
 - [JCSUnity](https://github.com/jcs090218/JCSUnity)
+- [Mx](https://github.com/jcs090218/Unity.Mx)
 
-## Development
+## 🔨 Development
 
-### :mag: Prepare wz files
+### 🔍 Prepare wz files
 
 Make sure you have placed all `.wz` files to `wz` folder from the
 root of the project directory.
