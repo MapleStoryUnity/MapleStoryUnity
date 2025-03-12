@@ -394,7 +394,7 @@ namespace JCSUnity
             }
 
             // part of the SFX
-            mRandomMultiSoundAction.PlayRandomSound();
+            mRandomMultiSoundAction.PlayRandom();
 
             return bullet;
         }
@@ -500,7 +500,7 @@ namespace JCSUnity
             }
 
             // part of the SFX
-            mRandomMultiSoundAction.PlayRandomSound();
+            mRandomMultiSoundAction.PlayRandom();
 
             return bullet;
         }

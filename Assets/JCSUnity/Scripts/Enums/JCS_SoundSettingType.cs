@@ -14,10 +14,10 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_SoundSettingType
     {
-        NONE,
+        NONE = 0,
 
-        BGM_SOUND,
-        SFX_SOUND,
-        SKILLS_SOUND,
+        BGM = 1,
+        EFFECT = 2,
+        SKILL = 3,
     }
 }

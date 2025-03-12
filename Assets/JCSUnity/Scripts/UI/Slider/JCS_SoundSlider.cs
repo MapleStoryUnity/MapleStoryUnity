@@ -50,7 +50,7 @@ namespace JCSUnity
             float total = mSlider.maxValue - mSlider.minValue;  // Find total.
             float val = mSlider.value / total;                  // Convert to 0 to 1 scale.
 
-            JCS_SoundSettings.instance.SetSoudnVolume(mSoundType, val);
+            JCS_SoundSettings.instance.SetVolume(mSoundType, val);
         }
     }
 }

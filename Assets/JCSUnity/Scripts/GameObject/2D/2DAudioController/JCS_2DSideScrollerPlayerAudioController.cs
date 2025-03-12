@@ -58,7 +58,7 @@ namespace JCSUnity
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mJumpSound[0], ss.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mJumpSound[0], ss.GetSkill_Volume());
         }
         /// <summary>
         /// 
@@ -74,7 +74,7 @@ namespace JCSUnity
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mJumpSound[1], ss.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mJumpSound[1], ss.GetSkill_Volume());
         }
         /// <summary>
         /// 
@@ -90,7 +90,7 @@ namespace JCSUnity
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mJumpSound[2], ss.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mJumpSound[2], ss.GetSkill_Volume());
         }
         /// <summary>
         /// 
@@ -112,7 +112,7 @@ namespace JCSUnity
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mAttackSounds[rand], ss.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mAttackSounds[rand], ss.GetSkill_Volume());
         }
         /// <summary>
         /// 
@@ -125,7 +125,7 @@ namespace JCSUnity
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mWalkSound, ss.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mWalkSound, ss.GetSkill_Volume());
         }
         /// <summary>
         /// 

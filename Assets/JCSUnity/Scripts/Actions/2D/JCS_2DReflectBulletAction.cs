@@ -107,7 +107,7 @@ degree lower than 90.")]
             bullet.MoveSpeed += mReflectForce;
 
             // play sound from sound pool
-            mSoundPoolAction.PlayRandomSound();
+            mSoundPoolAction.PlayRandom();
 
             // do random teleport effect
             RandomPosEffect(bullet);

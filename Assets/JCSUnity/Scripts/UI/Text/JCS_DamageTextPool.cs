@@ -427,14 +427,14 @@ namespace JCSUnity
             if (hitSound != null)
             {
                 // play the hit sound provide by passing in.
-                sp.PlayOneShot(hitSound, ss.GetSFXSound_Volume());
+                sp.PlayOneShot(hitSound, ss.GetEffect_Volume());
             }
             else
             {
                 if (mHitSound != null)
                 {
                     // play the regular assigned by variable's hit sound.
-                    sp.PlayOneShot(mHitSound, ss.GetSFXSound_Volume());
+                    sp.PlayOneShot(mHitSound, ss.GetEffect_Volume());
                 }
             }
         }

@@ -36,7 +36,7 @@ namespace JCSUnity
         private void Start()
         {
             // add sound to let "SoundManager" take care of all the effect
-            JCS_SoundManager.instance.AssignSoundSource(JCS_SoundSettingType.SFX_SOUND, mAudioSource);
+            JCS_SoundManager.instance.AssignSoundSource(JCS_SoundSettingType.EFFECT, mAudioSource);
         }
     }
 }

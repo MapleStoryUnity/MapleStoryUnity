@@ -78,14 +78,14 @@ namespace JCSUnity
             float volume = 0;
             switch (type)
             {
-                case JCS_SoundSettingType.BGM_SOUND:
+                case JCS_SoundSettingType.BGM:
                     volume = ss.GetBGM_Volume();
                     break;
-                case JCS_SoundSettingType.SFX_SOUND:
-                    volume = ss.GetSFXSound_Volume();
+                case JCS_SoundSettingType.EFFECT:
+                    volume = ss.GetEffect_Volume();
                     break;
-                case JCS_SoundSettingType.SKILLS_SOUND:
-                    volume = ss.GetSkillsSound_Volume();
+                case JCS_SoundSettingType.SKILL:
+                    volume = ss.GetSkill_Volume();
                     break;
             }
 

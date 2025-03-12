@@ -43,7 +43,7 @@ namespace JCSUnity
 
             // add it to Sound Manager so it could manage
             // the volume and mute!
-            sm.AssignSoundSource(JCS_SoundSettingType.SKILLS_SOUND, mSoundPlayer.GetAudioSource());
+            sm.AssignSoundSource(JCS_SoundSettingType.SKILL, mSoundPlayer.GetAudioSource());
         }
     }
 }

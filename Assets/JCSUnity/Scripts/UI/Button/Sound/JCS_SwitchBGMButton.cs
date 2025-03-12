@@ -44,7 +44,7 @@ namespace JCSUnity
 
         public override void OnClick()
         {
-            JCS_SoundManager.instance.SwitchBackgroundMusic(
+            JCS_SoundManager.instance.SwitchBGM(
                 mSoundClip,
                 mSoundFadeInTime,
                 mSoundFadeOutTime);

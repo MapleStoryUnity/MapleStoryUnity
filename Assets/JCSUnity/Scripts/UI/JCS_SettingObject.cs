@@ -101,14 +101,14 @@ namespace JCSUnity
                 case JCS_SoundSettingType.NONE:
                     JCS_Debug.LogError("Setting with no meaning...");
                     return;
-                case JCS_SoundSettingType.BGM_SOUND:
+                case JCS_SoundSettingType.BGM:
                     this.mSettingValue = ss.GetBGM_Volume();
                     break;
-                case JCS_SoundSettingType.SFX_SOUND:
-                    this.mSettingValue = ss.GetSFXSound_Volume();
+                case JCS_SoundSettingType.EFFECT:
+                    this.mSettingValue = ss.GetEffect_Volume();
                     break;
-                case JCS_SoundSettingType.SKILLS_SOUND:
-                    this.mSettingValue = ss.GetSkillsSound_Volume();
+                case JCS_SoundSettingType.SKILL:
+                    this.mSettingValue = ss.GetSkill_Volume();
                     break;
             }
         }
@@ -187,14 +187,14 @@ namespace JCSUnity
 
             switch (mSettingType)
             {
-                case JCS_SoundSettingType.BGM_SOUND:
+                case JCS_SoundSettingType.BGM:
                     ss.SetBGM_Volume(this.mSlider.value);
                     break;
-                case JCS_SoundSettingType.SFX_SOUND:
-                    ss.SetSFXSound_Volume(this.mSlider.value);
+                case JCS_SoundSettingType.EFFECT:
+                    ss.SetEffect_Volume(this.mSlider.value);
                     break;
-                case JCS_SoundSettingType.SKILLS_SOUND:
-                    ss.SetSkillsSound_Volume(this.mSlider.value);
+                case JCS_SoundSettingType.SKILL:
+                    ss.SetSkill_Volume(this.mSlider.value);
                     break;
             }
         }

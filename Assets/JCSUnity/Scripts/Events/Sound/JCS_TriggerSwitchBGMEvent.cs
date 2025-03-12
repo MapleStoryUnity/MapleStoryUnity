@@ -44,7 +44,7 @@ namespace JCSUnity
 
         private void OnTriggerEnter(Collider other)
         {
-            JCS_SoundManager.instance.SwitchBackgroundMusic(
+            JCS_SoundManager.instance.SwitchBGM(
                 mSoundClip, 
                 mSoundFadeInTime, 
                 mSoundFadeOutTime);

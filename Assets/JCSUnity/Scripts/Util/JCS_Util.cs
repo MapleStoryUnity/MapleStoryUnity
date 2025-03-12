@@ -1243,6 +1243,30 @@ namespace JCSUnity
 
         #endregion
 
+        #region Audio
+
+        /// <summary>
+        /// Same with function `AudioSource.PlayClipAtPoint` with different
+        /// default `spatialBlend` value.
+        /// </summary>
+        public static void PlayClipAtPoint(
+            AudioClip clip, 
+            Vector3 position, 
+            float volume, 
+            float spatialBlend)
+        {
+            var gameObject = new GameObject("One shot audio");
+            gameObject.transform.position = position;
+            var audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = clip;
+            audioSource.spatialBlend = spatialBlend;
+            audioSource.volume = volume;
+            audioSource.Play();
+            Object.Destroy(gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
+        }
+
+        #endregion
+
         #region Gameplay
 
         /// <summary>

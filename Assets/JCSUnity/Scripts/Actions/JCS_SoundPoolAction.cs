@@ -46,7 +46,7 @@ namespace JCSUnity
         /// <summary>
         /// Randomly play a sound from the pool.
         /// </summary>
-        public void PlayRandomSound()
+        public void PlayRandom()
         {
             if (mAudioClips.Length == 0)
                 return;
@@ -59,7 +59,7 @@ namespace JCSUnity
                 return;
             }
 
-            float soundVolume = JCS_SoundSettings.instance.GetSoundVolume(mSoundSettingType);
+            float soundVolume = JCS_SoundSettings.instance.GetVolume(mSoundSettingType);
             mSoundPlayer.PlayOneShot(mAudioClips[randIndex], soundVolume);
         }
     }

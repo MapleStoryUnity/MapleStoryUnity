@@ -18,11 +18,11 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public const float MAX_SOUND_VOLUME = 1.0f;
-        public const float MIN_SOUND_VOLUME = 0.0f;
+        public const float MAX_VOLUME = 1.0f;
+        public const float MIN_VOLUME = 0.0f;
 
-        public const float MAX_SOUND_FADEOUT_TIME = 5.0f;
-        public const float MIN_SOUND_FADEOUT_TIME = 0.0f;
+        public const float MAX_FADEOUT_TIME = 5.0f;
+        public const float MIN_FADEOUT_TIME = 0.0f;
 
         [Separator("Runtime Variables (JCS_SoundSettings)")]
 
@@ -36,23 +36,23 @@ namespace JCSUnity
         public bool PERFONAL_EFFECT_MUTE = false;
 
         [Tooltip("Background music [Default: 0.4f]")]
-        [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
+        [Range(MIN_VOLUME, MAX_VOLUME)]
         public float BGM_SOUND = 0.4f;
 
         [Tooltip("Sound from other player/environment [Default: 0.4]")]
-        [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
+        [Range(MIN_VOLUME, MAX_VOLUME)]
         public float SFX_SOUND = 0.4f;
 
         [Tooltip("Sound from player [Default: 0.4f]")]
-        [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
+        [Range(MIN_VOLUME, MAX_VOLUME)]
         public float SKILLS_SOUND = 0.4f;
 
         [Tooltip("General Sound fadout time.")]
-        [Range(MIN_SOUND_FADEOUT_TIME, MAX_SOUND_FADEOUT_TIME)]
+        [Range(MIN_FADEOUT_TIME, MAX_FADEOUT_TIME)]
         public float SOUND_FADEOUT_TIME = 1.5f;
 
         [Tooltip("General Sound fadein time.")]
-        [Range(MIN_SOUND_FADEOUT_TIME, MAX_SOUND_FADEOUT_TIME)]
+        [Range(MIN_FADEOUT_TIME, MAX_FADEOUT_TIME)]
         public float SOUND_FADEIN_TIME = 1.5f;
 
         [Tooltip("Keep BGM current scene?")]
@@ -83,44 +83,54 @@ namespace JCSUnity
             BGM_SOUND = volume;
             JCS_SoundManager.instance.GetBGMAudioSource().volume = volume;
         }
-        public float GetSFXSound_Volume() { return SFX_SOUND; }
-        public void SetSFXSound_Volume(float volume)
+
+        public float GetEffect_Volume() { return SFX_SOUND; }
+        public void SetEffect_Volume(float volume)
         {
             SFX_SOUND = volume;
-            JCS_SoundManager.instance.SetSoundVolume(JCS_SoundSettingType.SFX_SOUND, volume);
+            JCS_SoundManager.instance.SetVolume(JCS_SoundSettingType.EFFECT, volume);
         }
-        public void SetSkillsSound_Volume(float volume)
+
+        public void SetSkill_Volume(float volume)
         {
             SKILLS_SOUND = volume;
-            JCS_SoundManager.instance.SetSoundVolume(JCS_SoundSettingType.SKILLS_SOUND, volume);
+            JCS_SoundManager.instance.SetVolume(JCS_SoundSettingType.SKILL, volume);
         }
-        public float GetSkillsSound_Volume() { return SKILLS_SOUND; }
-        public float GetSoundVolume(JCS_SoundSettingType type)
+        public float GetSkill_Volume() { return SKILLS_SOUND; }
+
+        public float GetVolume(JCS_SoundSettingType type)
         {
             switch (type)
             {
-                case JCS_SoundSettingType.BGM_SOUND:
+                case JCS_SoundSettingType.BGM:
                     return GetBGM_Volume();
-                case JCS_SoundSettingType.SFX_SOUND:
-                    return GetSFXSound_Volume();
-                case JCS_SoundSettingType.SKILLS_SOUND:
-                    return GetSkillsSound_Volume();
+                case JCS_SoundSettingType.EFFECT:
+                    return GetEffect_Volume();
+                case JCS_SoundSettingType.SKILL:
+                    return GetSkill_Volume();
             }
 
-            JCS_Debug.LogError("Get unknown volume...");
+            JCS_Debug.LogError("Get unknown volume: " + type);
             return 0;
         }
-        public void SetSoudnVolume(JCS_SoundSettingType type, float volume)
+        public void SetVolume(JCS_SoundSettingType type, float volume)
         {
             switch (type)
             {
-                case JCS_SoundSettingType.NONE: return;
-                case JCS_SoundSettingType.BGM_SOUND: BGM_SOUND = volume; break;
-                case JCS_SoundSettingType.SFX_SOUND: SFX_SOUND = volume; break;
-                case JCS_SoundSettingType.SKILLS_SOUND: SKILLS_SOUND = volume; break;
+                case JCS_SoundSettingType.NONE: 
+                    return;
+                case JCS_SoundSettingType.BGM: 
+                    BGM_SOUND = volume; 
+                    break;
+                case JCS_SoundSettingType.EFFECT: 
+                    SFX_SOUND = volume; 
+                    break;
+                case JCS_SoundSettingType.SKILL: 
+                    SKILLS_SOUND = volume; 
+                    break;
             }
 
-            JCS_SoundManager.instance.SetSoundVolume(type, volume);
+            JCS_SoundManager.instance.SetVolume(type, volume);
         }
 
         /* Functions */
