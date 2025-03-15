@@ -947,7 +947,7 @@ namespace JCSUnity
             {
                 // NOTE(JenChieh): kill the object that are clone!
                 // or else it will effect the prefab object...
-                if (e.gameObject.name.Contains("(Clone)"))
+                if (IsClone(e.gameObject))
                     MonoBehaviour.Destroy(e.gameObject);
             }
         }
@@ -965,9 +965,40 @@ namespace JCSUnity
             {
                 // NOTE(JenChieh): kill the object that are clone!
                 // or else it will effect the prefab object...
-                if (e.gameObject.name.Contains("(Clone)"))
+                if (IsClone(e.gameObject))
                     MonoBehaviour.DestroyImmediate(e.gameObject);
             }
+        }
+
+        #endregion
+
+        #region Clone
+
+        /// <summary>
+        /// Return true if the game object is a clone.
+        /// </summary>
+        public static bool IsClone(Transform trans)
+        {
+            return IsClone(trans.gameObject);
+        }
+        public static bool IsClone(GameObject obj)
+        {
+            return obj.name.Contains("(Clone)");
+        }
+
+        /// <summary>
+        /// Remove the text "(Clone)" from game object's name,
+        /// and return the new name string.
+        /// </summary>
+        public static string RemoveCloneString(Transform trans)
+        {
+            return RemoveCloneString(trans.gameObject);
+        }
+        public static string RemoveCloneString(GameObject obj)
+        {
+            obj.name = obj.name.Replace("(Clone)", "");
+
+            return obj.name;
         }
 
         #endregion
@@ -989,7 +1020,7 @@ namespace JCSUnity
 
             foreach (T obj in typeArr)
             {
-                if (obj.gameObject.name.Contains("(Clone)"))
+                if (IsClone(obj.gameObject))
                 {
                     cleanArr[length] = obj;
                     ++length;
@@ -1014,7 +1045,7 @@ namespace JCSUnity
 
             foreach (T obj in typeArr)
             {
-                if (!obj.gameObject.name.Contains("(Clone)"))
+                if (!IsClone(obj.gameObject))
                 {
                     cleanArr[length] = obj;
                     ++length;

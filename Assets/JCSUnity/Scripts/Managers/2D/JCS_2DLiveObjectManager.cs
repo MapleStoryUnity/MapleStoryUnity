@@ -51,7 +51,7 @@ namespace JCSUnity
             {
                 // NOTE(JenChieh): kill the object that are clone!
                 // or else it will effect the prefab object...
-                if (lo.gameObject.name.Contains("(Clone)"))
+                if (JCS_Util.IsClone(lo.gameObject))
                     lo.Die();
             }
         }

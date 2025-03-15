@@ -192,7 +192,7 @@ namespace JCSUnity
         {
             this.mSpriteRenderers = new List<SpriteRenderer>();
 
-            if (this.mCriticalSprite == null && transform.name.Contains("(Clone)"))
+            if (this.mCriticalSprite == null && JCS_Util.IsClone(transform))
             {
                 var gm = new GameObject();
                 this.mCriticalSprite = gm.AddComponent<SpriteRenderer>();

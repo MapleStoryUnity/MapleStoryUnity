@@ -59,7 +59,7 @@ namespace JCSUnity
                 // Check clone
                 if (mIncludeClone)
                 {
-                    if (other.gameObject.name == (obj + "(Clone)"))
+                    if (JCS_Util.IsClone(other.gameObject))
                     {
                         mIsHit = true;
                         continue;

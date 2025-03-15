@@ -337,7 +337,7 @@ namespace JCSUnity
             const string desc_path = "UI/JCS Describe Panel";
 
             GameObject desc_obj = JCS_Util.Instantiate(desc_path);
-            desc_obj.name = desc_obj.name.Replace("(Clone)", "");
+            JCS_Util.RemoveCloneString(desc_obj);
 
             desc_obj.transform.SetParent(parent.transform);
             desc_obj.transform.localPosition = Vector3.zero;
@@ -773,7 +773,7 @@ namespace JCSUnity
             GameObject hierarchyObj = JCS_Util.Instantiate(settingPath);
 
             // take away clone sign.
-            hierarchyObj.name = hierarchyObj.name.Replace("(Clone)", "");
+            JCS_Util.RemoveCloneString(hierarchyObj);
 
             return hierarchyObj;
         }
