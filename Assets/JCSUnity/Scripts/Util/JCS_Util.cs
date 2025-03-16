@@ -202,14 +202,18 @@ namespace JCSUnity
         /// <returns></returns>
         public static T[] MergeArrays<T>(params T[][] arrList)
         {
-            if (arrList.Length <= 1)
-            {
-                JCS_Debug.Log("You trying to merge the array less then two array");
-            }
+            if (arrList.Length == 0)
+                return null;
+
+            if (arrList.Length == 1)
+                return arrList[0];
 
             int arrLen = 0;
+
             foreach (var arr in arrList)
+            {
                 arrLen += arr.Length;
+            }
 
             // first combine the first two array.
             T[] data = MergeArrays2<T>(arrList[0], arrList[1]);
@@ -1294,6 +1298,26 @@ namespace JCSUnity
             audioSource.volume = volume;
             audioSource.Play();
             Object.Destroy(gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
+        }
+
+        #endregion
+
+        #region Particle
+
+        /// <summary>
+        /// Play the particle at point.
+        /// </summary>
+        public static void PlayParticleAtPoint(ParticleSystem ps, Vector3 position)
+        {
+            PlayParticleAtPoint(ps, position, ps.main.duration);
+        }
+        public static void PlayParticleAtPoint(ParticleSystem ps, Vector3 position, float duration)
+        {
+            ParticleSystem particleSystem = MonoBehaviour.Instantiate(ps);
+            particleSystem.gameObject.name = "One shot particle";
+            particleSystem.transform.position = position;
+            particleSystem.Play();
+            Object.Destroy(particleSystem.gameObject, duration);
         }
 
         #endregion

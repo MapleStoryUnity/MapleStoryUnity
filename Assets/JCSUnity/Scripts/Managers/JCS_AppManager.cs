@@ -89,7 +89,6 @@ namespace JCSUnity
                 this.mPlatformType = value;
             }
         }
-        public bool SimulateSystemLanguage { get { return this.mSimulateSystemLanguage; } set { this.mSimulateSystemLanguage = value; } }
         public SystemLanguage systemLanguage
         {
             get { return this.mSystemLanguage; }
@@ -100,6 +99,18 @@ namespace JCSUnity
 
                 if (onSystemLanguageChanged != null)
                     onSystemLanguageChanged.Invoke(value);
+            }
+        }
+        public bool SimulateSystemLanguage { get { return this.mSimulateSystemLanguage; } set { this.mSimulateSystemLanguage = value; } }
+        public SystemLanguage SimulateLanguage
+        {
+            get { return this.mSimulateLanguage; }
+            set
+            {
+                this.mSimulateLanguage = value;
+
+                if (mSimulateSystemLanguage)
+                    systemLanguage = value;
             }
         }
         public bool RequestCamera { get { return this.mRequestCamera; } }
@@ -143,6 +154,12 @@ namespace JCSUnity
 
             // done initialize the application layer.
             APP_INITIALIZING = false;
+        }
+
+        private void OnValidate()
+        {
+            if (mSimulateSystemLanguage)
+                systemLanguage = SimulateLanguage;
         }
 
         public bool IsPC() { return (PlatformType == JCS_PlatformType.PC); }
