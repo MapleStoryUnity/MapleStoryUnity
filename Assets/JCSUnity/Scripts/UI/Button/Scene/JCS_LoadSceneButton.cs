@@ -25,7 +25,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_PlatformType mPlatformType = JCS_PlatformType.NONE;
 
-        [Tooltip("Scene name you want to load the scene.")]
+        [Tooltip("Scene name you want to load the scene; if empy, load the next scene instead.")]
         [SerializeField]
         private string mSceneName = "";
 
@@ -61,13 +61,7 @@ namespace JCSUnity
                     return;
             }
 
-            string sceneName = mSceneName;
-
-            if (mReloadScene)
-            {
-                // assign current scene name
-                sceneName = SceneManager.GetActiveScene().name;
-            }
+            string sceneName = JCS_SceneManager.GetSceneNameByOption(mSceneName, mReloadScene);
 
             JCS_SceneManager.instance.LoadScene(sceneName, mScreenColor, mKeppBGM);
         }

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MyBox;
@@ -210,6 +211,8 @@ namespace JCSUnity
             DoSwitchScene();
         }
 
+        #region Load Scene
+
         /// <summary>
         /// Load the target scene.
         /// </summary>
@@ -399,6 +402,10 @@ namespace JCSUnity
             scs.SWITCHING_SCENE = true;
         }
 
+        #endregion
+
+        #region Reload Scene
+
         /// <summary>
         /// Reload the current scene.
         /// </summary>
@@ -490,6 +497,139 @@ namespace JCSUnity
             string sceneName = SceneManager.GetActiveScene().name;
 
             LoadScene(sceneName, fadeInTime, screenColor, keepBGM);
+        }
+
+        #endregion
+
+        #region Next Scene
+
+        /// <summary>
+        /// Return the next scene name.
+        /// </summary>
+        public static string NextSceneName(int offset = 1)
+        {
+            int nextIndex = SceneManager.GetActiveScene().buildIndex + offset;
+
+            string pathToScene = SceneUtility.GetScenePathByBuildIndex(nextIndex);
+            string sceneName = Path.GetFileNameWithoutExtension(pathToScene);
+
+            return sceneName;
+        }
+
+        /// <summary>
+        /// Load the next scene.
+        /// </summary>
+        public void LoadNextScene()
+        {
+            // NOTE(jenchieh): get the fade in time base on 
+            // the scene setting and scene manager specific.
+            float fadeInTime = JCS_SceneSettings.instance.SceneFadeInTimeBaseOnSetting();
+
+            // load scene and pass the value in.
+            LoadNextScene(fadeInTime);
+        }
+
+        /// <summary>
+        /// Load the next scene.
+        /// </summary>
+        /// <param name="fadeInTime"> Time to fade in. </param>
+        public void LoadNextScene(float fadeInTime)
+        {
+            LoadNextScene(fadeInTime, false);
+        }
+
+        /// <summary>
+        /// Load the next scene.
+        /// </summary>
+        /// <param name="screenColor"> Screen color to fade in/out. </param>
+        public void LoadNextScene(Color screenColor)
+        {
+            var ss = JCS_SceneSettings.instance;
+
+            // NOTE(jenchieh): get the fade in time base on  the scene setting
+            // and scene manager specific.
+            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
+
+            LoadNextScene(fadeInTime, screenColor, false);
+        }
+
+        /// <summary>
+        /// Load the next scene.
+        /// </summary>
+        /// <param name="keepBGM"> Set to true if keep background music playing. </param>
+        public void LoadNextScene(bool keepBGM)
+        {
+            var ss = JCS_SceneSettings.instance;
+
+            // NOTE(jenchieh): get the fade in time base on  the scene setting
+            // and scene manager specific.
+            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
+
+            LoadNextScene(fadeInTime, ss.SCREEN_COLOR, keepBGM);
+        }
+
+        /// <summary>
+        /// Load the next scene.
+        /// </summary>
+        /// <param name="fadeInTime"> Time to fade in. </param>
+        /// <param name="keepBGM"> Set to true if keep background music playing. </param>
+        public void LoadNextScene(float fadeInTime, bool keepBGM)
+        {
+            var sceneS = JCS_SceneSettings.instance;
+
+            LoadNextScene(fadeInTime, sceneS.SCREEN_COLOR, keepBGM);
+        }
+
+        /// <summary>
+        /// Load the next scene.
+        /// </summary>
+        /// <param name="screenColor"> Screen color to fade in/out. </param>
+        /// <param name="keepBGM"> Set to true if keep background music playing. </param>
+        public void LoadNextScene(Color screenColor, bool keepBGM)
+        {
+            var ss = JCS_SceneSettings.instance;
+
+            // NOTE(jenchieh): get the fade in time base on  the scene setting
+            // and scene manager specific.
+            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
+
+            LoadNextScene(fadeInTime, screenColor, keepBGM);
+        }
+
+        /// <summary>
+        /// Load the next scene.
+        /// </summary>
+        /// <param name="fadeInTime"> Time to fade in. </param>
+        /// <param name="screenColor"> Screen color to fade in/out. </param>
+        /// <param name="keepBGM"> Set to true if keep background music playing. </param>
+        public void LoadNextScene(float fadeInTime, Color screenColor, bool keepBGM)
+        {
+            string sceneName = NextSceneName();
+
+            LoadScene(sceneName, fadeInTime, screenColor, keepBGM);
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Return the scene name by their options.
+        /// </summary>
+        /// <param name="sceneName"> The default scene name. </param>
+        /// <param name="reload"> Reload it? </param>
+        /// <param name="offset"> Offset for next scene's build index. </param>
+        public static string GetSceneNameByOption(string sceneName, bool reload, int offset = 1)
+        {
+            if (reload)
+            {
+                return SceneManager.GetActiveScene().name;
+            }
+            else
+            {
+                if (sceneName.IsNullOrEmpty())
+                    sceneName = NextSceneName(offset);
+            }
+
+            return sceneName;
         }
 
         /// <summary>
