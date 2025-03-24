@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Destroy the gameobject after the sound is done playing.
+    /// Destroy the game object after the sound is done playing.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_DestroySoundEndEvent : MonoBehaviour

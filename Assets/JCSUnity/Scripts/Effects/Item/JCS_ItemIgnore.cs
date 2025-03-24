@@ -20,7 +20,7 @@ namespace JCSUnity
 
         [Separator("Initialize Variables (JCS_ItemIgnore)")]
 
-        [Tooltip("Add this effect to all the children from this gameobject.")]
+        [Tooltip("Add this effect to all the children from this game object.")]
         [SerializeField]
         private bool mEffectToAllChild = true;
 

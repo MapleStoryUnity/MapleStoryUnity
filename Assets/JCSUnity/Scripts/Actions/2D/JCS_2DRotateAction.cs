@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action that make gameobject rotates.
+    /// Action that make game object rotates.
     /// </summary>
     public class JCS_2DRotateAction : MonoBehaviour, JCS_IAction
     {

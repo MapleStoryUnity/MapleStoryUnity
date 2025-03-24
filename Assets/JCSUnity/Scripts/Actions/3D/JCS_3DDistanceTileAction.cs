@@ -12,8 +12,8 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Move a gameobject in certain distance then set the gameobject
-    /// back to original position relative to the gameobject that moved.
+    /// Move a game object in certain distance then set the game object
+    /// back to original position relative to the game object that moved.
     /// </summary>
     [RequireComponent(typeof(JCS_3DGoStraightAction))]
     public class JCS_3DDistanceTileAction : MonoBehaviour
@@ -31,7 +31,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mResetTrans = null;
 
-        [Tooltip("How long this gameobject could travel.")]
+        [Tooltip("How long this game object could travel.")]
         [SerializeField]
         [Range(0.0f, 30000.0f)]
         private float mDistance = 0.0f;

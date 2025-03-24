@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Destroy the gameobject when the object is no longer render 
+    /// Destroy the game object when the object is no longer render 
     /// on the screen.
     /// </summary>
     public class JCS_DestroyObjectWithScreen : MonoBehaviour

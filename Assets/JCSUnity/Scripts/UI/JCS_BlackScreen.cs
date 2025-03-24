@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Black screen gameobject for JCSUnity usage.
+    /// Black screen game object for JCSUnity usage.
     /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_BlackScreen : MonoBehaviour

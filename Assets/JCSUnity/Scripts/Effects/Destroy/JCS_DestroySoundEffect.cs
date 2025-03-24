@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Effect that play the sound after the gameobject is destroyed.
+    /// Effect that play the sound after the game object is destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
     [RequireComponent(typeof(JCS_SoundPool))]

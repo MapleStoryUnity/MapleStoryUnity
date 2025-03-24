@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Destroy the gameobject after plays the animation back 
+    /// Destroy the game object after plays the animation back 
     /// and forth once.
     /// </summary>
     [RequireComponent(typeof(Animator))]

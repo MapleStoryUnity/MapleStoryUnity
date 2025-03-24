@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Effect that spawn a gameobject after this gameobject is destroyed.
+    /// Effect that spawn a game object after this game object is destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_TransformPool))]
     public class JCS_DestroySpawnEffect : MonoBehaviour
@@ -45,19 +45,19 @@ namespace JCSUnity
 
         [Header("- Transform")]
 
-        [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
+        [Tooltip("Play the animation as the same position as the destroyed game object.")]
         [SerializeField]
         private bool mSamePosition = true;
-        [Tooltip("Play the animation as the same rotation as the destroyed gameobject.")]
+        [Tooltip("Play the animation as the same rotation as the destroyed game object.")]
         [SerializeField]
         private bool mSameRotation = true;
-        [Tooltip("Play the animation as the same scale as the destroyed gameobject.")]
+        [Tooltip("Play the animation as the same scale as the destroyed game object.")]
         [SerializeField]
         private bool mSameScale = true;
 
         [Header("- Random Effect")]
 
-        [Tooltip("Randomize the position when spawn the gameobject.")]
+        [Tooltip("Randomize the position when spawn the game object.")]
         [SerializeField]
         private bool mRandPos = false;
 
@@ -66,7 +66,7 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandPosRange = 0.0f;
 
-        [Tooltip("Randomize the rotation when spawn the gameobject.")]
+        [Tooltip("Randomize the rotation when spawn the game object.")]
         [SerializeField]
         private bool mRandRot = false;
 
@@ -75,7 +75,7 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandRotRange = 0.0f;
 
-        [Tooltip("Randomize the scale when spawn the gameobject.")]
+        [Tooltip("Randomize the scale when spawn the game object.")]
         [SerializeField]
         private bool mRandScale = false;
 

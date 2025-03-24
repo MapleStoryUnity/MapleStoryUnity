@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Disable the gameobject after the done playing the animation.
+    /// Disable the game object after the done playing the animation.
     /// </summary>
     [RequireComponent(typeof(Animator))]
     public class JCS_DisableWithAnimEndEvent : MonoBehaviour

@@ -13,7 +13,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Inactive the gameobject after a certain time.
+    /// Inactive the game object after a certain time.
     /// </summary>
     public class JCS_InactiveWithTime : MonoBehaviour
     {
@@ -27,11 +27,11 @@ namespace JCSUnity
         [SerializeField]
         private List<GameObject> mGameObjects = null;
 
-        [Tooltip("Take effect for this gameobject.")]
+        [Tooltip("Take effect for this game object.")]
         [SerializeField]
         private bool mEffectSelf = true;
 
-        [Tooltip("Time before inactive the gameobject.")]
+        [Tooltip("Time before inactive the game object.")]
         [SerializeField]
         [Range(0.0f, 3600.0f)]
         private float mTime = 2.0f;

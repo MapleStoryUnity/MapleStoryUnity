@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action freeze the gameobject by relative distance.
+    /// Action freeze the game object by relative distance.
     /// </summary>
     public class JCS_RelativeFreezePositionAction : JCS_UnityObject
     {
@@ -24,7 +24,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetTrans = null;
 
-        [Tooltip("How far the gameobject going to be freeze.")]
+        [Tooltip("How far the game object going to be freeze.")]
         [SerializeField]
         private Vector3 mDistance = Vector3.zero;
 

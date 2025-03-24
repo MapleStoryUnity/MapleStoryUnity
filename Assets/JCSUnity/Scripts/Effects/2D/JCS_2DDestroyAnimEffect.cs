@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Play the animation when the gameobject is destroyed.
+    /// Play the animation when the game object is destroyed.
     /// 
     /// Differet from normal 'JCS_DestroyAnimEffect' was this
     /// uses the JCS_2DAnimation to display the animation.
@@ -56,13 +56,15 @@ namespace JCSUnity
 
         [Header("- Transform")]
 
-        [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
+        [Tooltip("Play the animation as the same position as the destroyed game object.")]
         [SerializeField]
         private bool mSamePosition = true;
-        [Tooltip("Play the animation as the same rotation as the destroyed gameobject.")]
+
+        [Tooltip("Play the animation as the same rotation as the destroyed game object.")]
         [SerializeField]
         private bool mSameRotation = true;
-        [Tooltip("Play the animation as the same scale as the destroyed gameobject.")]
+
+        [Tooltip("Play the animation as the same scale as the destroyed game object.")]
         [SerializeField]
         private bool mSameScale = true;
 

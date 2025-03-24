@@ -391,7 +391,7 @@ namespace JCSUnity
 
         /// <summary>
         /// Remove the empty slot in the list including remove 
-        /// the missing gameobject too. 
+        /// the missing game object too. 
         /// 
         /// I guess Unity do the CG collection later a while when 
         /// you call 'Destory()' function. Before scripting layer 
@@ -873,27 +873,52 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Retrieves the first active loaded object of Type type.
+        /// Spwan a game object to another scene.
         /// </summary>
-        public static Object FindObjectByType(System.Type type)
+        /// <param name="original"> The original game object. </param>
+        /// <param name="scene"> The target scene </param>
+        /// <returns> Return the newly spawned game object. </returns>
+        public static GameObject InstantiateToScene(GameObject original, Scene scene)
         {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindFirstObjectByType(type);
-#else
-            return UnityEngine.Object.FindObjectOfType(type);
-#endif
+            GameObject newObj = null;
+
+            WithActiveScene(scene, () =>
+            {
+                newObj = MonoBehaviour.Instantiate(original);
+
+                RemoveCloneString(newObj);
+            });
+
+            return newObj;
         }
 
         /// <summary>
-        /// Retrieves a list of all loaded objects of Type type.
+        /// Execute within the active scene without losing the
+        /// current scene.
         /// </summary>
-        public static Object[] FindObjectsByType(System.Type type)
+        /// <param name="scene"> Target scene we want to execute. </param>
+        /// <param name="action"> The execution body. </param>
+        public static void WithActiveScene(Scene scene, System.Action action)
         {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
-#else
-            return UnityEngine.Object.FindObjectsOfType(type);
-#endif
+            Scene oldScene = SceneManager.GetActiveScene();
+
+            // If the same scene, just execute and leave.
+            if (oldScene == scene)
+            {
+                if (action != null)
+                    action.Invoke();
+
+                return;
+            }
+
+            // Switch to new scene.
+            SceneManager.SetActiveScene(scene);
+
+            if (action != null)
+                action.Invoke();
+
+            // Revert back to old scene.
+            SceneManager.SetActiveScene(oldScene);
         }
 
         /// <summary>
@@ -1008,6 +1033,30 @@ namespace JCSUnity
         #endregion
 
         #region Finding
+
+        /// <summary>
+        /// Retrieves the first active loaded object of Type type.
+        /// </summary>
+        public static Object FindObjectByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindFirstObjectByType(type);
+#else
+            return UnityEngine.Object.FindObjectOfType(type);
+#endif
+        }
+
+        /// <summary>
+        /// Retrieves a list of all loaded objects of Type type.
+        /// </summary>
+        public static UnityEngine.Object[] FindObjectsByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
+#else
+            return UnityEngine.Object.FindObjectsOfType(type);
+#endif
+        }
 
         /// <summary>
         /// Find all the objects that are clone in the scene by type.
@@ -1285,9 +1334,9 @@ namespace JCSUnity
         /// default `spatialBlend` value.
         /// </summary>
         public static void PlayClipAtPoint(
-            AudioClip clip, 
-            Vector3 position, 
-            float volume, 
+            AudioClip clip,
+            Vector3 position,
+            float volume,
             float spatialBlend)
         {
             var gameObject = new GameObject("One shot audio");

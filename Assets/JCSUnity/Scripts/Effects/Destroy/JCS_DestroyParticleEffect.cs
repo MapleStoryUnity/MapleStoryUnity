@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Effect when the gameobject get destroyed, spawn a particle system.
+    /// Effect when the game object get destroyed, spawn a particle system.
     /// </summary>
     [RequireComponent(typeof(JCS_ParticleSystem))]
     [RequireComponent(typeof(JCS_HitListEvent))]
@@ -44,13 +44,13 @@ namespace JCSUnity
 
         [Header("- Transform")]
 
-        [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
+        [Tooltip("Play the animation as the same position as the destroyed game object.")]
         [SerializeField]
         private bool mSamePosition = true;
-        [Tooltip("Play the animation as the same rotation as the destroyed gameobject.")]
+        [Tooltip("Play the animation as the same rotation as the destroyed game object.")]
         [SerializeField]
         private bool mSameRotation = true;
-        [Tooltip("Play the animation as the same scale as the destroyed gameobject.")]
+        [Tooltip("Play the animation as the same scale as the destroyed game object.")]
         [SerializeField]
         private bool mSameScale = true;
 

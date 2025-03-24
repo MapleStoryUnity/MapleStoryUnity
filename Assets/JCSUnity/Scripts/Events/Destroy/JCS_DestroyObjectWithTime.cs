@@ -13,7 +13,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Destroy the gameobject by time.
+    /// Destroy the game object by time.
     /// </summary>
     public class JCS_DestroyObjectWithTime : MonoBehaviour
     {
@@ -35,7 +35,7 @@ namespace JCSUnity
 
         [Header("- Optional")]
 
-        [Tooltip("While destroying, fade out the gameobject.")]
+        [Tooltip("While destroying, fade out the game object.")]
         [SerializeField]
         private bool mDestroyWithAlphaEffect = true;
 

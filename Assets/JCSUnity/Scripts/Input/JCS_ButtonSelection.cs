@@ -63,7 +63,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Button mButton = null;
 
-        [Tooltip("This gameobject itself is a button and use this button component.")]
+        [Tooltip("This game object itself is a button and use this button component.")]
         [SerializeField]
         private bool mSelfAsButton = true;
 

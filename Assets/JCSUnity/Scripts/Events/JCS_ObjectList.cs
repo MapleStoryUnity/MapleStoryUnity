@@ -13,8 +13,8 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// List of gameobject holder, with some utility functions provided 
-    /// messing with list of gameobject.
+    /// List of game object holder, with some utility functions provided 
+    /// messing with list of game object.
     /// </summary>
     public class JCS_ObjectList : MonoBehaviour
     {

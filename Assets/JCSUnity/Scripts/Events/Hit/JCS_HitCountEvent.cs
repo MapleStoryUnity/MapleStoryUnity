@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Event that count the hit count and check if the gameobject
+    /// Event that count the hit count and check if the game object
     /// needed to by destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
@@ -24,7 +24,7 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_HitCountEvent)")]
 
-        [Tooltip(@"How many hits needed to destroy this gameobject. 
+        [Tooltip(@"How many hits needed to destroy this game object. 
 (If this is 0 than wont active hit animation event.)")]
         [SerializeField]
         [Range(0, 300)]

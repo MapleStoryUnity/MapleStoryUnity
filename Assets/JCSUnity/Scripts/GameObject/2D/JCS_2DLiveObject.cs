@@ -79,8 +79,8 @@ to get the information from them.")]
             if (mAttackRecorder == null)
                 mAttackRecorder = this.GetComponent<JCS_AttackerRecorder>();
 
-            // auto detect to see if this gameobject player or not.
-            JCS_Player p = this.GetComponent<JCS_Player>();
+            // auto detect to see if this game object player or not.
+            var p = this.GetComponent<JCS_Player>();
 
             // if found it return true!
             if (p != null)

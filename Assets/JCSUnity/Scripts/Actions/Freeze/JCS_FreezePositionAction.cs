@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action freeze the gameobject's position.
+    /// Action freeze the game object's position.
     /// </summary>
     public class JCS_FreezePositionAction : JCS_UnityObject
     {
@@ -24,7 +24,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Position where this gameobject freeze at.")]
+        [Tooltip("Position where this game object freeze at.")]
         [SerializeField]
         private Vector3 mPositionToFreeze = Vector3.zero;
 

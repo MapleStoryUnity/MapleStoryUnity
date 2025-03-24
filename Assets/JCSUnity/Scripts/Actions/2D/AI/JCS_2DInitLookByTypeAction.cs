@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Look at the gameobject depends on the find method.
+    /// Look at the game object depends on the find method.
     /// </summary>
     [RequireComponent(typeof(JCS_AttackerInfo))]
     public class JCS_2DInitLookByTypeAction : MonoBehaviour
@@ -81,7 +81,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        /// Lock a gameobject, and look at it.
+        /// Lock a game object, and look at it.
         /// So the object will seems like it
         /// "approach/further away" to the object.
         /// </summary>
@@ -90,7 +90,7 @@ which to target which not to.")]
             LockOnInit(mMethod);
         }
         /// <summary>
-        /// Lock a gameobject, and look at it. So the object will seems like it
+        /// Lock a game object, and look at it. So the object will seems like it
         /// "approach/further away" to the object.
         /// </summary>
         /// <param name="method"> method to find. </param>

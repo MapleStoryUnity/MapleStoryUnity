@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Ensure while playing the sound, this gameobject does not 
+    /// Ensure while playing the sound, this game object does not 
     /// get destroyed.
     /// 
     /// Careful this won't destroy it self!!!

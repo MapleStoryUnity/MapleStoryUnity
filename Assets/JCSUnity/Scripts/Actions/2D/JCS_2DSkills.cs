@@ -49,7 +49,7 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_2DAnimActionType mAnimType = JCS_2DAnimActionType.DESTROY;
 
-        [Tooltip("Stay with the parent gameobject.")]
+        [Tooltip("Stay with the parent game object.")]
         [SerializeField]
         protected bool mStayWithActiveTarget = true;
 
@@ -73,15 +73,15 @@ namespace JCSUnity
 
         [Header("- Spawn")]
 
-        [Tooltip("Spawn the same position as this gameobject.")]
+        [Tooltip("Spawn the same position as this game object.")]
         [SerializeField]
         protected bool mSamePosition = true;
 
-        [Tooltip("Spawn the same rotation as this gameobject.")]
+        [Tooltip("Spawn the same rotation as this game object.")]
         [SerializeField]
         protected bool mSameRotation = true;
 
-        [Tooltip("Spawn the same scale as this gameobject.")]
+        [Tooltip("Spawn the same scale as this game object.")]
         [SerializeField]
         protected bool mSameScale = true;
 
@@ -95,7 +95,7 @@ namespace JCSUnity
         [SerializeField]
         protected AudioClip mUseSound = null;
 
-        [Tooltip("Sound when this skill hit the gameobject.")]
+        [Tooltip("Sound when this skill hit the game object.")]
         [SerializeField]
         protected AudioClip mHitSound = null;
 

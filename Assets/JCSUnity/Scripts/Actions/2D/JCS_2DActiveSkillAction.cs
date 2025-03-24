@@ -33,7 +33,7 @@ namespace JCSUnity
         [SerializeField]
         private RuntimeAnimatorController mSkillAnim = null;
 
-        [Tooltip("Stick to the parent gameobject.")]
+        [Tooltip("Stick to the parent game object.")]
         [SerializeField]
         private bool mStayWithActiveTarget = true;
 

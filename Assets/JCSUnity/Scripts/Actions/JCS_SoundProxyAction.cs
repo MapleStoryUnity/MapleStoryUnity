@@ -12,8 +12,8 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action spawns a new gameobject and play the sound, after the 
-    /// sound is played the gameobject will be destroyed.
+    /// Action spawns a new game object and play the sound, after the 
+    /// sound is played the game object will be destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_DestroyReminder))]
     public class JCS_SoundProxyAction : MonoBehaviour

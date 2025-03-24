@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// If gameobject goes a certain range set back to
+    /// If game object goes a certain range set back to
     /// original positioin.
     /// position.
     /// </summary>

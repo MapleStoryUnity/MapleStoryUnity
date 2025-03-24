@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action that freeze the gameobject rotation.
+    /// Action that freeze the game object rotation.
     /// </summary>
     public class JCS_FreezeRotationAction : JCS_UnityObject
     {
@@ -24,7 +24,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Rotation where gameobject freeze at.")]
+        [Tooltip("Rotation where game object freeze at.")]
         [SerializeField]
         private Vector3 mRotationToFreeze = Vector3.zero;
 

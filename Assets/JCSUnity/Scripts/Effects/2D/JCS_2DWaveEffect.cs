@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Effect that make wave effect on the gameobject.
+    /// Effect that make wave effect on the game object.
     /// </summary>
     public class JCS_2DWaveEffect : JCS_2DEffect
     {

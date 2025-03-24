@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action that freeze the gameobject position, rotation and scale.
+    /// Action that freeze the game object position, rotation and scale.
     /// </summary>
     public class JCS_FreezeTransformAction : JCS_UnityObject
     {
@@ -24,15 +24,15 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Position where this gameobject freeze at.")]
+        [Tooltip("Position where this game object freeze at.")]
         [SerializeField]
         private Vector3 mPositionToFreeze = Vector3.zero;
 
-        [Tooltip("Rotation where this gameobject freeze at.")]
+        [Tooltip("Rotation where this game object freeze at.")]
         [SerializeField]
         private Vector3 mRotationToFreeze = Vector3.zero;
 
-        [Tooltip("Scale where this gameobject freeze at.")]
+        [Tooltip("Scale where this game object freeze at.")]
         [SerializeField]
         private Vector3 mScaleToFreeze = Vector3.zero;
 

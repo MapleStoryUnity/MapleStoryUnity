@@ -88,7 +88,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Disable the gameobject when whith in the range.
+        /// Disable the game object when whith in the range.
         /// </summary>
         private void DisableWithInRange()
         {

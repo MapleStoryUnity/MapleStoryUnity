@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Destroy the gameobject after done playing the 2D animation.
+    /// Destroy the game object after done playing the 2D animation.
     /// </summary>
     [RequireComponent(typeof(JCS_2DAnimation))]
     public class JCS_2DDestroyAnimEndEvent : MonoBehaviour

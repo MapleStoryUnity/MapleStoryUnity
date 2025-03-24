@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action that freeze the gameobject scale.
+    /// Action that freeze the game object scale.
     /// </summary>
     public class JCS_FreezeScaleAction : JCS_UnityObject
     {
@@ -24,7 +24,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Scale where this gameobject freeze at.")]
+        [Tooltip("Scale where this game object freeze at.")]
         [SerializeField]
         private Vector3 mScaleToFreeze = Vector3.zero;
 

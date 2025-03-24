@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Effect when reach the destination destroy this gameobject.
+    /// Effect when reach the destination destroy this game object.
     /// </summary>
     [RequireComponent(typeof(JCS_AlphaObject))]
     public class JCS_DestinationDestroy : JCS_UnityObject

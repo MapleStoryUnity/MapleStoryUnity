@@ -217,7 +217,7 @@ namespace JCSUnity
                 case JCS_Axis.AXIS_X:
                     {
                         // mPanelRoot will be null is the object isn't UI
-                        // gameobject.
+                        // game object.
                         if (mPanelRoot != null)
                             mDistance *= mPanelRoot.PanelDeltaWidthRatio;
 
@@ -227,7 +227,7 @@ namespace JCSUnity
                 case JCS_Axis.AXIS_Y:
                     {
                         // mPanelRoot will be null is the object isn't UI
-                        // gameobject.
+                        // game object.
                         if (mPanelRoot != null)
                             mDistance *= mPanelRoot.PanelDeltaHeightRatio;
 

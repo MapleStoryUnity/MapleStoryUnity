@@ -1118,7 +1118,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Returns the gameobject that the closest to the current 
+        /// Returns the game object that the closest to the current 
         /// pass in transform.
         /// </summary>
         /// <returns></returns>

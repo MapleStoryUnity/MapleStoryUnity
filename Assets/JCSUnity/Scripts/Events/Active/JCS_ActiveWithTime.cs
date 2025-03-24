@@ -13,7 +13,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Active the gameobject after a certain time.
+    /// Active the game object after a certain time.
     /// </summary>
     public class JCS_ActiveWithTime : MonoBehaviour
     {
@@ -27,7 +27,7 @@ namespace JCSUnity
         [SerializeField]
         private List<GameObject> mGameObjects = null;
 
-        [Tooltip("Time before active the gameobject.")]
+        [Tooltip("Time before active the game object.")]
         [SerializeField]
         [Range(0.0f, 3600.0f)]
         private float mTime = 2.0f;

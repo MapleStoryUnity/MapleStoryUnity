@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Thorws a gameobject toward another gameobject.
+    /// Thorws a game object toward another game object.
     /// </summary>
     public class JCS_3DThrowAction : MonoBehaviour
     {

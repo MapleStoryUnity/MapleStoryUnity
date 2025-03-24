@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Track a gameobject in 3D space.
+    /// Track a game object in 3D space.
     /// </summary>
     public class JCS_3DTrackAction : MonoBehaviour, JCS_IAction
     {
@@ -46,7 +46,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Do the following gameobject action.
+        /// Do the following game object action.
         /// </summary>
         private void FollowObject()
         {

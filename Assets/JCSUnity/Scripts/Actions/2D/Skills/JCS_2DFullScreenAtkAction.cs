@@ -103,7 +103,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Set the gameobject to the random position.
+        /// Set the game object to the random position.
         /// </summary>
         /// <param name="obj"></param>
         private void SetToRandomPos(ref GameObject obj)

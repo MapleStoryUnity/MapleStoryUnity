@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action makes the gameobject drops item.
+    /// Action makes the game object drops item.
     /// </summary>
     [RequireComponent(typeof(JCS_ItemDroppable))]
     public class JCS_2DDropItemAction : MonoBehaviour

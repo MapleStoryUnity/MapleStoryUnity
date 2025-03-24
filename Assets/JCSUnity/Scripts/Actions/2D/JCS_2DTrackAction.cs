@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Track a gameobject on 2D.
+    /// Track a game object on 2D.
     /// </summary>
     public class JCS_2DTrackAction : MonoBehaviour , JCS_IAction
     {
@@ -111,7 +111,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Follow the target gameobject.
+        /// Follow the target game object.
         /// </summary>
         private void FollowObject()
         {
