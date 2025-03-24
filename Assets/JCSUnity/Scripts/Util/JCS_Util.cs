@@ -9,6 +9,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using PeterVuorela.Tweener;
@@ -856,7 +857,8 @@ namespace JCSUnity
         /// <returns></returns>
         public static GameObject Instantiate(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
-            return MonoBehaviour.Instantiate(Resources.Load<GameObject>(objectPath), position, rotation) as GameObject;
+            var original = Resources.Load<GameObject>(objectPath);
+            return MonoBehaviour.Instantiate(original, position, rotation);
         }
 
         /// <summary>
@@ -866,7 +868,7 @@ namespace JCSUnity
         /// <param name="position"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static UnityEngine.Object Instantiate(UnityEngine.Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+        public static Object Instantiate(Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
             if (trans == null) return null;
             return MonoBehaviour.Instantiate(trans, position, rotation);
@@ -878,47 +880,20 @@ namespace JCSUnity
         /// <param name="original"> The original game object. </param>
         /// <param name="scene"> The target scene </param>
         /// <returns> Return the newly spawned game object. </returns>
-        public static GameObject InstantiateToScene(GameObject original, Scene scene)
+        public static Object InstantiateToScene(Object original, Scene scene, Vector3 position, Quaternion rotation)
         {
-            GameObject newObj = null;
+            Object obj = InstantiateToScene(original, scene);
 
-            WithActiveScene(scene, () =>
-            {
-                newObj = MonoBehaviour.Instantiate(original);
+            var trans = obj.GetComponent<Transform>();
 
-                RemoveCloneString(newObj);
-            });
+            trans.position = position;
+            trans.rotation = rotation;
 
-            return newObj;
+            return obj;
         }
-
-        /// <summary>
-        /// Execute within the active scene without losing the
-        /// current scene.
-        /// </summary>
-        /// <param name="scene"> Target scene we want to execute. </param>
-        /// <param name="action"> The execution body. </param>
-        public static void WithActiveScene(Scene scene, System.Action action)
+        public static Object InstantiateToScene(Object original, Scene scene)
         {
-            Scene oldScene = SceneManager.GetActiveScene();
-
-            // If the same scene, just execute and leave.
-            if (oldScene == scene)
-            {
-                if (action != null)
-                    action.Invoke();
-
-                return;
-            }
-
-            // Switch to new scene.
-            SceneManager.SetActiveScene(scene);
-
-            if (action != null)
-                action.Invoke();
-
-            // Revert back to old scene.
-            SceneManager.SetActiveScene(oldScene);
+            return MonoBehaviour.Instantiate(original, scene);
         }
 
         /// <summary>
@@ -1285,6 +1260,35 @@ namespace JCSUnity
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Execute within the active scene without losing the
+        /// current scene.
+        /// </summary>
+        /// <param name="scene"> Target scene we want to execute. </param>
+        /// <param name="action"> The execution body. </param>
+        public static void WithActiveScene(Scene scene, System.Action action)
+        {
+            Scene oldScene = SceneManager.GetActiveScene();
+
+            // If the same scene, just execute and leave.
+            if (oldScene == scene)
+            {
+                if (action != null)
+                    action.Invoke();
+
+                return;
+            }
+
+            // Switch to new scene.
+            SceneManager.SetActiveScene(scene);
+
+            if (action != null)
+                action.Invoke();
+
+            // Revert back to old scene.
+            SceneManager.SetActiveScene(oldScene);
         }
 
         #endregion
