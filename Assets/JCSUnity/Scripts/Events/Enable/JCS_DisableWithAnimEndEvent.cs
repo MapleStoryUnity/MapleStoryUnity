@@ -31,12 +31,12 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
         public uint LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -49,7 +49,7 @@ namespace JCSUnity
         {
             AnimatorStateInfo animatorStateInfo = mAnimator.GetCurrentAnimatorStateInfo(0);
 
-            mAnimationTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mAnimationTimer += JCS_Time.ItTime(mTimeType);
 
             if (mAnimationTimer > animatorStateInfo.length * mLoopTimes)
             {

@@ -64,14 +64,14 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public Vector3 Velocity { get { return this.mVelocity; } }
         public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -84,7 +84,7 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             // make it effect by gravity.
             this.mVelocity.y += JCS_Constants.GRAVITY * mGravityProduct * dt;

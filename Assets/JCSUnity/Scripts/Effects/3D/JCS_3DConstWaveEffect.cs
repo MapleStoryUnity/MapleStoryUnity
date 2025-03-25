@@ -49,7 +49,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Randomize")]
 
@@ -71,7 +71,7 @@ namespace JCSUnity
         public float Frequency { get { return this.mFrequency; } set { this.mFrequency = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public JCS_TransformType TransformType { get { return this.mTransformType; } set { this.mTransformType = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         public float RandomizeAmplitudeAtStart { get { return this.mRandomizeAmplitudeAtStart; } set { this.mRandomizeAmplitudeAtStart = value; } }
         public float RandomizeFrequencyAtStart { get { return this.mRandomizeFrequencyAtStart; } set { this.mRandomizeFrequencyAtStart = value; } }
@@ -96,7 +96,7 @@ namespace JCSUnity
 
             Vector3 newVal = GetVector3ByTransformType();
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             switch (mAxis)
             {

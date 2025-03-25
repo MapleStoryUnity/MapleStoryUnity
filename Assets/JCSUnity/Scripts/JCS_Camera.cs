@@ -82,7 +82,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        protected JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Tooltip("Flag to check if using smooth track, otherwise hard track.")]
         [SerializeField]
@@ -104,7 +104,7 @@ namespace JCSUnity
 
         public float ScreenAspect { get { return (float)mCamera.pixelWidth / (float)mCamera.pixelHeight; } }
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 

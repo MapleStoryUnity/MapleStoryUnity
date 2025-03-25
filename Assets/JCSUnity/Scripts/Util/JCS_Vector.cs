@@ -15,6 +15,15 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Vector
     {
+        /* Variables */
+
+        // Distance to look in direction to get the point.
+        public const float LOOK_DISTANCE = 10.0f;
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         /// <summary>
         /// Set the vector value.
         /// </summary>
@@ -368,6 +377,20 @@ namespace JCSUnity
         {
             float distance = Vector3.Distance(pos1, pos2);
             return (distance <= threshold);
+        }
+
+        /// <summary>
+        /// Return the point in specific direction.
+        /// </summary>
+        public static Vector3 PointInDirection(JCS_Vector3Direction direction, Transform trans)
+        {
+            return PointInDirection(direction, trans, LOOK_DISTANCE);
+        }
+        public static Vector3 PointInDirection(JCS_Vector3Direction direction, Transform trans, float distance)
+        {
+            Vector3 dir = Direction(direction, trans);
+
+            return trans.position + dir * distance;
         }
     }
 }

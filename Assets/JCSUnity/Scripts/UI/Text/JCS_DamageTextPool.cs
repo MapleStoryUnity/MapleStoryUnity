@@ -58,7 +58,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Sound")]
 
@@ -102,7 +102,7 @@ namespace JCSUnity
         public float SpacingPerText { get { return this.mSpacingPerText; } set { this.mSpacingPerText = value; } }
         public float TimePerSpawn { get { return this.mTimePerSpawn; } set { this.mTimePerSpawn = value; } }
         public bool FaceCamera { get { return this.mFaceCamera; } set { this.mFaceCamera = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         public bool ZiggeEffect { get { return this.mZiggeEffect; } set { this.mZiggeEffect = value; } }
         public float RightAlign { get { return this.mRightAlign; } set { this.mRightAlign = value; } }
@@ -356,7 +356,7 @@ namespace JCSUnity
         {
             float newTimer = timer;
 
-            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            newTimer += JCS_Time.ItTime(mTimeType);
 
             if (mTimePerSpawn < newTimer)
             {

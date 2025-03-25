@@ -86,7 +86,7 @@ namespace JCSUnity
             if (mTrackAction.TargetTransform == null)
                 return;
 
-            mDelayTimeToFollowTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mDelayTimeToFollowTimer += JCS_Time.ItTime(mTimeType);
 
             if (mDelayTimeToFollow < mDelayTimeToFollowTimer)
             {

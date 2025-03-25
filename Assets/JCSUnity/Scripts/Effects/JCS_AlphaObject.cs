@@ -41,13 +41,13 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
         public float TargetAlpha { get { return this.mTargetAlpha; } set { this.mTargetAlpha = value; } }
         public float FadeFriction { get { return this.mFadeFriction; } set { this.mFadeFriction = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -56,7 +56,7 @@ namespace JCSUnity
             if (mAlpha == mTargetAlpha)
                 return;
 
-            this.mAlpha += (mTargetAlpha - mAlpha) / mFadeFriction * JCS_Time.DeltaTime(mDeltaTimeType);
+            this.mAlpha += (mTargetAlpha - mAlpha) / mFadeFriction * JCS_Time.ItTime(mTimeType);
 
             this.LocalAlpha = this.mAlpha;
         }

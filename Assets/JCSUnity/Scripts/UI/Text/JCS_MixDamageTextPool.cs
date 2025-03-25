@@ -75,7 +75,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Zigge Right Left")]
 
@@ -107,7 +107,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public JCS_DamageTextPool CriticalDamageTextPool { get { return this.mCritDamageTextPool; } }
         public JCS_DamageTextPool NormralDamageTextPool { get { return this.mNormalDamageTextPool; } }
         public JCS_DamageTextPool GetDamageDamageTextPool { get { return this.mGetDamageDamageTextPool; } }
@@ -486,7 +486,7 @@ namespace JCSUnity
         {
             float newTimer = timer;
 
-            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            newTimer += JCS_Time.ItTime(mTimeType);
 
             if (mTimePerSpawn < newTimer)
             {

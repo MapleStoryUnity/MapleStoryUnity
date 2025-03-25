@@ -58,7 +58,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Action")]
 
@@ -103,7 +103,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
         public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
         public float Possibility { get { return this.mPossibility; } set { this.mPossibility = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -191,7 +191,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
             if (mJumped)
                 ResetTimeZone();
 
-            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mTimer += JCS_Time.ItTime(mTimeType);
 
             if (mTimer < mRealTimeZone)
                 return;

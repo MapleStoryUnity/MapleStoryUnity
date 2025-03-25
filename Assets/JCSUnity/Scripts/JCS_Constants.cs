@@ -15,6 +15,5 @@ namespace JCSUnity
     public static class JCS_Constants
     {
         public static float GRAVITY = -9.81f;
-
     }
 }

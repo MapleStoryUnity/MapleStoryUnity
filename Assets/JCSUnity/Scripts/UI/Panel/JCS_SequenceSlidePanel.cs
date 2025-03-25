@@ -45,7 +45,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Spacing")]
 
@@ -82,7 +82,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public float SpaceTime { get { return this.mSpaceTime; } set { this.mSpaceTime = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         public AudioClip ActiveClip { get { return this.mActiveClip; } set { this.mActiveClip = value; } }
         public AudioClip DeactiveClip { get { return this.mDeactiveClip; } set { this.mDeactiveClip = value; } }
@@ -196,7 +196,7 @@ namespace JCSUnity
             {
                 mSoundPlayer.PlayOneShot(mActiveClip);
 
-                mSpaceTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+                mSpaceTimer += JCS_Time.ItTime(mTimeType);
 
                 if (mSpaceTime < mSpaceTimer)
                 {

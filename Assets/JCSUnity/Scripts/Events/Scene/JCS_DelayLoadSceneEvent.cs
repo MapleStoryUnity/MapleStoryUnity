@@ -35,7 +35,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         private float mDelayTimer = 0.0f;
 
@@ -43,7 +43,7 @@ namespace JCSUnity
 
         public string NextLevel { get { return this.mNextLevel; } set { this.mNextLevel = value; } }
         public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -58,7 +58,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mDelayTimer += JCS_Time.ItTime(mTimeType);
 
             if (mDelayTime < mDelayTimer)
             {

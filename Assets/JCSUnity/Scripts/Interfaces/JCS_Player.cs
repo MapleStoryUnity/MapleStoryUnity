@@ -39,7 +39,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        protected JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
@@ -52,7 +52,7 @@ namespace JCSUnity
         public CharacterController GetCharacterController() { return this.mCharacterController; }
         public JCS_CharacterControllerInfo CharacterControllerInfo { get { return this.mCharacterControllerInfo; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -86,7 +86,7 @@ namespace JCSUnity
             if (mCharacterController.enabled)
             {
                 // apply force
-                mCharacterController.Move(mVelocity * JCS_Time.DeltaTime(mDeltaTimeType));
+                mCharacterController.Move(mVelocity * JCS_Time.ItTime(mTimeType));
             }
         }
 

@@ -25,7 +25,7 @@ namespace PeterVuorela.Tweener
         private float _Duration = 1.0f;
         private float _Progression = 0.0f;
 
-        private JCS_DeltaTimeType _DeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType _DeltaTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
@@ -34,7 +34,7 @@ namespace PeterVuorela.Tweener
         public float from { get { return _From; } set { _From = value; } }
         public float to { get { return _To; } set { _To = value; } }
         public float progressPct { get { return _ProgressPct; } }
-        public JCS_DeltaTimeType deltaTimeType { get { return this._DeltaTimeType; } }
+        public JCS_TimeType deltaTimeType { get { return this._DeltaTimeType; } }
 
         /// <summary>
         /// Callback when reach destination.
@@ -60,7 +60,7 @@ namespace PeterVuorela.Tweener
             bool resetElapsedTime = true, 
             float duration = 1.0f, 
             TweenDelegate easing = null, EmptyFunction callback = null,
-            JCS_DeltaTimeType deltaTimeType = JCS_DeltaTimeType.DELTA_TIME)
+            JCS_TimeType deltaTimeType = JCS_TimeType.DELTA_TIME)
         {
             if (easing == null)
                 easing = Easing.Linear;
@@ -95,7 +95,7 @@ namespace PeterVuorela.Tweener
 
                 _ProgressPct = _TimeElapsed / _Duration;
 
-                _TimeElapsed += JCS_Time.DeltaTime(_DeltaTimeType);
+                _TimeElapsed += JCS_Time.ItTime(_DeltaTimeType);
             }
             else
             {

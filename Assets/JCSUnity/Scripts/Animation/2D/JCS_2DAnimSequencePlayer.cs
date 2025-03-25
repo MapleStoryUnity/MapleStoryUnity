@@ -65,7 +65,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Tooltip("Sequence of animations that played.")]
         [SerializeField]
@@ -77,7 +77,7 @@ namespace JCSUnity
         public bool DonePlayingSequence { get { return this.mDonePlayingSequence; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
         public float TimePerAnim { get { return this.mTimePerAnim; } set { this.mTimePerAnim = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -120,7 +120,7 @@ namespace JCSUnity
                 mDonePlayingSequence = false;
             }
 
-            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mTimer += JCS_Time.ItTime(mTimeType);
 
             // check if reach the time.
             if (mTimer < mTimePerAnim)

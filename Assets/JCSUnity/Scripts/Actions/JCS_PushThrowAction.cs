@@ -36,14 +36,14 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public float Angle { get { return this.mAngle; } set { this.mAngle = value; } }
         public float G { get { return this.mG; } set { this.mG = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -53,7 +53,7 @@ namespace JCSUnity
             if (!mEffect)
                 return;
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             this.mVelocity.y -= mG * dt;
             this.transform.position += this.mVelocity * dt;

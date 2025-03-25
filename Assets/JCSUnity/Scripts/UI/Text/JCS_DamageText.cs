@@ -60,7 +60,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Caplitaize Effect")]
 
@@ -184,7 +184,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool isActive() { return this.mActive; }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -437,7 +437,7 @@ namespace JCSUnity
         private void MoveUp()
         {
             Vector3 newPos = this.transform.position;
-            newPos.y += mMoveSpeed * JCS_Time.DeltaTime(mDeltaTimeType);
+            newPos.y += mMoveSpeed * JCS_Time.ItTime(mTimeType);
             this.transform.position = newPos;
 
             Fade();
@@ -449,7 +449,7 @@ namespace JCSUnity
         private void Fade()
         {
             Color col = new Color();
-            float fadeValue = mFadeSpeed * JCS_Time.DeltaTime(mDeltaTimeType);
+            float fadeValue = mFadeSpeed * JCS_Time.ItTime(mTimeType);
 
             foreach (SpriteRenderer sr in mSpriteRenderers)
             {

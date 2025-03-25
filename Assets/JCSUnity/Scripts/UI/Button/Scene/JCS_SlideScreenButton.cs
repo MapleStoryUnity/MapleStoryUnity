@@ -37,7 +37,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Sound")]
 
@@ -65,7 +65,7 @@ namespace JCSUnity
         public JCS_2D8Direction Direction { get { return this.mDirection; } }
         public int Count { get { return this.mCount; } }
         public float DelayTime { get { return this.mDelayTime; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -85,7 +85,7 @@ namespace JCSUnity
             if (!mStartDelay)
                 return;
 
-            mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mDelayTimer += JCS_Time.ItTime(mTimeType);
 
             if (mDelayTime < mDelayTimer)
             {

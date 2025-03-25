@@ -90,7 +90,7 @@ namespace JCSUnity
             if (mCharacterController.enabled)
             {
                 // apply force
-                mCharacterController.Move(transform.forward * mVelocity.z * JCS_Time.DeltaTime(mDeltaTimeType));
+                mCharacterController.Move(transform.forward * mVelocity.z * JCS_Time.ItTime(mTimeType));
             }
         }
 

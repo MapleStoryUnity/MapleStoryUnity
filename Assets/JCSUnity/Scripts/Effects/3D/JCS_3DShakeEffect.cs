@@ -70,7 +70,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Axis")]
 
@@ -106,7 +106,7 @@ namespace JCSUnity
         public float ShakeMargin { get { return this.mShakeMargin; } }
         public float ShakeSteps { get { return this.mShakeSteps; } set { this.mShakeSteps = value; } }
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         public bool ShakeOnX { get { return this.mShakeOnX; } set { this.mShakeOnX = value; } }
         public bool ShakeOnY { get { return this.mShakeOnY; } set { this.mShakeOnY = value; } }
@@ -187,7 +187,7 @@ namespace JCSUnity
 
             mShakeDelta = Vector3.zero;
 
-            mShakeTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mShakeTimer += JCS_Time.ItTime(mTimeType);
 
             if (mShakeTimer < mShakeTime)
             {

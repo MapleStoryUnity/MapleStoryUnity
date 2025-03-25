@@ -82,7 +82,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Action")]
 
@@ -125,7 +125,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         public float RecordSpeedX { get { return this.mVelocityInfo.RecordSpeed.x; } set { this.mVelocityInfo.RecordSpeedX = value; } }
         public float RecordSpeedY { get { return this.mVelocityInfo.RecordSpeed.y; } set { this.mVelocityInfo.RecordSpeedY = value; } }
         public float RecordSpeedZ { get { return this.mVelocityInfo.RecordSpeed.z; } set { this.mVelocityInfo.RecordSpeedZ = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         // Track Effects
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
@@ -333,7 +333,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             if (mWalked)
                 ResetTimeZone();
 
-            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mTimer += JCS_Time.ItTime(mTimeType);
 
             if (mTimer < mRealTimeZone)
                 return;

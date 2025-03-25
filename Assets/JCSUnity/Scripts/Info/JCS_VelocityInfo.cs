@@ -41,7 +41,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         // 原本速度的變化量
         private Vector3 mMoveSpeed = Vector3.zero;
@@ -72,7 +72,7 @@ namespace JCSUnity
         public float MoveSpeedX { get { return this.mMoveSpeed.x; } set { this.mMoveSpeed.x = value; } }
         public float MoveSpeedY { get { return this.mMoveSpeed.y; } set { this.mMoveSpeed.y = value; } }
         public float MoveSpeedZ { get { return this.mMoveSpeed.z; } set { this.mMoveSpeed.z = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public Vector3 RecordSpeed { get { return this.mRecordSpeed; } set { this.mRecordSpeed = value; } }
         public float RecordSpeedX { get { return this.mRecordSpeed.x; } set { this.mRecordSpeed.x = value; } }
         public float RecordSpeedY { get { return this.mRecordSpeed.y; } set { this.mRecordSpeed.y = value; } }
@@ -95,7 +95,7 @@ namespace JCSUnity
             // do freezing before move the character.
             DoFreeze();
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             if (mCharacterController.enabled)
             {

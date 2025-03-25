@@ -222,7 +222,7 @@ namespace JCSUnity
                     this.transform.position.z) / mScrollFriction;
 
                 // Update self position
-                this.transform.position += this.mVelocity * JCS_Time.DeltaTime(mDeltaTimeType);
+                this.transform.position += this.mVelocity * JCS_Time.ItTime(mTimeType);
             }
             // Hard track
             else

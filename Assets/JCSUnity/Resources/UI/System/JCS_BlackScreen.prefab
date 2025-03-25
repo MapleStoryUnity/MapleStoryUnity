@@ -34,7 +34,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -92,6 +91,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mFadeInKey: 109
   mFadeOutKey: 110
@@ -101,7 +102,7 @@ MonoBehaviour:
   mOverrideFade: 1
   mFadeInAmount: 1
   mFadeOutAmount: 0
-  mDeltaTimeType: 7
+  mTimeType: 7
 --- !u!114 &11461196
 MonoBehaviour:
   m_ObjectHideFlags: 0

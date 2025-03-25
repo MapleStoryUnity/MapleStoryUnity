@@ -123,7 +123,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Freeze")]
 
@@ -154,7 +154,7 @@ namespace JCSUnity
         public BoxCollider2D GetBoxCollider2D() { return this.mBoxCollider2d; }
         public Rigidbody2D GetRigidbody2D() { return this.mRigidbody2d; }
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         public bool HitTop { get { return this.mHitTop; } }
         public bool HitBottom { get { return this.mHitBottom; } }
@@ -233,7 +233,7 @@ namespace JCSUnity
             ApplyGravity();
 
             // apply force base on the velocity.
-            this.transform.position += mVelocity * JCS_Time.DeltaTime(mDeltaTimeType);
+            this.transform.position += mVelocity * JCS_Time.ItTime(mTimeType);
 
             // lastly check the freezing.
             DoFreeze();
@@ -705,7 +705,7 @@ namespace JCSUnity
             if (!isGrounded())
             {
                 // apply gravity
-                mVelocity.y += JCS_Constants.GRAVITY * JCS_Time.DeltaTime(mDeltaTimeType);
+                mVelocity.y += JCS_Constants.GRAVITY * JCS_Time.ItTime(mTimeType);
             }
             else
             {

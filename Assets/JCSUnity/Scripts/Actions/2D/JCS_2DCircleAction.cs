@@ -54,7 +54,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
@@ -65,7 +65,7 @@ namespace JCSUnity
         public bool DoRotate { get { return this.mDoRotate; } set { this.mDoRotate = value; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -90,7 +90,7 @@ namespace JCSUnity
                 return;
 
             // Do movement
-            this.transform.Translate(Vector3.right * MoveSpeed * JCS_Time.DeltaTime(mDeltaTimeType));
+            this.transform.Translate(Vector3.right * MoveSpeed * JCS_Time.ItTime(mTimeType));
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace JCSUnity
             if (!mDoRotate)
                 return;
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             mRotateDegreeTimer += mTurnSpeed * dt;
 

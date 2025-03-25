@@ -62,7 +62,7 @@ built-in Unity Engine.")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Random Spawn Offset")]
 
@@ -124,7 +124,7 @@ built-in Unity Engine.")]
 
         /* Setter & Getter */
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -288,7 +288,7 @@ built-in Unity Engine.")]
                     return;
             }
 
-            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mTimer += JCS_Time.ItTime(mTimeType);
 
             if (mTimer < mDelayTime)
                 return;

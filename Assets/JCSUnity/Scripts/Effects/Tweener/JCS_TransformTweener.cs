@@ -116,7 +116,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Destroy")]
 
@@ -191,7 +191,7 @@ namespace JCSUnity
         public float DurationY { get { return this.mDurationY; } set { this.mDurationY = value; } }
         public float DurationZ { get { return this.mDurationZ; } set { this.mDurationZ = value; } }
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         public JCS_TweenType EasingX { get { return this.mEasingX; } set { this.mEasingX = value; } }
         public JCS_TweenType EasingY { get { return this.mEasingY; } set { this.mEasingY = value; } }
@@ -678,7 +678,7 @@ namespace JCSUnity
                 durationX,
                 easingX,
                 DoneTweeningX,
-                mDeltaTimeType);
+                mTimeType);
 
             // Sets The Position From -> To
             mTweenerY.easeFromTo(
@@ -688,7 +688,7 @@ namespace JCSUnity
                 durationY,
                 easingY,
                 DoneTweeningY,
-                mDeltaTimeType);
+                mTimeType);
 
             // Sets The Position From -> To
             mTweenerZ.easeFromTo(
@@ -698,7 +698,7 @@ namespace JCSUnity
                 durationZ,
                 easingZ,
                 DoneTweeningZ,
-                mDeltaTimeType);
+                mTimeType);
         }
 
         /// <summary>

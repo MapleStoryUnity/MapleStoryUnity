@@ -42,7 +42,7 @@ namespace JCSUnity
         protected override void FixedUpdate()
         {
             if (!mCharacterController.isGrounded)
-                mVelocity.y += (JCS_Constants.GRAVITY * JCS_Time.DeltaTime(mDeltaTimeType) * JCS_GameSettings.instance.GRAVITY_PRODUCT);
+                mVelocity.y += (JCS_Constants.GRAVITY * JCS_Time.ItTime(mTimeType) * JCS_GameSettings.instance.GRAVITY_PRODUCT);
 
             base.FixedUpdate();
         }
@@ -99,7 +99,7 @@ namespace JCSUnity
                 mVelocity.z = 0;
             }
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             if (JCS_Input.GetKey(KeyCode.L))
                 this.transform.Rotate(Vector3.up * mRotateSpeed * dt);

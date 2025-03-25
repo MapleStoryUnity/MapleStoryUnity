@@ -180,7 +180,7 @@ namespace JCSUnity
         /// </summary>
         private void DoAbsorbEffect()
         {
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             if (mAbsorbEffect)
             {
@@ -214,7 +214,7 @@ namespace JCSUnity
             if (!mDegreeChangeEffect)
                 return;
 
-            mDegreeTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mDegreeTimer += JCS_Time.ItTime(mTimeType);
 
             if (mDegreeTimer < mTimeToDegreeChange)
                 return;
@@ -255,7 +255,7 @@ namespace JCSUnity
             if (mInitLookAction == null)
                 return;
 
-            mLookTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mLookTimer += JCS_Time.ItTime(mTimeType);
 
             if (mLookTimer < mTimeToLook)
                 return;

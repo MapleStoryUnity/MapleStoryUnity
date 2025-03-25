@@ -41,7 +41,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
@@ -49,7 +49,7 @@ namespace JCSUnity
         public float SlideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
         public void SetTargetPosition(Vector3 pos) { this.mTargetPosition = pos; }
         public Vector3 GetTargetPosition() { return this.mTargetPosition; }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -64,7 +64,7 @@ namespace JCSUnity
         {
             Vector3 newPosition = this.mRectTransform.localPosition;
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             newPosition.x += (mTargetPosition.x - newPosition.x) / mSlideFrictionX * dt;
             newPosition.y += (mTargetPosition.y - newPosition.y) / mSlideFrictionY * dt;

@@ -66,7 +66,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         private Vector3 mVelocity = Vector3.zero;
 
@@ -75,7 +75,7 @@ namespace JCSUnity
         public float Force { get { return this.mForce; } set { this.mForce = value; } }
         public float Gravity { get { return this.mGravity; } set { this.mGravity = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -144,7 +144,7 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             float prevPos = GetLocalPositionByAxis();
             this.LocalPosition += mVelocity * dt;

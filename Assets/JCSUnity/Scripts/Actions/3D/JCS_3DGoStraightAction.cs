@@ -31,7 +31,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Randomize")]
 
@@ -50,7 +50,7 @@ move speed to negative move speed.")]
 
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public bool RandomizeSpeedAtStart { get { return this.mRandomizeSpeedAtStart; } set { this.mRandomizeSpeedAtStart = value; } }
         public float RandomSpeedValue { get { return this.mRandomSpeedValue; } set { this.mRandomSpeedValue = value; } }
 
@@ -75,7 +75,7 @@ move speed to negative move speed.")]
         {
             Vector3 newPos = Vector3.zero;
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             switch (mAxis)
             {

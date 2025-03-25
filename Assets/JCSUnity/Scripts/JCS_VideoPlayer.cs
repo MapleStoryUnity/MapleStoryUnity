@@ -54,7 +54,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Delay Playback")]
 
@@ -201,7 +201,7 @@ namespace JCSUnity
             if (mClipPlayed)
                 return;
 
-            mDelayPlayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mDelayPlayTimer += JCS_Time.ItTime(mTimeType);
 
             if (mDelayPlayTimer < mDelayPlayTime)
                 return;
@@ -262,7 +262,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Delay Playback")]
 
@@ -383,7 +383,7 @@ namespace JCSUnity
                 return;
 
             // start the load scene timer.
-            mLoadNextSceneTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mLoadNextSceneTimer += JCS_Time.ItTime(mTimeType);
 
             // check if the clips ends.
             if (mLoadNextSceneTimer < mLoadNextSceneTime)
@@ -401,7 +401,7 @@ namespace JCSUnity
             if (mClipPlayed)
                 return;
 
-            mDelayPlayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mDelayPlayTimer += JCS_Time.ItTime(mTimeType);
 
             if (mDelayPlayTimer < mDelayPlayTime)
                 return;

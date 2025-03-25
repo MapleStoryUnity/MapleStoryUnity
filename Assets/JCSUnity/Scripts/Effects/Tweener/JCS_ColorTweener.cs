@@ -102,7 +102,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Tooltip("Tween type for red channel.")]
         [SerializeField]
@@ -168,7 +168,7 @@ namespace JCSUnity
         public Color ProgressionColor { get { return mProgressionColor; } }
         public Color ProgressPctColor { get { return mProgressPctColor; } }
         public Color TargetColor { get { return mTargetColor; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public JCS_TweenType EaseTypeR
         {
             get { return this.mEaseTypeR; }
@@ -395,7 +395,7 @@ namespace JCSUnity
 
                 this.mProgressPctColor.r = mTimeElapsed.x / mRealDurationRed;
 
-                this.mTimeElapsed.x += JCS_Time.DeltaTime(mDeltaTimeType);
+                this.mTimeElapsed.x += JCS_Time.ItTime(mTimeType);
             }
             else
             {
@@ -430,7 +430,7 @@ namespace JCSUnity
 
                 this.mProgressPctColor.g = mTimeElapsed.y / mRealDurationGreen;
 
-                this.mTimeElapsed.y += JCS_Time.DeltaTime(mDeltaTimeType);
+                this.mTimeElapsed.y += JCS_Time.ItTime(mTimeType);
             }
             else
             {
@@ -465,7 +465,7 @@ namespace JCSUnity
 
                 this.mProgressPctColor.b = mTimeElapsed.z / mRealDurationBlue;
 
-                this.mTimeElapsed.z += JCS_Time.DeltaTime(mDeltaTimeType);
+                this.mTimeElapsed.z += JCS_Time.ItTime(mTimeType);
             }
             else
             {
@@ -500,7 +500,7 @@ namespace JCSUnity
 
                 this.mProgressPctColor.a = mTimeElapsed.w / mRealDurationAlpha;
 
-                this.mTimeElapsed.w += JCS_Time.DeltaTime(mDeltaTimeType);
+                this.mTimeElapsed.w += JCS_Time.ItTime(mTimeType);
             }
             else
             {

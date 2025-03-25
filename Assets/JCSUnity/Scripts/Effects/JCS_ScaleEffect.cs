@@ -66,7 +66,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- UI")]
 
@@ -87,7 +87,7 @@ namespace JCSUnity
         public Vector3 RecordScale { get { return this.mRecordScale; } set { this.mRecordScale = value; } }
         public Vector3 TowardScale { get { return this.mTowardScale; } set { this.mTowardScale = value; } }
         public Vector3 GetScaleValue() { return this.mScaleValue; }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -226,7 +226,7 @@ namespace JCSUnity
         {
             Vector3 newScale = this.transform.localScale;
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             newScale.x += (mTargetScale.x - newScale.x) / mScaleFriction.x * dt;
             newScale.y += (mTargetScale.y - newScale.y) / mScaleFriction.y * dt;

@@ -34,7 +34,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Tooltip("Force in the last position.")]
         [SerializeField]
@@ -58,7 +58,7 @@ namespace JCSUnity
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public bool EffectOnAwake { get { return this.mEffectOnAwake; } set { this.mEffectOnAwake = value; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public bool StayAtLastPosition { get { return this.mStayAtLastPosition; } set { this.mStayAtLastPosition = value; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
@@ -79,7 +79,7 @@ namespace JCSUnity
             if (!mEffect)
                 return;
 
-            mDistanceRecorder += JCS_Mathf.AbsoluteValue(mMoveSpeed) * JCS_Time.DeltaTime(mDeltaTimeType);
+            mDistanceRecorder += JCS_Mathf.AbsoluteValue(mMoveSpeed) * JCS_Time.ItTime(mTimeType);
 
             if (mDistanceRecorder > mDistance)
             {
@@ -125,7 +125,7 @@ namespace JCSUnity
         /// <param name="speed"></param>
         private void DoMovement(JCS_Axis ax, float speed)
         {
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             switch (ax)
             {

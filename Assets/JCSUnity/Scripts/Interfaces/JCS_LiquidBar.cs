@@ -61,7 +61,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        protected JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Tooltip(@"How fast the liquid bar move approach to target position/value.")]
         [SerializeField]
@@ -139,7 +139,7 @@ Careful that recover can be damage too.")]
 
         public bool OverrideZero { get { return this.mOverrideZero; } set { this.mOverrideZero = value; } }
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         public float DeltaFriction { get { return this.mDeltaFriction; } set { this.mDeltaFriction = value; } }
         public float DistanceThreshold { get { return this.mDistanceThreshold; } set { this.mDistanceThreshold = value; } }
@@ -180,7 +180,7 @@ Careful that recover can be damage too.")]
 
             // Try to get back the original value (which we record down in 
             // the Awake function).
-            this.mRecoverValue += (mRecordValue - mRecoverValue) / mGetBackFriction * JCS_Time.DeltaTime(mDeltaTimeType);
+            this.mRecoverValue += (mRecordValue - mRecoverValue) / mGetBackFriction * JCS_Time.ItTime(mTimeType);
         }
 
         /// <summary>

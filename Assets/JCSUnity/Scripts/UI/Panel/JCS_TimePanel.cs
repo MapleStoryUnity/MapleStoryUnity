@@ -42,7 +42,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         // timer
         private float mDoActionTimer = 0;
@@ -57,7 +57,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool ActiveOnAwake { get { return this.mActiveOnAwake; } set { this.mActiveOnAwake = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -98,7 +98,7 @@ namespace JCSUnity
             if (!mActionActive)
                 return;
 
-            mDoActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mDoActionTimer += JCS_Time.ItTime(mTimeType);
 
             // check if time reach.
             if (mDoActionTimer < mDoActionTime)

@@ -60,7 +60,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Key")]
 
@@ -223,7 +223,7 @@ namespace JCSUnity
 
         public int ShootCount { get { return this.mShootCount; } }
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         public KeyCode ShootKeyCode { get { return this.mShootKeyCode; } set { this.mShootKeyCode = value; } }
         public JCS_MouseButton MouseButton { get { return this.mMouseButton; } set { this.mMouseButton = value; } }
@@ -557,7 +557,7 @@ namespace JCSUnity
             if (!CanShoot)
                 return;
 
-            mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mDelayTimer += JCS_Time.ItTime(mTimeType);
 
             if (mDelayTime < mDelayTimer)
             {
@@ -645,7 +645,7 @@ namespace JCSUnity
 
             if (mAfterDelay)
             {
-                mActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+                mActionTimer += JCS_Time.ItTime(mTimeType);
 
                 if (mTimeDelayAfterShoot < mActionTimer)
                 {
@@ -662,7 +662,7 @@ namespace JCSUnity
 
             if (mAction && !mAfterDelay)
             {
-                mActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+                mActionTimer += JCS_Time.ItTime(mTimeType);
 
                 if (mTimeBeforeShoot < mActionTimer)
                 {

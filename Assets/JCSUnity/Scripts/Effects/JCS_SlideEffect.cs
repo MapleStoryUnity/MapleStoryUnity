@@ -78,7 +78,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- UI")]
 
@@ -157,7 +157,7 @@ namespace JCSUnity
                 this.mTowardPosition = newPos;
             }
         }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public bool AutoAddEvent { get { return this.mAutoAddEvent; } set { this.mAutoAddEvent = value; } }
 
         public AudioClip ActiveClip { get { return this.mActiveClip; } set { this.mActiveClip = value; } }
@@ -382,7 +382,7 @@ namespace JCSUnity
             if (mIgnoreZ)
                 tempTargetPost.z = this.LocalPosition.z;
 
-            LocalPosition += (tempTargetPost - LocalPosition) / mFriction * JCS_Time.DeltaTime(mDeltaTimeType);
+            LocalPosition += (tempTargetPost - LocalPosition) / mFriction * JCS_Time.ItTime(mTimeType);
         }
     }
 }

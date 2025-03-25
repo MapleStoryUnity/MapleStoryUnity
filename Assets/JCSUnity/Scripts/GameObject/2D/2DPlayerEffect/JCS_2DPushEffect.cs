@@ -30,7 +30,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
@@ -42,7 +42,7 @@ namespace JCSUnity
             if (player == null)
                 return;
 
-            player.VelX += mPushSpeed * -(int)mDirection * JCS_Time.DeltaTime(mDeltaTimeType);
+            player.VelX += mPushSpeed * -(int)mDirection * JCS_Time.ItTime(mTimeType);
         }
 
         /// <summary>

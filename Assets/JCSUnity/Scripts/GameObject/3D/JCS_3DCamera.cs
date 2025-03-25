@@ -233,7 +233,7 @@ namespace JCSUnity
                 ZoomCamera(mWheelDegree);
             }
 
-            Vector3 newPos = Vector3.forward * mTargetScrollSpeed * JCS_Time.DeltaTime(mDeltaTimeType);
+            Vector3 newPos = Vector3.forward * mTargetScrollSpeed * JCS_Time.ItTime(mTimeType);
 
             // if is valid, do action.
             if (!JCS_Mathf.IsNaN(newPos))
@@ -256,7 +256,7 @@ namespace JCSUnity
             // Fix the speed if reach the distance!
             FixedMinMaxDistance();
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             // asymptotic back to zero
             mTargetScrollSpeed += (0.0f - mTargetScrollSpeed) / mScrollSpeedFriction * dt;
@@ -356,7 +356,7 @@ namespace JCSUnity
                 mLastFramePos = currentFramePos;
 
                 // update the transform position
-                this.transform.position += (this.mTrackPosition - this.transform.position) / mSmoothTrackFriction * JCS_Time.DeltaTime(mDeltaTimeType);
+                this.transform.position += (this.mTrackPosition - this.transform.position) / mSmoothTrackFriction * JCS_Time.ItTime(mTimeType);
             }
             // Hard track
             else
@@ -405,7 +405,7 @@ namespace JCSUnity
 
             {
                 // do the delta position formula
-                float deltaHeight = (mTargetHeight - newPos.y) / mUpDownFriction * JCS_Time.DeltaTime(mDeltaTimeType);
+                float deltaHeight = (mTargetHeight - newPos.y) / mUpDownFriction * JCS_Time.ItTime(mTimeType);
 
                 // apply to new position, so get ready to 
                 // apply on the current position.

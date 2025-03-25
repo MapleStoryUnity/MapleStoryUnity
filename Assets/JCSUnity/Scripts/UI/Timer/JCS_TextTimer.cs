@@ -86,7 +86,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Sound")]
 
@@ -112,7 +112,7 @@ namespace JCSUnity
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
         public bool HideWhenZero { get { return this.mHideWhenZero; } set { this.mHideWhenZero = value; } }
         public string DelimiterText { get { return this.mDelimiterText; } set { this.mDelimiterText = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         public AudioClip HourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
         public AudioClip MinuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
@@ -293,7 +293,7 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            mCurrentSeconds -= JCS_Time.DeltaTime(mDeltaTimeType);
+            mCurrentSeconds -= JCS_Time.ItTime(mTimeType);
 
             int currentSecond = (int)mCurrentSeconds;
             if (mTrackSecond != currentSecond)

@@ -44,11 +44,11 @@ holding we could play the animation back in time.")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -110,7 +110,7 @@ holding we could play the animation back in time.")]
                 return;
 
             // start timer.
-            mHoldTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mHoldTimer += JCS_Time.ItTime(mTimeType);
 
             // record down whats the current animation playing.
             if (this.m2DAnimator.CurrentAnimId != mHoldAnimIndex)

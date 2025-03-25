@@ -31,7 +31,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         // timer.
         private float mInvicibleTimer = 0.0f;
@@ -69,7 +69,7 @@ namespace JCSUnity
         public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
         // Use to check if this effect is active?
         public bool IsInvincible { get { return this.mTriggerAction; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -87,7 +87,7 @@ namespace JCSUnity
             if (!mTriggerAction)
                 return;
 
-            mInvicibleTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mInvicibleTimer += JCS_Time.ItTime(mTimeType);
 
             // do flash algorithm.
             DoFlash();
@@ -169,7 +169,7 @@ namespace JCSUnity
         /// </summary>
         private void DoFlash()
         {
-            mFlashTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mFlashTimer += JCS_Time.ItTime(mTimeType);
 
             if (mFlashTime > mFlashTimer)
                 return;

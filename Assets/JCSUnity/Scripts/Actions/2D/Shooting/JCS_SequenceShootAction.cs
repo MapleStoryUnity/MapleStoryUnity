@@ -43,7 +43,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Optional")]
 
@@ -96,7 +96,7 @@ namespace JCSUnity
         public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
         public bool InSequenceEffect { get { return this.mInSequenceEffect; } set { this.mInSequenceEffect = value; } }
         public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public void SetShootCallback(EmptyFunction func) { this.mShootAction.SetShootCallback(func); }
         public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } set { this.mAbilityFormat = value; } }
         public float TimeBeforeShoot { get { return this.mTimeBeforeShoot; } set { this.mTimeBeforeShoot = value; } }
@@ -245,7 +245,7 @@ namespace JCSUnity
             float newTimer = mTimers.at(processIndex);
 
             // add time to timer
-            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            newTimer += JCS_Time.ItTime(mTimeType);
 
             // check if we can shoot or not
             if (mTimePerShoot < newTimer)
@@ -354,7 +354,7 @@ namespace JCSUnity
                 }
             }
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             if (mAfterDelay)
             {

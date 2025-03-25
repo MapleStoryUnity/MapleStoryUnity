@@ -490,7 +490,7 @@ namespace JCSUnity
             // in air
             else
             {
-                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * JCS_Time.DeltaTime(mDeltaTimeType);
+                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * JCS_Time.ItTime(mTimeType);
             }
 
             if (isAttacking)
@@ -532,7 +532,7 @@ namespace JCSUnity
             // in air
             else
             {
-                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * JCS_Time.DeltaTime(mDeltaTimeType);
+                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * JCS_Time.ItTime(mTimeType);
             }
 
             if (isAttacking)
@@ -865,7 +865,7 @@ namespace JCSUnity
             {
                 // apply gravity
                 mVelocity.y += (JCS_Constants.GRAVITY *
-                    JCS_Time.DeltaTime(mDeltaTimeType) *
+                    JCS_Time.ItTime(mTimeType) *
                     JCS_GameSettings.instance.GRAVITY_PRODUCT);
 
                 /* TODO!! */

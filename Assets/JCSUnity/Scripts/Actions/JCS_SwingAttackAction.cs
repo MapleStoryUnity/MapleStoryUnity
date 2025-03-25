@@ -53,7 +53,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Tooltip("The same position as the spawn transform's position.")]
         [SerializeField]
@@ -131,7 +131,7 @@ namespace JCSUnity
             // update speed of this action.
             ProcessSpeedLayer();
         }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public bool AsSamePosition { get { return this.mAsSamePosition; } set { this.mAsSamePosition = value; } }
         public bool AsSameRotation { get { return this.mAsSameRotation; } set { this.mAsSameRotation = value; } }
         public bool AsSameScale { get { return this.mAsSameScale; } set { this.mAsSameScale = value; } }
@@ -240,7 +240,7 @@ namespace JCSUnity
 
                 if (mAfterDelay)
                 {
-                    mActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+                    mActionTimer += JCS_Time.ItTime(mTimeType);
 
                     if (mActTime < mActionTimer)
                     {
@@ -260,7 +260,7 @@ namespace JCSUnity
 
                 if (mAction && !mAfterDelay)
                 {
-                    mActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+                    mActionTimer += JCS_Time.ItTime(mTimeType);
 
                     if (mTimeToActTime < mActionTimer)
                     {

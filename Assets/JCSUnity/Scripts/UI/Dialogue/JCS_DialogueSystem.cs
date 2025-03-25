@@ -118,7 +118,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         // timer to calculate the scroll time
         private float mScrollTimer = 0.0f;
@@ -234,7 +234,7 @@ namespace JCSUnity
         public JCS_Button DeclineBtn { get { return this.mDeclineBtn; } }
 
         public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
         public string SelectStringFront { get { return this.mSelectStringFront; } }
         public string SelectStringBack { get { return this.mSelectStringBack; } }
@@ -905,7 +905,7 @@ namespace JCSUnity
                 return;
 
             // do timer.
-            mScrollTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mScrollTimer += JCS_Time.ItTime(mTimeType);
 
             // check if each index of character in message 
             // is good to display in the text box render queue.
@@ -966,7 +966,7 @@ namespace JCSUnity
                 return;
 
             // do timer.
-            mScrollTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mScrollTimer += JCS_Time.ItTime(mTimeType);
 
             // they will use the same time system.
             if (mScrollTimer < mScrollTime)
@@ -1050,7 +1050,7 @@ namespace JCSUnity
             if (IsScrolling())
                 return;
 
-            mAutoTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mAutoTimer += JCS_Time.ItTime(mTimeType);
 
             if (mAutoTimer < mAutoDelay)
                 return;

@@ -69,7 +69,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        protected JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Spawn")]
 
@@ -101,7 +101,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -133,7 +133,7 @@ namespace JCSUnity
                     mAction = true;
             }
 
-            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
 
             if (mAfterDelay)
             {

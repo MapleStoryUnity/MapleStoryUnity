@@ -110,7 +110,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Header("- Space Limitation")]
 
@@ -167,7 +167,7 @@ namespace JCSUnity
 
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
 
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -453,7 +453,7 @@ namespace JCSUnity
             if (mFlyed)
                 ResetTimeZone();
 
-            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mTimer += JCS_Time.ItTime(mTimeType);
 
             if (mTimer < mRealTimeZone)
                 return;

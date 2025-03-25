@@ -84,7 +84,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         [Tooltip("Sprite displayed when the animation stopped.")]
         [SerializeField]
@@ -127,7 +127,7 @@ namespace JCSUnity
             }
         }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         // Is the animation done playing?
         public bool IsDonePlaying { get { return this.mIsDonePlaying; } }
         public void SetAnimator(JCS_2DAnimator animator) { this.mAnimator = animator; }
@@ -346,7 +346,7 @@ namespace JCSUnity
                 return;
 
             // start the timer.
-            mFrameTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mFrameTimer += JCS_Time.ItTime(mTimeType);
 
             // get the time per seconds.
             // NOTE(jenchieh): multiple you own animate production first.

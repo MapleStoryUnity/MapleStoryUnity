@@ -35,14 +35,14 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
         public bool Action { get { return this.mAction; } set { this.mAction = value; } }
         public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
         public JCS_2DFaceType RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -51,7 +51,7 @@ namespace JCSUnity
             if (!mAction)
                 return;
 
-            this.transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * JCS_Time.DeltaTime(mDeltaTimeType));
+            this.transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * JCS_Time.ItTime(mTimeType));
         }
     }
 }

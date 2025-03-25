@@ -48,7 +48,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
         // Range under this will not do the scale effect,
         // otherwise do the scale effect
@@ -71,7 +71,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public AudioListener GetAudioListener() { return this.mAudioListener; }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public float MinFieldOfView { get { return this.mMinFieldOfView; } set { this.mMinFieldOfView = value; } }
         public float MaxFieldOfView { get { return this.mMaxFieldOfView; } set { this.mMaxFieldOfView = value; } }
 
@@ -107,7 +107,7 @@ namespace JCSUnity
 
             this.transform.position = CalculateTheCameraPosition();
 
-            mCamera.fieldOfView += (mTargetFieldOfView - mCamera.fieldOfView) / mCameraFriction * JCS_Time.DeltaTime(mDeltaTimeType);
+            mCamera.fieldOfView += (mTargetFieldOfView - mCamera.fieldOfView) / mCameraFriction * JCS_Time.ItTime(mTimeType);
 
             if (mCamera.fieldOfView < mMinFieldOfView)
                 mCamera.fieldOfView = mMinFieldOfView;
