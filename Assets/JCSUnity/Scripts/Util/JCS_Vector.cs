@@ -17,9 +17,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        // Distance to look in direction to get the point.
-        public const float LOOK_DISTANCE = 10.0f;
-
         /* Setter & Getter */
 
         /* Functions */
@@ -384,7 +381,7 @@ namespace JCSUnity
         /// </summary>
         public static Vector3 PointInDirection(JCS_Vector3Direction direction, Transform trans)
         {
-            return PointInDirection(direction, trans, LOOK_DISTANCE);
+            return PointInDirection(direction, trans, JCS_Physics.LOOK_DISTANCE);
         }
         public static Vector3 PointInDirection(JCS_Vector3Direction direction, Transform trans, float distance)
         {

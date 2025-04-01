@@ -156,10 +156,14 @@ namespace JCSUnity
             APP_INITIALIZING = false;
         }
 
+        private void Start()
+        {
+            JCS_GameManager.instance.onSystemAfterInitialize += RefreshSimulateLanguage;
+        }
+
         private void OnValidate()
         {
-            if (mSimulateSystemLanguage)
-                systemLanguage = SimulateLanguage;
+            RefreshSimulateLanguage();
         }
 
         public bool IsPC() { return (PlatformType == JCS_PlatformType.PC); }
@@ -184,6 +188,15 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Refresh the simulate language once.
+        /// </summary>
+        public void RefreshSimulateLanguage()
+        {
+            if (mSimulateSystemLanguage)
+                systemLanguage = SimulateLanguage;
+        }
+
+        /// <summary>
         /// Register a new language text.
         /// </summary>
         public void AddLangText(JCS_LangText txt)
@@ -197,8 +210,11 @@ namespace JCSUnity
         public void RefreshLangTexts()
         {
             this.mLangTexts = JCS_Util.RemoveEmptySlotIncludeMissing(this.mLangTexts);
+
             foreach (JCS_LangText txt in mLangTexts)
+            {
                 txt.Refresh();
+            }
         }
 
         public void StartRequestCamera() { StartCoroutine("DoRequestCamera"); }

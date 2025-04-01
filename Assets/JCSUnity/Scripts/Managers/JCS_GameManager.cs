@@ -18,6 +18,9 @@ namespace JCSUnity
     {
         /* Variables */
 
+        // Callback after the game is done initialize. (system used)
+        public EmptyFunction onSystemAfterInitialize = null;
+
         // Callback after the game is done initialize.
         public EmptyFunction onAfterInitialize = null;
 
@@ -61,10 +64,11 @@ namespace JCSUnity
             instance = this;
 
             SetSpecificGameTypeGameManager();
+
+            Invoke("OnFirstFrame", 0.0f);
         }
 
-
-        private void Update()
+        private void OnFirstFrame()
         {
             SetDoneInitializeFlag();
         }
@@ -93,6 +97,9 @@ namespace JCSUnity
                 return;
 
             this.mDoneInitialize = true;
+
+            if (onSystemAfterInitialize != null)
+                onSystemAfterInitialize.Invoke();
 
             if (onAfterInitialize != null)
                 onAfterInitialize.Invoke();

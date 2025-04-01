@@ -15,6 +15,12 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_ResConverter
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         /// <summary>
         /// Turn byte array to texture data.
         /// </summary>

@@ -16,6 +16,8 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Mathf
     {
+        /* Variables */
+
         public static float ZERO = 0.0f;
         public static float D_HALF = 2.0f;
         public static float T_HALF = 0.5f;
@@ -24,6 +26,10 @@ namespace JCSUnity
         public const float Rad2Deg = 180.0f / Mathf.PI;
         // Degree to Radian.
         public const float Deg2Rad = Mathf.PI / 180.0f;
+
+        /* Setter & Getter */
+
+        /* Functions */
 
         /// <summary>
         /// Returns the smallest integer greater to or equal to f.

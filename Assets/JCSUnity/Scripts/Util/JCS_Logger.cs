@@ -34,6 +34,12 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Logger
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         /// <summary>
         /// JCSUnity custom log function.
         /// </summary>

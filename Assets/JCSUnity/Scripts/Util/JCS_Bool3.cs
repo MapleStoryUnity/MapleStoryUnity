@@ -15,12 +15,18 @@ namespace JCSUnity
     [System.Serializable]
     public struct JCS_Bool3
     {
+        /* Variables */
+
         public static JCS_Bool3 allTrue { get { return new JCS_Bool3(true, true, true); } }
         public static JCS_Bool3 allFalse { get { return new JCS_Bool3(false, false, false); } }
         
         public bool check1;
         public bool check2;
         public bool check3;
+
+        /* Setter & Getter */
+
+        /* Functions */
 
         // init specific value
         public JCS_Bool3(bool ch1 = false, bool ch2 = false, bool ch3 = false)

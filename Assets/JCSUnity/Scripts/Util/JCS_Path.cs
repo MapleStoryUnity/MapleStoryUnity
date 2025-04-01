@@ -14,6 +14,12 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Path
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         /// <summary>
         /// Safe way to combine multiple path to one path with slash.
         /// </summary>

@@ -17,6 +17,12 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Debug
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         /// <summary>
         /// Print out log by deesign by JCSUnity format. (Log)
         /// </summary>

@@ -13,6 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Interface of all setting class.
     /// </summary>
+    [DisallowMultipleComponent]
     public abstract class JCS_Settings<T> : JCS_InstanceNew<T>
         where T : MonoBehaviour
     {

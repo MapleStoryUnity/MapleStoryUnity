@@ -16,6 +16,12 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Random
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         /// <summary>
         /// Return normal random range.
         /// </summary>

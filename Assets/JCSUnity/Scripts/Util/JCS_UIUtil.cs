@@ -29,6 +29,12 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_UIUtil
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         /// <summary>
         /// Return true if GameObject contains built-in UI components.
         /// </summary>

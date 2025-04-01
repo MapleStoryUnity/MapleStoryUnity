@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace JCSUnity
@@ -17,6 +18,10 @@ namespace JCSUnity
     [Serializable]
     public struct JCS_ColliderInfo
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
         public float width;
         public float height;
 
@@ -28,6 +33,8 @@ namespace JCSUnity
         public Vector3 bottomBound;
         public Vector3 leftBound;
         public Vector3 rightBound;
+
+        /* Functions */
 
         /// <summary>
         /// Find out all four bounding point.
@@ -54,6 +61,51 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Physics
     {
+        /* Variables */
+
+        // Distance to look in direction to get the point.
+        public const float LOOK_DISTANCE = 10.0f;
+
+        // Default ray distance.
+        public const float RAY_DISTANCE = 100.0f;
+
+        /* Setter & Getter */
+
+        /* Functions */
+
+        /// <summary>
+        /// Sort the raycast hits by distance.
+        /// 
+        /// The order is from the nearest to the furthest.
+        /// </summary>
+        /// <param name="point"> Point to calculate the distance. </param>
+        /// <param name="hits"> A list of raycast hits. </param>
+        public static RaycastHit[] SortHitsByDistance(Vector3 point, RaycastHit[] hits)
+        {
+            hits.OrderBy((hit) => Vector3.Distance(point, hit.point));
+            return hits;
+        }
+
+        /// <summary>
+        /// Find the nearest raycast hit.
+        /// </summary>
+        /// <param name="point"> Point to calculate the distance. </param>
+        /// <param name="hits"> A list of raycast hits. </param>
+        public static RaycastHit FindNeareastHit(Vector3 point, RaycastHit[] hits)
+        {
+            return SortHitsByDistance(point, hits).First();
+        }
+
+        /// <summary>
+        /// Find the furthest raycast hit.
+        /// </summary>
+        /// <param name="point"> Point to calculate the distance. </param>
+        /// <param name="hits"> A list of raycast hits. </param>
+        public static RaycastHit FindFurthestHit(Vector3 point, RaycastHit[] hits)
+        {
+            return SortHitsByDistance(point, hits).Last();
+        }
+
         /// <summary>
         /// Return Character controller's collider's width and height.
         /// </summary>
@@ -227,8 +279,8 @@ namespace JCSUnity
         /// <param name="cap"></param>
         /// <param name="maxDistance"></param>
         public static bool SetOnTopOfClosestBoxWithRay(
-            CharacterController cap, 
-            float maxDistance, 
+            CharacterController cap,
+            float maxDistance,
             JCS_Vector3Direction inDirection)
         {
             Vector3 direction = cap.transform.TransformDirection(JCS_Vector.Direction(inDirection));
@@ -326,12 +378,12 @@ namespace JCSUnity
             capScale = JCS_Mathf.AbsoluteValue(capScale);
 
             // 取得Collider的中心"相對位置".
-            Vector3 rectCenter = new Vector3(
+            var rectCenter = new Vector3(
                 rect.center.x * rectScale.x,
                 rect.center.y * rectScale.y,
                 rect.center.z * rectScale.z);
 
-            Vector3 cCenter = new Vector3(
+            var cCenter = new Vector3(
                 cap.center.x * capScale.x,
                 cap.center.y * capScale.y,
                 cap.center.z * capScale.z);
@@ -361,8 +413,8 @@ namespace JCSUnity
         /// Faild : Vector.zero
         /// </returns>
         public static Vector3 SetOnTopOfBoxWithSlope(
-            CharacterController cap, 
-            BoxCollider rect, 
+            CharacterController cap,
+            BoxCollider rect,
             float offset = 0)
         {
             float innerAngle = rect.transform.localEulerAngles.z;
@@ -377,7 +429,7 @@ namespace JCSUnity
 
             capScale = JCS_Mathf.AbsoluteValue(capScale);
 
-            Vector3 cCenter = new Vector3(
+            var cCenter = new Vector3(
                 cap.center.x * capScale.x,
                 cap.center.y * capScale.y,
                 cap.center.z * capScale.z);
@@ -392,7 +444,7 @@ namespace JCSUnity
             float rectWidth = rect.size.x * rectScale.x;
             float rectHeight = rect.size.y * rectScale.y;
 
-            Vector3 rectCenter = new Vector3(
+            var rectCenter = new Vector3(
                 rect.center.x * rectScale.x,
                 rect.center.y * rectScale.y,
                 rect.center.z * rectScale.z);
@@ -474,12 +526,12 @@ namespace JCSUnity
             botBoxScale = JCS_Mathf.AbsoluteValue(botBoxScale);
 
             // 取得Collider的中心"相對位置".
-            Vector3 topBoxCenter = new Vector3(
+            var topBoxCenter = new Vector3(
                 topBox.center.x * topBoxScale.x,
                 topBox.center.y * topBoxScale.y,
                 topBox.center.z * topBoxScale.z);
 
-            Vector3 botBoxCenter = new Vector3(
+            var botBoxCenter = new Vector3(
                 botBox.center.x * botBoxScale.x,
                 botBox.center.y * botBoxScale.y,
                 botBox.center.z * botBoxScale.z);
@@ -518,7 +570,7 @@ namespace JCSUnity
 
             Vector2 topBoxWH = GetColliderWidthHeight(topBox);
 
-            Vector3 topBoxCenter = new Vector3(
+            var topBoxCenter = new Vector3(
                topBox.center.x * topBoxScale.x,
                topBox.center.y * topBoxScale.y,
                topBox.center.z * topBoxScale.z);
@@ -533,7 +585,7 @@ namespace JCSUnity
             float rectWidth = botBox.size.x * rectScale.x;
             float rectHeight = botBox.size.y * rectScale.y;
 
-            Vector3 rectCenter = new Vector3(
+            var rectCenter = new Vector3(
                 botBox.center.x * rectScale.x,
                 botBox.center.y * rectScale.y,
                 botBox.center.z * rectScale.z);
@@ -617,18 +669,18 @@ namespace JCSUnity
             botBoxScale = JCS_Mathf.AbsoluteValue(botBoxScale);
 
             // 取得Collider的中心"相對位置".
-            Vector2 topBoxCenter = new Vector2(
+            var topBoxCenter = new Vector2(
                 topBox.offset.x * topBoxScale.x,
                 topBox.offset.y * topBoxScale.y);
 
-            Vector2 botBoxCenter = new Vector2(
+            var botBoxCenter = new Vector2(
                 botBox.offset.x * botBoxScale.x,
                 botBox.offset.y * botBoxScale.y);
 
             // * rectCenter 跟 rect.transfrom.position 是"相對位置', 
             // 所以要相加才能得到正確的"世界位置"!
             // * cCenter + cap.transform.position 同理.
-            Vector2 newPos = new Vector2(
+            var newPos = new Vector2(
                 topBoxCenter.x + topBox.transform.position.x,
                 topBoxCenter.y + topBox.transform.position.y);
 
@@ -661,11 +713,11 @@ namespace JCSUnity
             topBoxScale = JCS_Mathf.AbsoluteValue(topBoxScale);
 
             // 取得Collider的中心"相對位置".
-            Vector2 botBoxCenter = new Vector2(
+            var botBoxCenter = new Vector2(
                 botBox.offset.x * botBoxScale.x,
                 botBox.offset.y * botBoxScale.y);
 
-            Vector2 topBoxCenter = new Vector2(
+            var topBoxCenter = new Vector2(
                 topBox.offset.x * topBoxScale.x,
                 topBox.offset.y * topBoxScale.y);
 
@@ -705,18 +757,18 @@ namespace JCSUnity
             rightBoxScale = JCS_Mathf.AbsoluteValue(rightBoxScale);
 
             // 取得Collider的中心"相對位置".
-            Vector2 leftBoxCenter = new Vector2(
+            var leftBoxCenter = new Vector2(
                 leftBox.offset.x * leftBoxScale.x,
                 leftBox.offset.y * leftBoxScale.y);
 
-            Vector2 rightBoxCenter = new Vector2(
+            var rightBoxCenter = new Vector2(
                 rightBox.offset.x * rightBoxScale.x,
                 rightBox.offset.y * rightBoxScale.y);
 
             // * rectCenter 跟 rect.transfrom.position 是"相對位置', 
             // 所以要相加才能得到正確的"世界位置"!
             // * cCenter + cap.transform.position 同理.
-            Vector2 newPos = new Vector2(
+            var newPos = new Vector2(
                 leftBoxCenter.x + leftBox.transform.position.x,
                 leftBoxCenter.y + leftBox.transform.position.y);
 
@@ -749,18 +801,18 @@ namespace JCSUnity
             leftBoxScale = JCS_Mathf.AbsoluteValue(leftBoxScale);
 
             // 取得Collider的中心"相對位置".
-            Vector2 rightBoxCenter = new Vector2(
+            var rightBoxCenter = new Vector2(
                 rightBox.offset.x * rightBoxScale.x,
                 rightBox.offset.y * rightBoxScale.y);
 
-            Vector2 leftBoxCenter = new Vector2(
+            var leftBoxCenter = new Vector2(
                 leftBox.offset.x * leftBoxScale.x,
                 leftBox.offset.y * leftBoxScale.y);
 
             // * rectCenter 跟 rect.transfrom.position 是"相對位置', 
             // 所以要相加才能得到正確的"世界位置"!
             // * cCenter + cap.transform.position 同理.
-            Vector2 newPos = new Vector2(
+            var newPos = new Vector2(
                 rightBoxCenter.x + rightBox.transform.position.x,
                 rightBoxCenter.y + rightBox.transform.position.y);
 
@@ -794,12 +846,12 @@ namespace JCSUnity
             //float rWidth = rect.size.x * rectScale.x;
             float rHeight = rect.size.y * rectScale.y;
 
-            Vector3 rectCenter = new Vector3(
+            var rectCenter = new Vector3(
                 rect.center.x * rectScale.x,
                 rect.center.y * rectScale.y,
                 rect.center.z * rectScale.z);
 
-            Vector3 cCenter = new Vector3(
+            var cCenter = new Vector3(
                 cap.center.x * capScale.x,
                 cap.center.y * capScale.y,
                 cap.center.z * capScale.z);
@@ -814,7 +866,7 @@ namespace JCSUnity
             float cBotBound = cap.transform.position.y + cCenter.y - (cH / 2.0f) - cR;
 
 #if UNITY_EDITOR
-            Debug.DrawLine(rect.transform.position + rectCenter, 
+            Debug.DrawLine(rect.transform.position + rectCenter,
                 new Vector3(
                     rect.transform.position.x,
                     rTopBound,
@@ -857,7 +909,7 @@ namespace JCSUnity
 
             capScale = JCS_Mathf.AbsoluteValue(capScale);
 
-            Vector3 cCenter = new Vector3(
+            var cCenter = new Vector3(
                 cap.center.x * capScale.x,
                 cap.center.y * capScale.y,
                 cap.center.z * capScale.z);
@@ -878,7 +930,7 @@ namespace JCSUnity
             float rectWidth = rect.size.x * rectScale.x;
             float rectHeight = rect.size.y * rectScale.y;
 
-            Vector3 rectCenter = new Vector3(
+            var rectCenter = new Vector3(
                 rect.center.x * rectScale.x,
                 rect.center.y * rectScale.y,
                 rect.center.z * rectScale.z);
@@ -914,8 +966,8 @@ namespace JCSUnity
             }
 
             float heightToCapBot = JCS_Mathf.CrossMultiply(
-                rectLeftToRight, 
-                distRectLeftToCapCenter, 
+                rectLeftToRight,
+                distRectLeftToCapCenter,
                 rectTopAndBot);
 
 #if UNITY_EDITOR
@@ -957,12 +1009,12 @@ namespace JCSUnity
             //float rWidth = rect.size.x * rectScale.x;
             float rHeight = rect.size.y * rectScale.y;
 
-            Vector3 rectCenter = new Vector3(
+            var rectCenter = new Vector3(
                 rect.center.x * rectScale.x,
                 rect.center.y * rectScale.y,
                 rect.center.z * rectScale.z);
 
-            Vector3 cCenter = new Vector3(
+            var cCenter = new Vector3(
                 cap.center.x * capScale.x,
                 cap.center.y * capScale.y,
                 cap.center.z * capScale.z);
@@ -1005,12 +1057,12 @@ namespace JCSUnity
             rWidth = JCS_Mathf.AbsoluteValue(rWidth);
             rHeight = JCS_Mathf.AbsoluteValue(rHeight);
 
-            Vector3 rectCenter = new Vector3(
+            var rectCenter = new Vector3(
                 rect.center.x * rectScale.x,
                 rect.center.y * rectScale.y,
                 rect.center.z * rectScale.z);
 
-            Vector3 cCenter = new Vector3(
+            var cCenter = new Vector3(
                 cap.center.x * capScale.x,
                 cap.center.y * capScale.y,
                 cap.center.z * capScale.z);
@@ -1024,11 +1076,11 @@ namespace JCSUnity
             if (cH < 0)
                 cH = 0;
 
-            Vector3 topCirclePoint = new Vector3(
+            var topCirclePoint = new Vector3(
                 cap.transform.position.x + cCenter.x,
                 cap.transform.position.y + cHalfHeight + offsetY,
                 cap.transform.position.z + cCenter.z);
-            Vector3 botCirclePoint = new Vector3(
+            var botCirclePoint = new Vector3(
                 cap.transform.position.x + cCenter.x,
                 cap.transform.position.y - cHalfHeight + offsetY,
                 cap.transform.position.z + cCenter.z);
