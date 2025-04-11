@@ -29,19 +29,9 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mTestWithVelKey = KeyCode.None;
 
-        [Tooltip("Force to hit the target.")]
-        [SerializeField]
-        [Range(0.1f, 300.0f)]
-        private float mForce = 20.0f;
-
         [Tooltip("Key to use to test using the time function.")]
         [SerializeField]
         private KeyCode mTestWithTimeKey = KeyCode.None;
-
-        [Tooltip("Target time to hit the target.")]
-        [SerializeField]
-        [Range(1.0f, 10.0f)]
-        private float mTime = 1.0f;
 #endif
 
         [Separator("Check Variables (JCS_3DThrowAction)")]
@@ -62,6 +52,16 @@ namespace JCSUnity
         [Range(0.1f, 30.0f)]
         private float mGravityProduct = 1.0f;
 
+        [Tooltip("Force to hit the target.")]
+        [SerializeField]
+        [Range(0.1f, 300.0f)]
+        private float mForce = 20.0f;
+
+        [Tooltip("Target time to hit the target.")]
+        [SerializeField]
+        [Range(1.0f, 10.0f)]
+        private float mTime = 1.0f;
+
         [Tooltip("Type of the delta time.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
@@ -75,6 +75,8 @@ namespace JCSUnity
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public Vector3 Velocity { get { return this.mVelocity; } }
         public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
+        public float Force { get { return this.mForce; } set { this.mForce = value; } }
+        public float Time { get { return this.mTime; } set { this.mTime = value; } }
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public bool FaceFoward { get { return this.mFaceFoward; } set { this.mFaceFoward = value; } }
 
@@ -111,10 +113,10 @@ namespace JCSUnity
         private void Test()
         {
             if (Input.GetKeyDown(mTestWithVelKey))
-                ThrowByForce(mTestTarget.position, mForce);
+                ThrowByForce(mTestTarget.position);
 
             if (Input.GetKeyDown(mTestWithTimeKey))
-                ThrowByTime(mTestTarget.position, mTime);
+                ThrowByTime(mTestTarget.position);
         }
 #endif
 
@@ -124,17 +126,19 @@ namespace JCSUnity
         /// <param name="startPos"> Point to start this action. </param>
         /// <param name="targetPos"> Point you want to hit. </param>
         /// <param name="time"> Certain time will reach the target position. </param>
+        public void ThrowByTime(Vector3 startPos, Vector3 targetPos)
+        {
+            ThrowByTime(startPos, targetPos, mTime);
+        }
         public void ThrowByTime(Vector3 startPos, Vector3 targetPos, float time)
         {
             this.transform.position = startPos;
             ThrowByTime(targetPos, time);
         }
-
-        /// <summary>
-        /// Do the throw action by time.
-        /// </summary>
-        /// <param name="targetPos"> Point you want to hit. </param>
-        /// <param name="time"> Time. </param>
+        public void ThrowByTime(Vector3 targetPos)
+        {
+            ThrowByTime(targetPos, mTime);
+        }
         public void ThrowByTime(Vector3 targetPos, float time)
         {
             Vector3 displacement = targetPos - this.transform.position;
@@ -153,17 +157,19 @@ namespace JCSUnity
         /// <param name="startPos"> Point to start this action. </param>
         /// <param name="targetPos"> Point you want to hit. </param>
         /// <param name="vel"> velocity to hit the point. </param>
+        public void ThrowByForce(Vector3 startPos, Vector3 targetPos)
+        {
+            ThrowByForce(startPos, targetPos, mForce);
+        }
         public void ThrowByForce(Vector3 startPos, Vector3 targetPos, float vel)
         {
             this.transform.position = startPos;
             ThrowByForce(targetPos, vel);
         }
-
-        /// <summary>
-        /// Do the throw action by calculate the kinematic.
-        /// </summary>
-        /// <param name="targetPos"> Point you want to hit. </param>
-        /// <param name="vel"> velocity to hit the point. </param>
+        public void ThrowByForce(Vector3 targetPos)
+        {
+            ThrowByForce(targetPos, mForce);
+        }
         public void ThrowByForce(Vector3 targetPos, float vel)
         {
             float distance = Vector3.Distance(targetPos, this.transform.position);
