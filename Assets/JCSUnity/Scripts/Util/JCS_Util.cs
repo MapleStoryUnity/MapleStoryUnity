@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Unity.VisualScripting;
@@ -135,55 +136,26 @@ namespace JCSUnity
         /// <returns></returns>
         public static bool WithInRange(float minRange, float maxRange, float currentVal)
         {
-            if (currentVal >= minRange && currentVal <= maxRange)
-                return true;
-            return false;
+            return (currentVal >= minRange && currentVal <= maxRange);
         }
 
         /// <summary>
-        /// With in array range. (Array)
+        /// With in collection range.
         /// </summary>
         /// <returns></returns>
-        public static bool WithInRange<T>(int index, T[] arr)
-        {
-            return index >= 0 && index < arr.Length;
-        }
-
-        /// <summary>
-        /// With in array range. (List)
-        /// </summary>
-        /// <returns></returns>
-        public static bool WithInRange<T>(int index, List<T> arr)
+        public static bool WithInRange(int index, ICollection arr)
         {
             return index >= 0 && index < arr.Count;
         }
 
         /// <summary>
-        /// Loop in an array. (Array)
-        /// </summary>
-        /// <typeparam name="T"> Type. </typeparam>
-        /// <param name="index"> Index </param>
-        /// <param name="arr"> Array. </param>
-        /// <returns> index that looped. </returns>
-        public static int LoopIn<T>(int index, T[] arr)
-        {
-            // loop through the array, if at the tail of the array set it to head.
-            if (index < 0)
-                index = arr.Length - 1;
-            // loop through the array, if at head of the array we set it to the tail.
-            else if (index >= arr.Length)
-                index = 0;
-            return index;
-        }
-
-        /// <summary>
-        /// Loop in an array. (List)
+        /// Loop in a collection.
         /// </summary>
         /// <typeparam name="T"> Type. </typeparam>
         /// <param name="index"> Index </param>
         /// <param name="arr"> List. </param>
         /// <returns> index that looped. </returns>
-        public static int LoopIn<T>(int index, List<T> arr)
+        public static int LoopIn(int index, ICollection arr)
         {
             // loop through the array, if at the tail of the array set it to head.
             if (index < 0)
