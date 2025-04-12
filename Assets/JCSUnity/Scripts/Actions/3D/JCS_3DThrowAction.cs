@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -143,11 +144,12 @@ namespace JCSUnity
         {
             Vector3 displacement = targetPos - this.transform.position;
 
+            // Calculate initial velocity.
             mVelocity.x = displacement.x / time;
             mVelocity.z = displacement.z / time;
-            mVelocity.y = (displacement.y - (JCS_Constants.GRAVITY * mGravityProduct * time * time / 2)) / time;
+            mVelocity.y = (displacement.y - (JCS_Constants.GRAVITY * mGravityProduct * time * time / 2.0f)) / time;
 
-            // start dropping.
+            // start the action.
             this.mActive = true;
         }
 
@@ -177,5 +179,80 @@ namespace JCSUnity
 
             ThrowByTime(targetPos, time);
         }
+
+        #region Simulation
+
+        /// <summary>
+        /// Return a list of arch positions.
+        /// </summary>
+        /// <param name="pointCount"> This decides how many points you want. </param>
+        /// <param name="startPos"> Starting position. </param>
+        /// <param name="targetPos"> End position </param>
+        /// <param name="time"> Time to perform. </param>
+        /// <param name="gravityProduct"> Arch height. </param>
+        public static List<Vector3> GetArchByTime(
+            int pointCount,
+            Vector3 startPos, Vector3 targetPos,
+            float time, float gravityProduct)
+        {
+            List<Vector3> points = new();
+
+            Vector3 displacement = targetPos - startPos;
+
+            Vector3 velocity = Vector3.zero;
+
+            // Calculate initial velocity.
+            velocity.x = displacement.x / time;
+            velocity.z = displacement.z / time;
+            velocity.y = (displacement.y - (JCS_Constants.GRAVITY * gravityProduct * time * time / 2.0f)) / time;
+
+            /* 開始模擬 */
+
+            float timer = 0.0f;
+
+            float interval = time / pointCount;
+
+            // Add first point.
+            points.Add(startPos);
+
+            while (timer < time)
+            {
+                float dt = interval;  // Interval is the delta time!
+
+                // make it effect by gravity.
+                velocity.y += JCS_Constants.GRAVITY * gravityProduct * dt;
+
+                // add up velocity.
+                startPos += velocity * dt;
+
+                // Records the positions.
+                points.Add(startPos);
+
+                timer += interval;
+            }
+
+            return points;
+        }
+
+        /// <summary>
+        /// Return a list of arch positions.
+        /// </summary>
+        /// <param name="pointCount"> This decides how many points you want. </param>
+        /// <param name="startPos"> Starting position. </param>
+        /// <param name="targetPos"> End position </param>
+        /// <param name="vel"> Force velocity. </param>
+        /// <param name="gravityProduct"> Arch height. </param>
+        public static List<Vector3> GetArchByForce(
+           int pointCount,
+           Vector3 startPos, Vector3 targetPos,
+           float vel, float gravityProduct)
+        {
+            float distance = Vector3.Distance(targetPos, startPos);
+            float time = distance / vel;
+
+            return GetArchByTime(pointCount, startPos, targetPos, time, gravityProduct);
+        }
+
+        #endregion
     }
 }

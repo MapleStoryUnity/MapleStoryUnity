@@ -45,7 +45,6 @@ move speed to negative move speed.")]
         [Range(0.0f, 10.0f)]
         private float mRandomSpeedValue = 5.0f;
 
-
         /* Setter & Getter */
 
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
