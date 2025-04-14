@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
     m_MixedBakeMode: 1
     m_BakeBackend: 0
@@ -105,7 +101,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -118,7 +114,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -155,7 +151,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1605971375}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -237,7 +232,6 @@ RectTransform:
   m_Children:
   - {fileID: 1374982440}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -330,7 +324,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1294710018}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -435,7 +428,6 @@ RectTransform:
   m_Children:
   - {fileID: 1323322170}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -455,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -464,6 +456,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: 
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &193455527
@@ -508,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -612,11 +605,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &193455533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,6 +629,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -638,6 +639,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -674,7 +676,6 @@ RectTransform:
   m_Children:
   - {fileID: 689504096}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -767,7 +768,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1925171286}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -840,7 +840,6 @@ RectTransform:
   - {fileID: 379940122}
   - {fileID: 865629817}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -890,6 +889,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -994,13 +994,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327124769}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &331970205
 GameObject:
@@ -1037,7 +1037,6 @@ RectTransform:
   m_Children:
   - {fileID: 532215904}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1074,6 +1073,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -1083,6 +1084,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -1206,7 +1208,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 267027645}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1273,43 +1274,43 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 267027645}
     m_Modifications:
     - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
-      propertyPath: slidePanels.Array.data[0]
+      propertyPath: 'slidePanels.Array.data[0]'
       value: 
       objectReference: {fileID: 379940122}
     - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
-      propertyPath: slidePanels.Array.data[1]
+      propertyPath: 'slidePanels.Array.data[1]'
       value: 
       objectReference: {fileID: 782754179}
     - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
-      propertyPath: slidePanels.Array.data[2]
+      propertyPath: 'slidePanels.Array.data[2]'
       value: 
       objectReference: {fileID: 2004400550}
     - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
-      propertyPath: slidePanels.Array.data[3]
+      propertyPath: 'slidePanels.Array.data[3]'
       value: 
       objectReference: {fileID: 671072141}
     - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
-      propertyPath: slidePanels.Array.data[4]
+      propertyPath: 'slidePanels.Array.data[4]'
       value: 
       objectReference: {fileID: 445629392}
     - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
-      propertyPath: slidePanels.Array.data[5]
+      propertyPath: 'slidePanels.Array.data[5]'
       value: 
       objectReference: {fileID: 196451054}
     - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
-      propertyPath: slidePanels.Array.data[6]
+      propertyPath: 'slidePanels.Array.data[6]'
       value: 
       objectReference: {fileID: 968011696}
     - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
-      propertyPath: slidePanels.Array.data[7]
+      propertyPath: 'slidePanels.Array.data[7]'
       value: 
       objectReference: {fileID: 119225857}
     - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
-      propertyPath: slidePanels.Array.data[8]
+      propertyPath: 'slidePanels.Array.data[8]'
       value: 
       objectReference: {fileID: 1078392642}
     - target: {fileID: 22465536, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
@@ -1385,7 +1386,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
 --- !u!224 &413381865 stripped
 RectTransform:
@@ -1424,7 +1427,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 602746530}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1505,7 +1507,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 267027645}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1598,7 +1599,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 331970206}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1685,7 +1685,6 @@ RectTransform:
   m_Children:
   - {fileID: 2078510432}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1705,7 +1704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -1714,6 +1713,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: 
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &537699783
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -1862,11 +1862,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &537699789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,6 +1886,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -1888,6 +1896,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -1926,7 +1935,6 @@ RectTransform:
   m_Children:
   - {fileID: 918927474}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1963,6 +1971,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -1972,6 +1982,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -2101,7 +2112,6 @@ RectTransform:
   m_Children:
   - {fileID: 1852640058}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2121,7 +2131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -2130,6 +2140,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: 
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &573518711
@@ -2174,7 +2185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -2278,11 +2289,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &573518717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2296,6 +2313,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -2304,6 +2323,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -2342,7 +2362,6 @@ RectTransform:
   m_Children:
   - {fileID: 2068116421}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2379,6 +2398,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -2388,6 +2409,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -2514,7 +2536,6 @@ RectTransform:
   m_Children:
   - {fileID: 891556513}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2551,6 +2572,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -2560,6 +2583,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -2689,7 +2713,6 @@ RectTransform:
   m_Children:
   - {fileID: 433695997}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2709,7 +2732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -2718,6 +2741,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: 
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &602746532
@@ -2762,7 +2786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -2866,11 +2890,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &602746538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,6 +2914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -2892,6 +2924,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -2925,7 +2958,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 968011696}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2957,6 +2989,7 @@ MonoBehaviour:
   - {fileID: 1293163317}
   mSpacing: 80
   mDimension: 2
+  mTimeType: 7
   mAsympEffect: 1
   mAsympDiffScale: {x: 0.5, y: 0.5, z: 0.5}
   mScrollFriction: 0.1
@@ -2993,7 +3026,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 267027645}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3093,7 +3125,6 @@ RectTransform:
   m_Children:
   - {fileID: 1602313553}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3113,7 +3144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -3122,6 +3153,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: 
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &688828981
@@ -3166,7 +3198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -3270,11 +3302,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &688828987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3288,6 +3326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -3296,6 +3336,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -3344,7 +3385,6 @@ RectTransform:
   - {fileID: 1925171286}
   - {fileID: 744377265}
   m_Father: {fileID: 196451054}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3375,6 +3415,7 @@ MonoBehaviour:
   - {fileID: 1925171288}
   - {fileID: 744377267}
   mAreaEffects: []
+  mTimeType: 0
   mSpaceTime: 0.2
   mExitByNoOverGUI: 1
   mActiveClip: {fileID: 0}
@@ -3394,6 +3435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -3403,6 +3446,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -3503,6 +3547,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3623,7 +3668,6 @@ RectTransform:
   m_Children:
   - {fileID: 1266093025}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3660,6 +3704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -3669,6 +3715,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -3765,7 +3812,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 459412, guid: 8cb6109e89b5b9943b6a38681a508dcb, type: 3}
@@ -3801,7 +3848,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb6109e89b5b9943b6a38681a508dcb, type: 3}
 --- !u!1 &782754178
 GameObject:
@@ -3835,7 +3884,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 267027645}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3932,7 +3980,6 @@ RectTransform:
   m_Children:
   - {fileID: 1901976129}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4056,7 +4103,6 @@ RectTransform:
   m_Children:
   - {fileID: 1308051385}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4093,6 +4139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -4102,6 +4150,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -4224,7 +4273,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 593927672}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4304,7 +4352,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 568001148}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4395,7 +4442,6 @@ RectTransform:
   - {fileID: 1293163314}
   - {fileID: 606409746}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4488,7 +4534,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1393812412}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4570,7 +4615,6 @@ RectTransform:
   m_Children:
   - {fileID: 1806888933}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4637,7 +4681,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 3}
@@ -4673,7 +4717,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 3}
 --- !u!1 &1126457941
 GameObject:
@@ -4706,7 +4752,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1374982440}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4786,7 +4831,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1806888933}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4866,7 +4910,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 744377265}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4953,7 +4996,6 @@ RectTransform:
   m_Children:
   - {fileID: 1935524801}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4973,7 +5015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -4982,6 +5024,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: 
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &1293163316
@@ -5026,7 +5069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -5130,11 +5173,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &1293163322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5148,6 +5197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -5156,6 +5207,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -5197,7 +5249,6 @@ RectTransform:
   m_Children:
   - {fileID: 125373290}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5217,7 +5268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -5226,6 +5277,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: 
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &1294710020
@@ -5270,7 +5322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -5374,11 +5426,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &1294710026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5392,6 +5450,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -5400,6 +5460,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -5434,7 +5495,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 885410984}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5514,7 +5574,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 193455525}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5568,7 +5627,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 442828, guid: cea3ae018e023684283757410f3065f4, type: 3}
@@ -5612,7 +5671,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea3ae018e023684283757410f3065f4, type: 3}
 --- !u!1 &1374982439
 GameObject:
@@ -5649,7 +5710,6 @@ RectTransform:
   m_Children:
   - {fileID: 1126457942}
   m_Father: {fileID: 119225857}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5698,6 +5758,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -5707,6 +5769,7 @@ MonoBehaviour:
   mAxis: 1
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -5836,7 +5899,6 @@ RectTransform:
   m_Children:
   - {fileID: 1043577568}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5856,7 +5918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -5865,6 +5927,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: 
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &1393812414
@@ -5909,7 +5972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -6013,11 +6076,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &1393812420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6031,6 +6100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -6039,6 +6110,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -6047,7 +6119,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 473926, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
@@ -6095,7 +6167,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
 --- !u!1 &1449818932
 GameObject:
@@ -6132,7 +6206,6 @@ RectTransform:
   m_Children:
   - {fileID: 2111639384}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6169,6 +6242,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -6178,6 +6253,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -6303,6 +6379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
+  mMainCanvas: 1
   mActiveSound: {fileID: 0}
   mDeactiveSound: {fileID: 0}
 --- !u!114 &1492517213
@@ -6337,7 +6414,7 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -6362,6 +6439,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -6400,7 +6478,6 @@ RectTransform:
   m_Children:
   - {fileID: 1605657660}
   m_Father: {fileID: 1901976129}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6506,7 +6583,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 403812, guid: f3f4b7d5553961e4cb7509494c81b400, type: 3}
@@ -6555,7 +6632,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f4b7d5553961e4cb7509494c81b400, type: 3}
 --- !u!1 &1602313552
 GameObject:
@@ -6588,7 +6667,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 688828979}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6668,7 +6746,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1528379103}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6752,7 +6829,6 @@ RectTransform:
   m_Children:
   - {fileID: 31778282}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6789,6 +6865,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -6798,6 +6876,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -6924,7 +7003,6 @@ RectTransform:
   m_Children:
   - {fileID: 1149616696}
   m_Father: {fileID: 1078392642}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6973,6 +7051,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -6982,6 +7062,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -7104,7 +7185,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2110879008}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7184,7 +7264,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 573518709}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7238,7 +7317,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 417384, guid: 281cba18ca61487499216ccc06e4d40a, type: 3}
@@ -7274,7 +7353,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 281cba18ca61487499216ccc06e4d40a, type: 3}
 --- !u!1 &1901976128
 GameObject:
@@ -7313,7 +7394,6 @@ RectTransform:
   m_Children:
   - {fileID: 1528379103}
   m_Father: {fileID: 865629817}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7382,6 +7462,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7501,6 +7582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mTweenToAKey: 97
   mTweenToA: {x: 0, y: 0, z: 0}
@@ -7508,7 +7591,7 @@ MonoBehaviour:
   mTweenToB: {x: 5, y: 5, z: 5}
   mContinueKeyTween: 99
   mContinueTween: 0
-  mTargetTransform: {fileID: 0}
+  mTarget: {fileID: 0}
   mDoneTweenX: 1
   mDoneTweenY: 1
   mDoneTweenZ: 1
@@ -7518,6 +7601,7 @@ MonoBehaviour:
   mDurationX: 1
   mDurationY: 1
   mDurationZ: 1
+  mTimeType: 0
   mDestroyWhenDoneTweening: 0
   mDestroyDoneTweeningCount: 1
   mRandomizeDuration: 0
@@ -7540,6 +7624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1d481050008994b9557a8d6eb2c8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTestWithKey: 0
+  mTweenToStart: 106
+  mTweenToTarget: 107
   mPanelRoot: {fileID: 0}
   mTweenInfos: []
 --- !u!1 &1925171285
@@ -7577,7 +7664,6 @@ RectTransform:
   m_Children:
   - {fileID: 242865946}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7614,6 +7700,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -7623,6 +7711,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -7745,7 +7834,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293163314}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7818,13 +7906,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990639917}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -82.587326, y: 7.6250725, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1990639919
 MonoBehaviour:
@@ -7870,7 +7958,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 267027645}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7963,7 +8050,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 593563568}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8043,7 +8129,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 537699781}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8130,7 +8215,6 @@ RectTransform:
   m_Children:
   - {fileID: 1841452572}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8150,7 +8234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -8159,6 +8243,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: 
+  mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!114 &2110879010
@@ -8203,7 +8288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -8307,11 +8392,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &2110879016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8325,6 +8416,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -8333,6 +8426,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -8367,7 +8461,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1449818933}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8416,3 +8509,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111639383}
   m_CullTransparentMesh: 1
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 327124773}
+  - {fileID: 1566778248}
+  - {fileID: 1109720392}
+  - {fileID: 1341011460}
+  - {fileID: 1859234553}
+  - {fileID: 267027645}
+  - {fileID: 761660593}
+  - {fileID: 1414270698}
+  - {fileID: 1990639918}

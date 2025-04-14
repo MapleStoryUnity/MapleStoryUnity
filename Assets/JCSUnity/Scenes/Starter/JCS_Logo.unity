@@ -203,7 +203,7 @@ MonoBehaviour:
   mNextLevel: 
   mReloadScene: 0
   mDelayTime: 1.5
-  mDeltaTimeType: 0
+  mTimeType: 0
 --- !u!222 &311663131
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -319,7 +319,7 @@ MonoBehaviour:
   mTargetTransform: {fileID: 0}
   mFollowing: 1
   mPositionOffset: {x: 0, y: 1.5, z: -10}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSmoothTrack: 1
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
