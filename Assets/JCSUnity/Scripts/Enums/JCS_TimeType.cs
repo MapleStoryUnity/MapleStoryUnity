@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
- *	                 Copyright ï¿½ 2023 by Shen, Jen-Chieh $
+ *	                 Copyright © 2023 by Shen, Jen-Chieh $
  */
 
 namespace JCSUnity

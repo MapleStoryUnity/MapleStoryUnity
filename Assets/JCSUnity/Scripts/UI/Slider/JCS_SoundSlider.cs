@@ -40,7 +40,31 @@ namespace JCSUnity
             this.mSlider = this.GetComponent<Slider>();
         }
 
-        private void LateUpdate()
+        private void Start()
+        {
+            AddListener();
+        }
+
+        private void OnValidate()
+        {
+            AddListener();
+        }
+
+        private void AddListener()
+        {
+            if (mSlider == null)
+                return;
+
+            // First, initialize to keep the settings untouched.
+            mSlider.value = JCS_SoundSettings.instance.GetVolume(mSoundType);
+
+            mSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
+
+            // Call once.
+            OnValueChanged();
+        }
+
+        private void OnValueChanged()
         {
             var sm = JCS_SceneManager.instance;
 

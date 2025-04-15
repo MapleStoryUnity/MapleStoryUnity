@@ -7,7 +7,6 @@
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using UnityEngine.UI;
 using MyBox;
 
 namespace JCSUnity
@@ -15,12 +14,9 @@ namespace JCSUnity
     /// <summary>
     /// A better version of input field handle for uGUI.
     /// </summary>
-    [RequireComponent(typeof(InputField))]
-    public class JCS_InputField : MonoBehaviour
+    public class JCS_InputField : JCS_InputFieldObject
     {
         /* Variables */
-
-        private InputField mInputField = null;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_InputField)")]
@@ -64,15 +60,12 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public InputField inputField { get { return this.mInputField; } }
         public string RealText { get { return this.mRealText; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mInputField = this.GetComponent<InputField>();
-
             RegisterUpdateInputFieldDataEvent();
         }
 
@@ -127,14 +120,14 @@ namespace JCSUnity
             }
 
             // Check if we need to shortcut this.
-            string textData = mInputField.text;
+            string textData = text;
 
             // If shortcut text already, return it.
             if (IsShortcutText(textData, dot))
                 return;
 
             // Store the real text.
-            mRealText = mInputField.text;
+            mRealText = text;
 
             int textDataLen = textData.Length;
 
@@ -166,7 +159,7 @@ namespace JCSUnity
                 + textData.Substring(secondReplacePos, textDataLen - secondReplacePos);
 
             // Apply new text data.
-            mInputField.text = newTextData;
+            text = newTextData;
         }
 
         /// <summary>
@@ -194,7 +187,14 @@ namespace JCSUnity
         /// </summary>
         private void RegisterUpdateInputFieldDataEvent()
         {
-            mInputField.onEndEdit.AddListener(delegate
+            mInputFieldLegacy?.onEndEdit.AddListener(delegate
+            {
+                UpdateInputFieldData();
+
+                mIsFocus = false;
+            });
+
+            InputFieldTMP?.onEndEdit.AddListener(delegate
             {
                 UpdateInputFieldData();
 
@@ -207,10 +207,10 @@ namespace JCSUnity
         /// </summary>
         private void InputFieldFocusedEvent()
         {
-            if (!mInputField.isFocused || mIsFocus)
+            if (!isFocused || mIsFocus)
                 return;
 
-            mInputField.text = mRealText;
+            this.text = mRealText;
 
             // Make sure it only do once.
             mIsFocus = true;

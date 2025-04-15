@@ -199,12 +199,12 @@ namespace JCSUnity
         public void UpdateTimeUI(float hour, float minute, float second)
         {
 #if TMP_PRO
-            if (mTextContainer == null && mTMP_Text == null)
+            if (mTextLegacy == null && mTextTMP == null)
 #else
-            if (mTextContainer == null)
+            if (mTextLegacy == null)
 #endif
             {
-                JCS_Debug.LogError("Text slot cannot be null references...");
+                JCS_Debug.LogError("Text slot cannot be null references");
                 return;
             }
 

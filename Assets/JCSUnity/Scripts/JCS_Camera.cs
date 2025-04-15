@@ -123,8 +123,9 @@ namespace JCSUnity
 
             // add to on screen resize callback.
             var screens = JCS_ScreenSettings.instance;
-            screens.onScreenResize += OnScreenResize;
-            screens.onScreenIdle += OnScreenIdle;
+
+            screens.onResizableResize += OnResizableResize;
+            screens.onResizableIdle += OnResizableIdle;
         }
 
         protected virtual void Update()
@@ -658,7 +659,7 @@ namespace JCSUnity
         /// <summary>
         /// Callback when screen not resizing.
         /// </summary>
-        protected virtual void OnScreenIdle()
+        protected virtual void OnResizableIdle()
         {
             if (mLastVerticalFOV != mCamera.fieldOfView)
             {
@@ -669,7 +670,7 @@ namespace JCSUnity
         /// <summary>
         /// Resize the game if screen size changes.
         /// </summary>
-        protected virtual void OnScreenResize()
+        protected virtual void OnResizableResize()
         {
             if (mCamera.orthographic)
                 OnResizeOrthographic();

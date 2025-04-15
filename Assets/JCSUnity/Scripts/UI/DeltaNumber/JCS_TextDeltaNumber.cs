@@ -241,12 +241,12 @@ should disable this effect for best purpose.")]
         private void UpdateTextRender()
         {
 #if TMP_PRO
-            if (mTextContainer == null && mTMP_Text == null)
+            if (mTextLegacy == null && mTextTMP == null)
 #else
-            if (mTextContainer == null)
+            if (mTextLegacy == null)
 #endif
             {
-                JCS_Debug.LogError("Text slot cannot be null references...");
+                JCS_Debug.LogError("Text slot cannot be null references");
                 return;
             }
 
@@ -260,11 +260,11 @@ should disable this effect for best purpose.")]
                 + renderNumberString
                 + PostString;
 
-            if (mTextContainer)
-                mTextContainer.text = mFullString;
+            if (mTextLegacy)
+                mTextLegacy.text = mFullString;
 #if TMP_PRO
-            if (mTMP_Text)
-                mTMP_Text.text = mFullString;
+            if (mTextTMP)
+                mTextTMP.text = mFullString;
 #endif
         }
     }

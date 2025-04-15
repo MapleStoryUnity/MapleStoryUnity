@@ -8,6 +8,10 @@
  */
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace JCSUnity
 {
     /// <summary>
@@ -23,6 +27,10 @@ namespace JCSUnity
 
         private void Awake()
         {
+#if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+#endif
+
             Application.Quit();
         }
     }

@@ -28,9 +28,27 @@ namespace JCSUnity
         private void Awake()
         {
             this.mSlider = this.GetComponent<Slider>();
+
+            AddListener();
         }
 
-        private void Update()
+        private void OnValidate()
+        {
+            AddListener();
+        }
+
+        private void AddListener()
+        {
+            if (mSlider == null)
+                return;
+
+            mSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
+
+            // Call once.
+            OnValueChanged();
+        }
+
+        private void OnValueChanged()
         {
             Time.timeScale = mSlider.value;
         }

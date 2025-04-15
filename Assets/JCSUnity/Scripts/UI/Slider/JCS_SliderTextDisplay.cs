@@ -38,11 +38,29 @@ namespace JCSUnity
 
         /* Functions */
 
-        private void Update()
+        private void Awake()
+        {
+            AddListener();
+        }
+
+        private void OnValidate()
+        {
+            AddListener();
+        }
+
+        private void AddListener()
         {
             if (mSlider == null)
                 return;
 
+            mSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
+
+            // Call once.
+            OnValueChanged();
+        }
+
+        private void OnValueChanged()
+        {
             double val = Math.Round(mSlider.value, mRoundPlace);
 
             this.text = val.ToString();

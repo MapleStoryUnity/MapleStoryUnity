@@ -8,6 +8,10 @@
  */
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace JCSUnity
 {
     /// <summary>
@@ -42,6 +46,10 @@ namespace JCSUnity
             // layer.
             if (JCS_PacketLostPreventer.instance.PacketIds.Count != 0)
                 return;
+
+#if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+#endif
 
             Application.Quit();
         }
