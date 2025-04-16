@@ -15,7 +15,12 @@ namespace JCSUnity
     /// Echo out a string on the console window when this
     /// button triggered.
     /// </summary>
-    public class JCS_EchoButton : JCS_Button
+    public class JCS_EchoButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

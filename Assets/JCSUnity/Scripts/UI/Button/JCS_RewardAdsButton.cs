@@ -21,7 +21,12 @@ namespace JCSUnity
     /// <summary>
     /// Reward type of Ads button.
     /// </summary>
-    public class JCS_RewardAdsButton : JCS_Button
+    public class JCS_RewardAdsButton : 
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

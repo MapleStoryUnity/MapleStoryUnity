@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 70186286}
   - component: {fileID: 70186290}
   m_Layer: 5
-  m_Name: JCS_GamePadAnimationHandler
+  m_Name: JCS_GamepadAnimationHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1880,7 +1880,7 @@ GameObject:
   - component: {fileID: 1680278274}
   - component: {fileID: 1680278277}
   m_Layer: 5
-  m_Name: JCS_GamePadSpriteHandler
+  m_Name: JCS_GamepadSpriteHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2462,7 +2462,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '** JCS_GamePadButtonUIHandler Demo **'
+  m_Text: '# Gamepad handler'
 --- !u!222 &2031414604
 CanvasRenderer:
   m_ObjectHideFlags: 0

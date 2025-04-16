@@ -14,7 +14,12 @@ namespace JCSUnity
     /// <summary>
     /// Active panel button.
     /// </summary>
-    public class JCS_ActivePanelButton : JCS_Button
+    public class JCS_ActivePanelButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

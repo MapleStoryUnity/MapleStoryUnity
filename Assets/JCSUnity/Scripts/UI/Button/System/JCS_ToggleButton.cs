@@ -15,7 +15,12 @@ namespace JCSUnity
     /// <summary>
     /// Button that have two callback can toggle each other.
     /// </summary>
-    public class JCS_ToggleButton : JCS_Button
+    public class JCS_ToggleButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

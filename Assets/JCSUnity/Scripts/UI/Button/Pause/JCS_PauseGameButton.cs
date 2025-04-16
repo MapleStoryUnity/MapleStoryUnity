@@ -12,7 +12,12 @@ namespace JCSUnity
     /// <summary>
     /// Pause the game with button.
     /// </summary>
-    public class JCS_PauseGameButton : JCS_Button
+    public class JCS_PauseGameButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

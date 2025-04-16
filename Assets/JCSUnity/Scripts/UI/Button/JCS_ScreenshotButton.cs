@@ -12,7 +12,12 @@ namespace JCSUnity
     /// <summary>
     /// Button that will take the screenshot from the current gameplay scene.
     /// </summary>
-    public class JCS_ScreenshotButton : JCS_Button
+    public class JCS_ScreenshotButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

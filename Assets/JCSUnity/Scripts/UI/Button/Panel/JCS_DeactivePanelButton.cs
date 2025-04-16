@@ -14,7 +14,12 @@ namespace JCSUnity
     /// <summary>
     /// Deactive panel button.
     /// </summary>
-    public class JCS_DeactivePanelButton : JCS_Button
+    public class JCS_DeactivePanelButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

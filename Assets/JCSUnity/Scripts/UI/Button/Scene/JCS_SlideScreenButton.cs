@@ -14,7 +14,12 @@ namespace JCSUnity
     /// <summary>
     /// Button will do the slide screen.
     /// </summary>
-    public class JCS_SlideScreenButton : JCS_Button
+    public class JCS_SlideScreenButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 
@@ -41,9 +46,11 @@ namespace JCSUnity
 
         [Header("- Sound")]
 
+#if !JCS_USE_GAMEPAD
         [Tooltip("Sound player for 3D sounds calculation.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
+#endif
 
         [Tooltip("Sound when sliding screen.")]
         [SerializeField]
@@ -80,8 +87,14 @@ namespace JCSUnity
             this.mSlideCameras = JCS_Util.FindObjectsByType(typeof(JCS_2DSlideScreenCamera)) as JCS_2DSlideScreenCamera[];
         }
 
+#if JCS_USE_GAMEPAD
+        protected override void Update()
+        {
+            base.Update();
+#else
         private void Update()
         {
+#endif
             if (!mStartDelay)
                 return;
 

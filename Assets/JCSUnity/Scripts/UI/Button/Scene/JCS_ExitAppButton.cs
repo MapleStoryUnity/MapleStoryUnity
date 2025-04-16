@@ -12,7 +12,12 @@ namespace JCSUnity
     /// <summary>
     /// Button exit the application.
     /// </summary>
-    public class JCS_ExitAppButton : JCS_Button
+    public class JCS_ExitAppButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         public override void OnClick()
         {

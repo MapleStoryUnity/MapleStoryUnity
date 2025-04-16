@@ -14,7 +14,12 @@ namespace JCSUnity
     /// <summary>
     /// Button to show canvas, so it's visible on the screen.
     /// </summary>
-    public class JCS_ShowCanvasButton : JCS_Button
+    public class JCS_ShowCanvasButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

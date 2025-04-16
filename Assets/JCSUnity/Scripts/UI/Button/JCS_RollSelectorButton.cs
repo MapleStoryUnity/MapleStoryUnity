@@ -15,7 +15,12 @@ namespace JCSUnity
     /// Use with JCS_RollBtnSelector.
     /// </summary>
     [RequireComponent(typeof(JCS_SimpleTrackAction))]
-    public class JCS_RollSelectorButton : JCS_Button
+    public class JCS_RollSelectorButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

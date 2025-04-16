@@ -14,7 +14,12 @@ namespace JCSUnity
     /// <summary>
     /// Open a URL in the default browser.
     /// </summary>
-    public class JCS_OpenURLButton : JCS_Button
+    public class JCS_OpenURLButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

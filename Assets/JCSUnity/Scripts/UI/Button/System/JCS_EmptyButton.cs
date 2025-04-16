@@ -12,7 +12,12 @@ namespace JCSUnity
     /// <summary>
     /// Empty button specific for system call back usage.
     /// </summary>
-    public class JCS_EmptyButton : JCS_Button
+    public class JCS_EmptyButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

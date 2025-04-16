@@ -15,7 +15,12 @@ namespace JCSUnity
     /// <summary>
     /// Button will load the target scene.
     /// </summary>
-    public class JCS_LoadSceneButton : JCS_Button
+    public class JCS_LoadSceneButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

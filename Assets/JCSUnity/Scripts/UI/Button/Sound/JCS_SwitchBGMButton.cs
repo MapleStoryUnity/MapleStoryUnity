@@ -14,7 +14,12 @@ namespace JCSUnity
     /// <summary>
     /// Button that switches the background music.
     /// </summary>
-    public class JCS_SwitchBGMButton : JCS_Button
+    public class JCS_SwitchBGMButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 

@@ -15,7 +15,12 @@ namespace JCSUnity
     /// Button when switching the server. For example, switch 
     /// channel server.
     /// </summary>
-    public class JCS_SwitchServerButton : JCS_Button
+    public class JCS_SwitchServerButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 
@@ -33,13 +38,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mForce = false;
 
-
         /* Setter & Getter */
 
         public int Port { get { return this.mPort; } set { this.mPort = value; } }
         public string Host { get { return this.mHost; } set { this.mHost = value; } }
         public bool Force { get { return this.mForce; } set { this.mForce = value; } }
-
 
         /* Functions */
 

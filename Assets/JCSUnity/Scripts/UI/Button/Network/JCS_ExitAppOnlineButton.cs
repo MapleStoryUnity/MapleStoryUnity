@@ -13,7 +13,12 @@ namespace JCSUnity
     /// Exit button with change scene effect.
     /// Multiplayer Version.
     /// </summary>
-    public class JCS_ExitAppOnlineButton : JCS_Button
+    public class JCS_ExitAppOnlineButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         public override void OnClick()
         {
