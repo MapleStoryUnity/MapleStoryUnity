@@ -1,10 +1,10 @@
-/**
- * $File: JCS_DropdownWindowedMode.cs $
+﻿/**
+ * $File: JCS_DropdownLanguage.cs $
  * $Date: 2025-04-15 01:14:38 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright � 2025 by Shen, Jen-Chieh $
+ *                   Copyright © 2025 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,20 +15,21 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// A dropdown menu let you choose the windowed mode.
+    /// A dropdown menu let you choose the language.
     /// </summary>
-    [RequireComponent(typeof(TMP_Dropdown))]
-    public class JCS_DropdownWindowedMode : JCS_DropdownObject
+    public class JCS_DropdownLanguage : JCS_DropdownObject
     {
         /* Variables */
 
-        private List<string> mOptions = new ()
-        {
-            "Full Screen",
-            "Windowed",
-        };
+        [Separator("Initialize Variables (JCS_DropdownLanguage)")]
 
-        [Separator("Initialize Variables (JCS_DropdownWindowedMode)")]
+        [Tooltip("List of supported languages.")]
+        [SerializeField]
+        private List<SystemLanguage> mOptions = new()
+        {
+            SystemLanguage.English,
+            SystemLanguage.ChineseTraditional,
+        };
 
         [Tooltip("If true, remove all other options at the beginning.")]
         [SerializeField]
@@ -36,30 +37,23 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<string> Options { get { return mOptions; } set { this.mOptions = value; } }
+        public List<SystemLanguage> Options { get { return mOptions; } set { this.mOptions = value; } }
         public bool RemoveAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
 
         /* Functions */
 
-        private void Awake()
+        private void Start()
         {
             Refresh();
 
             AddListener();
         }
 
-        private void Start()
-        {
-            var screens = JCS_ScreenSettings.instance;
-
-            screens.onChangedMode += Refresh;
-        }
-
         private void AddListener()
         {
-            DropdownLegacy?.onValueChanged.AddListener(delegate
+            mDropdownLegacy?.onValueChanged.AddListener(delegate
             {
-                OnValueChanged_Legacy(DropdownLegacy);
+                OnValueChanged_Legacy(mDropdownLegacy);
             });
 
             mDropdownTMP?.onValueChanged.AddListener(delegate
@@ -68,7 +62,7 @@ namespace JCSUnity
             });
 
             // Run once.
-            OnValueChanged_Legacy(DropdownLegacy);
+            OnValueChanged_Legacy(mDropdownLegacy);
             OnValueChanged_TMP(mDropdownTMP);
         }
 
@@ -80,14 +74,16 @@ namespace JCSUnity
             if (mRemoveAllOptions)
                 ClearOptions();
 
-            foreach (string option in mOptions)
+            foreach (SystemLanguage option in mOptions)
             {
-                JCS_UIUtil.Dropdown_AddOption(this, option);
+                string text = JCS_Locale.SystemLangToString(option);
+
+                JCS_UIUtil.Dropdown_AddOption(this, text);
             }
 
             // Default to the current windowed mode.
             {
-                string text = ModeToString(Screen.fullScreenMode);
+                string text = JCS_Locale.SystemLangToString(JCS_AppManager.instance.systemLanguage);
 
                 JCS_UIUtil.Dropdown_SetSelection(this, text);
             }
@@ -115,38 +111,9 @@ namespace JCSUnity
         }
         private void OnValueChanged(string text)
         {
-            FullScreenMode mode = StringToMode(text);
+            SystemLanguage selected = JCS_Locale.StringToSystemLang(text);
 
-            Resolution res = Screen.currentResolution;
-
-            int width = res.width;
-            int height = res.height;
-
-            Screen.SetResolution(width, height, mode);
-        }
-
-        private string ModeToString(FullScreenMode mode)
-        {
-            switch (mode)
-            {
-                case FullScreenMode.FullScreenWindow:
-                    return "Full Screen";
-                default:
-                    return "Windowed";
-            }
-        }
-
-        private FullScreenMode StringToMode(string text)
-        {
-            switch (text)
-            {
-                case "Full Screen":
-                    return FullScreenMode.FullScreenWindow;
-                case "Windowed":
-                    return FullScreenMode.Windowed;
-            }
-
-            return Screen.fullScreenMode;
+            JCS_AppManager.instance.systemLanguage = selected;
         }
     }
 }
