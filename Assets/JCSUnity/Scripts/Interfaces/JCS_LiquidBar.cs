@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using MyBox;
@@ -23,12 +24,12 @@ namespace JCSUnity
         public const float MAX_LIQUID_BAR_VALUE = 999999999;
 
         // When value reachs min/max value.
-        public EmptyFunction callback_min = null;
-        public EmptyFunction callback_max = null;
+        public Action callback_min = null;
+        public Action callback_max = null;
 
         // When value reachs min/max value. (visually)
-        public EmptyFunction callback_min_vis = null;
-        public EmptyFunction callback_max_vis = null;
+        public Action callback_min_vis = null;
+        public Action callback_max_vis = null;
 
         [Separator("Check Variables (JCS_LiquidBar)")]
 

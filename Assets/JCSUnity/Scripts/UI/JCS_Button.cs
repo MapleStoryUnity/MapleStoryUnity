@@ -11,6 +11,7 @@
  */
 #define TMP_PRO
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using MyBox;
@@ -35,15 +36,15 @@ namespace JCSUnity
         public delegate void CallBackFuncBtnInt(int selection);
 
         // framework only callback, do not override this callback
-        public EmptyFunction btnSystemCallBack = null;
+        public Action btnSystemCallBack = null;
         public CallBackFuncBtn btnSystemCallBackBtn = null;
         public CallBackFuncBtnInt btnSystemCallBackBtnInt = null;
 
         // user callback
-        public EmptyFunction btnCallBack = null;
+        public Action btnCallBack = null;
         public CallBackFuncBtn btnCallBackBtn = null;
 
-        public EmptyFunction interactableCallback = null;
+        public Action interactableCallback = null;
 
         [Separator("Check Variables (JCS_Button)")]
 
@@ -119,9 +120,9 @@ namespace JCSUnity
         public bool IsSelectedInGroup { get { return this.mIsSelectedInGroup; } }
 
         /* Compatible with version 1.5.3 */
-        public void SetCallback(EmptyFunction func) { this.btnCallBack += func; }
+        public void SetCallback(Action func) { this.btnCallBack += func; }
         public void SetCallback(CallBackFuncBtn func) { this.btnCallBackBtn += func; }
-        public void SetSystemCallback(EmptyFunction func) { this.btnSystemCallBack += func; }
+        public void SetSystemCallback(Action func) { this.btnSystemCallBack += func; }
         public void SetSystemCallback(CallBackFuncBtn func) { this.btnSystemCallBackBtn += func; }
         public void SetSystemCallback(CallBackFuncBtnInt func, int selection)
         {

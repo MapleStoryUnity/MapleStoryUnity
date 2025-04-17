@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -20,8 +21,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public EmptyFunction beforeResetCallback = null;
-        public EmptyFunction afterResetCallback = null;
+        public Action beforeResetCallback = null;
+        public Action afterResetCallback = null;
 
         private Vector3 mOriginPos = Vector3.zero;
 

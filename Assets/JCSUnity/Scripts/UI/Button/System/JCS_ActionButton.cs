@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2023 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using MyBox;
@@ -24,7 +25,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        protected EmptyFunction onAction = null;
+        protected Action onAction = null;
 
         [Separator("Runtime Variables (JCS_ActionButton)")]
 

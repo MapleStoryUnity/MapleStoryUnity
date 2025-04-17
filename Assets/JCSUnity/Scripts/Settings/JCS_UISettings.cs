@@ -31,7 +31,7 @@ namespace JCSUnity
 
         [Separator("Initialize Variables (JCS_UISettings)")]
 
-        [Tooltip("Resize the UI in runtime?")]
+        [Tooltip("Resize the UI in runtime.")]
         public bool RESIZE_UI = true;
 
         /* Setter & Getter */

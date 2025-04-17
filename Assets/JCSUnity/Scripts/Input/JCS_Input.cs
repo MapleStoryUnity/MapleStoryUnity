@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -150,19 +151,19 @@ namespace JCSUnity
         /// <param name="key"> Key to press. </param>
         /// <param name="callback"> Callback after key being pressed. </param>
         /// <returns> Result key state. </returns>
-        public static bool WithKey(KeyCode key, EmptyFunction callback)
+        public static bool WithKey(KeyCode key, Action callback)
         {
             return WithKeyAction(JCS_KeyActionType.KEY, key, callback);
         }
-        public static bool WithKeyUp(KeyCode key, EmptyFunction callback)
+        public static bool WithKeyUp(KeyCode key, Action callback)
         {
             return WithKeyAction(JCS_KeyActionType.KEY_UP, key, callback);
         }
-        public static bool WithKeyDown(KeyCode key, EmptyFunction callback)
+        public static bool WithKeyDown(KeyCode key, Action callback)
         {
             return WithKeyAction(JCS_KeyActionType.KEY_DOWN, key, callback);
         }
-        private static bool WithKeyAction(JCS_KeyActionType action, KeyCode key, EmptyFunction callback)
+        private static bool WithKeyAction(JCS_KeyActionType action, KeyCode key, Action callback)
         {
             if (GetKeyByAction(action, key))
             {

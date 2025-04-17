@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -19,8 +20,8 @@ namespace JCSUnity
         /* Variables */
 
         // call back when done playing the animation.
-        public EmptyFunction donePlayingAnimCallback = null;
-        public EmptyFunction playFrameCallback = null;
+        public Action donePlayingAnimCallback = null;
+        public Action playFrameCallback = null;
 
         // animator using this animation?
         private JCS_2DAnimator mAnimator = null;

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,10 +21,10 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public EmptyFunction onSwitchSceneInit = null;
-        public EmptyFunction onSwitchSceneLoad = null;
-        public EmptyBoolFunction onSwitchSceneIn = null;
-        public EmptyBoolFunction onSwitchSceneOut = null;
+        public Action onSwitchSceneInit = null;
+        public Action onSwitchSceneLoad = null;
+        public Func<bool> onSwitchSceneIn = null;
+        public Func<bool> onSwitchSceneOut = null;
 
         // Async loading scene operation. (thread)
         private AsyncOperation mAsyncOperation = null;

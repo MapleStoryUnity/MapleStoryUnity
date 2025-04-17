@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using MyBox;
@@ -24,7 +25,7 @@ namespace JCSUnity
         private TweenDelegate mEasingBlue = null;
         private TweenDelegate mEasingAlpha = null;
 
-        private EmptyFunction mColorCallback = null;
+        private Action mColorCallback = null;
 
         /**
          * time to calculate the progress.
@@ -221,7 +222,7 @@ namespace JCSUnity
         public bool IgnoreG { get { return this.mIgnoreG; } set { this.mIgnoreG = value; } }
         public bool IgnoreB { get { return this.mIgnoreB; } set { this.mIgnoreB = value; } }
         public bool IgnoreA { get { return this.mIgnoreA; } set { this.mIgnoreA = value; } }
-        public void SetCallback(EmptyFunction func)
+        public void SetCallback(Action func)
         {
             this.mColorCallback = func;
         }
@@ -286,7 +287,7 @@ namespace JCSUnity
         /// Tween to the color.
         /// </summary>
         /// <param name="inToColor"> target color </param>
-        public void DoTween(Color inToColor, EmptyFunction func = null)
+        public void DoTween(Color inToColor, Action func = null)
         {
             DoTween(
                 inToColor,
@@ -311,7 +312,7 @@ namespace JCSUnity
             JCS_TweenType inTweenTypeG,
             JCS_TweenType inTweenTypeB,
             JCS_TweenType inTweenTypeA,
-            EmptyFunction func = null)
+            Action func = null)
         {
             DoTween(
                 this.LocalColor,
@@ -351,7 +352,7 @@ namespace JCSUnity
             float inDurationG,
             float inDurationB,
             float inDurationA,
-            EmptyFunction func = null)
+            Action func = null)
         {
             this.mFromColor = inFromColor;
             this.mTargetColor = inToColor;

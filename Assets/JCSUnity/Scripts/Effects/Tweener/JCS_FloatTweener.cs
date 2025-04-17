@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using MyBox;
@@ -27,7 +28,7 @@ namespace JCSUnity
         public SetFloat onValueChange = null;
         public GetFloat onValueReturn = null;
 
-        private EmptyFunction mValueCallback = null;
+        private Action mValueCallback = null;
 
         private TweenDelegate mEasingFunc = null;
 

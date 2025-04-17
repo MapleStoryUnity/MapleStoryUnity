@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using MyBox;
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private EmptyFunction mExecution = null;
+        private Action mExecution = null;
 
         [Separator("Check Variables (JCS_OrderEvent)")]
 
@@ -66,7 +67,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="intervalTime"> Interval of time to execute each operation. </param>
         /// <param name="evt"> Operation to get execute. </param>
-        public void StartEvent(float intervalTime, EmptyFunction evt)
+        public void StartEvent(float intervalTime, Action evt)
         {
             this.mIntervalTime = intervalTime;
             this.mExecution = evt;

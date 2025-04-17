@@ -93,7 +93,10 @@ namespace JCSUnity
 
         private void Start()
         {
-            if (JCS_UISettings.instance.RESIZE_UI && !JCS_ScreenSettings.instance.IsNone())
+            var uis = JCS_UISettings.instance;
+            var screens = JCS_ScreenSettings.instance;
+
+            if (uis.RESIZE_UI && !screens.IsNone())
             {
                 if (mResizeUI == null)
                     return;

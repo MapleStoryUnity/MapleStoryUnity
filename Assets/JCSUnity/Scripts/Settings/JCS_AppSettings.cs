@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -18,12 +19,12 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public EmptyFunction SAVE_APP_DATA_FUNC = null;
-        public EmptyFunction LOAD_APP_DATA_FUNC = null;  // NOT USED
+        public Action SAVE_APP_DATA_FUNC = null;
+        public Action LOAD_APP_DATA_FUNC = null;  // NOT USED
 
         // Callback when application starts. This should only run once
         // per application is starts.
-        public EmptyFunction onApplicationStarts = null;
+        public Action onApplicationStarts = null;
 
         [Separator("Check Variables (JCS_AppSettings)")]
 

@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
 using JCSUnity;
 
 namespace PeterVuorela.Tweener
@@ -11,7 +10,7 @@ namespace PeterVuorela.Tweener
     {
         /* Variables */
 
-        private EmptyFunction _Callback = null;
+        private Action _Callback = null;
 
         private TweenDelegate _Easing = null;
 
@@ -40,7 +39,7 @@ namespace PeterVuorela.Tweener
         /// Callback when reach destination.
         /// </summary>
         /// <param name="func"> function pointer </param>
-        public void SetCallback(EmptyFunction func)
+        public void SetCallback(Action func)
         {
             this._Callback = func;
         }
@@ -59,7 +58,7 @@ namespace PeterVuorela.Tweener
         public void easeFromTo(float from, float to, 
             bool resetElapsedTime = true, 
             float duration = 1.0f, 
-            TweenDelegate easing = null, EmptyFunction callback = null,
+            TweenDelegate easing = null, Action callback = null,
             JCS_TimeType deltaTimeType = JCS_TimeType.DELTA_TIME)
         {
             if (easing == null)

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -20,6 +21,10 @@ namespace JCSUnity
     public class JCS_TweenPanel : MonoBehaviour
     {
         /* Variables */
+
+        // call backs
+        public Action onActiveCallbackFunc = null;
+        public Action onDeactiveCallbackFunc = null;
 
         private JCS_TweenerHandler mTweenerHandler = null;
 
@@ -69,18 +74,11 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mDeactiveSound = null;
 
-        // call backs
-        private EmptyFunction mActiveCallbackFunc = null;
-        private EmptyFunction mDeactiveCallbackFunc = null;
-
         /* Setter & Getter */
 
         public bool IsActive { get { return this.mIsActive; } }
         public JCS_TweenerHandler TweenerHandler { get { return this.mTweenerHandler; } }
         public bool OverrideTween { get { return this.mOverrideTween; } set { this.mOverrideTween = value; } }
-
-        public EmptyFunction ActiveCallbackFunc { get { return this.mActiveCallbackFunc; } set { this.mActiveCallbackFunc = value; } }
-        public EmptyFunction DeactiveCallbackFunc { get { return this.mDeactiveCallbackFunc; } set { this.mDeactiveCallbackFunc = value; } }
 
         /* Functions */
 
@@ -131,8 +129,7 @@ namespace JCSUnity
             if (mPanelRoot != null)
                 mPanelRoot.Show(true);
 
-            if (mActiveCallbackFunc != null)
-                mActiveCallbackFunc.Invoke();
+            onActiveCallbackFunc?.Invoke();
 
             this.mIsActive = true;
         }
@@ -153,8 +150,7 @@ namespace JCSUnity
             mTweenerHandler.DoAllTweenToStartValue();
             JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mDeactiveSound, JCS_SoundMethod.PLAY_SOUND_WHILE_NOT_PLAYING);
 
-            if (mDeactiveCallbackFunc != null)
-                mDeactiveCallbackFunc.Invoke();
+            onDeactiveCallbackFunc?.Invoke();
 
             this.mIsActive = false;
         }

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using MyBox;
@@ -24,8 +25,8 @@ namespace JCSUnity
 
         /* Variables */
 
-        public EmptyFunction selectionEnable = SelectionEnable;
-        public EmptyFunction selectionDisable = SelectionDisable;
+        public Action selectionEnable = SelectionEnable;
+        public Action selectionDisable = SelectionDisable;
         public SelectionActiveEvent selectionActive = SelectionActive;
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;

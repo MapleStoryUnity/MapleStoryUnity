@@ -18,9 +18,6 @@ using PeterVuorela.Tweener;
 namespace JCSUnity
 {
     // Function pointer
-    public delegate void EmptyFunction();
-    public delegate bool EmptyBoolFunction();
-
     public delegate float TweenDelegate(float t, float b, float c, float d);
 
     /// <summary>

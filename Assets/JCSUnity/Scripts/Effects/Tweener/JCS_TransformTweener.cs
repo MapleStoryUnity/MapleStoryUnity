@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using PeterVuorela.Tweener;
 using MyBox;
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private EmptyFunction mDestinationCallback = null;
+        private Action mDestinationCallback = null;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_TransformTweener)")]
@@ -294,7 +295,7 @@ namespace JCSUnity
         /// Callback when reach destination.
         /// </summary>
         /// <param name="func"> function pointer </param>
-        public void SetCallback(EmptyFunction func)
+        public void SetCallback(Action func)
         {
             mDestinationCallback = func;
         }
@@ -304,7 +305,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="to"> target vector 3 </param>
         /// <param name="callback"> callback function pointer. </param>
-        public void DoTween(Vector3 to, EmptyFunction callback = null)
+        public void DoTween(Vector3 to, Action callback = null)
         {
             DoTween(to, true, mEasingX, mEasingY, mEasingZ, callback);
         }
@@ -315,7 +316,7 @@ namespace JCSUnity
         /// <param name="to"> target vector 3 </param>
         /// <param name="resetElapsedTime"> reset elapsed time? (default : true) </param>
         /// <param name="callback"> callback function pointer. </param>
-        public void DoTween(Vector3 to, bool resetElapsedTime, EmptyFunction callback = null)
+        public void DoTween(Vector3 to, bool resetElapsedTime, Action callback = null)
         {
             DoTween(to, resetElapsedTime, mEasingX, mEasingY, mEasingZ, callback);
         }
@@ -335,7 +336,7 @@ namespace JCSUnity
             JCS_TweenType typeX,
             JCS_TweenType typeY,
             JCS_TweenType typeZ,
-            EmptyFunction callback = null)
+            Action callback = null)
         {
             DoTween(to, resetElapsedTime, mDurationX, mDurationY, mDurationZ, typeX, typeY, typeZ, callback);
         }
@@ -361,7 +362,7 @@ namespace JCSUnity
             JCS_TweenType typeX,
             JCS_TweenType typeY,
             JCS_TweenType typeZ,
-            EmptyFunction callback = null)
+            Action callback = null)
         {
             Vector3 from = GetSelfTransformTypeVector3();
 
@@ -391,7 +392,7 @@ namespace JCSUnity
             JCS_TweenType typeX,
             JCS_TweenType typeY,
             JCS_TweenType typeZ,
-            EmptyFunction callback = null)
+            Action callback = null)
         {
             TweenDelegate easingX = JCS_Util.GetEasing(typeX);
             TweenDelegate easingY = JCS_Util.GetEasing(typeY);
@@ -659,7 +660,7 @@ namespace JCSUnity
             TweenDelegate easingX = null,
             TweenDelegate easingY = null,
             TweenDelegate easingZ = null,
-            EmptyFunction callback = null)
+            Action callback = null)
         {
             mDestinationCallback = callback;
 

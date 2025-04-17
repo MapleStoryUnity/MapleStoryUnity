@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -19,10 +20,10 @@ namespace JCSUnity
         /* Variables */
 
         // Callback after the game is done initialize. (system used)
-        public EmptyFunction onSystemAfterInitialize = null;
+        public Action onSystemAfterInitialize = null;
 
         // Callback after the game is done initialize.
-        public EmptyFunction onAfterInitialize = null;
+        public Action onAfterInitialize = null;
 
         [Separator("Check Variable (JCS_GameManager)")]
 

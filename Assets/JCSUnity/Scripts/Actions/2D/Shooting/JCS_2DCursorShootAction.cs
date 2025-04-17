@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -35,7 +36,7 @@ namespace JCSUnity
         /// Call back during shooting a bullet.
         /// </summary>
         /// <param name="func"> function to set. </param>
-        public void SetShootCallback(EmptyFunction func)
+        public void SetShootCallback(Action func)
         {
             this.mShootAction.SetShootCallback(func);
         }

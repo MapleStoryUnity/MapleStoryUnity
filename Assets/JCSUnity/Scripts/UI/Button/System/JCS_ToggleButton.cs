@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using MyBox;
@@ -24,8 +25,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public EmptyFunction onActive = null;
-        public EmptyFunction onDeactive = null;
+        public Action onActive = null;
+        public Action onDeactive = null;
 
         [Separator("Runtime Variables (JCS_ToggleButton)")]
 

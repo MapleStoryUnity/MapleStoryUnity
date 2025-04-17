@@ -274,7 +274,6 @@ namespace JCSUnity
         /// <summary>
         /// Return true if current screen type is none.
         /// </summary>
-        /// <returns></returns>
         public bool IsNone()
         {
             return SCREEN_TYPE == JCS_ScreenType.NONE;

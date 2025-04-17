@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -97,7 +98,7 @@ namespace JCSUnity
         public bool InSequenceEffect { get { return this.mInSequenceEffect; } set { this.mInSequenceEffect = value; } }
         public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public void SetShootCallback(EmptyFunction func) { this.mShootAction.SetShootCallback(func); }
+        public void SetShootCallback(Action func) { this.mShootAction.SetShootCallback(func); }
         public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } set { this.mAbilityFormat = value; } }
         public float TimeBeforeShoot { get { return this.mTimeBeforeShoot; } set { this.mTimeBeforeShoot = value; } }
         public float TimeDelayAfterShoot { get { return this.mTimeDelayAfterShoot; } set { this.mTimeDelayAfterShoot = value; } }
@@ -432,7 +433,7 @@ namespace JCSUnity
 
             for (int index = 0; index < hit; ++index)
             {
-                int dm = Random.Range(minDamage, maxDamage);
+                int dm = UnityEngine.Random.Range(minDamage, maxDamage);
 
                 // 受到的傷害 = 傷害 - 防禦力
                 damages[index] = dm - defenseValue;

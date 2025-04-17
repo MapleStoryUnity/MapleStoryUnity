@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -23,7 +24,7 @@ namespace JCSUnity
         /* Variables */
 
         // Callback triggered when selection has changed.
-        public EmptyFunction selectionChanged = null;
+        public Action selectionChanged = null;
 
         /// <summary>
         /// Direction of this control.

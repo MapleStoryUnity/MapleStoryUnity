@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using MyBox;
@@ -20,7 +21,7 @@ namespace JCSUnity
         /* Variables */
 
         // action to trigger if the time is reached.
-        public EmptyFunction onAction = null;
+        public Action onAction = null;
 
         [Separator("Check Variables (JCS_AdjustTimeTrigger)")]
 

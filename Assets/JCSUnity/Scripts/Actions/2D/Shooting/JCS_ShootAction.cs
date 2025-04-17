@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -77,7 +78,7 @@ namespace JCSUnity
         private JCS_KeyActionType mKeyAct = JCS_KeyActionType.KEY;
 
         // call back after we do shoot action.
-        private EmptyFunction mShootCallback = DefualtShootCallback;
+        private Action mShootCallback = DefualtShootCallback;
 
         // Check we able to shoot or not
         private CheckAbleToShoot mCheckAbleToShoot = DefualtCheckFunction;
@@ -233,8 +234,8 @@ namespace JCSUnity
         /// Call back during shooting a bullet.
         /// </summary>
         /// <param name="func"> function to set. </param>
-        public void SetShootCallback(EmptyFunction func) { this.mShootCallback = func; }
-        public EmptyFunction GetShootCallback() { return this.mShootCallback; }
+        public void SetShootCallback(Action func) { this.mShootCallback = func; }
+        public Action GetShootCallback() { return this.mShootCallback; }
 
         /// <summary>
         /// Function check before shooting the bullet.

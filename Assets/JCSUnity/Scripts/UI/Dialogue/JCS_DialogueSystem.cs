@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -21,11 +22,11 @@ namespace JCSUnity
         /* Variables */
 
         // Callback when successfully dispose the dialogue.
-        public EmptyFunction onDispose = null;
+        public Action onDispose = null;
 
         // Callback determine when the dialogue system suppose to be
         // disposed when executing the function `NextOrDispose`.
-        public EmptyBoolFunction onNextOrDisposeCondition = null;
+        public Func<bool> onNextOrDisposeCondition = null;
 
         private bool mInitialized = false;
 

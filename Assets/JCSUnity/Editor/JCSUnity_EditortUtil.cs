@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2021 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ namespace JCSUnity
             return JCSUnity_EditorWindow.NAME + "." + name;
         }
 
-        public static void CreateGroup(EmptyFunction func, bool flexibleSpace = false)
+        public static void CreateGroup(Action func, bool flexibleSpace = false)
         {
             BeginHorizontal(() =>
             {
@@ -39,7 +40,7 @@ namespace JCSUnity
             flexibleSpace);
         }
 
-        public static void BeginHorizontal(EmptyFunction func, bool flexibleSpace = false)
+        public static void BeginHorizontal(Action func, bool flexibleSpace = false)
         {
             GUILayout.BeginHorizontal();
             if (flexibleSpace) GUILayout.FlexibleSpace();
@@ -47,21 +48,21 @@ namespace JCSUnity
             GUILayout.EndHorizontal();
         }
 
-        public static void BeginVertical(EmptyFunction func)
+        public static void BeginVertical(Action func)
         {
             GUILayout.BeginVertical("box");
             func.Invoke();
             GUILayout.EndVertical();
         }
 
-        public static void Indent(EmptyFunction func)
+        public static void Indent(Action func)
         {
             EditorGUI.indentLevel++;
             func.Invoke();
             EditorGUI.indentLevel--;
         }
 
-        public static bool Foldout(bool foldout, string content, EmptyFunction func, string texName = "")
+        public static bool Foldout(bool foldout, string content, Action func, string texName = "")
         {
             Texture tex = FindTexture(texName);
 
@@ -89,7 +90,7 @@ namespace JCSUnity
         /// </summary>
         public static GameObject Instantiate(string path)
         {
-            var asset = AssetDatabase.LoadAssetAtPath(path, typeof(Object)) as GameObject;
+            var asset = AssetDatabase.LoadAssetAtPath(path, typeof(UnityEngine.Object)) as GameObject;
             var currentPrefab = GameObject.Instantiate(asset);
             return currentPrefab;
         }

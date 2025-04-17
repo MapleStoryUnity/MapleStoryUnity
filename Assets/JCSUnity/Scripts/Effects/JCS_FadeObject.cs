@@ -6,13 +6,12 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
 namespace JCSUnity
 {
-    public delegate void Fading(float alpha);
-
     /// <summary>
     /// Fade object to a particular alpha channel.
     /// </summary>
@@ -20,10 +19,10 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public EmptyFunction onFadeOut = null;
-        public EmptyFunction onFadeIn = null;
+        public Action onFadeOut = null;
+        public Action onFadeIn = null;
 
-        public Fading onFading = null;
+        public Action<float> onFading = null;
 
         private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
 
@@ -223,8 +222,7 @@ namespace JCSUnity
                             mEffect = false;
 
                             // do fade out callback
-                            if (onFadeOut != null)
-                                onFadeOut.Invoke();
+                            onFadeOut?.Invoke();
 
                             return;
                         }
@@ -241,8 +239,7 @@ namespace JCSUnity
                             mEffect = false;
 
                             // do fade in callback
-                            if (onFadeIn != null)
-                                onFadeIn.Invoke();
+                            onFadeIn?.Invoke();
 
                             return;
                         }
@@ -256,8 +253,7 @@ namespace JCSUnity
             screenColor.a = mAlpha;
             this.LocalColor = screenColor;
 
-            if (onFading != null)
-                onFading.Invoke(mAlpha);
+            onFading?.Invoke(mAlpha);
         }
     }
 }
