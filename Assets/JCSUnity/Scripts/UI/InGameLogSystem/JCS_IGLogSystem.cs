@@ -95,6 +95,18 @@ namespace JCSUnity
 #endif
 
         /// <summary>
+        /// Make multiple log messages on the screen.
+        /// </summary>
+        /// <param name="messages"></param>
+        public void SendLogMessages(string[] messages)
+        {
+            foreach (string msg in messages)
+            {
+                SendLogMessage(msg);
+            }
+        }
+
+        /// <summary>
         /// Make single log message on the screen.
         /// </summary>
         /// <param name="message"></param>
@@ -126,18 +138,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Make multiple log messages on the screen.
-        /// </summary>
-        /// <param name="messages"></param>
-        public void SendLogMessages(string[] messages)
-        {
-            foreach (string msg in messages)
-            {
-                SendLogMessage(msg);
-            }
-        }
-
-        /// <summary>
         /// Remove the log message that are outdated.
         /// </summary>
         /// <param name="txt"></param>
@@ -158,26 +158,6 @@ namespace JCSUnity
 
                 logText.SimpleTrackAction.DeltaTargetPosY(mLogSpacing * spaces);
             }
-        }
-
-        /// <summary>
-        /// move all the log text up one space.
-        /// </summary>
-        private void IncSpacing()
-        {
-            for (int index = 0; index < mRenderLogText.length; ++index)
-            {
-                mRenderLogText.at(index);
-            }
-        }
-
-        /// <summary>
-        /// Active one log text object.
-        /// </summary>
-        private void ActiveOneText()
-        {
-            // get one log text from the pool
-            mLogTextPool.ExecuteOneFromPool();
         }
     }
 }

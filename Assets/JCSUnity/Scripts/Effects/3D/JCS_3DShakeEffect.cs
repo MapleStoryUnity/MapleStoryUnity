@@ -132,7 +132,7 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (JCS_Input.GetKey(mDoShakeEffectKey))
+            if (JCS_Input.GetKeyDown(mDoShakeEffectKey))
             {
                 DoShake();
             }

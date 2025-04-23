@@ -26,6 +26,10 @@ namespace JCSUnity
         [SerializeField]
         private Slider mSlider = null;
 
+        [Tooltip("Format text to display.")]
+        [SerializeField]
+        private string mFormat = "{0} / {1}";
+
         [Tooltip("Place you want to round the decimal.")]
         [SerializeField]
         [Range(0, 15)]
@@ -34,6 +38,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public Slider slider { get { return this.mSlider; } set { this.mSlider = value; } }
+        public string Format { get { return this.mFormat; } set { this.mFormat = value; } }
         public int RoundPlace { get { return this.mRoundPlace; } set { this.mRoundPlace = value; } }
 
         /* Functions */
@@ -61,9 +66,10 @@ namespace JCSUnity
 
         private void OnValueChanged()
         {
-            double val = Math.Round(mSlider.value, mRoundPlace);
-
-            this.text = val.ToString();
+            this.text = string.Format(mFormat,
+                    Math.Round(mSlider.value, mRoundPlace),
+                    Math.Round(mSlider.maxValue, mRoundPlace),
+                    Math.Round(mSlider.minValue, mRoundPlace));
         }
     }
 }

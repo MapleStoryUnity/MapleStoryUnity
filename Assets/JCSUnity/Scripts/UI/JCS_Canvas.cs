@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -23,6 +24,9 @@ namespace JCSUnity
         public static JCS_Canvas main = null;
 
         private const string RESIZE_UI_PATH = "UI/ResizeUI";
+
+        public Action<JCS_Canvas> onShow = null;  // Execution when canvas is shown.
+        public Action<JCS_Canvas> onHide = null;  // Execution when canvas is hidden.
 
         private Canvas mCanvas = null;
 
@@ -165,6 +169,8 @@ namespace JCSUnity
             mCanvas.enabled = true;
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mDeactiveSound, JCS_SoundMethod.PLAY_SOUND);
+
+            onShow?.Invoke(this);
         }
 
         /// <summary>
@@ -175,6 +181,8 @@ namespace JCSUnity
             mCanvas.enabled = false;
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mActiveSound, JCS_SoundMethod.PLAY_SOUND);
+
+            onHide?.Invoke(this);
         }
 
         /// <summary>
@@ -199,7 +207,7 @@ namespace JCSUnity
 
             if (main != null)
             {
-                JCS_Debug.LogWarning("Having multiple main canvases is often not allowed, " + this.gameObject.name);
+                JCS_Debug.LogWarning("Having multiple main canvases is often not allowed: " + this.gameObject.name);
                 return;
             }
 

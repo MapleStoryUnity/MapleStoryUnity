@@ -62,7 +62,7 @@ namespace JCSUnity
 
                 // if not active, meaning we can 
                 // active the log text
-                if (!logText.isActive())
+                if (!logText.IsActive)
                 {
                     // set the last spawn count
                     mLastSpawnPos = index;
@@ -85,7 +85,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogWarning("Prevent, stack overflow function call.");
+                    JCS_Debug.LogWarning("Prevent stack overflow function call");
                 }
 #endif
                 return null;
@@ -104,14 +104,13 @@ namespace JCSUnity
         {
             if (mLogText == null)
             {
-                JCS_Debug.LogReminder("No log text assign in the text pool...");
+                JCS_Debug.LogReminder("No log text assign in the text pool");
                 return;
             }
 
-
             // NOTE(JenChieh): this might change in the future.
             // Get the log system from the same transfrom/node.
-            JCS_IGLogSystem logSystem = this.GetComponent<JCS_IGLogSystem>();
+            var logSystem = this.GetComponent<JCS_IGLogSystem>();
 
             mLogTexts = new JCS_Vec<JCS_LogText>(mNumberOfHandle);
 
@@ -128,7 +127,7 @@ namespace JCSUnity
 
                 // NOTE(JenChieh): this might change in the future.
                 // set the log system if there is one.
-                logText.SetIGLogSystem(logSystem);
+                logText.Init(logSystem);
             }
         }
     }
