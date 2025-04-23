@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ToggleSign.cs $
+ * $File: JCS_SwitchSign.cs $
  * $Date: 2018-08-21 23:11:05 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,11 +11,11 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Sign of the toggle button.
+    /// Sign of the switch button.
     /// </summary>
     [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_ColorTweener))]
-    public class JCS_ToggleSign : MonoBehaviour
+    public class JCS_SwitchSign : MonoBehaviour
     {
         /* Variables */
 
@@ -27,7 +27,6 @@ namespace JCSUnity
 
         public JCS_TransformTweener TransformTweener { get { return this.mTransformTweener; } }
         public JCS_ColorTweener ColorTweener { get { return this.mColorTweener; } }
-
 
         /* Functions */
 

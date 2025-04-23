@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2020 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 
 namespace JCSUnity
@@ -13,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Base application data structure.
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public abstract class JCS_AppData
     {
         /* Variables */
@@ -27,16 +28,18 @@ namespace JCSUnity
 
         /* Functions */
 
-        protected void InitJCSFile()
+        protected void InitFile()
         {
-            if (JCS_PackageDataSettings.instance == null)
+            var pds = JCS_PackageDataSettings.instance;
+
+            if (pds == null)
             {
                 JCS_Debug.LogError("Failed to load the copyright and version text");
                 return;
             }
 
-            Copyright = JCS_PackageDataSettings.instance.CopyrightString;
-            Version = JCS_PackageDataSettings.instance.VersionString;
+            Copyright = pds.CopyrightString;
+            Version = pds.VersionString;
 
             this.mInitialized = true;
         }
@@ -49,6 +52,9 @@ namespace JCSUnity
             return this.mInitialized; 
         }
 
+        /// <summary>
+        /// Save the data.
+        /// </summary>
         public abstract void Save<T>(string filePath, string fileName);
         public abstract void Save<T>(string fullFilePath);
 

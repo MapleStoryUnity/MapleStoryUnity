@@ -109,8 +109,7 @@ namespace JCSUnity
             if (APPLICATION_STARTS)
                 return;
 
-            if (onApplicationStarts != null)
-                onApplicationStarts.Invoke();
+            onApplicationStarts?.Invoke();
 
             APPLICATION_STARTS = true;
         }

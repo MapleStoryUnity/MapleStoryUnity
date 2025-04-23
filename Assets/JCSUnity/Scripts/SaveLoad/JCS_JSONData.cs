@@ -49,7 +49,7 @@ namespace JCSUnity
 
             JCS_IO.CreateDirectory(filePath);
 
-            InitJCSFile();
+            InitFile();
 
             using (var stream = new FileStream(fullFilePath, FileMode.Create))
             {

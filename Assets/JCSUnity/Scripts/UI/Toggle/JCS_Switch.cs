@@ -1,37 +1,35 @@
 /**
- * $File: JCS_Toggle.cs $
+ * $File: JCS_Switch.cs $
  * $Date: 2018-08-21 22:22:23 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
 namespace JCSUnity
 {
     /// <summary>
-    /// Better version of checkbox/toggle GUI.
+    /// Better version of checkbox/switch GUI.
     /// </summary>
     [RequireComponent(typeof(JCS_ColorTweener))]
-    public class JCS_Toggle : JCS_Button
+    public class JCS_Switch : JCS_Button
     {
-        public delegate void ToggleOnCallback();
-        public delegate void ToggleOffCallback();
-        public delegate void OnValueChanged();
-
         /* Variables */
 
-        public ToggleOnCallback toggleOnCallback = null;
-        public ToggleOffCallback toggleOffCallback = null;
+        public Action onSwitchOn = null;   // Callback when the switch is on.
+        public Action onSwitchOff = null;  // Callback when the switch is off.
 
-        public OnValueChanged onValueChanged = null;
+        // Callback when the value changed.
+        public Action onValueChanged = null;
 
         private JCS_ColorTweener mColorTweener = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_Toggle)")]
+        [Separator("Helper Variables (JCS_Switch)")]
 
         [Tooltip("Test module with the key?")]
         [SerializeField]
@@ -46,7 +44,7 @@ namespace JCSUnity
         private KeyCode mToggleInteractable = KeyCode.S;
 #endif
 
-        [Separator("Initialize Variables (JCS_Toggle)")]
+        [Separator("Initialize Variables (JCS_Switch)")]
 
         [Tooltip("Set the on/off position the same as the current " +
         "sign's position.")]
@@ -57,11 +55,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mColorSameAsEditingStatus = true;
 
-        [Separator("Runtime Variables (JCS_Toggle)")]
+        [Separator("Runtime Variables (JCS_Switch)")]
 
-        [Tooltip("Sign of this toggle.")]
+        [Tooltip("Sign of this switch.")]
         [SerializeField]
-        private JCS_ToggleSign mToggleSign = null;
+        private JCS_SwitchSign mSwitchSign = null;
 
         [Tooltip("Is the toggle currently on or off?")]
         [SerializeField]
@@ -93,13 +91,13 @@ namespace JCSUnity
         [SerializeField]
         private Color mOffBackgroundColor = Color.white;
 
-
         /* Setter & Getter */
 
         public bool IsOn
         {
             get { return this.mIsOn; }
-            set {
+            set
+            {
                 if (this.mIsOn != value)
                 {
                     this.mIsOn = value;
@@ -124,8 +122,8 @@ namespace JCSUnity
         {
             base.Awake();
 
-            if (mToggleSign == null)
-                this.mToggleSign = this.GetComponentInChildren<JCS_ToggleSign>();
+            if (mSwitchSign == null)
+                this.mSwitchSign = this.GetComponentInChildren<JCS_SwitchSign>();
 
             this.mColorTweener = this.GetComponent<JCS_ColorTweener>();
 
@@ -195,13 +193,13 @@ namespace JCSUnity
 
             if (mIsOn)
             {
-                this.mOnPos = mToggleSign.transform.localPosition;
-                this.mOffPos = JCS_Mathf.ToNegative(mToggleSign.transform.localPosition);
+                this.mOnPos = mSwitchSign.transform.localPosition;
+                this.mOffPos = JCS_Mathf.ToNegative(mSwitchSign.transform.localPosition);
             }
             else
             {
-                this.mOffPos = mToggleSign.transform.localPosition;
-                this.mOnPos = JCS_Mathf.ToNegative(mToggleSign.transform.localPosition);
+                this.mOffPos = mSwitchSign.transform.localPosition;
+                this.mOnPos = JCS_Mathf.ToNegative(mSwitchSign.transform.localPosition);
             }
         }
 
@@ -214,12 +212,12 @@ namespace JCSUnity
             {
                 if (mIsOn)
                 {
-                    mOnButtonColor = mToggleSign.ColorTweener.LocalColor;
+                    mOnButtonColor = mSwitchSign.ColorTweener.LocalColor;
                     mOnBackgroundColor = mColorTweener.LocalColor;
                 }
                 else
                 {
-                    mOffButtonColor = mToggleSign.ColorTweener.LocalColor;
+                    mOffButtonColor = mSwitchSign.ColorTweener.LocalColor;
                     mOffBackgroundColor = mColorTweener.LocalColor;
                 }
             }
@@ -254,21 +252,19 @@ namespace JCSUnity
         {
             if (act)
             {
-                mToggleSign.TransformTweener.DoTween(mOnPos);
-                mToggleSign.ColorTweener.DoTween(mOnButtonColor);
+                mSwitchSign.TransformTweener.DoTween(mOnPos);
+                mSwitchSign.ColorTweener.DoTween(mOnButtonColor);
                 mColorTweener.DoTween(mOnBackgroundColor);
 
-                if (toggleOnCallback != null)
-                    toggleOnCallback.Invoke();
+                onSwitchOn?.Invoke();
             }
             else
             {
-                mToggleSign.TransformTweener.DoTween(mOffPos);
-                mToggleSign.ColorTweener.DoTween(mOffButtonColor);
+                mSwitchSign.TransformTweener.DoTween(mOffPos);
+                mSwitchSign.ColorTweener.DoTween(mOffButtonColor);
                 mColorTweener.DoTween(mOffBackgroundColor);
 
-                if (toggleOffCallback != null)
-                    toggleOffCallback.Invoke();
+                onSwitchOff?.Invoke();
             }
         }
 
@@ -294,7 +290,7 @@ namespace JCSUnity
             else
             {
                 // Stop color tweener if between the process of tweener.
-                mToggleSign.ColorTweener.ResetTweener();
+                mSwitchSign.ColorTweener.ResetTweener();
                 mColorTweener.ResetTweener();
 
                 targetBackgroundColor.a = mNotInteractColor.a;
@@ -311,7 +307,7 @@ namespace JCSUnity
         /// <param name="col"></param>
         private void SetButtonColor(Color col)
         {
-            mToggleSign.ColorTweener.LocalColor = col;
+            mSwitchSign.ColorTweener.LocalColor = col;
         }
 
         /// <summary>

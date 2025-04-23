@@ -447,8 +447,8 @@ namespace JCSUnity
 
                         if (mToggle != null)
                             tmpIsOn = mToggle.isOn;
-                        else if (mJCSToggle != null)
-                            tmpIsOn = mJCSToggle.IsOn;
+                        else if (mSwitch != null)
+                            tmpIsOn = mSwitch.IsOn;
 
                         mPrevToggleData = new JCS_ToggleData
                         {
@@ -572,9 +572,9 @@ namespace JCSUnity
                                 RecordOnce();
                             });
                         }
-                        else if (mJCSToggle != null)
+                        else if (mSwitch != null)
                         {
-                            mJCSToggle.onValueChanged += RecordOnce;
+                            mSwitch.onValueChanged += RecordOnce;
                         }
                         else
                         {
@@ -680,8 +680,8 @@ namespace JCSUnity
 
                         if (mToggle != null)
                             td.isOn = mToggle.isOn;
-                        else if (mJCSToggle != null)
-                            td.isOn = mJCSToggle.IsOn;
+                        else if (mSwitch != null)
+                            td.isOn = mSwitch.IsOn;
                         else
                         {
                             JCS_Debug.LogError("Cannot record toggle object " +
@@ -738,8 +738,8 @@ namespace JCSUnity
         {
             if (mToggle != null)
                 mToggle.isOn = td.isOn;
-            else if (mJCSToggle != null)
-                mJCSToggle.IsOn = td.isOn;
+            else if (mSwitch != null)
+                mSwitch.IsOn = td.isOn;
         }
 
         /// <summary>
@@ -802,8 +802,8 @@ namespace JCSUnity
         {
             if (mToggle != null)
                 return (mToggle.isOn == td.isOn);
-            else if (mJCSToggle != null)
-                return (mJCSToggle.IsOn == td.isOn);
+            else if (mSwitch != null)
+                return (mSwitch.IsOn == td.isOn);
 
             return false;
         }
@@ -898,7 +898,7 @@ namespace JCSUnity
                     {
                         if (mToggle != null)
                             mToggle.Select();
-                        else if (mJCSToggle != null)
+                        else if (mSwitch != null)
                         {
                             // empty..
                         }
