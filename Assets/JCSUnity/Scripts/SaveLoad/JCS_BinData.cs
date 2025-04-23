@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
+using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -14,7 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// Interface of storing game data as binary format.
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public abstract class JCS_BinData : JCS_AppData
     {
         /* Variables */

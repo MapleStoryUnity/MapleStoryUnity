@@ -8,6 +8,7 @@
  */
 using System;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,37 +20,48 @@ namespace JCSUnity
     {
         /* Variables */
 
+        [Separator("Runtime Variables (JCS_AppData)")]
+
+        [Tooltip("The copyright information.")]
+        public string Copyright = "";
+
+        [Tooltip("The resource version.")]
+        public string Version = "";
+
+        [Tooltip("Set to true when the data is initialized.")]
+        [SerializeField]
+        [ReadOnly]
         private bool mInitialized = false;
 
-        public string Copyright = "";
-        public string Version = "";
-        
         /* Setter & Getter */
 
         /* Functions */
+
+        protected JCS_AppData()
+        {
+            InitFile();
+        }
 
         protected void InitFile()
         {
             var pds = JCS_PackageDataSettings.instance;
 
             if (pds == null)
-            {
-                JCS_Debug.LogError("Failed to load the copyright and version text");
                 return;
-            }
 
             Copyright = pds.CopyrightString;
             Version = pds.VersionString;
 
-            this.mInitialized = true;
+            // Set init flag.
+            mInitialized = true;
         }
 
         /// <summary>
-        /// Return true if data is initialized.
+        /// Return true if the data is initialized and ready to use.
         /// </summary>
-        public bool Initialized() 
-        { 
-            return this.mInitialized; 
+        public bool Initialized()
+        {
+            return this.mInitialized;
         }
 
         /// <summary>
@@ -59,7 +71,7 @@ namespace JCSUnity
         public abstract void Save<T>(string fullFilePath);
 
         /// <summary>
-        /// Get complete save data path.
+        /// Return the complete saved data path.
         /// </summary>
         public static string SavePath()
         {

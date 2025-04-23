@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
+using System;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
@@ -15,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Interface to store game data in JSON format.
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public abstract class JCS_JSONData : JCS_AppData
     {
         /* Variables */
@@ -93,10 +94,12 @@ namespace JCSUnity
             using (var stream = new FileStream(fullFilePath, FileMode.Open))
             {
                 string contents = "";
+
                 using (var sr = new StreamReader(stream))
                 {
                     contents = sr.ReadToEnd();
                 }
+
                 return JsonConvert.DeserializeObject<T>(contents);
             }
         }
