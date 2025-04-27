@@ -127,8 +127,10 @@ namespace JCSUnity
 
             if (mJCS_2DCamera != null)
             {
-                this.mOrigin.x = mJCS_2DCamera.GetTargetTransform().position.x;
-                this.mOrigin.y = mJCS_2DCamera.GetTargetTransform().position.y;
+                Transform trans = mJCS_2DCamera.GetTargetTransform();
+
+                this.mOrigin.x = trans.position.x;
+                this.mOrigin.y = trans.position.y;
             }
 
             mTime += JCS_Time.ItTime(mTimeType);

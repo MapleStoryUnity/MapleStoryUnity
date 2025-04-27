@@ -112,7 +112,7 @@ namespace JCSUnity
                     break;
                 case JCS_Axis.AXIS_Y:
                     {
-                        newVal.y += (mAmplitude * (Mathf.Cos(mTime * mFrequency))) * dt;
+                        newVal.y += (mAmplitude * Mathf.Cos(mTime * mFrequency)) * dt;
                     }
                     break;
             }

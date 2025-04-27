@@ -237,7 +237,6 @@ namespace JCSUnity
         /// </summary>
         /// <param name="currentVal"></param>
         /// <param name="targetVal"></param>
-        /// <returns></returns>
         public static int ApproachTo(int currentVal, int targetVal)
         {
             if (currentVal == targetVal)
@@ -251,69 +250,6 @@ namespace JCSUnity
 
             JCS_Debug.LogError("Errors with approaching to a value");
             return 0;
-        }
-
-        /// <summary>
-        /// 計算旋轉的點 (JCS_VECTOR2F)
-        /// </summary>
-        /// <param name="point"> 我們要計算的"點" </param>
-        /// <param name="cos"> Cos 的角度 "Cos(angle)" </param>
-        /// <param name="sin"> Sin 的角度 "Sin(angle)" </param>
-        /// <param name="origin"> 以這個"點"為中心旋轉 </param>
-        /// <returns></returns>
-        public static Vector3 RotatePointX(
-            Vector3 point, float cos, float sin, Vector3 origin)
-        {
-            return new Vector3(
-            point.x,
-            origin.z + ((point.z - origin.z) * cos) - ((point.y - origin.y) * sin),
-            origin.y + ((point.z - origin.z) * sin) + ((point.y - origin.y) * cos));
-        }
-        public static Vector3 RotatePointZ(
-            Vector3 point, float cos, float sin, Vector3 origin)
-        {
-            return new Vector3(
-            origin.x + ((point.x - origin.x) * cos) - ((point.y - origin.y) * sin),
-            origin.y + ((point.x - origin.x) * sin) + ((point.y - origin.y) * cos),
-            point.z);
-        }
-        public static Vector3 RotatePointY(
-            Vector3 point, float cos, float sin, Vector3 origin)
-        {
-            return new Vector3(
-            origin.x + ((point.x - origin.x) * cos) - ((point.z - origin.z) * sin),
-            point.y,
-            origin.z + ((point.x - origin.x) * sin) + ((point.z - origin.z) * cos));
-        }
-
-        /// <summary>
-        /// 計算旋轉的點 (JCS_VECTOR2F)
-        /// </summary>
-        /// <param name="point"> 我們要計算的"點" </param>
-        /// <param name="cos"> Cos 的角度 "Cos(angle)" </param>
-        /// <param name="sin"> Sin 的角度 "Sin(angle)" </param>
-        /// <param name="origin"> 以這個"點"為中心旋轉 </param>
-        /// <returns></returns>
-        public static Vector3 RotatePointX(Vector3 point, Vector3 origin, float angle)
-        {
-            return new Vector3(
-                point.x,
-                origin.y + ((Mathf.Cos(angle) * (point.y - origin.y))) - (Mathf.Sin(angle) * (point.z - origin.z)),
-                origin.z + ((Mathf.Sin(angle) * (point.y - origin.y))) + (Mathf.Cos(angle) * (point.z - origin.z)));
-        }
-        public static Vector3 RotatePointY(Vector3 point, Vector3 origin, float angle)
-        {
-            return new Vector3(
-                origin.x + ((Mathf.Cos(angle) * (point.x - origin.x))) - (Mathf.Sin(angle) * (point.z - origin.z)),
-                point.y,
-                origin.z + ((Mathf.Sin(angle) * (point.x - origin.x))) + (Mathf.Cos(angle) * (point.z - origin.z)));
-        }
-        public static Vector3 RotatePointZ(Vector3 point, Vector3 origin, float angle)
-        {
-            return new Vector3(
-                origin.x + ((Mathf.Cos(angle) * (point.x - origin.x))) - (Mathf.Sin(angle) * (point.y - origin.y)),
-                origin.y + ((Mathf.Sin(angle) * (point.x - origin.x))) + (Mathf.Cos(angle) * (point.y - origin.y)),
-                point.z);
         }
 
         /// <summary>
@@ -486,7 +422,7 @@ namespace JCSUnity
                     }
             }
 
-            JCS_Debug.LogError("This not suppose to happen here...");
+            JCS_Debug.LogError("This not suppose to happen here");
 
             return 0;
         }
@@ -514,7 +450,6 @@ namespace JCSUnity
 
             return remainder / divider;
         }
-
 
         /// <summary>
         /// Count the digit by pass in number you want to count.
@@ -568,7 +503,6 @@ namespace JCSUnity
             return (a * y / x);
         }
 
-
         /// <summary>
         /// Convert degree to radian.
         /// </summary>
@@ -617,6 +551,153 @@ namespace JCSUnity
         public static float Tan(float deg)
         {
             return Mathf.Tan(DegreeToRadian(deg));
+        }
+
+        /// <summary>
+        /// Truncate float number.
+        /// 
+        /// If 'digits'=2 and 'value'=1.345698F:
+        ///   1.345698F => 1.34
+        /// 
+        /// If 'digits'=2 and 'value'=1.300000F:
+        ///   1.300000F => 1.30
+        /// 
+        /// SOURCE(jenchieh): https://social.msdn.microsoft.com/Forums/vstudio/en-US/a8092fd2-1080-416c-8ae1-2bad8c013a21/how-to-round-off-a-float-to-2-decimal-places?forum=csharpgeneral
+        /// </summary>
+        /// <param name="val"> Value to do truncate. </param>
+        /// <param name="digits"> Target shown digit. </param>
+        /// <returns> Result value. </returns>
+        public static float Truncate(float val, int digits)
+        {
+            double mult = Math.Pow(10.0, digits);
+            double result = Math.Truncate(mult * val) / mult;
+            return (float)result;
+        }
+
+        /// <summary>
+        /// Find the greatest common factor.
+        /// 最大公因數.
+        /// 
+        /// SOURCE: https://stackoverflow.com/questions/18541832/c-sharp-find-the-greatest-common-divisor
+        /// AUTHOR: Drew Noakes
+        /// </summary>
+        /// <param name="a"> number a. </param>
+        /// <param name="b"> number b. </param>
+        /// <returns>
+        /// greatest common factor for 'a' nd 'b'.
+        /// </returns>
+        public static int GCD(int a, int b)
+        {
+            while (a != 0 && b != 0)
+            {
+                if (a > b)
+                    a %= b;
+                else
+                    b %= a;
+            }
+
+            return (a == 0) ? b : a;
+        }
+
+        /// <summary>
+        /// Return the positive/negative 1 sign from VAL.
+        /// 
+        /// If the value is 0 then return 0.
+        /// </summary>
+        /// <param name="val"> Value you want to idenfity. </param>
+        /// <returns>
+        /// Return 0, if the VAL can't be identify.
+        /// Return 1, if the VAL is positive value.
+        /// Return -1, if the VAL is negative value.
+        /// </returns>
+        public static float GetSign(float val)
+        {
+            if (val == 0.0f)
+                return 0.0f;
+            else
+            {
+                if (IsPositive(val))
+                    return 1.0f;
+                else
+                    return -1.0f;
+            }
+        }
+
+        /// <summary>
+        /// 計算旋轉的點 (JCS_VECTOR2F)
+        /// </summary>
+        /// <param name="point"> 我們要計算的"點" </param>
+        /// <param name="cos"> Cos 的角度 "Cos(angle)" </param>
+        /// <param name="sin"> Sin 的角度 "Sin(angle)" </param>
+        /// <param name="origin"> 以這個"點"為中心旋轉 </param>
+        public static Vector3 RotatePointX(
+            Vector3 point, float cos, float sin, Vector3 origin)
+        {
+            return new Vector3(
+            point.x,
+            origin.z + ((point.z - origin.z) * cos) - ((point.y - origin.y) * sin),
+            origin.y + ((point.z - origin.z) * sin) + ((point.y - origin.y) * cos));
+        }
+        public static Vector3 RotatePointZ(
+            Vector3 point, float cos, float sin, Vector3 origin)
+        {
+            return new Vector3(
+            origin.x + ((point.x - origin.x) * cos) - ((point.y - origin.y) * sin),
+            origin.y + ((point.x - origin.x) * sin) + ((point.y - origin.y) * cos),
+            point.z);
+        }
+        public static Vector3 RotatePointY(
+            Vector3 point, float cos, float sin, Vector3 origin)
+        {
+            return new Vector3(
+            origin.x + ((point.x - origin.x) * cos) - ((point.z - origin.z) * sin),
+            point.y,
+            origin.z + ((point.x - origin.x) * sin) + ((point.z - origin.z) * cos));
+        }
+
+        /// <summary>
+        /// Return a new position after rotate around the pivot.
+        /// 
+        /// Source: https://discussions.unity.com/t/rotate-a-vector-around-a-certain-point/81225/2
+        /// </summary>
+        /// <param name="point"> The outer point. </param>
+        /// <param name="pivot"> The pivot point. </param>
+        /// <param name="angles"> Angle to rotate. </param>
+        public static Vector3 RotatePointAround(Vector3 point, Vector3 pivot, Vector3 angles)
+        {
+            Vector3 dir = point - pivot;
+            dir = Quaternion.Euler(angles) * dir;
+            point = dir + pivot;
+            return point;
+        }
+
+        /// <summary>
+        /// 計算旋轉的點 (JCS_VECTOR2F)
+        /// </summary>
+        /// <param name="point"> 我們要計算的"點" </param>
+        /// <param name="cos"> Cos 的角度 "Cos(angle)" </param>
+        /// <param name="sin"> Sin 的角度 "Sin(angle)" </param>
+        /// <param name="origin"> 以這個"點"為中心旋轉 </param>
+        public static Vector3 RotatePointX(Vector3 point, Vector3 origin, float angle)
+        {
+            return new Vector3(
+                point.x,
+                origin.y + ((Mathf.Cos(angle) * (point.y - origin.y))) - (Mathf.Sin(angle) * (point.z - origin.z)),
+                origin.z + ((Mathf.Sin(angle) * (point.y - origin.y))) + (Mathf.Cos(angle) * (point.z - origin.z)));
+        }
+        public static Vector3 RotatePointY(Vector3 point, Vector3 origin, float angle)
+        {
+            return new Vector3(
+                origin.x + ((Mathf.Cos(angle) * (point.x - origin.x))) - (Mathf.Sin(angle) * (point.z - origin.z)),
+                point.y,
+                origin.z + ((Mathf.Sin(angle) * (point.x - origin.x))) + (Mathf.Cos(angle) * (point.z - origin.z)));
+        }
+        public static Vector3 RotatePointZ(Vector3 point, Vector3 origin, float angle)
+        {
+            return new Vector3(
+                origin.x + ((Mathf.Cos(angle) * (point.x - origin.x))) - (Mathf.Sin(angle) * (point.y - origin.y)),
+                origin.y + ((Mathf.Sin(angle) * (point.x - origin.x))) + (Mathf.Cos(angle) * (point.y - origin.y)),
+                point.z);
         }
 
         /// <summary>
@@ -700,76 +781,6 @@ namespace JCSUnity
             }
 
             return circlePos;
-        }
-
-        /// <summary>
-        /// Truncate float number.
-        /// 
-        /// If 'digits'=2 and 'value'=1.345698F:
-        ///   1.345698F => 1.34
-        /// 
-        /// If 'digits'=2 and 'value'=1.300000F:
-        ///   1.300000F => 1.30
-        /// 
-        /// SOURCE(jenchieh): https://social.msdn.microsoft.com/Forums/vstudio/en-US/a8092fd2-1080-416c-8ae1-2bad8c013a21/how-to-round-off-a-float-to-2-decimal-places?forum=csharpgeneral
-        /// </summary>
-        /// <param name="val"> Value to do truncate. </param>
-        /// <param name="digits"> Target shown digit. </param>
-        /// <returns> Result value. </returns>
-        public static float Truncate(float val, int digits)
-        {
-            double mult = Math.Pow(10.0, digits);
-            double result = Math.Truncate(mult * val) / mult;
-            return (float)result;
-        }
-
-        /// <summary>
-        /// Find the greatest common factor.
-        /// 最大公因數.
-        /// 
-        /// SOURCE: https://stackoverflow.com/questions/18541832/c-sharp-find-the-greatest-common-divisor
-        /// AUTHOR: Drew Noakes
-        /// </summary>
-        /// <param name="a"> number a. </param>
-        /// <param name="b"> number b. </param>
-        /// <returns>
-        /// greatest common factor for 'a' nd 'b'.
-        /// </returns>
-        public static int GCD(int a, int b)
-        {
-            while (a != 0 && b != 0)
-            {
-                if (a > b)
-                    a %= b;
-                else
-                    b %= a;
-            }
-
-            return (a == 0) ? b : a;
-        }
-
-        /// <summary>
-        /// Return the positive/negative 1 sign from VAL.
-        /// 
-        /// If the value is 0 then return 0.
-        /// </summary>
-        /// <param name="val"> Value you want to idenfity. </param>
-        /// <returns>
-        /// Return 0, if the VAL can't be identify.
-        /// Return 1, if the VAL is positive value.
-        /// Return -1, if the VAL is negative value.
-        /// </returns>
-        public static float GetSign(float val)
-        {
-            if (val == 0.0f)
-                return 0.0f;
-            else
-            {
-                if (IsPositive(val))
-                    return 1.0f;
-                else
-                    return -1.0f;
-            }
         }
     }
 }

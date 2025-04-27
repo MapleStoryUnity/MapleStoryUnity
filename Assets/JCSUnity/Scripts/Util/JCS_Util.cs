@@ -1312,6 +1312,9 @@ namespace JCSUnity
             float volume,
             float spatialBlend)
         {
+            if (clip == null)
+                return null;
+
             var gameObject = new GameObject("One shot audio");
             gameObject.transform.position = position;
             var audioSource = gameObject.AddComponent<AudioSource>();
@@ -1336,6 +1339,9 @@ namespace JCSUnity
         }
         public static ParticleSystem PlayParticleAtPoint(ParticleSystem ps, Vector3 position, float duration)
         {
+            if (ps == null)
+                return null;
+
             ParticleSystem particleSystem = MonoBehaviour.Instantiate(ps);
             particleSystem.gameObject.name = "One shot particle";
             particleSystem.transform.position = position;
