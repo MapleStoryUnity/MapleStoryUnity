@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTextContainer: {fileID: 0}
-  mTMP_Text: {fileID: 0}
+  mTextLegacy: {fileID: 2164849351931105531}
+  mTextTMP: {fileID: 0}
 --- !u!114 &7604726519187752915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,8 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTextContainer: {fileID: 1316074825341773976}
-  mTMP_Text: {fileID: 1226237836800714891}
+  mTextLegacy: {fileID: 1316074825341773976}
+  mTextTMP: {fileID: 1226237836800714891}
 --- !u!114 &984955064379576238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,8 +1169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTextContainer: {fileID: 4049056766121412686}
-  mTMP_Text: {fileID: 8742959077094338641}
+  mTextLegacy: {fileID: 4049056766121412686}
+  mTextTMP: {fileID: 8742959077094338641}
 --- !u!1 &1401888582373399707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,8 +1604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTextContainer: {fileID: 0}
-  mTMP_Text: {fileID: 0}
+  mTextLegacy: {fileID: 9121092709517747079}
+  mTextTMP: {fileID: 0}
 --- !u!114 &8028899472869899861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,8 +1880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTextContainer: {fileID: 0}
-  mTMP_Text: {fileID: 0}
+  mTextLegacy: {fileID: 438706341912196970}
+  mTextTMP: {fileID: 0}
 --- !u!114 &7020587301713527430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2255,8 +2255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTextContainer: {fileID: 0}
-  mTMP_Text: {fileID: 0}
+  mTextLegacy: {fileID: 1679502770832915688}
+  mTextTMP: {fileID: 0}
 --- !u!114 &526192977114094584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2513,7 +2513,7 @@ MonoBehaviour:
   mNameTag: {fileID: 827766543013699587}
   mTextBox: {fileID: 6267707290331941680}
   mScrollTime: 0.01
-  mDeltaTimeType: 0
+  mTimeType: 0
   mPanelTrans: {fileID: 3359068487512866979}
   mOkBtn: {fileID: 4920190722270744894}
   mExitBtn: {fileID: 7581509963973178257}
@@ -3222,8 +3222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTextContainer: {fileID: 0}
-  mTMP_Text: {fileID: 0}
+  mTextLegacy: {fileID: 324853464165628440}
+  mTextTMP: {fileID: 0}
 --- !u!114 &5369465059770988589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4957,8 +4957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62725a01edb748d4ebcff42d7f674904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTextContainer: {fileID: 0}
-  mTMP_Text: {fileID: 0}
+  mTextLegacy: {fileID: 5331729949446864641}
+  mTextTMP: {fileID: 0}
 --- !u!114 &8458313105987517967
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_KeyWith mRedoKey = new JCS_KeyWith
         {
-            comb = JCS_KeyCombination.ALT, 
+            comb = JCS_KeyCombination.ALT,
             key = KeyCode.S,
         };
 #endif
@@ -170,9 +170,9 @@ namespace JCSUnity
             // to be as late as possible. Cuz any script change 
             // the UI value after this will not be record...
             {
-                JCS_GameManager gm = JCS_GameManager.instance;
+                var gm = JCS_GameManager.instance;
 
-                gm.onAfterInitialize += RecordPrevData;
+                gm.RegisterOnAfterInit(RecordPrevData);
             }
         }
 
@@ -897,7 +897,9 @@ namespace JCSUnity
                 case JCS_GUIType.TOGGLE:
                     {
                         if (mToggle != null)
+                        {
                             mToggle.Select();
+                        }
                         else if (mSwitch != null)
                         {
                             // empty..

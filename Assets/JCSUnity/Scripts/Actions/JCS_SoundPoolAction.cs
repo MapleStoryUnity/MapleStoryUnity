@@ -27,14 +27,9 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip[] mAudioClips = null;
 
-        [Tooltip("Sound type you want to organized.")]
-        [SerializeField]
-        private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
-
         /* Setter & Getter */
 
         public AudioClip[] AudioClips { get { return this.mAudioClips; } set { this.mAudioClips = value; } }
-        public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } set { this.mSoundSettingType = value; } }
 
         /* Functions */
 
@@ -59,8 +54,7 @@ namespace JCSUnity
                 return;
             }
 
-            float soundVolume = JCS_SoundSettings.instance.GetVolume(mSoundSettingType);
-            mSoundPlayer.PlayOneShot(mAudioClips[randIndex], soundVolume);
+            mSoundPlayer.PlayOneShot(mAudioClips[randIndex]);
         }
     }
 }

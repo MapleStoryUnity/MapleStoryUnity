@@ -579,7 +579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &67705642
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1204,7 +1203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &85221342
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2413,7 +2411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &152746896
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2792,7 +2789,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &174393518
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3608,7 +3604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4999acd701f3e6743b7c5518ea7aaa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 1
 --- !u!82 &203357713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3618,7 +3613,8 @@ AudioSource:
   m_GameObject: {fileID: 203357711}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -300667356125292915, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -3814,7 +3810,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &205558923
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4246,7 +4241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &212683418
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4570,12 +4564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a8d1efa6195b54c9ca7188652b2db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGM_MUTE: 0
-  EFFECT_MUTE: 0
-  PERFONAL_EFFECT_MUTE: 0
-  BGM_SOUND: 0.4
-  SFX_SOUND: 0.4
-  SKILLS_SOUND: 0.4
+  MIXER: {fileID: 24100000, guid: 7db419a1e5067c44fb6780b4f563b20b, type: 2}
   SOUND_FADEOUT_TIME: 1.5
   SOUND_FADEIN_TIME: 1.5
   KEEP_BGM_SWITCH_SCENE: 0
@@ -4997,7 +4986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &249234015
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5361,7 +5349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &267087947
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5622,7 +5609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &290666781
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7408,7 +7394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &483790898
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7955,7 +7940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &539856519
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8787,7 +8771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &637781630
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9302,7 +9285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &676508546
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9563,7 +9545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &694786046
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9893,7 +9874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7158c9b686782e44ab9208ecf28733b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mBGM: {fileID: 0}
   mCurrentBGM: {fileID: 0}
   mSwitchingBGM: 0
   mOverrideSetting: 0
@@ -9912,7 +9892,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &702065691
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9922,7 +9901,8 @@ AudioSource:
   m_GameObject: {fileID: 702065682}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3934861744733628453, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -11127,7 +11107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &840660689
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11423,7 +11402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &909227759
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11985,7 +11963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &953612067
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12975,7 +12952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &998396418
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13236,7 +13212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1004270293
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13779,7 +13754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1027017454
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15519,7 +15493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1157319011
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16058,7 +16031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1218369874
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16350,7 +16322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1228430074
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16801,7 +16772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1250619530
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17324,7 +17294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1309758669
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17585,7 +17554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1326006827
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18271,7 +18239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1360049078
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18706,7 +18673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1386363108
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19461,7 +19427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1447992806
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20442,7 +20407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1493644930
 AudioSource:
   m_ObjectHideFlags: 0
@@ -21111,7 +21075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1571872176
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22192,7 +22155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1682040856
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24314,7 +24276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1861528262
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25693,7 +25654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1992159225
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25975,7 +25935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &2002811820
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26310,7 +26269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &2012100175
 AudioSource:
   m_ObjectHideFlags: 0
@@ -27645,7 +27603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &2113415559
 AudioSource:
   m_ObjectHideFlags: 0

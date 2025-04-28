@@ -20,10 +20,10 @@ namespace JCSUnity
         /* Variables */
 
         // Callback after the game is done initialize. (system used)
-        public Action onSystemAfterInitialize = null;
+        private Action mOnSystemAfterInitialize = null;
 
         // Callback after the game is done initialize.
-        public Action onAfterInitialize = null;
+        private Action mOnAfterInitialize = null;
 
         [Separator("Check Variable (JCS_GameManager)")]
 
@@ -69,6 +69,39 @@ namespace JCSUnity
             Invoke("OnFirstFrame", 0.0f);
         }
 
+        /// <summary>
+        /// Register event run on the first frame of the game. (system used)
+        /// </summary>
+        public void RegisterOnSystemAfterInit(Action action)
+        {
+            // Already initialize, just execute it.
+            if (mDoneInitialize)
+            {
+                action?.Invoke();
+                return;
+            }
+
+            mOnSystemAfterInitialize += action;
+        }
+
+        /// <summary>
+        /// Register event run on the first frame of the game.
+        /// </summary>
+        public void RegisterOnAfterInit(Action action)
+        {
+            // Already initialize, just execute it.
+            if (mDoneInitialize)
+            {
+                action?.Invoke();
+                return;
+            }
+
+            mOnAfterInitialize += action;
+        }
+
+        /// <summary>
+        /// Run only once on the first frame.
+        /// </summary>
         private void OnFirstFrame()
         {
             SetDoneInitializeFlag();
@@ -99,12 +132,9 @@ namespace JCSUnity
 
             this.mDoneInitialize = true;
 
-            if (onSystemAfterInitialize != null)
-                onSystemAfterInitialize.Invoke();
+            mOnSystemAfterInitialize?.Invoke();
 
-            if (onAfterInitialize != null)
-                onAfterInitialize.Invoke();
+            mOnAfterInitialize?.Invoke();
         }
     }
 }
-

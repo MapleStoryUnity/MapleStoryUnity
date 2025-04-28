@@ -22,13 +22,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void SetAudioClipAndPlayOneShot(AudioClip clip, JCS_SoundSettingType type)
+        public void SetAudioClipAndPlayOneShot(AudioClip clip)
         {
             if (mSoundPlayer == null)
                 mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             this.mSoundPlayer.GetAudioSource().clip = clip;
-            this.mSoundPlayer.PlayOneShot(clip, type);
+            this.mSoundPlayer.PlayOneShot(clip);
         }
 
         /* Functions */

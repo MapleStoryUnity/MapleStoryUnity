@@ -22,29 +22,20 @@ namespace JCSUnity
 
         private AudioSource mAudioSource = null;
 
-        [Separator("Runtime Variables (JCS_SoundPlayer)")]
-
-        [Tooltip("Sound setting type for this sound player.")]
-        [SerializeField]
-        private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
-
         /* Setter & Getter */
 
         public AudioSource GetAudioSource() { return this.mAudioSource; }
-        public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } }
 
         /* Functions */
 
         protected virtual void Awake()
         {
             mAudioSource = this.GetComponent<AudioSource>();
-        }
 
-        protected virtual void Start()
-        {
-            // let sound manager know we are here and ready
-            // to be manage be him(Sound Manager)
-            JCS_SoundManager.instance.AssignSoundSource(mSoundSettingType, GetAudioSource());
+            if (mAudioSource.outputAudioMixerGroup == null)
+            {
+                JCS_Debug.LogReminder("The output audio mixer is empty: " + this.name);
+            }
         }
 
         /// <summary>
@@ -64,32 +55,6 @@ namespace JCSUnity
             if (useSp == null)
                 useSp = JCS_SoundManager.instance.GlobalSoundPlayer();
             useSp.PlayOneShotByMethod(clip, method, volume);
-        }
-
-        /// <summary>
-        /// Play one shot of sound.
-        /// </summary>
-        /// <param name="clip"></param>
-        /// <param name="type"></param>
-        public void PlayOneShot(AudioClip clip, JCS_SoundSettingType type)
-        {
-            var ss = JCS_SoundSettings.instance;
-
-            float volume = 0;
-            switch (type)
-            {
-                case JCS_SoundSettingType.BGM:
-                    volume = ss.GetBGM_Volume();
-                    break;
-                case JCS_SoundSettingType.EFFECT:
-                    volume = ss.GetEffect_Volume();
-                    break;
-                case JCS_SoundSettingType.SKILL:
-                    volume = ss.GetSkill_Volume();
-                    break;
-            }
-
-            PlayOneShot(clip, volume);
         }
 
         /// <summary>

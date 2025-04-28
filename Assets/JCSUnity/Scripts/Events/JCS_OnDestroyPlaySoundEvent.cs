@@ -24,11 +24,8 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mAudioClip = null;
 
-        private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
-
         /* Setter & Getter */
 
-        public void SetSoundSettingType(JCS_SoundSettingType type) { mSoundSettingType = type; }
         public void SetAudioClip(AudioClip ac) { this.mAudioClip = ac; }
 
         /* Functions */
@@ -57,7 +54,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             obj.name = "JCS_OnDestroyPlaySoundEvent";
 #endif
-            dsee.SetAudioClipAndPlayOneShot(mAudioClip, mSoundSettingType);
+            dsee.SetAudioClipAndPlayOneShot(mAudioClip);
         }
     }
 }

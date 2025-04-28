@@ -32,11 +32,5 @@ namespace JCSUnity
             if (mAudioSource.clip == null)
                 JCS_Debug.LogError("Sound Effect Object with out audio clip init...");
         }
-
-        private void Start()
-        {
-            // add sound to let "SoundManager" take care of all the effect
-            JCS_SoundManager.instance.AssignSoundSource(JCS_SoundSettingType.EFFECT, mAudioSource);
-        }
     }
 }

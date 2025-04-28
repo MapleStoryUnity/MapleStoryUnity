@@ -25,14 +25,9 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip[] mAudioClips = null;
 
-        [Tooltip("Sound type you want to organize.")]
-        [SerializeField]
-        private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
-
         /* Setter & Getter */
 
         public AudioClip[] audioClips { get { return this.mAudioClips; } set { this.mAudioClips = value; } }
-        public JCS_SoundSettingType SoundType { get { return this.mSoundSettingType; } }
 
         /* Functions */
 

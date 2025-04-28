@@ -7,6 +7,7 @@
  *                   Copyright © 2022 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using MyBox;
 
@@ -24,25 +25,36 @@ namespace JCSUnity
 
         [Separator("Initialize Variables (JCS_SoundSlider)")]
 
-        [Tooltip("Sound type you would like the slider to control.")]
+        [Tooltip("The mixer to control; if null assign the default mixer.")]
         [SerializeField]
-        private JCS_SoundSettingType mSoundType = JCS_SoundSettingType.NONE;
+        private AudioMixer mMixer = null;
+
+        [Tooltip("The target volume parameter.")]
+        [SerializeField]
+        private string mParameter = "";
 
         /* Setter & Getter */
 
         public Slider slider { get { return this.mSlider; } }
-        public JCS_SoundSettingType SoundType { get { return this.mSoundType; } }
 
         /* Functions */
 
         private void Awake()
         {
             this.mSlider = this.GetComponent<Slider>();
+
+            // The minimum value can't be 0.
+            if (this.mSlider.minValue == 0.0f)
+                this.mSlider.minValue = 0.0001f;
         }
 
         private void Start()
         {
-            AddListener();
+            // Assign default mixer.
+            if (mMixer == null)
+                mMixer = JCS_SoundSettings.instance.MIXER;
+
+            JCS_GameManager.instance.RegisterOnAfterInit(AddListener);
         }
 
         private void OnValidate()
@@ -56,7 +68,7 @@ namespace JCSUnity
                 return;
 
             // First, initialize to keep the settings untouched.
-            mSlider.value = JCS_SoundSettings.instance.GetVolume(mSoundType);
+            mSlider.value = JCS_Util.GetVolume(mMixer, mParameter);
 
             mSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
 
@@ -74,7 +86,7 @@ namespace JCSUnity
             float total = mSlider.maxValue - mSlider.minValue;  // Find total.
             float val = mSlider.value / total;                  // Convert to 0 to 1 scale.
 
-            JCS_SoundSettings.instance.SetVolume(mSoundType, val);
+            JCS_Util.SetVolume(mMixer, mParameter, val);
         }
     }
 }

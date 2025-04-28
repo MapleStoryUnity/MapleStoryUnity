@@ -37,13 +37,9 @@ namespace JCSUnity
 
         protected virtual void Start()
         {
-            JCS_SoundManager sm = JCS_SoundManager.instance;
+            var sm = JCS_SoundManager.instance;
 
             sm.SetAudioListener(GetAudioListener());
-
-            // add it to Sound Manager so it could manage
-            // the volume and mute!
-            sm.AssignSoundSource(JCS_SoundSettingType.SKILL, mSoundPlayer.GetAudioSource());
         }
     }
 }

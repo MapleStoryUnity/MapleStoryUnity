@@ -21,12 +21,6 @@ namespace JCSUnity
 
         private AudioListener mAudioListener = null;
 
-        // environment, ui, etc.
-        private JCS_Vec<AudioSource> mSFXSounds = null;
-
-        // personal stuff, personal skill, personal jump walk, etc.
-        private JCS_Vec<AudioSource> mSkillsSounds = null;
-
         private JCS_SoundPlayer mGlobalSoundPlayer = null;
 
         private JCS_FadeSound mJCSFadeSound = null;
@@ -40,17 +34,12 @@ namespace JCSUnity
 
         [Separator("Check Variables (JCS_SoundManager)")]
 
-        [Tooltip("Current background music audio source.")]
-        [SerializeField]
-        [ReadOnly]
-        private AudioSource mBGM = null;
-
         [Tooltip("Current background music is playing.")]
         [SerializeField]
         [ReadOnly]
         private AudioClip mCurrentBGM = null;
 
-        // boolean check if the background music switching.
+        [Tooltip("Boolean check if the background music switching.")]
         [SerializeField]
         [ReadOnly]
         private bool mSwitchingBGM = false;
@@ -75,7 +64,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mDisableSoundWheWindowNotFocus = true;
 
-
         // real time that the bgm fade out.
         private float mRealSoundFadeOutTime = 0;
 
@@ -85,22 +73,6 @@ namespace JCSUnity
 
         public void SetAudioListener(AudioListener al) { this.mAudioListener = al; }
         public AudioListener GetAudioListener() { return this.mAudioListener; }
-        public AudioSource GetBGMAudioSource()
-        {
-            if (this.mBGM == null)
-                this.mBGM = JCS_BGMPlayer.instance.GetAudioSource();
-            return this.mBGM;
-        }
-        public void SetBGM(AudioSource music)
-        {
-            this.mBGM = music;
-
-            var ss = JCS_SoundSettings.instance;
-
-            this.mBGM.volume = ss.GetBGM_Volume();
-            this.mBGM.mute = ss.BGM_MUTE;
-        }
-        public JCS_Vec<AudioSource> GetEffectSounds() { return this.mSFXSounds; }
         public JCS_SoundPlayer GlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
 
         public bool OverrideSetting { get { return this.mOverrideSetting; } }
@@ -135,9 +107,6 @@ namespace JCSUnity
             // try to get component, this is not guarantee.
             this.mJCSFadeSound = this.GetComponent<JCS_FadeSound>();
 
-            mSFXSounds = new JCS_Vec<AudioSource>();
-            mSkillsSounds = new JCS_Vec<AudioSource>();
-
             mGlobalSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
 
@@ -148,14 +117,6 @@ namespace JCSUnity
                 JCS_Debug.LogError("There is no 'JCS_Camera' assign!");
                 return;
             }
-
-            var ss = JCS_SoundSettings.instance;
-
-            // Reset the sound every scene
-            SetEffectVolume(ss.GetEffect_Volume());
-            SetSkillsSoundVolume(ss.GetSkill_Volume());
-            SetSFXSoundMute(ss.EFFECT_MUTE);
-            SetSkillsSoundMute(ss.PERFONAL_EFFECT_MUTE);
         }
 
         private void Update()
@@ -214,9 +175,8 @@ namespace JCSUnity
                     mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
             }
 
-
             // get the background music audio source.
-            AudioSource bgmAudioSource = GetBGMAudioSource();
+            AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
 
             // check if loop
             bgmAudioSource.loop = loop;
@@ -293,89 +253,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Push to the sound effect into array ready for use!
-        /// </summary>
-        /// <param name="sound"></param>
-        public void PlayOneShotEffect(int index)
-        {
-            AudioSource aud = mSFXSounds.at(index);
-
-            var ss = JCS_SoundSettings.instance;
-
-            if (aud.clip != null)
-                aud.PlayOneShot(aud.clip, ss.GetEffect_Volume());
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="source"></param>
-        public void AssignSoundSource(JCS_SoundSettingType type, AudioSource source)
-        {
-            switch (type)
-            {
-                case JCS_SoundSettingType.NONE:
-                    return;
-                case JCS_SoundSettingType.BGM:
-                    SetBGM(source);
-                    break;
-                case JCS_SoundSettingType.EFFECT:
-                    AssignEffect(source);
-                    break;
-                case JCS_SoundSettingType.SKILL:
-                    AssignSkill(source);
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Set the sound volume base on type.
-        /// </summary>
-        /// <param name="type"> type of the sound you want to set. </param>
-        /// <param name="volume"> volume of the sound. </param>
-        public void SetVolume(JCS_SoundSettingType type, float volume)
-        {
-            switch (type)
-            {
-                case JCS_SoundSettingType.NONE:
-                    return;
-                case JCS_SoundSettingType.BGM:
-                    GetBGMAudioSource().volume = volume;
-                    break;
-                case JCS_SoundSettingType.EFFECT:
-                    SetEffectVolume(volume);
-                    break;
-                case JCS_SoundSettingType.SKILL:
-                    SetSkillsSoundVolume(volume);
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Set weather the sound are mute or not by sound type.
-        /// </summary>
-        /// <param name="type"> type of the sound. </param>
-        /// <param name="act"> action of the mute </param>
-        public void SetMute(JCS_SoundSettingType type, bool act)
-        {
-            switch (type)
-            {
-                case JCS_SoundSettingType.NONE:
-                    return;
-                case JCS_SoundSettingType.BGM:
-                    GetBGMAudioSource().mute = act;
-                    break;
-                case JCS_SoundSettingType.EFFECT:
-                    SetSFXSoundMute(act);
-                    break;
-                case JCS_SoundSettingType.SKILL:
-                    SetSkillsSoundMute(act);
-                    break;
-            }
-        }
-
-        /// <summary>
         /// Set the sound volume in the list.
         /// </summary>
         /// <param name="list"> list of the audio source </param>
@@ -402,77 +279,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Add a SFX in to the list in order to get manage.
-        /// </summary>
-        /// <param name="sound"> Unity's audio source class. </param>
-        private void AssignEffect(AudioSource sound)
-        {
-            AssignSoundToList(mSFXSounds, sound);
-        }
-
-        /// <summary>
-        /// Add a skill sound in to the list in order to get manage.
-        /// </summary>
-        /// <param name="sound"> Unity's audio source class. </param>
-        private void AssignSkill(AudioSource sound)
-        {
-            AssignSoundToList(mSkillsSounds, sound);
-        }
-
-        /// <summary>
-        /// Assgin the audio source to audio source list.
-        /// </summary>
-        /// <param name="list"> List of audio source. </param>
-        /// <param name="sound"> audio source to add into list. </param>
-        private void AssignSoundToList(JCS_Vec<AudioSource> list, AudioSource sound)
-        {
-            if (sound == null)
-            {
-                JCS_Debug.LogError("Assigning Source that is null...");
-                return;
-            }
-
-            list.push(sound);
-            sound.volume = JCS_SoundSettings.instance.GetEffect_Volume();
-        }
-
-        /// <summary>
-        /// Set the SFX volume.
-        /// </summary>
-        /// <param name="vol"> volume to set. </param>
-        private void SetEffectVolume(float vol)
-        {
-            SetVolume(mSFXSounds, vol);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="vol"></param>
-        private void SetSkillsSoundVolume(float vol)
-        {
-            SetVolume(mSkillsSounds, vol);
-        }
-
-        /// <summary>
-        /// Set the SFX mute or not mute.
-        /// </summary>
-        /// <param name="act"> target mute action. </param>
-        private void SetSFXSoundMute(bool act)
-        {
-            SetMute(mSFXSounds, act);
-        }
-
-        /// <summary>
-        /// Set the skill sound mute or not mute.
-        /// </summary>
-        /// <param name="act"> target mute action. </param>
-        private void SetSkillsSoundMute(bool act)
-        {
-            SetMute(mSkillsSounds, act);
-        }
-
-        /// <summary>
         /// Do the switching bgm algorithm.
         /// </summary>
         private void DoSwitchBGM()
@@ -489,7 +295,7 @@ namespace JCSUnity
                     return;
 
                 // get the background music audio source.
-                AudioSource bgmAudioSource = GetBGMAudioSource();
+                AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
 
                 // set the audio source.
                 mJCSFadeSound.SetAudioSource(bgmAudioSource);
@@ -499,9 +305,7 @@ namespace JCSUnity
                 bgmAudioSource.Play();
 
                 // active the fade sound in effect.
-                mJCSFadeSound.FadeIn(
-                    JCS_SoundSettings.instance.GetBGM_Volume(),
-                    this.mRealSoundFadeOutTime);
+                mJCSFadeSound.FadeIn(1.0f, this.mRealSoundFadeOutTime);
 
                 mDoneFadingOut = true;
             }
@@ -534,8 +338,10 @@ namespace JCSUnity
             if (mSwitchingBGM)
                 return;
 
+            AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
+
             // do nothing if still playing
-            if (GetBGMAudioSource().isPlaying)
+            if (bgmAudioSource.isPlaying)
                 return;
 
             // switch bgm

@@ -65,9 +65,6 @@ namespace JCSUnity
         /// <param name="loadingMode"></param>
         private void LevelLoaded()
         {
-            // set to Sound Manager in order to get manage
-            JCS_SoundManager.instance.SetBGM(GetAudioSource());
-
             // In 2023.2.19f1, the loop will be turned off for some reason.
             // Let's force BGM to run loop!
             GetAudioSource().loop = true;

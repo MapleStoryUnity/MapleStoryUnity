@@ -158,7 +158,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_GameManager.instance.onSystemAfterInitialize += RefreshSimulateLanguage;
+            JCS_GameManager.instance.RegisterOnSystemAfterInit(RefreshSimulateLanguage);
         }
 
         private void OnValidate()

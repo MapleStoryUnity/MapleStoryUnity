@@ -183,7 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &11444958
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4321,7 +4320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &513136572
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5111,7 +5109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &556784626
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7058,7 +7055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &634047530
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7954,7 +7950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &689504103
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8374,7 +8369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &708528390
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9284,7 +9278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4999acd701f3e6743b7c5518ea7aaa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 1
 --- !u!82 &844941548
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9294,7 +9287,8 @@ AudioSource:
   m_GameObject: {fileID: 844941546}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -300667356125292915, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -19491,6 +19485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75203312fb5bbd7468e4000e98a8c4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDropdownLegacy: {fileID: 0}
+  mDropdownTMP: {fileID: 0}
   mTestWithKey: 1
   mUpdateDropdown: 117
   mDropdownRealTexts: []

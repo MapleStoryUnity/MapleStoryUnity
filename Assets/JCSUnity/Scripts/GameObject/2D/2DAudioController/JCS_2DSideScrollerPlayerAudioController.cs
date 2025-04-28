@@ -54,11 +54,11 @@ namespace JCSUnity
 
             if (mJumpSound[0] == null)
             {
-                JCS_Debug.LogError("Play sound with null references...");
+                JCS_Debug.LogError("Play sound with null references is not allowed");
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mJumpSound[0], ss.GetSkill_Volume());
+            mSoundPlayer.PlayOneShot(mJumpSound[0]);
         }
         /// <summary>
         /// 
@@ -70,11 +70,11 @@ namespace JCSUnity
 
             if (mJumpSound[1] == null)
             {
-                JCS_Debug.LogError("Play sound with null references...");
+                JCS_Debug.LogError("Play sound with null references is not allowed");
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mJumpSound[1], ss.GetSkill_Volume());
+            mSoundPlayer.PlayOneShot(mJumpSound[1]);
         }
         /// <summary>
         /// 
@@ -90,7 +90,7 @@ namespace JCSUnity
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mJumpSound[2], ss.GetSkill_Volume());
+            mSoundPlayer.PlayOneShot(mJumpSound[2]);
         }
         /// <summary>
         /// 
@@ -112,7 +112,7 @@ namespace JCSUnity
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mAttackSounds[rand], ss.GetSkill_Volume());
+            mSoundPlayer.PlayOneShot(mAttackSounds[rand]);
         }
         /// <summary>
         /// 
@@ -125,7 +125,7 @@ namespace JCSUnity
                 return;
             }
             var ss = JCS_SoundSettings.instance;
-            mSoundPlayer.PlayOneShot(mWalkSound, ss.GetSkill_Volume());
+            mSoundPlayer.PlayOneShot(mWalkSound);
         }
         /// <summary>
         /// 

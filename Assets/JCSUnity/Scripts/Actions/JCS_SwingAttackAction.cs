@@ -79,10 +79,6 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mAudioClip = null;
 
-        [Tooltip("Sound settings type.")]
-        [SerializeField]
-        private JCS_SoundSettingType mSoundType = JCS_SoundSettingType.NONE;
-
         [Header("- Damage Text")]
 
         [Tooltip("If you want the action apply damage text add apply this.")]
@@ -330,7 +326,7 @@ namespace JCSUnity
             if (mAudioClip == null)
                 return;
 
-            mSoundPlayer.PlayOneShot(mAudioClip, mSoundType);
+            mSoundPlayer.PlayOneShot(mAudioClip);
         }
 
         /// <summary>

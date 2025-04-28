@@ -309,7 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!114 &227762397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +339,8 @@ AudioSource:
   m_GameObject: {fileID: 227762390}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3934861744733628453, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 551326691}
   - component: {fileID: 551326690}
   m_Layer: 5
-  m_Name: GamePad Sound Button
+  m_Name: Gamepad Sound Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -558,23 +558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fcf42e0eec5bf4991da564448f07a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDialogueSelection: -1
-  mItText: {fileID: 0}
-  mButtonSelection: {fileID: 0}
-  mAutoListener: 1
-  mDialogueIndex: -1
-  mInteractable: 1
-  mInteractColor: {r: 1, g: 1, b: 1, a: 1}
-  mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mListenToAnyKey: 0
-  mKeyActionType: 1
-  mKKeyToListen: 0
-  mJKeyToListen: 1
-  mJoystickLitener: 0
-  mSoundPlayer: {fileID: 0}
-  mButtonClickSound: {fileID: 8300000, guid: 902d524d230a0184089984ae74396039, type: 3}
-  mSoundMethod: 0
-  echoString: echo Hello World!~
 --- !u!114 &551326691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &551326692
 AudioSource:
   m_ObjectHideFlags: 0
@@ -597,7 +579,8 @@ AudioSource:
   m_GameObject: {fileID: 551326688}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3934861744733628453, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -1200,7 +1183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4999acd701f3e6743b7c5518ea7aaa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 1
 --- !u!82 &1382102766
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1210,7 +1192,8 @@ AudioSource:
   m_GameObject: {fileID: 1382102764}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -300667356125292915, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -1415,7 +1398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &1420248536
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1425,7 +1407,8 @@ AudioSource:
   m_GameObject: {fileID: 1420248531}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3934861744733628453, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1

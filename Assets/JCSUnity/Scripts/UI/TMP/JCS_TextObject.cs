@@ -51,7 +51,14 @@ namespace JCSUnity
 
         public string text
         {
-            get { return this.mTextLegacy.text; }  // just return one of them
+            get 
+            { 
+                if (this.mTextLegacy)
+                    return this.mTextLegacy.text;
+
+                return this.mTextTMP.text;
+            }
+
             set
             {
                 if (this.mTextLegacy) 

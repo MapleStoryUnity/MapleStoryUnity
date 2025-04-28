@@ -26,21 +26,16 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mAudioClip = null;
 
-        [Tooltip("Sound settings type.")]
-        [SerializeField]
-        private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
-
         /* Setter & Getter */
 
         public AudioClip audioClip { get { return this.mAudioClip; } set { this.mAudioClip = value; } }
-        public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } set { this.mSoundSettingType = value; } }
         
         /* Functions */
 
         private void Start()
         {
-            GameObject obj = new GameObject();
-            JCS_DestroySoundEndEvent dsee = obj.AddComponent<JCS_DestroySoundEndEvent>();
+            var obj = new GameObject();
+            var dsee = obj.AddComponent<JCS_DestroySoundEndEvent>();
 
 #if UNITY_EDITOR
             obj.name = "JCS_SoundProxyAction";
@@ -49,11 +44,11 @@ namespace JCSUnity
             if (mAudioClip == null)
             {
                 JCS_Debug.LogError(
-                    "You called a proxy action but without data in it...");
+                    "You called a proxy action but without data in it");
                 return;
             }
 
-            dsee.SetAudioClipAndPlayOneShot(mAudioClip, mSoundSettingType);
+            dsee.SetAudioClipAndPlayOneShot(mAudioClip);
         }
     }
 }

@@ -83,14 +83,16 @@ namespace JCSUnity
             }
 
             // Add Destroy Sound
-            GameObject gm = new GameObject();
+            var gm = new GameObject();
             JCS_DestroySoundEndEvent dse = gm.AddComponent<JCS_DestroySoundEndEvent>();
+
 #if UNITY_EDITOR
             gm.name = "JCS_DestroySoundEffect";
 #endif
+
             AudioClip ac = this.mRandomSoundAction.GetRandomSound();
             if (ac != null)
-                dse.SetAudioClipAndPlayOneShot(ac, mRandomSoundAction.SoundType);
+                dse.SetAudioClipAndPlayOneShot(ac);
         }
     }
 }

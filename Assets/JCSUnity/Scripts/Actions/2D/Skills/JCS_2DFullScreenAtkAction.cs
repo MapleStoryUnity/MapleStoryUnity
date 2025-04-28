@@ -126,9 +126,8 @@ namespace JCSUnity
             if (mHitSound == null)
                 return;
 
-            JCS_SoundProxyAction spa = obj.AddComponent<JCS_SoundProxyAction>();
+            var spa = obj.AddComponent<JCS_SoundProxyAction>();
             spa.audioClip = mHitSound;
-            spa.SoundSettingType = mSoundPlayer.SoundSettingType;
         }
     }
 }

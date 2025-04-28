@@ -172,7 +172,6 @@ namespace JCSUnity
 
             // Only need to fade BGM when BGM is not switch between scene.
             var soundS = JCS_SoundSettings.instance;
-            var soundM = JCS_SoundManager.instance;
 
             if (!soundS.KEEP_BGM_SWITCH_SCENE)
             {
@@ -182,13 +181,15 @@ namespace JCSUnity
                     if (mFadeSound == null)
                         mFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
 
+                    AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
+
                     // set the background audio source.
                     mFadeSound.SetAudioSource(
-                        soundM.GetBGMAudioSource());
+                        bgmAudioSource);
 
                     // active the fade sound in effect.
                     mFadeSound.FadeIn(
-                        soundS.GetBGM_Volume(),
+                        1.0f,
                         /* Fade in the sound base on the setting. */
                         soundS.GetSoundFadeInTimeBaseOnSetting());
                 }
@@ -392,7 +393,9 @@ namespace JCSUnity
                     if (mFadeSound == null)
                         mFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
 
-                    mFadeSound.SetAudioSource(JCS_SoundManager.instance.GetBGMAudioSource());
+                    AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
+
+                    mFadeSound.SetAudioSource(bgmAudioSource);
 
                     // fade out sound to zero
                     mFadeSound.FadeOut(0, fadeInTime);

@@ -22,10 +22,6 @@ namespace JCSUnity
 
         [Separator("Initialize Variables (JCS_SettingObject)")]
 
-        [Tooltip("Type of the settings.")]
-        [SerializeField]
-        private JCS_SoundSettingType mSettingType = JCS_SoundSettingType.NONE;
-
         [Tooltip("Type of the GUI.")]
         [SerializeField]
         private JCS_GUIType mGUIType = JCS_GUIType.NONE;
@@ -49,8 +45,6 @@ namespace JCSUnity
 
         private void Start()
         {
-            InitValue();
-
             // get the corrosponding gui type!!
             InitGUIComponent();
         }
@@ -63,52 +57,28 @@ namespace JCSUnity
                     return;
                 case JCS_GUIType.TOGGLE:
                     {
-
+                        // ..
                     }
                     break;
                 case JCS_GUIType.SLIDER:
                     {
-                        SliderSettingUpdate();
+                        // ..
                     }
                     break;
                 case JCS_GUIType.SCROLL_BAR:
                     {
-
+                        // ..
                     }
                     break;
                 case JCS_GUIType.DROP_DOWN:
                     {
-
+                        // ..
                     }
                     break;
                 case JCS_GUIType.INPUT_FIELD:
                     {
-
+                        // ..
                     }
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Set value according to the GUI type!
-        /// </summary>
-        private void InitValue()
-        {
-            var ss = JCS_SoundSettings.instance;
-
-            switch (mSettingType)
-            {
-                case JCS_SoundSettingType.NONE:
-                    JCS_Debug.LogError("Setting with no meaning...");
-                    return;
-                case JCS_SoundSettingType.BGM:
-                    this.mSettingValue = ss.GetBGM_Volume();
-                    break;
-                case JCS_SoundSettingType.EFFECT:
-                    this.mSettingValue = ss.GetEffect_Volume();
-                    break;
-                case JCS_SoundSettingType.SKILL:
-                    this.mSettingValue = ss.GetSkill_Volume();
                     break;
             }
         }
@@ -174,27 +144,6 @@ namespace JCSUnity
                             return;
                         }
                     }
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void SliderSettingUpdate()
-        {
-            var ss = JCS_SoundSettings.instance;
-
-            switch (mSettingType)
-            {
-                case JCS_SoundSettingType.BGM:
-                    ss.SetBGM_Volume(this.mSlider.value);
-                    break;
-                case JCS_SoundSettingType.EFFECT:
-                    ss.SetEffect_Volume(this.mSlider.value);
-                    break;
-                case JCS_SoundSettingType.SKILL:
-                    ss.SetSkill_Volume(this.mSlider.value);
                     break;
             }
         }
