@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace JCSUnity
@@ -91,23 +92,18 @@ namespace JCSUnity
         /// <typeparam name="T"> Type of the object. </typeparam>
         /// <param name="inArray"> The list or array to choose from. </param>
         /// <returns> The chosen object from the list or array. </returns>
-        public static T ChooseOne<T>(T[] inArray)
-        {
-            if (inArray.Length == 0) return default(T);
-            int index = Range(0, inArray.Length);
-            return inArray[index];
-        }
-        public static T ChooseOne<T>(List<T> inList)
-        {
-            if (inList.Count == 0) return default(T);
-            int index = Range(0, inList.Count);
-            return inList[index];
-        }
         public static T ChooseOneE<T>(params T[] args)  // Ellipsis
         {
-            if (args.Length == 0) return default(T);
-            int index = Range(0, args.Length);
-            return args[index];
+            return ChooseOne(args);
+        }
+        public static T ChooseOne<T>(ICollection<T> inList)
+        {
+            if (inList.Count == 0)
+                return default(T);
+
+            int index = Range(0, inList.Count);
+
+            return inList.ElementAt(index);
         }
 
         /// <summary>

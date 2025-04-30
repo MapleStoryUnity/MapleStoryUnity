@@ -53,16 +53,6 @@ namespace JCSUnity
         [Range(0.1f, 30.0f)]
         private float mGravityProduct = 1.0f;
 
-        [Tooltip("Force to hit the target.")]
-        [SerializeField]
-        [Range(0.1f, 300.0f)]
-        private float mForce = 20.0f;
-
-        [Tooltip("Target time to hit the target.")]
-        [SerializeField]
-        [Range(1.0f, 10.0f)]
-        private float mTime = 1.0f;
-
         [Tooltip("Type of the delta time.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
@@ -71,15 +61,40 @@ namespace JCSUnity
         [SerializeField]
         private bool mFaceFoward = false;
 
+        [Separator("By Force")]
+
+        [Tooltip("Force to hit the target.")]
+        [SerializeField]
+        [Range(0.1f, 300.0f)]
+        private float mForce = 20.0f;
+
+        [Tooltip("Angle degree to hit the target.")]
+        [SerializeField]
+        private float mDegree = 0.0f;
+
+        [Separator("By Time")]
+
+        [Tooltip("Target time to hit the target.")]
+        [SerializeField]
+        [Range(1.0f, 10.0f)]
+        private float mTime = 1.0f;
+
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public Vector3 Velocity { get { return this.mVelocity; } }
         public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
-        public float Force { get { return this.mForce; } set { this.mForce = value; } }
-        public float Time { get { return this.mTime; } set { this.mTime = value; } }
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public bool FaceFoward { get { return this.mFaceFoward; } set { this.mFaceFoward = value; } }
+
+        public float Force { get { return this.mForce; } set { this.mForce = value; } }
+        public float Degree { get { return this.mDegree; } set { this.mDegree = value; } }
+        public float Time { get { return this.mTime; } set { this.mTime = value; } }
+
+        private float G
+        {
+            get { return JCS_Constants.GRAVITY * mGravityProduct; }
+        }
 
         /* Functions */
 
@@ -127,15 +142,6 @@ namespace JCSUnity
         /// <param name="startPos"> Point to start this action. </param>
         /// <param name="targetPos"> Point you want to hit. </param>
         /// <param name="time"> Certain time will reach the target position. </param>
-        public void ThrowByTime(Vector3 startPos, Vector3 targetPos)
-        {
-            ThrowByTime(startPos, targetPos, mTime);
-        }
-        public void ThrowByTime(Vector3 startPos, Vector3 targetPos, float time)
-        {
-            this.transform.position = startPos;
-            ThrowByTime(targetPos, time);
-        }
         public void ThrowByTime(Vector3 targetPos)
         {
             ThrowByTime(targetPos, mTime);
@@ -147,7 +153,8 @@ namespace JCSUnity
             // Calculate initial velocity.
             mVelocity.x = displacement.x / time;
             mVelocity.z = displacement.z / time;
-            mVelocity.y = (displacement.y - (JCS_Constants.GRAVITY * mGravityProduct * time * time / 2.0f)) / time;
+
+            mVelocity.y = (displacement.y - (0.5f * G * Mathf.Pow(time, 2))) / time;
 
             // start the action.
             this.mActive = true;
@@ -159,23 +166,20 @@ namespace JCSUnity
         /// <param name="startPos"> Point to start this action. </param>
         /// <param name="targetPos"> Point you want to hit. </param>
         /// <param name="vel"> velocity to hit the point. </param>
-        public void ThrowByForce(Vector3 startPos, Vector3 targetPos)
-        {
-            ThrowByForce(startPos, targetPos, mForce);
-        }
-        public void ThrowByForce(Vector3 startPos, Vector3 targetPos, float vel)
-        {
-            this.transform.position = startPos;
-            ThrowByForce(targetPos, vel);
-        }
         public void ThrowByForce(Vector3 targetPos)
         {
-            ThrowByForce(targetPos, mForce);
+            ThrowByForce(targetPos, mForce, mDegree);
         }
-        public void ThrowByForce(Vector3 targetPos, float vel)
+        public void ThrowByForce(Vector3 targetPos, float vel, float degree)
         {
-            float distance = Vector3.Distance(targetPos, this.transform.position);
-            float time = distance / vel;
+            Vector3 displacement = targetPos - this.transform.position;
+            var displacementXZ = new Vector3(displacement.x, 0, displacement.z);
+            float horizontalDistance = displacementXZ.magnitude;
+
+            float angle = degree * Mathf.Deg2Rad;
+            float horizontalVelocity = vel * Mathf.Cos(angle);
+
+            float time = horizontalDistance / horizontalVelocity;
 
             ThrowByTime(targetPos, time);
         }
@@ -245,10 +249,16 @@ namespace JCSUnity
         public static List<Vector3> GetArchByForce(
            int pointCount,
            Vector3 startPos, Vector3 targetPos,
-           float vel, float gravityProduct)
+           float vel, float degree, float gravityProduct)
         {
-            float distance = Vector3.Distance(targetPos, startPos);
-            float time = distance / vel;
+            Vector3 displacement = targetPos - startPos;
+            var displacementXZ = new Vector3(displacement.x, 0, displacement.z);
+            float horizontalDistance = displacementXZ.magnitude;
+
+            float angle = degree * Mathf.Deg2Rad;
+            float horizontalVelocity = vel * Mathf.Cos(angle);
+
+            float time = horizontalDistance / horizontalVelocity;
 
             return GetArchByTime(pointCount, startPos, targetPos, time, gravityProduct);
         }
