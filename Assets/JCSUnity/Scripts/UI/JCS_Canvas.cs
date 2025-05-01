@@ -35,13 +35,45 @@ namespace JCSUnity
         // Execution when canvas is hidden by fading.
         public Action<JCS_Canvas> onHideFade = null;
 
-        private Canvas mCanvas = null;
-
-        private CanvasGroup mCanvasGroup = null;
-
         private RectTransform mAppRect = null;  // Application Rect (Window)
 
+#if UNITY_EDITOR
+        [Separator("Helper Variables (JCS_Canvas)")]
+
+        [Tooltip("Turn on this to test this behaviour.")]
+        [SerializeField]
+        private bool mTest = false;
+
+        [Tooltip("Key to show canvas.")]
+        [SerializeField]
+        private KeyCode mKeyShow = KeyCode.A;
+
+        [Tooltip("Key to hide canvas.")]
+        [SerializeField]
+        private KeyCode mKeyHide = KeyCode.S;
+#endif
+
         [Separator("Check Variables (JCS_Canvas)")]
+
+        [Tooltip("Canvas.")]
+        [SerializeField]
+        [ReadOnly]
+        private Canvas mCanvas = null;
+
+        [Tooltip("Canvas group.")]
+        [SerializeField]
+        [ReadOnly]
+        private CanvasGroup mCanvasGroup = null;
+
+        [Tooltip("Target fading alpha.")]
+        [SerializeField]
+        [ReadOnly]
+        private float mFadeAlpa = 0.0f;
+
+        [Tooltip("Type of fading currently used.")]
+        [SerializeField]
+        [ReadOnly]
+        private JCS_FadeType mFading = JCS_FadeType.NONE;
 
         [Tooltip("Resize object.")]
         [SerializeField]
@@ -67,7 +99,7 @@ namespace JCSUnity
         [Tooltip("How fast the canvas fades.")]
         [SerializeField]
         [Range(0.0001f, 30.0f)]
-        private float mFadeFriction = 0.2f;
+        private float mFadeFriction = 0.15f;
 
         [Tooltip("Full fade in amount.")]
         [SerializeField]
@@ -78,11 +110,6 @@ namespace JCSUnity
         [SerializeField]
         [Range(0.0f, 1.0f)]
         private float mFadeOutAmount = 0.0f;
-
-        // Target fading alpha.
-        private float mFadeAlpa = 0.0f;
-
-        private JCS_FadeType mFading = JCS_FadeType.NONE;
 
         [Tooltip("The time type.")]
         [SerializeField]
@@ -161,8 +188,25 @@ namespace JCSUnity
 
         private void Update()
         {
+#if UNITY_EDITOR
+            Test();
+#endif
+
             DoFading();
         }
+
+#if UNITY_EDITOR
+        private void Test()
+        {
+            if (!mTest)
+                return;
+
+            if (Input.GetKeyDown(mKeyShow))
+                Show();
+            else if (Input.GetKeyDown(mKeyHide))
+                Hide();
+        }
+#endif
 
         /// <summary>
         /// Return the `canvas` that is the parent of the `trans` object.
@@ -222,6 +266,8 @@ namespace JCSUnity
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mDeactiveSound, JCS_SoundMethod.PLAY_SOUND);
 
+            mCanvas.enabled = true;
+
             if (fade)
             {
                 mFading = JCS_FadeType.IN;
@@ -230,8 +276,6 @@ namespace JCSUnity
             }
             else
             {
-                mCanvas.enabled = true;
-
                 if (mCanvasGroup != null)
                     mCanvasGroup.alpha = mFadeInAmount;
             }
@@ -253,6 +297,9 @@ namespace JCSUnity
 
             if (fade)
             {
+                // Remains enabled since we're going to do fading.
+                mCanvas.enabled = true;
+
                 mFading = JCS_FadeType.OUT;
 
                 mFadeAlpa = mFadeOutAmount;
@@ -364,6 +411,8 @@ namespace JCSUnity
                     case JCS_FadeType.OUT:
                         {
                             mCanvasGroup.alpha = mFadeOutAmount;
+
+                            mCanvas.enabled = false;
 
                             onHideFade?.Invoke(this);
                         }

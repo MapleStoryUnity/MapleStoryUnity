@@ -23,7 +23,7 @@ namespace JCSUnity
         public const float FRICTION = 0.2f;
 
         // Below this threshold is consider close enough.
-        public const float NEAR_THRESHOLD = 0.001f;
+        public const float NEAR_THRESHOLD = 0.01f;
 
         /* Setter & Getter */
 

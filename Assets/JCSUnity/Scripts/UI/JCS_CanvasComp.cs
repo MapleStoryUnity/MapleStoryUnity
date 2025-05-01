@@ -16,6 +16,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public JCS_Canvas canvas { get { return this.mCanvas; } }
+
         /* Functions */
 
         protected virtual void Awake()
