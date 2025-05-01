@@ -14,15 +14,15 @@ namespace JCSUnity
     /// <summary>
     /// Sound player specific for environment sound.
     /// </summary>
-    public class JCS_EnvironmentSoundPlayer : JCS_SoundPlayer
+    public class JCS_EnvSoundPlayer : JCS_SoundPlayer
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_EnvironmentSoundPlayer)")]
+        [Separator("Initialize Variables (JCS_EnvSoundPlayer)")]
 
         [Tooltip("Sound to play for environment sound.")]
         [SerializeField]
-        private AudioClip mEnvironmentSound = null;
+        private AudioClip mEnvSound = null;
 
         /* Setter & Getter */
 
@@ -32,11 +32,11 @@ namespace JCSUnity
         {
             base.Awake();
 
-            GetAudioSource().loop = true;
+            mAudioSource.loop = true;
 
             // NOTE(JenChieh): does not connect to bgm yet.
-            GetAudioSource().clip = mEnvironmentSound;
-            GetAudioSource().Play();
+            mAudioSource.clip = mEnvSound;
+            mAudioSource.Play();
         }
     }
 }

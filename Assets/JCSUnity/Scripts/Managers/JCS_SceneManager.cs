@@ -181,7 +181,7 @@ namespace JCSUnity
                     if (mFadeSound == null)
                         mFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
 
-                    AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
+                    AudioSource bgmAudioSource = JCS_BGMPlayer.instance.audioSource;
 
                     // set the background audio source.
                     mFadeSound.SetAudioSource(
@@ -393,7 +393,7 @@ namespace JCSUnity
                     if (mFadeSound == null)
                         mFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
 
-                    AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
+                    AudioSource bgmAudioSource = JCS_BGMPlayer.instance.audioSource;
 
                     mFadeSound.SetAudioSource(bgmAudioSource);
 

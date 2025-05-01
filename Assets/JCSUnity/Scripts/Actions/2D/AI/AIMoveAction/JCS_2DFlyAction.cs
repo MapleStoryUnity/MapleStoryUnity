@@ -495,14 +495,13 @@ namespace JCSUnity
         /// </summary>
         private void PlayFlySound()
         {
-            // play fly sound,
+            if (mSoundPlayer == null)
+                return;
+
             // fly sound should be looped.
-            if (mSoundPlayer != null)
-            {
-                mSoundPlayer.GetAudioSource().loop = true;
-                mSoundPlayer.GetAudioSource().clip = mFlySound;
-                mSoundPlayer.GetAudioSource().Play();
-            }
+            mSoundPlayer.audioSource.loop = true;
+            mSoundPlayer.audioSource.clip = mFlySound;
+            mSoundPlayer.audioSource.Play();
         }
 
     }

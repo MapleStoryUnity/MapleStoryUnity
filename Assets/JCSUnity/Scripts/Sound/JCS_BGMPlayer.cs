@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace JCSUnity
@@ -67,16 +68,16 @@ namespace JCSUnity
         {
             // In 2023.2.19f1, the loop will be turned off for some reason.
             // Let's force BGM to run loop!
-            GetAudioSource().loop = true;
+            mAudioSource.loop = true;
 
             var ss = JCS_SoundSettings.instance;
 
             if (!ss.KEEP_BGM_SWITCH_SCENE)
             {
                 // Assign BGM from Sound Manager!
-                GetAudioSource().clip = ss.BACKGROUND_MUSIC;
+                mAudioSource.clip = ss.BACKGROUND_MUSIC;
 
-                GetAudioSource().Play();
+                mAudioSource.Play();
             }
         }
     }

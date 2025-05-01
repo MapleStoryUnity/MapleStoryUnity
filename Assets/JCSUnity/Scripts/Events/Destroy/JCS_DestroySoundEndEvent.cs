@@ -27,7 +27,7 @@ namespace JCSUnity
             if (mSoundPlayer == null)
                 mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
-            this.mSoundPlayer.GetAudioSource().clip = clip;
+            this.mSoundPlayer.audioSource.clip = clip;
             this.mSoundPlayer.PlayOneShot(clip);
         }
 
@@ -35,7 +35,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            if (mSoundPlayer.GetAudioSource().isPlaying)
+            if (mSoundPlayer.audioSource.isPlaying)
                 return;
 
             Destroy(this.gameObject);

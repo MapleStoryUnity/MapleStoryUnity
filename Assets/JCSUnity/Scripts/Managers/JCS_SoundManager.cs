@@ -176,7 +176,7 @@ namespace JCSUnity
             }
 
             // get the background music audio source.
-            AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
+            AudioSource bgmAudioSource = JCS_BGMPlayer.instance.audioSource;
 
             // check if loop
             bgmAudioSource.loop = loop;
@@ -295,7 +295,7 @@ namespace JCSUnity
                     return;
 
                 // get the background music audio source.
-                AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
+                AudioSource bgmAudioSource = JCS_BGMPlayer.instance.audioSource;
 
                 // set the audio source.
                 mJCSFadeSound.SetAudioSource(bgmAudioSource);
@@ -338,7 +338,7 @@ namespace JCSUnity
             if (mSwitchingBGM)
                 return;
 
-            AudioSource bgmAudioSource = JCS_BGMPlayer.instance.GetAudioSource();
+            AudioSource bgmAudioSource = JCS_BGMPlayer.instance.audioSource;
 
             // do nothing if still playing
             if (bgmAudioSource.isPlaying)

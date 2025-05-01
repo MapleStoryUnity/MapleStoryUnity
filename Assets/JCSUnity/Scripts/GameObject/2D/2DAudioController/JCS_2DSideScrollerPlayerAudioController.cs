@@ -100,7 +100,7 @@ namespace JCSUnity
             if (!mOverrideSound)
             {
                 // do not override the sound
-                if (mSoundPlayer.GetAudioSource().isPlaying)
+                if (mSoundPlayer.audioSource.isPlaying)
                     return;
             }
 

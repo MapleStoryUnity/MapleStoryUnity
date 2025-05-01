@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Particle System thats spawns `JCS_Particle` object.
     /// </summary>
-    [RequireComponent(typeof(JCS_EnvironmentSoundPlayer))]
+    [RequireComponent(typeof(JCS_EnvSoundPlayer))]
     public class JCS_ParticleSystem : MonoBehaviour
     {
         /* Variables */

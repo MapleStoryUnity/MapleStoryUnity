@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using MyBox;
 
 namespace JCSUnity
 {
@@ -20,11 +19,11 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private AudioSource mAudioSource = null;
+        protected AudioSource mAudioSource = null;
 
         /* Setter & Getter */
 
-        public AudioSource GetAudioSource() { return this.mAudioSource; }
+        public AudioSource audioSource { get { return mAudioSource; } }
 
         /* Functions */
 
@@ -67,7 +66,7 @@ namespace JCSUnity
             if (clip == null)
                 return;
 
-            GetAudioSource().PlayOneShot(clip, volume);
+            mAudioSource.PlayOneShot(clip, volume);
         }
 
         /// <summary>
@@ -75,10 +74,10 @@ namespace JCSUnity
         /// </summary>
         public void PlayOneShotWhileNotPlaying(AudioClip clip, float volume = 1.0f)
         {
-            if (GetAudioSource() == null)
+            if (mAudioSource == null)
                 return;
 
-            if (GetAudioSource().isPlaying)
+            if (mAudioSource.isPlaying)
                 return;
 
             PlayOneShot(clip, volume);
@@ -89,10 +88,10 @@ namespace JCSUnity
         /// </summary>
         public void PlayOneShotInterrupt(AudioClip clip, float volume = 1.0f)
         {
-            if (GetAudioSource() == null)
+            if (mAudioSource == null)
                 return;
 
-            GetAudioSource().Stop();
+            mAudioSource.Stop();
 
             PlayOneShot(clip, volume);
         }
