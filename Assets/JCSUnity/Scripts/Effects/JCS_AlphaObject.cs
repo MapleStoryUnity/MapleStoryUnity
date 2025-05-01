@@ -36,7 +36,7 @@ namespace JCSUnity
 
         [Tooltip("How fast the alpha channel changes.")]
         [SerializeField]
-        [Range(0.1f, 5.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
         private float mFadeFriction = 1.0f;
 
         [Tooltip("Type of the delta time.")]

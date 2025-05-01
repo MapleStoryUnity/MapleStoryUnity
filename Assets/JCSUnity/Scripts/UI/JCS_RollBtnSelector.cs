@@ -65,6 +65,7 @@ namespace JCSUnity
 
         [Tooltip("How fast the buttons move?")]
         [SerializeField]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mScrollFriction = 0.2f;
 
         private bool mAnimating = false;

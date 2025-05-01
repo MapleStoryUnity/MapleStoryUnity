@@ -117,7 +117,9 @@ namespace JCSUnity
 
         [Tooltip("")]
         [SerializeField]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mAirFriction = 0.5f;
+
         private bool mAttackedInAir = false;
 
         [Tooltip("Can the player down jump the platform.")]
@@ -864,7 +866,7 @@ namespace JCSUnity
             if (!isGrounded())
             {
                 // apply gravity
-                mVelocity.y += (JCS_Constants.GRAVITY *
+                mVelocity.y += (JCS_Physics.GRAVITY *
                     JCS_Time.ItTime(mTimeType) *
                     JCS_GameSettings.instance.GRAVITY_PRODUCT);
 

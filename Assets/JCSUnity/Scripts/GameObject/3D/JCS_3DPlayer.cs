@@ -42,7 +42,7 @@ namespace JCSUnity
         protected override void FixedUpdate()
         {
             if (!mCharacterController.isGrounded)
-                mVelocity.y += (JCS_Constants.GRAVITY * JCS_Time.ItTime(mTimeType) * JCS_GameSettings.instance.GRAVITY_PRODUCT);
+                mVelocity.y += (JCS_Physics.GRAVITY * JCS_Time.ItTime(mTimeType) * JCS_GameSettings.instance.GRAVITY_PRODUCT);
 
             base.FixedUpdate();
         }

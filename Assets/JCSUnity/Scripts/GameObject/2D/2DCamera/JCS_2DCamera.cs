@@ -44,12 +44,12 @@ namespace JCSUnity
 
         [Tooltip("How fast this camera move toward the target. (x-axis)")]
         [SerializeField]
-        [Range(0.01f, 10.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mFrictionX = 0.6f;
 
         [Tooltip("How fast this camera move toward the target. (y-axis)")]
         [SerializeField]
-        [Range(0.01f, 10.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mFrictionY = 0.6f;
 
         [Header("- Freeze")]

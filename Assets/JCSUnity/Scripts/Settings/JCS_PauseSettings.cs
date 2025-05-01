@@ -24,7 +24,7 @@ namespace JCSUnity
         public bool ASYMPTOTIC = false;
 
         [Tooltip("How fast the asymptotic transition?")]
-        [Range(0.001f, 30.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 30.0f)]
         public float FRICTION = 0.2f;
 
         /* Setter & Getter */

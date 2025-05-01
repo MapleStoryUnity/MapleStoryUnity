@@ -47,6 +47,7 @@ namespace JCSUnity
         //-- Smooth Track
         [Tooltip("Invers of speed, if smooth track is enable use this.")]
         [SerializeField]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mMoveFriction = 0.2f;
 
         //-- Hard Track

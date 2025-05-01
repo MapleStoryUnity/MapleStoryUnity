@@ -56,7 +56,7 @@ namespace JCSUnity
 
         [Tooltip("How fast this camera rotates.")]
         [SerializeField]
-        [Range(0.001f, 30.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 30.0f)]
         private float mRotateFriction = 0.2f;
 
         [Tooltip("Angle that rotate once.")]

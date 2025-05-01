@@ -97,7 +97,7 @@ object you have in the list.")]
 
         [Tooltip("How fast the asymptotic transition?")]
         [SerializeField]
-        [Range(0.001f, 30.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 30.0f)]
         private float mFriction = 0.2f;
 
         /* Setter & Getter */

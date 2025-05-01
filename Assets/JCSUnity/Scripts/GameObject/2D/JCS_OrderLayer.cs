@@ -26,6 +26,7 @@ namespace JCSUnity
 
         [Tooltip("How fast this layer moves.")]
         [SerializeField]
+        [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
         private float mLayerFriction = 0;
 
         [Tooltip("Type of the delta time.")]

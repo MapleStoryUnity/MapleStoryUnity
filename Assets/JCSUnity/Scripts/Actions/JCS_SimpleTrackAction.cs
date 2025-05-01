@@ -30,7 +30,7 @@ namespace JCSUnity
 
         [Tooltip("How fast it moves toward to the target position?")]
         [SerializeField]
-        [Range(0.01f, 10.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mFriction = 0.2f;
 
         [Tooltip("Type of the delta time.")]

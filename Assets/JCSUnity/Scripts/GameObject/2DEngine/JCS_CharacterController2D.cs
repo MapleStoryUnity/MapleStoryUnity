@@ -705,7 +705,7 @@ namespace JCSUnity
             if (!isGrounded())
             {
                 // apply gravity
-                mVelocity.y += JCS_Constants.GRAVITY * JCS_Time.ItTime(mTimeType);
+                mVelocity.y += JCS_Physics.GRAVITY * JCS_Time.ItTime(mTimeType);
             }
             else
             {

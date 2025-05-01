@@ -62,6 +62,7 @@ just stop there.")]
 
         [Tooltip("Deacceleration after bouncing from the wall.")]
         [SerializeField]
+        [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
         private float mBounceFriction = 0.2f;
 
         /* Setter & Getter */
@@ -104,7 +105,7 @@ just stop there.")]
             float dt = JCS_Time.ItTime(mTimeType);
 
             this.transform.position += mVelocity * dt;
-            mVelocity.y += JCS_Constants.GRAVITY * dt * mItemGravity;
+            mVelocity.y += JCS_Physics.GRAVITY * dt * mItemGravity;
         }
 
         private void OnTriggerEnter(Collider other)

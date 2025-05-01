@@ -91,7 +91,7 @@ namespace JCSUnity
         /// <param name="time"></param>
         public void FadeOut(float target_volume, float time)
         {
-            if (mType == JCS_FadeType.FADE_OUT)
+            if (mType == JCS_FadeType.OUT)
             {
                 JCS_Debug.LogError("Already fade out");
                 return;
@@ -108,7 +108,7 @@ namespace JCSUnity
             mTargetVolume = target_volume;
             mRecordVolume = mAudioSource.volume;
 
-            mType = JCS_FadeType.FADE_OUT;
+            mType = JCS_FadeType.OUT;
             mEffect = true;
         }
 
@@ -119,7 +119,7 @@ namespace JCSUnity
         /// <param name="time"></param>
         public void FadeIn(float target_volume, float time)
         {
-            if (mType == JCS_FadeType.FADE_IN)
+            if (mType == JCS_FadeType.IN)
             {
                 JCS_Debug.LogError("Already fade in");
                 return;
@@ -137,7 +137,7 @@ namespace JCSUnity
             mTargetVolume = target_volume;
             mRecordVolume = target_volume;
 
-            mType = JCS_FadeType.FADE_IN;
+            mType = JCS_FadeType.IN;
             mEffect = true;
         }
 
@@ -184,7 +184,7 @@ namespace JCSUnity
         {
             switch (mType)
             {
-                case JCS_FadeType.FADE_OUT:
+                case JCS_FadeType.OUT:
                     {
                         mAudioSource.volume -= mRecordVolume / mFadeOutTime * JCS_Time.ItTime(mTimeType);
 
@@ -195,7 +195,7 @@ namespace JCSUnity
                         }
                     }
                     break;
-                case JCS_FadeType.FADE_IN:
+                case JCS_FadeType.IN:
                     {
                         mAudioSource.volume += mRecordVolume / mFadeInTime * JCS_Time.ItTime(mTimeType);
 

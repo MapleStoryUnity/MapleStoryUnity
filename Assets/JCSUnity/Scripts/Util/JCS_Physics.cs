@@ -63,6 +63,9 @@ namespace JCSUnity
     {
         /* Variables */
 
+        // Gravity.
+        public static float GRAVITY = -9.81f;
+
         // Distance to look in direction to get the point.
         public const float LOOK_DISTANCE = 10.0f;
 

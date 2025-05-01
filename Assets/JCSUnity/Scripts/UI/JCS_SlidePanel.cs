@@ -31,12 +31,12 @@ namespace JCSUnity
 
         [Tooltip("How fast the this slide panel slide in x axis.")]
         [SerializeField]
-        [Range(0.01f, 5.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
         private float mSlideFrictionX = 0.2f;
 
         [Tooltip("How fast the this slide panel slide in y axis.")]
         [SerializeField]
-        [Range(0.01f, 5.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
         private float mSlideFrictionY = 0.2f;
 
         [Tooltip("Type of the delta time.")]

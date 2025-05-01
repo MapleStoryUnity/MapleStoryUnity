@@ -37,6 +37,7 @@ namespace JCSUnity
         
         [Tooltip("How fast it get back to original speed?")]
         [SerializeField]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mSpeedFriction = 0.2f;
 
         [Tooltip("Type of the delta time.")]
@@ -118,7 +119,7 @@ namespace JCSUnity
                 if (!isGrounded)
                 {
                     VelY +=
-                        JCS_Constants.GRAVITY *
+                        JCS_Physics.GRAVITY *
                         dt *
                         JCS_GameSettings.instance.GRAVITY_PRODUCT;
                 }

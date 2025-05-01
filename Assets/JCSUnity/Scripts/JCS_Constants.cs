@@ -14,6 +14,20 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Constants
     {
-        public static float GRAVITY = -9.81f;
+        /* Variables */
+
+        // The minimum friction value.
+        public const float FRICTION_MIN = 0.01f;
+
+        // The default effect friction value.
+        public const float FRICTION = 0.2f;
+
+        // Below this threshold is consider close enough.
+        public const float NEAR_THRESHOLD = 0.001f;
+
+        /* Setter & Getter */
+
+        /* Functions */
+
     }
 }

@@ -66,7 +66,7 @@ namespace JCSUnity
 
         [Tooltip(@"How fast the liquid bar move approach to target position/value.")]
         [SerializeField]
-        [Range(0.01f, 10.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         protected float mDeltaFriction = 0.2f;
 
         [Tooltip("Distance threshold to do visualize callback.")]
@@ -130,7 +130,7 @@ Careful that recover can be damage too.")]
         protected float mRecordValue = 0.0f;
 
         [SerializeField]
-        [Range(0.01f, 7.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 7.0f)]
         protected float mGetBackFriction = 1.0f;
 
         /* Setter & Getter */

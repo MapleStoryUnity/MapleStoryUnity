@@ -26,6 +26,7 @@ namespace JCSUnity
 
         [Tooltip("Invers of speed.")]
         [SerializeField]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mMoveFriction = 1.0f;
 
         [Tooltip("Type of the delta time.")]

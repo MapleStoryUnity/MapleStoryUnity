@@ -93,7 +93,7 @@ namespace JCSUnity
 
         private float G
         {
-            get { return JCS_Constants.GRAVITY * mGravityProduct; }
+            get { return JCS_Physics.GRAVITY * mGravityProduct; }
         }
 
         /* Functions */
@@ -110,7 +110,7 @@ namespace JCSUnity
             float dt = JCS_Time.ItTime(mTimeType);
 
             // make it effect by gravity.
-            this.mVelocity.y += JCS_Constants.GRAVITY * mGravityProduct * dt;
+            this.mVelocity.y += JCS_Physics.GRAVITY * mGravityProduct * dt;
 
             // add up velocity.
             this.transform.position += mVelocity * dt;
@@ -208,7 +208,7 @@ namespace JCSUnity
             // Calculate initial velocity.
             velocity.x = displacement.x / time;
             velocity.z = displacement.z / time;
-            velocity.y = (displacement.y - (JCS_Constants.GRAVITY * gravityProduct * time * time / 2.0f)) / time;
+            velocity.y = (displacement.y - (JCS_Physics.GRAVITY * gravityProduct * time * time / 2.0f)) / time;
 
             /* 開始模擬 */
 
@@ -224,7 +224,7 @@ namespace JCSUnity
                 float dt = interval;  // Interval is the delta time!
 
                 // make it effect by gravity.
-                velocity.y += JCS_Constants.GRAVITY * gravityProduct * dt;
+                velocity.y += JCS_Physics.GRAVITY * gravityProduct * dt;
 
                 // add up velocity.
                 startPos += velocity * dt;

@@ -24,7 +24,7 @@ namespace JCSUnity
 
         public Action<float> onFading = null;
 
-        private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
+        private JCS_FadeType mFadeType = JCS_FadeType.IN;  // defaul as visible
 
         private float mAlpha = 1.0f;
 
@@ -146,8 +146,8 @@ namespace JCSUnity
 
         public void FadeOut() { FadeOut(mFadeTime); }
         public void FadeIn() { FadeIn(mFadeTime); }
-        public void FadeOut(float time) { FadeEffect(JCS_FadeType.FADE_OUT, time); }
-        public void FadeIn(float time) { this.FadeEffect(JCS_FadeType.FADE_IN, time); }
+        public void FadeOut(float time) { FadeEffect(JCS_FadeType.OUT, time); }
+        public void FadeIn(float time) { this.FadeEffect(JCS_FadeType.IN, time); }
 
         /// <summary>
         /// Default function to point to, 
@@ -169,8 +169,8 @@ namespace JCSUnity
             if (!mOverrideFade)
             {
                 // Check is already fade out or fade in!
-                if ((mVisible && type == JCS_FadeType.FADE_IN) ||
-                    (!mVisible && type == JCS_FadeType.FADE_OUT))
+                if ((mVisible && type == JCS_FadeType.IN) ||
+                    (!mVisible && type == JCS_FadeType.OUT))
                     return;
             }
 
@@ -179,13 +179,13 @@ namespace JCSUnity
 
             switch (type)
             {
-                case JCS_FadeType.FADE_OUT:
+                case JCS_FadeType.OUT:
                     {
                         mAlpha = mFadeInAmount;
                         this.mVisible = false;
                     }
                     break;
-                case JCS_FadeType.FADE_IN:
+                case JCS_FadeType.IN:
                     {
                         mAlpha = mFadeOutAmount;
                         this.mVisible = true;
@@ -212,7 +212,7 @@ namespace JCSUnity
 
             switch (mFadeType)
             {
-                case JCS_FadeType.FADE_OUT:
+                case JCS_FadeType.OUT:
                     {
                         // Fade out effect complete
                         if (mAlpha < mFadeOutAmount)
@@ -231,7 +231,7 @@ namespace JCSUnity
                     }
                     break;
 
-                case JCS_FadeType.FADE_IN:
+                case JCS_FadeType.IN:
                     {
                         // Fade in effect complete
                         if (mAlpha > mFadeInAmount)

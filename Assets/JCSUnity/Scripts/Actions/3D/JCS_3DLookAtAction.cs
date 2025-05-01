@@ -76,7 +76,7 @@ namespace JCSUnity
 
         [Tooltip("How it look at the target?")]
         [SerializeField]
-        [Range(0.01f, 10.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mLookFriction = 0.4f;
 
         // record the current rotation every frame, in order to set it back

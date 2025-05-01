@@ -25,10 +25,19 @@ namespace JCSUnity
 
         private const string RESIZE_UI_PATH = "UI/ResizeUI";
 
-        public Action<JCS_Canvas> onShow = null;  // Execution when canvas is shown.
-        public Action<JCS_Canvas> onHide = null;  // Execution when canvas is hidden.
+        // Execution when canvas is shown.
+        public Action<JCS_Canvas> onShow = null;
+        // Execution when canvas is hidden.
+        public Action<JCS_Canvas> onHide = null;
+
+        // Execution when canvas is shown by fading.
+        public Action<JCS_Canvas> onShowFade = null;
+        // Execution when canvas is hidden by fading.
+        public Action<JCS_Canvas> onHideFade = null;
 
         private Canvas mCanvas = null;
+
+        private CanvasGroup mCanvasGroup = null;
 
         private RectTransform mAppRect = null;  // Application Rect (Window)
 
@@ -51,6 +60,34 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_Canvas)")]
 
+        [Tooltip("Turn on when you want to fade the canvas by default.")]
+        [SerializeField]
+        private bool mFade = false;
+
+        [Tooltip("How fast the canvas fades.")]
+        [SerializeField]
+        [Range(0.0001f, 30.0f)]
+        private float mFadeFriction = 0.2f;
+
+        [Tooltip("Full fade in amount.")]
+        [SerializeField]
+        [Range(0.0f, 1.0f)]
+        private float mFadeInAmount = 1.0f;
+
+        [Tooltip("Full fade out amount.")]
+        [SerializeField]
+        [Range(0.0f, 1.0f)]
+        private float mFadeOutAmount = 0.0f;
+
+        // Target fading alpha.
+        private float mFadeAlpa = 0.0f;
+
+        private JCS_FadeType mFading = JCS_FadeType.NONE;
+
+        [Tooltip("The time type.")]
+        [SerializeField]
+        private JCS_TimeType mTimeType = JCS_TimeType.UNSCALED_DELTA_TIME;
+
         [Tooltip("Play sound when active the canvas.")]
         [SerializeField]
         private AudioClip mActiveSound = null;
@@ -63,11 +100,17 @@ namespace JCSUnity
 
         public RectTransform AppRect { get { return this.mAppRect; } }
         public Canvas canvas { get { return this.mCanvas; } }
+        public CanvasGroup canvasGroup { get { return this.mCanvasGroup; } }
         public JCS_ResizeUI ResizeUI { get { return this.mResizeUI; } }
 
         public bool DisplayOnAwake { get { return this.mDisplayOnAwake; } }
         public bool MainCanvas { get { return this.mMainCanvas; } }
 
+        public bool Fade { get { return this.mFade; } set { this.mFade = value; } }
+        public float FadeFriction { get { return this.mFadeFriction; } set { this.mFadeFriction = value; } }
+        public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
+        public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
+        public JCS_TimeType TimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public AudioClip ActiveSound { get { return this.mActiveSound; } set { this.mActiveSound = value; } }
         public AudioClip DeactiveSound { get { return this.mDeactiveSound; } set { this.mDeactiveSound = value; } }
 
@@ -79,6 +122,7 @@ namespace JCSUnity
 
             this.mAppRect = this.GetComponent<RectTransform>();
             this.mCanvas = this.GetComponent<Canvas>();
+            this.mCanvasGroup = this.GetComponent<CanvasGroup>();
 
             if (JCS_UISettings.instance.RESIZE_UI && !JCS_ScreenSettings.instance.IsNone())
             {
@@ -113,6 +157,11 @@ namespace JCSUnity
             }
 
             NoMainCanvas();
+        }
+
+        private void Update()
+        {
+            DoFading();
         }
 
         /// <summary>
@@ -166,9 +215,26 @@ namespace JCSUnity
         /// </summary>
         public void Show(bool mute = false)
         {
-            mCanvas.enabled = true;
+            Show(mFade, mute);
+        }
+        public void Show(bool fade, bool mute = false)
+        {
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mDeactiveSound, JCS_SoundMethod.PLAY_SOUND);
+
+            if (fade)
+            {
+                mFading = JCS_FadeType.IN;
+
+                mFadeAlpa = mFadeInAmount;
+            }
+            else
+            {
+                mCanvas.enabled = true;
+
+                if (mCanvasGroup != null)
+                    mCanvasGroup.alpha = mFadeInAmount;
+            }
 
             onShow?.Invoke(this);
         }
@@ -178,9 +244,26 @@ namespace JCSUnity
         /// </summary>
         public void Hide(bool mute = false)
         {
-            mCanvas.enabled = false;
+            Hide(mFade, mute);
+        }
+        public void Hide(bool fade, bool mute = false)
+        {
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mActiveSound, JCS_SoundMethod.PLAY_SOUND);
+
+            if (fade)
+            {
+                mFading = JCS_FadeType.OUT;
+
+                mFadeAlpa = mFadeOutAmount;
+            }
+            else
+            {
+                mCanvas.enabled = false;
+
+                if (mCanvasGroup != null)
+                    mCanvasGroup.alpha = mFadeOutAmount;
+            }
 
             onHide?.Invoke(this);
         }
@@ -189,12 +272,17 @@ namespace JCSUnity
         /// Toggle the canvas' visibility.
         /// </summary>
         /// <param name="mute"> True to mute the sound. </param>
+        /// 
         public void ToggleVisibility(bool mute = false)
         {
+            ToggleVisibility(mFade, mute);
+        }
+        public void ToggleVisibility(bool fade, bool mute = false)
+        {
             if (IsShown())
-                Hide(mute);
+                Hide(fade, mute);
             else
-                Show(mute);
+                Show(fade, mute);
         }
 
         /// <summary>
@@ -239,6 +327,53 @@ namespace JCSUnity
             newScale.x /= screenRaio.width;
             newScale.y /= screenRaio.height;
             rect.localScale = newScale;
+        }
+
+        /// <summary>
+        /// Do the fading effect.
+        /// </summary>
+        private void DoFading()
+        {
+            if (mFading == JCS_FadeType.NONE)
+                return;
+
+            if (mCanvasGroup == null)
+            {
+                JCS_Debug.LogReminder($"Fade missing the canvas group: {name}");
+                return;
+            }
+
+            float direction = mFadeAlpa - mCanvasGroup.alpha;
+
+            mCanvasGroup.alpha += direction / mFadeFriction * JCS_Time.ItTime(mTimeType);
+
+            float diff = Mathf.Abs(direction);
+
+            // When close enough.
+            if (diff < JCS_Constants.NEAR_THRESHOLD)
+            {
+                switch (mFading)
+                {
+                    case JCS_FadeType.IN:
+                        {
+                            mCanvasGroup.alpha = mFadeInAmount;
+
+                            onShowFade?.Invoke(this);
+                        }
+                        break;
+                    case JCS_FadeType.OUT:
+                        {
+                            mCanvasGroup.alpha = mFadeOutAmount;
+
+                            onHideFade?.Invoke(this);
+                        }
+                        break;
+                }
+
+                mFadeAlpa = mCanvasGroup.alpha;
+
+                mFading = JCS_FadeType.NONE;
+            }
         }
     }
 }

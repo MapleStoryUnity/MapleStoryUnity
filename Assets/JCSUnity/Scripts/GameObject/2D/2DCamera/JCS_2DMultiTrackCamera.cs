@@ -44,6 +44,7 @@ namespace JCSUnity
 
         [Tooltip("How fast the caemra zoom in/out.")]
         [SerializeField]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mCameraFriction = 0.7f;
 
         [Tooltip("Type of the delta time.")]

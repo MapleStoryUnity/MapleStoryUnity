@@ -71,7 +71,7 @@ namespace JCSUnity
 
         [Tooltip("How fast the object slides.")]
         [SerializeField]
-        [Range(0.01f, 10.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mFriction = 0.2f;
 
         [Separator("Runtime Variables (JCS_SlideEffect)")]

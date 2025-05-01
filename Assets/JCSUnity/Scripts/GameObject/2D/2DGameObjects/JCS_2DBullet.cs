@@ -36,7 +36,7 @@ namespace JCSUnity
 
         [Tooltip("How fast it absorb back.")]
         [SerializeField]
-        [Range(0.01f, 10.0f)]
+        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mAbsorbBackFriction = 0.25f;
 
         [Tooltip("Randomize the time to absorb at init time.")]
