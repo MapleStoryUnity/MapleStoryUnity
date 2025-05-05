@@ -10,7 +10,7 @@ namespace PeterVuorela.Tweener
     {
         /* Variables */
 
-        private Action _Callback = null;
+        public Action onDone = null;
 
         private TweenDelegate _Easing = null;
 
@@ -35,15 +35,6 @@ namespace PeterVuorela.Tweener
         public float progressPct { get { return _ProgressPct; } }
         public JCS_TimeType deltaTimeType { get { return this._DeltaTimeType; } }
 
-        /// <summary>
-        /// Callback when reach destination.
-        /// </summary>
-        /// <param name="func"> function pointer </param>
-        public void SetCallback(Action func)
-        {
-            this._Callback = func;
-        }
-
         /* Functions */
 
         public Tweener() { }
@@ -55,9 +46,9 @@ namespace PeterVuorela.Tweener
         /// <param name="to">To.</param>
         /// <param name="duration">Duration.</param>
         /// <param name="easing">Easing.</param>
-        public void easeFromTo(float from, float to, 
-            bool resetElapsedTime = true, 
-            float duration = 1.0f, 
+        public void easeFromTo(float from, float to,
+            bool resetElapsedTime = true,
+            float duration = 1.0f,
             TweenDelegate easing = null, Action callback = null,
             JCS_TimeType deltaTimeType = JCS_TimeType.DELTA_TIME)
         {
@@ -65,7 +56,7 @@ namespace PeterVuorela.Tweener
                 easing = Easing.Linear;
 
             _Easing = easing;
-            SetCallback(callback);
+            onDone = callback;
 
             _From = from;
             _To = to;
@@ -104,8 +95,8 @@ namespace PeterVuorela.Tweener
                 _TimeElapsed = 0.0f;
                 _ProgressPct = 1.0f;
 
-                if (callCallBack && _Callback != null)
-                    _Callback.Invoke();
+                if (callCallBack)
+                    onDone?.Invoke();
             }
         }
 
@@ -115,9 +106,9 @@ namespace PeterVuorela.Tweener
             update(false);
             whatToTween = _Progression;
 
-            if (wasAnimating && !_Animating && _Callback != null)
+            if (wasAnimating && !_Animating)
             {
-                _Callback.Invoke();
+                onDone?.Invoke();
             }
         }
 
@@ -137,8 +128,7 @@ namespace PeterVuorela.Tweener
         /// </summary>
         public void DoCallback()
         {
-            if (_Callback != null)
-                _Callback.Invoke();
+            onDone?.Invoke();
         }
     }
 }
