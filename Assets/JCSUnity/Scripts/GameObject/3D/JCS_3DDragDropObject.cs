@@ -47,7 +47,7 @@ namespace JCSUnity
 
         private void OnMouseDrag()
         {
-            Vector3 curPos = new Vector3(Input.mousePosition.x - mPosX, Input.mousePosition.y - mPosY, mDistance.z);
+            var curPos = new Vector3(Input.mousePosition.x - mPosX, Input.mousePosition.y - mPosY, mDistance.z);
 
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(curPos);
 

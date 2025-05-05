@@ -11,6 +11,7 @@
  */
 #define TMP_PRO
 
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -23,7 +24,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public TimeIsUpFunc timeIsUpCallback = null;
+        public Action onTimeUp = null;
 
         private const float MAX_HOUR_TIME = 23.0f;
         private const float MAX_MINUTE_TIME = 59.0f;
@@ -36,7 +37,7 @@ namespace JCSUnity
         [Separator("Check Variables (JCS_TextTimer)")]
 
         [SerializeField]
-        private bool mDoTimeIsUpCallback = false;
+        private bool mDoTimeUpCallback = false;
 
         [SerializeField]
         private string mHoursText = "";
@@ -165,7 +166,7 @@ namespace JCSUnity
             UpdateTimeUI();
 
             // reset callback everytime we set to a new time.
-            this.mDoTimeIsUpCallback = false;
+            this.mDoTimeUpCallback = false;
         }
 
         /// <summary>
@@ -367,14 +368,13 @@ namespace JCSUnity
         /// </summary>
         private void DoTimeIsUpCallback()
         {
-            if (!IsTimeUp() || mDoTimeIsUpCallback)
+            if (!IsTimeUp() || mDoTimeUpCallback)
                 return;
 
             // make sure we only do one time the callback.
-            mDoTimeIsUpCallback = true;
+            mDoTimeUpCallback = true;
 
-            if (timeIsUpCallback != null)
-                timeIsUpCallback.Invoke();
+            onTimeUp?.Invoke();
         }
 
         /// <summary>

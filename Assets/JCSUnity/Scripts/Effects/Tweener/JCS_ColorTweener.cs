@@ -25,7 +25,16 @@ namespace JCSUnity
         private TweenDelegate mEasingBlue = null;
         private TweenDelegate mEasingAlpha = null;
 
-        private Action mColorCallback = null;
+
+        // Callback to execute when start tweening.
+        public Action onStart = null;
+
+        // Callback to execute when done tweening.
+        public Action onDone = null;
+
+        // Callback to execute when done tweening but only with that
+        // specific function call.
+        private Action mOnDone = null;
 
         /**
          * time to calculate the progress.
@@ -222,10 +231,6 @@ namespace JCSUnity
         public bool IgnoreG { get { return this.mIgnoreG; } set { this.mIgnoreG = value; } }
         public bool IgnoreB { get { return this.mIgnoreB; } set { this.mIgnoreB = value; } }
         public bool IgnoreA { get { return this.mIgnoreA; } set { this.mIgnoreA = value; } }
-        public void SetCallback(Action func)
-        {
-            this.mColorCallback = func;
-        }
 
         /* Functions */
 
@@ -354,6 +359,8 @@ namespace JCSUnity
             float inDurationA,
             Action func = null)
         {
+            onStart?.Invoke();
+
             this.mFromColor = inFromColor;
             this.mTargetColor = inToColor;
 
@@ -372,7 +379,7 @@ namespace JCSUnity
             this.mEasingB = true;
             this.mEasingA = true;
 
-            SetCallback(func);
+            mOnDone = func;
         }
 
         /// <summary>
@@ -524,13 +531,11 @@ namespace JCSUnity
             if (mEasingA || mEasingR || mEasingG || mEasingB)
                 return;
 
-            // trigger callback.
-            if (mColorCallback != null)
-                mColorCallback.Invoke();
+            mOnDone?.Invoke();
 
-            // trigger unity callback.
-            if (mUnityCallback != null)
-                mUnityCallback.Invoke();
+            mUnityCallback?.Invoke();
+
+            onDone?.Invoke();
         }
 
         /// <summary>

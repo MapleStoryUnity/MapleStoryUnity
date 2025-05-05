@@ -48,9 +48,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TransformType mTransformType = JCS_TransformType.POSITION;
 
-        [Tooltip("Override the effect even the the effect is enabled already.")]
+        [Tooltip("Force the effect even when its already in the motion.")]
         [SerializeField]
-        private bool mRepeatOverride = false;
+        private bool mForce = false;
 
         [Tooltip("How long it shakes.")]
         [SerializeField]
@@ -101,7 +101,7 @@ namespace JCSUnity
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
 
         public JCS_TransformType TransformType { get { return this.mTransformType; } set { this.mTransformType = value; } }
-        public bool RepeatOverride { get { return this.mRepeatOverride; } set { this.mRepeatOverride = value; } }
+        public bool Force { get { return this.mForce; } set { this.mForce = value; } }
         public float ShakeTime { get { return this.mShakeTime; } set { this.mShakeTime = value; } }
         public float ShakeMargin { get { return this.mShakeMargin; } }
         public float ShakeSteps { get { return this.mShakeSteps; } set { this.mShakeSteps = value; } }
@@ -140,21 +140,17 @@ namespace JCSUnity
 #endif
 
         /// <summary>
-        /// Do the shake with default shake time and shake margin.
-        /// </summary>
-        public void DoShake()
-        {
-            DoShake(mShakeTime, mShakeMargin);
-        }
-
-        /// <summary>
         /// Do the shake effect with time and margin.
         /// </summary>
         /// <param name="time"> time to do the shake. </param>
         /// <param name="margin"> margin to do the shake. </param>
-        public void DoShake(float time, float margin)
+        public void DoShake()
         {
-            if (!mRepeatOverride)
+            DoShake(mShakeTime, mShakeMargin, mForce);
+        }
+        public void DoShake(float time, float margin, bool force)
+        {
+            if (!force)
             {
                 // if is doing the effect
                 if (mEffect)
@@ -187,7 +183,17 @@ namespace JCSUnity
 
             mShakeDelta = Vector3.zero;
 
-            mShakeTimer += JCS_Time.ItTime(mTimeType);
+            float dt = JCS_Time.ItTime(mTimeType);
+
+            // Handle pause situation.
+            {
+                var pm = JCS_PauseManager.instance;
+
+                if (pm != null && pm.Paused)
+                    return;
+            }
+
+            mShakeTimer += dt;
 
             if (mShakeTimer < mShakeTime)
             {

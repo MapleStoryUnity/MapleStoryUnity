@@ -37,23 +37,69 @@ namespace JCSUnity
 
         [Header("- Cursor State")]
 
+        [Tooltip("Cursor custom type.")]
         [SerializeField]
         private JCS_CursorCustomizeType mCursorCustomizeType = JCS_CursorCustomizeType.NORMAL_SELECT;
-        [SerializeField] private JCS_2DAnimation mNormalSelect = null;
-        [SerializeField] private JCS_2DAnimation mHelpSelect = null;
-        [SerializeField] private JCS_2DAnimation mWorkingInBackground = null;
-        [SerializeField] private JCS_2DAnimation mBusy = null;
-        [SerializeField] private JCS_2DAnimation mPrecisionSelect = null;
-        [SerializeField] private JCS_2DAnimation mTextSelect = null;
-        [SerializeField] private JCS_2DAnimation mHandwriting = null;
-        [SerializeField] private JCS_2DAnimation mUnavaliable = null;
-        [SerializeField] private JCS_2DAnimation mVerticalResize = null;
-        [SerializeField] private JCS_2DAnimation mHorizontalResize = null;
-        [SerializeField] private JCS_2DAnimation mDiagonalResize1 = null;
-        [SerializeField] private JCS_2DAnimation mDiagonalResize2 = null;
-        [SerializeField] private JCS_2DAnimation mMove = null;
-        [SerializeField] private JCS_2DAnimation mAlternateSelect = null;
-        [SerializeField] private JCS_2DAnimation mLinkSelect = null;
+
+        [Tooltip("Normal select")]
+        [SerializeField]
+        private JCS_2DAnimation mNormalSelect = null;
+
+        [Tooltip("Help select")]
+        [SerializeField]
+        private JCS_2DAnimation mHelpSelect = null;
+
+        [Tooltip("Working in background")]
+        [SerializeField]
+        private JCS_2DAnimation mWorkingInBackground = null;
+
+        [Tooltip("Busy")]
+        [SerializeField]
+        private JCS_2DAnimation mBusy = null;
+
+        [Tooltip("Precision select")]
+        [SerializeField]
+        private JCS_2DAnimation mPrecisionSelect = null;
+
+        [Tooltip("Text select")]
+        [SerializeField]
+        private JCS_2DAnimation mTextSelect = null;
+
+        [Tooltip("Handwriting")]
+        [SerializeField]
+        private JCS_2DAnimation mHandwriting = null;
+
+        [Tooltip("Unavaliable")]
+        [SerializeField]
+        private JCS_2DAnimation mUnavaliable = null;
+
+        [Tooltip("Vertical resize.")]
+        [SerializeField]
+        private JCS_2DAnimation mVerticalResize = null;
+
+        [Tooltip("Horizontal resize")]
+        [SerializeField]
+        private JCS_2DAnimation mHorizontalResize = null;
+
+        [Tooltip("Diagonal resize 1")]
+        [SerializeField]
+        private JCS_2DAnimation mDiagonalResize1 = null;
+
+        [Tooltip("Diagonal resize 2")]
+        [SerializeField]
+        private JCS_2DAnimation mDiagonalResize2 = null;
+
+        [Tooltip("Move")]
+        [SerializeField]
+        private JCS_2DAnimation mMove = null;
+
+        [Tooltip("Alternate select")]
+        [SerializeField]
+        private JCS_2DAnimation mAlternateSelect = null;
+
+        [Tooltip("Link select")]
+        [SerializeField]
+        private JCS_2DAnimation mLinkSelect = null;
 
         /* Setter & Getter */
 

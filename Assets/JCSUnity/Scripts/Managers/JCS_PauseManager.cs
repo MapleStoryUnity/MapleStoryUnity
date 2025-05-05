@@ -29,9 +29,9 @@ namespace JCSUnity
         [ReadOnly]
         private float mTimeScale = 1.0f;
 
-        [Tooltip("Test this module?")]
+        [Tooltip("Turn on to test this behaviour.")]
         [SerializeField]
-        private bool mTestWithKey = false;
+        private bool mTest = false;
 
         [Tooltip("Key to toggle game pause/unpause.")]
         [SerializeField]
@@ -139,7 +139,7 @@ object you have in the list.")]
 #if UNITY_EDITOR
         private void TestPauseGame()
         {
-            if (!mTestWithKey)
+            if (!mTest)
                 return;
 
             if (Input.GetKeyDown(mToggleGamePause))
@@ -181,7 +181,7 @@ object you have in the list.")]
             mTargetTimeScale = mDefaultTimeScale;
             Time.timeScale = mDefaultTimeScale;
 
-            PauseTheWholeGame(false);
+            SetPause(false);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ object you have in the list.")]
             else
                 Time.timeScale = 0.0f;
 
-            PauseTheWholeGame(true);
+            SetPause(true);
         }
 
         /// <summary>
@@ -211,19 +211,29 @@ object you have in the list.")]
             else
                 Time.timeScale = mDefaultTimeScale;
 
-            PauseTheWholeGame(false);
+            SetPause(false);
         }
 
         /// <summary>
-        /// Pause/Unpause the whole game.
+        /// Toggle between pause/unpause the game.
         /// </summary>
-        public void PauseTheWholeGame(bool act = true)
+        public void TogglePause()
+        {
+            if (mPaused)
+                Unpause();
+            else
+                Pause();
+        }
+
+        /// <summary>
+        /// Set pause/unpause the game.
+        /// </summary>
+        public void SetPause(bool act = true)
         {
             foreach (JCS_PauseAction pauseAction in mPauseActions)
             {
                 if (pauseAction == null)
                     continue;
-
 
                 // NOTE(jenchieh): the act should be opposite with the 
                 // enable /disable.

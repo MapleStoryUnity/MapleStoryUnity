@@ -28,7 +28,15 @@ namespace JCSUnity
         public SetFloat onValueChange = null;
         public GetFloat onValueReturn = null;
 
-        private Action mValueCallback = null;
+        // Callback to execute when start tweening.
+        public Action onStart = null;
+
+        // Callback to execute when done tweening.
+        public Action onDone = null;
+
+        // Callback to execute when done tweening but only with that
+        // specific function call.
+        private Action mOnDone = null;
 
         private TweenDelegate mEasingFunc = null;
 
@@ -215,13 +223,11 @@ namespace JCSUnity
         /// </summary>
         private void DoDoneEasing()
         {
-            // trigger callback.
-            if (mValueCallback != null)
-                mValueCallback.Invoke();
+            mOnDone?.Invoke();
 
-            // trigger unity callback.
-            if (mUnityCallback != null)
-                mUnityCallback.Invoke();
+            mUnityCallback?.Invoke();
+
+            onDone?.Invoke();
         }
 
         private void UpdateValue()

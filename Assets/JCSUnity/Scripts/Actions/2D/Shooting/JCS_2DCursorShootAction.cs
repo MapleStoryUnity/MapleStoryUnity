@@ -74,9 +74,14 @@ namespace JCSUnity
         {
             Camera cam = JCS_Camera.main.GetCamera();
 
-            // Set Mouse Position in world
-            Vector3 Mouse = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
-                Input.mousePosition.z - cam.transform.position.z));
+            Vector3 mousePosition = Input.mousePosition;
+
+            // Set `mouse` Position in world
+            var mouse = cam.ScreenToWorldPoint(
+                new Vector3(
+                    mousePosition.x, 
+                    mousePosition.y,
+                    mousePosition.z - cam.transform.position.z));
 
             // line connect with curosr pos and this pos.
             Vector3 lockPos;
@@ -88,17 +93,17 @@ namespace JCSUnity
             if (JCS_Mathf.IsPositive(transform.localScale.x))
             {
                 lockPos = new Vector3(0, 0,
-                    Mathf.Atan2((Mouse.y - mShootAction.SpawnPoint.position.y),
-                    (Mouse.x - mShootAction.SpawnPoint.position.x)) * Mathf.Rad2Deg);
+                    Mathf.Atan2((mouse.y - mShootAction.SpawnPoint.position.y),
+                    (mouse.x - mShootAction.SpawnPoint.position.x)) * Mathf.Rad2Deg);
             }
             else
             {
                 lockPos = new Vector3(0, 0,
-                    Mathf.Atan2((-Mouse.y + mShootAction.SpawnPoint.position.y),
-                    (-Mouse.x + mShootAction.SpawnPoint.position.x)) * Mathf.Rad2Deg);
+                    Mathf.Atan2((-mouse.y + mShootAction.SpawnPoint.position.y),
+                    (-mouse.x + mShootAction.SpawnPoint.position.x)) * Mathf.Rad2Deg);
             }
 
-            // Have the Gun Object look at the Mouse Var
+            // Have the Gun Object look at the `mouse` Var
             mShootAction.SpawnPoint.eulerAngles = lockPos;
         }
 

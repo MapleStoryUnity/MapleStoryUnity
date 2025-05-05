@@ -20,7 +20,15 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private Action mDestinationCallback = null;
+        // Callback to execute when start tweening.
+        public Action onStart = null;
+
+        // Callback to execute when done tweening.
+        public Action onDone = null;
+
+        // Callback to execute when done tweening but only with that
+        // specific function call.
+        private Action mOnDone = null;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_TransformTweener)")]
@@ -216,9 +224,9 @@ namespace JCSUnity
 
             RandomizeDuration();
 
-            mTweenerX.SetCallback(DoneTweeningX);
-            mTweenerY.SetCallback(DoneTweeningY);
-            mTweenerZ.SetCallback(DoneTweeningZ);
+            mTweenerX.onDone = DoneTweeningX;
+            mTweenerY.onDone = DoneTweeningY;
+            mTweenerZ.onDone = DoneTweeningZ;
         }
 
         private void LateUpdate()
@@ -289,15 +297,6 @@ namespace JCSUnity
             mTweenerX.ResetTweener();
             mTweenerY.ResetTweener();
             mTweenerZ.ResetTweener();
-        }
-
-        /// <summary>
-        /// Callback when reach destination.
-        /// </summary>
-        /// <param name="func"> function pointer </param>
-        public void SetCallback(Action func)
-        {
-            mDestinationCallback = func;
         }
 
         /// <summary>
@@ -622,21 +621,31 @@ namespace JCSUnity
 
         private void SafeDoCallback()
         {
-            if (mDestinationCallback == null)
-                return;
-
             if (!this.mDoneTweenX || !this.mDoneTweenY || !this.mDoneTweenZ)
                 return;
 
-            mDestinationCallback.Invoke();
+            mOnDone?.Invoke();
+            onDone?.Invoke();
         }
 
         /// <summary>
         /// Callback for each tweener.
         /// </summary>
-        private void DoneTweeningX() { this.mDoneTweenX = true; SafeDoCallback(); }
-        private void DoneTweeningY() { this.mDoneTweenY = true; SafeDoCallback(); }
-        private void DoneTweeningZ() { this.mDoneTweenZ = true; SafeDoCallback(); }
+        private void DoneTweeningX()
+        {
+            this.mDoneTweenX = true;
+            SafeDoCallback();
+        }
+        private void DoneTweeningY()
+        {
+            this.mDoneTweenY = true;
+            SafeDoCallback();
+        }
+        private void DoneTweeningZ()
+        {
+            this.mDoneTweenZ = true;
+            SafeDoCallback();
+        }
 
         /// <summary>
         /// Prepare for tweening.
@@ -662,7 +671,8 @@ namespace JCSUnity
             TweenDelegate easingZ = null,
             Action callback = null)
         {
-            mDestinationCallback = callback;
+            onStart?.Invoke();
+            mOnDone = callback;
 
             this.mIsDoneTweening = false;
             this.mDoneTweenX = false;

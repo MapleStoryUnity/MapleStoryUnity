@@ -21,7 +21,7 @@ namespace JCSUnity
         /* Variables */
 
         // tweener effect to the object.
-        private JCS_TransformTweener mJCSTweener = null;
+        private JCS_TransformTweener mTweener = null;
 
         // when reach the certain range disable it.
         private JCS_DisableWithCertainRangeEvent mDisableWidthCertainRangeEvent = null;
@@ -66,11 +66,11 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mJCSTweener = this.GetComponent<JCS_TransformTweener>();
+            this.mTweener = this.GetComponent<JCS_TransformTweener>();
             this.mDisableWidthCertainRangeEvent = this.GetComponent<JCS_DisableWithCertainRangeEvent>();
 
             // set destination callback.
-            mJCSTweener.SetCallback(DestinationCallback);
+            mTweener.onDone = DestinationCallback;
         }
 
         private void OnEnable()
@@ -100,23 +100,23 @@ namespace JCSUnity
             else
             {
                 // set the target transform.
-                this.mJCSTweener.SetTarget(this.mTarget);
+                this.mTweener.SetTarget(this.mTarget);
                 this.mDisableWidthCertainRangeEvent.SetTarget(this.mTarget);
 
                 // starting position.
                 SetPosition(newPos);
             }
 
-            mJCSTweener.UpdateUnityData();
+            mTweener.UpdateUnityData();
 
             // reset alpha change.
-            mJCSTweener.LocalAlpha = 1.0f;
+            mTweener.LocalAlpha = 1.0f;
 
             // enable the sprite renderer component.
-            mJCSTweener.LocalEnabled = true;
+            mTweener.LocalEnabled = true;
 
             // reset tweener
-            mJCSTweener.ResetTweener();
+            mTweener.ResetTweener();
 
             // update the unity data first.
             if (mReverseDirection)
@@ -125,10 +125,10 @@ namespace JCSUnity
                  * Reverse could only use DoTween, cannot 
                  * use DoTweenContinue. 
                  */
-                mJCSTweener.DoTween(newPos);
+                mTweener.DoTween(newPos);
             }
             else
-                mJCSTweener.DoTweenContinue(this.mTarget);
+                mTweener.DoTweenContinue(this.mTarget);
         }
 
         /// <summary>
