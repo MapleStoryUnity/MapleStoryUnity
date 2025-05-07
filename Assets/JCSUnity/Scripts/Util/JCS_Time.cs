@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Provides an interface to get time information from Unity.
     /// </summary>
-    public static class JCS_Time 
+    public static class JCS_Time
     {
         /* Variables */
 
@@ -23,8 +23,9 @@ namespace JCSUnity
         /* Functions */
 
         /// <summary>
-        /// Get the time by type.
+        /// Return the time by type.
         /// </summary>
+        /// <param name="type"> The type of the time you want to get. </param>
         public static float ItTime(JCS_TimeType type)
         {
             switch (type)
@@ -51,16 +52,17 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Return the time similar to skill time.
+        /// Return the time largest unit time.
         /// 
         /// - For day: 1d
         /// - For hour: 2h
         /// - For minute: 3m
         /// - For second: 4s
         /// </summary>
-        public static string Format(float seconds)
+        /// <param name="val"> Time value. </param>
+        public static string FormatLargest(double val)
         {
-            TimeSpan time = TimeSpan.FromSeconds(seconds);
+            TimeSpan time = TimeSpan.FromSeconds(val);
 
             if (time.Days > 0)
                 return $"{time.Days}d";
@@ -72,6 +74,16 @@ namespace JCSUnity
                 return $"{time.Seconds}s";
 
             return "";
+        }
+
+        /// <summary>
+        /// Return the time string in full colon format.
+        /// </summary>
+        /// <param name="val"> Time value. </param>
+        public static string FormatFull(double val)
+        {
+            TimeSpan ts = TimeSpan.FromSeconds(val);
+            return ts.ToString(@"hh\:mm\:ss");
         }
     }
 }

@@ -32,8 +32,7 @@ namespace JCSUnity
         {
             for (int count = start; count < end; ++count)
             {
-                if (action != null)
-                    action.Invoke(count);
+                action?.Invoke(count);
             }
         }
 
@@ -57,8 +56,7 @@ namespace JCSUnity
         {
             ForEach(coll, (count, item) =>
             {
-                if (action != null)
-                    action.Invoke(item);
+                action?.Invoke(item);
             });
         }
         public static void ForEach<T>(ICollection<T> coll, Action<int, T> action)
@@ -67,8 +65,7 @@ namespace JCSUnity
 
             foreach (T item in coll)
             {
-                if (action != null)
-                    action.Invoke(count, item);
+                action?.Invoke(count, item);
 
                 ++count;
             }
@@ -83,8 +80,7 @@ namespace JCSUnity
         {
             ForEach(dict, (_, entry) =>
             {
-                if (action != null)
-                    action.Invoke(entry);
+                action?.Invoke(entry);
             });
         }
         public static void ForEach<T, V>(IDictionary<T, V> dict, Action<int, KeyValuePair<T, V>> action)
@@ -93,8 +89,32 @@ namespace JCSUnity
 
             foreach (KeyValuePair<T, V> entry in dict)
             {
-                if (action != null)
-                    action.Invoke(count, entry);
+                action?.Invoke(count, entry);
+
+                ++count;
+            }
+        }
+
+        /// <summary>
+        /// Loop through enumerator.
+        /// </summary>
+        /// <param name="action"> The callback. </param>
+        public static void ForEach<T>(Action<T> action)
+           where T : Enum
+        {
+            ForEach<T>((_, item) =>
+            {
+                action?.Invoke(item);
+            });
+        }
+        public static void ForEach<T>(Action<int, T> action)
+            where T : Enum
+        {
+            int count = 0;
+
+            foreach (T item in Enum.GetValues(typeof(T)))
+            {
+                action?.Invoke(count, item);
 
                 ++count;
             }

@@ -129,5 +129,14 @@ namespace JCSUnity
                 Range(bounds.min.y, bounds.max.y),
                 Range(bounds.min.z, bounds.max.z));
         }
+
+        /// <summary>
+        /// Return a random position in sphere.
+        /// </summary>
+        public static Vector3 PointInSphere(Vector3 centerPosition, float radius)
+        {
+            Vector3 randomPoint = Random.insideUnitSphere * radius;
+            return centerPosition + randomPoint;
+        }
     }
 }
