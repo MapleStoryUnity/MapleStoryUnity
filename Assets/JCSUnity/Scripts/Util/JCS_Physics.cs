@@ -85,8 +85,7 @@ namespace JCSUnity
         /// <param name="hits"> A list of raycast hits. </param>
         public static RaycastHit[] SortHitsByDistance(Vector3 point, RaycastHit[] hits)
         {
-            hits.OrderBy((hit) => Vector3.Distance(point, hit.point));
-            return hits;
+            return hits.OrderBy((hit) => Vector3.Distance(point, hit.point)).ToArray();
         }
 
         /// <summary>

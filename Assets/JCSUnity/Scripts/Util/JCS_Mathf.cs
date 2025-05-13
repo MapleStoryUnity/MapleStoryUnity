@@ -554,6 +554,19 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return angle on axis.
+        /// </summary>
+        /// <param name="self"> Starting vector. </param>
+        /// <param name="other"> Compare vector. </param>
+        /// <param name="axis"> Target axis to get. </param>
+        public static float AngleOnAxis(Vector3 self, Vector3 other, Vector3 axis)
+        {
+            Vector3 perpendicularSelf = Vector3.Cross(axis, self);
+            Vector3 perpendicularOther = Vector3.Cross(axis, other);
+            return Vector3.SignedAngle(perpendicularSelf, perpendicularOther, axis);
+        }
+
+        /// <summary>
         /// Truncate float number.
         /// 
         /// If 'digits'=2 and 'value'=1.345698F:

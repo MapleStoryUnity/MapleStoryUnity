@@ -48,10 +48,10 @@ namespace JCSUnity
         [Range(0.01f, 15.0f)]
         private float mDelayTime = 1.0f;
 
-        [Tooltip("Time that will randomly affect the time zone.")]
+        [Tooltip("Time that will randomly affect the time.")]
         [SerializeField]
         [Range(0.0f, 3.0f)]
-        private float mAdjustTimeZone = 1.5f;
+        private float mAdjustTime = 1.5f;
 
         [Tooltip("Axis the bullet shoots.")]
         [SerializeField]
@@ -61,7 +61,7 @@ namespace JCSUnity
 
         private bool mShooted = false;
 
-        private float mRealTimeZone = 0.0f;
+        private float mRealTime = 0.0f;
 
         private float mCount = 0.0f;
 
@@ -76,7 +76,7 @@ namespace JCSUnity
         public bool AutoShootByOrder { get { return this.mAutoShootByOrder; } set { this.mAutoShootByOrder = value; } }
         public float DegreePerShoot { get { return this.mDegreePerShoot; } set { this.mDegreePerShoot = value; } }
         public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
-        public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
+        public float AdjustTime { get { return this.mAdjustTime; } set { this.mAdjustTime = value; } }
         public JCS_Axis ShootAxis { get { return this.mShootAxis; } set { this.mShootAxis = value; } }
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
@@ -178,11 +178,11 @@ namespace JCSUnity
                 return;
 
             if (mShooted)
-                ResetTimeZone();
+                RecalculateTimeAndResetTimer();
 
             mDelayTimer += JCS_Time.ItTime(mTimeType);
 
-            if (mRealTimeZone < mDelayTimer)
+            if (mRealTime < mDelayTimer)
             {
                 ShootAllAngleByFrame();
 
@@ -200,11 +200,11 @@ namespace JCSUnity
                 return;
 
             if (mShooted)
-                ResetTimeZone();
+                RecalculateTimeAndResetTimer();
 
             mDelayTimer += JCS_Time.ItTime(mTimeType);
 
-            if (mRealTimeZone < mDelayTimer)
+            if (mRealTime < mDelayTimer)
             {
                 ShootAllAngleByOrder();
 
@@ -214,12 +214,12 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Reset the timer.
+        /// Recalculate the time and reset the timer.
         /// </summary>
-        private void ResetTimeZone()
+        private void RecalculateTimeAndResetTimer()
         {
-            float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
-            mRealTimeZone = mDelayTime + adjustTime;
+            float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
+            mRealTime = mDelayTime + adjustTime;
 
             mShooted = false;
             mDelayTimer = 0;

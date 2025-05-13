@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 11436796}
   - component: {fileID: 11453626}
   - component: {fileID: 11461692}
-  - component: {fileID: 11407940}
   - component: {fileID: 114914540437033550}
   m_Layer: 0
   m_Name: JCS_Managers
@@ -373,18 +372,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mActivePlayer: {fileID: 0}
   mPlayers: []
---- !u!114 &11407940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d95829d00ae724e81ce51e880130fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114914540437033550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTimeScale: 1
-  mTestWithKey: 0
+  mTest: 0
   mToggleGamePause: 112
   mIncTime: 110
   mDecTime: 109

@@ -16,6 +16,15 @@ namespace JCSUnity
     {
         /* Variables */
 
+        // The time delay to be invoked for the first frame.
+        //
+        // First frame invocation can't be set to 0; therefore, we set
+        // to somthing really small. Generally has to be smaller than
+        // the 1/60 frame time.
+        //
+        // See https://docs.unity3d.com/6000.1/Documentation/ScriptReference/MonoBehaviour.Invoke.html
+        public const float FIRST_FRAME_INVOKE_TIME = 0.001f;
+
         // The minimum friction value.
         public const float FRICTION_MIN = 0.01f;
 

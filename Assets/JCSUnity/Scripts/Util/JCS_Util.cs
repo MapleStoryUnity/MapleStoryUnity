@@ -1009,26 +1009,18 @@ namespace JCSUnity
         #region Clone
 
         /// <summary>
-        /// Return true if the game object is a clone.
+        /// Return true if the object is a clone.
         /// </summary>
-        public static bool IsClone(Transform trans)
-        {
-            return IsClone(trans.gameObject);
-        }
-        public static bool IsClone(GameObject obj)
+        public static bool IsClone(Object obj)
         {
             return obj.name.Contains("(Clone)");
         }
 
         /// <summary>
-        /// Remove the text "(Clone)" from game object's name,
+        /// Remove the text "(Clone)" from the object's name,
         /// and return the new name string.
         /// </summary>
-        public static string RemoveCloneString(Transform trans)
-        {
-            return RemoveCloneString(trans.gameObject);
-        }
-        public static string RemoveCloneString(GameObject obj)
+        public static string RemoveCloneString(Object obj)
         {
             obj.name = obj.name.Replace("(Clone)", "");
 
@@ -1429,8 +1421,20 @@ namespace JCSUnity
             audioSource.spatialBlend = spatialBlend;
             audioSource.volume = volume;
             audioSource.Play();
-            Object.Destroy(gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
+            DestroyClip(audioSource);
             return audioSource;
+        }
+
+        /// <summary>
+        /// Destroy the clip by its clip length.
+        /// </summary>
+        public static void DestroyClip(AudioSource source)
+        {
+            DestroyClip(source, source.clip);
+        }
+        public static void DestroyClip(AudioSource source, AudioClip clip)
+        {
+            Object.Destroy(source.gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
         }
 
         #endregion
@@ -1453,8 +1457,20 @@ namespace JCSUnity
             particleSystem.gameObject.name = "One shot particle";
             particleSystem.transform.position = position;
             particleSystem.Play();
-            Object.Destroy(particleSystem.gameObject, duration);
+            DestroyParticle(particleSystem, duration);
             return particleSystem;
+        }
+
+        /// <summary>
+        /// Destroy the particle by its duration.
+        /// </summary>
+        public static void DestroyParticle(ParticleSystem ps)
+        {
+            Object.Destroy(ps.gameObject, ps.main.duration);
+        }
+        public static void DestroyParticle(ParticleSystem ps, float duration)
+        {
+            Object.Destroy(ps.gameObject, duration);
         }
 
         #endregion

@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        // action to trigger if the time is reached.
+        // Action to trigger if the time is reached.
         public Action onAction = null;
 
         [Separator("Check Variables (JCS_AdjustTimeTrigger)")]
@@ -29,9 +29,9 @@ namespace JCSUnity
 we calculate the real time.")]
         [SerializeField]
         [ReadOnly]
-        private float mRealTimeZone = 0.0f;
+        private float mRealTime = 0.0f;
 
-        [Tooltip("Timer to check if reach the real time zone.")]
+        [Tooltip("Timer to check if reach the real time.")]
         [SerializeField]
         [ReadOnly]
         private float mTimer = 0.0f;
@@ -40,6 +40,12 @@ we calculate the real time.")]
         [SerializeField]
         [ReadOnly]
         private bool mDidAction = false;
+
+        [Separator("Initialize Variables (JCS_AdjustTimeTrigger)")]
+
+        [Tooltip("Run immediately on the first frame.")]
+        [SerializeField]
+        private bool mInvokeOnStart = true;
 
         [Separator("Runtime Variables (JCS_AdjustTimeTrigger)")]
 
@@ -50,12 +56,12 @@ we calculate the real time.")]
         [Tooltip("Time to trigger the event.")]
         [SerializeField]
         [Range(0.0f, 30.0f)]
-        private float mTimeZone = 2.0f;
+        private float mTime = 2.0f;
 
         [Tooltip("Time that will randomly affect the time.")]
         [SerializeField]
         [Range(0.0f, 20.0f)]
-        private float mAdjustTimeZone = 1.5f;
+        private float mAdjustTime = 1.5f;
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
@@ -67,13 +73,21 @@ we calculate the real time.")]
 
         /* Setter & Getter */
 
+        public bool InvokeOnStart { get { return this.mInvokeOnStart; } set { this.mInvokeOnStart = value; } }
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
-        public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
+        public float Time { get { return this.mTime; } set { this.mTime = value; } }
+        public float AdjustTime { get { return this.mAdjustTime; } set { this.mAdjustTime = value; } }
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
 
         /* Functions */
+
+        private void Start()
+        {
+            // Run immediately on the first frame.
+            if (mInvokeOnStart)
+                Invoke(nameof(ExecuteAction), JCS_Constants.FIRST_FRAME_INVOKE_TIME);
+        }
 
         private void Update()
         {
@@ -84,13 +98,39 @@ we calculate the real time.")]
         }
 
         /// <summary>
-        /// Calculate the time to do event once.
+        /// Reset time and timer, then run the action once.
         /// </summary>
-        public void ResetTimeZone()
+        public void ResetAndRun()
         {
-            float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
-            mRealTimeZone = mTimeZone + adjustTime;
+            RecalculateTimeAndResetTimer();
 
+            ExecuteAction();
+        }
+
+        /// <summary>
+        /// Recalculate the time and reset the timer.
+        /// </summary>
+        public void RecalculateTimeAndResetTimer()
+        {
+            RecalculateTime();
+
+            ResetTimer();
+        }
+
+        /// <summary>
+        /// Recalculate the real time.
+        /// </summary>
+        public void RecalculateTime()
+        {
+            float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
+            mRealTime = mTime + adjustTime;
+        }
+
+        /// <summary>
+        /// Reset the timer.
+        /// </summary>
+        public void ResetTimer()
+        {
             mDidAction = false;
             mTimer = 0.0f;
         }
@@ -102,21 +142,28 @@ we calculate the real time.")]
         private void DoAction()
         {
             if (mDidAction)
-                ResetTimeZone();
+            {
+                RecalculateTimeAndResetTimer();
+            }
 
             mTimer += JCS_Time.ItTime(mTimeType);
 
-            if (mRealTimeZone > mTimer)
+            if (mRealTime > mTimer)
                 return;
 
-            // active actions.
-            if (onAction != null)
-                onAction.Invoke();
-
-            if (mOnAction != null)
-                mOnAction.Invoke();
+            ExecuteAction();
 
             mDidAction = true;
+        }
+
+        /// <summary>
+        /// Execute the action.
+        /// </summary>
+        private void ExecuteAction()
+        {
+            onAction?.Invoke();
+
+            mOnAction?.Invoke();
         }
     }
 }

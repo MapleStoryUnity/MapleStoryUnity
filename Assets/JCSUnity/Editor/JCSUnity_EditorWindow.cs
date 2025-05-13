@@ -647,7 +647,7 @@ namespace JCSUnity
 
                     if (panelImage != null)
                     {
-                        panelImage.color = JCS_Random.PickColor();
+                        panelImage.color = JCS_Random.Color();
                     }
 
                     // assign to slide panel holder.

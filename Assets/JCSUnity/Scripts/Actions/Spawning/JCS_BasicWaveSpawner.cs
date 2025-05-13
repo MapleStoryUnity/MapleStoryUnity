@@ -233,16 +233,16 @@ namespace JCSUnity
         /// </summary>
         private void DoSpawnRandomTransform()
         {
-            // reset time zone everytime if spawned
+            // reset time everytime if spawned
             if (mSpawned)
-                ResetTimeZone();
+                RecalculateTimeAndResetTimer();
 
             mSpawnTimer += JCS_Time.ItTime(mTimeType);
 
             if (mSpawnTimer < mRealSpawnTime)
                 return;
 
-            // turn on the trigger so it will reset time zone.
+            // turn on the trigger so it will reset time.
             mSpawned = true;
 
             SpawnATransform();
@@ -262,9 +262,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Re-calculate the real time zone.
+        /// Recalculate the time and reset the timer.
         /// </summary>
-        private void ResetTimeZone()
+        private void RecalculateTimeAndResetTimer()
         {
             float adjustTime = JCS_Random.Range(-mRandomizeSpawnTime, mRandomizeSpawnTime);
             mRealSpawnTime = mSpawnTime + adjustTime;

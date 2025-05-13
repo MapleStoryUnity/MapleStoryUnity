@@ -39,21 +39,21 @@ namespace JCSUnity
         [Tooltip("Time to do one jump.")]
         [SerializeField]
         [Range(0.0f, 10.0f)]
-        private float mTimeZone = 2.0f;
+        private float mTime = 2.0f;
 
-        [Tooltip("Time that will randomly affect the time zone.")]
+        [Tooltip("Time that will randomly affect the time.")]
         [SerializeField]
         [Range(0.0f, 3.0f)]
-        private float mAdjustTimeZone = 1.5f;
+        private float mAdjustTime = 1.5f;
 
         // time to record down the real time to do one jump after we calculate
         // the real time.
-        private float mRealTimeZone = 0;
+        private float mRealTime = 0;
 
         // timer to do jump.
         private float mTimer = 0;
 
-        // check to see if we can reset our time zone.
+        // check to see if we can reset our time.
         private bool mJumped = false;
 
         [Tooltip("Type of the delta time.")]
@@ -100,8 +100,8 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
 
         // Action Variables
         public float JumpForce { get { return this.mJumpForce; } set { this.mJumpForce = value; } }
-        public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
-        public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
+        public float AdjustTime { get { return this.mAdjustTime; } set { this.mAdjustTime = value; } }
+        public float Time { get { return this.mTime; } set { this.mTime = value; } }
         public float Possibility { get { return this.mPossibility; } set { this.mPossibility = value; } }
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
@@ -175,7 +175,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
             // do animation
             mLiveObjectAnimator.DoAnimation(JCS_LiveObjectState.JUMP);
 
-            // next frame re-calculate the time zone.
+            // next frame re-calculate the time.
             mJumped = true;
 
             // start check if grounded and end the jump animation.
@@ -189,23 +189,23 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         private void DoJump()
         {
             if (mJumped)
-                ResetTimeZone();
+                RecalculateTimeAndResetTimer();
 
             mTimer += JCS_Time.ItTime(mTimeType);
 
-            if (mTimer < mRealTimeZone)
+            if (mTimer < mRealTime)
                 return;
 
             JumpByPossibility();
         }
 
         /// <summary>
-        /// Algorithm to calculate the time to do one jump.
+        /// Recalculate the time and reset the timer.
         /// </summary>
-        private void ResetTimeZone()
+        private void RecalculateTimeAndResetTimer()
         {
-            float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
-            mRealTimeZone = mTimeZone + adjustTime;
+            float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
+            mRealTime = mTime + adjustTime;
 
             mJumped = false;
             mTimer = 0;

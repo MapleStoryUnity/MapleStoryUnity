@@ -71,9 +71,6 @@ namespace JCSUnity
         [Tooltip("Can tribe damage each other?")]
         public bool TRIBE_DAMAGE_EACH_OTHER = false;
 
-        [Tooltip("Careful, this will override player ignore options!")]
-        public bool IGNORE_EACH_OTHER_CHARACTER_CONTROLLER = true;
-
         [Header("- Resources")]
 
         [Tooltip("Base URL for streaming assets, please point to a directory.")]

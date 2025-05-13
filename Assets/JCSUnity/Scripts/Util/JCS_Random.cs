@@ -63,12 +63,74 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return a random vector 2 int.
+        /// </summary>
+        public static Vector2Int Vector2Int(int min, int max)
+        {
+            int x = Range(min, max);
+            int y = Range(min, max);
+            return new Vector2Int(x, y);
+        }
+
+        /// <summary>
+        /// Return a random vector 2.
+        /// </summary>
+        public static Vector2 Vector2(float min, float max)
+        {
+            float x = Range(min, max);
+            float y = Range(min, max);
+            return new Vector2(x, y);
+        }
+
+        /// <summary>
+        /// Return a random vector 3 int.
+        /// </summary>
+        public static Vector3Int Vector3Int(int min, int max)
+        {
+            int x = Range(min, max);
+            int y = Range(min, max);
+            int z = Range(min, max);
+            return new Vector3Int(x, y, z);
+        }
+
+        /// <summary>
+        /// Return a random vector 3.
+        /// </summary>
+        public static Vector3 Vector3(float min, float max)
+        {
+            float x = Range(min, max);
+            float y = Range(min, max);
+            float z = Range(min, max);
+            return new Vector3(x, y, z);
+        }
+
+        /// <summary>
+        /// Return a random Quaternion.
+        /// </summary>
+        public static Quaternion Quaternion(float min, float max)
+        {
+            float x = Range(min, max);
+            float y = Range(min, max);
+            float z = Range(min, max);
+            return UnityEngine.Quaternion.Euler(x, y, z);
+        }
+
+        /// <summary>
         /// Return a random color.
         /// </summary>
         /// <returns> random color object. </returns>
-        public static Color PickColor(float a = 1.0f)
+        public static Color Color()
         {
-            return new Color(Range(0.0f, 1.0f), Range(0.0f, 1.0f), Range(0.0f, 1.0f), a);
+            float a = Range(0.0f, 1.0f);
+            return Color(a);
+        }
+        public static Color Color(float a = 1.0f)
+        {
+            float x = Range(0.0f, 1.0f);
+            float y = Range(0.0f, 1.0f);
+            float z = Range(0.0f, 1.0f);
+
+            return new Color(x, y, z, a);
         }
 
         /// <summary>

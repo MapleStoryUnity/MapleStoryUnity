@@ -66,7 +66,7 @@ namespace JCSUnity
 
             SetSpecificGameTypeGameManager();
 
-            Invoke("OnFirstFrame", 0.0f);
+            Invoke(nameof(OnFirstFrame), JCS_Constants.FIRST_FRAME_INVOKE_TIME);
         }
 
         /// <summary>
