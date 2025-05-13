@@ -73,18 +73,18 @@ namespace JCSUnity
                             this.transform.localPosition
                                 = JCS_Mathf.CirclePositionX(
                                     this.mOrigin.localPosition,
+                                    this.transform.localPosition,
                                     this.mDegree,
-                                    this.mRadius,
-                                    this.transform.localPosition);
+                                    this.mRadius);
                         }
                         else
                         {
                             this.transform.position
                                 = JCS_Mathf.CirclePositionX(
                                     this.mOrigin.position,
+                                    this.transform.position,
                                     this.mDegree,
-                                    this.mRadius,
-                                    this.transform.position);
+                                    this.mRadius);
                         }
                     }
                     break;
@@ -95,18 +95,18 @@ namespace JCSUnity
                             this.transform.localPosition
                                 = JCS_Mathf.CirclePositionY(
                                     this.mOrigin.localPosition,
+                                    this.transform.localPosition,
                                     this.mDegree,
-                                    this.mRadius,
-                                    this.transform.localPosition);
+                                    this.mRadius);
                         }
                         else
                         {
                             this.transform.position
                                 = JCS_Mathf.CirclePositionY(
                                     this.mOrigin.position,
+                                    this.transform.position,
                                     this.mDegree,
-                                    this.mRadius,
-                                    this.transform.position);
+                                    this.mRadius);
                         }
                     }
                     break;
@@ -117,18 +117,18 @@ namespace JCSUnity
                             this.transform.localPosition
                                 = JCS_Mathf.CirclePositionZ(
                                     this.mOrigin.localPosition,
+                                    this.transform.localPosition,
                                     this.mDegree,
-                                    this.mRadius,
-                                    this.transform.localPosition);
+                                    this.mRadius);
                         }
                         else
                         {
                             this.transform.position
                                 = JCS_Mathf.CirclePositionZ(
                                     this.mOrigin.position,
+                                    this.transform.position,
                                     this.mDegree,
-                                    this.mRadius,
-                                    this.transform.position);
+                                    this.mRadius);
                         }
                     }
                     break;

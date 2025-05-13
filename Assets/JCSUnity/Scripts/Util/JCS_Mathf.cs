@@ -637,38 +637,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 計算旋轉的點 (JCS_VECTOR2F)
-        /// </summary>
-        /// <param name="point"> 我們要計算的"點" </param>
-        /// <param name="cos"> Cos 的角度 "Cos(angle)" </param>
-        /// <param name="sin"> Sin 的角度 "Sin(angle)" </param>
-        /// <param name="origin"> 以這個"點"為中心旋轉 </param>
-        public static Vector3 RotatePointX(
-            Vector3 point, float cos, float sin, Vector3 origin)
-        {
-            return new Vector3(
-            point.x,
-            origin.z + ((point.z - origin.z) * cos) - ((point.y - origin.y) * sin),
-            origin.y + ((point.z - origin.z) * sin) + ((point.y - origin.y) * cos));
-        }
-        public static Vector3 RotatePointZ(
-            Vector3 point, float cos, float sin, Vector3 origin)
-        {
-            return new Vector3(
-            origin.x + ((point.x - origin.x) * cos) - ((point.y - origin.y) * sin),
-            origin.y + ((point.x - origin.x) * sin) + ((point.y - origin.y) * cos),
-            point.z);
-        }
-        public static Vector3 RotatePointY(
-            Vector3 point, float cos, float sin, Vector3 origin)
-        {
-            return new Vector3(
-            origin.x + ((point.x - origin.x) * cos) - ((point.z - origin.z) * sin),
-            point.y,
-            origin.z + ((point.x - origin.x) * sin) + ((point.z - origin.z) * cos));
-        }
-
-        /// <summary>
         /// Return a new position after rotate around the pivot.
         /// 
         /// Source: https://discussions.unity.com/t/rotate-a-vector-around-a-certain-point/81225/2
@@ -682,6 +650,58 @@ namespace JCSUnity
             dir = Quaternion.Euler(angles) * dir;
             point = dir + pivot;
             return point;
+        }
+
+        /// <summary>
+        /// Rotate a point around a pivot based on the rotation from 
+        /// fromDir to toDir.
+        /// </summary>
+        /// <param name="fromDir"> The initial direction vector. </param>
+        /// <param name="toDir"> The target direction vector. </param>
+        /// <param name="point"> The point to rotate. </param>
+        /// <param name="pivot"> The pivot point to rotate around. </param>
+        /// <returns> The rotated point. </returns>
+        public static Vector3 RotatePointFromToDirection(Vector3 fromDir, Vector3 toDir, Vector3 point, Vector3 pivot)
+        {
+            if (fromDir == toDir)
+                return point;
+
+            Quaternion rotation = Quaternion.FromToRotation(fromDir, toDir);
+            Vector3 dir = point - pivot;
+            Vector3 rotatedDir = rotation * dir;
+            return pivot + rotatedDir;
+        }
+
+        /// <summary>
+        /// 計算旋轉的點 (JCS_VECTOR2F)
+        /// </summary>
+        /// <param name="point"> 我們要計算的"點" </param>
+        /// <param name="cos"> Cos 的角度 "Cos(angle)" </param>
+        /// <param name="sin"> Sin 的角度 "Sin(angle)" </param>
+        /// <param name="origin"> 以這個"點"為中心旋轉 </param>
+        public static Vector3 RotatePointX(
+            Vector3 point, float cos, float sin, Vector3 origin)
+        {
+            return new Vector3(
+                point.x,
+                origin.z + ((point.z - origin.z) * cos) - ((point.y - origin.y) * sin),
+                origin.y + ((point.z - origin.z) * sin) + ((point.y - origin.y) * cos));
+        }
+        public static Vector3 RotatePointZ(
+            Vector3 point, float cos, float sin, Vector3 origin)
+        {
+            return new Vector3(
+                origin.x + ((point.x - origin.x) * cos) - ((point.y - origin.y) * sin),
+                origin.y + ((point.x - origin.x) * sin) + ((point.y - origin.y) * cos),
+                point.z);
+        }
+        public static Vector3 RotatePointY(
+            Vector3 point, float cos, float sin, Vector3 origin)
+        {
+            return new Vector3(
+                origin.x + ((point.x - origin.x) * cos) - ((point.z - origin.z) * sin),
+                point.y,
+                origin.z + ((point.x - origin.x) * sin) + ((point.z - origin.z) * cos));
         }
 
         /// <summary>
@@ -721,9 +741,13 @@ namespace JCSUnity
         /// <param name="deg"> degree </param>
         /// <param name="radius"> radius from the origin. </param>
         /// <returns> Vector3 : point on the circle. </returns>
-        public static Vector3 CirclePositionX(Vector3 origin, float deg, float radius, Vector3 objPos)
+        public static Vector3 CirclePositionX(Vector3 origin, Vector3 objPos, float deg)
         {
-            return CirclePosition(origin, deg, radius, objPos, JCS_Axis.AXIS_X);
+            return CirclePositionX(origin, objPos, deg, Vector3.Distance(origin, objPos));
+        }
+        public static Vector3 CirclePositionX(Vector3 origin, Vector3 objPos, float deg, float radius)
+        {
+            return CirclePosition(origin, objPos, deg, radius, JCS_Axis.AXIS_X);
         }
 
         /// <summary>
@@ -734,9 +758,13 @@ namespace JCSUnity
         /// <param name="deg"> degree </param>
         /// <param name="radius"> radius from the origin. </param>
         /// <returns> Vector3 : point on the circle. </returns>
-        public static Vector3 CirclePositionY(Vector3 origin, float deg, float radius, Vector3 objPos)
+        public static Vector3 CirclePositionY(Vector3 origin, Vector3 objPos, float deg)
         {
-            return CirclePosition(origin, deg, radius, objPos, JCS_Axis.AXIS_Y);
+            return CirclePositionY(origin, objPos, deg, Vector3.Distance(origin, objPos));
+        }
+        public static Vector3 CirclePositionY(Vector3 origin, Vector3 objPos, float deg, float radius)
+        {
+            return CirclePosition(origin, objPos, deg, radius, JCS_Axis.AXIS_Y);
         }
 
         /// <summary>
@@ -747,9 +775,13 @@ namespace JCSUnity
         /// <param name="deg"> degree </param>
         /// <param name="radius"> radius from the origin. </param>
         /// <returns> Vector3 : point on the circle. </returns>
-        public static Vector3 CirclePositionZ(Vector3 origin, float deg, float radius, Vector3 objPos)
+        public static Vector3 CirclePositionZ(Vector3 origin, Vector3 objPos, float deg)
         {
-            return CirclePosition(origin, deg, radius, objPos, JCS_Axis.AXIS_Z);
+            return CirclePositionZ(origin, objPos, deg, Vector3.Distance(origin, objPos));
+        }
+        public static Vector3 CirclePositionZ(Vector3 origin, Vector3 objPos, float deg, float radius)
+        {
+            return CirclePosition(origin, objPos, deg, radius, JCS_Axis.AXIS_Z);
         }
 
         /// <summary>
@@ -761,7 +793,7 @@ namespace JCSUnity
         /// <param name="radius"> radius from the origin. </param>
         /// <param name="axis"> Around which axis? </param>
         /// <returns> Vector3 : point on the circle. </returns>
-        public static Vector3 CirclePosition(Vector3 origin, float deg, float radius, Vector3 objPos, JCS_Axis axis)
+        public static Vector3 CirclePosition(Vector3 origin, Vector3 objPos, float deg, float radius, JCS_Axis axis)
         {
             deg = deg % 360.0f;
 
