@@ -30,7 +30,7 @@ namespace JCSUnity
 
             // Check to see if there is audio attach in the game or not!
             if (mAudioSource.clip == null)
-                JCS_Debug.LogError("Sound Effect Object with out audio clip init...");
+                Debug.LogError("Sound Effect Object with out audio clip init...");
         }
     }
 }

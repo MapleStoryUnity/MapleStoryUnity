@@ -142,13 +142,13 @@ namespace JCSUnity
         {
             if (mShootAction.Bullet == null)
             {
-                JCS_Debug.LogReminder("There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
+                Debug.Log("There is no bullet assign to `JCS_ShootAction`, so we can't shoot a sequence");
                 return;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.LogReminder("Can't shoot sequence of bullet with lower than 0 hit...");
+                Debug.Log("Can't shoot sequence of bullet with lower than 0 hit");
                 return;
             }
 
@@ -410,19 +410,19 @@ namespace JCSUnity
         {
             if (minDamage > maxDamage)
             {
-                JCS_Debug.LogError("min damage cannot be higher or equal to the max damage!");
+                Debug.LogError("min damage cannot be higher or equal to the max damage!");
                 return null;
             }
 
             if (minDamage < 0 || maxDamage < 0)
             {
-                JCS_Debug.LogError("Min or Max damage cannot be lower than 0!");
+                Debug.LogError("Min or Max damage cannot be lower than 0!");
                 return null;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.LogError("Hit count should not be equal or lower than 0!");
+                Debug.LogError("Hit count should not be equal or lower than 0!");
                 return null;
             }
 

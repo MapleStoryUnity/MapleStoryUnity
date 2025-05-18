@@ -91,14 +91,14 @@ namespace JCSUnity
             switch (mGUIType)
             {
                 case JCS_GUIType.NONE:
-                    JCS_Debug.LogError("Setting with no meaning...");
+                    Debug.LogError("Setting with no meaning...");
                     return;
                 case JCS_GUIType.TOGGLE:
                     {
                         this.mToggle = this.GetComponent<Toggle>();
                         if (mToggle == null)
                         {
-                            JCS_Debug.LogError("Toggle with no corrosdoing component...");
+                            Debug.LogError("Toggle with no corrosdoing component...");
                             return;
                         }
                     }
@@ -108,7 +108,7 @@ namespace JCSUnity
                         this.mSlider = this.GetComponent<Slider>();
                         if (mSlider == null)
                         {
-                            JCS_Debug.LogError("Slider with no corrosdoing component...");
+                            Debug.LogError("Slider with no corrosdoing component...");
                             return;
                         }
                         // assign value;
@@ -120,7 +120,7 @@ namespace JCSUnity
                         this.mScrollbar = this.GetComponent<Scrollbar>();
                         if (mScrollbar == null)
                         {
-                            JCS_Debug.LogError("Scrollbar with no corrosdoing component...");
+                            Debug.LogError("Scrollbar with no corrosdoing component...");
                             return;
                         }
                     }
@@ -130,7 +130,7 @@ namespace JCSUnity
                         this.mDropdown = this.GetComponent<Dropdown>();
                         if (mDropdown == null)
                         {
-                            JCS_Debug.LogError("Dropdown with no corrosdoing component...");
+                            Debug.LogError("Dropdown with no corrosdoing component...");
                             return;
                         }
                     }
@@ -140,7 +140,7 @@ namespace JCSUnity
                         this.mInputField = this.GetComponent<InputField>();
                         if (mInputField == null)
                         {
-                            JCS_Debug.LogError("InputField with no corrosdoing component...");
+                            Debug.LogError("InputField with no corrosdoing component...");
                             return;
                         }
                     }

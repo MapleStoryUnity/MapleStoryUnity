@@ -8,6 +8,7 @@
  */
 using System;
 using System.IO;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -73,9 +74,9 @@ namespace JCSUnity
             else
             {
                 if (packetHandler == null)
-                    JCS_Debug.Log("Exception during processing packet: null");
+                    Debug.Log("Exception during processing packet: null");
                 else
-                    JCS_Debug.Log("Exception during processing packet: " + packetHandler);
+                    Debug.Log("Exception during processing packet: " + packetHandler);
             }
         }
 

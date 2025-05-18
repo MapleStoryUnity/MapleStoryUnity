@@ -95,7 +95,7 @@ namespace JCSUnity
         {
             if (JCS_UIManager.instance.GetJCSDialogue(type) != null)
             {
-                JCS_Debug.LogError("(" + type.ToString() + ")No able to spawn Game UI cuz there are multiple GameUI in the scene...");
+                Debug.LogError("(" + type.ToString() + ")No able to spawn Game UI cuz there are multiple GameUI in the scene...");
                 return false;
             }
 
@@ -112,13 +112,13 @@ namespace JCSUnity
             // so it will block the lower priority dialogue type
             if (JCS_UIManager.instance.GetJCSDialogue(type) != null)
             {
-                JCS_Debug.LogError("(" + type.ToString() + ")No able to spawn Dialogue cuz there are multiple dialogue in the scene...");
+                Debug.LogError("(" + type.ToString() + ")No able to spawn Dialogue cuz there are multiple dialogue in the scene...");
                 return false;
             }
 
             if (JCS_Canvas.GuessCanvas() == null)
             {
-                JCS_Debug.LogError("No able to spawn Dialogue cuz Canvas are null...");
+                Debug.LogError("No able to spawn Dialogue cuz Canvas are null...");
                 return false;
             }
 
@@ -128,14 +128,14 @@ namespace JCSUnity
         /// <summary>
         /// Pop the JCS_BlackScreen object.
         /// </summary>
-        public static void PopJCSBlackScreen()
+        public static void PopBlackScreen()
         {
             string path = JCS_UISettings.BLACK_SCREEN_PATH;
             var bs = JCS_Util.Instantiate(path).GetComponent<JCS_BlackScreen>();
 
             if (bs == null)
             {
-                JCS_Debug.LogError("GameObject without \"JCS_BlackScreen\" Component attached!!!");
+                Debug.LogError("GameObject without `JCS_BlackScreen` component attached");
                 return;
             }
 
@@ -145,14 +145,14 @@ namespace JCSUnity
         /// <summary>
         /// Pop the JCS_BlackSlideScreen object.
         /// </summary>
-        public static void PopJCSBlackSlideScreen()
+        public static void PopBlackSlideScreen()
         {
             string path = JCS_UISettings.BLACK_SLIDE_SCREEN_PATH;
             var bs = JCS_Util.Instantiate(path).GetComponent<JCS_BlackSlideScreen>();
 
             if (bs == null)
             {
-                JCS_Debug.LogError("GameObject without \"JCS_BlackScreen\" Component attached!!!");
+                Debug.LogError("GameObject without `JCS_BlackScreen` component attached");
                 return;
             }
 
@@ -162,14 +162,14 @@ namespace JCSUnity
         /// <summary>
         /// Spawn a white screen.
         /// </summary>
-        public static void PopJCSWhiteScreen()
+        public static void PopWhiteScreen()
         {
             string path = JCS_UISettings.WHITE_SCREEN_PATH;
             var ws = JCS_Util.Instantiate(path).GetComponent<JCS_WhiteScreen>();
 
             if (ws == null)
             {
-                JCS_Debug.LogError("GameObject without `JCS_WhiteScreen` Component attached!!!");
+                Debug.LogError("GameObject without `JCS_WhiteScreen` component attached");
                 return;
             }
 

@@ -72,7 +72,7 @@ namespace JCSUnity
         {
             if (source == null)
             {
-                JCS_Debug.LogError("Source assign are null references");
+                Debug.LogError("Source assign are null references");
                 return;
             }
 
@@ -93,13 +93,13 @@ namespace JCSUnity
         {
             if (mType == JCS_FadeType.OUT)
             {
-                JCS_Debug.LogError("Already fade out");
+                Debug.LogError("Already fade out");
                 return;
             }
 
             if (mAudioSource == null)
             {
-                JCS_Debug.LogError("Can't do the fade out effect without audio source");
+                Debug.LogError("Can't do the fade out effect without audio source");
                 return;
             }
 
@@ -121,13 +121,13 @@ namespace JCSUnity
         {
             if (mType == JCS_FadeType.IN)
             {
-                JCS_Debug.LogError("Already fade in");
+                Debug.LogError("Already fade in");
                 return;
             }
 
             if (mAudioSource == null)
             {
-                JCS_Debug.LogError("Can't do the fade in effect without audio source");
+                Debug.LogError("Can't do the fade in effect without audio source");
                 return;
             }
 

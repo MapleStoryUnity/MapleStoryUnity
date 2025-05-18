@@ -128,7 +128,7 @@ namespace JCSUnity
             this.mColorTweener = this.GetComponent<JCS_ColorTweener>();
 
             // Add interactable callback.
-            this.interactableCallback += InteractableCallback;
+            this.onInteractableStateChanged += OnInteractableStateChanged;
         }
 
         private void Start()
@@ -271,7 +271,7 @@ namespace JCSUnity
         /// <summary>
         /// After set interactable callback.
         /// </summary>
-        private void InteractableCallback()
+        private void OnInteractableStateChanged()
         {
             Color targetBackgroundColor = mOnBackgroundColor;
             Color targetButtonColor = mOnButtonColor;

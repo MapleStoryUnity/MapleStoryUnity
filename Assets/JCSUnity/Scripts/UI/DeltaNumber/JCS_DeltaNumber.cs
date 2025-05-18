@@ -293,7 +293,7 @@ should disable this effect for best purpose.")]
             {
                 if (mDigitsRendererSlot[digit] == null)
                 {
-                    JCS_Debug.LogError("Digit slot cannot be null references");
+                    Debug.LogError("Digit slot cannot be null references");
                     continue;
                 }
 
@@ -324,7 +324,7 @@ should disable this effect for best purpose.")]
             {
                 if (mDigitsRendererSlot[digit] == null)
                 {
-                    JCS_Debug.LogError(
+                    Debug.LogError(
                         "Digit slot cannot be null references...");
                     continue;
                 }
@@ -483,7 +483,7 @@ should disable this effect for best purpose.")]
             {
                 if (mDigitsRendererSlot[digit] == null)
                 {
-                    JCS_Debug.LogError(
+                    Debug.LogError(
                         "Digit slot cannot be null references...");
                     continue;
                 }

@@ -230,7 +230,7 @@ namespace JCSUnity
 
             if (notFound)
             {
-                JCS_Debug.LogError(type.ToString() + " animation does not assign");
+                Debug.LogError(type.ToString() + " animation does not assign");
                 return;
             }
 

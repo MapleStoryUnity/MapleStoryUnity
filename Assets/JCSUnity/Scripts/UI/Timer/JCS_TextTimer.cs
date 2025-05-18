@@ -205,7 +205,7 @@ namespace JCSUnity
             if (mTextLegacy == null)
 #endif
             {
-                JCS_Debug.LogError("Text slot cannot be null references");
+                Debug.LogError("Text slot cannot be null references");
                 return;
             }
 

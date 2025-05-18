@@ -73,7 +73,7 @@ namespace JCSUnity
         {
             if (mRollBtnSelector == null)
             {
-                JCS_Debug.LogError("No Roll Button Selector attached");
+                Debug.LogError("No Roll Button Selector attached");
                 return;
             }
 
@@ -130,7 +130,7 @@ namespace JCSUnity
         {
             if (mRollBtnSelector == null)
             {
-                JCS_Debug.LogError("This button has been set focus but without the handler");
+                Debug.LogError("This button has been set focus but without the handler");
                 return;
             }
 

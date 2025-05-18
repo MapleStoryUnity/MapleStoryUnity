@@ -727,7 +727,7 @@ namespace JCSUnity
                 // so do it only when is debug mode.
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogError("Start the tween but the target is null");
+                    Debug.LogError("Start the tween but the target is null");
                 }
 #endif
 

@@ -253,7 +253,7 @@ namespace JCSUnity
         {
             if (mDigitHour1 == null || mDigitHour2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references");
+                Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -278,7 +278,7 @@ namespace JCSUnity
         {
             if (mDigitMinute1 == null || mDigitMinute2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references");
+                Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -303,7 +303,7 @@ namespace JCSUnity
         {
             if (mDigitSecond1 == null || mDigitSecond2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references");
+                Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -350,7 +350,7 @@ namespace JCSUnity
         {
             if (mDigitHour1 == null || mDigitHour2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references");
+                Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -380,7 +380,7 @@ namespace JCSUnity
         {
             if (mDigitMinute1 == null || mDigitMinute2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references");
+                Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -410,7 +410,7 @@ namespace JCSUnity
         {
             if (mDigitSecond1 == null || mDigitSecond2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references");
+                Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 

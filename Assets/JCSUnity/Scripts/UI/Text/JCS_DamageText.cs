@@ -354,7 +354,7 @@ namespace JCSUnity
                         newScale.y += applyRandom;
                     }
                     else
-                        JCS_Debug.LogError("Max size cannot be smaller than Min size");
+                        Debug.LogError("Max size cannot be smaller than Min size");
                 }
 
                 sr.transform.localScale = newScale;

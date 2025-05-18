@@ -109,13 +109,13 @@ namespace JCSUnity
         {
             if (mClone == null)
             {
-                JCS_Debug.LogReminder("Can't create new linked node without the clone");
+                Debug.Log("Can't create new linked node without the clone");
                 return null;
             }
 
             if (n <= 0)
             {
-                JCS_Debug.LogReminder("Can't create new linked node N lower than 1");
+                Debug.Log("Can't create new linked node N lower than 1");
                 return null;
             }
 
@@ -153,7 +153,7 @@ namespace JCSUnity
         {
             if (!JCS_Util.WithInRange(startIndex, mManagedList))
             {
-                JCS_Debug.LogReminder("Can't remove linked node with index lower than 0");
+                Debug.Log("Can't remove linked node with index lower than 0");
                 return null;
             }
 

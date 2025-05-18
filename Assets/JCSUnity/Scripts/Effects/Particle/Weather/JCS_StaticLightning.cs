@@ -75,7 +75,7 @@ namespace JCSUnity
         {
             if (mLightning == null)
             {
-                JCS_Debug.LogWarning("Lightning effect without white screen invalid");
+                Debug.LogWarning("Lightning effect without white screen invalid");
                 return;
             }
 

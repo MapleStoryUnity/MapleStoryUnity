@@ -122,7 +122,7 @@ namespace JCSUnity
                         requestCallback = callback;
                     else
                     {
-                        JCS_Debug.LogWarning("Override request callback is denied");
+                        Debug.LogWarning("Override request callback is denied");
                     }
                 }
                 AddDownloadTarget(path);
@@ -205,7 +205,7 @@ namespace JCSUnity
 #endif
             {
                 if (JCS_GameSettings.instance.DEBUG_MODE)
-                    JCS_Debug.LogWarning(www.error);
+                    Debug.LogWarning(www.error);
             }
             else
             {

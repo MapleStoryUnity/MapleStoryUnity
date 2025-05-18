@@ -45,7 +45,7 @@ namespace JCSUnity
 
             if (mDetectCollider.Length == 0)
             {
-                JCS_Debug.LogReminder("No Collider assing for dectetion");
+                Debug.Log("No Collider assing for dectetion");
             }
 
 
@@ -54,7 +54,7 @@ namespace JCSUnity
 
                 if (mDetectCollider[index] == null)
                 {
-                    JCS_Debug.LogReminder("No Collider assing for dectetion");
+                    Debug.Log("No Collider assing for dectetion");
                     continue;
                 }
 

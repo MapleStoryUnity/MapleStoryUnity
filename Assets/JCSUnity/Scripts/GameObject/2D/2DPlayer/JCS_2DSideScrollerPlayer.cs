@@ -672,7 +672,7 @@ namespace JCSUnity
         {
             if (!mHitEffect)
             {
-                JCS_Debug.LogError("You call the function without checking the hit effect?");
+                Debug.LogError("You call the function without checking the hit effect?");
                 return;
             }
 

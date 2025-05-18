@@ -30,7 +30,7 @@ namespace JCSUnity
     /// <summary>
     /// Common Logger for JCSUnity.
     /// 
-    /// This log more detail than just a log from 'JCS_Debug'.
+    /// This log more detail than just a log from 'Debug'.
     /// </summary>
     public static class JCS_Logger
     {

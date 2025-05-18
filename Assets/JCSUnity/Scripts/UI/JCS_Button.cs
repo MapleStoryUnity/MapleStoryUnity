@@ -32,19 +32,16 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public delegate void CallBackFuncBtn(JCS_Button btn);
-        public delegate void CallBackFuncBtnInt(int selection);
-
         // framework only callback, do not override this callback
-        public Action btnSystemCallBack = null;
-        public CallBackFuncBtn btnSystemCallBackBtn = null;
-        public CallBackFuncBtnInt btnSystemCallBackBtnInt = null;
+        public Action sysOnClick = null;
+        public Action<JCS_Button> sysOnClickBtn = null;
+        public Action<int> sysOnClickSelection = null;
 
         // user callback
-        public Action btnCallBack = null;
-        public CallBackFuncBtn btnCallBackBtn = null;
+        public Action onClick = null;
+        public Action<JCS_Button> onClickBtn = null;
 
-        public Action interactableCallback = null;
+        public Action onInteractableStateChanged = null;
 
         [Separator("Check Variables (JCS_Button)")]
 
@@ -120,13 +117,11 @@ namespace JCSUnity
         public bool IsSelectedInGroup { get { return this.mIsSelectedInGroup; } }
 
         /* Compatible with version 1.5.3 */
-        public void SetCallback(Action func) { this.btnCallBack += func; }
-        public void SetCallback(CallBackFuncBtn func) { this.btnCallBackBtn += func; }
-        public void SetSystemCallback(Action func) { this.btnSystemCallBack += func; }
-        public void SetSystemCallback(CallBackFuncBtn func) { this.btnSystemCallBackBtn += func; }
-        public void SetSystemCallback(CallBackFuncBtnInt func, int selection)
+        public void SetSystemCallback(Action func) { this.sysOnClick += func; }
+        public void SetSystemCallback(Action<JCS_Button> func) { this.sysOnClickBtn += func; }
+        public void SetSystemCallback(Action<int> func, int selection)
         {
-            this.btnSystemCallBackBtnInt += func;
+            this.sysOnClickSelection += func;
             this.mDialogueSelection = selection;
         }
 
@@ -198,21 +193,14 @@ namespace JCSUnity
                 return;
 
             /* System callback */
-            if (btnSystemCallBack != null)
-                btnSystemCallBack.Invoke();
-
-            if (btnSystemCallBackBtn != null)
-                btnSystemCallBackBtn.Invoke(this);
-
-            if (btnSystemCallBackBtnInt != null)
-                btnSystemCallBackBtnInt.Invoke(this.mDialogueSelection);
+            sysOnClick?.Invoke();
+            sysOnClickBtn?.Invoke(this);
+            sysOnClickSelection?.Invoke(this.mDialogueSelection);
 
             /* User callback */
-            if (btnCallBack != null)
-                btnCallBack.Invoke();
 
-            if (btnCallBackBtn != null)
-                btnCallBackBtn.Invoke(this);
+            onClick?.Invoke();
+            onClickBtn?.Invoke(this);
         }
 
         /// <summary>
@@ -247,8 +235,7 @@ namespace JCSUnity
                 mButtonSelection.SetSkip(!mInteractable, true);
 
             // interactable callback.
-            if (interactableCallback != null)
-                interactableCallback.Invoke();
+            onInteractableStateChanged?.Invoke();
         }
         public virtual void SetInteractable(bool act)
         {

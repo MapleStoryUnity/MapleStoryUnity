@@ -244,7 +244,7 @@ built-in Unity Engine.")]
                 // check if null.
                 if (spawnTrans == null)
                 {
-                    JCS_Debug.LogError(
+                    Debug.LogError(
                         "Spawning object detect that are null references... Could not spawn the object!");
 
                     break;

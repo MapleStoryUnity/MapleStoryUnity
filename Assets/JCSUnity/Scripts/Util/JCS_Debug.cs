@@ -1,13 +1,11 @@
 ﻿/**
- * $File: JCS_Debug.cs $
+ * $File: Debug.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.IO;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace JCSUnity
@@ -24,99 +22,14 @@ namespace JCSUnity
         /* Functions */
 
         /// <summary>
-        /// Print out log by deesign by JCSUnity format. (Log)
-        /// </summary>
-        /// <param name="msg"> msg to print out. </param>
-        /// <param name="file"> caller file path. </param>
-        /// <param name="member"> caller function. </param>
-        /// <param name="line"> caller line number. </param>
-        public static void Log(
-            object msg,
-            [CallerFilePath] string file = "",
-            [CallerMemberName] string member = "",
-            [CallerLineNumber] int line = 0)
-        {
-            JcsLog("LOG", msg.ToString(), file, member, line);
-        }
-
-        /// <summary>
-        /// Print out log by deesign by JCSUnity format. (Errors)
-        /// </summary>
-        /// <param name="msg"> msg to print out. </param>
-        /// <param name="file"> caller file path. </param>
-        /// <param name="member"> caller function. </param>
-        /// <param name="line"> caller line number. </param>
-        public static void LogError(
-            object msg,
-            [CallerFilePath] string file = "",
-            [CallerMemberName] string member = "",
-            [CallerLineNumber] int line = 0)
-        {
-            JcsLog("ERROR", msg.ToString(), file, member, line);
-        }
-
-        /// <summary>
-        /// Print out log by deesign by JCSUnity format. (Warnings)
-        /// </summary>
-        /// <param name="msg"> msg to print out. </param>
-        /// <param name="file"> caller file path. </param>
-        /// <param name="member"> caller function. </param>
-        /// <param name="line"> caller line number. </param>
-        public static void LogWarning(
-            object msg,
-            [CallerFilePath] string file = "",
-            [CallerMemberName] string member = "",
-            [CallerLineNumber] int line = 0)
-        {
-            JcsLog("WARNING", msg.ToString(), file, member, line);
-        }
-
-        /// <summary>
-        /// Print out log by deesign by JCSUnity format. (Reminders)
-        /// </summary>
-        /// <param name="msg"> msg to print out. </param>
-        /// <param name="file"> caller file path. </param>
-        /// <param name="member"> caller function. </param>
-        /// <param name="line"> caller line number. </param>
-        public static void LogReminder(
-            object msg,
-            [CallerFilePath] string file = "",
-            [CallerMemberName] string member = "",
-            [CallerLineNumber] int line = 0)
-        {
-            JcsLog("REMINDER", msg.ToString(), file, member, line);
-        }
-
-        /// <summary>
-        /// Print out log by deesign by JCSUnity format.
-        /// </summary>
-        /// <param name="type">Log type.</param>
-        /// <param name="msg"> msg to print out. </param>
-        /// <param name="file"> caller file path. </param>
-        /// <param name="member"> caller function. </param>
-        /// <param name="line"> caller line number. </param>
-        private static void JcsLog(
-            string type,
-            string msg,
-            [CallerFilePath] string file = "",
-            [CallerMemberName] string member = "",
-            [CallerLineNumber] int line = 0)
-        {
-#if UNITY_EDITOR
-            string filename = Path.GetFileName(file);
-            Debug.Log("¶ [" + type + "] { " + filename + " } ( " + line + " ) - " + msg);
-#endif
-        }
-
-        /// <summary>
         /// Debug draw line.
         /// </summary>
         /// <param name="from"></param>
         /// <param name="to"></param>
         public static void DrawLine(Vector2 from, Vector2 to)
         {
-            Vector3 tempFrom = new Vector3(from.x, from.y, 0);
-            Vector3 tempTo = new Vector3(to.x, to.y, 0);
+            var tempFrom = new Vector3(from.x, from.y, 0);
+            var tempTo = new Vector3(to.x, to.y, 0);
 
             Debug.DrawLine(tempFrom, tempTo);
         }
@@ -182,16 +95,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Print out the transform name.
-        /// </summary>
-        /// <param name="trans"> name of the transform. </param>
-        public static void PrintName(Transform trans)
-        {
-            Debug.Log("[NAME] " + trans.name);
-        }
-
-
-        /// <summary>
         /// Draw the collider
         /// </summary>
         /// <param name="collider"> Collider u want to draw. </param>
@@ -204,16 +107,16 @@ namespace JCSUnity
 
             Vector3 pos = JCS_Physics.GetColliderPosition(collider);
 
-            Vector3 topLeft = new Vector3(
+            var topLeft = new Vector3(
                 pos.x - boxInfo.x / 2,
                 pos.y + boxInfo.y / 2);
-            Vector3 topRight = new Vector3(
+            var topRight = new Vector3(
                 pos.x + boxInfo.x / 2,
                 pos.y + boxInfo.y / 2);
-            Vector3 botRight = new Vector3(
+            var botRight = new Vector3(
                 pos.x + boxInfo.x / 2,
                 pos.y - boxInfo.y / 2);
-            Vector3 botLeft = new Vector3(
+            var botLeft = new Vector3(
                 pos.x - boxInfo.x / 2,
                 pos.y - boxInfo.y / 2);
 
@@ -235,16 +138,16 @@ namespace JCSUnity
 
             Vector3 pos = origin;
 
-            Vector3 topLeft = new Vector3(
+            var topLeft = new Vector3(
                 pos.x - boxInfo.x / 2,
                 pos.y + boxInfo.y / 2);
-            Vector3 topRight = new Vector3(
+            var topRight = new Vector3(
                 pos.x + boxInfo.x / 2,
                 pos.y + boxInfo.y / 2);
-            Vector3 botRight = new Vector3(
+            var botRight = new Vector3(
                 pos.x + boxInfo.x / 2,
                 pos.y - boxInfo.y / 2);
-            Vector3 botLeft = new Vector3(
+            var botLeft = new Vector3(
                 pos.x - boxInfo.x / 2,
                 pos.y - boxInfo.y / 2);
 

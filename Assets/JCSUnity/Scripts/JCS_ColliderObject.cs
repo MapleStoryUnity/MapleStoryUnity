@@ -107,7 +107,7 @@ namespace JCSUnity
                     case JCS_ColliderType.CAPSULE:
                         return mCapsuleCollider.center;
                     default:
-                        JCS_Debug.LogWarning("No collider found");
+                        Debug.LogWarning("No collider found");
                         return Vector3.zero;
                 }
             }
@@ -128,7 +128,7 @@ namespace JCSUnity
                         this.mCapsuleCollider.center = value;
                         break;
                     default:
-                        JCS_Debug.LogWarning("No collider found");
+                        Debug.LogWarning("No collider found");
                         break;
                 }
             }
@@ -147,7 +147,7 @@ namespace JCSUnity
                     case JCS_ColliderType.CAPSULE_2D:
                         return mCapsuleCollider2D.offset;
                     default:
-                        JCS_Debug.LogWarning("No collider found");
+                        Debug.LogWarning("No collider found");
                         return Vector3.zero;
                 }
             }
@@ -165,7 +165,7 @@ namespace JCSUnity
                         this.mCapsuleCollider2D.offset = value;
                         break;
                     default:
-                        JCS_Debug.LogWarning("No collider found");
+                        Debug.LogWarning("No collider found");
                         break;
                 }
             }
@@ -184,7 +184,7 @@ namespace JCSUnity
                     case JCS_ColliderType.CAPSULE_2D:
                         return mCapsuleCollider2D.size;
                     default:
-                        JCS_Debug.LogWarning("No collider found");
+                        Debug.LogWarning("No collider found");
                         return Vector3.zero;
                 }
             }
@@ -202,7 +202,7 @@ namespace JCSUnity
                         this.mCapsuleCollider2D.size = value;
                         break;
                     default:
-                        JCS_Debug.LogWarning("No collider found");
+                        Debug.LogWarning("No collider found");
                         break;
                 }
             }
@@ -223,7 +223,7 @@ namespace JCSUnity
                     case JCS_ColliderType.CIRCLE_2D:
                         return mCircleCollider2D.radius;
                     default:
-                        JCS_Debug.LogWarning("No collider found");
+                        Debug.LogWarning("No collider found");
                         return 0.0f;
                 }
             }
@@ -244,7 +244,7 @@ namespace JCSUnity
                         this.mCircleCollider2D.radius = value;
                         break;
                     default:
-                        JCS_Debug.LogWarning("No collider found");
+                        Debug.LogWarning("No collider found");
                         break;
                 }
             }
@@ -261,7 +261,7 @@ namespace JCSUnity
                     case JCS_ColliderType.CAPSULE:
                         return mCapsuleCollider.height;
                 }
-                JCS_Debug.LogWarning("No collider found");
+                Debug.LogWarning("No collider found");
                 return 0.0f;
             }
             set
@@ -275,7 +275,7 @@ namespace JCSUnity
                         this.mCapsuleCollider.height = value;
                         break;
                     default:
-                        JCS_Debug.LogWarning("No collider found");
+                        Debug.LogWarning("No collider found");
                         break;
                 }
             }

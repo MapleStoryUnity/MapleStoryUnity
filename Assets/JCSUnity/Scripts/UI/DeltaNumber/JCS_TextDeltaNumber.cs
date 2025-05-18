@@ -246,7 +246,7 @@ should disable this effect for best purpose.")]
             if (mTextLegacy == null)
 #endif
             {
-                JCS_Debug.LogError("Text slot cannot be null references");
+                Debug.LogError("Text slot cannot be null references");
                 return;
             }
 

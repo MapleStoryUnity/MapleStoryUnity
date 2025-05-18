@@ -77,7 +77,7 @@ namespace JCSUnity
         {
             if (mTarget == null)
             {
-                JCS_Debug.LogError("Can't set calculated circle position with null target transform");
+                Debug.LogError("Can't set calculated circle position with null target transform");
                 return;
             }
 

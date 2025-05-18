@@ -263,7 +263,7 @@ namespace JCSUnity
 
 
             // this should not happens.
-            JCS_Debug.LogWarning(@"Try to get the name with unknown joystick button is not allow...");
+            Debug.LogWarning(@"Try to get the name with unknown joystick button is not allow...");
             return "";
         }
 

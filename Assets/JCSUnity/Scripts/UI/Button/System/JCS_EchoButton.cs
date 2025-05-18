@@ -35,7 +35,7 @@ namespace JCSUnity
 
         public override void OnClick()
         {
-            JCS_Debug.Log(echoString);
+            Debug.Log(echoString);
         }
     }
 }

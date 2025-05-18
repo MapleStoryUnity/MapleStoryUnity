@@ -116,7 +116,7 @@ namespace JCSUnity
                 case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
                 case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
             }
-            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
+            Debug.LogError("This shouldn't happens, charset `bytes to string`");
             return null;
         }
 
@@ -138,7 +138,7 @@ namespace JCSUnity
                 case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
                 case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
             }
-            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
+            Debug.LogError("This shouldn't happens, charset `string to bytes`");
             return null;
         }
 
@@ -291,7 +291,7 @@ namespace JCSUnity
         {
             if (lists.Length <= 1)
             {
-                JCS_Debug.Log("You trying to merge the List less then two array");
+                Debug.Log("You trying to merge the List less then two array");
             }
 
             var newList = new List<T>();
@@ -1421,7 +1421,9 @@ namespace JCSUnity
             audioSource.spatialBlend = spatialBlend;
             audioSource.volume = volume;
             audioSource.Play();
+
             DestroyClip(audioSource);
+
             return audioSource;
         }
 
@@ -1434,6 +1436,9 @@ namespace JCSUnity
         }
         public static void DestroyClip(AudioSource source, AudioClip clip)
         {
+            if (source.loop)
+                return;
+
             Object.Destroy(source.gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
         }
 
@@ -1453,12 +1458,14 @@ namespace JCSUnity
             if (ps == null)
                 return null;
 
-            ParticleSystem particleSystem = MonoBehaviour.Instantiate(ps);
-            particleSystem.gameObject.name = "One shot particle";
-            particleSystem.transform.position = position;
-            particleSystem.Play();
-            DestroyParticle(particleSystem, duration);
-            return particleSystem;
+            ParticleSystem newPS = MonoBehaviour.Instantiate(ps);
+            newPS.gameObject.name = "One shot particle";
+            newPS.transform.position = position;
+            newPS.Play();
+
+            DestroyParticle(newPS, duration);
+
+            return newPS;
         }
 
         /// <summary>
@@ -1466,10 +1473,13 @@ namespace JCSUnity
         /// </summary>
         public static void DestroyParticle(ParticleSystem ps)
         {
-            Object.Destroy(ps.gameObject, ps.main.duration);
+            DestroyParticle(ps, ps.main.duration);
         }
         public static void DestroyParticle(ParticleSystem ps, float duration)
         {
+            if (ps.main.loop)
+                return;
+
             Object.Destroy(ps.gameObject, duration);
         }
 

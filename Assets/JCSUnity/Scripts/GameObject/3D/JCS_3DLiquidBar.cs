@@ -132,7 +132,7 @@ namespace JCSUnity
         {
             if (val <= mMinValue)
             {
-                JCS_Debug.LogError("Max value you set can't be lower than min value.");
+                Debug.LogError("Max value you set can't be lower than min value.");
                 return;
             }
 
@@ -152,7 +152,7 @@ namespace JCSUnity
         {
             if (val >= mMaxValue)
             {
-                JCS_Debug.LogError("Min value you set can be higher than max value");
+                Debug.LogError("Min value you set can be higher than max value");
                 return;
             }
 
@@ -334,7 +334,7 @@ namespace JCSUnity
 
             if (mSpriteMask == null)
             {
-                JCS_Debug.LogError("No sprite mask attached");
+                Debug.LogError("No sprite mask attached");
                 return;
             }
 
@@ -387,7 +387,7 @@ namespace JCSUnity
             if (mCurrentValue < mMinValue || mCurrentValue > mMaxValue)
 
             {
-                JCS_Debug.LogWarning("Value should with in min(" + mMinValue +
+                Debug.LogWarning("Value should with in min(" + mMinValue +
                     ") ~ max(" + mMaxValue + ") value");
                 return;
             }

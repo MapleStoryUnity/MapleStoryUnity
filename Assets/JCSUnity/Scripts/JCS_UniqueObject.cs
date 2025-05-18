@@ -28,7 +28,7 @@ namespace JCSUnity
                 DontDestroyOnLoad(this.gameObject);
             else
             {
-                JCS_Debug.LogWarning("Only the root object can be use DontDestoryOnLoad");
+                Debug.LogWarning("Only the root object can be use DontDestoryOnLoad");
             }
         }
     }

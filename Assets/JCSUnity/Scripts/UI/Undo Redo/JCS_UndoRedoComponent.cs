@@ -578,7 +578,7 @@ namespace JCSUnity
                         }
                         else
                         {
-                            JCS_Debug.LogError("Cannot record toggle object " +
+                            Debug.LogError("Cannot record toggle object " +
                                 "without any toggle object component attached..");
                         }
                     }
@@ -684,7 +684,7 @@ namespace JCSUnity
                             td.isOn = mSwitch.IsOn;
                         else
                         {
-                            JCS_Debug.LogError("Cannot record toggle object " +
+                            Debug.LogError("Cannot record toggle object " +
                                 "without any toggle object component attached..");
                         }
 

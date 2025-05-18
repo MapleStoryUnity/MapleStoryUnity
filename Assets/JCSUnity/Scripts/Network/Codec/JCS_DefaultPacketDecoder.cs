@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -30,7 +31,7 @@ namespace JCSUnity
             if (undecrypted.Length < 0 || undecrypted.Length > JCS_NetworkConstant.INBUFSIZE)
             {
                 // TODO(JenChieh): split the packet system
-                JCS_Debug.LogError("Packet recieved is too big!!!");
+                Debug.LogError("Packet recieved is too big!!!");
                 return null;
             }
 
@@ -39,7 +40,7 @@ namespace JCSUnity
             {
                 if ((char)undecrypted[index] != (char)JCS_NetworkConstant.DECODE_BUFFER[index])
                 {
-                    JCS_Debug.LogError("Wrong Packet Header!!!");
+                    Debug.LogError("Wrong Packet Header!!!");
                     return null;
                 }
             }

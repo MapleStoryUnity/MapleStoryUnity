@@ -387,14 +387,14 @@ namespace JCSUnity
 
             if (mActive)
             {
-                JCS_Debug.LogError("Dialogue System is already active!");
+                Debug.LogError("Dialogue System is already active!");
                 return;
             }
 
             // check if the script attached is available?
             if (DialogueScript == null)
             {
-                JCS_Debug.LogWarning("Can't run dialogue system without the dialogue script");
+                Debug.LogWarning("Can't run dialogue system without the dialogue script");
                 return;
             }
 
@@ -425,13 +425,13 @@ namespace JCSUnity
         {
             if (mSelectBtn.Length <= index)
             {
-                JCS_Debug.LogWarning("Select button call is out of range");
+                Debug.LogWarning("Select button call is out of range");
                 return;
             }
 
             if (mSelectBtn[index] == null)
             {
-                JCS_Debug.LogWarning("There are space in the array but does no assign the value");
+                Debug.LogWarning("There are space in the array but does no assign the value");
                 return;
             }
 
@@ -714,7 +714,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mNameTag == null)
             {
-                JCS_Debug.LogError("Name tag doesn't exist!");
+                Debug.LogError("Name tag doesn't exist!");
                 return;
             }
 #endif
@@ -733,7 +733,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mCenterImage == null)
             {
-                JCS_Debug.LogError("Image (center) doesn't exist");
+                Debug.LogError("Image (center) doesn't exist");
                 return;
             }
 #endif
@@ -751,7 +751,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mLeftImage == null)
             {
-                JCS_Debug.LogError("Image (left) doesn't exist");
+                Debug.LogError("Image (left) doesn't exist");
                 return;
             }
 #endif
@@ -769,7 +769,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mRightImage == null)
             {
-                JCS_Debug.LogError("Image (right) doesn't exist");
+                Debug.LogError("Image (right) doesn't exist");
                 return;
             }
 #endif
@@ -1278,7 +1278,7 @@ namespace JCSUnity
                 {
                     if (btn.ButtonSelection == null)
                     {
-                        JCS_Debug.LogWarning(@"Cannot make hover select 
+                        Debug.LogWarning(@"Cannot make hover select 
 because button selection is not attach to all selections in the list!");
                     }
                     else

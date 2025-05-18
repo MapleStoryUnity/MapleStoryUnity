@@ -199,7 +199,7 @@ just stop there.")]
             // in order to know what does item touched and 
             // stop this movement.
             if (JCS_GameSettings.instance.DEBUG_MODE)
-                JCS_Debug.PrintName(other.transform);
+                Debug.Log(other.transform.name);
 
             mColliderName = other.name;
 #endif

@@ -41,6 +41,13 @@ namespace JCSUnity
         /// </summary>
         /// <param name="times"> Times to loop over. </param>
         /// <param name="action"> Action to execute each times. </param>
+        public static void Times(int times, Action action)
+        {
+            Times(times, (_) =>
+            {
+                action?.Invoke();
+            });
+        }
         public static void Times(int times, Action<int> action)
         {
             Range(0, times, action);

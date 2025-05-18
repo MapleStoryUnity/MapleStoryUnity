@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -98,7 +99,7 @@ namespace JCSUnity
                 }
                 catch (System.Exception e)
                 {
-                    JCS_Debug.LogError("Packet Handle Error : " + e.ToString());
+                    Debug.LogError("Packet Handle Error : " + e.ToString());
                 }
             }
 

@@ -24,11 +24,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TransformType mTransformType = JCS_TransformType.POSITION;
 
-        [Tooltip("Effect local position/eulerAngles instead of global one?")]
+        [Tooltip("Turn on to use local properties.")]
         [SerializeField]
         private bool mEffectLocal = false;
 
-        [Tooltip("as play on awake!")]
+        [Tooltip("Turn on to do the effect.")]
         [SerializeField]
         private bool mEffect = false;
 

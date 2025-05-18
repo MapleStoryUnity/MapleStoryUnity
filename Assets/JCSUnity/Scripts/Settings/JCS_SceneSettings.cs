@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using MyBox;
 
 namespace JCSUnity
@@ -23,6 +24,18 @@ namespace JCSUnity
         [Tooltip("True when is switching scene.")]
         [ReadOnly]
         public bool SWITCHING_SCENE = false;
+
+        [Tooltip("Next scene name to load.")]
+        [ReadOnly]
+        public string NEXT_SCENE_NAME = "";
+
+        [Tooltip("Previous scene mode.")]
+        [ReadOnly]
+        public Scene PREVIOUS_SCENE = default(Scene);
+
+        [Tooltip("Load scene mode.")]
+        [ReadOnly]
+        public LoadSceneMode MODE = LoadSceneMode.Single;
 
         [Separator("Runtime Variables (JCS_SceneSettings)")]
 
@@ -98,6 +111,9 @@ namespace JCSUnity
         protected override void TransferData(JCS_SceneSettings _old, JCS_SceneSettings _new)
         {
             _new.SWITCHING_SCENE = _old.SWITCHING_SCENE;
+            _new.NEXT_SCENE_NAME = _old.NEXT_SCENE_NAME;
+            _new.PREVIOUS_SCENE = _old.PREVIOUS_SCENE;
+            _new.MODE = _old.MODE;
 
             _new.SCENE_FADEIN_TIME = _old.SCENE_FADEIN_TIME;
             _new.SCENE_FADEOUT_TIME = _old.SCENE_FADEOUT_TIME;

@@ -116,7 +116,7 @@ true meaning the fly action object cannot go throught this platform.")]
                 }
                 else
                 {
-                    JCS_Debug.Log(
+                    Debug.Log(
                         "No platform setting, could not set the down jump force...");
                 }
             }

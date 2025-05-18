@@ -152,19 +152,19 @@ namespace JCSUnity
         {
             if (minDamage > maxDamage)
             {
-                JCS_Debug.LogError("Min damage cannot be higher or equal to the max damage!");
+                Debug.LogError("Min damage cannot be higher or equal to the max damage!");
                 return null;
             }
 
             if (minDamage < 0 || maxDamage < 0)
             {
-                JCS_Debug.LogError("Min or Max damage cannot be lower than 0!");
+                Debug.LogError("Min or Max damage cannot be lower than 0!");
                 return null;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.LogError("Hit count should not be equal or lower than 0!");
+                Debug.LogError("Hit count should not be equal or lower than 0!");
                 return null;
             }
 
@@ -209,7 +209,7 @@ namespace JCSUnity
         {
             if (damage.Length != pos.Length)
             {
-                JCS_Debug.LogError("Wrong pair size!");
+                Debug.LogError("Wrong pair size!");
                 return;
             }
 
@@ -301,7 +301,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogWarning("Prevent, stack overflow function call.");
+                    Debug.LogWarning("Prevent, stack overflow function call.");
                 }
 #endif
                 return;

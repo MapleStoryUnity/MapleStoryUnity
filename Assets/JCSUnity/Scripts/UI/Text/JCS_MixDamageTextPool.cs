@@ -226,25 +226,25 @@ namespace JCSUnity
         {
             if (minDamage > maxDamage)
             {
-                JCS_Debug.LogError("Min damage cannot be higher or equal to the max damage!");
+                Debug.LogError("Min damage cannot be higher or equal to the max damage!");
                 return null;
             }
 
             if (minDamage < 0 || maxDamage < 0)
             {
-                JCS_Debug.LogError("Min or Max damage cannot be lower than 0!");
+                Debug.LogError("Min or Max damage cannot be lower than 0!");
                 return null;
             }
 
             if (percentOfCritical < 0 || percentOfCritical > 100)
             {
-                JCS_Debug.LogError("Percent Of Critical should within range of 0 ~ 100...");
+                Debug.LogError("Percent Of Critical should within range of 0 ~ 100...");
                 return null;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.LogError("Hit count should not be equal or lower than 0!");
+                Debug.LogError("Hit count should not be equal or lower than 0!");
                 return null;
             }
 
@@ -415,7 +415,7 @@ namespace JCSUnity
         {
             if (damage.Length != pos.Length || damage.Length != types.Length)
             {
-                JCS_Debug.LogError("Wrong triple pair size");
+                Debug.LogError("Wrong triple pair size");
                 return;
             }
 

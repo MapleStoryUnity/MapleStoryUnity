@@ -85,7 +85,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogWarning("Prevent stack overflow function call");
+                    Debug.LogWarning("Prevent stack overflow function call");
                 }
 #endif
                 return null;
@@ -104,7 +104,7 @@ namespace JCSUnity
         {
             if (mLogText == null)
             {
-                JCS_Debug.LogReminder("No log text assign in the text pool");
+                Debug.Log("No log text assign in the text pool");
                 return;
             }
 

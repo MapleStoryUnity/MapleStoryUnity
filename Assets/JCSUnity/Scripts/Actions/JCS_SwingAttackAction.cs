@@ -280,7 +280,7 @@ namespace JCSUnity
         {
             if (mAtkAnim == null)
             {
-                JCS_Debug.LogReminder("No animation assign but you still want to spawn a animation");
+                Debug.Log("No animation assign but you still want to spawn a animation");
                 return;
             }
 

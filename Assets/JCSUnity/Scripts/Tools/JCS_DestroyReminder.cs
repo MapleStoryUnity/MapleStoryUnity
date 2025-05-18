@@ -33,7 +33,7 @@ namespace JCSUnity
             {
                 string msg = "Object you should be destroyed but failed";
 
-                JCS_Debug.LogReminder(msg);
+                Debug.Log(msg);
 
 #if UNITY_EDITOR
                 gameObject.name = msg;

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -30,7 +31,7 @@ namespace JCSUnity
             // Check packet length
             if (packetLength < 0 || packetLength > JCS_NetworkConstant.OUTBUFSIZE)
             {
-                JCS_Debug.LogError("Packet you are sending is too big!");
+                Debug.LogError("Packet you are sending is too big!");
                 return null;
             }
 

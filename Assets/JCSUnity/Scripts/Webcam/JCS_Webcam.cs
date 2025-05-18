@@ -189,7 +189,7 @@ namespace JCSUnity
             // cannot take snap shot without the device!!
             if (!mDetectDevice)
             {
-                JCS_Debug.LogError("No webcam detected in the current devices");
+                Debug.LogError("No webcam detected in the current devices");
                 return null;
             }
 
@@ -218,7 +218,7 @@ namespace JCSUnity
                 var sm = JCS_SceneManager.instance;
 
                 if (sm.GetWhiteScreen() == null)
-                    JCS_UtilFunctions.PopJCSWhiteScreen();
+                    JCS_UtilFunctions.PopWhiteScreen();
 
                 sm.GetWhiteScreen().FadeIn();
 
@@ -419,7 +419,7 @@ namespace JCSUnity
 
             if (!mDetectDevice)
             {
-                JCS_Debug.LogError("No webcam detected in the current devices");
+                Debug.LogError("No webcam detected in the current devices");
                 return;
             }
 

@@ -62,7 +62,7 @@ namespace JCSUnity
         {
             if (mColorGraphic == null)
             {
-                JCS_Debug.LogError("Do nothing without Graphic object assign");
+                Debug.LogError("Do nothing without Graphic object assign");
                 return;
             }
 

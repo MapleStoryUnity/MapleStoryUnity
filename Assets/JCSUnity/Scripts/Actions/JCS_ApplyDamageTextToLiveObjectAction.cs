@@ -233,7 +233,7 @@ namespace JCSUnity
                 mCriticalChance = mAbilityFormat.GetCriticalChance();
             }
             else {
-                JCS_Debug.LogReminder("You sure to not using any `JCS_AbilityFormat`?");
+                Debug.Log("You sure to not using any `JCS_AbilityFormat`?");
             }
 
             Vector3 currentPos = liveObject.transform.position + mDamageTextPositionOffset;

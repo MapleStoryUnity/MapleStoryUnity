@@ -218,7 +218,7 @@ namespace JCSUnity
                 instance.PORT == port &&
                 handler == null)
             {
-                JCS_Debug.LogError(
+                Debug.LogError(
                     "Not need to switch server, we already in....");
                 return;
             }

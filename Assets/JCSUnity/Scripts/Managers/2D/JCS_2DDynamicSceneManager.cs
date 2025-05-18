@@ -76,7 +76,7 @@ namespace JCSUnity
         {
             if (olo == null)
             {
-                JCS_Debug.LogWarning(
+                Debug.LogWarning(
                     "The 'JCS_OrderLayerObject' object you trying to set is null references...");
                 return;
             }
@@ -86,7 +86,7 @@ namespace JCSUnity
 
             if (ol == null)
             {
-                JCS_Debug.LogWarning(
+                Debug.LogWarning(
                     "Did not find the layer you willing to set to..., Layer Index: " + orderLayerIndex);
                 return;
             }

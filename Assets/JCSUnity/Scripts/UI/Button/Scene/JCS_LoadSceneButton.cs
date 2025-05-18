@@ -9,6 +9,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MyBox;
+using Unity.Hierarchy;
 
 namespace JCSUnity
 {
@@ -36,7 +37,7 @@ namespace JCSUnity
 
         [Tooltip("Reload the current scene, and ignore the target scene name.")]
         [SerializeField]
-        public bool mReloadScene = false;
+        private bool mReloadScene = false;
 
         [Tooltip("Screen color when load the scene.")]
         [SerializeField]
@@ -46,12 +47,17 @@ namespace JCSUnity
         [SerializeField]
         private bool mKeppBGM = false;
 
+        [Tooltip("The way to load scene.")]
+        [SerializeField]
+        private LoadSceneMode mMode = LoadSceneMode.Single;
+
         /* Setter & Getter */
 
         public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
         public bool ReloadScene { get { return this.mReloadScene; } set { this.mReloadScene = value; } }
         public Color ScreenColor { get { return this.mScreenColor; } set { this.mScreenColor = value; } }
         public bool KeppBGM { get { return this.mKeppBGM; } set { this.mKeppBGM = value; } }
+        public LoadSceneMode Mode { get { return this.mMode; } set { this.mMode = value; } }
 
         /* Functions */
 
@@ -68,7 +74,10 @@ namespace JCSUnity
 
             string sceneName = JCS_SceneManager.GetSceneNameByOption(mSceneName, mReloadScene);
 
-            JCS_SceneManager.instance.LoadScene(sceneName, mScreenColor, mKeppBGM);
+            float fadeInTime = JCS_SceneSettings.instance.SceneFadeInTimeBaseOnSetting();
+
+            JCS_SceneManager.instance.LoadScene(sceneName, mMode,
+                fadeInTime, mScreenColor, mKeppBGM);
         }
     }
 }

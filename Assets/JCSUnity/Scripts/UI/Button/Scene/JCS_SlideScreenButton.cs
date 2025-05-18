@@ -123,7 +123,7 @@ namespace JCSUnity
         {
             if (mSlideCameras.Length == 0)
             {
-                JCS_Debug.LogReminder("Assign the button without camera is not allowed");
+                Debug.Log("Assign the button without camera is not allowed");
                 return;
             }
 

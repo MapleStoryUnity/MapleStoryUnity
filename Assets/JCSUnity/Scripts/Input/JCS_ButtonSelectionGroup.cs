@@ -265,7 +265,7 @@ namespace JCSUnity
                 }
             }
 
-            JCS_Debug.LogError(@"Try to select a selection, but seems like the 
+            Debug.LogError(@"Try to select a selection, but seems like the 
 selection is not in the group...");
         }
         public void SelectSelectionHover(JCS_ButtonSelection selection)
@@ -386,7 +386,7 @@ selection is not in the group...");
                 case Direction.LEFT: return bs.LeftSelection;
             }
 
-            JCS_Debug.Log("Failed to get button selection by direction, this should not happens...");
+            Debug.Log("Failed to get button selection by direction, this should not happens...");
             return null;
         }
 

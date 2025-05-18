@@ -119,8 +119,8 @@ namespace JCSUnity
         #endregion
 
         /* Default callback function pointer. */
-        private static void JoystickPluggedDefaultCallback() { JCS_Debug.Log("At least one joystick connected!!!"); }
-        private static void JoystickUnPluggedDefaultCallback() { JCS_Debug.Log("No joystick connected..."); }
+        private static void JoystickPluggedDefaultCallback() { Debug.Log("At least one joystick connected!!!"); }
+        private static void JoystickUnPluggedDefaultCallback() { Debug.Log("No joystick connected..."); }
 
         /// <summary>
         /// Main loop for input.
@@ -740,7 +740,7 @@ namespace JCSUnity
         {
             if (name == "")
             {
-                JCS_Debug.LogError("InputManager's name variable cannot be empty string...");
+                Debug.LogError("InputManager's name variable cannot be empty string...");
                 return 0;
             }
 

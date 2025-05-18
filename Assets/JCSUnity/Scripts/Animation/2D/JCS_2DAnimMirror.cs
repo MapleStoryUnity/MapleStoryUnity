@@ -132,7 +132,7 @@ use negative scale instead.")]
                 if (mMirrorAnimation.GetObjectType() != JCS_UnityObjectType.SPRITE ||
                     anim.GetObjectType() != JCS_UnityObjectType.SPRITE)
                 {
-                    JCS_Debug.LogError(
+                    Debug.LogError(
                         "Mimic order layer and mimic color has to be sprite renderer, not something else...");
                     continue;
                 }

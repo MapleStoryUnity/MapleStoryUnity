@@ -54,7 +54,7 @@ namespace JCSUnity
 
             if (mJumpSound[0] == null)
             {
-                JCS_Debug.LogError("Play sound with null references is not allowed");
+                Debug.LogError("Play sound with null references is not allowed");
                 return;
             }
             var ss = JCS_SoundSettings.instance;
@@ -70,7 +70,7 @@ namespace JCSUnity
 
             if (mJumpSound[1] == null)
             {
-                JCS_Debug.LogError("Play sound with null references is not allowed");
+                Debug.LogError("Play sound with null references is not allowed");
                 return;
             }
             var ss = JCS_SoundSettings.instance;
@@ -86,7 +86,7 @@ namespace JCSUnity
 
             if (mJumpSound[2] == null)
             {
-                JCS_Debug.LogError("Play sound with null references...");
+                Debug.LogError("Play sound with null references...");
                 return;
             }
             var ss = JCS_SoundSettings.instance;
@@ -108,7 +108,7 @@ namespace JCSUnity
 
             if (mAttackSounds[rand] == null)
             {
-                JCS_Debug.LogError("Play sound with null references...");
+                Debug.LogError("Play sound with null references...");
                 return;
             }
             var ss = JCS_SoundSettings.instance;
@@ -121,7 +121,7 @@ namespace JCSUnity
         {
             if (mWalkSound == null)
             {
-                JCS_Debug.LogError("Play sound with null references...");
+                Debug.LogError("Play sound with null references...");
                 return;
             }
             var ss = JCS_SoundSettings.instance;
@@ -187,7 +187,7 @@ namespace JCSUnity
                     return mGhostSound;
             }
 
-            JCS_Debug.LogError("Return sound that aren't in the player state...");
+            Debug.LogError("Return sound that aren't in the player state...");
             return null;
         }
     }

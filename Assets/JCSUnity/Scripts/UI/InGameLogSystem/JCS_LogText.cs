@@ -74,7 +74,7 @@ namespace JCSUnity
         {
             if (mActive)
             {
-                JCS_Debug.LogError("Call this while the object is still active");
+                Debug.LogError("Call this while the object is still active");
                 return;
             }
 

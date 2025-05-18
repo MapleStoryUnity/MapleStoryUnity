@@ -87,7 +87,7 @@ namespace JCSUnity
                 return;
 
             // print the name of the detected transform.
-            JCS_Debug.PrintName(trans);
+            Debug.Log(trans.name);
 #endif
         }
 

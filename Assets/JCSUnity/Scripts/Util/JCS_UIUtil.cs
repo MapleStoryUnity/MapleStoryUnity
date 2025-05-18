@@ -778,10 +778,11 @@ namespace JCSUnity
         /// <returns></returns>
         public static Vector2 GetImageRect(Image img)
         {
-            RectTransform rt = img.transform.GetComponent<RectTransform>();
+            var rt = img.transform.GetComponent<RectTransform>();
+
             if (rt == null)
             {
-                JCS_Debug.LogError("No RectTransform on ur image!");
+                Debug.LogError("No `RectTransform` on your image!");
                 return Vector2.one;
             }
 

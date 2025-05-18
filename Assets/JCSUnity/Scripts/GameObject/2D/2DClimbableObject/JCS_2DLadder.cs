@@ -35,7 +35,7 @@ namespace JCSUnity
 
             if (mPositionPlatform == null)
             {
-                JCS_Debug.LogError(
+                Debug.LogError(
                     "U have a ladder without a platform/ground to lean on.");
             }
         }

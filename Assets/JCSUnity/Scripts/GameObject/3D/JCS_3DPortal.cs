@@ -56,7 +56,7 @@ namespace JCSUnity
         private void Awake()
         {
             if (mType == JCS_3DPortalType.TRANSFER_PORTAL && mTargetPortal == null)
-                JCS_Debug.LogError("Transform portal does not exists.");
+                Debug.LogError("Transform portal does not exists.");
         }
 
         private void OnTriggerStay(Collider other)

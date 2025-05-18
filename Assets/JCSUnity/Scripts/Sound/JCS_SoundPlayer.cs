@@ -33,7 +33,7 @@ namespace JCSUnity
 
             if (mAudioSource.outputAudioMixerGroup == null)
             {
-                JCS_Debug.LogReminder("The output audio mixer is empty: " + this.name);
+                Debug.Log("The output audio mixer is empty: " + this.name);
             }
         }
 

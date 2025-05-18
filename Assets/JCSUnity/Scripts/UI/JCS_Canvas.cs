@@ -235,7 +235,7 @@ namespace JCSUnity
             Transform newParent = (mResizeUI != null) ? mResizeUI.transform : this.mCanvas.transform;
 
             if (newParent == null)
-                JCS_Debug.LogError("Attach resize canvas exception: " + com);
+                Debug.LogError("Attach resize canvas exception: " + com);
             else
                 com.transform.SetParent(newParent);
 
@@ -342,7 +342,7 @@ namespace JCSUnity
 
             if (main != null)
             {
-                JCS_Debug.LogWarning("Having multiple main canvases is often not allowed: " + this.gameObject.name);
+                Debug.LogWarning("Having multiple main canvases is often not allowed: " + this.gameObject.name);
                 return;
             }
 
@@ -355,7 +355,7 @@ namespace JCSUnity
         private void NoMainCanvas()
         {
             if (main) return;
-            JCS_Debug.LogWarning("No main canvas is detected");
+            Debug.LogWarning("No main canvas is detected");
         }
 
         /// <summary>
@@ -386,7 +386,7 @@ namespace JCSUnity
 
             if (mCanvasGroup == null)
             {
-                JCS_Debug.LogReminder($"Fade missing the canvas group: {name}");
+                Debug.Log($"Fade missing the canvas group: {name}");
                 return;
             }
 

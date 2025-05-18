@@ -184,7 +184,7 @@ namespace JCSUnity
             {
 #if UNITY_EDITOR
                 if (JCS_GameSettings.instance.DEBUG_MODE)
-                    JCS_Debug.LogError("Swtich animation failed cuz of null reference animation assigned...");
+                    Debug.LogError("Swtich animation failed cuz of null reference animation assigned...");
 #endif
                 return;
             }

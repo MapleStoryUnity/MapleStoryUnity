@@ -142,7 +142,7 @@ object that we target.")]
 
             if (mPickCollider == null)
             {
-                JCS_Debug.LogError("Cannot pick the item cuz there is no collider set");
+                Debug.LogError("Cannot pick the item cuz there is no collider set");
                 return;
             }
 

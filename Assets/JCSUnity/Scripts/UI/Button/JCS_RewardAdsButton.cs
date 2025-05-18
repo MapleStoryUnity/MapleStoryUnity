@@ -55,7 +55,7 @@ namespace JCSUnity
         {
             if (mRewardCallback == null)
             {
-                JCS_Debug.LogWarning("Active default reward function, please fill the reward callback!");
+                Debug.LogWarning("Active default reward function, please fill the reward callback!");
                 return;
             }
 
@@ -75,15 +75,15 @@ namespace JCSUnity
         {
             if (result == ShowResult.Failed)
             {
-                JCS_Debug.Log(this, "Reward Ads video get Failed.");
+                Debug.Log(this, "Reward Ads video get Failed.");
             }
             else if (result == ShowResult.Finished)
             {
-                JCS_Debug.Log(this, "Reward Ads video get Finished.");
+                Debug.Log(this, "Reward Ads video get Finished.");
             }
             else if (result == ShowResult.Skipped)
             {
-                JCS_Debug.Log(this, "Reward Ads video get Skipped.");
+                Debug.Log(this, "Reward Ads video get Skipped.");
             }
         }
 #endif

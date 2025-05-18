@@ -550,7 +550,7 @@ namespace JCSUnity
             var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
             {
-                JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
+                Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return null;
             }
 
@@ -578,7 +578,7 @@ namespace JCSUnity
             var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
             {
-                JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
+                Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return null;
             }
 
@@ -607,7 +607,7 @@ namespace JCSUnity
 
             if (canvas == null)
             {
-                JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
+                Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return;
             }
 
@@ -682,7 +682,7 @@ namespace JCSUnity
 
             if (canvas == null)
             {
-                JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
+                Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return null;
             }
 
@@ -806,7 +806,7 @@ namespace JCSUnity
         {
             if (canvas == null)
             {
-                JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
+                Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
                 return null;
             }
 

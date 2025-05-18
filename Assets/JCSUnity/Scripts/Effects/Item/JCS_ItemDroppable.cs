@@ -179,7 +179,7 @@ just stop there.")]
         {
             if (mMinNumItemDrop > mMaxNumItemDrop)
             {
-                JCS_Debug.LogError("No item drop. min max.");
+                Debug.LogError("No item drop. min max.");
                 return;
             }
 
@@ -225,13 +225,13 @@ just stop there.")]
         {
             if (mustDropItem == null)
             {
-                JCS_Debug.LogError("Must drop item cannot be null references");
+                Debug.LogError("Must drop item cannot be null references");
                 return;
             }
 
             if (count <= 0)
             {
-                JCS_Debug.LogError("Cannot drop item with count less or equal to zero");
+                Debug.LogError("Cannot drop item with count less or equal to zero");
                 return;
             }
 
@@ -258,7 +258,7 @@ just stop there.")]
             {
                 if (mMinNumItemDrop > mMaxNumItemDrop)
                 {
-                    JCS_Debug.LogError("No item drop. min max.");
+                    Debug.LogError("No item drop. min max.");
                     return;
                 }
 

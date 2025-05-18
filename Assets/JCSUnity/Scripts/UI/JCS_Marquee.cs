@@ -94,7 +94,7 @@ namespace JCSUnity
         {
             if (mTextContainer == null)
             {
-                JCS_Debug.Log("Can't display the marquee text without text container");
+                Debug.Log("Can't display the marquee text without text container");
                 return;
             }
 

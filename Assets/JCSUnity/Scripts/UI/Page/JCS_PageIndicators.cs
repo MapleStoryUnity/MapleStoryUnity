@@ -57,7 +57,7 @@ namespace JCSUnity
 
             if (!JCS_Util.WithInRange(page, mIndicators))
             {
-                JCS_Debug.LogWarning("Page indicators out of range exception");
+                Debug.LogWarning("Page indicators out of range exception");
                 return;
             }
 

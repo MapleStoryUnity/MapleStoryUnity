@@ -175,7 +175,7 @@ namespace JCSUnity
 
                 if (currentBtn == null)
                 {
-                    JCS_Debug.LogError("Missing button assign in the inspector");
+                    Debug.LogError("Missing button assign in the inspector");
                     continue;
                 }
 
@@ -291,7 +291,7 @@ namespace JCSUnity
 
                 if (se == null)
                 {
-                    JCS_Debug.LogError("JCS_ScaleEffect are null but we still want the effect. Please make sure all the button have JCS_ScaleEffet component!");
+                    Debug.LogError("JCS_ScaleEffect are null but we still want the effect. Please make sure all the button have JCS_ScaleEffet component!");
 
                     // close the effect.
                     mAsympEffect = false;
@@ -318,7 +318,7 @@ namespace JCSUnity
         {
             if (mFocusBtn == null)
             {
-                JCS_Debug.LogError("Can't do the movement without focus button");
+                Debug.LogError("Can't do the movement without focus button");
                 return;
             }
 
@@ -327,7 +327,7 @@ namespace JCSUnity
 
             if (mLastScrollIndex == currentScrollIndex)
             {
-                JCS_Debug.LogError("Last Scroll Index and Current Scroll Index are the same");
+                Debug.LogError("Last Scroll Index and Current Scroll Index are the same");
                 return;
             }
 
@@ -408,7 +408,7 @@ namespace JCSUnity
 
                 if (currentBtn == null || targetBtn == null)
                 {
-                    JCS_Debug.LogError("Missing `JCS_Button` assign in the inspector...");
+                    Debug.LogError("Missing `JCS_Button` assign in the inspector...");
                     continue;
                 }
 

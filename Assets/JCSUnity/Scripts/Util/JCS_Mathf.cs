@@ -248,7 +248,7 @@ namespace JCSUnity
             if (targetVal < currentVal)
                 return --currentVal;
 
-            JCS_Debug.LogError("Errors with approaching to a value");
+            Debug.LogError("Errors with approaching to a value");
             return 0;
         }
 
@@ -422,7 +422,7 @@ namespace JCSUnity
                     }
             }
 
-            JCS_Debug.LogError("This not suppose to happen here");
+            Debug.LogError("This not suppose to happen here");
 
             return 0;
         }

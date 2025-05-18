@@ -37,7 +37,7 @@ namespace JCSUnity
             mCollider = this.GetComponent<Collider>();
 
             if (mCollider == null)
-                JCS_Debug.LogError("No collider attached to do the dectect action");
+                Debug.LogError("No collider attached to do the dectect action");
             else
                 mCollider.enabled = false;
         }

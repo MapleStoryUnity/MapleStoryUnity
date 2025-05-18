@@ -60,7 +60,7 @@ namespace JCSUnity
 
 #if UNITY_EDITOR
             if (mPoints.Count == 0)
-                JCS_Debug.LogWarning("Path action with 0 path point is not valid");
+                Debug.LogWarning("Path action with 0 path point is not valid");
 #endif
 
             mAdjustTimerTrigger.onAction = DoPath;

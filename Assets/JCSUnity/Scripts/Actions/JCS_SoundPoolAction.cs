@@ -50,7 +50,7 @@ namespace JCSUnity
 
             if (mAudioClips[randIndex] == null)
             {
-                JCS_Debug.LogError("You inlcude a null references in he audio pool");
+                Debug.LogError("You inlcude a null references in he audio pool");
                 return;
             }
 

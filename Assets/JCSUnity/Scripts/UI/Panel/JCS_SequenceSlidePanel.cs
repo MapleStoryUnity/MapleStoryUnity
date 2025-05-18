@@ -159,7 +159,7 @@ namespace JCSUnity
 
                 if (se == null)
                 {
-                    JCS_Debug.LogError("Missing button assign in the inspector");
+                    Debug.LogError("Missing button assign in the inspector");
                     continue;
                 }
 
@@ -175,7 +175,7 @@ namespace JCSUnity
 
                 if (se == null)
                 {
-                    JCS_Debug.LogError("Missing button assign in the inspector");
+                    Debug.LogError("Missing button assign in the inspector");
                     continue;
                 }
 
