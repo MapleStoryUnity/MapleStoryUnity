@@ -1,7 +1,7 @@
 /*
  This file is part of the MapleStory Unity
 
- Copyright (C) 2021-2024 Shen, Jen-Chieh <jcs090218@gmail.com> 
+ Copyright (C) 2021-2025 Shen, Jen-Chieh <jcs090218@gmail.com> 
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License version 3
@@ -26,6 +26,7 @@ using JCSUnity;
 using MapleLib.WzLib;
 using MapleLib.WzLib.WzProperties;
 using MapleLib.WzLib.WzStructure.Data;
+using MyBox;
 
 namespace MSU
 {
@@ -36,11 +37,11 @@ namespace MSU
     {
         /* Variables */
 
-        private Dictionary<string, WzMainDirectory> mWzDirs = new Dictionary<string, WzMainDirectory>();
+        private Dictionary<string, WzMainDirectory> mWzDirs = new();
 
-        public Dictionary<string, WzFile> mWzFiles = new Dictionary<string, WzFile>();
+        public Dictionary<string, WzFile> mWzFiles = new();
 
-        [Header("** Initialize Variables (WzFileManager) **")]
+        [Separator("Initialize Variables (WzFileManager)")]
 
         [Tooltip("List fo .wz file names.")]
         [SerializeField]
@@ -54,7 +55,7 @@ namespace MSU
         [SerializeField]
         private short mVersion = -1;
 
-        [Header("** Runtime Variables (WzFileManager) **")]
+        [Separator("Runtime Variables")]
 
         [Tooltip("Path points to wz directory.")]
         [SerializeField]
@@ -122,7 +123,7 @@ namespace MSU
             }
             catch (Exception e)
             {
-                JCS_Debug.LogError("Error initializing " + name + ".wz (" + e.Message + ").\r\nCheck that the directory is valid and the file is not in use.");
+                Debug.LogError("Error initializing " + name + ".wz (" + e.Message + ").\r\nCheck that the directory is valid and the file is not in use.");
                 return false;
             }
         }
