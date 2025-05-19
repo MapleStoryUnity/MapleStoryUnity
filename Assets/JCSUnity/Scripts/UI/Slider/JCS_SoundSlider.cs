@@ -68,7 +68,7 @@ namespace JCSUnity
                 return;
 
             // First, initialize to keep the settings untouched.
-            mSlider.value = JCS_Util.GetVolume(mMixer, mParameter);
+            mSlider.value = JCS_Audio.GetVolume(mMixer, mParameter);
 
             mSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
 
@@ -86,7 +86,7 @@ namespace JCSUnity
             float total = mSlider.maxValue - mSlider.minValue;  // Find total.
             float val = mSlider.value / total;                  // Convert to 0 to 1 scale.
 
-            JCS_Util.SetVolume(mMixer, mParameter, val);
+            JCS_Audio.SetVolume(mMixer, mParameter, val);
         }
     }
 }
