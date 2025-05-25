@@ -468,9 +468,7 @@ namespace JCSUnity
                             AllowSceneActivation();
                         }
 
-                        bool inNewScene = (ss.NEXT_SCENE_NAME == "");
-
-                        if (inNewScene && mBlackScreen.IsFadeOut())
+                        if (mBlackScreen.IsFadeOut())
                         {
                             ss.SWITCHING_SCENE = false;
                         }

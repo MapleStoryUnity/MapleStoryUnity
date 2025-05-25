@@ -61,7 +61,14 @@ namespace JCSUnity
         /// </summary>
         public static bool HasState(Animator animator, int layer, string name)
         {
+            // First check if the layer exists.
+            if (layer < 0 || animator.layerCount <= layer)
+                return false;
+
+            // Convert name to hash.
             int stateHash = Animator.StringToHash(name);
+
+            // Then do the check.
             return animator.HasState(layer, stateHash);
         }
     }

@@ -182,6 +182,9 @@ namespace JCSUnity
         /// </summary>
         private void DoFadeSound()
         {
+            if (mAudioSource == null)
+                return;
+
             switch (mType)
             {
                 case JCS_FadeType.OUT:

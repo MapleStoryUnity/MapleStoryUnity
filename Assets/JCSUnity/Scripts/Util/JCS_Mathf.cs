@@ -60,7 +60,10 @@ namespace JCSUnity
         /// <summary>
         /// Returns f rounded to the nearest integer.
         /// </summary>
-        public static float Round(float f) { return Mathf.Round(f); }
+        public static float Round(float f) 
+        {
+            return Mathf.Round(f); 
+        }
         public static Vector2 Round(Vector2 vec)
         {
             return new Vector2(Round(vec.x), Round(vec.y));
@@ -126,7 +129,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check if the value is positive.
+        /// Return true if the number is positive.
         /// </summary>
         /// <param name="val"> value to check </param>
         /// <returns> true: is positive, false: is negative </returns>
@@ -135,7 +138,7 @@ namespace JCSUnity
         public static bool IsPositive(double val) { return (val > 0.0 && val != 0.0) ? true : false; }
 
         /// <summary>
-        /// Check if the value is negative.
+        /// Return true if the number is negative.
         /// </summary>
         /// <param name="val"> value to check </param>
         /// <returns> true: is negative, false: is positive </returns>
@@ -144,7 +147,7 @@ namespace JCSUnity
         public static bool IsNegative(double val) { return (val < 0.0 && val != 0.0) ? true : false; }
 
         /// <summary>
-        /// To Reverse the value.
+        /// To reverse the value.
         /// </summary>
         /// <param name="val"> value to reverse </param>
         /// <returns> reverse value </returns>
@@ -153,7 +156,7 @@ namespace JCSUnity
         public static double ToReverse(double val) { return -val; }
 
         /// <summary>
-        /// Reciprocal of the value
+        /// To reciprocal of the value.
         /// </summary>
         /// <param name="val"> value to reciprocal </param>
         /// <returns> reciprocal value </returns>
@@ -253,29 +256,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// check if the vector value is infinity
-        /// </summary>
-        /// <param name="check"></param>
-        /// <returns></returns>
-        public static bool IsInfinity(Vector2 check)
-        {
-            return (float.IsInfinity(check.x) ||
-                float.IsInfinity(check.y));
-        }
-
-        /// <summary>
-        /// check if the vector value is infinity
-        /// </summary>
-        /// <param name="check"></param>
-        /// <returns></returns>
-        public static bool IsInfinity(Vector3 check)
-        {
-            return (float.IsInfinity(check.x) ||
-                float.IsInfinity(check.y) ||
-                float.IsInfinity(check.z));
-        }
-
-        /// <summary>
         /// Return min value compare the two pass
         /// in values.
         /// </summary>
@@ -300,29 +280,46 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check if the number is valid.
+        /// Return true if the number is infinity.
         /// </summary>
-        /// <param name="vec"> vector to check </param>
-        /// <returns> 
-        /// true: is nan
-        /// false: valid value
-        /// </returns>
+        public static bool IsInfinity(Vector2 check)
+        {
+            return (float.IsInfinity(check.x) ||
+                float.IsInfinity(check.y));
+        }
+        public static bool IsInfinity(Vector3 check)
+        {
+            return (float.IsInfinity(check.x) ||
+                float.IsInfinity(check.y) ||
+                float.IsInfinity(check.z));
+        }
+
+        /// <summary>
+        /// Return true if the number is NaN.
+        /// </summary>
         public static bool IsNaN(Vector3 vec)
         {
             return (float.IsNaN(vec.x) || float.IsNaN(vec.y) || float.IsNaN(vec.z));
         }
-
-        /// <summary>
-        /// Check if the number is valid.
-        /// </summary>
-        /// <param name="vec"> vector to check </param>
-        /// <returns> 
-        /// true: is nan
-        /// false: valid value
-        /// </returns>
         public static bool IsNaN(Vector2 vec)
         {
             return (float.IsNaN(vec.x) || float.IsNaN(vec.y));
+        }
+
+        /// <summary>
+        /// Return true if the number is either NaN or infinity.
+        /// </summary>
+        public static bool IsNaNOrInfinity(float f)
+        {
+            return float.IsNaN(f) || float.IsInfinity(f);
+        }
+        public static bool IsNaNOrInfinity(Vector3 vec)
+        {
+            return IsNaN(vec) || IsInfinity(vec);
+        }
+        public static bool IsNaNOrInfinity(Vector2 vec)
+        {
+            return IsNaN(vec) || IsInfinity(vec);
         }
 
         /// <summary>

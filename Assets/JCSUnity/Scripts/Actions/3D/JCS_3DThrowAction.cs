@@ -112,8 +112,11 @@ namespace JCSUnity
             // make it effect by gravity.
             this.mVelocity.y += JCS_Physics.GRAVITY * mGravityProduct * dt;
 
-            // add up velocity.
-            this.transform.position += mVelocity * dt;
+            if (!JCS_Mathf.IsNaNOrInfinity(mVelocity))
+            {
+                // add up velocity.
+                this.transform.position += mVelocity * dt;
+            }
 
             if (mFaceFoward)
             {

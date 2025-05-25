@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace JCSUnity
@@ -43,11 +42,7 @@ namespace JCSUnity
                 instance = this;
 
 #if UNITY_5_4_OR_NEWER
-                // ==> OnLevelWasLoaded <==
-                SceneManager.sceneLoaded += (scene, loadingMode) =>
-                {
-                    LevelLoaded();
-                };
+                SceneManager.sceneLoaded += LevelLoaded;
 #endif
             }
             else
@@ -64,8 +59,11 @@ namespace JCSUnity
         /// </summary>
         /// <param name="scene"></param>
         /// <param name="loadingMode"></param>
-        private void LevelLoaded()
+        private void LevelLoaded(Scene scene, LoadSceneMode mode)
         {
+            if (mAudioSource == null)
+                return;
+
             // In 2023.2.19f1, the loop will be turned off for some reason.
             // Let's force BGM to run loop!
             mAudioSource.loop = true;

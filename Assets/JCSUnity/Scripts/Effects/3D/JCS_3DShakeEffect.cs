@@ -35,9 +35,13 @@ namespace JCSUnity
         [SerializeField]
         private bool mTestWithKey = false;
 
-        [Tooltip("Do wave effect key.")]
+        [Tooltip("Key to shake once.")]
         [SerializeField]
-        private KeyCode mDoEffectKey = KeyCode.Y;
+        private KeyCode mKeyShake = KeyCode.Y;
+
+        [Tooltip("Key to shake continously.")]
+        [SerializeField]
+        private KeyCode mKeyShakeForce = KeyCode.U;
 #endif
 
         [Separator("Check Variables (JCS_3DShakeEffect)")]
@@ -142,9 +146,14 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (JCS_Input.GetKeyDown(mDoEffectKey))
+            if (JCS_Input.GetKeyDown(mKeyShake))
             {
                 DoShake();
+            }
+
+            if (JCS_Input.GetKey(mKeyShakeForce))
+            {
+                DoShake(true);
             }
         }
 #endif
@@ -156,7 +165,11 @@ namespace JCSUnity
         /// <param name="margin"> margin to do the shake. </param>
         public void DoShake()
         {
-            DoShake(mTime, mMargin, mForce);
+            DoShake(mForce);
+        }
+        public void DoShake(bool force)
+        {
+            DoShake(mTime, mMargin, force);
         }
         public void DoShake(float time, float margin, bool force)
         {
@@ -174,7 +187,7 @@ namespace JCSUnity
             this.mTimer = 0.0f;
             this.mMargin = margin;
 
-            mDelta = Vector3.zero;
+            RevertShakeByTransformType(mDelta);
 
             mEffect = true;
 
@@ -193,29 +206,26 @@ namespace JCSUnity
 
             RevertShakeByTransformType(mDelta);
 
-            mDelta = Vector3.zero;
-
             float dt = JCS_Time.ItTime(mTimeType);
-
-            // Handle pause situation.
-            {
-                var pm = JCS_PauseManager.instance;
-
-                if (pm != null && pm.Paused)
-                    return;
-            }
 
             mTimer += dt;
 
             if (mTimer < mTime)
             {
+                if (mTimer <= 0.0f)
+                    return;
+
+                float timeStep = mTime / mTimer;
+
+                float amount = (mMargin * timeStep / mSteps) * dt;
+
                 // shake randomly
                 if (mOnX)
-                    mDelta.x = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
+                    mDelta.x = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * amount;
                 if (mOnY)
-                    mDelta.y = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
+                    mDelta.y = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * amount;
                 if (mOnZ)
-                    mDelta.z = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
+                    mDelta.z = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * amount;
 
                 ApplyShakeByTransformType(mDelta);
 
@@ -245,44 +255,47 @@ namespace JCSUnity
         /// Apply shake delta by transform type.
         /// </summary>
         /// <param name="shakeDelta"> Shake delta value. </param>
-        private void ApplyShakeByTransformType(Vector3 shakeDelta)
+        private void ApplyShakeByTransformType(Vector3 delta)
         {
+            if (JCS_Mathf.IsNaNOrInfinity(delta))
+                return;
+
             switch (this.mTransformType)
             {
                 /* Transform */
                 case JCS_TransformType.POSITION:
-                    this.transform.position += shakeDelta;
+                    this.transform.position += delta;
                     break;
                 case JCS_TransformType.ROTATION:
-                    this.transform.eulerAngles += shakeDelta;
+                    this.transform.eulerAngles += delta;
                     break;
                 case JCS_TransformType.SCALE:
-                    this.transform.localScale += shakeDelta;
+                    this.transform.localScale += delta;
                     break;
                 /* RectTransform */
                 case JCS_TransformType.ANCHOR_MIN:
-                    mRectTransform.anchorMin += (Vector2)shakeDelta;
+                    mRectTransform.anchorMin += (Vector2)delta;
                     break;
                 case JCS_TransformType.ANCHOR_MAX:
-                    mRectTransform.anchorMax += (Vector2)shakeDelta;
+                    mRectTransform.anchorMax += (Vector2)delta;
                     break;
                 case JCS_TransformType.SIZE_DELTA:
-                    mRectTransform.sizeDelta += (Vector2)shakeDelta;
+                    mRectTransform.sizeDelta += (Vector2)delta;
                     break;
                 case JCS_TransformType.PIVOT:
-                    mRectTransform.pivot += (Vector2)shakeDelta;
+                    mRectTransform.pivot += (Vector2)delta;
                     break;
                 case JCS_TransformType.ANCHOR_POSITION:
-                    mRectTransform.anchoredPosition += (Vector2)shakeDelta;
+                    mRectTransform.anchoredPosition += (Vector2)delta;
                     break;
                 case JCS_TransformType.ANCHOR_POSITION_3D:
-                    mRectTransform.anchoredPosition3D += shakeDelta;
+                    mRectTransform.anchoredPosition3D += delta;
                     break;
                 case JCS_TransformType.OFFSET_MIN:
-                    mRectTransform.offsetMin += (Vector2)shakeDelta;
+                    mRectTransform.offsetMin += (Vector2)delta;
                     break;
                 case JCS_TransformType.OFFSET_MAX:
-                    mRectTransform.offsetMax += (Vector2)shakeDelta;
+                    mRectTransform.offsetMax += (Vector2)delta;
                     break;
             }
         }
@@ -291,46 +304,52 @@ namespace JCSUnity
         /// Revert shake delta by transform type.
         /// </summary>
         /// <param name="shakeDelta"> Shake delta value. </param>
-        private void RevertShakeByTransformType(Vector3 shakeDelta)
+        private void RevertShakeByTransformType(Vector3 delta)
         {
+            if (JCS_Mathf.IsNaNOrInfinity(delta))
+                return;
+
             switch (this.mTransformType)
             {
                 /* Transform */
                 case JCS_TransformType.POSITION:
-                    this.transform.position -= shakeDelta;
+                    this.transform.position -= delta;
                     break;
                 case JCS_TransformType.ROTATION:
-                    this.transform.eulerAngles -= shakeDelta;
+                    this.transform.eulerAngles -= delta;
                     break;
                 case JCS_TransformType.SCALE:
-                    this.transform.localScale -= shakeDelta;
+                    this.transform.localScale -= delta;
                     break;
                 /* RectTransform */
                 case JCS_TransformType.ANCHOR_MIN:
-                    mRectTransform.anchorMin -= (Vector2)shakeDelta;
+                    mRectTransform.anchorMin -= (Vector2)delta;
                     break;
                 case JCS_TransformType.ANCHOR_MAX:
-                    mRectTransform.anchorMax -= (Vector2)shakeDelta;
+                    mRectTransform.anchorMax -= (Vector2)delta;
                     break;
                 case JCS_TransformType.SIZE_DELTA:
-                    mRectTransform.sizeDelta -= (Vector2)shakeDelta;
+                    mRectTransform.sizeDelta -= (Vector2)delta;
                     break;
                 case JCS_TransformType.PIVOT:
-                    mRectTransform.pivot -= (Vector2)shakeDelta;
+                    mRectTransform.pivot -= (Vector2)delta;
                     break;
                 case JCS_TransformType.ANCHOR_POSITION:
-                    mRectTransform.anchoredPosition -= (Vector2)shakeDelta;
+                    mRectTransform.anchoredPosition -= (Vector2)delta;
                     break;
                 case JCS_TransformType.ANCHOR_POSITION_3D:
-                    mRectTransform.anchoredPosition3D -= shakeDelta;
+                    mRectTransform.anchoredPosition3D -= delta;
                     break;
                 case JCS_TransformType.OFFSET_MIN:
-                    mRectTransform.offsetMin -= (Vector2)shakeDelta;
+                    mRectTransform.offsetMin -= (Vector2)delta;
                     break;
                 case JCS_TransformType.OFFSET_MAX:
-                    mRectTransform.offsetMax -= (Vector2)shakeDelta;
+                    mRectTransform.offsetMax -= (Vector2)delta;
                     break;
             }
+
+            // Reset.
+            mDelta = Vector3.zero;
         }
     }
 }
