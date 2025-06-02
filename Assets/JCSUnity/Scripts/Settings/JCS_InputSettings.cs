@@ -275,7 +275,7 @@ namespace JCSUnity
         /// <returns> name of the joystick button id. </returns>
         public static string GetJoystickButtonIdName(int index, JCS_JoystickButton label)
         {
-            return GetJoystickButtonIdName((JCS_JoystickIndex)index, label);
+            return GetJoystickButtonIdName((JCS_JoystickId)index, label);
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace JCSUnity
         /// <param name="index"> joystick id. </param>
         /// <param name="label"> joystick button label </param>
         /// <returns> name of the joystick button id. </returns>
-        public static string GetJoystickButtonIdName(JCS_JoystickIndex index, JCS_JoystickButton label)
+        public static string GetJoystickButtonIdName(JCS_JoystickId index, JCS_JoystickButton label)
         {
             return GetJoystickButtonName(label) + " " + (int)index;
         }

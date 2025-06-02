@@ -1061,6 +1061,63 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return a list of game object with the tag name.
+        /// 
+        /// This is CG intensive, please try not to use it too often.
+        /// </summary>
+        public static List<GameObject> FindGameObjectsWithTag(string tag)
+        {
+            List<GameObject> result = new();
+
+            JCS_Loop.Times(SceneManager.sceneCount, (count) =>
+            {
+                Scene scene = SceneManager.GetSceneAt(count);
+
+                List<GameObject> objs = FindGameObjectsWithTag(tag, scene);
+
+                result.AddRange(objs);
+            });
+
+            return result;
+        }
+        // Deal with specific scene.
+        public static List<GameObject> FindGameObjectsWithTag(string tag, Scene scene)
+        {
+            List<GameObject> result = new();
+
+            foreach (GameObject root in scene.GetRootGameObjects())
+            {
+                // Add root self.
+                if (root.tag == tag)
+                    result.Add(root);
+
+                List<GameObject> objs = FindGameObjectsWithTag(tag, root);
+
+                result.AddRange(objs);
+            }
+
+            return result;
+        }
+        // Deal with specific GameObject.
+        public static List<GameObject> FindGameObjectsWithTag(string tag, GameObject go)
+        {
+            List<GameObject> result = new();
+
+            // Add children.
+            foreach (Transform child in go.transform)
+            {
+                if (child.tag == tag)
+                    result.Add(child.gameObject);
+
+                List<GameObject> nested = FindGameObjectsWithTag(tag, child.gameObject);
+
+                result.AddRange(nested);
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Find all the objects that are clone in the scene by type.
         /// </summary>
         /// <typeparam name="T"> Type to find. </typeparam>

@@ -22,6 +22,53 @@ namespace JCSUnity
         /* Functions */
 
         /// <summary>
+        /// Return true if the parameter exists.
+        /// </summary>
+        public static bool HasParameter(Animator animator, string paramName)
+        {
+            foreach (AnimatorControllerParameter param in animator.parameters)
+            {
+                if (param.name == paramName)
+                    return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Return true if the layer exists in the aniamtor.
+        /// </summary>
+        public static bool HasLayer(Animator animator, string name)
+        {
+            int index = animator.GetLayerIndex(name);
+
+            return HasLayer(animator, index);
+        }
+        public static bool HasLayer(Animator animator, int index)
+        {
+            if (index < 0 || animator.layerCount <= index)
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Like `Animator.HasState` but make second paramter 
+        /// accepts the string.
+        /// </summary>
+        public static bool HasState(Animator animator, int layer, string name)
+        {
+            // First check if the layer exists.
+            if (!HasLayer(animator, layer))
+                return false;
+
+            // Convert name to hash.
+            int stateHash = Animator.StringToHash(name);
+
+            // Then do the check.
+            return animator.HasState(layer, stateHash);
+        }
+
+        /// <summary>
         /// Sets the weight of the layer at the given name.
         /// 
         /// Similar to `Animationr.SetLayerWeight` but accept string name.
@@ -53,23 +100,6 @@ namespace JCSUnity
         public static float GetLayerWeight(Animator ator, int index)
         {
             return ator.GetLayerWeight(index);
-        }
-
-        /// <summary>
-        /// Like `Animator.HasState` but make second paramter 
-        /// accepts the string.
-        /// </summary>
-        public static bool HasState(Animator animator, int layer, string name)
-        {
-            // First check if the layer exists.
-            if (layer < 0 || animator.layerCount <= layer)
-                return false;
-
-            // Convert name to hash.
-            int stateHash = Animator.StringToHash(name);
-
-            // Then do the check.
-            return animator.HasState(layer, stateHash);
         }
     }
 }

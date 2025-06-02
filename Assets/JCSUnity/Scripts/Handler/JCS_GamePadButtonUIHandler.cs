@@ -93,8 +93,8 @@ namespace JCSUnity
 
             /* Register callback */
             {
-                JCS_Input.joystickPluggedCallback += JoystickPluggedCallback;
-                JCS_Input.joystickUnPluggedCallback += JoystickUnPluggedCallback;
+                JCS_Input.onJoystickPlugged += JoystickPluggedCallback;
+                JCS_Input.onJoystickUnplugged += JoystickUnpluggedCallback;
             }
 
             JCS_Input.InputCallbackOnce();
@@ -104,8 +104,8 @@ namespace JCSUnity
         {
             /* Deregister callback */
             {
-                JCS_Input.joystickPluggedCallback -= JoystickPluggedCallback;
-                JCS_Input.joystickUnPluggedCallback -= JoystickUnPluggedCallback;
+                JCS_Input.onJoystickPlugged -= JoystickPluggedCallback;
+                JCS_Input.onJoystickUnplugged -= JoystickUnpluggedCallback;
             }
         }
 
@@ -128,11 +128,11 @@ namespace JCSUnity
         /// <summary>
         /// When joystick un-plugged.
         /// </summary>
-        protected virtual void JoystickUnPluggedCallback()
+        protected virtual void JoystickUnpluggedCallback()
         {
             this.mNormalImage.sprite = mKNormalSprite;
 
-            SpriteState newSpriteState = new SpriteState();
+            SpriteState newSpriteState = new();
 
             newSpriteState.highlightedSprite = mKHighlightedSprite;
             newSpriteState.pressedSprite = mKPressedSprite;

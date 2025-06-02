@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2015 by Shen, Jen-Chieh $
  */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,8 +18,6 @@ using UnityEngine.Android;
 
 namespace JCSUnity
 {
-    public delegate void OnSystemLanguageChanged(SystemLanguage language);
-
     /// <summary>
     /// Manager manage application layer.
     /// </summary>
@@ -31,7 +30,7 @@ namespace JCSUnity
         public static bool APP_INITIALIZING = true;
 
         // Execute after the system language has changed.
-        public OnSystemLanguageChanged onSystemLanguageChanged = null;
+        public Action<SystemLanguage> onSystemLanguageChanged = null;
 
         [Separator("Check Variables (JCS_AppManager)")]
 
@@ -97,8 +96,7 @@ namespace JCSUnity
                 this.mSystemLanguage = value;
                 RefreshLangTexts();
 
-                if (onSystemLanguageChanged != null)
-                    onSystemLanguageChanged.Invoke(value);
+                onSystemLanguageChanged?.Invoke(value);
             }
         }
         public bool SimulateSystemLanguage { get { return this.mSimulateSystemLanguage; } set { this.mSimulateSystemLanguage = value; } }

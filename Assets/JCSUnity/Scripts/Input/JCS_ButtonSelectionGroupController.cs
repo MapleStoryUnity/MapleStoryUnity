@@ -68,7 +68,7 @@ namespace JCSUnity
 
         [Tooltip("Which device we are listening to?")]
         [SerializeField]
-        private JCS_JoystickIndex mGamePadId = JCS_JoystickIndex.FROM_ALL_JOYSTICK;
+        private JCS_JoystickId mGamePadId = JCS_JoystickId.ANY;
 
         [Tooltip("Next selection. (Gamepad)")]
         [SerializeField]
@@ -172,7 +172,7 @@ namespace JCSUnity
         public KeyCode MRight { get { return this.mMNext; } set { this.mMNext = value; } }
         public KeyCode MLeft { get { return this.mMNext; } set { this.mMNext = value; } }
 
-        public JCS_JoystickIndex GamePadId { get { return this.mGamePadId; } set { this.mGamePadId = value; } }
+        public JCS_JoystickId GamePadId { get { return this.mGamePadId; } set { this.mGamePadId = value; } }
 
         public JCS_JoystickButton JNext { get { return this.mJNext; } set { this.mJNext = value; } }
         public JCS_JoystickButton JPrev { get { return this.mJPrev; } set { this.mJPrev = value; } }

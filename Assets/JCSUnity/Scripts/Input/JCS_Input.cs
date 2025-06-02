@@ -51,21 +51,21 @@ namespace JCSUnity
     /// <summary>
     /// Support joystick up to 30 people.
     /// </summary>
-    public enum JCS_JoystickIndex
+    public enum JCS_JoystickId
     {
         // Joystick 0 - 10 (1 ~ 11)
-        FROM_ALL_JOYSTICK = 0x00,
-        JOYSTICK_01 = 0x01,
-        JOYSTICK_02 = 0x02,
-        JOYSTICK_03 = 0x03,
-        JOYSTICK_04 = 0x04,
-        JOYSTICK_05 = 0x05,
-        JOYSTICK_06 = 0x06,
-        JOYSTICK_07 = 0x07,
-        JOYSTICK_08 = 0x08,
-        JOYSTICK_09 = 0x09,
-        JOYSTICK_10 = 0x0A,
-        JOYSTICK_11 = 0x0B,
+        ANY = 0x00,
+        ID_01 = 0x01,
+        ID_02 = 0x02,
+        ID_03 = 0x03,
+        ID_04 = 0x04,
+        ID_05 = 0x05,
+        ID_06 = 0x06,
+        ID_07 = 0x07,
+        ID_08 = 0x08,
+        ID_09 = 0x09,
+        ID_10 = 0x0A,
+        ID_11 = 0x0B,
     };
 
     /// <summary>
@@ -88,39 +88,50 @@ namespace JCSUnity
     public class JCS_Input
     {
         #region DOUBLE_CLICK
+
         // Boolean to indentify the first click.
         private static bool CLICK = false;
         // Interval time between the first click and the second click.
         private static float CLICK_TIME = 0.25f;
         // Timer to check with 'CLICK_TIME'.
         private static float CLICK_TIMER = 0.0f;
+
         #endregion
 
         #region DRAG
+
         private static bool START_DRAGGING = false;
         private static bool DRAGGING = false;
         private static Vector3 START_DRAG_POINT = Vector3.zero;
+
         #endregion
 
         #region JOYSTICK
-        private static Dictionary<string, bool>
-            mJoystickKeyPressed = new Dictionary<string, bool>();
-        private static Dictionary<string, bool>
-            mJoystickKeyReleased = new Dictionary<string, bool>();
 
-        private static List<string> mJoystickKeyWasPreseed = new List<string>();
-        private static List<string> mJoystickKeyWasReleased = new List<string>();
+        private static Dictionary<string, bool> mJoystickKeyPressed = new();
+        private static Dictionary<string, bool> mJoystickKeyReleased = new();
 
-        public static JoystickPlugged joystickPluggedCallback = JoystickPluggedDefaultCallback;
-        public static JoystickUnPlugged joystickUnPluggedCallback = JoystickUnPluggedDefaultCallback;
+        private static List<string> mJoystickKeyWasPreseed = new();
+        private static List<string> mJoystickKeyWasReleased = new();
+
+        public static Action onJoystickPlugged = DefaultJoystickPlugged;
+        public static Action onJoystickUnplugged = DefaultJoystickUnplugged;
 
         // record down the if the joystick was connected.
         private static bool mIsJoystickConnected = IsJoystickConnected();
+
         #endregion
 
         /* Default callback function pointer. */
-        private static void JoystickPluggedDefaultCallback() { Debug.Log("At least one joystick connected!!!"); }
-        private static void JoystickUnPluggedDefaultCallback() { Debug.Log("No joystick connected..."); }
+
+        private static void DefaultJoystickPlugged()
+        {
+            Debug.Log("At least one joystick connected!!!");
+        }
+        private static void DefaultJoystickUnplugged()
+        {
+            Debug.Log("No joystick connected...");
+        }
 
         /// <summary>
         /// Main loop for input.
@@ -128,6 +139,7 @@ namespace JCSUnity
         public static void LateUpdate()
         {
             #region DOUBLE_CLICK
+
             if (CLICK)
             {
                 CLICK_TIMER += Time.unscaledDeltaTime;
@@ -138,6 +150,7 @@ namespace JCSUnity
                     CLICK_TIMER = 0.0f;
                 }
             }
+
             #endregion
 
             DoJoystickCallback();
@@ -167,9 +180,11 @@ namespace JCSUnity
         {
             if (GetKeyByAction(action, key))
             {
-                callback.Invoke();
+                callback?.Invoke();
+
                 return true;
             }
+
             return false;
         }
 
@@ -179,9 +194,9 @@ namespace JCSUnity
         public static void InputCallbackOnce()
         {
             if (mIsJoystickConnected)
-                joystickPluggedCallback.Invoke();
+                onJoystickPlugged?.Invoke();
             else
-                joystickUnPluggedCallback.Invoke();
+                onJoystickUnplugged?.Invoke();
         }
 
         /// <summary>
@@ -533,31 +548,21 @@ namespace JCSUnity
         /// true, button with current key action is active.
         /// false, button with current key action is not active.
         /// </returns>
-        public static bool GetKeyByAction(JCS_KeyActionType act, KeyCode key)
+        public static bool GetKeyByAction(JCS_KeyActionType act, params KeyCode[] keys)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetKey(key);
+                    return GetKey(keys);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetKeyDown(key);
+                    return GetKeyDown(keys);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetKeyUp(key);
+                    return GetKeyUp(keys);
             }
 
             return false;  // This cannot happens!
         }
-        /// <summary>
-        /// Is the key down?
-        /// </summary>
-        /// <param name="key"> key to check if the key is down. </param>
-        /// <returns>
-        /// true: key is down, false: vice versa.
-        /// </returns>
-        public static bool GetKeyDown(KeyCode key)
-        {
-            return Input.GetKeyDown(key);
-        }
+
         /// <summary>
         /// Is the key held down?
         /// </summary>
@@ -565,18 +570,115 @@ namespace JCSUnity
         /// <returns>
         /// true: key is held down, false: vice versa.
         /// </returns>
-        public static bool GetKey(KeyCode key)
+        public static bool GetKey(params KeyCode[] keys)
         {
-            return Input.GetKey(key);
+            foreach (KeyCode key in keys)
+            {
+                if (Input.GetKey(key))
+                    return true;
+            }
+
+            return false;
         }
+
+        /// <summary>
+        /// Is the key down?
+        /// </summary>
+        /// <param name="key"> key to check if the key is down. </param>
+        /// <returns>
+        /// true: key is down, false: vice versa.
+        /// </returns>
+        public static bool GetKeyDown(params KeyCode[] keys)
+        {
+            foreach (KeyCode key in keys)
+            {
+                if (Input.GetKeyDown(key))
+                    return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Is the key up?
         /// </summary>
         /// <param name="key"> key to check if is key up. </param>
         /// <returns> true: is key up, false: vice versa. </returns>
-        public static bool GetKeyUp(KeyCode key)
+        public static bool GetKeyUp(params KeyCode[] keys)
         {
-            return Input.GetKeyUp(key);
+            foreach (KeyCode key in keys)
+            {
+                if (Input.GetKeyUp(key))
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check all of these key are preseed.
+        /// 
+        /// If all of the keys are pressed, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are pressed.
+        /// false, none of these keys are pressed.
+        /// </returns>
+        public static bool AllKeys(params KeyCode[] keys)
+        {
+            foreach (KeyCode key in keys)
+            {
+                if (!GetKey(key))
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Check all of these key are down.
+        /// 
+        /// If all of the keys are down, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are down.
+        /// false, none of these keys are down.
+        /// </returns>
+        public static bool AllKeysDown(params KeyCode[] keys)
+        {
+            foreach (KeyCode key in keys)
+            {
+                if (!GetKeyDown(key))
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Check all of these key are up.
+        /// 
+        /// If all of the keys are up, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are up.
+        /// false, none of these keys are up.
+        /// </returns>
+        public static bool AllKeysUp(params KeyCode[] keys)
+        {
+            foreach (KeyCode key in keys)
+            {
+                if (!GetKeyUp(key))
+                    return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -592,46 +694,67 @@ namespace JCSUnity
         /// <returns> 
         /// Is either pressed, down, up. or not pressed, down, up. 
         /// </returns>
-        public static bool GetButtonByAction(JCS_KeyActionType act, string buttonName)
+        public static bool GetButtonByAction(JCS_KeyActionType act, params string[] names)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetButton(buttonName);
+                    return GetButton(names);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetButtonDown(buttonName);
+                    return GetButtonDown(names);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetButtonUp(buttonName);
+                    return GetButtonUp(names);
             }
 
             return false;  // this cannot happens
         }
+
         /// <summary>
         /// Is the button pressed?
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
-        public static bool GetButton(string buttonName)
+        public static bool GetButton(params string[] names)
         {
-            return Input.GetButton(buttonName);
+            foreach (string name in names)
+            {
+                if (Input.GetButton(name))
+                    return true;
+            }
+
+            return false;
         }
+
         /// <summary>
         /// Is the button down?
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
-        public static bool GetButtonDown(string buttonName)
+        public static bool GetButtonDown(params string[] names)
         {
-            return Input.GetButtonDown(buttonName);
+            foreach (string name in names)
+            {
+                if (Input.GetButtonDown(name))
+                    return true;
+            }
+
+            return false;
         }
+
         /// <summary>
         /// Is the button up?
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
-        public static bool GetButtonUp(string buttonName)
+        public static bool GetButtonUp(params string[] names)
         {
-            return Input.GetButtonUp(buttonName);
+            foreach (string name in names)
+            {
+                if (Input.GetButtonUp(name))
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -706,41 +829,30 @@ namespace JCSUnity
             return IsAnyKeyBuffer(JCS_KeyActionType.KEY_UP);
         }
 
-
         /// <summary>
         /// Return the joystick buffer.
         /// </summary>
-        /// <param name="joystickIndex"></param>
+        /// <param name="index"></param>
         /// <param name="btn"></param>
         /// <returns></returns>
-        public static float GetAxis(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static float GetAxis(JCS_JoystickId index, JCS_JoystickButton btn)
         {
-            return GetAxis((int)joystickIndex, btn);
+            return GetAxis((int)index, btn);
         }
-        /// <summary>
-        /// Return the joystick buffer.
-        /// </summary>
-        /// <param name="btn"></param>
-        /// <returns></returns>
-        public static float GetAxis(int joystickIndex, JCS_JoystickButton btn)
+        public static float GetAxis(int index, JCS_JoystickButton btn)
         {
             if (btn == JCS_JoystickButton.NONE)
                 return 0;
 
-            string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
+            string id = JCS_InputSettings.GetJoystickButtonIdName(index, btn);
 
-            return GetAxis(idString);
+            return GetAxis(id);
         }
-        /// <summary>
-        /// Return the joystick buffer.
-        /// </summary>
-        /// <param name="name"> name of the joystick name. </param>
-        /// <returns> value the joystick tilt. </returns>
         public static float GetAxis(string name)
         {
             if (name == "")
             {
-                Debug.LogError("InputManager's name variable cannot be empty string...");
+                Debug.LogError("InputManager's name variable can't be an empty string");
                 return 0;
             }
 
@@ -753,108 +865,109 @@ namespace JCSUnity
         /// <param name="joystickIndex"></param>
         /// <param name="btn"></param>
         /// <returns> buffer pressure from hardware. </returns>
-        public static bool GetJoystickButton(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickButton(JCS_JoystickId index, params JCS_JoystickButton[] btns)
         {
-            return GetJoystickButton((int)joystickIndex, btn);
+            return GetJoystickButton((int)index, btns);
         }
-        /// <summary>
-        /// Check if the button have pressed.
-        /// </summary>
-        /// <returns></returns>
-        public static bool GetJoystickButton(int joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickButton(int index, params JCS_JoystickButton[] btns)
         {
             // check if any joystick connected.
             if (!IsJoystickConnected())
                 return false;
 
-            return GetAxis(joystickIndex, btn) > 0;
+            foreach (JCS_JoystickButton btn in btns)
+            {
+                if (GetAxis(index, btn) > 0)
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>
         /// Check if the button have pressed.
         /// </summary>
-        /// <param name="idString"> string id </param>
+        /// <param name="id"> string id </param>
         /// <returns></returns>
-        public static bool GetJoystickButton(string idString)
+        public static bool GetJoystickButton(string id)
         {
-            return GetAxis(idString) > 0;
+            return GetAxis(id) > 0;
         }
 
         /// <summary>
         /// Check if joystick id, pressed the key?
         /// </summary>
-        /// <param name="joystickIndex"> id. </param>
+        /// <param name="index"> id. </param>
         /// <param name="btn"> target button. </param>
         /// <returns>
         /// true: did pressed.
         /// false: not pressed.
         /// </returns>
-        public static bool GetJoystickKey(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKey(JCS_JoystickId index, JCS_JoystickButton btn)
         {
-            return GetJoystickKey((int)joystickIndex, btn);
+            return GetJoystickKey((int)index, btn);
         }
 
         /// <summary>
         /// Check if joystick id, pressed the key?
         /// </summary>
-        /// <param name="joystickIndex"> id. </param>
+        /// <param name="index"> id. </param>
         /// <param name="btn"> target button. </param>
         /// <returns>
         /// true: did pressed.
         /// false: not pressed.
         /// </returns>
-        public static bool GetJoystickKey(int joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKey(int index, JCS_JoystickButton btn)
         {
-            return GetJoystickButton(joystickIndex, btn);
-        }
-
-
-        /// <summary>
-        /// Check if joystick id, up the key?
-        /// </summary>
-        /// <param name="joystickIndex"> id. </param>
-        /// <param name="btn"> target button. </param>
-        /// <returns>
-        /// true: did uo.
-        /// false: not up.
-        /// </returns>
-        public static bool GetJoystickKeyUp(int joystickIndex, JCS_JoystickButton btn)
-        {
-            return GetJoystickKeyUp((JCS_JoystickIndex)joystickIndex, btn);
+            return GetJoystickButton(index, btn);
         }
 
         /// <summary>
         /// Check if joystick id, up the key?
         /// </summary>
-        /// <param name="joystickIndex"> id. </param>
+        /// <param name="index"> id. </param>
         /// <param name="btn"> target button. </param>
         /// <returns>
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKeyUp(int index, JCS_JoystickButton btn)
         {
-            string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
+            return GetJoystickKeyUp((JCS_JoystickId)index, btn);
+        }
 
-            if (GetJoystickKey(joystickIndex, btn))
+        /// <summary>
+        /// Check if joystick id, up the key?
+        /// </summary>
+        /// <param name="index"> id. </param>
+        /// <param name="btn"> target button. </param>
+        /// <returns>
+        /// true: did uo.
+        /// false: not up.
+        /// </returns>
+        public static bool GetJoystickKeyUp(JCS_JoystickId index, JCS_JoystickButton btn)
+        {
+            string id = JCS_InputSettings.GetJoystickButtonIdName(index, btn);
+
+            if (GetJoystickKey(index, btn))
             {
-                if (mJoystickKeyReleased.ContainsKey(idString))
-                    mJoystickKeyReleased[idString] = false;
+                if (mJoystickKeyReleased.ContainsKey(id))
+                    mJoystickKeyReleased[id] = false;
             }
             else
             {
-                if (!mJoystickKeyReleased.ContainsKey(idString))
+                if (!mJoystickKeyReleased.ContainsKey(id))
                 {
-                    mJoystickKeyReleased.Add(idString, true);
+                    mJoystickKeyReleased.Add(id, true);
                 }
                 else
                 {
-                    if (mJoystickKeyReleased[idString])
+                    if (mJoystickKeyReleased[id])
                         return false;
                     else
                     {
-                        if (!mJoystickKeyWasReleased.Contains(idString))
-                            mJoystickKeyWasReleased.Add(idString);
+                        if (!mJoystickKeyWasReleased.Contains(id))
+                            mJoystickKeyWasReleased.Add(id);
                         return true;
                     }
                 }
@@ -866,45 +979,45 @@ namespace JCSUnity
         /// <summary>
         /// Check if joystick id, down the key?
         /// </summary>
-        /// <param name="joystickIndex"> id. </param>
+        /// <param name="index"> id. </param>
         /// <param name="btn"> target button. </param>
         /// <returns>
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyDown(int joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKeyDown(int index, JCS_JoystickButton btn)
         {
-            return GetJoystickKeyDown((JCS_JoystickIndex)joystickIndex, btn);
+            return GetJoystickKeyDown((JCS_JoystickId)index, btn);
         }
 
         /// <summary>
         /// Check if joystick id, down the key?
         /// </summary>
-        /// <param name="joystickIndex"> id. </param>
+        /// <param name="index"> id. </param>
         /// <param name="btn"> target button. </param>
         /// <returns>
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKeyDown(JCS_JoystickId index, JCS_JoystickButton btn)
         {
-            string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
+            string id = JCS_InputSettings.GetJoystickButtonIdName(index, btn);
 
-            if (GetJoystickKey(joystickIndex, btn))
+            if (GetJoystickKey(index, btn))
             {
-                if (!mJoystickKeyPressed.ContainsKey(idString))
+                if (!mJoystickKeyPressed.ContainsKey(id))
                 {
-                    mJoystickKeyPressed.Add(idString, false);
+                    mJoystickKeyPressed.Add(id, false);
                 }
                 // Key contains!
                 else
                 {
-                    if (mJoystickKeyPressed[idString])
+                    if (mJoystickKeyPressed[id])
                         return false;
                     else
                     {
-                        if (!mJoystickKeyWasPreseed.Contains(idString))
-                            mJoystickKeyWasPreseed.Add(idString);
+                        if (!mJoystickKeyWasPreseed.Contains(id))
+                            mJoystickKeyWasPreseed.Add(id);
                         return true;
                     }
                 }
@@ -912,8 +1025,8 @@ namespace JCSUnity
             }
             else
             {
-                if (mJoystickKeyPressed.ContainsKey(idString))
-                    mJoystickKeyPressed[idString] = false;
+                if (mJoystickKeyPressed.ContainsKey(id))
+                    mJoystickKeyPressed[id] = false;
             }
 
             return false;
@@ -932,7 +1045,7 @@ namespace JCSUnity
         /// <returns></returns>
         public static bool GetJoystickKeyByAction(
             JCS_KeyActionType act,
-            JCS_JoystickIndex id,
+            JCS_JoystickId id,
             JCS_JoystickButton key)
         {
             switch (act)
@@ -975,9 +1088,8 @@ namespace JCSUnity
         {
             string[] joystickNames = Input.GetJoystickNames();
 
-            for (int index = 0; index < joystickNames.Length; ++index)
+            foreach (string joystickName in joystickNames)
             {
-                string joystickName = joystickNames[index];
                 if (name == joystickName)
                     return true;
             }
@@ -985,87 +1097,6 @@ namespace JCSUnity
             return false;
         }
 
-
-        /// <summary>
-        /// Check either of these key are preseed.
-        /// 
-        /// If one of the key is pressed, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <returns> 
-        /// true, one of the key in the array list is pressed.
-        /// false, none of these keys are pressed.
-        /// </returns>
-        public static bool OneKeys(List<KeyCode> keys)
-        {
-            return OneKeys(keys.ToArray());
-        }
-        public static bool OneKeys(KeyCode[] keys)
-        {
-            for (int index = 0; index < keys.Length; ++index)
-            {
-                if (GetKey(keys[index]))
-                    return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Check either of these key are down.
-        /// 
-        /// If one of the key is down, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <returns> 
-        /// true, one of the key in the array list is down.
-        /// false, none of these keys are down.
-        /// </returns>
-        public static bool OneKeysDown(List<KeyCode> keys)
-        {
-            return OneKeysDown(keys.ToArray());
-        }
-        public static bool OneKeysDown(KeyCode[] keys)
-        {
-            for (int index = 0; index < keys.Length; ++index)
-            {
-                if (GetKeyDown(keys[index]))
-                    return true;
-            }
-
-            return false;
-        }
-
-
-        /// <summary>
-        /// Check either of these key are up.
-        /// 
-        /// If one of the key is up, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <returns> 
-        /// true, one of the key in the array list is up.
-        /// false, none of these keys are up.
-        /// </returns>
-        public static bool OneKeysUp(List<KeyCode> keys)
-        {
-            return OneKeysUp(keys.ToArray());
-        }
-        public static bool OneKeysUp(KeyCode[] keys)
-        {
-            for (int index = 0; index < keys.Length; ++index)
-            {
-                if (GetKeyUp(keys[index]))
-                    return true;
-            }
-
-            return false;
-        }
-
-
         /// <summary>
         /// Check all of these key are preseed.
         /// 
@@ -1077,15 +1108,15 @@ namespace JCSUnity
         /// true, all of the keys in the array list are pressed.
         /// false, none of these keys are pressed.
         /// </returns>
-        public static bool AllKeys(List<KeyCode> keys)
+        public static bool AllJoystickButtons(int index, params JCS_JoystickButton[] keys)
         {
-            return AllKeys(keys.ToArray());
+            return AllJoystickButtons((JCS_JoystickId)index, keys);
         }
-        public static bool AllKeys(KeyCode[] keys)
+        public static bool AllJoystickButtons(JCS_JoystickId index, params JCS_JoystickButton[] keys)
         {
-            for (int index = 0; index < keys.Length; ++index)
+            foreach (JCS_JoystickButton key in keys)
             {
-                if (!GetKey(keys[index]))
+                if (!GetJoystickButton(index, key))
                     return false;
             }
 
@@ -1103,15 +1134,15 @@ namespace JCSUnity
         /// true, all of the keys in the array list are down.
         /// false, none of these keys are down.
         /// </returns>
-        public static bool AllKeysDown(List<KeyCode> keys)
+        public static bool AllJoystickKeysDown(int index, params JCS_JoystickButton[] keys)
         {
-            return AllKeysDown(keys.ToArray());
+            return AllJoystickKeysDown((JCS_JoystickId)index, keys);
         }
-        public static bool AllKeysDown(KeyCode[] keys)
+        public static bool AllJoystickKeysDown(JCS_JoystickId index, params JCS_JoystickButton[] keys)
         {
-            for (int index = 0; index < keys.Length; ++index)
+            foreach (JCS_JoystickButton key in keys)
             {
-                if (!GetKeyDown(keys[index]))
+                if (!GetJoystickKeyDown(index, key))
                     return false;
             }
 
@@ -1129,222 +1160,15 @@ namespace JCSUnity
         /// true, all of the keys in the array list are up.
         /// false, none of these keys are up.
         /// </returns>
-        public static bool AllKeysUp(List<KeyCode> keys)
+        public static bool AllJoystickKeysUp(int index, params JCS_JoystickButton[] keys)
         {
-            return AllKeysUp(keys.ToArray());
+            return AllJoystickKeysUp((JCS_JoystickId)index, keys);
         }
-        public static bool AllKeysUp(KeyCode[] keys)
+        public static bool AllJoystickKeysUp(JCS_JoystickId index, params JCS_JoystickButton[] keys)
         {
-            for (int index = 0; index < keys.Length; ++index)
+            foreach (JCS_JoystickButton key in keys)
             {
-                if (!GetKeyUp(keys[index]))
-                    return false;
-            }
-
-            return true;
-        }
-
-
-        /// <summary>
-        /// Check either of these key are preseed.
-        /// 
-        /// If one of the key is pressed, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <returns> 
-        /// true, one of the key in the array list is pressed.
-        /// false, none of these keys are pressed.
-        /// </returns>
-        public static bool OneJoystickButtons(int joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys.ToArray());
-        }
-        public static bool OneJoystickButtons(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return OneJoystickButtons(joystickIndex, keys.ToArray());
-        }
-        public static bool OneJoystickButtons(int joystickIndex, JCS_JoystickButton[] keys)
-        {
-            return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys);
-        }
-        public static bool OneJoystickButtons(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
-        {
-            for (int index = 0; index < keys.Length; ++index)
-            {
-                if (GetJoystickButton(joystickIndex, keys[index]))
-                    return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Check either of these key are down.
-        /// 
-        /// If one of the key is down, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <returns> 
-        /// true, one of the key in the array list is down.
-        /// false, none of these keys are down.
-        /// </returns>
-        public static bool OneJoystickKeysDown(int joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return OneJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys.ToArray());
-        }
-        public static bool OneJoystickKeysDown(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return OneJoystickKeysDown(joystickIndex, keys.ToArray());
-        }
-        public static bool OneJoystickKeysDown(int joystickIndex, JCS_JoystickButton[] keys)
-        {
-            return OneJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys);
-        }
-        public static bool OneJoystickKeysDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
-        {
-            for (int index = 0; index < keys.Length; ++index)
-            {
-                if (GetJoystickKeyDown(joystickIndex, keys[index]))
-                    return true;
-            }
-
-            return false;
-        }
-
-
-        /// <summary>
-        /// Check either of these key are up.
-        /// 
-        /// If one of the key is up, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <returns> 
-        /// true, one of the key in the array list is up.
-        /// false, none of these keys are up.
-        /// </returns>
-        public static bool OneJoystickKeysUp(int joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return OneJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys.ToArray());
-        }
-        public static bool OneJoystickKeysUp(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return OneJoystickKeysUp(joystickIndex, keys.ToArray());
-        }
-        public static bool OneJoystickKeysUp(int joystickIndex, JCS_JoystickButton[] keys)
-        {
-            return OneJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys);
-        }
-        public static bool OneJoystickKeysUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
-        {
-            for (int index = 0; index < keys.Length; ++index)
-            {
-                if (GetJoystickKeyUp(joystickIndex, keys[index]))
-                    return true;
-            }
-
-            return false;
-        }
-
-
-        /// <summary>
-        /// Check all of these key are preseed.
-        /// 
-        /// If all of the keys are pressed, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <returns> 
-        /// true, all of the keys in the array list are pressed.
-        /// false, none of these keys are pressed.
-        /// </returns>
-        public static bool AllJoystickButtons(int joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return AllJoystickButtons((JCS_JoystickIndex)joystickIndex, keys.ToArray());
-        }
-        public static bool AllJoystickButtons(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return AllJoystickButtons(joystickIndex, keys.ToArray());
-        }
-        public static bool AllJoystickButtons(int joystickIndex, JCS_JoystickButton[] keys)
-        {
-            return AllJoystickButtons((JCS_JoystickIndex)joystickIndex, keys);
-        }
-        public static bool AllJoystickButtons(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
-        {
-            for (int index = 0; index < keys.Length; ++index)
-            {
-                if (!GetJoystickButton(joystickIndex, keys[index]))
-                    return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Check all of these key are down.
-        /// 
-        /// If all of the keys are down, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <returns> 
-        /// true, all of the keys in the array list are down.
-        /// false, none of these keys are down.
-        /// </returns>
-        public static bool AllJoystickKeysDown(int joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return AllJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys.ToArray());
-        }
-        public static bool AllJoystickKeysDown(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return AllJoystickKeysDown(joystickIndex, keys.ToArray());
-        }
-        public static bool AllJoystickKeysDown(int joystickIndex, JCS_JoystickButton[] keys)
-        {
-            return AllJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys);
-        }
-        public static bool AllJoystickKeysDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
-        {
-            for (int index = 0; index < keys.Length; ++index)
-            {
-                if (!GetJoystickKeyDown(joystickIndex, keys[index]))
-                    return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Check all of these key are up.
-        /// 
-        /// If all of the keys are up, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <returns> 
-        /// true, all of the keys in the array list are up.
-        /// false, none of these keys are up.
-        /// </returns>
-        public static bool AllJoystickKeysUp(int joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return AllJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys.ToArray());
-        }
-        public static bool AllJoystickKeysUp(JCS_JoystickIndex joystickIndex, List<JCS_JoystickButton> keys)
-        {
-            return AllJoystickKeysUp(joystickIndex, keys.ToArray());
-        }
-        public static bool AllJoystickKeysUp(int joystickIndex, JCS_JoystickButton[] keys)
-        {
-            return AllJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys);
-        }
-        public static bool AllJoystickKeysUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton[] keys)
-        {
-            for (int index = 0; index < keys.Length; ++index)
-            {
-                if (!GetJoystickKeyUp(joystickIndex, keys[index]))
+                if (!GetJoystickKeyUp(index, key))
                     return false;
             }
 

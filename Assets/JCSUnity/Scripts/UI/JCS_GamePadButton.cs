@@ -42,7 +42,7 @@ namespace JCSUnity
 
         [Tooltip("Which joystick should listen?")]
         [SerializeField]
-        protected JCS_JoystickIndex mJoystickLitener = JCS_JoystickIndex.FROM_ALL_JOYSTICK;
+        protected JCS_JoystickId mJoystickLitener = JCS_JoystickId.ANY;
 
         [Header("- Sound")]
 
@@ -62,7 +62,7 @@ namespace JCSUnity
 
         public KeyCode KKeyToListen { get { return this.mKKeyToListen; } set { this.mKKeyToListen = value; } }
         public JCS_JoystickButton JKeyToListen { get { return this.mJKeyToListen; } set { this.mJKeyToListen = value; } }
-        public JCS_JoystickIndex JoystickLitener { get { return this.mJoystickLitener; } set { this.mJoystickLitener = value; } }
+        public JCS_JoystickId JoystickLitener { get { return this.mJoystickLitener; } set { this.mJoystickLitener = value; } }
         public bool ListenToAnyKey { get { return this.mListenToAnyKey; } set { this.mListenToAnyKey = value; } }
         public JCS_KeyActionType KeyActionType { get { return this.mKeyActionType; } set { this.mKeyActionType = value; } }
 

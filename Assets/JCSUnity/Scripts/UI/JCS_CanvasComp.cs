@@ -27,6 +27,16 @@ namespace JCSUnity
 
         public JCS_Canvas canvas { get { return this.mCanvas; } }
 
+        public Action doShow
+        {
+            get => mCanvas.doShow;
+            set => mCanvas.doShow = value;
+        }
+        public Action doHide
+        {
+            get => mCanvas.doHide;
+            set => mCanvas.doHide = value;
+        }
         public Action<JCS_Canvas> onShow
         {
             get => mCanvas.onShow;
@@ -57,10 +67,7 @@ namespace JCSUnity
 
         public virtual bool IsShown() => mCanvas.IsShown();
         public virtual void Show(bool mute = false) => mCanvas.Show(mute);
-        public virtual void Show(bool fade, bool mute = false) => mCanvas.Show(fade, mute);
         public virtual void Hide(bool mute = false) => mCanvas.Hide(mute);
-        public virtual void Hide(bool fade, bool mute = false) => mCanvas.Hide(fade, mute);
         public virtual void ToggleVisibility(bool mute = false) => mCanvas.ToggleVisibility(mute);
-        public virtual void ToggleVisibility(bool fade, bool mute = false) => mCanvas.ToggleVisibility(fade, mute);
     }
 }
