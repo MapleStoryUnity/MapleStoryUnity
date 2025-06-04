@@ -357,15 +357,15 @@ namespace JCSUnity
         /// </summary>
         private void DoMobileSwipe()
         {
-            var si = JCS_SlideInput.instance;
-            if (si == null)
+            var ti = JCS_TouchInput.instance;
+            if (ti == null)
                 return;
 
             bool enableSlidePanel = true;
 
-            if (mInteractableSwipe && si.Touched)
+            if (mInteractableSwipe && ti.Touched)
             {
-                Vector3 deltaPos = si.DeltaPos;
+                Vector3 deltaPos = ti.DeltaPos;
 
                 bool cancelX = false;
                 bool cancelY = false;
@@ -402,19 +402,19 @@ namespace JCSUnity
 
             if (mInteractableSwipe && JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
             {
-                Vector3 posDiff = si.DragDistance;
+                Vector3 posDiff = ti.DragDistance;
                 JCS_ScreenSizef vs = JCS_ScreenSettings.instance.VisibleScreenSize();
                 var target_vs = new JCS_ScreenSizef(vs.width * mSwipeArea.x, vs.height * mSwipeArea.y);
 
-                var speedX = si.DragDistance.x / si.TouchTime;
-                var speedY = si.DragDistance.y / si.TouchTime;
+                var speedX = ti.DragDistance.x / ti.TouchTime;
+                var speedY = ti.DragDistance.y / ti.TouchTime;
 
                 bool reachedX = posDiff.x > target_vs.width;  // distance
                 bool speedExceedX = speedX > mSwipeSpeedX;    // speed
 
                 if (!mFreezeX && (reachedX || speedExceedX))
                 {
-                    if (JCS_Mathf.IsPositive(si.DragDisplacement.x))
+                    if (JCS_Mathf.IsPositive(ti.DragDisplacement.x))
                         SwitchScene(JCS_2D4Direction.LEFT);
                     else
                         SwitchScene(JCS_2D4Direction.RIGHT);
@@ -428,7 +428,7 @@ namespace JCSUnity
 
                 if (!mFreezeY && (reachedY || speedExceedY))
                 {
-                    if (JCS_Mathf.IsPositive(si.DragDisplacement.y))
+                    if (JCS_Mathf.IsPositive(ti.DragDisplacement.y))
                         SwitchScene(JCS_2D4Direction.BOTTOM);
                     else
                         SwitchScene(JCS_2D4Direction.TOP);

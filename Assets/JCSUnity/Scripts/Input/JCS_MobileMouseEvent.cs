@@ -146,9 +146,9 @@ namespace JCSUnity
         private void Handle_UpOver()
         {
             var im = JCS_InputManager.instance;
-            var slideInput = JCS_SlideInput.instance;
+            var ti = JCS_TouchInput.instance;
 
-            if (slideInput == null)
+            if (ti == null)
                 return;
 
             foreach (RaycastHit hit in mHits)
@@ -163,7 +163,7 @@ namespace JCSUnity
 
                 if (im.Support_OnMouseUp)
                 {
-                    if (mTouchedLastFrame && !slideInput.Touched)
+                    if (mTouchedLastFrame && !ti.Touched)
                         _SendMessage(obj, "OnMouseUp");
                 }
 
@@ -179,9 +179,9 @@ namespace JCSUnity
         private void Handle_DownDrag()
         {
             var im = JCS_InputManager.instance;
-            var slideInput = JCS_SlideInput.instance;
+            var ti = JCS_TouchInput.instance;
 
-            if (!slideInput.Touched)
+            if (!ti.Touched)
             {
                 this.mTouchedLastFrame = false;
                 return;
@@ -200,7 +200,7 @@ namespace JCSUnity
 
                 GameObject obj = hit.transform.gameObject;
 
-                if (slideInput.Touched)
+                if (ti.Touched)
                 {
                     if (im.Support_OnMouseDown)
                     {
@@ -210,7 +210,7 @@ namespace JCSUnity
 
                     if (im.Support_OnMouseDrag)
                     {
-                        if (slideInput.DeltaPos != Vector2.zero)
+                        if (ti.DeltaPos != Vector2.zero)
                             _SendMessage(obj, "OnMouseDrag");
                     }
                 }

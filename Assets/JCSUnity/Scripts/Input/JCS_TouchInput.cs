@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_SlideInput.cs $
+ * $File: JCS_TouchInput.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -14,13 +14,13 @@ namespace JCSUnity
     /// <summary>
     /// Use this to receive the slide input from the device buffer.
     /// </summary>
-    public class JCS_SlideInput : JCS_Instance<JCS_SlideInput>
+    public class JCS_TouchInput : JCS_Instance<JCS_TouchInput>
     {
         /* Variables */
 
         private Vector2 mDragStartPosition = Vector2.zero;
 
-        [Separator("Check Variables (JCS_SlideInput)")]
+        [Separator("Check Variables (JCS_TouchInput)")]
 
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
         [Tooltip("Previous position.")]
@@ -82,7 +82,7 @@ namespace JCSUnity
 #endif
 
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
-        [Separator("Runtime Variables (JCS_SlideInput)")]
+        [Separator("Runtime Variables (JCS_TouchInput)")]
 
         [Tooltip("Mouse event type of identify the touch event.")]
         [SerializeField]
@@ -90,7 +90,7 @@ namespace JCSUnity
 #endif
 
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-        [Separator("Runtime Variables (JCS_SlideInput)")]
+        [Separator("Runtime Variables (JCS_TouchInput)")]
 
         [Tooltip("Touch count that will detect as touched.")]
         [SerializeField]
