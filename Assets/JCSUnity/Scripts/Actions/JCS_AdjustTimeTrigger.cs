@@ -23,6 +23,12 @@ namespace JCSUnity
         // Action to trigger if the time is reached.
         public Action onAction = null;
 
+        // Execution before action is being executed.
+        public Action onBeforeAction = null;
+
+        // Execution after action is being executed.
+        public Action onAfterAction = null;
+
         [Separator("Check Variables (JCS_AdjustTimeTrigger)")]
 
         [Tooltip(@"Time to record down the real time to do one action after 
@@ -161,9 +167,13 @@ we calculate the real time.")]
         /// </summary>
         private void ExecuteAction()
         {
+            onBeforeAction?.Invoke();
+
             onAction?.Invoke();
 
             mOnAction?.Invoke();
+
+            onAfterAction?.Invoke();
         }
     }
 }

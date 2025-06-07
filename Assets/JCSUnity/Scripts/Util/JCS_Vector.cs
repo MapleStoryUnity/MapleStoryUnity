@@ -379,15 +379,23 @@ namespace JCSUnity
         /// <summary>
         /// Return the point in specific direction.
         /// </summary>
-        public static Vector3 PointInDirection(JCS_Vector3Direction direction, Transform trans)
+        public static Vector3 PointInDirection(Transform trans, JCS_Vector3Direction direction)
         {
-            return PointInDirection(direction, trans, JCS_Physics.LOOK_DISTANCE);
+            return PointInDirection(trans, direction, JCS_Physics.LOOK_DISTANCE);
         }
-        public static Vector3 PointInDirection(JCS_Vector3Direction direction, Transform trans, float distance)
+        public static Vector3 PointInDirection(Transform trans, JCS_Vector3Direction direction, float distance)
         {
             Vector3 dir = Direction(direction, trans);
 
-            return trans.position + dir * distance;
+            return PointInDirection(trans, dir, distance);
+        }
+        public static Vector3 PointInDirection(Transform trans, Vector3 direction)
+        {
+            return PointInDirection(trans, direction, JCS_Physics.LOOK_DISTANCE);
+        }
+        public static Vector3 PointInDirection(Transform trans, Vector3 direction, float distance)
+        {
+            return trans.position + direction * distance;
         }
     }
 }

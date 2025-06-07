@@ -19,13 +19,23 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public Action onFadeOut = null;
-        public Action onFadeIn = null;
+        // Execution after its done fading.
+        public Action onAfterFade = null;
+        public Action onAfterFadeOut = null;
+        public Action onAfterFadeIn = null;
 
+        // Exectuion before start fading.
+        public Action onBeforeFade = null;
+        public Action onBeforeFadeIn = null;
+        public Action onBeforeFadeOut = null;
+
+        // Execution while fading.
         public Action<float> onFading = null;
 
+        // The current fade type.
         private JCS_FadeType mFadeType = JCS_FadeType.IN;  // defaul as visible
 
+        // Hold the alpha value.
         private float mAlpha = 1.0f;
 
 #if UNITY_EDITOR
@@ -144,15 +154,35 @@ namespace JCSUnity
             return (this.mAlpha <= mFadeOutAmount);
         }
 
-        public void FadeOut() { FadeOut(mFadeTime); }
-        public void FadeIn() { FadeIn(mFadeTime); }
-        public void FadeOut(float time) { FadeEffect(JCS_FadeType.OUT, time); }
-        public void FadeIn(float time) { this.FadeEffect(JCS_FadeType.IN, time); }
+        /// <summary>
+        /// Fade out.
+        /// </summary>
+        public void FadeOut()
+        {
+            FadeOut(mFadeTime);
+        }
+        public void FadeOut(float time)
+        {
+            FadeEffect(JCS_FadeType.OUT, time);
+        }
 
         /// <summary>
-        /// Default function to point to, 
-        /// prevent null reference exception.
-        /// to save check null pointer performance.
+        /// Fade in.
+        /// </summary>
+        public void FadeIn()
+        {
+            FadeIn(mFadeTime);
+        }
+        public void FadeIn(float time)
+        {
+            FadeEffect(JCS_FadeType.IN, time);
+        }
+
+        /// <summary>
+        /// Default function to point to, prevent null 
+        /// reference exception.
+        /// 
+        /// To save check null pointer performance.
         /// </summary>
         public static void DefaultFadeCallback()
         {
@@ -183,12 +213,16 @@ namespace JCSUnity
                     {
                         mAlpha = mFadeInAmount;
                         this.mVisible = false;
+
+                        onBeforeFadeOut?.Invoke();
                     }
                     break;
                 case JCS_FadeType.IN:
                     {
                         mAlpha = mFadeOutAmount;
                         this.mVisible = true;
+
+                        onBeforeFadeIn?.Invoke();
                     }
                     break;
             }
@@ -196,6 +230,8 @@ namespace JCSUnity
             this.mFadeTime = time;
             this.mFadeType = type;
             this.mEffect = true;
+
+            onBeforeFade?.Invoke();
         }
 
         /// <summary>
@@ -221,8 +257,11 @@ namespace JCSUnity
 
                             mEffect = false;
 
-                            // do fade out callback
-                            onFadeOut?.Invoke();
+                            // do callback
+                            {
+                                onAfterFadeOut?.Invoke();
+                                onAfterFade?.Invoke();
+                            }
 
                             return;
                         }
@@ -238,8 +277,11 @@ namespace JCSUnity
                         {
                             mEffect = false;
 
-                            // do fade in callback
-                            onFadeIn?.Invoke();
+                            // do callback
+                            {
+                                onAfterFadeIn?.Invoke();
+                                onAfterFade?.Invoke();
+                            }
 
                             return;
                         }
