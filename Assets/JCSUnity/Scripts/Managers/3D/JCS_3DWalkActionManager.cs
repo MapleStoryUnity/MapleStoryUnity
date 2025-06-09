@@ -42,7 +42,7 @@ namespace JCSUnity
         /// <param name="wa"> Target walk action you want to get manage. </param>
         public void AddWalkAction(JCS_3DWalkAction wa)
         {
-            mWalkActions = JCS_Util.RemoveEmptySlotIncludeMissing<JCS_3DWalkAction>(mWalkActions);
+            mWalkActions = JCS_Array.RemoveEmptyMissing(mWalkActions);
 
             mWalkActions.Add(wa);
         }

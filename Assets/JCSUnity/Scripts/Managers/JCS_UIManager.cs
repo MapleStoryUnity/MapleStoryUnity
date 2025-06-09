@@ -195,7 +195,7 @@ namespace JCSUnity
         public void AddCanvas(JCS_Canvas canvas)
         {
             this.mCanvases.Add(canvas);
-            mCanvases = JCS_Util.RemoveEmptySlotIncludeMissing(mCanvases);
+            mCanvases = JCS_Array.RemoveEmptyMissing(mCanvases);
             mCanvases = SortCanvases_Insertion();
         }
         private List<JCS_Canvas> SortCanvases_Insertion()

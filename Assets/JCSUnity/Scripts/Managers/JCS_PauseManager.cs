@@ -254,7 +254,7 @@ object you have in the list.")]
         /// </summary>
         private void RemoveNullRefInPauseActionList()
         {
-            mPauseActions = JCS_Util.RemoveEmptySlotIncludeMissing(mPauseActions);
+            mPauseActions = JCS_Array.RemoveEmptyMissing(mPauseActions);
         }
 
         /// <summary>

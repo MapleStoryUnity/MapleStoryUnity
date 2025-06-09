@@ -70,7 +70,7 @@ namespace JCSUnity
         /// <param name="sprite"> The sprite to apply. </param>
         private void SetSprite(Sprite sprite)
         {
-            this.mIndicators = JCS_Util.RemoveEmptySlotIncludeMissing(this.mIndicators);
+            this.mIndicators = JCS_Array.RemoveEmptyMissing(this.mIndicators);
 
             foreach (Image ind in mIndicators)
             {

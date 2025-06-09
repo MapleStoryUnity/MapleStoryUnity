@@ -69,7 +69,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mSelections = JCS_Util.RemoveEmptySlot(mSelections);
+            this.mSelections = JCS_Array.RemoveEmpty(mSelections);
 
             // let them know the grouper.
             foreach (JCS_ButtonSelection bs in mSelections)
@@ -223,7 +223,7 @@ namespace JCSUnity
 
             this.mCurrentSelectIndex = selectionIndex;
 
-            this.mCurrentSelectIndex = JCS_Util.LoopIn(this.mCurrentSelectIndex, mSelections);
+            this.mCurrentSelectIndex = JCS_Array.LoopIn(this.mCurrentSelectIndex, mSelections);
 
             // active the new active selection.
             mSelections[mCurrentSelectIndex].Active = true;

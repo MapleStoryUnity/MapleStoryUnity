@@ -46,7 +46,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            this.spriteSets = JCS_Util.RemoveEmptySlot(this.spriteSets);
+            this.spriteSets = JCS_Array.RemoveEmpty(this.spriteSets);
 
             /* Register callback */
             {

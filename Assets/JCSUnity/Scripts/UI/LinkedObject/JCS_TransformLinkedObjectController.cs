@@ -187,7 +187,7 @@ namespace JCSUnity
 
         private void OrganizedLinked()
         {
-            mManagedList = JCS_Util.RemoveEmptySlotIncludeMissing(mManagedList);
+            mManagedList = JCS_Array.RemoveEmptyMissing(mManagedList);
 
             for (int index = 0; index < mManagedList.Count; ++index)
             {

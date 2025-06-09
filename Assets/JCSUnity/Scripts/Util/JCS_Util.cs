@@ -6,9 +6,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -183,7 +183,7 @@ namespace JCSUnity
 
         #endregion
 
-        #region List
+        #region Range
 
         /// <summary>
         /// Check the value within the range plus acceptable range.
@@ -218,108 +218,9 @@ namespace JCSUnity
             return index >= 0 && index < arr.Count;
         }
 
-        /// <summary>
-        /// Loop in a collection.
-        /// </summary>
-        /// <typeparam name="T"> Type. </typeparam>
-        /// <param name="index"> Index </param>
-        /// <param name="arr"> List. </param>
-        /// <returns> index that looped. </returns>
-        public static int LoopIn(int index, ICollection arr)
-        {
-            // loop through the array, if at the tail of the array set it to head.
-            if (index < 0)
-                index = arr.Count - 1;
-            // loop through the array, if at head of the array we set it to the tail.
-            else if (index >= arr.Count)
-                index = 0;
+        #endregion
 
-            return index;
-        }
-
-        /// <summary>
-        /// Merge multiple arrays into one array.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static T[] MergeArrays<T>(params T[][] arrList)
-        {
-            if (arrList.Length == 0)
-                return null;
-
-            if (arrList.Length == 1)
-                return arrList[0];
-
-            int arrLen = 0;
-
-            foreach (var arr in arrList)
-            {
-                arrLen += arr.Length;
-            }
-
-            // first combine the first two array.
-            T[] data = MergeArrays2<T>(arrList[0], arrList[1]);
-
-            // combine the rest.
-            for (int index = 2; index < arrList.Length; ++index)
-            {
-                data = MergeArrays2<T>(data, arrList[index]);
-            }
-            return data;
-        }
-
-        /// <summary>
-        /// Merging two array and return the new array.
-        /// </summary>
-        /// <typeparam name="T"> Type of the array. </typeparam>
-        /// <param name="arr1"> First array. </param>
-        /// <param name="arr2"> Second array. </param>
-        /// <returns> Merged array. </returns>
-        public static T[] MergeArrays2<T>(T[] arr1, T[] arr2)
-        {
-            T[] data = new T[arr1.Length + arr2.Length];
-
-            System.Array.Copy(arr1, data, arr1.Length);
-            System.Array.Copy(arr2, 0, data, arr1.Length, arr2.Length);
-
-            return data;
-        }
-
-        /// <summary>
-        /// Merging two list and return the new list.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="lists"></param>
-        /// <returns></returns>
-        public static List<T> MergeList<T>(params List<T>[] lists)
-        {
-            if (lists.Length <= 1)
-            {
-                Debug.Log("You trying to merge the List less then two array");
-            }
-
-            var newList = new List<T>();
-
-            for (int index = 0; index < lists.Length; ++index)
-            {
-                // Loop through all list.
-                List<T> list = lists[index];
-
-                if (list == null)
-                    continue;
-
-                for (int listIndex = 0; listIndex < list.Count; ++listIndex)
-                {
-                    // Loop through item.
-                    T item = list[listIndex];
-
-                    newList.Add(item);
-                }
-            }
-
-            return newList;
-        }
+        #region Stream
 
         /// <summary>
         /// Copy byte array to another byte array memory space.
@@ -338,134 +239,6 @@ namespace JCSUnity
             }
 
             return bytes;
-        }
-
-        /// <summary>
-        /// Check if the list empty.
-        /// </summary>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static bool IsArrayEmpty(string[] list)
-        {
-            for (int index = 0; index < list.Length; ++index)
-            {
-                if (list[index] != "")
-                    return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Pop the last value from the list.
-        /// </summary>
-        public static T ListPopFront<T>(List<T> list)
-        {
-            if (list.Count == 0)
-                return default(T);
-
-            T data = list[0];
-
-            list.RemoveAt(0);
-
-            return data;
-        }
-
-        /// <summary>
-        /// Pop the last value from the list.
-        /// </summary>
-        public static T ListPopBack<T>(List<T> list)
-        {
-            if (list.Count == 0)
-                return default(T);
-
-            int lastIndex = list.Count - 1;
-
-            T data = list[lastIndex];
-
-            list.RemoveAt(lastIndex);
-
-            return data;
-        }
-
-        /// <summary>
-        /// Fill slots with initialize value type by length.
-        /// </summary>
-        /// <typeparam name="T"> Type from `inArray`. </typeparam>
-        /// <param name="inArray"> Array you would like to fill out. </param>
-        /// <param name="len"> Target length to initialize. </param>
-        /// <param name="with"> Initialize object type. </param>
-        /// <returns> Return filled array. </returns>
-        public static T[] FillSlot<T>(T[] inArray, int len, T with)
-        {
-            return FillSlot(inArray.ToList(), len, with).ToArray();
-        }
-
-        public static List<T> FillSlot<T>(List<T> inList, int len, T with)
-        {
-            for (int index = inList.Count; index < len; ++index)
-                inList.Add(with);
-            return inList;
-        }
-
-        /// <summary>
-        /// Remove the empty slot in the array.
-        /// </summary>
-        /// <typeparam name="T"> Type of the List. </typeparam>
-        /// <param name="inArray"> Array list. </param>
-        /// <returns> Cleaned up Array object. </returns>
-        public static T[] RemoveEmptySlot<T>(T[] inArray)
-        {
-            return RemoveEmptySlot(inArray.ToList()).ToArray();
-        }
-        public static List<T> RemoveEmptySlot<T>(List<T> inList)
-        {
-            List<T> newArray = new List<T>(inList.Count);
-
-            for (int index = 0; index < inList.Count; ++index)
-            {
-                // Add itself if exists.
-                if (inList[index] != null)
-                    newArray.Add(inList[index]);
-            }
-
-            return newArray;
-        }
-
-        /// <summary>
-        /// Remove the empty slot in the list including remove 
-        /// the missing game object too. 
-        /// 
-        /// I guess Unity do the CG collection later a while when 
-        /// you call 'Destory()' function. Before scripting layer 
-        /// acknowledge this game object is destory might be too 
-        /// late in some situation. This will avoid this type of 
-        /// issue/circumstance.
-        /// </summary>
-        /// <typeparam name="T"> Type of the List. </typeparam>
-        /// <param name="inList"> List object. </param>
-        /// <returns> Cleaned up List object. </returns>
-        public static T[] RemoveEmptySlotIncludeMissing<T>(T[] inArray)
-            where T : UnityEngine.Object
-        {
-            return RemoveEmptySlotIncludeMissing(inArray.ToList()).ToArray();
-        }
-        public static List<T> RemoveEmptySlotIncludeMissing<T>(List<T> inList)
-            where T : UnityEngine.Object
-        {
-            List<T> newArray = new List<T>(inList.Count);
-
-            for (int index = 0; index < inList.Count; ++index)
-            {
-                // Add itself if exists.
-                // 
-                // SOURCE(jenchieh): https://answers.unity.com/questions/131158/how-can-i-check-if-an-object-is-null.html
-                // INFORMATION(jenchieh): https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/
-                if (inList[index] ?? false)
-                    newArray.Add(inList[index]);
-            }
-
-            return newArray;
         }
 
         #endregion
@@ -796,7 +569,7 @@ namespace JCSUnity
             {
                 List<Transform> tmpChilds = DetachChildren(trans);
 
-                childs = MergeList(tmpChilds, childs);
+                childs.AddRange(tmpChilds);
             }
 
             return childs;
@@ -809,7 +582,7 @@ namespace JCSUnity
             {
                 List<RectTransform> tmpChilds = DetachChildren(trans);
 
-                childs = MergeList(tmpChilds, childs);
+                childs.AddRange(tmpChilds);
             }
 
             return childs;

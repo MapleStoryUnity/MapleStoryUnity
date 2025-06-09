@@ -1073,7 +1073,7 @@ namespace JCSUnity
         /// </returns>
         public static bool IsJoystickConnected()
         {
-            return (!JCS_Util.IsArrayEmpty(Input.GetJoystickNames()));
+            return (!JCS_Array.IsEmpty(Input.GetJoystickNames()));
         }
 
         /// <summary>
