@@ -58,18 +58,16 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Is the black screen fade in?
+        /// Return true if the black screen is fade in.
         /// </summary>
-        /// <returns></returns>
         public bool IsFadeIn()
         {
             return mFadeObject.IsFadeIn();
         }
 
         /// <summary>
-        /// Is the black screen fade out?
+        /// Return true if the black screen is fade out.
         /// </summary>
-        /// <returns></returns>
         public bool IsFadeOut()
         {
             return mFadeObject.IsFadeOut();

@@ -203,7 +203,10 @@ namespace JCSUnity
 
         private void Update()
         {
-            DoSwitchScene();
+            if (IsEnteringSwitchScene())
+                DoEnterSwitchScene();
+            else
+                DoExitSwitchScene();
         }
 
         #region Load Scene
@@ -433,7 +436,7 @@ namespace JCSUnity
         /// <summary>
         /// Do the async switch scene.
         /// </summary>
-        private void DoSwitchScene()
+        private void DoEnterSwitchScene()
         {
             var ss = JCS_SceneSettings.instance;
 
@@ -452,12 +455,6 @@ namespace JCSUnity
                                 AllowSceneActivation();
                             }
                         }
-
-                        if (onSwitchSceneOut != null)
-                        {
-                            if (onSwitchSceneOut.Invoke())
-                                ss.SWITCHING_SCENE = false;
-                        }
                     }
                     break;
 
@@ -466,11 +463,6 @@ namespace JCSUnity
                         if (mBlackScreen.IsFadeIn())
                         {
                             AllowSceneActivation();
-                        }
-
-                        if (mBlackScreen.IsFadeOut())
-                        {
-                            ss.SWITCHING_SCENE = false;
                         }
                     }
                     break;
@@ -486,6 +478,46 @@ namespace JCSUnity
             }
         }
 
+        private void DoExitSwitchScene()
+        {
+            var ss = JCS_SceneSettings.instance;
+
+            // check if during the switch scene?
+            if (!ss.SWITCHING_SCENE)
+                return;
+
+            switch (mSwitchSceneType)
+            {
+                case JCS_SwitchSceneType.CUSTOM:
+                    {
+                        if (onSwitchSceneOut != null)
+                        {
+                            if (onSwitchSceneOut.Invoke())
+                                ss.SWITCHING_SCENE = false;
+                        }
+                    }
+                    break;
+
+                case JCS_SwitchSceneType.BLACK_SCREEN:
+                    {
+                        if (mBlackScreen.IsFadeOut())
+                        {
+                            ss.SWITCHING_SCENE = false;
+                        }
+                    }
+                    break;
+
+                case JCS_SwitchSceneType.SLIDE_SCREEN:
+                    {
+                        if (mBlackSlideScreen.IsDoneSliding())
+                        {
+                            ss.SWITCHING_SCENE = false;
+                        }
+                    }
+                    break;
+            }
+        }
+
         /// <summary>
         /// Activate the next scene when it's ready.
         /// </summary>
@@ -493,6 +525,14 @@ namespace JCSUnity
         {
             // load the scene if is ready
             mAsyncOperation.allowSceneActivation = true;
+        }
+
+        /// <summary>
+        /// Return true if we are still in the entering switch scene state.
+        /// </summary>
+        private bool IsEnteringSwitchScene()
+        {
+            return mAsyncOperation != null && !mAsyncOperation.allowSceneActivation;
         }
     }
 }

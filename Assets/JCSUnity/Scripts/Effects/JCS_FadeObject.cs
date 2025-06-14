@@ -131,24 +131,16 @@ namespace JCSUnity
 #endif
 
         /// <summary>
-        /// Is the fade object fade in?
+        /// Return true if the object is fade in.
         /// </summary>
-        /// <returns>
-        /// true : is fade in.
-        /// false : not fade in yet.
-        /// </returns>
         public bool IsFadeIn()
         {
             return (this.mAlpha >= mFadeInAmount);
         }
 
         /// <summary>
-        /// Is the fade object fade out?
+        /// Return true if the object is fade out.
         /// </summary>
-        /// <returns>
-        /// true : is fade out.
-        /// false : not fade out yet.
-        /// </returns>
         public bool IsFadeOut()
         {
             return (this.mAlpha <= mFadeOutAmount);

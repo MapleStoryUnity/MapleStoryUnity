@@ -158,14 +158,23 @@ namespace JCSUnity
         {
             return ChooseOne(args);
         }
-        public static T ChooseOne<T>(ICollection<T> inList)
+        public static T ChooseOne<T>(ICollection<T> lst)
         {
-            if (inList.Count == 0)
+            if (lst.Count == 0)
                 return default(T);
 
-            int index = Range(0, inList.Count);
+            int index = Range(0, lst.Count);
 
-            return inList.ElementAt(index);
+            return lst.ElementAt(index);
+        }
+        public static KeyValuePair<T, K> ChooseOne<T, K>(ICollection<KeyValuePair<T, K>> dict)
+        {
+            if (dict == null || dict.Count == 0)
+                return default;
+
+            int index = Range(0, dict.Count);
+
+            return dict.ElementAt(index);
         }
 
         /// <summary>
