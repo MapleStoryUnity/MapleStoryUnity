@@ -858,7 +858,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1098634726}
   - component: {fileID: 1098634725}
-  - component: {fileID: 1098634727}
   m_Layer: 0
   m_Name: JCS_ScriptTester
   m_TagString: Untagged
@@ -879,7 +878,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSystem: {fileID: 0}
-  mTestDialogueScript: {fileID: 1098634727}
+  mTestDialogueScript: {fileID: 11400000, guid: 286e9263d5694d648873eea1a9baa904,
+    type: 2}
   DisposeKey: 113
   RunScriptKey: 119
   NextOrDispose: 110
@@ -899,22 +899,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1098634727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1098634724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab47c026913b03240ac5acab10521433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Status: -1
-  mCenterSprite: {fileID: 21300000, guid: 1eec70c4e6aa75046918d9708050e17f, type: 3}
-  mLeftSprite: {fileID: 21300000, guid: fc3ece91e1c120e4687902d60d6458cd, type: 3}
-  mRightSprite: {fileID: 21300000, guid: d42f6a0de5f4d154cb9d9682e42e0bf4, type: 3}
 --- !u!1 &1731246307
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,11 +931,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTest: 0
+  mKeyShow: 97
+  mKeyHide: 115
+  mCanvas: {fileID: 0}
+  mCanvasGroup: {fileID: 0}
+  mFadeAlpa: 0
+  mFading: 0
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
-  mActiveSound: {fileID: 0}
-  mDeactiveSound: {fileID: 0}
+  mShowMethod: 1
+  mFadeFriction: 0.15
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
+  mTimeType: 7
+  mSoundOnShow: {fileID: 0}
+  mSoundOnHide: {fileID: 0}
 --- !u!114 &1731246309
 MonoBehaviour:
   m_ObjectHideFlags: 0

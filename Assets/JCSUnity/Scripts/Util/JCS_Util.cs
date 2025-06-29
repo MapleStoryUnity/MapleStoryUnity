@@ -563,7 +563,7 @@ namespace JCSUnity
         /// </returns>
         public static List<Transform> ForceDetachChildren(Transform trans)
         {
-            List<Transform> childs = null;
+            var childs = new List<Transform>();
 
             while (HasChild(trans))
             {
@@ -576,7 +576,7 @@ namespace JCSUnity
         }
         public static List<RectTransform> ForceDetachChildren(RectTransform trans)
         {
-            List<RectTransform> childs = null;
+            var childs = new List<RectTransform>();
 
             while (HasChild(trans))
             {

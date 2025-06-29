@@ -7,32 +7,23 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Interface of the dialogue script.
     /// </summary>
-    public abstract class JCS_DialogueScript : MonoBehaviour
+    public abstract class JCS_DialogueScript : ScriptableObject
     {
         /* Variables */
 
+        protected JCS_DialogueSystem mDialogueSystem = null;
+
+        [Separator("Runtime Variables (JCS_DialogueScript)")]
+
         [Tooltip("use to design the pages.")]
         public int Status = -1;
-
-        [Tooltip("Sprite visualize at the center.")]
-        [SerializeField]
-        private Sprite mCenterSprite = null;
-
-        [Tooltip("Sprite visualize at the left.")]
-        [SerializeField]
-        private Sprite mLeftSprite = null;
-
-        [Tooltip("Sprite visualize at the right.")]
-        [SerializeField]
-        private Sprite mRightSprite = null;
-
-        protected JCS_DialogueSystem mDialogueSystem = null;
 
         /* Setter & Getter */
 
@@ -48,17 +39,7 @@ namespace JCSUnity
         }
         protected JCS_DialogueSystem ds { get { return this.DialogueSystem; } }
 
-        public Sprite CenterSprite { get { return this.mCenterSprite; } }
-        public Sprite LeftSprite { get { return this.mLeftSprite; } }
-        public Sprite RightSprite { get { return this.mRightSprite; } }
-
         /* Functions */
-
-        protected virtual void Start()
-        {
-            // get dialogue system. (singleton)
-            mDialogueSystem = JCS_UtilManager.instance.GetDialogueSystem();
-        }
 
         /// <summary>
         /// Starting point of the dialogue.
