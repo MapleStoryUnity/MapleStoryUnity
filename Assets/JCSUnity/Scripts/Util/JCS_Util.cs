@@ -814,23 +814,38 @@ namespace JCSUnity
         /// </summary>
         public static Object FindObjectByType(System.Type type)
         {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindFirstObjectByType(type);
-#else
-            return UnityEngine.Object.FindObjectOfType(type);
-#endif
+            return Object.FindFirstObjectByType(type);
+        }
+        public static Object FindObjectByType(System.Type type, Scene scene)
+        {
+            Object[] objects = FindObjectsByType(type, scene);
+
+            if (objects.Length == 0)
+                return null;
+
+            return objects.First();
         }
 
         /// <summary>
         /// Retrieves a list of all loaded objects of Type type.
         /// </summary>
-        public static UnityEngine.Object[] FindObjectsByType(System.Type type)
+        public static Object[] FindObjectsByType(System.Type type)
         {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
-#else
-            return UnityEngine.Object.FindObjectsOfType(type);
-#endif
+            return Object.FindObjectsByType(type, FindObjectsSortMode.None);
+        }
+        public static Object[] FindObjectsByType(System.Type type, Scene scene)
+        {
+            Object[] objects = FindObjectsByType(type);
+
+            return objects.Where((obj) =>
+            {
+                var trans = obj.GetComponent<Transform>();
+
+                if (trans == null)
+                    return false;
+
+                return trans.gameObject.scene == scene;
+            }).ToArray();
         }
 
         /// <summary>

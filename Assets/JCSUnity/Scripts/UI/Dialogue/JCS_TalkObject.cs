@@ -32,7 +32,7 @@ namespace JCSUnity
         {
             if (JCS_Input.OnMouseDoubleClick(JCS_MouseButton.LEFT))
             {
-                JCS_DialogueSystem ds = JCS_UtilManager.instance.GetDialogueSystem();
+                var ds = JCS_DialogueSystem.instance;
 
                 if (ds != null)
                 {
@@ -51,7 +51,7 @@ namespace JCSUnity
             if (sp == null)
                 return;
 
-
+            // ..
         }
     }
 }

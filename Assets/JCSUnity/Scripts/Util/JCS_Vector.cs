@@ -326,9 +326,17 @@ namespace JCSUnity
         /// <summary>
         /// Make the vector to a ground vector.
         /// </summary>
+        public static Vector3 GroundVector(Vector3 vec, Vector3 ground)
+        {
+            return GroundVector(vec, ground.y);
+        }
         public static Vector3 GroundVector(Vector3 vec, float y = 0.0f)
         {
             return new Vector3(vec.x, y, vec.z);
+        }
+        public static Vector2 GroundVector(Vector2 vec, Vector3 ground)
+        {
+            return GroundVector(vec, ground.y);
         }
         public static Vector2 GroundVector(Vector2 vec, float y = 0.0f)
         {

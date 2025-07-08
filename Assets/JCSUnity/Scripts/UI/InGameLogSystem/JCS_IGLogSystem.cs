@@ -20,6 +20,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        public static JCS_IGLogSystem instance = null;
+
         private JCS_GUITextPool mLogTextPool = null;
 
 #if UNITY_EDITOR
@@ -61,15 +63,11 @@ namespace JCSUnity
         {
             base.Awake();
 
+            instance = this;
+
             this.mLogTextPool = this.GetComponent<JCS_GUITextPool>();
 
             mRenderLogText = new JCS_Vec<JCS_LogText>();
-        }
-
-        private void Start()
-        {
-            // set to utility manager.
-            JCS_UtilManager.instance.SetIGLogSystem(this);
         }
 
 #if UNITY_EDITOR

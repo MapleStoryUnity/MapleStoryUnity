@@ -17,7 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Dialogue system core implementation.
     /// </summary>
-    public class JCS_DialogueSystem : MonoBehaviour
+    public class JCS_DialogueSystem : JCS_Instance<JCS_DialogueSystem>
     {
         /* Variables */
 
@@ -28,11 +28,14 @@ namespace JCSUnity
         // disposed when executing the function `NextOrDispose`.
         public Func<bool> onNextOrDisposeCondition = null;
 
-        private bool mInitialized = false;
-
         private JCS_DialogueScript mPreselectingScript = null;
 
         [Separator("Check Variables (JCS_DialogueSystem)")]
+
+        [Tooltip("True if initialized.")]
+        [SerializeField]
+        [ReadOnly]
+        private bool mInitialized = false;
 
         [Tooltip("Script to run the current text box.")]
         [SerializeField]
@@ -252,12 +255,11 @@ namespace JCSUnity
 
         private void Awake()
         {
+            instance = this;
+
             // try to get transfrom by it own current transfrom.
             if (mPanelTrans == null)
                 mPanelTrans = this.GetComponent<RectTransform>();
-
-            // set to manager to get manage.
-            JCS_UtilManager.instance.SetDiaglogueSystem(this);
         }
 
         private void Start()
@@ -387,7 +389,7 @@ namespace JCSUnity
 
             if (mActive)
             {
-                Debug.LogError("Dialogue System is already active!");
+                Debug.LogWarning("Dialogue System is already active!");
                 return;
             }
 
@@ -449,7 +451,6 @@ namespace JCSUnity
         /// <summary>
         /// Next button is the only option for current status.
         /// </summary>
-        /// <param name="msg"></param>
         public void SendNext(string msg)
         {
             NextBtnActive(true);
@@ -473,7 +474,6 @@ namespace JCSUnity
         /// <summary>
         /// Current status will be next and prev control/options.
         /// </summary>
-        /// <param name="msg"></param>
         public void SendNextPrev(string msg)
         {
             NextBtnActive(true);
@@ -495,9 +495,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Okay button for only option.
+        /// Sned okay button for only option.
         /// </summary>
-        /// <param name="msg"></param>
         public void SendOk(string msg)
         {
             NextBtnActive(false);
@@ -519,9 +518,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Yes/No options for current status.
+        /// Send yes/no options for current status.
         /// </summary>
-        /// <param name="msg"></param>
         public void SendYesNo(string msg)
         {
             NextBtnActive(false);
@@ -545,7 +543,6 @@ namespace JCSUnity
         /// <summary>
         /// Only exit button will be the only option.
         /// </summary>
-        /// <param name="msg"></param>
         public void SendSimple(string msg)
         {
             NextBtnActive(false);
@@ -569,7 +566,6 @@ namespace JCSUnity
         /// <summary>
         /// Accept/Decline options.
         /// </summary>
-        /// <param name="msg"></param>
         public void SendAcceptDecline(string msg)
         {
             NextBtnActive(false);
@@ -592,10 +588,7 @@ namespace JCSUnity
 
         /// <summary>
         /// Send Empty option, expect selections take over it.
-        /// 
-        /// NOTE(jenchieh): Will better if use Gamepad/Controller/Joystick.
         /// </summary>
-        /// <param name="msg"></param>
         public void SendEmpty(string msg)
         {
             NextBtnActive(false);
@@ -1229,11 +1222,11 @@ namespace JCSUnity
         /// </summary>
         private void ClearSelectBtnMessage()
         {
-            for (int index = 0; index < mSelectMessage.Length; ++index)
+            JCS_Loop.Times(mSelectMessage.Length, (index) =>
             {
                 mSelectMessage[index] = "";
                 mSelectBtn[index].ItText.text = "";
-            }
+            });
         }
 
         /// <summary>

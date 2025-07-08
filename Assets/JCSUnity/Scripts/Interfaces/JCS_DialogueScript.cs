@@ -18,8 +18,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        protected JCS_DialogueSystem mDialogueSystem = null;
-
         [Separator("Runtime Variables (JCS_DialogueScript)")]
 
         [Tooltip("use to design the pages.")]
@@ -27,17 +25,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_DialogueSystem DialogueSystem
-        {
-            get
-            {
-                if (mDialogueSystem == null)
-                    mDialogueSystem = JCS_UtilManager.instance.GetDialogueSystem();
-
-                return this.mDialogueSystem;
-            }
-        }
-        protected JCS_DialogueSystem ds { get { return this.DialogueSystem; } }
+        public JCS_DialogueSystem ds { get { return JCS_DialogueSystem.instance; } }
 
         /* Functions */
 
@@ -76,6 +64,22 @@ namespace JCSUnity
         public virtual void ResetAction()
         {
             Status = -1;
+        }
+
+        /// <summary>
+        /// Return true if the selection is yes.
+        /// </summary>
+        public bool IsYes(int selection)
+        {
+            return selection == 1;
+        }
+
+        /// <summary>
+        /// Return true if the selection is no.
+        /// </summary>
+        public bool IsNo(int selection)
+        {
+            return selection == 0;
         }
     }
 }

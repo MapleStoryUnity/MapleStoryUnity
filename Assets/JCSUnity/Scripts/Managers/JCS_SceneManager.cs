@@ -8,6 +8,7 @@
  */
 using System;
 using System.IO;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MyBox;
@@ -422,6 +423,23 @@ namespace JCSUnity
             }
 
             return sceneName;
+        }
+
+        /// <summary>
+        /// Return a list of all scenes.
+        /// </summary>
+        public static List<Scene> GetAllScenes()
+        {
+            List<Scene> scenes = new();
+
+            JCS_Loop.Times(SceneManager.sceneCount, (count) =>
+            {
+                Scene scene = SceneManager.GetSceneAt(count);
+
+                scenes.Add(scene);
+            });
+
+            return scenes;
         }
 
         /// <summary>
