@@ -76,7 +76,7 @@ namespace JCSUnity
 
         private void OnApplicationQuit()
         {
-            if (JCS_NetworkSettings.instance.ONLINE_MODE)
+            if (ONLINE_MODE)
                 CloseSocket();
         }
 

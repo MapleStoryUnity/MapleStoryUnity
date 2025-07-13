@@ -214,7 +214,6 @@ namespace JCSUnity
 
             UpDownMovement();
 
-
             this.mRecordPosition = this.transform.position;
 
             {

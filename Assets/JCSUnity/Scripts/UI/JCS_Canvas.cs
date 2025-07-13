@@ -386,6 +386,14 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true if the canvas is fading in/out.
+        /// </summary>
+        public bool IsFading()
+        {
+            return mFading != JCS_FadeType.NONE;
+        }
+
+        /// <summary>
         /// Prompt warning if there are multiple main canvases in the scene.
         /// </summary>
         private void CheckMainCanvas()

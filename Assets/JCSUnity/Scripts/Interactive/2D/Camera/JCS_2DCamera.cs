@@ -99,21 +99,6 @@ namespace JCSUnity
 
         private float mWheelDegree = 0;
 
-        [Header("- Scene")]
-
-        [Tooltip("Maxinum this camera can go in x-axis.")]
-        [SerializeField]
-        private float mMax_X_PositionInScene = float.PositiveInfinity;
-        [Tooltip("Mininum this camera can go in x-axis.")]
-        [SerializeField]
-        private float mMin_X_PositionInScene = float.NegativeInfinity;
-        [Tooltip("Maxinum this camera can go in y-axis.")]
-        [SerializeField]
-        private float mMax_Y_PositionInScene = float.PositiveInfinity;
-        [Tooltip("Mininum this camera can go in y-axis.")]
-        [SerializeField]
-        private float mMin_Y_PositionInScene = float.NegativeInfinity;
-
         /* Setter & Getter */
 
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
@@ -236,9 +221,6 @@ namespace JCSUnity
 
             // do freezing the last
             DoFreezing();
-
-            // Do the camera boundaries check!!
-            CameraBoundaries();
         }
 
         /// <summary>
@@ -279,41 +261,6 @@ namespace JCSUnity
 #endif
 
             this.mTargetPosition.z += cameraDepth;
-        }
-
-        /// <summary>
-        /// 4 boundaries (top, bottom, right, left) that camera should not 
-        /// go through.
-        /// 
-        /// check the boundries and do the trick!
-        /// </summary>
-        private void CameraBoundaries()
-        {
-            Vector3 camPos = this.transform.position;
-
-            if (camPos.x > mMax_X_PositionInScene)
-            {
-                camPos.x = mMax_X_PositionInScene;
-                mVelocity.x = 0;
-            }
-            else if (camPos.x < mMin_X_PositionInScene)
-            {
-                camPos.x = mMin_X_PositionInScene;
-                mVelocity.x = 0;
-            }
-
-            if (camPos.y > mMax_Y_PositionInScene)
-            {
-                camPos.y = mMax_Y_PositionInScene;
-                mVelocity.y = 0;
-            }
-            else if (camPos.y < mMin_Y_PositionInScene)
-            {
-                camPos.y = mMin_Y_PositionInScene;
-                mVelocity.y = 0;
-            }
-
-            this.transform.position = camPos;
         }
 
         /// <summary>

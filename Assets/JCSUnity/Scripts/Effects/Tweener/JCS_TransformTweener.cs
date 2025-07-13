@@ -736,6 +736,7 @@ namespace JCSUnity
             }
 
             float distance = 0;
+
             Vector3 selfVal = GetSelfTransformTypeVector3();
             Vector3 targetVal = GetTargetTransformTypeVector3();
 
@@ -752,9 +753,9 @@ namespace JCSUnity
             // record down the target position
             mRecordTargetTransformValue = targetVal;
 
-
             // Check if close enough to the distance we target.
             distance = Vector3.Distance(selfVal, targetVal);
+
             if (distance <= mStopTweenDistance)
             {
                 // call the call back.

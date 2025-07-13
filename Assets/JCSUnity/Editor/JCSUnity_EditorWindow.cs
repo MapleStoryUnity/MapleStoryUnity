@@ -46,7 +46,9 @@ namespace JCSUnity
         private bool mFO_ARVR = false;
 
         public string PROJECT_NAME = "_Project";
+
         public const string PROJECT_NAME_SUFFIX = "";
+
         public string[] ProjectSubFolders = {
             "Animations",
             "Editor",

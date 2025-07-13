@@ -69,5 +69,6 @@ namespace JCSUnity
         public virtual void Show(bool mute = false) => mCanvas.Show(mute);
         public virtual void Hide(bool mute = false) => mCanvas.Hide(mute);
         public virtual void ToggleVisibility(bool mute = false) => mCanvas.ToggleVisibility(mute);
+        public virtual bool IsFading() => mCanvas.IsFading();
     }
 }

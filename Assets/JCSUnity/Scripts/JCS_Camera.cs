@@ -14,7 +14,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Camera class for JCSUnity framework.
+    /// Camera based class.
     /// </summary>
     [RequireComponent(typeof(Camera))]
     public abstract class JCS_Camera : MonoBehaviour
@@ -88,6 +88,12 @@ namespace JCSUnity
         [SerializeField]
         protected bool mSmoothTrack = true;
 
+        [Header("- Boundary")]
+
+        [Tooltip("The movement boundary.")]
+        [SerializeField]
+        protected JCS_Boundary mBoundary = null;
+
         /* Setter & Getter */
 
         public Vector3 PositionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
@@ -105,6 +111,8 @@ namespace JCSUnity
         public float ScreenAspect { get { return (float)mCamera.pixelWidth / (float)mCamera.pixelHeight; } }
 
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+
+        public JCS_Boundary Boundary { get { return this.mBoundary; } set { this.mBoundary = value; } }
 
         /* Functions */
 
@@ -138,6 +146,9 @@ namespace JCSUnity
 #if UNITY_EDITOR
             DisplayGameDepthCamera();
 #endif
+
+            // Do the camera boundaries check!!
+            DoBoundaries();
         }
 
         /// <summary>
@@ -665,6 +676,24 @@ namespace JCSUnity
             {
                 mRecordFieldOfView = RevertAngleConversionByRatio(mCamera.fieldOfView, GetAspectRatio());
             }
+        }
+
+        /// <summary>
+        /// 4 boundaries (top, bottom, right, left) that camera should not 
+        /// go through.
+        /// 
+        /// check the boundries and do the trick!
+        /// </summary>
+        private void DoBoundaries()
+        {
+            if (mBoundary == null)
+                return;
+
+            Bounds bounds = mBoundary.GetBounds();
+
+            Vector3 camPos = this.transform.position;
+
+            this.transform.position = bounds.ClosestPoint(camPos);
         }
 
         /// <summary>
