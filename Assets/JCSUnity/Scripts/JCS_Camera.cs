@@ -607,7 +607,7 @@ namespace JCSUnity
             //first you need the RectTransform component of your canvas
             RectTransform canvasRect = JCS_Canvas.GuessCanvas().AppRect;
 
-            Vector2 canvasObject_WorldPosition = new Vector2(
+            var canvasObject_WorldPosition = new Vector2(
                 ((targetCanvasPos.x + (canvasRect.sizeDelta.x * JCS_Mathf.T_HALF)) / canvasRect.sizeDelta.x),
                 ((targetCanvasPos.y + (canvasRect.sizeDelta.y * JCS_Mathf.T_HALF)) / canvasRect.sizeDelta.y));
 

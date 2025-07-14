@@ -372,7 +372,7 @@ namespace JCSUnity
         /// Start the dialogue, in other word same as start a conversation.
         /// </summary>
         /// <param name="script"> Script to use to run the dialogue. </param>
-        public void ActiveDialogue(JCS_DialogueScript script)
+        public bool ActiveDialogue(JCS_DialogueScript script)
         {
             if (!mInitialized)
             {
@@ -382,22 +382,22 @@ namespace JCSUnity
                 // Activate it on the next frame!
                 this.gameObject.SetActive(true);
 
-                return;
+                return false;
             }
 
             mDialogueScript = script;
 
             if (mActive)
             {
-                Debug.LogWarning("Dialogue System is already active!");
-                return;
+                Debug.LogWarning("Dialogue System is already active");
+                return false;
             }
 
             // check if the script attached is available?
             if (DialogueScript == null)
             {
                 Debug.LogWarning("Can't run dialogue system without the dialogue script");
-                return;
+                return false;
             }
 
             // reset the action, so it will always start
@@ -416,6 +416,8 @@ namespace JCSUnity
 
             // Play the active dialogue sound.
             JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mActiveSound);
+
+            return true;
         }
 
         /// <summary>
