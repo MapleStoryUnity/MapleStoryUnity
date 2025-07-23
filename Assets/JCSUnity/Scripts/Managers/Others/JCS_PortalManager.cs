@@ -55,7 +55,7 @@ namespace JCSUnity
             if (!ps.RESET_POSITION_AT_START)
                 return;
 
-            mPortals = JCS_Array.RemoveEmptyMissing(mPortals);
+            mPortals = JCS_Array.RemoveEmptyMissing(mPortals).ToArray();
 
             foreach (JCS_2DPortal portal in mPortals)
             {

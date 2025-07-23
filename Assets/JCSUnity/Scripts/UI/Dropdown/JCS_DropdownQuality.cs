@@ -78,7 +78,7 @@ namespace JCSUnity
 
             // Default to the current quality level.
             {
-                string text = QualityName();
+                string text = JCS_Quality.ItName();
 
                 JCS_UIUtil.Dropdown_SetSelection(this, text);
             }
@@ -106,21 +106,7 @@ namespace JCSUnity
         }
         private void OnValueChanged(string text)
         {
-            int level = QualitySettings.names.IndexOfItem(text);
-
-            QualitySettings.SetQualityLevel(level);
-        }
-
-        /// <summary>
-        /// Return the name of the current quality level.
-        /// </summary>
-        private string QualityName()
-        {
-            int level = QualitySettings.GetQualityLevel();
-
-            string text = QualitySettings.names[level];
-
-            return text;
+            JCS_Quality.SetLevel(text);
         }
     }
 }

@@ -95,11 +95,11 @@ namespace JCSUnity
         /// <summary>
         /// Check if the list empty.
         /// </summary>
-        public static bool IsEmpty(string[] list)
+        public static bool IsEmpty(ICollection<string> list)
         {
-            for (int index = 0; index < list.Length; ++index)
+            for (int index = 0; index < list.Count; ++index)
             {
-                if (list[index] != "")
+                if (list.ElementAt(index) != "")
                     return false;
             }
 
@@ -146,15 +146,14 @@ namespace JCSUnity
         /// <param name="len"> Target length to initialize. </param>
         /// <param name="with"> Initialize object type. </param>
         /// <returns> Return filled array. </returns>
-        public static T[] Fill<T>(T[] inArray, int len, T with)
+        public static List<T> Fill<T>(ICollection<T> coll, int len, T with)
         {
-            return Fill(inArray.ToList(), len, with).ToArray();
-        }
-        public static List<T> Fill<T>(List<T> inList, int len, T with)
-        {
-            for (int index = inList.Count; index < len; ++index)
-                inList.Add(with);
-            return inList;
+            List<T> result = new();
+
+            for (int index = coll.Count; index < len; ++index)
+                result.Add(with);
+
+            return result;
         }
 
         /// <summary>
@@ -163,22 +162,32 @@ namespace JCSUnity
         /// <typeparam name="T"> Type of the List. </typeparam>
         /// <param name="inArray"> Array list. </param>
         /// <returns> Cleaned up Array object. </returns>
-        public static T[] RemoveEmpty<T>(T[] inArray)
+        public static List<T> RemoveEmpty<T>(ICollection<T> coll)
         {
-            return RemoveEmpty(inArray.ToList()).ToArray();
-        }
-        public static List<T> RemoveEmpty<T>(List<T> inList)
-        {
-            List<T> newArray = new(inList.Count);
+            List<T> newArray = new();
 
-            for (int index = 0; index < inList.Count; ++index)
+            for (int index = 0; index < coll.Count; ++index)
             {
                 // Add itself if exists.
-                if (inList[index] != null)
-                    newArray.Add(inList[index]);
+                if (coll.ElementAt(index) != null)
+                    newArray.Add(coll.ElementAt(index));
             }
 
             return newArray;
+        }
+        public static Dictionary<T, V> RemoveEmpty<T, V>(IDictionary<T, V> dict)
+            where T : UnityEngine.Object
+        {
+            Dictionary<T, V> result = new();
+
+            JCS_Loop.ForEach(dict, (entry) =>
+            {
+                // Add if exists.
+                if (entry.Key != null)
+                    result.Add(entry.Key, entry.Value);
+            });
+
+            return result;
         }
 
         /// <summary>
@@ -194,27 +203,36 @@ namespace JCSUnity
         /// <typeparam name="T"> Type of the List. </typeparam>
         /// <param name="inList"> List object. </param>
         /// <returns> Cleaned up List object. </returns>
-        public static T[] RemoveEmptyMissing<T>(T[] inArray)
+        public static List<T> RemoveEmptyMissing<T>(ICollection<T> coll)
             where T : UnityEngine.Object
         {
-            return RemoveEmptyMissing(inArray.ToList()).ToArray();
-        }
-        public static List<T> RemoveEmptyMissing<T>(List<T> inList)
-            where T : UnityEngine.Object
-        {
-            List<T> newArray = new(inList.Count);
+            List<T> result = new();
 
-            for (int index = 0; index < inList.Count; ++index)
+            for (int index = 0; index < coll.Count; ++index)
             {
-                // Add itself if exists.
+                // Add if exists.
                 // 
                 // SOURCE(jenchieh): https://answers.unity.com/questions/131158/how-can-i-check-if-an-object-is-null.html
                 // INFORMATION(jenchieh): https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/
-                if (inList[index] ?? false)
-                    newArray.Add(inList[index]);
+                if (coll.ElementAt(index) ?? false)
+                    result.Add(coll.ElementAt(index));
             }
 
-            return newArray;
+            return result;
+        }
+        public static Dictionary<T, V> RemoveEmptyMissing<T, V>(IDictionary<T, V> dict)
+            where T : UnityEngine.Object
+        {
+            Dictionary<T, V> result = new();
+
+            JCS_Loop.ForEach(dict, (entry) =>
+            {
+                // Add if exists.
+                if (entry.Key ?? false)
+                    result.Add(entry.Key, entry.Value);
+            });
+
+            return result;
         }
     }
 }
