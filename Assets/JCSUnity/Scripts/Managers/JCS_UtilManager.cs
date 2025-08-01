@@ -42,7 +42,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
         }
     }
 }

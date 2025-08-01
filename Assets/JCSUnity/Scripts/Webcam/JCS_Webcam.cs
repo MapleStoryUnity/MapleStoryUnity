@@ -169,7 +169,7 @@ namespace JCSUnity
                 return;
             }
 
-            var scs = JCS_ScreenSettings.instance;
+            var scs = JCS_ScreenSettings.FirstInstance();
             int screenWidth = scs.STANDARD_SCREEN_SIZE.width;
             int screenHeight = scs.STANDARD_SCREEN_SIZE.height;
 
@@ -193,7 +193,7 @@ namespace JCSUnity
                 return null;
             }
 
-            var gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.FirstInstance();
             var prefix = gs.WEBCAM_FILENAME;
             var ext = gs.WEBCAM_EXTENSION;
 
@@ -215,7 +215,7 @@ namespace JCSUnity
 
             if (mSplash)
             {
-                var sm = JCS_SceneManager.instance;
+                var sm = JCS_SceneManager.FirstInstance();
 
                 if (sm.GetWhiteScreen() == null)
                     JCS_UtilFunctions.PopWhiteScreen();
@@ -234,7 +234,7 @@ namespace JCSUnity
 
             // play sound.
             {
-                var soundm = JCS_SoundManager.instance;
+                var soundm = JCS_SoundManager.FirstInstance();
                 JCS_SoundPlayer sp = (mSoundPlayer) ? mSoundPlayer : soundm.GlobalSoundPlayer();
                 sp.PlayOneShot(mTakePhotoSound);
             }
@@ -247,7 +247,7 @@ namespace JCSUnity
         /// </summary>
         public static string SavePath()
         {
-            var gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.FirstInstance();
             string path = JCS_Path.Combine(Application.persistentDataPath, gs.WEBCAM_PATH);
             return path;
         }
@@ -257,7 +257,7 @@ namespace JCSUnity
         /// </summary>
         public static int LastImageFileIndex()
         {
-            var gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.FirstInstance();
             var prefix = gs.WEBCAM_FILENAME;
             var ext = gs.WEBCAM_EXTENSION;
             return JCS_IO.LastFileIndex(SavePath(), prefix, ext);
@@ -270,7 +270,7 @@ namespace JCSUnity
         /// <returns> Image path form by index. </returns>
         public static string ImagePathByIndex(int index)
         {
-            var gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.FirstInstance();
             string path = SavePath() + gs.WEBCAM_FILENAME + index + gs.WEBCAM_EXTENSION;
             return path;
         }
@@ -400,7 +400,7 @@ namespace JCSUnity
                 if (mDelayTimer > mDelayTime)
                 {
                     mDelayTimer = 0.0f;
-                    JCS_SceneManager.instance.GetWhiteScreen().FadeOut();
+                    JCS_SceneManager.FirstInstance().GetWhiteScreen().FadeOut();
                     mSplashEffectTrigger = false;
                 }
             }
@@ -425,7 +425,7 @@ namespace JCSUnity
 
             if (GetRectTransform() != null)
             {
-                var scs = JCS_ScreenSettings.instance;
+                var scs = JCS_ScreenSettings.FirstInstance();
 
                 float screenWidth = scs.STANDARD_SCREEN_SIZE.width;
                 float screenHeight = scs.STANDARD_SCREEN_SIZE.height;

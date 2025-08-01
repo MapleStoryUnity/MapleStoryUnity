@@ -83,7 +83,7 @@ namespace JCSUnity
         /// </summary>
         public static string CachePath()
         {
-            var gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.FirstInstance();
             string path = JCS_Path.Combine(Application.persistentDataPath, gs.STREAMING_CACHE_PATH);
             return path;
         }
@@ -93,7 +93,7 @@ namespace JCSUnity
         /// </summary>
         public static string UrlPath()
         {
-            var gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.FirstInstance();
             return gs.STREAMING_BASE_URL;
         }
 
@@ -204,7 +204,7 @@ namespace JCSUnity
             if (www.isNetworkError || www.isHttpError)
 #endif
             {
-                if (JCS_GameSettings.instance.DEBUG_MODE)
+                if (JCS_GameSettings.FirstInstance().DEBUG_MODE)
                     Debug.LogWarning(www.error);
             }
             else

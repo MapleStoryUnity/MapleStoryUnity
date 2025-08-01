@@ -232,7 +232,7 @@ namespace JCSUnity
         private void DoFade()
         {
             if (GetObjectType() == JCS_UnityObjectType.GAME_OBJECT &&
-                JCS_GameManager.instance.GAME_PAUSE)
+                JCS_GameManager.FirstInstance().GAME_PAUSE)
                 return;
 
             if (!mEffect)

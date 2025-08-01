@@ -326,7 +326,7 @@ namespace JCSUnity
         public static string GetPositiveNameByLabel(JCS_JoystickButton label)
         {
 #if UNITY_EDITOR
-            if (instance == null)
+            if (FirstInstance() == null)
             {
                 switch (JCS_InputController.SelectGamepadType)
                 {
@@ -355,7 +355,7 @@ namespace JCSUnity
             else
             {
 #endif
-                switch (instance.TargetGamePad)
+                switch (FirstInstance().TargetGamePad)
                 {
                     case JCS_GamepadType.ALL:
                         return "";

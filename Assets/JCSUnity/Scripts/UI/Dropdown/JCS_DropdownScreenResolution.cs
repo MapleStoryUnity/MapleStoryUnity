@@ -54,7 +54,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            var screens = JCS_ScreenSettings.instance;
+            var screens = JCS_ScreenSettings.FirstInstance();
 
             screens.onChangedSize += Refresh;
         }

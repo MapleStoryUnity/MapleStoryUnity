@@ -164,7 +164,11 @@ namespace JCSUnity
             this.mCanvas = this.GetComponent<Canvas>();
             this.mCanvasGroup = this.GetComponent<CanvasGroup>();
 
-            if (JCS_UISettings.instance.RESIZE_UI && !JCS_ScreenSettings.instance.IsNone())
+            var uis = JCS_UISettings.FirstInstance();
+            var screens = JCS_ScreenSettings.FirstInstance();
+            var uim = JCS_UIManager.FirstInstance();
+
+            if (uis.RESIZE_UI && !screens.IsNone())
             {
                 GameObject spawned = JCS_Util.Instantiate(RESIZE_UI_PATH);
 
@@ -174,7 +178,7 @@ namespace JCSUnity
                 mResizeUI.transform.SetParent(this.transform);
             }
 
-            JCS_UIManager.instance.AddCanvas(this);
+            uim.AddCanvas(this);
 
             AssignDefaultShowHide();
 
@@ -186,8 +190,8 @@ namespace JCSUnity
 
         private void Start()
         {
-            var uis = JCS_UISettings.instance;
-            var screens = JCS_ScreenSettings.instance;
+            var uis = JCS_UISettings.FirstInstance();
+            var screens = JCS_ScreenSettings.FirstInstance();
 
             if (uis.RESIZE_UI && !screens.IsNone())
             {
@@ -428,7 +432,7 @@ namespace JCSUnity
             if (rect == null)
                 return;
 
-            var ss = JCS_ScreenSettings.instance;
+            var ss = JCS_ScreenSettings.FirstInstance();
             JCS_ScreenSizef screenRaio = ss.ScreenRatio();
 
             Vector3 newScale = rect.localScale;

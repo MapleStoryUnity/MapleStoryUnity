@@ -32,7 +32,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
         }
 
         private void Start()
@@ -45,7 +45,7 @@ namespace JCSUnity
         /// </summary>
         private void SetPlayerToPortalByLabel()
         {
-            var ps = JCS_PortalSettings.instance;
+            var ps = JCS_PortalSettings.FirstInstance();
 
             // check manager exists?
             if (ps == null)
@@ -62,7 +62,7 @@ namespace JCSUnity
                 if (portal.PortalLabel == ps.SCENE_PORTAL_LABEL)
                 {
                     // get the player
-                    JCS_Player player = JCS_PlayerManager.instance.GetActivePlayer();
+                    JCS_Player player = JCS_PlayerManager.FirstInstance().GetActivePlayer();
 
                     // NOTE(jenchieh): this uses execution order in Unity Engine.
                     // move the player to portal position.

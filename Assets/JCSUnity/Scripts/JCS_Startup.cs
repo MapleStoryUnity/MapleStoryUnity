@@ -25,9 +25,9 @@ namespace JCSUnity
         /// Initialize the whole application. (In Unity layer.)
         /// </summary>
         /// <returns></returns>
-        public static bool InitializeApplication()
+        public static bool InitApp()
         {
-            var ns = JCS_NetworkSettings.instance;
+            var ns = JCS_NetworkSettings.FirstInstance();
 
             if (!ns.ONLINE_MODE)
                 return false;

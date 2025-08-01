@@ -45,7 +45,7 @@ does not have pause, then this script is basically not the good serve for you.")
 
         private void Start()
         {
-            JCS_PauseManager.instance.AddActionToList(this);
+            JCS_PauseManager.FirstInstance().AddActionToList(this);
         }
 
         /// <summary>

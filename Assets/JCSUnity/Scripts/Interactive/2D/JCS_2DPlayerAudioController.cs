@@ -37,7 +37,7 @@ namespace JCSUnity
 
         protected virtual void Start()
         {
-            var sm = JCS_SoundManager.instance;
+            var sm = JCS_SoundManager.FirstInstance();
 
             sm.SetAudioListener(GetAudioListener());
         }

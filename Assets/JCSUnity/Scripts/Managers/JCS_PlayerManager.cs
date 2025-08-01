@@ -41,8 +41,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
-            mPlayers = new List<JCS_Player>();
+            RegisterInstance(this);
         }
 
         private void Start()
@@ -51,37 +50,9 @@ namespace JCSUnity
 
             // if the game only allow one play do the function
             // in order to take the effect.
-            if (JCS_GameSettings.instance.ACTIVE_ONE_PLAYER)
-                ActiveOnePlayer(JCS_GameManager.instance.Player);
+            if (JCS_GameSettings.FirstInstance().ACTIVE_ONE_PLAYER)
+                ActiveOnePlayer(JCS_GameManager.FirstInstance().Player);
         }
-
-#if UNITY_EDITOR
-        private void Update()
-        {
-            if (JCS_GameSettings.instance.GAME_TYPE == JCS_GameType.GAME_2D)
-                PlayerManageTest();
-        }
-#endif
-
-#if UNITY_EDITOR
-        private void PlayerManageTest()
-        {
-            //if (JCS_Input.GetKeyDown(KeyCode.L))
-            //{
-            //    JCS_2DCamera cam = (JCS_2DCamera)JCS_Camera.main;
-            //    cam.SetFollowTarget(mPlayers[0].transform);
-            //    JCS_GameManager.instance.SetJCSPlayer(mPlayers[0]);
-            //    ActiveOnePlayer(0);
-            //}
-            //if (JCS_Input.GetKeyDown(KeyCode.K))
-            //{
-            //    JCS_2DCamera cam = (JCS_2DCamera)JCS_Camera.main;
-            //    cam.SetFollowTarget(mPlayers[1].transform);
-            //    JCS_GameManager.instance.SetJCSPlayer(mPlayers[1]);
-            //    ActiveOnePlayer(1);
-            //}
-        }
-#endif
 
         /// <summary>
         /// Add the player to the list, in order to get manage 
@@ -127,17 +98,17 @@ namespace JCSUnity
         /// </summary>
         public void DoIgnorePlayersToEachOthers()
         {
-            if (JCS_GameSettings.instance.PLAYER_IGNORE_EACH_OTHER)
+            if (!JCS_GameSettings.FirstInstance().PLAYER_IGNORE_EACH_OTHER)
+                return;
+
+            // Make all the player ignore each other
+            for (int index = 0; index < mPlayers.Count; ++index)
             {
-                // Make all the player ignore each other
-                for (int index = 0; index < mPlayers.Count; ++index)
+                for (int pairIndex = index + 1; pairIndex < mPlayers.Count; ++pairIndex)
                 {
-                    for (int pairIndex = index + 1; pairIndex < mPlayers.Count; ++pairIndex)
-                    {
-                        Physics.IgnoreCollision(
-                                mPlayers[index].GetCharacterController(),
-                                mPlayers[pairIndex].GetCharacterController(), true);
-                    }
+                    Physics.IgnoreCollision(
+                        mPlayers[index].GetCharacterController(),
+                        mPlayers[pairIndex].GetCharacterController(), true);
                 }
             }
         }
@@ -156,8 +127,8 @@ namespace JCSUnity
             for (int index = 0; index < mPlayers.Count; ++index)
             {
                 Physics.IgnoreCollision(
-                            mPlayers[index].GetCharacterController(), 
-                            cc, act);
+                    mPlayers[index].GetCharacterController(), 
+                    cc, act);
             }
         }
 

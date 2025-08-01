@@ -102,7 +102,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             // try to get component, this is not guarantee.
             this.mJCSFadeSound = this.GetComponent<JCS_FadeSound>();
@@ -134,7 +134,7 @@ namespace JCSUnity
         /// <param name="loop"> loop music? </param>
         public void SwitchBGM(AudioClip clip, bool loop = true)
         {
-            var ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.FirstInstance();
 
             SwitchBGM(
                 clip,
@@ -208,7 +208,7 @@ namespace JCSUnity
             AudioClip oneShotClip,
             AudioClip onStackClip)
         {
-            var ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.FirstInstance();
 
             return PlayOneShotBGM(
                 oneShotClip, 

@@ -121,7 +121,7 @@ namespace JCSUnity
                     VelY +=
                         JCS_Physics.GRAVITY *
                         dt *
-                        JCS_GameSettings.instance.GRAVITY_PRODUCT;
+                        JCS_GameSettings.FirstInstance().GRAVITY_PRODUCT;
                 }
                 // if touches the ground set to negative one.
                 else {

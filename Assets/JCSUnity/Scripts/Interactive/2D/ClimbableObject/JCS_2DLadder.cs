@@ -48,17 +48,17 @@ namespace JCSUnity
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            JCS_2DSideScrollerPlayer player = other.GetComponent<JCS_2DSideScrollerPlayer>();
+            var player = other.GetComponent<JCS_2DSideScrollerPlayer>();
             if (player == null)
                 return;
 
-            JCS_ClimbableManager cm = JCS_ClimbableManager.instance;
+            var cm = JCS_ClimbableManager.FirstInstance();
 
             AddSafe(player);
 
             bool isTopOfBox = JCS_Physics.TopOfBox(
-                            player.GetCharacterController(),
-                            mPositionPlatform.GetPlatformCollider());
+                player.GetCharacterController(),
+                mPositionPlatform.GetPlatformCollider());
 
             if (isTopOfBox)
             {
@@ -97,7 +97,7 @@ namespace JCSUnity
         /// </summary>
         public override void ClimbableUpdate()
         {
-            JCS_ClimbableManager cm = JCS_ClimbableManager.instance;
+            var cm = JCS_ClimbableManager.FirstInstance();
 
             foreach (JCS_2DSideScrollerPlayer player in mSSPlayers)
             {

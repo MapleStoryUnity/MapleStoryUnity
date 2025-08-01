@@ -156,7 +156,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
              * player. 
              */
             if (mSoundPlayer == null)
-                mSoundPlayer = JCS_SoundManager.instance.GlobalSoundPlayer();
+                mSoundPlayer = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
 
             if (mAutoAddEvent)
             {

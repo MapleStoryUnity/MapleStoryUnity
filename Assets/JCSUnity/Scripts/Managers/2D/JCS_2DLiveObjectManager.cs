@@ -33,7 +33,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             StartCoroutine(FindAllLiveObjectInScene(TIME_TO_FIND_ALL_LIVE_OBJECT_IN_SCENE));
         }

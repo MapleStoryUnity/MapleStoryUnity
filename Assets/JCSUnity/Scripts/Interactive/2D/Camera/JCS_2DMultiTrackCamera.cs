@@ -98,7 +98,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_SoundManager.instance.SetAudioListener(GetAudioListener());
+            JCS_SoundManager.FirstInstance().SetAudioListener(GetAudioListener());
         }
 
         private void Update()

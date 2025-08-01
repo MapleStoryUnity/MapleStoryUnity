@@ -79,9 +79,6 @@ namespace JCSUnity
         MIDDLE = 2
     };
 
-    public delegate void JoystickPlugged();  // Callback when joystick is plugged.
-    public delegate void JoystickUnPlugged();  // Callback when joystick is unplugged.
-
     /// <summary>
     /// Unity's Input class re-wrapper.
     /// </summary>

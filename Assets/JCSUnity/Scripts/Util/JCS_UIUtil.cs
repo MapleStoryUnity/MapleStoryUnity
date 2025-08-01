@@ -11,6 +11,7 @@
  */
 #define TMP_PRO
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -21,9 +22,6 @@ using TMPro;
 
 namespace JCSUnity
 {
-    public delegate void EventTriggerEvent(PointerEventData data);
-    public delegate void EventTriggerEventButtonSelection(PointerEventData data, JCS_ButtonSelection selection);
-
     /// <summary>
     /// User interface related utilities functions.
     /// </summary>
@@ -61,7 +59,7 @@ namespace JCSUnity
         /// <param name="te"></param>
         /// <param name="type"></param>
         /// <param name="func"></param>
-        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, EventTriggerEvent func)
+        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, Action<PointerEventData> func)
         {
             EventTrigger.Entry entry = new EventTrigger.Entry();
             entry.eventID = type;
@@ -75,7 +73,7 @@ namespace JCSUnity
         /// <param name="te"></param>
         /// <param name="type"></param>
         /// <param name="func"></param>
-        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, EventTriggerEventButtonSelection func, JCS_ButtonSelection selection)
+        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, Action<PointerEventData, JCS_ButtonSelection> func, JCS_ButtonSelection selection)
         {
             EventTrigger.Entry entry = new EventTrigger.Entry();
             entry.eventID = type;
@@ -92,7 +90,7 @@ namespace JCSUnity
         /// <param name="txt"> Text container to display language data. </param>
         public static void SetLangText(JCS_LangDataList data, Text txt)
         {
-            SystemLanguage lang = JCS_AppManager.instance.systemLanguage;
+            SystemLanguage lang = JCS_AppManager.FirstInstance().systemLanguage;
 
             foreach (JCS_LangData langData in data.LangData)
             {
@@ -112,7 +110,7 @@ namespace JCSUnity
         /// <param name="txt"> Text container to display language data. </param>
         public static void SetLangText(JCS_LangDataList data, TMP_Text txt)
         {
-            SystemLanguage lang = JCS_AppManager.instance.systemLanguage;
+            SystemLanguage lang = JCS_AppManager.FirstInstance().systemLanguage;
 
             foreach (JCS_LangData langData in data.LangData)
             {
@@ -799,7 +797,7 @@ namespace JCSUnity
         /// </summary>
         public static Sprite SpriteTransparent()
         {
-            return JCS_UtilManager.instance.SpriteTransparent;
+            return JCS_UtilManager.FirstInstance().SpriteTransparent;
         }
 
         /// <summary>

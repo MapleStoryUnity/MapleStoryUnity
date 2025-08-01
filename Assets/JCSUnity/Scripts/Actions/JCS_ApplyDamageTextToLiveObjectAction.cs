@@ -214,9 +214,10 @@ namespace JCSUnity
             if (attacker != null)
             {
                 JCS_2DLiveObject owenerLiveObject = mAttackerInfo.Attacker.GetComponent<JCS_2DLiveObject>();
+
                 if (owenerLiveObject != null)
                 {
-                    if (!JCS_GameSettings.instance.TRIBE_DAMAGE_EACH_OTHER)
+                    if (!JCS_GameSettings.FirstInstance().TRIBE_DAMAGE_EACH_OTHER)
                     {
                         // if both player does not need to add in to list.
                         // or if both enemy does not need to add in to list.

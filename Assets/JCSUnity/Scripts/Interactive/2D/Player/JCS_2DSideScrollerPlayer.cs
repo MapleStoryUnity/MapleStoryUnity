@@ -239,10 +239,12 @@ namespace JCSUnity
         /// <param name="act"></param>
         public override void ControlEnable(bool act)
         {
+            var gs = JCS_GameSettings.FirstInstance();
+
             // enable all the component here
             if (act)
             {
-                if (JCS_GameSettings.instance.CAMERA_TYPE != JCS_CameraType.MULTI_TARGET)
+                if (gs.CAMERA_TYPE != JCS_CameraType.MULTI_TARGET)
                 {
                     AudioListener al = this.mAudioController.GetAudioListener();
                     if (al != null)
@@ -253,7 +255,7 @@ namespace JCSUnity
             // diable all the component here
             else
             {
-                if (JCS_GameSettings.instance.CAMERA_TYPE != JCS_CameraType.MULTI_TARGET)
+                if (gs.CAMERA_TYPE != JCS_CameraType.MULTI_TARGET)
                 {
                     AudioListener al = this.mAudioController.GetAudioListener();
                     if (al != null)
@@ -865,10 +867,12 @@ namespace JCSUnity
             // if is in the AIR
             if (!isGrounded())
             {
+                var gs = JCS_GameSettings.FirstInstance();
+
                 // apply gravity
                 mVelocity.y += (JCS_Physics.GRAVITY *
                     JCS_Time.ItTime(mTimeType) *
-                    JCS_GameSettings.instance.GRAVITY_PRODUCT);
+                    gs.GRAVITY_PRODUCT);
 
                 /* TODO!! */
                 if (!mJustClimbOnTopOfBox)

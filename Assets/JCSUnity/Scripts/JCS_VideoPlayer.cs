@@ -50,7 +50,8 @@ namespace JCSUnity
 
         [Tooltip("Next scene will be loaded.")]
         [SerializeField]
-        private string mSceneName = "JCS_AppCloseSimulate";
+        [Scene]
+        private string mSceneName = "";
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
@@ -258,7 +259,8 @@ namespace JCSUnity
 
         [Tooltip("Next scene will be loaded.")]
         [SerializeField]
-        private string mSceneName = "JCS_AppCloseSimulate";
+        [Scene]
+        private string mSceneName = "";
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]

@@ -44,7 +44,7 @@ namespace JCSUnity
 
         protected void InitFile()
         {
-            var pds = JCS_PackageDataSettings.instance;
+            var pds = JCS_PackageDataSettings.FirstInstance();
 
             if (pds == null)
                 return;
@@ -75,7 +75,7 @@ namespace JCSUnity
         /// </summary>
         public static string SavePath()
         {
-            var apps = JCS_AppSettings.instance;
+            var apps = JCS_AppSettings.FirstInstance();
             string path = JCS_Path.Combine(Application.persistentDataPath, apps.DATA_PATH);
             return path;
         }

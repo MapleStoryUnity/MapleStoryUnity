@@ -22,7 +22,7 @@ namespace JCSUnity
 
         [Tooltip("")]
         [SerializeField]
-        private JCS_OrderLayer[] mJCSOrderLayer = null;
+        private JCS_OrderLayer[] mOrderLayers = null;
 
         /* Setter & Getter */
 
@@ -30,11 +30,11 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             // get all the scene layer in the scene.
             // so it could be manage
-            mJCSOrderLayer = JCS_Util.FindObjectsOfTypeAllInHierarchy<JCS_OrderLayer>();
+            mOrderLayers = JCS_Util.FindObjectsOfTypeAllInHierarchy<JCS_OrderLayer>();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace JCSUnity
         /// <returns></returns>
         public JCS_OrderLayer GetOrderLayerByOrderLayerIndex(int orderLayerIndex)
         {
-            foreach (JCS_OrderLayer ol in mJCSOrderLayer)
+            foreach (JCS_OrderLayer ol in mOrderLayers)
             {
                 if (ol == null)
                     continue;

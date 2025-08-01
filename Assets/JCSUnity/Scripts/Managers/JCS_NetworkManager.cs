@@ -34,12 +34,12 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
         }
 
         private void Update()
         {
-            if (!JCS_NetworkSettings.instance.ONLINE_MODE)
+            if (!JCS_NetworkSettings.FirstInstance().ONLINE_MODE)
                 return;
 
 #if UNITY_EDITOR
@@ -115,7 +115,7 @@ namespace JCSUnity
         public void CheckConnectionWithTime()
         {
             // do the following script only when is online mode
-            if (!JCS_NetworkSettings.instance.ONLINE_MODE)
+            if (!JCS_NetworkSettings.FirstInstance().ONLINE_MODE)
                 return;
 
             mConnectionCounter += Time.unscaledDeltaTime;
@@ -132,7 +132,7 @@ namespace JCSUnity
                 else if (FIRST_LOGIN)
                 {
                     FIRST_LOGIN = false;
-                    JCS_PatchManager.instance.LoadNextLevel();
+                    JCS_PatchManager.FirstInstance().LoadNextLevel();
                 }
                 mConnectionCounter = 0;
             }

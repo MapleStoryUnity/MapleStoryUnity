@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -18,16 +19,13 @@ namespace JCSUnity
     /// </summary>
     public class JCS_2DSlideScreenCamera : MonoBehaviour
     {
-        public delegate void AfterSceneSwitchedCallback(Vector2 page);
-        public delegate void AfterSwipeCallback(Vector2 page);
-
         /* Variables */
 
         // Function call after the scene changed
-        public AfterSceneSwitchedCallback afterSceneSwitched = null;
+        public Action<Vector2> afterSceneSwitched = null;
 
         // Function call after the user has swiped
-        public AfterSwipeCallback afterSwiped = null;
+        public Action<Vector2> afterSwiped = null;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_2DSlideScreenCamera)")]
@@ -357,7 +355,7 @@ namespace JCSUnity
         /// </summary>
         private void DoMobileSwipe()
         {
-            var ti = JCS_TouchInput.instance;
+            var ti = JCS_TouchInput.FirstInstance();
             if (ti == null)
                 return;
 
@@ -403,7 +401,7 @@ namespace JCSUnity
             if (mInteractableSwipe && JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
             {
                 Vector3 posDiff = ti.DragDistance;
-                JCS_ScreenSizef vs = JCS_ScreenSettings.instance.VisibleScreenSize();
+                JCS_ScreenSizef vs = JCS_ScreenSettings.FirstInstance().VisibleScreenSize();
                 var target_vs = new JCS_ScreenSizef(vs.width * mSwipeArea.x, vs.height * mSwipeArea.y);
 
                 var speedX = ti.DragDistance.x / ti.TouchTime;
@@ -444,7 +442,7 @@ namespace JCSUnity
         /// </summary>
         private void PlaySwitchSceneSound()
         {
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
             sp.PlayOneShot(this.mSwitchSceneSound);
         }
 
@@ -459,7 +457,7 @@ namespace JCSUnity
             float screenWidth = 0.0f;
             float screenHeight = 0.0f;
 
-            var screenS = JCS_ScreenSettings.instance;
+            var screenS = JCS_ScreenSettings.FirstInstance();
             var cam = JCS_Camera.main;
 
             RectTransform slidePanel = mPanelHolder.slidePanels[0];

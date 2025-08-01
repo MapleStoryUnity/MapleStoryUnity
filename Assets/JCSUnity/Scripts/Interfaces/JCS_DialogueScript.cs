@@ -25,7 +25,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_DialogueSystem ds { get { return JCS_DialogueSystem.instance; } }
+        public JCS_DialogueSystem ds { get { return JCS_DialogueSystem.FirstInstance(); } }
 
         /* Functions */
 

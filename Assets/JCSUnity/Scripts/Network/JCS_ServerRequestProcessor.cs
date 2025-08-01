@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,13 +18,11 @@ namespace JCSUnity
     public class JCS_ServerRequestProcessor
         : JCS_Settings<JCS_ServerRequestProcessor>
     {
-        public delegate void ServerRequest(JCS_BinaryReader br, JCS_Client client);
-
         /* Variables */
 
-        private List<ServerRequest> mServerRequest = new List<ServerRequest>();
-        private List<JCS_Client> mClient = new List<JCS_Client>();
-        private List<JCS_BinaryReader> mBinaryReader = new List<JCS_BinaryReader>();
+        private List<Action<JCS_BinaryReader, JCS_Client>> mServerRequest = new();
+        private List<JCS_Client> mClient = new();
+        private List<JCS_BinaryReader> mBinaryReader = new();
 
         /* Setter & Getter */
 
@@ -42,7 +41,7 @@ namespace JCSUnity
         /// <summary>
         /// Register request from server.
         /// </summary>
-        public void RegisterRequest(ServerRequest request, JCS_BinaryReader br, JCS_Client client)
+        public void RegisterRequest(Action<JCS_BinaryReader, JCS_Client> request, JCS_BinaryReader br, JCS_Client client)
         {
             mServerRequest.Add(request);
             mBinaryReader.Add(br);
@@ -52,7 +51,7 @@ namespace JCSUnity
         /// <summary>
         /// Deregister the request from server.
         /// </summary>
-        public void DeresgisterRequest(ServerRequest request, JCS_BinaryReader br, JCS_Client client)
+        public void DeresgisterRequest(Action<JCS_BinaryReader, JCS_Client> request, JCS_BinaryReader br, JCS_Client client)
         {
             mServerRequest.Remove(request);
             mBinaryReader.Remove(br);

@@ -42,7 +42,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            if (!JCS_ScreenSettings.instance.IsNone())
+            if (!JCS_ScreenSettings.FirstInstance().IsNone())
             {
                 // NOTE: not sure is this the correct position for the code or not.
                 DoResize();
@@ -68,7 +68,7 @@ namespace JCSUnity
 
         private void DoResize()
         {
-            var screenS = JCS_ScreenSettings.instance;
+            var screenS = JCS_ScreenSettings.FirstInstance();
 
             JCS_ScreenSizef size = screenS.StartingScreenSize();
 

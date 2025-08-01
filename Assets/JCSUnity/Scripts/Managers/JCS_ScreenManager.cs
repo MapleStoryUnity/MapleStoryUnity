@@ -64,7 +64,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             if (ShouldSpawnResizablePanels())
             {
@@ -84,7 +84,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            var ss = JCS_ScreenSettings.instance;
+            var ss = JCS_ScreenSettings.FirstInstance();
 
             if (RESIZE_SCREEN_THIS_SCENE)
             {
@@ -108,7 +108,7 @@ namespace JCSUnity
 
         private void ControlResizablePanels()
         {
-            var ss = JCS_ScreenSettings.instance;
+            var ss = JCS_ScreenSettings.FirstInstance();
 
             /* Handle color. */
             {
@@ -174,7 +174,7 @@ namespace JCSUnity
         /// </summary>
         private bool ShouldSpawnResizablePanels()
         {
-            var screenS = JCS_ScreenSettings.instance;
+            var screenS = JCS_ScreenSettings.FirstInstance();
             return screenS.ShouldSpawnResizablePanels();
         }
     }

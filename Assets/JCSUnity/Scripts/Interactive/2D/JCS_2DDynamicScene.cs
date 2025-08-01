@@ -23,7 +23,7 @@ namespace JCSUnity
         private void Start()
         {
             // get handle!
-            JCS_SceneManager.instance.SetDynamicScene(this);
+            JCS_SceneManager.FirstInstance().SetDynamicScene(this);
         }
     }
 }

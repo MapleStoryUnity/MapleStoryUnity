@@ -131,7 +131,7 @@ namespace JCSUnity
         {
             CreateDirectory(path);
 
-            var gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.FirstInstance();
 
             string fileName = "";
             string curExt = "";

@@ -57,7 +57,7 @@ namespace JCSUnity
                 Debug.LogError("Play sound with null references is not allowed");
                 return;
             }
-            var ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.FirstInstance();
             mSoundPlayer.PlayOneShot(mJumpSound[0]);
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace JCSUnity
                 Debug.LogError("Play sound with null references is not allowed");
                 return;
             }
-            var ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.FirstInstance();
             mSoundPlayer.PlayOneShot(mJumpSound[1]);
         }
         /// <summary>
@@ -86,10 +86,10 @@ namespace JCSUnity
 
             if (mJumpSound[2] == null)
             {
-                Debug.LogError("Play sound with null references...");
+                Debug.LogError("Play sound with null references");
                 return;
             }
-            var ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.FirstInstance();
             mSoundPlayer.PlayOneShot(mJumpSound[2]);
         }
         /// <summary>
@@ -108,10 +108,10 @@ namespace JCSUnity
 
             if (mAttackSounds[rand] == null)
             {
-                Debug.LogError("Play sound with null references...");
+                Debug.LogError("Play sound with null references");
                 return;
             }
-            var ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.FirstInstance();
             mSoundPlayer.PlayOneShot(mAttackSounds[rand]);
         }
         /// <summary>
@@ -121,10 +121,10 @@ namespace JCSUnity
         {
             if (mWalkSound == null)
             {
-                Debug.LogError("Play sound with null references...");
+                Debug.LogError("Play sound with null references");
                 return;
             }
-            var ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.FirstInstance();
             mSoundPlayer.PlayOneShot(mWalkSound);
         }
         /// <summary>
@@ -187,7 +187,7 @@ namespace JCSUnity
                     return mGhostSound;
             }
 
-            Debug.LogError("Return sound that aren't in the player state...");
+            Debug.LogError("Return sound that aren't in the player state");
             return null;
         }
     }

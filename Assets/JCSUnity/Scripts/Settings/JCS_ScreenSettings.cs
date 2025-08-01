@@ -106,7 +106,7 @@ namespace JCSUnity
             {
                 this.mResizablePanelsColor = value;
 
-                JCS_ScreenManager.instance.SetResizablePanelsColor(this.mResizablePanelsColor);
+                JCS_ScreenManager.FirstInstance().SetResizablePanelsColor(this.mResizablePanelsColor);
             }
         }
 
@@ -118,7 +118,7 @@ namespace JCSUnity
 
             // This will only run once at the time when 
             // the application is starts.
-            if (!JCS_AppSettings.instance.APPLICATION_STARTS)
+            if (!JCS_AppSettings.FirstInstance().APPLICATION_STARTS)
             {
                 // Calculate standard screen width and screen height.
                 {
@@ -183,7 +183,7 @@ namespace JCSUnity
         private void Start()
         {
             // When first run in the application...
-            if (!JCS_AppSettings.instance.APPLICATION_STARTS)
+            if (!JCS_AppSettings.FirstInstance().APPLICATION_STARTS)
             {
                 Camera cam = JCS_Camera.main.GetCamera();
 

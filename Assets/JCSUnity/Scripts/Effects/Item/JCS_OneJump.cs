@@ -87,8 +87,8 @@ just stop there.")]
         }
         private void Start()
         {
-            var pm = JCS_PlayerManager.instance;
-            var gm2d = JCS_2DGameManager.instance;
+            var pm = JCS_PlayerManager.FirstInstance();
+            var gm2d = JCS_2DGameManager.FirstInstance();
 
             if (pm != null)
                 pm.IgnorePhysicsToAllPlayer(mBoxCollider);
@@ -198,7 +198,7 @@ just stop there.")]
             // if is debug mode print this out.
             // in order to know what does item touched and 
             // stop this movement.
-            if (JCS_GameSettings.instance.DEBUG_MODE)
+            if (JCS_GameSettings.FirstInstance().DEBUG_MODE)
                 Debug.Log(other.transform.name);
 
             mColliderName = other.name;
@@ -217,7 +217,7 @@ just stop there.")]
                 JCS_Physics.SetOnTopOfBoxWithSlope(mBoxCollider, beSetBox);
 
             // enable the physic once on the ground
-            JCS_PlayerManager.instance.IgnorePhysicsToAllPlayer(this.mBoxCollider, false);
+            JCS_PlayerManager.FirstInstance().IgnorePhysicsToAllPlayer(this.mBoxCollider, false);
         }
     }
 }

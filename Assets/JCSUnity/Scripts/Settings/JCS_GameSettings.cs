@@ -47,9 +47,6 @@ namespace JCSUnity
         [Tooltip("Level design mode flag.")]
         public bool LEVEL_DESIGN_MODE = true;
 
-        [Tooltip("Game type flag.")]
-        public JCS_GameType GAME_TYPE = JCS_GameType.GAME_2D;
-
         [Tooltip("Gravity production. (For game that have gravity in it)")]
         public float GRAVITY_PRODUCT = 4.5f;
 
@@ -130,7 +127,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_GameWindowHandler gwh = JCS_GameWindowHandler.instance;
+            var gwh = JCS_GameWindowHandler.FirstInstance();
 
             // if this is the game scene, enable the game ui.
             if (THIS_IS_GAME_SCENE)

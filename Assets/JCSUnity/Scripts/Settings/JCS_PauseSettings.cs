@@ -41,7 +41,7 @@ namespace JCSUnity
         /// </summary>
         public bool AsymptoticBaseOnSetting()
         {
-            var pm = JCS_PauseManager.instance;
+            var pm = JCS_PauseManager.FirstInstance();
 
             // check if override the setting.
             if (pm.OverrideSetting)
@@ -60,7 +60,7 @@ namespace JCSUnity
         /// </summary>
         public float FrictionBaseOnSetting()
         {
-            var pm = JCS_PauseManager.instance;
+            var pm = JCS_PauseManager.FirstInstance();
 
             // check if override the setting.
             if (pm.OverrideSetting)

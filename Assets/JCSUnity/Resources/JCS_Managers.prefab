@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 11441358}
   - component: {fileID: 11414256}
   - component: {fileID: 11439248}
-  - component: {fileID: 11423776}
   - component: {fileID: 8275722}
   - component: {fileID: 11419390}
   - component: {fileID: 11491538}
@@ -155,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ceabc1c1c745c44a60262572a8c61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mNextSceneName: 
   mBlackScreen: {fileID: 0}
   mBlackSlideScreen: {fileID: 0}
   mAlign: 0
@@ -165,18 +163,6 @@ MonoBehaviour:
   mOverrideSetting: 0
   mSceneFadeInTime: 1
   mSceneFadeOutTime: 1
---- !u!114 &11423776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c4651d5a186933448968a430dd2e2d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &8275722
 AudioSource:
   m_ObjectHideFlags: 0
@@ -355,8 +341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMixDamageTextPool: {fileID: 0}
-  mIGLogSystem: {fileID: 0}
-  mDialogueSystem: {fileID: 0}
   mSpriteTransparent: {fileID: 21300000, guid: c7eced5e94022104d917659ef2734bf4, type: 3}
 --- !u!114 &11461692
 MonoBehaviour:
@@ -501,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2446967ac3f7f7a498814f369badf63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mJCSOrderLayer: []
+  mOrderLayers: []
 --- !u!114 &4178066354548462249
 MonoBehaviour:
   m_ObjectHideFlags: 0

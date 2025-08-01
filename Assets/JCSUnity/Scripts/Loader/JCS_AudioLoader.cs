@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
+using System;
 using System.IO;
 using System.Collections;
 using UnityEngine;
@@ -19,12 +20,6 @@ namespace JCSUnity
     public static class JCS_AudioLoader
     {
         /// <summary>
-        /// Callback after the audio is loaded.
-        /// </summary>
-        /// <param name="tex"> The loaded audio. </param>
-        public delegate void AudioLoaded(AudioClip clip);
-
-        /// <summary>
         /// Load the audio from path/url in runtime.
         /// </summary>
         /// <param name="path"> Path without file name. </param>
@@ -36,7 +31,7 @@ namespace JCSUnity
             string path,
             string filename,
             AudioType type = AudioType.OGGVORBIS,
-            AudioLoaded callback = null)
+            Action<AudioClip> callback = null)
         {
             string url = Path.Join(path, filename);
             return LoadAudio(url, type, callback);
@@ -52,7 +47,7 @@ namespace JCSUnity
         public static IEnumerator LoadAudio(
             string url,
             AudioType type = AudioType.OGGVORBIS,
-            AudioLoaded callback = null)
+            Action<AudioClip> callback = null)
         {
 #if UNITY_2018_1_OR_NEWER
             UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(url, type);

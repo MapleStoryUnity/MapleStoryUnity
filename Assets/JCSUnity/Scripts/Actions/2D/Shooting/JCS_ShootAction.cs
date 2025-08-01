@@ -12,11 +12,6 @@ using MyBox;
 
 namespace JCSUnity
 {
-    // If the function return
-    //              -> true, shoot the bullet.
-    //              -> false not able to shoot the bullet.
-    public delegate bool CheckAbleToShoot();
-
     /// <summary>
     /// Action that shoot bullets.
     /// </summary>
@@ -81,7 +76,7 @@ namespace JCSUnity
         private Action mShootCallback = DefualtShootCallback;
 
         // Check we able to shoot or not
-        private CheckAbleToShoot mCheckAbleToShoot = DefualtCheckFunction;
+        private Func<bool> mCheckAbleToShoot = DefualtCheckFunction;
 
         [Header("- Action")]
 
@@ -244,8 +239,8 @@ namespace JCSUnity
         /// in order to check the shoot action.
         /// </summary>
         /// <param name="func"> functin to check able to do the shoot action. </param>
-        public void SetCheckAbleToShootFunction(CheckAbleToShoot func) { this.mCheckAbleToShoot = func; }
-        public CheckAbleToShoot GetCheckAbleToShootFunction() { return this.mCheckAbleToShoot; }
+        public void SetCheckAbleToShootFunction(Func<bool> func) { this.mCheckAbleToShoot = func; }
+        public Func<bool> GetCheckAbleToShootFunction() { return this.mCheckAbleToShoot; }
 
         /* Functions */
 

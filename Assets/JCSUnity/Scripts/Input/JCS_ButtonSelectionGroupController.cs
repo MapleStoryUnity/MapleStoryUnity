@@ -338,7 +338,7 @@ namespace JCSUnity
         {
             if (mNextSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mNextSound, mNextSoundMethod);
         }
 
@@ -347,7 +347,7 @@ namespace JCSUnity
         {
             if (mPrevSound == null)
                 return; 
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mPrevSound, mPrevSoundMethod);
         }
 
@@ -356,7 +356,7 @@ namespace JCSUnity
         {
             if (mOkaySound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mOkaySound, mOkaySoundMethod);
         }
 
@@ -365,7 +365,7 @@ namespace JCSUnity
         {
             if (mUpSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mUpSound, mUpSoundMethod);
         }
 
@@ -374,7 +374,7 @@ namespace JCSUnity
         {
             if (mDownSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mDownSound, mDownSoundMethod);
         }
 
@@ -383,7 +383,7 @@ namespace JCSUnity
         {
             if (mRightSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mRightSound, mRightSoundMethod);
         }
 
@@ -392,7 +392,7 @@ namespace JCSUnity
         {
             if (mLeftSound == null)
                 return;
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
             sp.PlayOneShotByMethod(mLeftSound, mLeftSoundMethod);
         }
     }

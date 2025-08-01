@@ -154,14 +154,17 @@ namespace JCSUnity
 
             if (canvas == null)
             {
-                Debug.Log("Doesn't use JCS_Canvas object");
+                Debug.Log("Doesn't use the `JCS_Canvas` object");
                 return;
             }
 
             Transform parentObject;
 
+            var uis = JCS_UISettings.FirstInstance();
+            var screens = JCS_ScreenSettings.FirstInstance();
+
             // if is Resize UI is enable than add Dialogue under resize ui transform
-            if (JCS_UISettings.instance.RESIZE_UI && !JCS_ScreenSettings.instance.IsNone())
+            if (uis.RESIZE_UI && !screens.IsNone())
                 parentObject = resizeUI.transform;
             // Else we add it directly under the Canvas
             else

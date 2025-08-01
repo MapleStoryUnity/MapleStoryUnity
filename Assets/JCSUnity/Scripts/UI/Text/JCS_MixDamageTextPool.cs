@@ -130,7 +130,7 @@ namespace JCSUnity
         private void Start()
         {
             // set to global!
-            JCS_UtilManager.instance.SetMixDamageTextPool(this);
+            JCS_UtilManager.FirstInstance().SetMixDamageTextPool(this);
         }
 
         private void Update()
@@ -252,7 +252,7 @@ namespace JCSUnity
             DamageTextType[] types = new DamageTextType[hit];
 
             // get the game setting first
-            var gs = JCS_GameSettings.instance;
+            var gs = JCS_GameSettings.FirstInstance();
 
             for (int index = 0; index < hit; ++index)
             {

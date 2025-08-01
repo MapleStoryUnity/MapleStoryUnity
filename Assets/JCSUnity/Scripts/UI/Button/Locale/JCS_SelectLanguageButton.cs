@@ -37,7 +37,7 @@ namespace JCSUnity
 
         public override void OnClick()
         {
-            JCS_AppManager.instance.systemLanguage = mSystemLanguage;
+            JCS_AppManager.FirstInstance().systemLanguage = mSystemLanguage;
         }
     }
 }

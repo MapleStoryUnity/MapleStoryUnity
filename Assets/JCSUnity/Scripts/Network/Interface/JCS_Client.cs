@@ -31,7 +31,7 @@ namespace JCSUnity
         /* Check if the UDP client. */
         public bool IsOrderCheckServer()
         {
-            return (JCS_NetworkSettings.instance.PROTOCAL_TYPE == JCS_ProtocalType.UDP);
+            return (JCS_NetworkSettings.FirstInstance().PROTOCAL_TYPE == JCS_ProtocalType.UDP);
         }
 
         /// <summary>

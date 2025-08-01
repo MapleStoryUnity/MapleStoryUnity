@@ -27,7 +27,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             mPlatformList = new List<JCS_2DPositionPlatform>();
         }

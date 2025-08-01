@@ -25,6 +25,7 @@ namespace JCSUnity
 
         [Tooltip("The next starting scene to load.")]
         [SerializeField]
+        [Scene]
         private string mSceneName = "";
 
         /* Functions */

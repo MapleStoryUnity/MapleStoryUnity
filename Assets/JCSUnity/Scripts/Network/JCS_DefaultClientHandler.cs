@@ -33,10 +33,10 @@ namespace JCSUnity
         public void MessageReceived(byte[] buffer)
         {
             // convert byte array to stream
-            Stream stream = new MemoryStream(buffer);
+            var stream = new MemoryStream(buffer);
 
             // using byte reader for the stream.
-            BinaryReader br = new BinaryReader(stream);
+            var br = new BinaryReader(stream);
             var jbr = new JCS_BinaryReader(br);
 
             short packetId = jbr.ReadShort();
@@ -49,7 +49,7 @@ namespace JCSUnity
              * packet handler check under.
              */
             // packet responded!
-            JCS_PacketLostPreventer.instance.AddRespondPacketId(packetId);
+            JCS_PacketLostPreventer.FirstInstance().AddRespondPacketId(packetId);
 
             JCS_Client client = JCS_ClientManager.LOCAL_CLIENT;
 
@@ -59,7 +59,7 @@ namespace JCSUnity
             // handler depends on the client/server mode.
             JCS_PacketHandler packetHandler = 
                 JCS_DefaultPacketProcessor.GetProcessor(
-                    JCS_NetworkSettings.instance.CLIENT_MODE
+                    JCS_NetworkSettings.FirstInstance().CLIENT_MODE
                     ).GetHandler(packetId);
 
             if (packetHandler != null && packetHandler.validateState(client))
@@ -69,7 +69,7 @@ namespace JCSUnity
                 packetHandler.PacketData = jbr;
 
                 // register request.
-                JCS_ServerRequestProcessor.instance.RegisterRequest(packetHandler.handlePacket, jbr, client);
+                JCS_ServerRequestProcessor.FirstInstance().RegisterRequest(packetHandler.handlePacket, jbr, client);
             }
             else
             {
@@ -117,7 +117,7 @@ namespace JCSUnity
         private void PrintSendPacket(System.Object message)
         {
 #if UNITY_EDITOR
-            if (!JCS_GameSettings.instance.DEBUG_MODE)
+            if (!JCS_GameSettings.FirstInstance().DEBUG_MODE)
                 return;
 
             byte[] encryptedBuffer = (byte[])message;
@@ -134,7 +134,7 @@ namespace JCSUnity
         private void PrintRecievedPacket(System.Object message)
         {
 #if UNITY_EDITOR
-            if (!JCS_GameSettings.instance.DEBUG_MODE)
+            if (!JCS_GameSettings.FirstInstance().DEBUG_MODE)
                 return;
 
             byte[] decryptedBuffer = (byte[])message;

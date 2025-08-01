@@ -255,7 +255,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             // try to get transfrom by it own current transfrom.
             if (mPanelTrans == null)
@@ -415,7 +415,7 @@ namespace JCSUnity
             RunAction();
 
             // Play the active dialogue sound.
-            JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mActiveSound);
+            JCS_SoundManager.FirstInstance().GlobalSoundPlayer().PlayOneShot(mActiveSound);
 
             return true;
         }
@@ -642,12 +642,15 @@ namespace JCSUnity
             mActive = false;
             mActiveThisFrame = false;
 
+            var gs = JCS_GameManager.FirstInstance();
+            var sm = JCS_SoundManager.FirstInstance();
+
             // Check initialize to ignore dispose called at the very beginning!
-            if (JCS_GameManager.instance.DONE_INITIALIZE && onDispose != null)
+            if (gs.DONE_INITIALIZE && onDispose != null)
                 onDispose.Invoke();
 
             // Play the dispose dialogue sound.
-            JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mDisposeSound);
+            sm.GlobalSoundPlayer().PlayOneShot(mDisposeSound);
         }
 
         /// <summary>

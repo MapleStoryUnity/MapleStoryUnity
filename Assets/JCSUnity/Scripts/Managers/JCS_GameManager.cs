@@ -39,10 +39,10 @@ namespace JCSUnity
         public bool DONE_INITIALIZE { get { return this.mDoneInitialize; } }
         public bool GAME_PAUSE
         {
-            get { return JCS_PauseManager.instance.Paused; }
+            get { return JCS_PauseManager.FirstInstance().Paused; }
             set
             {
-                var pm = JCS_PauseManager.instance;
+                var pm = JCS_PauseManager.FirstInstance();
 
                 // check if need the game pause the same as the value previously
                 // set. In order to save some perforce by enable/disable all the
@@ -62,9 +62,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
-
-            SetSpecificGameTypeGameManager();
+            RegisterInstance(this);
 
             Invoke(nameof(OnFirstFrame), JCS_Constants.FIRST_FRAME_INVOKE_TIME);
         }
@@ -105,21 +103,6 @@ namespace JCSUnity
         private void OnFirstFrame()
         {
             SetDoneInitializeFlag();
-        }
-
-        /// <summary>
-        /// Add specific game manager type.
-        /// </summary>
-        private void SetSpecificGameTypeGameManager()
-        {
-            var gs = JCS_GameSettings.instance;
-
-            switch (gs.GAME_TYPE)
-            {
-                case JCS_GameType.GAME_2D:
-                    this.gameObject.AddComponent<JCS_2DGameManager>();
-                    break;
-            }
         }
 
         /// <summary>

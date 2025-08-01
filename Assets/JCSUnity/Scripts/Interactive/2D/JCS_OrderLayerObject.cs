@@ -111,7 +111,7 @@ namespace JCSUnity
         /// <param name="orderLayerIndex"> index of scene layer </param>
         public void SetObjectParentToOrderLayerByOrderLayerIndex(int orderLayerIndex)
         {
-            JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(
+            JCS_2DDynamicSceneManager.FirstInstance().SetObjectParentToOrderLayerByOrderLayerIndex(
                 this, 
                 orderLayerIndex);
         }

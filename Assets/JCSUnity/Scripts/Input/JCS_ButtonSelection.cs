@@ -21,13 +21,11 @@ namespace JCSUnity
     /// </summary>
     public class JCS_ButtonSelection : MonoBehaviour
     {
-        public delegate void SelectionActiveEvent(bool act);
-
         /* Variables */
 
         public Action selectionEnable = SelectionEnable;
         public Action selectionDisable = SelectionDisable;
-        public SelectionActiveEvent selectionActive = SelectionActive;
+        public Action<bool> selectionActive = SelectionActive;
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 

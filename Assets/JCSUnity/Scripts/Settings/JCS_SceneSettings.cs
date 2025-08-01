@@ -64,7 +64,7 @@ namespace JCSUnity
         /// </summary>
         public float SceneFadeOutTimeBaseOnSetting()
         {
-            var sm = JCS_SceneManager.instance;
+            var sm = JCS_SceneManager.FirstInstance();
 
             // check if override the setting.
             if (sm.OverrideSetting)
@@ -83,7 +83,7 @@ namespace JCSUnity
         /// </summary>
         public float SceneFadeInTimeBaseOnSetting()
         {
-            var sm = JCS_SceneManager.instance;
+            var sm = JCS_SceneManager.FirstInstance();
 
             // check if override the setting.
             if (sm.OverrideSetting)

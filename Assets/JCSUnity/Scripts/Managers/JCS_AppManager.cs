@@ -121,7 +121,7 @@ namespace JCSUnity
         {
             APP_QUITTING = true;
 
-            var apps = JCS_AppSettings.instance;
+            var apps = JCS_AppSettings.FirstInstance();
 
             if (apps.SAVE_ON_EXIT_APP && apps.SAVE_APP_DATA_FUNC != null)
             {
@@ -132,7 +132,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             mSystemLanguage = (mSimulateSystemLanguage) ? mSimulateLanguage : Application.systemLanguage;
 
@@ -156,7 +156,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_GameManager.instance.RegisterOnSystemAfterInit(RefreshSimulateLanguage);
+            JCS_GameManager.FirstInstance().RegisterOnSystemAfterInit(RefreshSimulateLanguage);
         }
 
         private void OnValidate()
@@ -175,7 +175,7 @@ namespace JCSUnity
             if (fade)
             {
                 // load the quit scene.
-                var scenem = JCS_SceneManager.instance;
+                var scenem = JCS_SceneManager.FirstInstance();
                 scenem.LoadScene("JCS_AppCloseSimulate");
             }
             else

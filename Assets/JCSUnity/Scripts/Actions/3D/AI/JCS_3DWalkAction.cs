@@ -172,7 +172,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            var wam = JCS_3DWalkActionManager.instance;
+            var wam = JCS_3DWalkActionManager.FirstInstance();
             wam.AddWalkAction(this);
         }
 
@@ -246,7 +246,7 @@ namespace JCSUnity
             if (target == null)
                 return;
 
-            var wam = JCS_3DWalkActionManager.instance;
+            var wam = JCS_3DWalkActionManager.FirstInstance();
 
             if (mSearchCounter == mSearchCount)
             {

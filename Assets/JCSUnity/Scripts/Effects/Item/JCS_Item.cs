@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -18,13 +19,13 @@ namespace JCSUnity
     [RequireComponent(typeof(Rigidbody))]
     public class JCS_Item : JCS_UnityObject
     {
-        public delegate void PickedFunction(Collider other);
-
         /* Variables */
 
-        public PickedFunction pickedCallback = DefaultPickCallback;
+        // Execution after the item is picked.
+        public Action<Collider> onPicked = null;
 
         protected bool mCanPick = true;
+
         protected BoxCollider mBoxCollider = null;
 
         [Separator("Check Variables (JCS_Item)")]
@@ -177,7 +178,7 @@ object that we target.")]
             if (mMustBeActivePlayer)
             {
                 // Check the colliding object are is active player.
-                if (JCS_PlayerManager.instance.IsActivePlayerTransform(other.transform))
+                if (JCS_PlayerManager.FirstInstance().IsActivePlayerTransform(other.transform))
                 {
                     DoPick(other);
                 }
@@ -189,15 +190,6 @@ object that we target.")]
         }
 
         /// <summary>
-        /// Default pick up callback.
-        /// </summary>
-        /// <param name="other"></param>
-        public static void DefaultPickCallback(Collider other)
-        {
-            // do anything after the character pick this item up.
-        }
-
-        /// <summary>
         /// Do pick up item action.
         /// </summary>
         /// <param name="other"></param>
@@ -205,7 +197,7 @@ object that we target.")]
         {
             DropEffect(other);
 
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
 
             /* Play Pick Sound */
             if (mPlayOneShotWhileNotPlayingForPickSound)
@@ -214,7 +206,7 @@ object that we target.")]
                 sp.PlayOneShot(mPickSound);
 
             // call item effect.
-            pickedCallback.Invoke(other);
+            onPicked?.Invoke(other);
 
             /* Play Effect Sound */
             if (mPlayOneShotWhileNotPlayingForEffectSound)

@@ -92,7 +92,7 @@ namespace JCSUnity
             this.mShootAction.SetShootCallback(func);
         }
 
-        public void SetCheckAbleToShootFunction(CheckAbleToShoot func)
+        public void SetCheckAbleToShootFunction(Func<bool> func)
         {
             this.mShootAction.SetCheckAbleToShootFunction(func);
         }

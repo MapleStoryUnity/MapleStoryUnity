@@ -130,7 +130,7 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
                 return;
 
             // if switching the scene, don't spawn new gameObject.
-            if (JCS_SceneManager.instance.IsSwitchingScene())
+            if (JCS_SceneManager.FirstInstance().IsSwitchingScene())
                 return;
 
             // trigger this effect?

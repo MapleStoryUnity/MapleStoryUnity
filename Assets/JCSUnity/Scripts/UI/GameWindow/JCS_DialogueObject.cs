@@ -94,7 +94,7 @@ namespace JCSUnity
             // function call after version 5.4
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
             {
-                var uim = JCS_UIManager.instance;
+                var uim = JCS_UIManager.FirstInstance();
 
                 // Once we load the scene we need to let new object 
                 // in the scene know about us!
@@ -112,7 +112,7 @@ namespace JCSUnity
 
             base.Awake();
 
-            var ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.FirstInstance();
 
             // Assign Default Audio
             {
@@ -126,7 +126,7 @@ namespace JCSUnity
 
         protected override void Start()
         {
-            var uim = JCS_UIManager.instance;
+            var uim = JCS_UIManager.FirstInstance();
 
             uim.SetDialogue(mDialogueType, this);
 
@@ -179,7 +179,7 @@ namespace JCSUnity
 
             // set focus dialogue
             if (DialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
-                JCS_UIManager.instance.SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
+                JCS_UIManager.FirstInstance().SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
 
             // let UIManager know the window is opened
             SwapToTheLastOpenWindowList();
@@ -244,7 +244,7 @@ namespace JCSUnity
                 return;
 
             // add to the list so the manager know what window is opened
-            JCS_UIManager.instance.GetOpenWindow().AddLast(this);
+            JCS_UIManager.FirstInstance().GetOpenWindow().AddLast(this);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace JCSUnity
         /// </summary>
         private void RemoveFromOpenWindowList()
         {
-            JCS_UIManager.instance.GetOpenWindow().Remove(this);
+            JCS_UIManager.FirstInstance().GetOpenWindow().Remove(this);
         }
 
         /// <summary>

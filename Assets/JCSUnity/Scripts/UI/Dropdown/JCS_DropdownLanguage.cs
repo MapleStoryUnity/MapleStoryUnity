@@ -83,7 +83,7 @@ namespace JCSUnity
 
             // Default to the current windowed mode.
             {
-                string text = JCS_Locale.SystemLangToString(JCS_AppManager.instance.systemLanguage);
+                string text = JCS_Locale.SystemLangToString(JCS_AppManager.FirstInstance().systemLanguage);
 
                 JCS_UIUtil.Dropdown_SetSelection(this, text);
             }
@@ -113,7 +113,7 @@ namespace JCSUnity
         {
             SystemLanguage selected = JCS_Locale.StringToSystemLang(text);
 
-            JCS_AppManager.instance.systemLanguage = selected;
+            JCS_AppManager.FirstInstance().systemLanguage = selected;
         }
     }
 }

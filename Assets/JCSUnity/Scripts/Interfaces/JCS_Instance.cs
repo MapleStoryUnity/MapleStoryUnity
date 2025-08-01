@@ -6,7 +6,10 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright © 2021 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
@@ -17,115 +20,125 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public static T instance = default(T);
+        protected static Dictionary<Scene, T> mInstances = new();
 
         /* Setter & Getter */
 
-        /* Functions */
-
-    }
-
-    /// <summary>
-    /// Singleton instance interface to keep the old instance.
-    /// </summary>
-    public abstract class JCS_InstanceOld<T> : JCS_Instance<T>
-        where T : MonoBehaviour
-    {
-        /* Variables */
-
-        /* Setter & Getter */
+        public Dictionary<Scene, T> instances { get { return mInstances; } }
 
         /* Functions */
 
         /// <summary>
-        /// Check singleton for keep the old one.
+        /// Register a scene instance.
         /// </summary>
-        /// <param name="_new"> new instance </param>
-        /// <param name="destroyGO"> 
-        /// If true, destory the entire game object instead of just the component.
-        /// </param>
-        protected virtual void CheckInstance(T _new, bool destroyGO = false)
+        public void RegisterInstance(T _new)
         {
-            if (instance != null)
-            {
-                // only if needed
-                TransferData(instance, _new);
+            var comp = _new as Component;
 
-                // Destory the new one; and keep the old one.
-                if (destroyGO)
-                    Destroy(_new.gameObject);
-                else
-                    Destroy(_new);
+            if (comp != null)
+                RegisterInstance(_new, comp.gameObject.scene);
+            else
+                RegisterInstance(_new, SceneManager.GetActiveScene());
+        }
+        public void RegisterInstance(T _new, Scene scene)
+        {
+            CleanInstances();
 
-                return;
-            }
+            if (!mInstances.ContainsKey(scene))
+                mInstances.Add(scene, _new);
 
-            // Only assign once!
-            instance = _new;
+            mInstances[scene] = _new;
         }
 
         /// <summary>
-        /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
-        /// I would like to use own define to transfer the old instance
-        /// to the newer instance.
-        /// 
-        /// Every time when unity load the scene. The script have been
-        /// reset, in order not to lose the original setting.
-        /// transfer the data from old instance to new instance.
+        /// Deregister the instance.
         /// </summary>
-        /// <param name="_old"> old instance </param>
-        /// <param name="_new"> new instance </param>
-        protected abstract void TransferData(T _old, T _new);
-    }
-
-    /// <summary>
-    /// Singleton instance interface to keep the new instance.
-    /// </summary>
-    public abstract class JCS_InstanceNew<T> : JCS_Instance<T>
-        where T : MonoBehaviour
-    {
-        /* Variables */
-
-        /* Setter & Getter */
-
-        /* Functions */
-
-        /// <summary>
-        /// Check singleton for keep the new one.
-        /// </summary>
-        /// <param name="_new"> new instance </param>
-        /// <param name="destroyGO"> 
-        /// If true, destory the entire game object instead of just the component.
-        /// </param>
-        protected virtual void CheckInstance(T _new, bool destroyGO = false)
+        public void DeregisterInstance()
         {
-            if (instance != null)
-            {
-                // only if needed
-                TransferData(instance, _new);
-
-                // Destory the old one!
-                if (destroyGO)
-                    Destroy(instance.gameObject);
-                else
-                    Destroy(instance);
-            }
-
-            // Assign the new one!
-            instance = _new;
+            DeregisterInstance(SceneManager.GetActiveScene());
+        }
+        public void DeregisterInstance(Scene scene)
+        {
+            if (mInstances.ContainsKey(scene))
+                mInstances.Remove(scene);
         }
 
         /// <summary>
-        /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
-        /// I would like to use own define to transfer the old instance
-        /// to the newer instance.
-        /// 
-        /// Every time when unity load the scene. The script have been
-        /// reset, in order not to lose the original setting.
-        /// transfer the data from old instance to new instance.
+        /// Clean up unused instances.
         /// </summary>
-        /// <param name="_old"> old instance </param>
-        /// <param name="_new"> new instance </param>
-        protected abstract void TransferData(T _old, T _new);
+        public void CleanInstances()
+        {
+            List<Scene> scenes = new();
+
+            foreach (Scene scene in mInstances.Keys)
+            {
+                if (!scene.isLoaded)
+                {
+                    scenes.Add(scene);
+                }
+            }
+
+            foreach (Scene scene in scenes)
+            {
+                mInstances.Remove(scene);
+            }
+        }
+
+        /// <summary>
+        /// Return the first instance.
+        /// </summary>
+        public static T FirstInstance()
+        {
+            if (mInstances.Count == 0)
+                return default;
+
+            return mInstances.ElementAt(0).Value;
+        }
+
+        /// <summary>
+        /// Return the instance.
+        /// </summary>
+        public static T GetInstance()
+        {
+            return GetInstance(SceneManager.GetActiveScene());
+        }
+        public static T GetInstance(uint id)
+        {
+            List<Scene> scenes = JCS_SceneManager.GetAllScenes();
+
+            Scene scene = scenes.Where((scene) =>
+            {
+                string name = scene.name;
+
+                if (!name.StartsWith("Arena"))
+                    return false;
+
+                string[] splits = name.Split(":");
+
+                return splits.Last() == id.ToString();
+            }).First();
+
+            return GetInstance(scene);
+        }
+        public static T GetInstance(Component comp)
+        {
+            return GetInstance(comp.transform);
+        }
+        public static T GetInstance(Transform trans)
+        {
+            return GetInstance(trans.gameObject);
+        }
+        public static T GetInstance(GameObject go)
+        {
+            return GetInstance(go.scene);
+        }
+        public static T GetInstance(Scene scene)
+        {
+            // 如果有, 就返回.
+            if (mInstances.ContainsKey(scene))
+                return mInstances[scene];
+
+            return default;
+        }
     }
 }

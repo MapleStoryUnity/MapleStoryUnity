@@ -131,7 +131,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             this.mOpenWindow = new LinkedList<JCS_DialogueObject>();
 

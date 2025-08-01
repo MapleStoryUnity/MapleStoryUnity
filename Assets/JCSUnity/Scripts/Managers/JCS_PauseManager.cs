@@ -115,7 +115,7 @@ object you have in the list.")]
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
         }
 
         private void Start()
@@ -144,7 +144,7 @@ object you have in the list.")]
 
             if (Input.GetKeyDown(mToggleGamePause))
             {
-                var gm = JCS_GameManager.instance;
+                var gm = JCS_GameManager.FirstInstance();
 
                 gm.GAME_PAUSE = !gm.GAME_PAUSE;
             }
@@ -189,7 +189,7 @@ object you have in the list.")]
         /// </summary>
         public void Pause()
         {
-            bool asymp = JCS_PauseSettings.instance.AsymptoticBaseOnSetting();
+            bool asymp = JCS_PauseSettings.FirstInstance().AsymptoticBaseOnSetting();
 
             if (asymp)
                 mTargetTimeScale = 0.0f;
@@ -204,7 +204,7 @@ object you have in the list.")]
         /// </summary>
         public void Unpause()
         {
-            bool asymp = JCS_PauseSettings.instance.AsymptoticBaseOnSetting();
+            bool asymp = JCS_PauseSettings.FirstInstance().AsymptoticBaseOnSetting();
 
             if (asymp)
                 mTargetTimeScale = mDefaultTimeScale;
@@ -279,7 +279,7 @@ object you have in the list.")]
         /// </summary>
         private void DoAsymp()
         {
-            bool asymp = JCS_PauseSettings.instance.AsymptoticBaseOnSetting();
+            bool asymp = JCS_PauseSettings.FirstInstance().AsymptoticBaseOnSetting();
 
             if (!asymp)
                 return;

@@ -427,7 +427,7 @@ namespace JCSUnity
             }
 
             // get the game setting first
-            var gm = JCS_GameSettings.instance;
+            var gm = JCS_GameSettings.FirstInstance();
 
             int[] damages = new int[hit];
 

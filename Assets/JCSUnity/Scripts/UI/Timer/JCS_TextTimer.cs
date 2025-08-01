@@ -386,7 +386,7 @@ namespace JCSUnity
             if (clip == null)
                 return;
 
-            JCS_SoundManager sm = JCS_SoundManager.instance;
+            var sm = JCS_SoundManager.FirstInstance();
             sm.GlobalSoundPlayer().PlayOneShot(clip);
         }
     }

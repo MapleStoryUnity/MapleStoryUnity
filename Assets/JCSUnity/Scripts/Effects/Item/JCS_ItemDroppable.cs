@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -19,14 +20,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [System.Serializable]
+        [Serializable]
         public struct ItemSet
         {
             [Tooltip("Possibilty droping this item, the higher the more possiblility.")]
             [Range(0.0f, 100.0f)]
             public float dropRate;
 
-            [Tooltip("Item to drop")]
+            [Tooltip("Item to drop.")]
             public JCS_Item item;
         };
 
@@ -525,7 +526,9 @@ just stop there.")]
             if (mDropSound == null)
                 return;
 
-            JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mDropSound);
+            var sm = JCS_SoundManager.FirstInstance();
+
+            sm.GlobalSoundPlayer().PlayOneShot(mDropSound);
         }
     }
 }

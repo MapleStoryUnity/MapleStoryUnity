@@ -42,12 +42,12 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
         }
 
         private void Start()
         {
-            if (!JCS_NetworkSettings.instance.ONLINE_MODE)
+            if (!JCS_NetworkSettings.FirstInstance().ONLINE_MODE)
             {
                 if (JCS_NetworkManager.FIRST_LOGIN)
                 {
@@ -62,7 +62,7 @@ namespace JCSUnity
         private void Update()
         {
             // if is online game
-            if (JCS_Startup.InitializeApplication())
+            if (JCS_Startup.InitApp())
             {
                 Debug.Log("Server Connected!");
 
@@ -77,7 +77,7 @@ namespace JCSUnity
         /// </summary>
         public void LoadNextLevel()
         {
-            JCS_SceneManager.instance.LoadScene(mNextLevel);
+            JCS_SceneManager.FirstInstance().LoadScene(mNextLevel);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace JCSUnity
             Debug.Log("Server Connection Time Out, Quit Application.");
 
             // quit the application smoothly.
-            JCS_AppManager.instance.Quit(true);
+            JCS_AppManager.FirstInstance().Quit(true);
         }
     }
 }

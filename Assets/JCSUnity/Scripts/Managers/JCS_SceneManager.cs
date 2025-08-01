@@ -107,7 +107,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             switch (mSwitchSceneType)
             {
@@ -136,7 +136,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            var ss = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.FirstInstance();
 
             // NOTE(jenchieh): get the fade out time base on  the scene setting
             // and scene manager specific.
@@ -166,7 +166,7 @@ namespace JCSUnity
             }
 
             // Only need to fade BGM when BGM is not switch between scene.
-            var soundS = JCS_SoundSettings.instance;
+            var soundS = JCS_SoundSettings.FirstInstance();
 
             if (!soundS.KEEP_BGM_SWITCH_SCENE)
             {
@@ -199,7 +199,7 @@ namespace JCSUnity
             }
 
             // the game is loaded start the game agian
-            JCS_GameManager.instance.GAME_PAUSE = false;
+            JCS_GameManager.FirstInstance().GAME_PAUSE = false;
         }
 
         private void Update()
@@ -221,7 +221,7 @@ namespace JCSUnity
         }
         public void LoadScene(string sceneName, LoadSceneMode mode)
         {
-            var ss = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.FirstInstance();
 
             float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
             Color screenColor = ss.SCREEN_COLOR;
@@ -242,7 +242,7 @@ namespace JCSUnity
             }
 #endif
 
-            var scs = JCS_SceneSettings.instance;
+            var scs = JCS_SceneSettings.FirstInstance();
 
             // if is loading already, dont load it agian
             if (scs.SWITCHING_SCENE)
@@ -254,7 +254,7 @@ namespace JCSUnity
             scs.PREVIOUS_SCENE = SceneManager.GetActiveScene();
             scs.MODE = mode;
 
-            var apps = JCS_AppSettings.instance;
+            var apps = JCS_AppSettings.FirstInstance();
 
             if (apps.SAVE_ON_SWITCH_SCENE)
             {
@@ -288,7 +288,7 @@ namespace JCSUnity
                         mBlackScreen.LocalColor = screenColor;
 
                         // record down the screen color.
-                        JCS_SceneSettings.instance.SCREEN_COLOR = screenColor;
+                        JCS_SceneSettings.FirstInstance().SCREEN_COLOR = screenColor;
 
                         // start fading in (black screen)
                         mBlackScreen.FadeIn(fadeInTime);
@@ -304,7 +304,7 @@ namespace JCSUnity
                     break;
             }
 
-            var sos = JCS_SoundSettings.instance;
+            var sos = JCS_SoundSettings.FirstInstance();
 
             sos.KEEP_BGM_SWITCH_SCENE = keepBGM;
 
@@ -343,7 +343,7 @@ namespace JCSUnity
         }
         public void ReloadScene(LoadSceneMode mode)
         {
-            var ss = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.FirstInstance();
 
             float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
             Color screenColor = ss.SCREEN_COLOR;
@@ -386,7 +386,7 @@ namespace JCSUnity
         }
         public void LoadNextScene(LoadSceneMode mode)
         {
-            var ss = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.FirstInstance();
 
             float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
             Color screenColor = ss.SCREEN_COLOR;
@@ -448,7 +448,7 @@ namespace JCSUnity
         /// <returns> return result. </returns>
         public bool IsSwitchingScene()
         {
-            return JCS_SceneSettings.instance.SWITCHING_SCENE;
+            return JCS_SceneSettings.FirstInstance().SWITCHING_SCENE;
         }
 
         /// <summary>
@@ -456,7 +456,7 @@ namespace JCSUnity
         /// </summary>
         private void DoEnterSwitchScene()
         {
-            var ss = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.FirstInstance();
 
             // check if during the switch scene?
             if (!ss.SWITCHING_SCENE)
@@ -498,7 +498,7 @@ namespace JCSUnity
 
         private void DoExitSwitchScene()
         {
-            var ss = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.FirstInstance();
 
             // check if during the switch scene?
             if (!ss.SWITCHING_SCENE)

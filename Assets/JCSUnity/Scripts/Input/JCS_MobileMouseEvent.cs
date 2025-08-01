@@ -50,7 +50,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
         }
 
         private void Start()
@@ -83,7 +83,7 @@ namespace JCSUnity
         private void PrintName(Transform trans)
         {
 #if UNITY_EDITOR
-            if (!JCS_GameSettings.instance.DEBUG_MODE)
+            if (!JCS_GameSettings.FirstInstance().DEBUG_MODE)
                 return;
 
             // print the name of the detected transform.
@@ -98,7 +98,7 @@ namespace JCSUnity
         /// </summary>
         private void Handle_EnterExit()
         {
-            var im = JCS_InputManager.instance;
+            var im = JCS_InputManager.FirstInstance();
 
             // A ray is an infinite line starting at an origin and going into a direction
             // For this we will use our mouse position
@@ -145,8 +145,8 @@ namespace JCSUnity
         /// </summary>
         private void Handle_UpOver()
         {
-            var im = JCS_InputManager.instance;
-            var ti = JCS_TouchInput.instance;
+            var im = JCS_InputManager.FirstInstance();
+            var ti = JCS_TouchInput.FirstInstance();
 
             if (ti == null)
                 return;
@@ -178,8 +178,8 @@ namespace JCSUnity
         /// </summary>
         private void Handle_DownDrag()
         {
-            var im = JCS_InputManager.instance;
-            var ti = JCS_TouchInput.instance;
+            var im = JCS_InputManager.FirstInstance();
+            var ti = JCS_TouchInput.FirstInstance();
 
             if (!ti.Touched)
             {

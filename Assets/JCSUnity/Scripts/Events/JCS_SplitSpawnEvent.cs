@@ -148,7 +148,7 @@ built-in Unity Engine.")]
                 return;
 
             // if switching the scene, don't spawn new gameObject.
-            if (JCS_SceneManager.instance.IsSwitchingScene())
+            if (JCS_SceneManager.FirstInstance().IsSwitchingScene())
                 return;
 
             // cause if we dont have the hit list, 

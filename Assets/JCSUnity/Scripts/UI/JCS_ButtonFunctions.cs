@@ -31,7 +31,7 @@ namespace JCSUnity
         /// <param name="act"></param>
         public static void PauseGame(bool act = true)
         {
-            JCS_GameManager.instance.GAME_PAUSE = act;
+            JCS_GameManager.FirstInstance().GAME_PAUSE = act;
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace JCSUnity
         /// </summary>
         public static void QuitApplicationWithSwithScene()
         {
-            JCS_SceneManager.instance.LoadScene("JCS_AppCloseSimulate");
+            JCS_SceneManager.FirstInstance().LoadScene("JCS_AppCloseSimulate");
         }
 
         /// <summary>
@@ -70,10 +70,10 @@ namespace JCSUnity
         /// <param name="type"></param>
         public static void DestoryCurrentDialogue(JCS_DialogueType type)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
+            if (JCS_GameManager.FirstInstance().GAME_PAUSE)
                 return;
 
-            JCS_UIManager.instance.HideTheLastOpenDialogue();
+            JCS_UIManager.FirstInstance().HideTheLastOpenDialogue();
 
             switch (type)
             {
@@ -93,7 +93,7 @@ namespace JCSUnity
         /// <returns></returns>
         private static bool CheckIfOkayToSpawnGameUI(JCS_DialogueType type)
         {
-            if (JCS_UIManager.instance.GetJCSDialogue(type) != null)
+            if (JCS_UIManager.FirstInstance().GetJCSDialogue(type) != null)
             {
                 Debug.LogError("(" + type.ToString() + ")No able to spawn Game UI cuz there are multiple GameUI in the scene...");
                 return false;
@@ -110,7 +110,7 @@ namespace JCSUnity
         {
             // Force Diaglogue have higher priority, 
             // so it will block the lower priority dialogue type
-            if (JCS_UIManager.instance.GetJCSDialogue(type) != null)
+            if (JCS_UIManager.FirstInstance().GetJCSDialogue(type) != null)
             {
                 Debug.LogError("(" + type.ToString() + ")No able to spawn Dialogue cuz there are multiple dialogue in the scene...");
                 return false;
@@ -139,7 +139,7 @@ namespace JCSUnity
                 return;
             }
 
-            JCS_SceneManager.instance.SetBlackScreen(bs);
+            JCS_SceneManager.FirstInstance().SetBlackScreen(bs);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace JCSUnity
                 return;
             }
 
-            JCS_SceneManager.instance.SetBlackSlideScreen(bs);
+            JCS_SceneManager.FirstInstance().SetBlackSlideScreen(bs);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace JCSUnity
                 return;
             }
 
-            JCS_SceneManager.instance.SetWhiteScreen(ws);
+            JCS_SceneManager.FirstInstance().SetWhiteScreen(ws);
         }
 
         //** Game UI (Game Layer)
@@ -186,7 +186,7 @@ namespace JCSUnity
             if (!CheckIfOkayToSpawnGameUI(JCS_DialogueType.GAME_UI))
                 return;
 
-            //string path = JCS_GameSettings.instance.GAME_UI_PATH;
+            //string path = JCS_GameSettings.FirstInstance().GAME_UI_PATH;
             //JCS_Util.SpawnGameObject(path);
         }
 

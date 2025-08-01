@@ -52,9 +52,9 @@ namespace JCSUnity
         {
             // Assign default mixer.
             if (mMixer == null)
-                mMixer = JCS_SoundSettings.instance.MIXER;
+                mMixer = JCS_SoundSettings.FirstInstance().MIXER;
 
-            JCS_GameManager.instance.RegisterOnAfterInit(AddListener);
+            JCS_GameManager.FirstInstance().RegisterOnAfterInit(AddListener);
         }
 
         private void OnValidate()
@@ -78,7 +78,7 @@ namespace JCSUnity
 
         private void OnValueChanged()
         {
-            var sm = JCS_SceneManager.instance;
+            var sm = JCS_SceneManager.FirstInstance();
 
             if (sm.IsSwitchingScene())
                 return;

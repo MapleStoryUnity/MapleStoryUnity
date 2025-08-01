@@ -71,7 +71,7 @@ namespace JCSUnity
         /// <returns> timeto fade out the music. </returns>
         public float GetSoundFadeOutTimeBaseOnSetting()
         {
-            var sm = JCS_SoundManager.instance;
+            var sm = JCS_SoundManager.FirstInstance();
 
             // check if override the setting.
             if (sm.OverrideSetting)
@@ -92,7 +92,7 @@ namespace JCSUnity
         /// <returns> time to fade in the sound </returns>
         public float GetSoundFadeInTimeBaseOnSetting()
         {
-            var sm = JCS_SoundManager.instance;
+            var sm = JCS_SoundManager.FirstInstance();
 
             // check if override the setting.
             if (sm.OverrideSetting)

@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using MyBox;
+using NUnit.Framework.Internal.Execution;
 
 namespace JCSUnity
 {
@@ -110,15 +111,20 @@ namespace JCSUnity
             if (SOCKET != null)
                 return false;
 
-            if (instance.PROTOCAL_TYPE == JCS_ProtocalType.TCP)
+            switch (FirstInstance().PROTOCAL_TYPE)
             {
-                SOCKET = new JCS_TCPSocket(handler);
-                SOCKET.Connect(hostname, port);
-            }
-            else if (instance.PROTOCAL_TYPE == JCS_ProtocalType.UDP)
-            {
-                SOCKET = new JCS_UDPSocket(handler);
-                SOCKET.Connect(hostname, port);
+                case JCS_ProtocalType.TCP:
+                    {
+                        SOCKET = new JCS_TCPSocket(handler);
+                        SOCKET.Connect(hostname, port);
+                    }
+                    break;
+                case JCS_ProtocalType.UDP:
+                    {
+                        SOCKET = new JCS_UDPSocket(handler);
+                        SOCKET.Connect(hostname, port);
+                    }
+                    break;
             }
 
             return true;
@@ -153,9 +159,7 @@ namespace JCSUnity
         /// </summary>
         public void SwitchServer()
         {
-            SwitchServer(
-                instance.HOST_NAME,
-                instance.PORT);
+            SwitchServer(HOST_NAME, PORT);
         }
 
         /// <summary>
@@ -214,8 +218,8 @@ namespace JCSUnity
             bool force,
             JCS_ClientHandler handler)
         {
-            if (instance.HOST_NAME == hostname &&
-                instance.PORT == port &&
+            if (HOST_NAME == hostname &&
+                PORT == port &&
                 handler == null)
             {
                 Debug.LogError(
@@ -224,8 +228,9 @@ namespace JCSUnity
             }
 
             // update hostname, port, and handler.
-            instance.HOST_NAME = hostname;
-            instance.PORT = port;
+            HOST_NAME = hostname;
+            PORT = port;
+
             if (handler != null)
                 PresetClientHandler(handler);
 
@@ -268,13 +273,15 @@ namespace JCSUnity
             if (!ON_SWITCH_SERVER)
                 return;
 
+            var plp = JCS_PacketLostPreventer.FirstInstance();
+
             // If not force, then we do need to check if we meet the 
             // requirement to swtich server.
             if (!FORCE_SWITCH_SERVER)
             {
                 // Cannot switch server if we are still waiting for packet 
                 // to process.
-                if (JCS_PacketLostPreventer.instance.IsPreventing())
+                if (plp.IsPreventing())
                     return;
             }
             else
@@ -283,14 +290,14 @@ namespace JCSUnity
                 // will like to terminate the server request!
                 // 
                 // ATTENTION(jenchieh): Use this carefully.
-                JCS_PacketLostPreventer.instance.ClearTracking();
+                plp.ClearTracking();
             }
 
             // close the previous one.
             CloseSocket();
 
             // open the new one for next server.
-            CreateNetwork(instance.HOST_NAME, instance.PORT);
+            CreateNetwork(FirstInstance().HOST_NAME, FirstInstance().PORT);
 
             ON_SWITCH_SERVER = false;
             FORCE_SWITCH_SERVER = false;

@@ -49,7 +49,7 @@ true meaning the fly action object cannot go throught this platform.")]
         protected void Start()
         {
             // add to list
-            JCS_2DGameManager.instance.AddPlatformList(this);
+            JCS_2DGameManager.FirstInstance().AddPlatformList(this);
         }
 
         protected void OnTriggerStay(Collider other)
@@ -104,7 +104,9 @@ true meaning the fly action object cannot go throught this platform.")]
 
             if (isJumpDown && isTopOfBox)
             {
-                if (JCS_PlatformSettings.instance != null)
+                var ps = JCS_PlatformSettings.FirstInstance();
+
+                if (ps != null)
                 {
 
                     /**
@@ -112,7 +114,7 @@ true meaning the fly action object cannot go throught this platform.")]
                      * the other collision detection. In order not to let the 
                      * render frame goes off. set the value as small as possible.
                      */
-                    p.VelY = -JCS_PlatformSettings.instance.POSITION_PLATFORM_DOWN_JUMP_FORCE;
+                    p.VelY = -ps.POSITION_PLATFORM_DOWN_JUMP_FORCE;
                 }
                 else
                 {

@@ -68,7 +68,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            mLightning = JCS_SceneManager.instance.GetWhiteScreen();
+            mLightning = JCS_SceneManager.FirstInstance().GetWhiteScreen();
         }
 
         private void Update()

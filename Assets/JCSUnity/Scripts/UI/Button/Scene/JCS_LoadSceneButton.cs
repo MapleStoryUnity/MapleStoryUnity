@@ -9,7 +9,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MyBox;
-using Unity.Hierarchy;
 
 namespace JCSUnity
 {
@@ -33,6 +32,7 @@ namespace JCSUnity
 
         [Tooltip("Scene name you want to load the scene; if empy, load the next scene instead.")]
         [SerializeField]
+        [Scene]
         private string mSceneName = "";
 
         [Tooltip("Reload the current scene, and ignore the target scene name.")]
@@ -68,15 +68,15 @@ namespace JCSUnity
             {
                 // if the button and the platform are not the same, 
                 // dont load the scene and do nothing.
-                if (mPlatformType != JCS_AppManager.instance.PlatformType)
+                if (mPlatformType != JCS_AppManager.FirstInstance().PlatformType)
                     return;
             }
 
             string sceneName = JCS_SceneManager.GetSceneNameByOption(mSceneName, mReloadScene);
 
-            float fadeInTime = JCS_SceneSettings.instance.SceneFadeInTimeBaseOnSetting();
+            float fadeInTime = JCS_SceneSettings.FirstInstance().SceneFadeInTimeBaseOnSetting();
 
-            JCS_SceneManager.instance.LoadScene(sceneName, mMode,
+            JCS_SceneManager.FirstInstance().LoadScene(sceneName, mMode,
                 fadeInTime, mScreenColor, mKeppBGM);
         }
     }
