@@ -19,13 +19,10 @@
  */
 using System;
 using System.IO;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using JCSUnity;
 using MapleLib.WzLib;
-using MapleLib.WzLib.WzProperties;
-using MapleLib.WzLib.WzStructure.Data;
 using MyBox;
 
 namespace MSU
@@ -71,7 +68,7 @@ namespace MSU
 
         private void Awake()
         {
-            instance = this;
+            RegisterInstance(this);
 
             mPath = JCS_Path.Combine(Application.dataPath, mPath);
         }

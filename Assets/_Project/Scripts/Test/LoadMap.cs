@@ -52,7 +52,7 @@ namespace MSU.Test
 
         private void Start()
         {
-            WzFileManager wzfm = WzFileManager.instance;
+            var wzfm = WzFileManager.FirstInstance();
 
             WzDirectory wzd = wzfm.GetWzDir("Map");
 

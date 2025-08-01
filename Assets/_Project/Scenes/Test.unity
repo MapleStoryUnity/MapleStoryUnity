@@ -331,13 +331,13 @@ MonoBehaviour:
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 0
-  mFade: 0
+  mShowMethod: 1
   mFadeFriction: 0.15
   mFadeInAmount: 1
   mFadeOutAmount: 0
   mTimeType: 7
-  mActiveSound: {fileID: 0}
-  mDeactiveSound: {fileID: 0}
+  mSoundOnShow: {fileID: 0}
+  mSoundOnHide: {fileID: 0}
 --- !u!114 &136121898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +492,7 @@ MonoBehaviour:
   mPositionOffset: {x: 0, y: 2, z: -10}
   mTimeType: 0
   mSmoothTrack: 1
+  mBoundary: {fileID: 0}
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
   mResetVelocityToZeroWhileNotActive: 0
@@ -506,10 +507,6 @@ MonoBehaviour:
   mScrollRange_Mouse: 2
   mScrollRange_Touch: 1
   mScrollFriction: 0.6
-  mMax_X_PositionInScene: Infinity
-  mMin_X_PositionInScene: -Infinity
-  mMax_Y_PositionInScene: Infinity
-  mMin_Y_PositionInScene: -Infinity
 --- !u!124 &256585706
 Behaviour:
   m_ObjectHideFlags: 0
@@ -652,7 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2446967ac3f7f7a498814f369badf63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mJCSOrderLayer: []
+  mOrderLayers: []
 --- !u!114 &425295014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,6 +784,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SWITCHING_SCENE: 0
+  NEXT_SCENE_NAME: 
+  PREVIOUS_SCENE:
+    m_Handle: 0
+  MODE: 0
   SCENE_FADEOUT_TIME: 1.5
   SCENE_FADEIN_TIME: 1.5
   SCREEN_COLOR: {r: 0, g: 0, b: 0, a: 1}
@@ -809,7 +810,6 @@ MonoBehaviour:
   DEBUG_MODE: 0
   THIS_IS_GAME_SCENE: 0
   LEVEL_DESIGN_MODE: 1
-  GAME_TYPE: 0
   GRAVITY_PRODUCT: 4.5
   CAMERA_TYPE: 1
   ACTIVE_ONE_PLAYER: 1
@@ -1662,13 +1662,13 @@ MonoBehaviour:
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
-  mFade: 0
+  mShowMethod: 1
   mFadeFriction: 0.15
   mFadeInAmount: 1
   mFadeOutAmount: 0
   mTimeType: 7
-  mActiveSound: {fileID: 0}
-  mDeactiveSound: {fileID: 0}
+  mSoundOnShow: {fileID: 0}
+  mSoundOnHide: {fileID: 0}
 --- !u!114 &1784713734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,7 +1767,6 @@ GameObject:
   - component: {fileID: 1999757287}
   - component: {fileID: 1999757286}
   - component: {fileID: 1999757285}
-  - component: {fileID: 1999757284}
   - component: {fileID: 1999757283}
   - component: {fileID: 1999757282}
   - component: {fileID: 1999757281}
@@ -1836,8 +1835,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMixDamageTextPool: {fileID: 0}
-  mIGLogSystem: {fileID: 0}
-  mDialogueSystem: {fileID: 0}
   mSpriteTransparent: {fileID: 0}
 --- !u!114 &1999757279
 MonoBehaviour:
@@ -2003,18 +2000,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &1999757284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999757274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c4651d5a186933448968a430dd2e2d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1999757285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,7 +2012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ceabc1c1c745c44a60262572a8c61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mNextSceneName: 
   mBlackScreen: {fileID: 0}
   mBlackSlideScreen: {fileID: 0}
   mAlign: 0
