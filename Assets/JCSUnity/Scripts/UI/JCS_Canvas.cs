@@ -183,9 +183,9 @@ namespace JCSUnity
             AssignDefaultShowHide();
 
             if (mDisplayOnAwake)
-                Show();
+                ShowEnable();
             else
-                Hide();
+                HideEnable();
         }
 
         private void Start()
@@ -316,8 +316,6 @@ namespace JCSUnity
                     JCS_SoundMethod.PLAY_SOUND);
             }
 
-            mCanvas.enabled = true;
-
             doShow?.Invoke();
 
             onShow?.Invoke(this);
@@ -327,12 +325,17 @@ namespace JCSUnity
 
         private void ShowEnable()
         {
+            mCanvas.enabled = true;
+
             if (mCanvasGroup != null)
                 mCanvasGroup.alpha = mFadeInAmount;
         }
 
         private void ShowFade()
         {
+            // Remains enabled since we're going to do fading.
+            mCanvas.enabled = true;
+
             mFading = JCS_FadeType.IN;
             mFadeAlpa = mFadeInAmount;
         }
