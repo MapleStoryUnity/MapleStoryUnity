@@ -689,6 +689,9 @@ namespace JCSUnity
             if (mBoundary == null)
                 return;
 
+            if (!mBoundary.gameObject.activeSelf || !mBoundary.enabled)
+                return;
+
             Bounds bounds = mBoundary.GetBounds();
 
             Vector3 camPos = this.transform.position;
