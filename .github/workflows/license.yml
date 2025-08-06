@@ -65,7 +65,7 @@ jobs:
 
       - name: Read ulf
         id: ulfRead
-        uses: juliangruber/read-file-action@v1.1.4
+        uses: juliangruber/read-file-action@v1.1.7
         with:
           path: ${{ env.ULF_FILE }}
 
