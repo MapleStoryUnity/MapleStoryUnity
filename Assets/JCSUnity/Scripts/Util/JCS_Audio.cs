@@ -81,7 +81,7 @@ namespace JCSUnity
             if (clip == null)
                 return null;
 
-            var gameObject = new GameObject("One shot audio");
+            var gameObject = new GameObject($"One shot audio ({clip.name})");
             gameObject.transform.position = position;
             var audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = clip;

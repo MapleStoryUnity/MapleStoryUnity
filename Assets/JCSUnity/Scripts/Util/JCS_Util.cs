@@ -1180,7 +1180,7 @@ namespace JCSUnity
                 return null;
 
             ParticleSystem newPS = MonoBehaviour.Instantiate(ps);
-            newPS.gameObject.name = "One shot particle";
+            newPS.gameObject.name = $"One shot particle ({ps.name})";
             newPS.transform.position = position;
             newPS.Play();
 
