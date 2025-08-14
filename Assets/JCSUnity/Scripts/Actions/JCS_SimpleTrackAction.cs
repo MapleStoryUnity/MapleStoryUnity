@@ -59,14 +59,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Vector3 TargetPosition { get { return this.mTargetPos; } set { this.mTargetPos = value; } }
-        public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public bool IgnoreX { get { return this.mIgnoreX; } set { this.mIgnoreX = value; } }
-        public bool IgnoreY { get { return this.mIgnoreY; } set { this.mIgnoreY = value; } }
-        public bool IgnoreZ { get { return this.mIgnoreZ; } set { this.mIgnoreZ = value; } }
-        public bool LocalTarget { get { return this.mLocalTarget; } set { this.mLocalTarget = value; } }
-        public bool LocalSelf { get { return this.mLocalSelf; } set { this.mLocalSelf = value; } }
+        public Vector3 targetPosition { get { return mTargetPos; } set { mTargetPos = value; } }
+        public float friction { get { return mFriction; } set { mFriction = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public bool ignoreX { get { return mIgnoreX; } set { mIgnoreX = value; } }
+        public bool ignoreY { get { return mIgnoreY; } set { mIgnoreY = value; } }
+        public bool ignoreZ { get { return mIgnoreZ; } set { mIgnoreZ = value; } }
+        public bool localTarget { get { return mLocalTarget; } set { mLocalTarget = value; } }
+        public bool localSelf { get { return mLocalSelf; } set { mLocalSelf = value; } }
 
         /* Functions */
 
@@ -80,18 +80,18 @@ namespace JCSUnity
             }
 
             if (mIgnoreX)
-                newPos.x = (mLocalSelf) ? LocalPosition.x : Position.x;
+                newPos.x = (mLocalSelf) ? localPosition.x : position.x;
             if (mIgnoreY)
-                newPos.y = (mLocalSelf) ? LocalPosition.y : Position.y;
+                newPos.y = (mLocalSelf) ? localPosition.y : position.y;
             if (mIgnoreZ)
-                newPos.z = (mLocalSelf) ? LocalPosition.z : Position.z;
+                newPos.z = (mLocalSelf) ? localPosition.z : position.z;
 
             float time = JCS_Time.ItTime(mTimeType);
 
             if (mLocalSelf)
-                this.LocalPosition += (newPos - LocalPosition) / mFriction * time;
+                this.localPosition += (newPos - localPosition) / mFriction * time;
             else
-                this.Position += (newPos - Position) / mFriction * time;
+                this.position += (newPos - position) / mFriction * time;
         }
 
         /// <summary>

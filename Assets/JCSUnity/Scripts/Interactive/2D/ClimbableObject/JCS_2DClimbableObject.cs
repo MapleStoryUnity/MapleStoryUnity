@@ -36,14 +36,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_OrderLayerObject OrderLayerObject { get { return this.mOrderLayerObject; } }
-        public JCS_2DPositionPlatform PositionPlatform { get { return this.mPositionPlatform; } }
+        public JCS_OrderLayerObject orderLayerObject { get { return this.mOrderLayerObject; } }
+        public JCS_2DPositionPlatform positionPlatform { get { return this.mPositionPlatform; } }
 
         /* Functions */
 
         protected virtual void Awake()
         {
-            this.mOrderLayerObject = this.GetComponent<JCS_OrderLayerObject>();
+            mOrderLayerObject = GetComponent<JCS_OrderLayerObject>();
         }
 
         /// <summary>

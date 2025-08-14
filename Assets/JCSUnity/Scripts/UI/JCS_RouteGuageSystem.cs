@@ -77,21 +77,21 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<PlayerRegisterForm> PlayersForm { get { return this.mPlayersForm; } }
-        public Transform RealStartTransform { get { return this.mRealStartTransform; } set { this.mRealStartTransform = value; } }
-        public Transform RealGoalTransfrom { get { return this.mRealGoalTransfrom; } set { this.mRealGoalTransfrom = value; } }
-        public Transform SpriteStartTransform { get { return this.mSpriteStartTransform; } set { this.mSpriteStartTransform = value; } }
-        public Transform SpriteGoalTransform { get { return this.mSpriteGoalTransform; } set { this.mSpriteGoalTransform = value; } }
+        public List<PlayerRegisterForm> playersForm { get { return mPlayersForm; } }
+        public Transform realStartTransform { get { return mRealStartTransform; } set { mRealStartTransform = value; } }
+        public Transform realGoalTransfrom { get { return mRealGoalTransfrom; } set { mRealGoalTransfrom = value; } }
+        public Transform spriteStartTransform { get { return mSpriteStartTransform; } set { mSpriteStartTransform = value; } }
+        public Transform rpriteGoalTransform { get { return mSpriteGoalTransform; } set { mSpriteGoalTransform = value; } }
 
         /* Functions */
 
         private void Awake()
         {
             // get the position from two target transform.
-            this.mRealDistance = Vector3.Distance(
+            mRealDistance = Vector3.Distance(
                 mRealGoalTransfrom.position, mRealStartTransform.position);
 
-            this.mSpriteDistance = Vector3.Distance(
+            mSpriteDistance = Vector3.Distance(
                 mSpriteGoalTransform.position, mSpriteStartTransform.position);
 
             // get the ratio from real distance and sprite distance.

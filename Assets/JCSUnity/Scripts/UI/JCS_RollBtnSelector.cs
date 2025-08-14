@@ -86,13 +86,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
+            mPanelRoot = JCS_PanelRoot.GetFromParent(transform);
         }
 
         private void Start()
@@ -208,7 +208,7 @@ namespace JCSUnity
                     case JCS_2DDimensions.VERTICAL:
                         {
                             if (mPanelRoot != null)
-                                intervalDistance *= mPanelRoot.PanelDeltaWidthRatio;
+                                intervalDistance *= mPanelRoot.panelDeltaWidthRatio;
 
                             if (isEven)
                                 newPos.y += intervalDistance;
@@ -219,7 +219,7 @@ namespace JCSUnity
                     case JCS_2DDimensions.HORIZONTAL:
                         {
                             if (mPanelRoot != null)
-                                intervalDistance *= mPanelRoot.PanelDeltaHeightRatio;
+                                intervalDistance *= mPanelRoot.panelDeltaHeightRatio;
 
                             if (isEven)
                                 newPos.x += intervalDistance;
@@ -232,7 +232,7 @@ namespace JCSUnity
                 currentBtn.GetRectTransfom().localPosition = newPos;
 
                 // set friction.
-                currentBtn.SimpleTrackAction.Friction = mScrollFriction;
+                currentBtn.SimpleTrackAction.friction = mScrollFriction;
                 // set tracking
                 currentBtn.SetTrackPosition();
 
@@ -283,8 +283,8 @@ namespace JCSUnity
 
                 if (mPanelRoot != null)
                 {
-                    scale.x *= mPanelRoot.PanelDeltaWidthRatio;
-                    scale.y *= mPanelRoot.PanelDeltaHeightRatio;
+                    scale.x *= mPanelRoot.panelDeltaWidthRatio;
+                    scale.y *= mPanelRoot.panelDeltaHeightRatio;
                 }
 
                 JCS_ScaleEffect se = currentBtn.GetScaleEffect();
@@ -299,12 +299,12 @@ namespace JCSUnity
                     return;
                 }
 
-                se.RecordScale += scale;
+                se.recordScale += scale;
 
                 // the change value plus the original scale.
                 // so it will keep the original setting form the
                 // level designer.
-                se.TowardScale += scale + se.GetScaleValue();
+                se.towardScale += scale + se.GetScaleValue();
 
                 se.Active();
             }
@@ -412,17 +412,17 @@ namespace JCSUnity
                     continue;
                 }
 
-                Vector3 newTargetPos = currentBtn.SimpleTrackAction.TargetPosition;
+                Vector3 newTargetPos = currentBtn.SimpleTrackAction.targetPosition;
 
-                newTargetPos = targetBtn.SimpleTrackAction.TargetPosition;
+                newTargetPos = targetBtn.SimpleTrackAction.targetPosition;
 
                 newTargetPosHolder[index] = newTargetPos;
                 scrollIndexHolder[index] = targetBtn.ScrollIndex;
 
                 if (mAsympEffect)
                 {
-                    newRecordScaleHolder[index] = targetBtn.GetScaleEffect().RecordScale;
-                    newTowardScaleHolder[index] = targetBtn.GetScaleEffect().TowardScale;
+                    newRecordScaleHolder[index] = targetBtn.GetScaleEffect().recordScale;
+                    newTowardScaleHolder[index] = targetBtn.GetScaleEffect().towardScale;
                 }
             }
 
@@ -430,7 +430,7 @@ namespace JCSUnity
             {
                 currentBtn = mButtons[index];
 
-                currentBtn.SimpleTrackAction.TargetPosition = newTargetPosHolder[index];
+                currentBtn.SimpleTrackAction.targetPosition = newTargetPosHolder[index];
 
                 currentBtn.ScrollIndex = scrollIndexHolder[index];
 
@@ -438,8 +438,8 @@ namespace JCSUnity
                 {
                     JCS_ScaleEffect se = currentBtn.GetScaleEffect();
 
-                    se.RecordScale = newRecordScaleHolder[index];
-                    se.TowardScale = newTowardScaleHolder[index];
+                    se.recordScale = newRecordScaleHolder[index];
+                    se.towardScale = newTowardScaleHolder[index];
                     se.Active();
                 }
             }

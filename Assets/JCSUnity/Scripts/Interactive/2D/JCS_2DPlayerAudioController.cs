@@ -25,14 +25,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public AudioListener GetAudioListener() { return this.mAudioListener; }
+        public AudioListener GetAudioListener() { return mAudioListener; }
 
         /* Functions */
 
         protected virtual void Awake()
         {
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
-            mAudioListener = this.GetComponent<AudioListener>();
+            mSoundPlayer = GetComponent<JCS_SoundPlayer>();
+            mAudioListener = GetComponent<AudioListener>();
         }
 
         protected virtual void Start()

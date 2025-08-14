@@ -35,17 +35,17 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Slider slider { get { return this.mSlider; } }
+        public Slider slider { get { return mSlider; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mSlider = this.GetComponent<Slider>();
+            mSlider = GetComponent<Slider>();
 
             // The minimum value can't be 0.
-            if (this.mSlider.minValue == 0.0f)
-                this.mSlider.minValue = 0.0001f;
+            if (mSlider.minValue == 0.0f)
+                mSlider.minValue = 0.0001f;
         }
 
         private void Start()

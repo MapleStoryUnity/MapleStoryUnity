@@ -27,16 +27,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool DestroyWhenOutOfScreen { get { return this.mDestroyWhenOutOfScreen; } set { this.mDestroyWhenOutOfScreen = value; } }
+        public bool destroyWhenOutOfScreen { get { return mDestroyWhenOutOfScreen; } set { mDestroyWhenOutOfScreen = value; } }
 
         /* Functions */
 
         private void OnBecameInvisible()
         {
-            if (!DestroyWhenOutOfScreen)
+            if (!mDestroyWhenOutOfScreen)
                 return;
 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

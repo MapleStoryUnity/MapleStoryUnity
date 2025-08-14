@@ -126,7 +126,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public override float MoveSpeed
+        public override float moveSpeed
         {
             get
             {
@@ -135,9 +135,9 @@ namespace JCSUnity
 
             set
             {
-                this.mMoveSpeed = value;
-                this.mGoStraightAction.MoveSpeed = value;
-                this.mRecordMoveSpeed = value;
+                mMoveSpeed = value;
+                mGoStraightAction.moveSpeed = value;
+                mRecordMoveSpeed = value;
             }
         }
 
@@ -162,10 +162,10 @@ namespace JCSUnity
         private void Start()
         {
             // set all action to this move speed.
-            mGoStraightAction.MoveSpeed = MoveSpeed;
+            mGoStraightAction.moveSpeed = mMoveSpeed;
 
             // record down the move speed
-            mRecordMoveSpeed = MoveSpeed;
+            mRecordMoveSpeed = mMoveSpeed;
         }
 
         private void Update()
@@ -189,9 +189,9 @@ namespace JCSUnity
                 if (mTimeToAbsorb < mAbsorbEffectTimer)
                 {
                     // start the effect
-                    mGoStraightAction.MoveSpeed += (0.1f - mGoStraightAction.MoveSpeed) / mTimeToAbsorb * Time.deltaTime;
+                    mGoStraightAction.moveSpeed += (0.1f - mGoStraightAction.moveSpeed) / mTimeToAbsorb * Time.deltaTime;
 
-                    if (JCS_Util.WithInRange(-mAcceptTimeRange, mAcceptTimeRange, mGoStraightAction.MoveSpeed))
+                    if (JCS_Util.WithInRange(-mAcceptTimeRange, mAcceptTimeRange, mGoStraightAction.moveSpeed))
                     {
                         //mGoStraightAction.MoveSpeed = mRecordMoveSpeed;
 
@@ -202,7 +202,7 @@ namespace JCSUnity
             }
             else
             {
-                mGoStraightAction.MoveSpeed += (mRecordMoveSpeed - mGoStraightAction.MoveSpeed) / mAbsorbBackFriction * dt;
+                mGoStraightAction.moveSpeed += (mRecordMoveSpeed - mGoStraightAction.moveSpeed) / mAbsorbBackFriction * dt;
             }
         }
 

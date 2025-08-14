@@ -56,23 +56,23 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool FadeEffect { get { return this.mFadeEffect; } set { this.mFadeEffect = value; } }
-        public Vector3 TargetPosition { get { return this.mTargetPosition; } set { this.mTargetPosition = value; } }
+        public bool fadeEffect { get { return mFadeEffect; } set { mFadeEffect = value; } }
+        public Vector3 targetPosition { get { return mTargetPosition; } set { mTargetPosition = value; } }
         public void SetTarget(JCS_UnityObject trans)
         {
             // update target position.
-            this.mTarget = trans;
+            mTarget = trans;
 
             // update the target position too.
-            this.mTargetPosition = this.transform.position;
+            mTargetPosition = transform.position;
         }
-        public float Range { get { return this.mRange; } set { this.mRange = value; } }
+        public float range { get { return mRange; } set { mRange = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mJCSFadeObject = this.GetComponent<JCS_FadeObject>();
+            mJCSFadeObject = GetComponent<JCS_FadeObject>();
         }
 
         private void Update()
@@ -95,25 +95,25 @@ namespace JCSUnity
             float distance = 0;
             if (mUseLocal)
             {
-                distance = Vector3.Distance(this.transform.localPosition, this.mTargetPosition);
+                distance = Vector3.Distance(transform.localPosition, mTargetPosition);
             }
             else
             {
                 // get the distance between self's and target's.
-                distance = Vector3.Distance(this.transform.position, this.mTargetPosition);
+                distance = Vector3.Distance(transform.position, mTargetPosition);
             }
 
-            if (distance < this.mRange)
+            if (distance < mRange)
             {
                 // disable the game object.
-                this.gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }
 
             // check fade effect enable?
             if (!mFadeEffect || mFaded)
                 return;
 
-            if (distance < this.mFadeDistance)
+            if (distance < mFadeDistance)
             {
                 mJCSFadeObject.FadeOut();
                 mFaded = true;

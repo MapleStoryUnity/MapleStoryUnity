@@ -41,8 +41,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool DoAction { get { return this.mDoAction; } set { this.mDoAction = value; } }
-        public float DetectRange { get { return this.mDetectRange; } set { this.mDetectRange = value; } }
+        public bool doAction { get { return mDoAction; } set { mDoAction = value; } }
+        public float detectRange { get { return mDetectRange; } set { mDetectRange = value; } }
 
         /* Functions */
 
@@ -63,7 +63,7 @@ namespace JCSUnity
         /// </returns>
         public bool DetectOneTransform()
         {
-            return this.mDetectOne;
+            return mDetectOne;
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace JCSUnity
         /// </returns>
         public bool DetectAllTransform()
         {
-            return this.mDetectAll;
+            return mDetectAll;
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace JCSUnity
                     continue;
                 }
 
-                float distance = Vector3.Distance(targetTrans.position, this.transform.position);
+                float distance = Vector3.Distance(targetTrans.position, transform.position);
 
                 // check distance in the detect range.
                 if (distance <= mDetectRange)

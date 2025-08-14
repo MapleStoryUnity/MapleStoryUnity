@@ -46,12 +46,12 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Support_OnMouseEnter { get { return this.mSupport_OnMouseEnter; } }
-        public bool Support_OnMouseExit { get { return this.mSupport_OnMouseExit; } }
-        public bool Support_OnMouseDown { get { return this.mSupport_OnMouseDown; } }
-        public bool Support_OnMouseUp { get { return this.mSupport_OnMouseUp; } }
-        public bool Support_OnMouseOver { get { return this.mSupport_OnMouseOver; } }
-        public bool Support_OnMouseDrag { get { return this.mSupport_OnMouseDrag; } }
+        public bool support_OnMouseEnter { get { return mSupport_OnMouseEnter; } }
+        public bool support_OnMouseExit { get { return mSupport_OnMouseExit; } }
+        public bool support_OnMouseDown { get { return mSupport_OnMouseDown; } }
+        public bool support_OnMouseUp { get { return mSupport_OnMouseUp; } }
+        public bool support_OnMouseOver { get { return mSupport_OnMouseOver; } }
+        public bool support_OnMouseDrag { get { return mSupport_OnMouseDrag; } }
 
         /* Functions */
 

@@ -19,6 +19,7 @@ namespace JCSUnity
         /* Variables */
 
         private float mTimer = 0;
+
         private float mRemindPerTime = 5;
 
         /* Setter & Getter */

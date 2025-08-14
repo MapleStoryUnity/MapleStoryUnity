@@ -56,13 +56,13 @@ use negative scale instead.")]
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public JCS_2DAnimation MirrorAnimation { get { return this.mMirrorAnimation; } set { this.mMirrorAnimation = value; } }
-        public List<JCS_2DAnimation> MimicAnimations { get { return this.mMimicAnimations; } }
-        public bool MimicFrame { get { return this.mMimicFrame; } set { this.mMimicFrame = value; } }
-        public bool MimicSortingOrder { get { return this.mMimicSortingOrder; } set { this.mMimicSortingOrder = value; } }
-        public bool MimicColor { get { return this.mMimicColor; } set { this.mMimicColor = value; } }
-        public bool MimcFlip { get { return this.mMimcFlip; } set { this.mMimcFlip = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public JCS_2DAnimation nirrorAnimation { get { return mMirrorAnimation; } set { mMirrorAnimation = value; } }
+        public List<JCS_2DAnimation> nimicAnimations { get { return mMimicAnimations; } }
+        public bool mimicFrame { get { return mMimicFrame; } set { mMimicFrame = value; } }
+        public bool mimicSortingOrder { get { return mMimicSortingOrder; } set { mMimicSortingOrder = value; } }
+        public bool mimicColor { get { return mMimicColor; } set { mMimicColor = value; } }
+        public bool mimcFlip { get { return mMimcFlip; } set { mMimcFlip = value; } }
 
         /* Functions */
 
@@ -73,7 +73,7 @@ use negative scale instead.")]
 
         private void LateUpdate()
         {
-            if (!Active)
+            if (!mActive)
                 return;
 
             DoMimicAnimations();
@@ -89,9 +89,9 @@ use negative scale instead.")]
                 if (anim == null)
                     continue;
 
-                anim.Active = false;
-                anim.PlayOnAwake = false;
-                anim.Loop = false;
+                anim.active = false;
+                anim.playOnAwake = false;
+                anim.loop = false;
             }
         }
 
@@ -106,7 +106,7 @@ use negative scale instead.")]
             if (mMirrorAnimation == null)
                 return;
 
-            SpriteRenderer mirrorSR = (SpriteRenderer)mMirrorAnimation.LocalType;
+            SpriteRenderer mirrorSR = (SpriteRenderer)mMirrorAnimation.localType;
 
             foreach (JCS_2DAnimation anim in mMimicAnimations)
             {
@@ -115,16 +115,16 @@ use negative scale instead.")]
 
                 if (mMimicFrame)
                 {
-                    if (mMirrorAnimation.LocalSprite == null)
-                        anim.LocalSprite = null;
+                    if (mMirrorAnimation.localSprite == null)
+                        anim.localSprite = null;
                     else
-                        anim.PlayFrame(mMirrorAnimation.CurrentPlayingFrame);
+                        anim.PlayFrame(mMirrorAnimation.currentPlayingFrame);
                 }
 
                 if (mMimcFlip)
                 {
-                    anim.LocalFlipX = mMirrorAnimation.LocalFlipX;
-                    anim.LocalFlipY = mMirrorAnimation.LocalFlipY;
+                    anim.localFlipX = mMirrorAnimation.localFlipX;
+                    anim.localFlipY = mMirrorAnimation.localFlipY;
                 }
 
 
@@ -140,10 +140,10 @@ use negative scale instead.")]
 
                 if (mMimicColor)
                 {
-                    anim.LocalColor = mMirrorAnimation.LocalColor;
+                    anim.localColor = mMirrorAnimation.localColor;
                 }
 
-                SpriteRenderer animSR = (SpriteRenderer)anim.LocalType;
+                SpriteRenderer animSR = (SpriteRenderer)anim.localType;
 
                 if (mMimicSortingOrder)
                 {

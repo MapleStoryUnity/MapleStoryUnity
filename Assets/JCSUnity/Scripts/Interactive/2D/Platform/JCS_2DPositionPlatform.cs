@@ -42,7 +42,7 @@ true meaning the fly action object cannot go throught this platform.")]
 
         public BoxCollider GetPlatformTrigger() { return this.mPlatformTrigger; }
         public BoxCollider GetPlatformCollider() { return this.mPlatformCollider; }
-        public bool CannotBeGoThrough { get { return this.mCannotBeGoThrough; } }
+        public bool cannotBeGoThrough { get { return this.mCannotBeGoThrough; } }
 
         /* Functions */
 
@@ -88,7 +88,7 @@ true meaning the fly action object cannot go throught this platform.")]
                 isJumpDown = false;
             }
 
-            if (p.CharacterState == JCS_2DCharacterState.CLIMBING ||
+            if (p.characterState == JCS_2DCharacterState.CLIMBING ||
                 isJumpDown)
             {
                 // IMPORTANT(JenChieh): Note that IgnoreCollision will reset 
@@ -114,7 +114,7 @@ true meaning the fly action object cannot go throught this platform.")]
                      * the other collision detection. In order not to let the 
                      * render frame goes off. set the value as small as possible.
                      */
-                    p.VelY = -ps.POSITION_PLATFORM_DOWN_JUMP_FORCE;
+                    p.velY = -ps.POSITION_PLATFORM_DOWN_JUMP_FORCE;
                 }
                 else
                 {
@@ -123,7 +123,7 @@ true meaning the fly action object cannot go throught this platform.")]
                 }
             }
 
-            p.ResetingCollision = true;
+            p.resetingCollision = true;
         }
     }
 }

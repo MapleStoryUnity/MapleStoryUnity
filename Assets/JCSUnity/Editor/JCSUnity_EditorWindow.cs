@@ -86,7 +86,7 @@ namespace JCSUnity
                 return;
 
             JCS_InputController.GAMEPAD_COUNT = EditorPrefs.GetInt(JCSUnity_EditortUtil.FormKey("GAMEPAD_COUNT"), 0);
-            JCS_InputController.SelectGamepadType = EditorPrefs.GetInt(JCSUnity_EditortUtil.FormKey("SelectGamepadType"), 0);
+            JCS_InputController.SELECT_GAMEPAD_TYPE = EditorPrefs.GetInt(JCSUnity_EditortUtil.FormKey("SelectGamepadType"), 0);
 
             prefsLoaded = true;
         }
@@ -105,7 +105,7 @@ namespace JCSUnity
         private void SavePref()
         {
             EditorPrefs.SetInt(JCSUnity_EditortUtil.FormKey("GAMEPAD_COUNT"), JCS_InputController.GAMEPAD_COUNT);
-            EditorPrefs.SetInt(JCSUnity_EditortUtil.FormKey("SelectGamepadType"), JCS_InputController.SelectGamepadType);
+            EditorPrefs.SetInt(JCSUnity_EditortUtil.FormKey("SelectGamepadType"), JCS_InputController.SELECT_GAMEPAD_TYPE);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace JCSUnity
         {
             GUILayout.Label("Gamepad", EditorStyles.boldLabel);
 
-            JCS_InputController.SelectGamepadType = EditorGUILayout.Popup("Gamepad Type", JCS_InputController.SelectGamepadType, JCS_InputController.GamepadPlatform);
+            JCS_InputController.SELECT_GAMEPAD_TYPE = EditorGUILayout.Popup("Gamepad Type", JCS_InputController.SELECT_GAMEPAD_TYPE, JCS_InputController.GAMEPAD_PLATFORM);
             JCS_InputController.GAMEPAD_COUNT = (int)EditorGUILayout.Slider("Gamepad Count", JCS_InputController.GAMEPAD_COUNT, 0, JCS_InputSettings.MAX_JOYSTICK_COUNT);
 
             GUILayout.Label("Input Manager", EditorStyles.boldLabel);
@@ -669,10 +669,10 @@ namespace JCSUnity
             slideScreenCamera.name = "_SlideScreenCamera (Created)";
 
             // set the panel holder.
-            slideScreenCamera.PanelHolder = panelHolder9x9;
+            slideScreenCamera.panelHolder = panelHolder9x9;
 
             // set to default 2d.
-            slideScreenCamera.UnityGUIType = JCS_UnityGUIType.uGUI_2D;
+            slideScreenCamera.unityGUIType = JCS_UnityGUIType.uGUI_2D;
         }
 
         /// <summary>

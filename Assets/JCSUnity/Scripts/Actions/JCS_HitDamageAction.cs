@@ -40,16 +40,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public BoxCollider GetBoxCollider() { return this.mBoxCollider; }
+        public BoxCollider GetBoxCollider() { return mBoxCollider; }
 
         /* Functions */
 
         private void Awake()
         {
             // try to get the ability format from this object.
-            mAbilityFormat = this.GetComponent<JCS_AbilityFormat>();
+            mAbilityFormat = GetComponent<JCS_AbilityFormat>();
 
-            mLiveObject = this.GetComponent<JCS_2DLiveObject>();
+            mLiveObject = GetComponent<JCS_2DLiveObject>();
 
             mLiveObjectList = new List<JCS_2DLiveObject>();
         }
@@ -87,14 +87,14 @@ namespace JCSUnity
         private void DamageLiveObject(JCS_2DLiveObject liveObject)
         {
             // if cannot damage this live object than do nothing.
-            if (!liveObject.CanDamage)
+            if (!liveObject.canDamage)
                 return;
 
             if (!JCS_GameSettings.FirstInstance().TRIBE_DAMAGE_EACH_OTHER)
             {
                 // if both player does not need to add in to list.
                 // or if both enemy does not need to add in to list.
-                if (liveObject.IsPlayer == mLiveObject.IsPlayer)
+                if (liveObject.isPlayer == mLiveObject.isPlayer)
                     return;
             }
 
@@ -107,7 +107,7 @@ namespace JCSUnity
             liveObject.ApplyDamageText(
                 mAbilityFormat.GetMinDamage(),
                 mAbilityFormat.GetMaxDamage(),
-                this.transform.position,
+                transform.position,
                 1,      // hit
                 0, 
                 mHitSound);     // critical chance

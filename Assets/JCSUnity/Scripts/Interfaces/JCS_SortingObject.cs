@@ -30,8 +30,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int OrderIndex { get { return this.mOrderIndex; } }
-        public bool Sorted { get { return this.mSorted; } set { this.mSorted = value; } }
+        public int orderIndex { get { return mOrderIndex; } }
+        public bool sorted { get { return mSorted; } set { mSorted = value; } }
 
         /* Functions */
 

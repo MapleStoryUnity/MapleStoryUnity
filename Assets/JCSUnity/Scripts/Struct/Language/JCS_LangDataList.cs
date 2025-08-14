@@ -30,7 +30,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<JCS_LangData> LangData { get { return this.mLangData; } }
+        public List<JCS_LangData> langData { get { return mLangData; } }
 
         /* Functions */
 

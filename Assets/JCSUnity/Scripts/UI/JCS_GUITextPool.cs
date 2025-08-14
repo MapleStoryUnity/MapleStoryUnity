@@ -62,7 +62,7 @@ namespace JCSUnity
 
                 // if not active, meaning we can 
                 // active the log text
-                if (!logText.IsActive)
+                if (!logText.isActive)
                 {
                     // set the last spawn count
                     mLastSpawnPos = index;

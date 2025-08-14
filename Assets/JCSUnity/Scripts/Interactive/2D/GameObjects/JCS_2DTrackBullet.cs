@@ -47,23 +47,23 @@ namespace JCSUnity
         {
             base.Awake();
 
-            mTrackAction = this.GetComponent<JCS_2DTrackAction>();
-            mTrackAction.Following = false;
+            mTrackAction = GetComponent<JCS_2DTrackAction>();
+            mTrackAction.following = false;
 
 
-            mGoStraightAction = this.GetComponent<JCS_3DGoStraightAction>();
+            mGoStraightAction = GetComponent<JCS_3DGoStraightAction>();
             mGoStraightAction.enabled = true;
         }
 
         private void Start()
         {
             // set all action to this move speed
-            mGoStraightAction.MoveSpeed = MoveSpeed;
+            mGoStraightAction.moveSpeed = mMoveSpeed;
 
             // if tracking are using the smooth track.
             // move speed have to be positive in order to get to the
             // correct direction.
-            mTrackAction.MoveSpeed = JCS_Mathf.ToPositive(MoveSpeed);
+            mTrackAction.moveSpeed = JCS_Mathf.ToPositive(mMoveSpeed);
         }
 
         private void Update()
@@ -83,7 +83,7 @@ namespace JCSUnity
             if (mAct)
                 return;
 
-            if (mTrackAction.TargetTransform == null)
+            if (mTrackAction.targetTransform == null)
                 return;
 
             mDelayTimeToFollowTimer += JCS_Time.ItTime(mTimeType);
@@ -91,7 +91,7 @@ namespace JCSUnity
             if (mDelayTimeToFollow < mDelayTimeToFollowTimer)
             {
                 // start follow!
-                mTrackAction.Following = true;
+                mTrackAction.following = true;
 
                 mAct = true;
 

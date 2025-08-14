@@ -27,7 +27,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<JCS_3DWalkAction> WalkActions { get { return this.mWalkActions; } }
+        public List<JCS_3DWalkAction> walkActions { get { return mWalkActions; } }
 
         /* Functions */
 
@@ -64,7 +64,7 @@ namespace JCSUnity
                 if (self == wa)
                     continue;
 
-                Vector3 dest = wa.TargetDestination;
+                Vector3 dest = wa.targetDestination;
                 float distance = Vector3.Distance(targetPos, dest);
 
                 if (distance <= overlapDistance)

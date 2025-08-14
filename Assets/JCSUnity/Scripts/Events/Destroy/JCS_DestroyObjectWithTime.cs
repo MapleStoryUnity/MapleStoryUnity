@@ -20,6 +20,7 @@ namespace JCSUnity
         /* Variables */
 
         private float mTimer = 0;
+
         private bool mTimesUp = false;
 
         [Separator("Runtime Variables (JCS_DestroyObjectWithTime)")]
@@ -50,12 +51,12 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
-        public bool TimesUp { get { return this.mTimesUp; } set { this.mTimesUp = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float destroyTime { get { return mDestroyTime; } set { mDestroyTime = value; } }
+        public bool timesUp { get { return mTimesUp; } set { mTimesUp = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
-        public List<JCS_FadeObject> FadeObjects { get { return this.mFadeObjects; } set { this.mFadeObjects = value; } }
+        public float fadeTime { get { return mFadeTime; } set { mFadeTime = value; } }
+        public List<JCS_FadeObject> fadeObjects { get { return mFadeObjects; } set { mFadeObjects = value; } }
 
         /* Functions */
 
@@ -71,8 +72,8 @@ namespace JCSUnity
 
             if (mDestroyTime < mTimer)
             {
-                TimesUp = true;
-                Destroy(this.gameObject);
+                mTimesUp = true;
+                Destroy(gameObject);
             }
         }
 
@@ -88,6 +89,7 @@ namespace JCSUnity
                     continue;
                 return fo;
             }
+
             return null;
         }
 
@@ -100,7 +102,8 @@ namespace JCSUnity
             {
                 if (fo == null)
                     continue;
-                fo.FadeTime = mFadeTime;
+
+                fo.fadeTime = mFadeTime;
                 fo.FadeOut();
             }
         }

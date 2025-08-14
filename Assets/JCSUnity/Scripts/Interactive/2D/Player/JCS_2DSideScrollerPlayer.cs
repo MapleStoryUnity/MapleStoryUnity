@@ -181,33 +181,33 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool JustClimbOnTopOfBox { get { return this.mJustClimbOnTopOfBox; } set { this.mJustClimbOnTopOfBox = value; } }
-        public bool AutoClimb { get { return this.mAutoClimb; } set { this.mAutoClimb = value; } }
-        public JCS_ClimbMoveType AutoClimbDirection { get { return this.mAutoClimbDirection; } set { this.mAutoClimbDirection = value; } }
-        public JCS_ClimbMoveType ClimbMoveType { get { return this.mClimbMoveType; } }
-        public bool ResetingCollision { get { return this.mResetingCollision; } set { this.mResetingCollision = value; } }
-        public bool ExitingClimbing { get { return this.mExitingClimbing; } set { this.mExitingClimbing = value; } }
-        public JCS_2DCharacterState CharacterState { get { return this.mCharacterState; } set { this.mCharacterState = value; } }
-        public bool CanLadder { get { return this.mCanLadder; } set { this.mCanLadder = value; } }
-        public bool CanRope { get { return this.mCanRope; } set { this.mCanRope = value; } }
-        public void SetJumpType(JCS_JumpeType type) { this.mJumpType = type; }
-        public JCS_JumpeType GetJumpType() { return this.mJumpType; }
-        public JCS_2DAnimator GetCharacterAnimator() { return this.mJCS2DAnimator; }
-        public bool isGrounded() { return this.mCharacterController.isGrounded; }
-        public JCS_2DSideScrollerPlayerAudioController GetAudioController() { return this.mAudioController; }
-        public int JumpCount { get { return this.mJumpCount; } }
-        public JCS_2DFaceType Face { get { return this.mFace; } }
-        public JCS_OrderLayerObject OrderLayerObject { get { return this.mOrderLayerObject; } }
+        public bool justClimbOnTopOfBox { get { return mJustClimbOnTopOfBox; } set { mJustClimbOnTopOfBox = value; } }
+        public bool autoClimb { get { return mAutoClimb; } set { mAutoClimb = value; } }
+        public JCS_ClimbMoveType autoClimbDirection { get { return mAutoClimbDirection; } set { mAutoClimbDirection = value; } }
+        public JCS_ClimbMoveType climbMoveType { get { return mClimbMoveType; } }
+        public bool resetingCollision { get { return mResetingCollision; } set { mResetingCollision = value; } }
+        public bool exitingClimbing { get { return mExitingClimbing; } set { mExitingClimbing = value; } }
+        public JCS_2DCharacterState characterState { get { return mCharacterState; } set { mCharacterState = value; } }
+        public bool canLadder { get { return mCanLadder; } set { mCanLadder = value; } }
+        public bool canRope { get { return mCanRope; } set { mCanRope = value; } }
+        public void SetJumpType(JCS_JumpeType type) { mJumpType = type; }
+        public JCS_JumpeType GetJumpType() { return mJumpType; }
+        public JCS_2DAnimator GetCharacterAnimator() { return mJCS2DAnimator; }
+        public bool isGrounded() { return mCharacterController.isGrounded; }
+        public JCS_2DSideScrollerPlayerAudioController GetAudioController() { return mAudioController; }
+        public int jumpCount { get { return mJumpCount; } }
+        public JCS_2DFaceType face { get { return mFace; } }
+        public JCS_OrderLayerObject orderLayerObject { get { return mOrderLayerObject; } }
 
-        public KeyCode UpKey { get { return this.mUpKey; } set { this.mUpKey = value; } }
-        public KeyCode DownKey { get { return this.mDownKey; } set { this.mDownKey = value; } }
-        public KeyCode RightKey { get { return this.mRightKey; } set { this.mRightKey = value; } }
-        public KeyCode LeftKey { get { return this.mLeftKey; } set { this.mLeftKey = value; } }
-        public KeyCode JumpKey { get { return this.mJumpKey; } set { this.mJumpKey = value; } }
-        public KeyCode ClimbUpKey { get { return this.mClimbUpKey; } set { this.mClimbUpKey = value; } }
-        public KeyCode ClimbDownKey { get { return this.mClimbDownKey; } set { this.mClimbDownKey = value; } }
+        public KeyCode upKey { get { return mUpKey; } set { mUpKey = value; } }
+        public KeyCode downKey { get { return mDownKey; } set { mDownKey = value; } }
+        public KeyCode rightKey { get { return mRightKey; } set { mRightKey = value; } }
+        public KeyCode leftKey { get { return mLeftKey; } set { mLeftKey = value; } }
+        public KeyCode jumpKey { get { return mJumpKey; } set { mJumpKey = value; } }
+        public KeyCode climbUpKey { get { return mClimbUpKey; } set { mClimbUpKey = value; } }
+        public KeyCode climbDownKey { get { return mClimbDownKey; } set { mClimbDownKey = value; } }
 
-        public JCS_2DClimbableObject ClimbableObject { get { return this.m2DClimbingObject; } set { this.m2DClimbingObject = value; } }
+        public JCS_2DClimbableObject climbableObject { get { return m2DClimbingObject; } set { m2DClimbingObject = value; } }
 
 
         /* Functions */
@@ -216,9 +216,9 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mAudioController = this.GetComponent<JCS_2DSideScrollerPlayerAudioController>();
-            this.mJCS2DAnimator = this.GetComponent<JCS_2DAnimator>();
-            this.mOrderLayerObject = this.GetComponent<JCS_OrderLayerObject>();
+            mAudioController = GetComponent<JCS_2DSideScrollerPlayerAudioController>();
+            mJCS2DAnimator = GetComponent<JCS_2DAnimator>();
+            mOrderLayerObject = GetComponent<JCS_OrderLayerObject>();
         }
 
         protected override void Start()
@@ -320,7 +320,7 @@ namespace JCSUnity
         /// <returns></returns>
         public bool BasicJump(float force = 10)
         {
-            if (CharacterState == JCS_2DCharacterState.CLIMBING)
+            if (characterState == JCS_2DCharacterState.CLIMBING)
                 return false;
 
             if (mExitingClimbing)
@@ -335,9 +335,11 @@ namespace JCSUnity
             if (isInAttackStage())
                 return false;
 
-            this.VelY = force;
+            velY = force;
+
             if (mForceXAfterJump[0])
-                this.VelX = (mJumpXForces[0] * -(int)mFace);
+                velX = (mJumpXForces[0] * -(int)mFace);
+
             mDoubleJump = false;
             mTripleJump = false;
 
@@ -358,7 +360,7 @@ namespace JCSUnity
         /// <returns></returns>
         public bool DoubleJump(float firstForce = 10, float secodForce = 10)
         {
-            if (CharacterState == JCS_2DCharacterState.CLIMBING)
+            if (characterState == JCS_2DCharacterState.CLIMBING)
                 return false;
 
             if (mExitingClimbing)
@@ -382,12 +384,12 @@ namespace JCSUnity
             // check if do the second jump
             if (!firstJump && !mDoubleJump)
             {
-                this.VelY = secodForce;
+                velY = secodForce;
                 mDoubleJump = true;
                 mAudioController.DoubleJumpSound();
 
                 if (mForceXAfterJump[1])
-                    this.VelX = (mJumpXForces[1] * -(int)mFace);
+                    velX = (mJumpXForces[1] * -(int)mFace);
 
                 DoJumpAnimEffect(1);
 
@@ -408,7 +410,7 @@ namespace JCSUnity
         /// <returns></returns>
         public bool TripleJump(float firstForce = 10, float secodForce = 10, float thirdForce = 10)
         {
-            if (CharacterState == JCS_2DCharacterState.CLIMBING)
+            if (characterState == JCS_2DCharacterState.CLIMBING)
                 return false;
 
             if (!mIsControllable)
@@ -432,12 +434,12 @@ namespace JCSUnity
                 !mTripleJump &&
                 mDoubleJump)
             {
-                this.VelY = thirdForce;
+                this.velY = thirdForce;
                 mTripleJump = true;
                 mAudioController.TripleJumpSound();
 
                 if (mForceXAfterJump[2])
-                    this.VelX = (mJumpXForces[2] * -(int)mFace);
+                    this.velX = (mJumpXForces[2] * -(int)mFace);
 
                 DoJumpAnimEffect(2);
 
@@ -467,7 +469,7 @@ namespace JCSUnity
         /// </summary>
         public void MoveRight()
         {
-            MoveRight(MoveSpeed);
+            MoveRight(mMoveSpeed);
         }
 
         /// <summary>
@@ -477,7 +479,7 @@ namespace JCSUnity
         public void MoveRight(float vel)
         {
             // cannot move during climbing
-            if (CharacterState == JCS_2DCharacterState.CLIMBING)
+            if (characterState == JCS_2DCharacterState.CLIMBING)
                 return;
 
             if (!mIsControllable)
@@ -509,7 +511,7 @@ namespace JCSUnity
         /// </summary>
         public void MoveLeft()
         {
-            MoveLeft(MoveSpeed);
+            MoveLeft(mMoveSpeed);
         }
 
         /// <summary>
@@ -519,7 +521,7 @@ namespace JCSUnity
         public void MoveLeft(float vel)
         {
             // cannot move during climbing
-            if (CharacterState == JCS_2DCharacterState.CLIMBING)
+            if (characterState == JCS_2DCharacterState.CLIMBING)
                 return;
 
             if (!mIsControllable)
@@ -571,7 +573,7 @@ namespace JCSUnity
         public override void Attack()
         {
             // cannot attack during climbing
-            if (CharacterState == JCS_2DCharacterState.CLIMBING)
+            if (characterState == JCS_2DCharacterState.CLIMBING)
                 return;
 
             if (!mIsControllable || isInAttackStage())
@@ -717,7 +719,7 @@ namespace JCSUnity
                 return;
 
             // set mode to climbing.
-            CharacterState = JCS_2DCharacterState.CLIMBING;
+            characterState = JCS_2DCharacterState.CLIMBING;
         }
 
         /// <summary>
@@ -726,7 +728,7 @@ namespace JCSUnity
         public override void Prone()
         {
             // cannot prone in the air.
-            if (!isGrounded() && VelY != 0)
+            if (!isGrounded() && velY != 0)
                 return;
 
             /**
@@ -740,11 +742,11 @@ namespace JCSUnity
             //if (CharacterState == JCS_2DCharacterState.CLIMBING)
             //    return;
 
-            if (CanRope || CanLadder)
+            if (canRope || canLadder)
             {
                 if (CheckClimbDirection())
                 {
-                    CharacterState = JCS_2DCharacterState.CLIMBING;
+                    characterState = JCS_2DCharacterState.CLIMBING;
                     return;
                 }
             }
@@ -763,7 +765,7 @@ namespace JCSUnity
             if (!mCanDownJump)
                 return false;
 
-            if (JCS_Input.GetKey(JumpKey) && JCS_Input.GetKey(DownKey))
+            if (JCS_Input.GetKey(jumpKey) && JCS_Input.GetKey(downKey))
                 return true;
 
             return false;
@@ -778,9 +780,9 @@ namespace JCSUnity
         /// </returns>
         protected bool isInAttackStage()
         {
-            JCS_LiveObjectState lastState = (JCS_LiveObjectState)GetCharacterAnimator().CurrentAnimId;
+            JCS_LiveObjectState lastState = (JCS_LiveObjectState)GetCharacterAnimator().currentAnimId;
             if (lastState == JCS_LiveObjectState.RAND_ATTACK &&
-                !GetCharacterAnimator().CurrentAnimation.IsDonePlaying)
+                !GetCharacterAnimator().currentAnimation.isDonePlaying)
                 return true;
 
             return false;
@@ -796,20 +798,20 @@ namespace JCSUnity
         /// </returns>
         protected bool DoAnimation(JCS_LiveObjectState state)
         {
-            if (GetCharacterAnimator().CurrentAnimation != null)
+            if (GetCharacterAnimator().currentAnimation != null)
             {
-                if (GetCharacterAnimator().CurrentAnimId == (int)JCS_LiveObjectState.RAND_ATTACK)
+                if (GetCharacterAnimator().currentAnimId == (int)JCS_LiveObjectState.RAND_ATTACK)
                 {
-                    if (!GetCharacterAnimator().CurrentAnimation.IsDonePlaying)
+                    if (!GetCharacterAnimator().currentAnimation.isDonePlaying)
                         return false;
                 }
             }
 
             if (state != JCS_LiveObjectState.RAND_ATTACK)
             {
-                if (CharacterState != JCS_2DCharacterState.CLIMBING)
+                if (characterState != JCS_2DCharacterState.CLIMBING)
                 {
-                    JCS_LiveObjectState lastState = (JCS_LiveObjectState)GetCharacterAnimator().CurrentAnimId;
+                    JCS_LiveObjectState lastState = (JCS_LiveObjectState)GetCharacterAnimator().currentAnimId;
 
                     if (lastState == JCS_LiveObjectState.JUMP && !isGrounded())
                         return false;
@@ -932,9 +934,9 @@ namespace JCSUnity
                 mStartClimbing = true;
             }
 
-            if (CanLadder)
+            if (canLadder)
                 Ladder();
-            else if (CanRope)
+            else if (canRope)
                 Rope();
             else
             {
@@ -954,9 +956,9 @@ namespace JCSUnity
             else
             {
                 // process input
-                if (JCS_Input.GetKey(this.ClimbUpKey))
+                if (JCS_Input.GetKey(climbUpKey))
                     mClimbMoveType = JCS_ClimbMoveType.MOVE_UP;
-                else if (JCS_Input.GetKey(this.mClimbDownKey))
+                else if (JCS_Input.GetKey(mClimbDownKey))
                     mClimbMoveType = JCS_ClimbMoveType.MOVE_DOWN;
                 else
                 {
@@ -974,11 +976,11 @@ namespace JCSUnity
                     this.mVelocity.y = 0;
                     break;
                 case JCS_ClimbMoveType.MOVE_UP:
-                    this.mVelocity.y = MoveSpeed;
+                    this.mVelocity.y = mMoveSpeed;
                     climbing = true;
                     break;
                 case JCS_ClimbMoveType.MOVE_DOWN:
-                    this.mVelocity.y = -MoveSpeed;
+                    this.mVelocity.y = -mMoveSpeed;
                     climbing = true;
                     break;
             }
@@ -1001,12 +1003,11 @@ namespace JCSUnity
             }
             else
             {
-                if (JCS_Input.GetKey(this.JumpKey) ||
-                    JCS_Input.GetKey(this.JumpKey))
+                if (JCS_Input.GetKey(this.jumpKey))
                 {
 
-                    if (JCS_Input.GetKey(this.LeftKey) ||
-                        JCS_Input.GetKey(this.RightKey))
+                    if (JCS_Input.GetKey(this.leftKey) ||
+                        JCS_Input.GetKey(this.rightKey))
                     {
                         ExitClimbing();
                         mExitingClimbing = true;
@@ -1086,8 +1087,8 @@ namespace JCSUnity
 
             if (jumpForce != 0)
             {
-                CanLadder = false;
-                CanRope = false;
+                canLadder = false;
+                canRope = false;
             }
         }
 
@@ -1111,7 +1112,7 @@ namespace JCSUnity
             JCS_ClimbMoveType keyInput = JCS_ClimbMoveType.IDLE;
 
             // process input
-            if (JCS_Input.GetKey(this.ClimbUpKey))
+            if (JCS_Input.GetKey(climbUpKey))
                 keyInput = JCS_ClimbMoveType.MOVE_UP;
             else if (JCS_Input.GetKey(this.mClimbDownKey))
                 keyInput = JCS_ClimbMoveType.MOVE_DOWN;
@@ -1123,13 +1124,13 @@ namespace JCSUnity
 
                 case JCS_ClimbMoveType.MOVE_UP:
                     {
-                        if (this.transform.position.y < this.m2DClimbingObject.transform.position.y)
+                        if (transform.position.y < m2DClimbingObject.transform.position.y)
                             return true;
                     }
                     break;
                 case JCS_ClimbMoveType.MOVE_DOWN:
                     {
-                        if (this.transform.position.y > this.m2DClimbingObject.transform.position.y)
+                        if (transform.position.y > m2DClimbingObject.transform.position.y)
                             return true;
                     }
                     break;

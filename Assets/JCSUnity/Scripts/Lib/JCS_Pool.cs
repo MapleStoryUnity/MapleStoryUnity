@@ -20,8 +20,8 @@ namespace JCSUnity
         private int mLastUseIndex = 0;
 
 
-        public JCS_Vec<T> GetObjects() { return this.objects; }
-        public int LastUseIndex { get { return this.mLastUseIndex; } }
+        public JCS_Vec<T> GetObjects() { return objects; }
+        public int lastUseIndex { get { return mLastUseIndex; } }
 
         public JCS_Pool(int num)
         {

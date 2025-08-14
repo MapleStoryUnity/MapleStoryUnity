@@ -21,8 +21,9 @@ namespace JCSUnity
     {
         public static int GAMEPAD_COUNT = 0;  // How many gamepad in this game?
 
-        public static int SelectGamepadType = 0;
-        public static string[] GamepadPlatform = {
+        public static int SELECT_GAMEPAD_TYPE= 0;
+
+        public static string[] GAMEPAD_PLATFORM = {
             "Select Platform",
 
             /* Sony Play Station */
@@ -162,7 +163,7 @@ namespace JCSUnity
         /// </summary>
         public static void SetupInputManager()
         {
-            switch (SelectGamepadType)
+            switch (SELECT_GAMEPAD_TYPE)
             {
                 case 0:  /* ==> Select Platform <== */
 

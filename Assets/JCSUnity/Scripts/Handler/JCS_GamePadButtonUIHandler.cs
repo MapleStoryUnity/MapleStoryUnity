@@ -68,24 +68,24 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool ActiveSpriteSwapAtAwake { get { return this.mActiveSpriteSwapAtAwake; } set { this.mActiveSpriteSwapAtAwake = value; } }
+        public bool activeSpriteSwapAtAwake { get { return mActiveSpriteSwapAtAwake; } set { mActiveSpriteSwapAtAwake = value; } }
 
-        public Sprite KNormalSprite { get { return this.mKNormalSprite; } set { this.mKNormalSprite = value; } }
-        public Sprite KHighlightedSprite { get { return this.mKHighlightedSprite; } set { this.mKHighlightedSprite = value; } }
-        public Sprite KPressedSprite { get { return this.mKPressedSprite; } set { this.mKPressedSprite = value; } }
-        public Sprite KDisabledSprite { get { return this.mKDisabledSprite; } set { this.mKDisabledSprite = value; } }
+        public Sprite kNormalSprite { get { return mKNormalSprite; } set { mKNormalSprite = value; } }
+        public Sprite kHighlightedSprite { get { return mKHighlightedSprite; } set { mKHighlightedSprite = value; } }
+        public Sprite kPressedSprite { get { return mKPressedSprite; } set { mKPressedSprite = value; } }
+        public Sprite kDisabledSprite { get { return mKDisabledSprite; } set { mKDisabledSprite = value; } }
 
-        public Sprite JNormalSprite { get { return this.mJNormalSprite; } set { this.mJNormalSprite = value; } }
-        public Sprite JHighlightedSprite { get { return this.mJHighlightedSprite; } set { this.mJHighlightedSprite = value; } }
-        public Sprite JPressedSprite { get { return this.mJPressedSprite; } set { this.mJPressedSprite = value; } }
-        public Sprite JDisabledSprite { get { return this.mJDisabledSprite; } set { this.mJDisabledSprite = value; } }
+        public Sprite jNormalSprite { get { return mJNormalSprite; } set { mJNormalSprite = value; } }
+        public Sprite jHighlightedSprite { get { return mJHighlightedSprite; } set { mJHighlightedSprite = value; } }
+        public Sprite jPressedSprite { get { return mJPressedSprite; } set { mJPressedSprite = value; } }
+        public Sprite jDisabledSprite { get { return mJDisabledSprite; } set { mJDisabledSprite = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mNormalImage = this.GetComponent<Image>();
-            this.mButton = this.GetComponent<Button>();
+            mNormalImage = GetComponent<Image>();
+            mButton = GetComponent<Button>();
 
             // chage it to swip swap selection.
             if (mActiveSpriteSwapAtAwake)
@@ -114,7 +114,7 @@ namespace JCSUnity
         /// </summary>
         protected virtual void JoystickPluggedCallback()
         {
-            this.mNormalImage.sprite = mJNormalSprite;
+            mNormalImage.sprite = mJNormalSprite;
 
             SpriteState newSpriteState = new SpriteState();
 
@@ -122,7 +122,7 @@ namespace JCSUnity
             newSpriteState.pressedSprite = mJPressedSprite;
             newSpriteState.disabledSprite = mJDisabledSprite;
 
-            this.mButton.spriteState = newSpriteState;
+            mButton.spriteState = newSpriteState;
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace JCSUnity
         /// </summary>
         protected virtual void JoystickUnpluggedCallback()
         {
-            this.mNormalImage.sprite = mKNormalSprite;
+            mNormalImage.sprite = mKNormalSprite;
 
             SpriteState newSpriteState = new();
 
@@ -138,7 +138,7 @@ namespace JCSUnity
             newSpriteState.pressedSprite = mKPressedSprite;
             newSpriteState.disabledSprite = mKDisabledSprite;
 
-            this.mButton.spriteState = newSpriteState;
+            mButton.spriteState = newSpriteState;
         }
 
     }

@@ -28,7 +28,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<Transform> Objects { get { return this.mObjects; } }
+        public List<Transform> objects { get { return mObjects; } }
 
         /* Functions */
 

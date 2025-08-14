@@ -23,7 +23,9 @@ namespace JCSUnity
         /* Variables */
 
         private JCS_3DGoStraightAction mGoStraightAction = null;
+
         private JCS_3DLookAtAction mLookAtAction = null;
+
         private JCS_AdjustTimeTrigger mAdjustTimerTrigger = null;
 
         [Separator("Check Variables (JCS_SimplePathAction)")]
@@ -50,19 +52,19 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<Transform> Points { get { return this.mPoints; } }
-        public JCS_PathActionType PathActionType { get { return this.mPathActionType; } set { this.mPathActionType = value; } }
-        public float AcceptRange { get { return this.mAcceptRange; } set { this.mAcceptRange = value; } }
+        public List<Transform> points { get { return mPoints; } }
+        public JCS_PathActionType pathActionType { get { return mPathActionType; } set { mPathActionType = value; } }
+        public float acceptRange { get { return mAcceptRange; } set { mAcceptRange = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mGoStraightAction = this.GetComponent<JCS_3DGoStraightAction>();
-            this.mLookAtAction = this.GetComponent<JCS_3DLookAtAction>();
-            this.mAdjustTimerTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
+            mGoStraightAction = GetComponent<JCS_3DGoStraightAction>();
+            mLookAtAction = GetComponent<JCS_3DLookAtAction>();
+            mAdjustTimerTrigger = GetComponent<JCS_AdjustTimeTrigger>();
 
-            this.mAdjustTimerTrigger.onAction = DoPath;
+            mAdjustTimerTrigger.onAction = DoPath;
 
 #if UNITY_EDITOR
             if (mPoints.Count == 0)
@@ -74,14 +76,14 @@ namespace JCSUnity
 
         private void Update()
         {
-            if (!this.mGoStraightAction.enabled)
+            if (!mGoStraightAction.enabled)
                 return;
 
             Transform target = mPoints[mTargetPointIndex];
-            float distance = Vector3.Distance(target.position, this.transform.position);
+            float distance = Vector3.Distance(target.position, transform.position);
 
             if (mAcceptRange >= distance)
-                this.mGoStraightAction.enabled = false;
+                mGoStraightAction.enabled = false;
         }
 
         /// <summary>
@@ -139,7 +141,7 @@ namespace JCSUnity
         {
             GetNextPoint();
 
-            this.mGoStraightAction.enabled = true;
+            mGoStraightAction.enabled = true;
 
             mLookAtAction.SetTargetTransform(mPoints[mTargetPointIndex]);
         }

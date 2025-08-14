@@ -41,13 +41,12 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool IsHit { get { return this.mIsHit; } set { this.mIsHit = value; } }
+        public bool isHit { get { return mIsHit; } set { mIsHit = value; } }
 
         /* Functions */
 
         private void OnTriggerEnter(Collider other)
         {
-
             foreach (string obj in mHitObjectList)
             {
                 if (other.gameObject.name == obj)
@@ -69,7 +68,7 @@ namespace JCSUnity
 
             if (mDestroyWhenOccurs && mIsHit)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
     }

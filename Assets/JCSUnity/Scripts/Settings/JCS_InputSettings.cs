@@ -179,7 +179,7 @@ namespace JCSUnity
 
         [Tooltip("Targeting game pad going to use in the game.")]
         [SerializeField]
-        private JCS_GamepadType mTargetGamePad = JCS_GamepadType.XBOX_360;
+        private JCS_GamepadType mTargetGamepad = JCS_GamepadType.XBOX_360;
 
         // How many joystick in the game? Do the mapping for these joysticks.
         private JoystickMap[] mJoysticks = new JoystickMap[MAX_JOYSTICK_COUNT];
@@ -190,17 +190,17 @@ namespace JCSUnity
         [Tooltip("Total maxinum game pad will live in game.")]
         [SerializeField]
         [Range(0, MAX_JOYSTICK_COUNT)]
-        private int mTotalGamePadInGame = 0;
+        private int mTotalGamepadInGame = 0;
 
         /* Setter & Getter */
 
-        public JCS_GamepadType TargetGamePad { get { return this.mTargetGamePad; } }
-        public JoystickMap[] Joysticks { get { return this.mJoysticks; } set { this.mJoysticks = value; } }
+        public JCS_GamepadType targetGamepad { get { return mTargetGamepad; } }
+        public JoystickMap[] joysticks { get { return mJoysticks; } set { mJoysticks = value; } }
         public JoystickMap GetJoysitckMapByIndex(int index)
         {
-            return this.mJoysticks[index];
+            return mJoysticks[index];
         }
-        public int TotalGamePadInGame { get { return this.mTotalGamePadInGame; } set { this.mTotalGamePadInGame = value; } }
+        public int totalGamepadInGame { get { return mTotalGamepadInGame; } set { mTotalGamepadInGame = value; } }
 
         /* Functions */
 
@@ -214,7 +214,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             // Just assign to it, in order to update the joystick 
             // names array.
-            this.joystickNames = Input.GetJoystickNames();
+            joystickNames = Input.GetJoystickNames();
 #endif
 
             GetJoystickInfo();
@@ -328,7 +328,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (FirstInstance() == null)
             {
-                switch (JCS_InputController.SelectGamepadType)
+                switch (JCS_InputController.SELECT_GAMEPAD_TYPE)
                 {
                     case 0:  /* ==> Select Platform <== */
                         return "";
@@ -355,7 +355,7 @@ namespace JCSUnity
             else
             {
 #endif
-                switch (FirstInstance().TargetGamePad)
+                switch (FirstInstance().mTargetGamepad)
                 {
                     case JCS_GamepadType.ALL:
                         return "";
@@ -393,7 +393,7 @@ namespace JCSUnity
         /// <returns></returns>
         public static bool IsInvert(JCS_JoystickButton label)
         {
-            switch (JCS_InputController.SelectGamepadType)
+            switch (JCS_InputController.SELECT_GAMEPAD_TYPE)
             {
                 case 0:  /* ==> Select Platform <== */
                     return false;
@@ -441,7 +441,7 @@ namespace JCSUnity
         /// <returns></returns>
         public static JCS_AxisChannel GetAxisChannel(JCS_JoystickButton label)
         {
-            switch (JCS_InputController.SelectGamepadType)
+            switch (JCS_InputController.SELECT_GAMEPAD_TYPE)
             {
                 case 0:  /* ==> Select Platform <== */
                     break;
@@ -523,7 +523,7 @@ namespace JCSUnity
         /// <returns></returns>
         public static JCS_AxisType GetAxisType(JCS_JoystickButton label)
         {
-            switch (JCS_InputController.SelectGamepadType)
+            switch (JCS_InputController.SELECT_GAMEPAD_TYPE)
             {
                 case 0:  /* ==> Select Platform <== */
                     break;
@@ -642,7 +642,7 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_InputSettings _old, JCS_InputSettings _new)
         {
-            _new.Joysticks = _old.Joysticks;
+            _new.mJoysticks = _old.mJoysticks;
         }
 
         /// <summary>
@@ -654,7 +654,7 @@ namespace JCSUnity
             if (!JCS_Input.IsJoystickConnected())
                 return;
 
-            for (int index = 0; index < mTotalGamePadInGame; ++index)
+            for (int index = 0; index < mTotalGamepadInGame; ++index)
             {
                 JoystickMap joystickMap = GetJoysitckMapByIndex(index);
 

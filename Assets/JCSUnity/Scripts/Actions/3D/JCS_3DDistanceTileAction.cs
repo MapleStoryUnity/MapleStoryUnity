@@ -42,9 +42,9 @@ namespace JCSUnity
         private bool mUseLocalPosition = false;
 
         /* Setter & Getter */
-        public Transform ResetTrans { get { return this.mResetTrans; } set { this.mResetTrans = value; } }
-        public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
-        public bool UseLocalPosition { get { return this.mUseLocalPosition; } set { this.mUseLocalPosition = value; } }
+        public Transform resetTrans { get { return mResetTrans; } set { mResetTrans = value; } }
+        public float distance { get { return mDistance; } set { mDistance = value; } }
+        public bool useLocalPosition { get { return mUseLocalPosition; } set { mUseLocalPosition = value; } }
 
         /* Functions */
 
@@ -54,9 +54,9 @@ namespace JCSUnity
             // this position, we have the record position at function
             // 'Start' rather than 'Awake'
             if (mUseLocalPosition)
-                this.mOriginPos = this.transform.localPosition;
+                mOriginPos = transform.localPosition;
             else
-                this.mOriginPos = this.transform.position;
+                mOriginPos = transform.position;
         }
 
         private void Update()
@@ -65,9 +65,9 @@ namespace JCSUnity
             // position and the starting position.
             float distance;
             if (mUseLocalPosition)
-                distance = Vector3.Distance(this.transform.localPosition, GetResetPosition());
+                distance = Vector3.Distance(transform.localPosition, GetResetPosition());
             else
-                distance = Vector3.Distance(this.transform.position, GetResetPosition());
+                distance = Vector3.Distance(transform.position, GetResetPosition());
 
             // check if the distance reach?
             if (distance < mDistance)
@@ -86,9 +86,9 @@ namespace JCSUnity
                 beforeResetCallback.Invoke();
 
             if (mUseLocalPosition)
-                this.transform.localPosition = GetResetPosition();
+                transform.localPosition = GetResetPosition();
             else
-                this.transform.position = GetResetPosition();
+                transform.position = GetResetPosition();
 
             if (afterResetCallback != null)
                 afterResetCallback.Invoke();

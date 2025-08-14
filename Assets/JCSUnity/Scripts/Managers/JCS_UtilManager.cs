@@ -33,7 +33,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Sprite SpriteTransparent { get { return this.mSpriteTransparent; } }
+        public Sprite spriteTransparent { get { return this.mSpriteTransparent; } }
 
         public void SetMixDamageTextPool(JCS_MixDamageTextPool tp) { this.mMixDamageTextPool = tp; }
         public JCS_MixDamageTextPool GetMixDamageTextPool() { return this.mMixDamageTextPool; }

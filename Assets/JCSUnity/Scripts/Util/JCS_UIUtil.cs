@@ -53,6 +53,7 @@ namespace JCSUnity
         }
 
         #region EVENT
+
         /// <summary>
         /// Add Event to Unity's Event Trigger(Script)
         /// </summary>
@@ -80,9 +81,11 @@ namespace JCSUnity
             entry.callback.AddListener((data) => { func((PointerEventData)data, selection); });
             te.triggers.Add(entry);
         }
+
         #endregion
 
         #region LANGUAGE
+
         /// <summary>
         /// Set text by system language and language data.
         /// </summary>
@@ -92,11 +95,11 @@ namespace JCSUnity
         {
             SystemLanguage lang = JCS_AppManager.FirstInstance().systemLanguage;
 
-            foreach (JCS_LangData langData in data.LangData)
+            foreach (JCS_LangData langData in data.langData)
             {
-                if (lang == langData.Language)
+                if (lang == langData.systemLanguage)
                 {
-                    SetText(txt, langData.Data);
+                    SetText(txt, langData.data);
                     break;
                 }
             }
@@ -112,11 +115,11 @@ namespace JCSUnity
         {
             SystemLanguage lang = JCS_AppManager.FirstInstance().systemLanguage;
 
-            foreach (JCS_LangData langData in data.LangData)
+            foreach (JCS_LangData langData in data.langData)
             {
-                if (lang == langData.Language)
+                if (lang == langData.systemLanguage)
                 {
-                    SetText(txt, langData.Data);
+                    SetText(txt, langData.data);
                     break;
                 }
             }
@@ -483,6 +486,7 @@ namespace JCSUnity
         #endregion
 
         #region ANCHOR
+
         /// <summary>
         /// Check the anchor presets type.
         /// </summary>
@@ -694,9 +698,11 @@ namespace JCSUnity
         {
             return (min.y == 0.0f && max.y == 1.0f);
         }
+
         #endregion
 
         #region CANVAS
+
         /// <summary>
         /// Show the canvas so it's visible on the screen.
         /// </summary>
@@ -720,9 +726,11 @@ namespace JCSUnity
                     cvs.Hide();
             }
         }
+
         #endregion
 
         #region PANELS
+
         /// <summary>
         /// Active panels in array.
         /// </summary>
@@ -766,9 +774,11 @@ namespace JCSUnity
                     panel.Deactive();
             }
         }
+
         #endregion
 
         #region IMAGE
+
         /// <summary>
         /// Returns the size of the image.
         /// </summary>
@@ -789,15 +799,17 @@ namespace JCSUnity
 
             return new Vector2(width, height);
         }
+
         #endregion
 
         #region SPRITE
+
         /// <summary>
         /// Return transparent sprite.
         /// </summary>
         public static Sprite SpriteTransparent()
         {
-            return JCS_UtilManager.FirstInstance().SpriteTransparent;
+            return JCS_UtilManager.FirstInstance().spriteTransparent;
         }
 
         /// <summary>
@@ -825,6 +837,7 @@ namespace JCSUnity
 
             return new Vector2(width, height);
         }
+
         #endregion
 
         /// <summary>

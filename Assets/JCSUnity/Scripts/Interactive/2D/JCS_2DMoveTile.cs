@@ -49,44 +49,44 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            var sp = this.GetComponent<SpriteRenderer>();
+            var sp = GetComponent<SpriteRenderer>();
 
             Vector2 spriteRect = JCS_UIUtil.GetSpriteRendererRectWithNoScale(sp);
 
             mWidth = spriteRect.x;
             mHeight = spriteRect.y;
 
-            mOriginPosition = this.transform.position;
+            mOriginPosition = transform.position;
         }
 
         private void Update()
         {
             if (!mIsYAxis)
             {
-                this.mVelocity.x = mMoveSpeed;
+                mVelocity.x = mMoveSpeed;
 
-                float distance = this.transform.position.x - mOriginPosition.x;
+                float distance = transform.position.x - mOriginPosition.x;
                 distance = JCS_Mathf.AbsoluteValue(distance);
                 if (distance > mWidth)
-                    this.transform.position = mOriginPosition;
+                    transform.position = mOriginPosition;
             }
             else
             {
-                this.mVelocity.y = mMoveSpeed;
+                mVelocity.y = mMoveSpeed;
 
-                float distance = this.transform.position.y - mOriginPosition.y;
+                float distance = transform.position.y - mOriginPosition.y;
                 distance = JCS_Mathf.AbsoluteValue(distance);
                 if (distance > mHeight)
-                    this.transform.position = mOriginPosition;
+                    transform.position = mOriginPosition;
             }
 
-            this.transform.position += mVelocity * JCS_Time.ItTime(mTimeType);
+            transform.position += mVelocity * JCS_Time.ItTime(mTimeType);
         }
     }
 }

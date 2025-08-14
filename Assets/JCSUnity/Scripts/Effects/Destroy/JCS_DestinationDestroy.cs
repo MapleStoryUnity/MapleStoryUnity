@@ -57,18 +57,18 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Action { get { return this.mAction; } set { this.mAction = value; } }
-        public void SetTargetTransform(Transform pos) { this.mTargetTransform = pos; }
-        public float FadeDistance { get { return this.mFadeDistance; } set { this.mFadeDistance = value; } }
-        public float DestroyDistance { get { return this.mDestroyDistance; } set { this.mDestroyDistance = value; } }
+        public bool action { get { return mAction; } set { mAction = value; } }
+        public void SetTargetTransform(Transform pos) { mTargetTransform = pos; }
+        public float fadeDistance { get { return mFadeDistance; } set { mFadeDistance = value; } }
+        public float destroyDistance { get { return mDestroyDistance; } set { mDestroyDistance = value; } }
 
         /* Functions */
 
         private void Start()
         {
-            this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
+            mAlphaObject = GetComponent<JCS_AlphaObject>();
 
-            this.mAlphaObject.SetObjectType(this.GetObjectType());
+            mAlphaObject.SetObjectType(GetObjectType());
         }
 
         private void Update()
@@ -83,7 +83,7 @@ namespace JCSUnity
                 return;
             }
 
-            float currentDistance = Vector3.Distance(this.transform.position, mTargetTransform.position);
+            float currentDistance = Vector3.Distance(transform.position, mTargetTransform.position);
 
             if (mFadeEffect)
             {
@@ -91,15 +91,15 @@ namespace JCSUnity
                 {
                     float alphaDeltaDistance = mFadeDistance - mDestroyDistance;
                     if (mFadeType == FadeType.IN)
-                        mAlphaObject.TargetAlpha = (currentDistance - mDestroyDistance) / alphaDeltaDistance;
+                        mAlphaObject.targetAlpha = (currentDistance - mDestroyDistance) / alphaDeltaDistance;
                     else if (mFadeType == FadeType.OUT)
-                        mAlphaObject.TargetAlpha = 1 - (currentDistance - mDestroyDistance) / alphaDeltaDistance;
+                        mAlphaObject.targetAlpha = 1 - (currentDistance - mDestroyDistance) / alphaDeltaDistance;
                 }
             }
 
             if (currentDistance <= mDestroyDistance)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
     }

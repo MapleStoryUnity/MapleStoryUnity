@@ -162,13 +162,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool active { get { return this.mActive; } set { this.mActive = value; } }
+        public bool roundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
-        public AudioClip HourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
-        public AudioClip MinuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
-        public AudioClip SecondSound { get { return this.mSecondSound; } set { this.mSecondSound = value; } }
+        public AudioClip hourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
+        public AudioClip minuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
+        public AudioClip secondSound { get { return this.mSecondSound; } set { this.mSecondSound = value; } }
 
         /* Functions */
 
@@ -354,14 +354,14 @@ namespace JCSUnity
                 return;
             }
 
-            if (RoundUp && (hour % 10.0f != 0.0f))
+            if (mRoundUp && (hour % 10.0f != 0.0f))
                 ++hour;
 
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)hour);
-            mDigitHour1.LocalSprite = GetSingleDigitSprite(valDigit);
+            mDigitHour1.localSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)hour);
-            mDigitHour2.LocalSprite = GetSingleDigitSprite(valDigit);
+            mDigitHour2.localSprite = GetSingleDigitSprite(valDigit);
         }
 
         /// <summary>
@@ -384,14 +384,14 @@ namespace JCSUnity
                 return;
             }
 
-            if (RoundUp && (minute % 10.0f != 0.0f))
+            if (mRoundUp && (minute % 10.0f != 0.0f))
                 ++minute;
 
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)minute);
-            mDigitMinute1.LocalSprite = GetSingleDigitSprite(valDigit);
+            mDigitMinute1.localSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)minute);
-            mDigitMinute2.LocalSprite = GetSingleDigitSprite(valDigit);
+            mDigitMinute2.localSprite = GetSingleDigitSprite(valDigit);
         }
 
         /// <summary>
@@ -414,14 +414,14 @@ namespace JCSUnity
                 return;
             }
 
-            if (RoundUp && (second % 10.0f != 0.0f))
+            if (mRoundUp && (second % 10.0f != 0.0f))
                 ++second;
 
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)second);
-            mDigitSecond1.LocalSprite = GetSingleDigitSprite(valDigit);
+            mDigitSecond1.localSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)second);
-            mDigitSecond2.LocalSprite = GetSingleDigitSprite(valDigit);
+            mDigitSecond2.localSprite = GetSingleDigitSprite(valDigit);
         }
 
         /// <summary>

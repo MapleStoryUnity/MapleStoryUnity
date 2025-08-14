@@ -18,14 +18,12 @@ namespace JCSUnity
     {
         /* Variables */
 
-        /**
-         * Please fill up the local client.
-         */
+        // Please fill up the local client.
         public static JCS_Client LOCAL_CLIENT = null;
 
         [Tooltip("All the player in the scene now.")]
         [SerializeField]
-        private List<JCS_Client> mClients = new List<JCS_Client>();
+        private List<JCS_Client> mClients = null;
 
         /* Setter & Getter */
 

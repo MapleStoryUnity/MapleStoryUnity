@@ -160,9 +160,9 @@ should disable this effect for best purpose.")]
 
         /* Setter & Getter */
 
-        public bool IsEnable { get { return this.mIsEnable; } }
-        public int CurrentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
-        public int TargetNumber
+        public bool isEnable { get { return this.mIsEnable; } }
+        public int currentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
+        public int targetNumber
         {
             get { return this.mTargetNumber; }
             set
@@ -174,11 +174,11 @@ should disable this effect for best purpose.")]
                 this.mDeltaToCurrentNumber = true;
             }
         }
-        public bool ClearEmptyLeftZero { get { return this.mClearEmptyLeftZero; } set { this.mClearEmptyLeftZero = value; } }
-        public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
-        public bool VisibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
-        public JCS_TextAlign TextAlign { get { return this.mTextAlign; } set { this.mTextAlign = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool clearEmptyLeftZero { get { return this.mClearEmptyLeftZero; } set { this.mClearEmptyLeftZero = value; } }
+        public bool deltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
+        public bool visibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
+        public JCS_TextAlign textAlign { get { return this.mTextAlign; } set { this.mTextAlign = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
@@ -233,7 +233,7 @@ should disable this effect for best purpose.")]
 
             for (int index = 0; index < mDigitsRendererSlot.Length; ++index)
             {
-                mDigitsRendererSlot[index].LocalEnabled = act;
+                mDigitsRendererSlot[index].localEnabled = act;
             }
 
             this.mIsEnable = act;
@@ -297,9 +297,9 @@ should disable this effect for best purpose.")]
                     continue;
                 }
 
-                Vector3 newPos = mDigitsRendererSlot[digit].LocalPosition;
+                Vector3 newPos = mDigitsRendererSlot[digit].localPosition;
                 newPos.x += -(interval * digit);
-                mDigitsRendererSlot[digit].LocalPosition = newPos;
+                mDigitsRendererSlot[digit].localPosition = newPos;
             }
         }
 
@@ -331,7 +331,7 @@ should disable this effect for best purpose.")]
 
                 int valDigit = JCS_Mathf.GetSingleDigit(digit + 1, number);
 
-                mDigitsRendererSlot[digit].LocalSprite = GetSingleDigitSprite(valDigit);
+                mDigitsRendererSlot[digit].localSprite = GetSingleDigitSprite(valDigit);
 
                 if (mClearEmptyLeftZero)
                 {
@@ -342,7 +342,7 @@ should disable this effect for best purpose.")]
                         meetNonZero = true;
 
                     if (!meetNonZero)
-                        mDigitsRendererSlot[digit].LocalSprite = mNumberNull;
+                        mDigitsRendererSlot[digit].localSprite = mNumberNull;
                 }
             }
         }
@@ -488,9 +488,9 @@ should disable this effect for best purpose.")]
                     continue;
                 }
 
-                Vector3 newPos = mDigitsRendererSlot[digit].LocalPosition;
+                Vector3 newPos = mDigitsRendererSlot[digit].localPosition;
                 newPos.x += deltaX;
-                mDigitsRendererSlot[digit].LocalPosition = newPos;
+                mDigitsRendererSlot[digit].localPosition = newPos;
             }
         }
     }

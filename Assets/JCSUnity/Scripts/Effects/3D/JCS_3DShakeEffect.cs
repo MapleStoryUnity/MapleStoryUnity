@@ -112,22 +112,22 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
+        public bool effect { get { return mEffect; } set { mEffect = value; } }
 
-        public JCS_TransformType TransformType { get { return this.mTransformType; } set { this.mTransformType = value; } }
-        public bool Force { get { return this.mForce; } set { this.mForce = value; } }
-        public float Time { get { return this.mTime; } set { this.mTime = value; } }
-        public float Margin { get { return this.mMargin; } set { this.mMargin = value; } }
-        public float Steps { get { return this.mSteps; } set { this.mSteps = value; } }
+        public JCS_TransformType transformType { get { return mTransformType; } set { mTransformType = value; } }
+        public bool force { get { return mForce; } set { mForce = value; } }
+        public float time { get { return mTime; } set { mTime = value; } }
+        public float margin { get { return mMargin; } set { mMargin = value; } }
+        public float steps { get { return mSteps; } set { mSteps = value; } }
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public bool OnX { get { return this.mOnX; } set { this.mOnX = value; } }
-        public bool OnY { get { return this.mOnY; } set { this.mOnY = value; } }
-        public bool OnZ { get { return this.mOnZ; } set { this.mOnZ = value; } }
+        public bool onX { get { return mOnX; } set { mOnX = value; } }
+        public bool onY { get { return mOnY; } set { mOnY = value; } }
+        public bool onZ { get { return mOnZ; } set { mOnZ = value; } }
 
-        public JCS_SoundPlayer SoundPlayer { get { return this.mSoundPlayer; } set { this.mSoundPlayer = value; } }
-        public AudioClip Clip { get { return this.mClip; } set { this.mClip = value; } }
+        public JCS_SoundPlayer soundPlayer { get { return mSoundPlayer; } set { mSoundPlayer = value; } }
+        public AudioClip audioClip { get { return mClip; } set { mClip = value; } }
 
         /* Functions */
 
@@ -183,9 +183,9 @@ namespace JCSUnity
                 }
             }
 
-            this.mTime = time;
-            this.mTimer = 0.0f;
-            this.mMargin = margin;
+            mTime = time;
+            mTimer = 0.0f;
+            mMargin = margin;
 
             RevertShakeByTransformType(mDelta);
 
@@ -260,17 +260,17 @@ namespace JCSUnity
             if (JCS_Mathf.IsNaNOrInfinity(delta))
                 return;
 
-            switch (this.mTransformType)
+            switch (mTransformType)
             {
                 /* Transform */
                 case JCS_TransformType.POSITION:
-                    this.transform.position += delta;
+                    transform.position += delta;
                     break;
                 case JCS_TransformType.ROTATION:
-                    this.transform.eulerAngles += delta;
+                    transform.eulerAngles += delta;
                     break;
                 case JCS_TransformType.SCALE:
-                    this.transform.localScale += delta;
+                    transform.localScale += delta;
                     break;
                 /* RectTransform */
                 case JCS_TransformType.ANCHOR_MIN:
@@ -309,17 +309,17 @@ namespace JCSUnity
             if (JCS_Mathf.IsNaNOrInfinity(delta))
                 return;
 
-            switch (this.mTransformType)
+            switch (mTransformType)
             {
                 /* Transform */
                 case JCS_TransformType.POSITION:
-                    this.transform.position -= delta;
+                    transform.position -= delta;
                     break;
                 case JCS_TransformType.ROTATION:
-                    this.transform.eulerAngles -= delta;
+                    transform.eulerAngles -= delta;
                     break;
                 case JCS_TransformType.SCALE:
-                    this.transform.localScale -= delta;
+                    transform.localScale -= delta;
                     break;
                 /* RectTransform */
                 case JCS_TransformType.ANCHOR_MIN:

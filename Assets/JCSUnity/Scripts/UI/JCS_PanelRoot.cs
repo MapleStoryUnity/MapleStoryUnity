@@ -33,8 +33,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float PanelDeltaWidthRatio { get { return this.mPanelDeltaWidthRatio; } }
-        public float PanelDeltaHeightRatio { get { return this.mPanelDeltaHeightRatio; } }
+        public float panelDeltaWidthRatio { get { return mPanelDeltaWidthRatio; } }
+        public float panelDeltaHeightRatio { get { return mPanelDeltaHeightRatio; } }
 
         /* Functions */
 
@@ -139,7 +139,7 @@ namespace JCSUnity
                     continue;
 
                 var panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
-                panelChild.PanelRoot = this;
+                panelChild.panelRoot = this;
             }
         }
     }

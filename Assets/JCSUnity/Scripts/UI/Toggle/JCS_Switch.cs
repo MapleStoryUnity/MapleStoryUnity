@@ -150,7 +150,7 @@ namespace JCSUnity
                 Toggle();
 
             if (Input.GetKeyDown(mToggleInteractable))
-                Interactable = !Interactable;
+                interactable = !interactable;
         }
 #endif
 
@@ -174,7 +174,7 @@ namespace JCSUnity
         /// </returns>
         public bool Toggle()
         {
-            if (!Interactable)
+            if (!interactable)
                 return false;
 
             // Toggle it.
@@ -212,13 +212,13 @@ namespace JCSUnity
             {
                 if (mIsOn)
                 {
-                    mOnButtonColor = mSwitchSign.ColorTweener.LocalColor;
-                    mOnBackgroundColor = mColorTweener.LocalColor;
+                    mOnButtonColor = mSwitchSign.colorTweener.localColor;
+                    mOnBackgroundColor = mColorTweener.localColor;
                 }
                 else
                 {
-                    mOffButtonColor = mSwitchSign.ColorTweener.LocalColor;
-                    mOffBackgroundColor = mColorTweener.LocalColor;
+                    mOffButtonColor = mSwitchSign.colorTweener.localColor;
+                    mOffBackgroundColor = mColorTweener.localColor;
                 }
             }
             else
@@ -252,16 +252,16 @@ namespace JCSUnity
         {
             if (act)
             {
-                mSwitchSign.TransformTweener.DoTween(mOnPos);
-                mSwitchSign.ColorTweener.DoTween(mOnButtonColor);
+                mSwitchSign.transformTweener.DoTween(mOnPos);
+                mSwitchSign.colorTweener.DoTween(mOnButtonColor);
                 mColorTweener.DoTween(mOnBackgroundColor);
 
                 onSwitchOn?.Invoke();
             }
             else
             {
-                mSwitchSign.TransformTweener.DoTween(mOffPos);
-                mSwitchSign.ColorTweener.DoTween(mOffButtonColor);
+                mSwitchSign.transformTweener.DoTween(mOffPos);
+                mSwitchSign.colorTweener.DoTween(mOffButtonColor);
                 mColorTweener.DoTween(mOffBackgroundColor);
 
                 onSwitchOff?.Invoke();
@@ -282,7 +282,7 @@ namespace JCSUnity
                 targetButtonColor = mOffButtonColor;
             }
 
-            if (Interactable)
+            if (interactable)
             {
                 targetBackgroundColor.a = mInteractColor.a;
                 targetButtonColor.a = mInteractColor.a;
@@ -290,7 +290,7 @@ namespace JCSUnity
             else
             {
                 // Stop color tweener if between the process of tweener.
-                mSwitchSign.ColorTweener.ResetTweener();
+                mSwitchSign.colorTweener.ResetTweener();
                 mColorTweener.ResetTweener();
 
                 targetBackgroundColor.a = mNotInteractColor.a;
@@ -307,7 +307,7 @@ namespace JCSUnity
         /// <param name="col"></param>
         private void SetButtonColor(Color col)
         {
-            mSwitchSign.ColorTweener.LocalColor = col;
+            mSwitchSign.colorTweener.localColor = col;
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace JCSUnity
         /// <param name="col"></param>
         private void SetBackgroundColor(Color col)
         {
-            mColorTweener.LocalColor = col;
+            mColorTweener.localColor = col;
         }
     }
 }

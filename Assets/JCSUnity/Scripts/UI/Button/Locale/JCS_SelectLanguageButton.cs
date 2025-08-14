@@ -31,7 +31,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public SystemLanguage systemLanguage { get { return this.mSystemLanguage; } set { this.mSystemLanguage = value; } }
+        public SystemLanguage systemLanguage { get { return mSystemLanguage; } set { mSystemLanguage = value; } }
 
         /* Functions */
 

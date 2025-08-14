@@ -42,17 +42,17 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
-        public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
+        public bool activeWithHitList { get { return mActiveWithHitList; } set { mActiveWithHitList = value; } }
+        public bool activeWithDestroyTime { get { return mActiveWithDestroyTime; } set { mActiveWithDestroyTime = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mHitList = this.GetComponent<JCS_HitListEvent>();
-            this.mRandomSoundAction = this.GetComponent<JCS_SoundPool>();
+            mHitList = GetComponent<JCS_HitListEvent>();
+            mRandomSoundAction = GetComponent<JCS_SoundPool>();
 
-            mDestroyObjectWithTime = this.GetComponent<JCS_DestroyObjectWithTime>();
+            mDestroyObjectWithTime = GetComponent<JCS_DestroyObjectWithTime>();
         }
 
         private void OnDestroy()
@@ -68,7 +68,7 @@ namespace JCSUnity
 
             if (!mActiveWithHitList)
             {
-                if (mHitList.IsHit)
+                if (mHitList.isHit)
                     return;
             }
 
@@ -77,14 +77,15 @@ namespace JCSUnity
                 
                 if (mDestroyObjectWithTime != null)
                 {
-                    if (mDestroyObjectWithTime.TimesUp)
+                    if (mDestroyObjectWithTime.timesUp)
                         return;
                 }
             }
 
             // Add Destroy Sound
             var gm = new GameObject();
-            JCS_DestroySoundEndEvent dse = gm.AddComponent<JCS_DestroySoundEndEvent>();
+
+            var dse = gm.AddComponent<JCS_DestroySoundEndEvent>();
 
 #if UNITY_EDITOR
             gm.name = "JCS_DestroySoundEffect";

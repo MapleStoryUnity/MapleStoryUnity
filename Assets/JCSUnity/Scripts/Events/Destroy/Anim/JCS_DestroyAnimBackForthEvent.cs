@@ -56,13 +56,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mAnimator = this.GetComponent<Animator>();
+            mAnimator = GetComponent<Animator>();
         }
 
         private void Start()

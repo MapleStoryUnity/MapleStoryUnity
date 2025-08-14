@@ -29,13 +29,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public AudioClip[] AudioClips { get { return this.mAudioClips; } set { this.mAudioClips = value; } }
+        public AudioClip[] AudioClips { get { return mAudioClips; } set { mAudioClips = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            mSoundPlayer = GetComponent<JCS_SoundPlayer>();
         }
 
         /// <summary>

@@ -42,9 +42,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<JCS_Packet> Packets { get { return this.mWaitingPackets; } set { this.mWaitingPackets = value; } }
-        public List<short> PacketIds { get { return this.mWaitingPacketIds; } set { this.mWaitingPacketIds = value; } }
-        public HashSet<short> RespondPacketIds { get { return this.mRespondPacketIds; } set { this.mRespondPacketIds = value; } }
+        public List<JCS_Packet> packets { get { return mWaitingPackets; } set { mWaitingPackets = value; } }
+        public List<short> packetIds { get { return mWaitingPacketIds; } set { mWaitingPacketIds = value; } }
+        public HashSet<short> respondPacketIds { get { return mRespondPacketIds; } set { mRespondPacketIds = value; } }
 
         /* Functions */
 
@@ -150,9 +150,9 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_PacketLostPreventer _old, JCS_PacketLostPreventer _new)
         {
-            _new.Packets = _old.Packets;
-            _new.PacketIds = _old.PacketIds;
-            _new.RespondPacketIds = _old.RespondPacketIds;
+            _new.mWaitingPackets = _old.mWaitingPackets;
+            _new.mWaitingPacketIds = _old.mWaitingPacketIds;
+            _new.mRespondPacketIds = _old.mRespondPacketIds;
 
         }
 

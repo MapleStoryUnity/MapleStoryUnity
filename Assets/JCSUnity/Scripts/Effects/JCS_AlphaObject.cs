@@ -45,9 +45,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float TargetAlpha { get { return this.mTargetAlpha; } set { this.mTargetAlpha = value; } }
-        public float FadeFriction { get { return this.mFadeFriction; } set { this.mFadeFriction = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float targetAlpha { get { return mTargetAlpha; } set { mTargetAlpha = value; } }
+        public float fadeFriction { get { return mFadeFriction; } set { mFadeFriction = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -56,9 +56,9 @@ namespace JCSUnity
             if (mAlpha == mTargetAlpha)
                 return;
 
-            this.mAlpha += (mTargetAlpha - mAlpha) / mFadeFriction * JCS_Time.ItTime(mTimeType);
+            mAlpha += (mTargetAlpha - mAlpha) / mFadeFriction * JCS_Time.ItTime(mTimeType);
 
-            this.LocalAlpha = this.mAlpha;
+            localAlpha = mAlpha;
         }
 
         /// <summary>

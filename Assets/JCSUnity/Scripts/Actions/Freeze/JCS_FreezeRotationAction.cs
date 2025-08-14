@@ -38,23 +38,23 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public Vector3 RotationToFreeze { get { return this.mRotationToFreeze; } set { this.mRotationToFreeze = value; } }
-        public bool IsLocalRotation
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public Vector3 rotationToFreeze { get { return mRotationToFreeze; } set { mRotationToFreeze = value; } }
+        public bool isLocalRotation
         {
-            get { return this.mIsLocalRotation; }
+            get { return mIsLocalRotation; }
             set
             {
-                this.mIsLocalRotation = value;
+                mIsLocalRotation = value;
 
                 // get the new freeze position.
                 if (mIsLocalRotation)
-                    this.mRotationToFreeze = this.LocalEulerAngles;
+                    mRotationToFreeze = localEulerAngles;
                 else
-                    this.mRotationToFreeze = this.EulerAngles;
+                    mRotationToFreeze = eulerAngles;
             }
         }
-        public JCS_Bool3 FreezeRotation { get { return this.mFreezeRotation; } set { this.mFreezeRotation = value; } }
+        public JCS_Bool3 freezeRotation { get { return mFreezeRotation; } set { mFreezeRotation = value; } }
 
         /* Functions */
 
@@ -71,9 +71,9 @@ namespace JCSUnity
         /// </summary>
         private void DoFreezeRotation()
         {
-            Vector3 newRot = this.EulerAngles;
-            if (IsLocalRotation)
-                newRot = this.LocalEulerAngles;
+            Vector3 newRot = eulerAngles;
+            if (mIsLocalRotation)
+                newRot = localEulerAngles;
 
             /* Freeze euler angles */
             if (mFreezeRotation.check1)
@@ -83,10 +83,10 @@ namespace JCSUnity
             if (mFreezeRotation.check3)
                 newRot.z = mRotationToFreeze.z;
 
-            if (IsLocalRotation)
-                this.LocalEulerAngles = newRot;
+            if (mIsLocalRotation)
+                localEulerAngles = newRot;
             else
-                this.EulerAngles = newRot;
+                eulerAngles = newRot;
         }
     }
 }

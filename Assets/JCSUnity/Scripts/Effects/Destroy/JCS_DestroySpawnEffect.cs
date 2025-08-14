@@ -86,29 +86,29 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool ActiveWhatever { get { return this.mActiveWhatever; } set { this.mActiveWhatever = value; } }
-        public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
-        public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
+        public bool activeWhatever { get { return mActiveWhatever; } set { mActiveWhatever = value; } }
+        public bool activeWithHitList { get { return mActiveWithHitList; } set { mActiveWithHitList = value; } }
+        public bool activeWithDestroyTime { get { return mActiveWithDestroyTime; } set { mActiveWithDestroyTime = value; } }
 
-        public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
-        public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
-        public bool SameScale { get { return this.mSameScale; } set { this.mSameScale = value; } }
+        public bool samePosition { get { return mSamePosition; } set { mSamePosition = value; } }
+        public bool sameRotation { get { return mSameRotation; } set { mSameRotation = value; } }
+        public bool sameScale { get { return mSameScale; } set { mSameScale = value; } }
 
-        public bool RandPos { get { return this.mRandPos; } set { this.mRandPos = value; } }
-        public bool RandRot { get { return this.mRandRot; } set { this.mRandRot = value; } }
-        public bool RandScale { get { return this.mRandScale; } set { this.mRandScale = value; } }
-        public float RandPosRange { get { return this.mRandPosRange; } set { this.mRandPosRange = value; } }
-        public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
-        public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
+        public bool randPos { get { return mRandPos; } set { mRandPos = value; } }
+        public bool randRot { get { return mRandRot; } set { mRandRot = value; } }
+        public bool randScale { get { return mRandScale; } set { mRandScale = value; } }
+        public float randPosRange { get { return mRandPosRange; } set { mRandPosRange = value; } }
+        public float randRotRange { get { return mRandRotRange; } set { mRandRotRange = value; } }
+        public float randScaleRange { get { return mRandScaleRange; } set { mRandScaleRange = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mHitList = this.GetComponent<JCS_HitListEvent>();
-            this.mTransformPool = this.GetComponent<JCS_TransformPool>();
+            mHitList = GetComponent<JCS_HitListEvent>();
+            mTransformPool = GetComponent<JCS_TransformPool>();
 
-            this.mDestroyObjectWithTime = this.GetComponent<JCS_DestroyObjectWithTime>();
+            mDestroyObjectWithTime = GetComponent<JCS_DestroyObjectWithTime>();
         }
 
         private void OnDestroy()
@@ -135,7 +135,7 @@ namespace JCSUnity
                 // if checking for hit list
                 if (mActiveWithHitList)
                 {
-                    if (mHitList.IsHit)
+                    if (mHitList.isHit)
                         onTrigger = true;
                 }
 
@@ -144,7 +144,7 @@ namespace JCSUnity
                 {
                     if (mDestroyObjectWithTime != null)
                     {
-                        if (mDestroyObjectWithTime.TimesUp)
+                        if (mDestroyObjectWithTime.timesUp)
                             onTrigger = true;
                     }
                     else
@@ -173,11 +173,11 @@ namespace JCSUnity
                 Transform newTrans = (Transform)JCS_Util.Instantiate(mTransformPool.GetRandomObject());
 
                 if (mSamePosition)
-                    newTrans.position = this.transform.position;
+                    newTrans.position = transform.position;
                 if (mSameRotation)
-                    newTrans.rotation = this.transform.rotation;
+                    newTrans.rotation = transform.rotation;
                 if (mSameScale)
-                    newTrans.localScale = this.transform.localScale;
+                    newTrans.localScale = transform.localScale;
 
                 // Random Effect
                 if (mRandPos)

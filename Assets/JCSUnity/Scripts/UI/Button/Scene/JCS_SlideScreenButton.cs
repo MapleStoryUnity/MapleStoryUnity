@@ -68,11 +68,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void SetDirection(JCS_2D8Direction direction) { this.mDirection = direction; }
-        public JCS_2D8Direction Direction { get { return this.mDirection; } }
-        public int Count { get { return this.mCount; } }
-        public float DelayTime { get { return this.mDelayTime; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public void SetDirection(JCS_2D8Direction direction) { mDirection = direction; }
+        public JCS_2D8Direction direction { get { return mDirection; } }
+        public int count { get { return mCount; } }
+        public float delayTime { get { return mDelayTime; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -81,10 +81,10 @@ namespace JCSUnity
             base.Awake();
 
             if (mSoundPlayer == null)
-                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+                mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
             // try to get it from the scene by type.
-            this.mSlideCameras = JCS_Util.FindObjectsByType(typeof(JCS_2DSlideScreenCamera)) as JCS_2DSlideScreenCamera[];
+            mSlideCameras = JCS_Util.FindObjectsByType(typeof(JCS_2DSlideScreenCamera)) as JCS_2DSlideScreenCamera[];
         }
 
 #if JCS_USE_GAMEPAD

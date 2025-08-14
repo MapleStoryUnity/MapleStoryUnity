@@ -167,20 +167,20 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform FollowTarget { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
-        public override void SetFollowTarget(Transform targ) { this.mTargetTransform = targ; }
-        public override Transform GetFollowTarget() { return this.mTargetTransform; }
+        public Transform followTarget { get { return mTargetTransform; } set { mTargetTransform = value; } }
+        public override void SetFollowTarget(Transform targ) { mTargetTransform = targ; }
+        public override Transform GetFollowTarget() { return mTargetTransform; }
 
-        public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
+        public bool zoomEffect { get { return mZoomEffect; } set { mZoomEffect = value; } }
 
-        public float ScrollRange_Mouse { get { return this.mScrollRange_Mouse; } set { this.mScrollRange_Mouse = value; } }
-        public float ScrollRange_Touch { get { return this.mScrollRange_Touch; } set { this.mScrollRange_Touch = value; } }
+        public float scrollRange_Mouse { get { return mScrollRange_Mouse; } set { mScrollRange_Mouse = value; } }
+        public float scrollRange_Touch { get { return mScrollRange_Touch; } set { mScrollRange_Touch = value; } }
 
-        public float RotateAngle { get { return this.mRotateAngle; } set { this.mRotateAngle = value; } }
-        public float ResetTargetAngle { get { return this.mResetTargetAngle; } set { this.mResetTargetAngle = value; } }
+        public float rotateAngle { get { return mRotateAngle; } set { mRotateAngle = value; } }
+        public float resetTargetAngle { get { return mResetTargetAngle; } set { mResetTargetAngle = value; } }
 
-        public float MinDistance { get { return this.mMinDistance; } set { this.mMinDistance = value; } }
-        public float MaxDistance { get { return this.mMaxDistance; } set { this.mMaxDistance = value; } }
+        public float minDistance { get { return mMinDistance; } set { mMinDistance = value; } }
+        public float maxDistance { get { return mMaxDistance; } set { mMaxDistance = value; } }
 
         /* Functions */
 
@@ -192,10 +192,10 @@ namespace JCSUnity
                 mLastFramePos = mTargetTransform.position;
 
             // record down the height
-            mTargetHeight = this.transform.position.y;
+            mTargetHeight = transform.position.y;
 
             // record down the transform position.
-            mTrackPosition = this.transform.position;
+            mTrackPosition = transform.position;
         }
 
         protected override void LateUpdate()
@@ -278,7 +278,7 @@ namespace JCSUnity
 
             if (JCS_Input.GetKeyDown(KeyCode.N))
             {
-                SmoothTrack = !SmoothTrack;
+                smoothTrack = !smoothTrack;
             }
         }
 #endif

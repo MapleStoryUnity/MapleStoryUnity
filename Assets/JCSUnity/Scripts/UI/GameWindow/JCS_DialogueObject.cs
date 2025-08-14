@@ -53,15 +53,15 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int DialogueIndex { get { return this.mDialogueIndex; } }
-        public KeyCode OpenKey { get { return this.mOpenKey; } set { this.mOpenKey = value; } }
-        public JCS_DialogueType DialogueType { get { return this.mDialogueType; } }
-        public JCS_PanelType PanelType { get { return this.mPanelType; } }
+        public int dialogueIndex { get { return this.mDialogueIndex; } }
+        public KeyCode openKey { get { return this.mOpenKey; } set { this.mOpenKey = value; } }
+        public JCS_DialogueType dialogueType { get { return this.mDialogueType; } }
+        public JCS_PanelType panelType { get { return this.mPanelType; } }
         public bool IsWindowOpened() { return this.mIsVisible; }
 
-        public JCS_SoundPlayer SoundPlayer { get { return this.mSoundPlayer; } set { this.mSoundPlayer = value; } }
-        public AudioClip OpenWindowClip { get { return this.mOpenWindowClip; } set { this.mOpenWindowClip = value; } }
-        public AudioClip CloseWindowClip { get { return this.mCloseWindowClip; } set { this.mCloseWindowClip = value; } }
+        public JCS_SoundPlayer soundPlayer { get { return this.mSoundPlayer; } set { this.mSoundPlayer = value; } }
+        public AudioClip openWindowClip { get { return this.mOpenWindowClip; } set { this.mOpenWindowClip = value; } }
+        public AudioClip closeWindowClip { get { return this.mCloseWindowClip; } set { this.mCloseWindowClip = value; } }
 
         /* Functions */
 
@@ -178,7 +178,7 @@ namespace JCSUnity
             base.Show(mute);
 
             // set focus dialogue
-            if (DialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
+            if (dialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
                 JCS_UIManager.FirstInstance().SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
 
             // let UIManager know the window is opened

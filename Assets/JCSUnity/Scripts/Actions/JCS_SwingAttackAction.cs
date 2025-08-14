@@ -81,7 +81,7 @@ namespace JCSUnity
 
         [Header("- Damage Text")]
 
-        [Tooltip("If you want the action apply damage text add apply this.")]
+        [Tooltip("If you want the action apply damage text add apply ")]
         [SerializeField]
         private JCS_ApplyDamageTextToLiveObjectAction mApplyDamageTextAction = null;
 
@@ -122,15 +122,15 @@ namespace JCSUnity
 
         public void SetSpeedLayer(JCS_SpeedLayer sl)
         {
-            this.mSpeedLayer = sl;
+            mSpeedLayer = sl;
 
             // update speed of this action.
             ProcessSpeedLayer();
         }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public bool AsSamePosition { get { return this.mAsSamePosition; } set { this.mAsSamePosition = value; } }
-        public bool AsSameRotation { get { return this.mAsSameRotation; } set { this.mAsSameRotation = value; } }
-        public bool AsSameScale { get { return this.mAsSameScale; } set { this.mAsSameScale = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public bool asSamePosition { get { return mAsSamePosition; } set { mAsSamePosition = value; } }
+        public bool asSameRotation { get { return mAsSameRotation; } set { mAsSameRotation = value; } }
+        public bool asSameScale { get { return mAsSameScale; } set { mAsSameScale = value; } }
 
         /* Functions */
 
@@ -138,7 +138,7 @@ namespace JCSUnity
         {
             // try to get it own transform's componenet.
             if (mAbilityFormat == null)
-                mAbilityFormat = this.GetComponent<JCS_AbilityFormat>();
+                mAbilityFormat = GetComponent<JCS_AbilityFormat>();
 
             if (mAttackRange != null)
             {
@@ -158,11 +158,11 @@ namespace JCSUnity
 
             // try to get the action from the attack range.
             if (mApplyDamageTextAction == null)
-                this.mApplyDamageTextAction = this.GetComponentInChildren<JCS_ApplyDamageTextToLiveObjectAction>();
+                mApplyDamageTextAction = GetComponentInChildren<JCS_ApplyDamageTextToLiveObjectAction>();
 
 
             if (mSoundPlayer == null)
-                this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+                mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
             // record down the time
             mRecordTimeToAttackTime = mTimeToActTime;
@@ -285,37 +285,37 @@ namespace JCSUnity
             }
 
 
-            GameObject gm = new GameObject();
+            var gm = new GameObject();
 #if UNITY_EDITOR
             gm.name = "JCS_SwingAttackAction";
 #endif
             // set the effect transform.
             if (mAsSamePosition)
-                gm.transform.position = this.mAtkAnimSpawnTrans.position;
+                gm.transform.position = mAtkAnimSpawnTrans.position;
             if (mAsSameRotation)
-                gm.transform.rotation = this.mAtkAnimSpawnTrans.rotation;
+                gm.transform.rotation = mAtkAnimSpawnTrans.rotation;
             if (mAsSameScale)
-                gm.transform.localScale = this.mAtkAnimSpawnTrans.localScale;
+                gm.transform.localScale = mAtkAnimSpawnTrans.localScale;
 
             gm.transform.position += mAnimOffsetPosition;
             gm.transform.localScale += mAnimOffsetScale;
 
-            if (this.transform.localScale.x < 0.0f)
+            if (transform.localScale.x < 0.0f)
             {
                 Vector3 newScale = gm.transform.localScale;
                 newScale.x = JCS_Mathf.ToNegative(newScale.x);
                 gm.transform.localScale = newScale;
             }
 
-            SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
+            var sr = gm.AddComponent<SpriteRenderer>();
             sr.sortingOrder = mOrderLayer;
-            Animator animator = gm.AddComponent<Animator>();
+            var animator = gm.AddComponent<Animator>();
             animator.runtimeAnimatorController = mAtkAnim;
             animator.speed = animator.speed * JCS_Mathf.Reciprocal(mAnimSpeed);
 
 
-            JCS_DestroyAnimEndEvent dae = gm.AddComponent<JCS_DestroyAnimEndEvent>();
-            dae.LoopTimes = mLoopTimes;
+            var dae = gm.AddComponent<JCS_DestroyAnimEndEvent>();
+            dae.loopTimes = mLoopTimes;
         }
 
         /// <summary>

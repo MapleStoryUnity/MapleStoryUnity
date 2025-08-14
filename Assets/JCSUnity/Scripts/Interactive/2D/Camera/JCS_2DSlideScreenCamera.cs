@@ -123,20 +123,20 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
-        public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
-        public bool InteractableSwipe { get { return this.mInteractableSwipe; } set { this.mInteractableSwipe = value; } }
-        public Vector2 SwipeArea { get { return this.mSwipeArea; } set { this.mSwipeArea = value; } }
-        public float SwipeSpeedX { get { return this.mSwipeSpeedX; } set { this.mSwipeSpeedX = value; } }
-        public float SwipeSpeedY { get { return this.mSwipeSpeedY; } set { this.mSwipeSpeedY = value; } }
-        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
-        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
-        public AudioClip SwitchSceneSound { get { return this.mSwitchSceneSound; } set { this.mSwitchSceneSound = value; } }
-        public Vector2 CurrentPage { get { return this.mCurrentPage; } }
-        public int MinPageX { get { return this.mMinPageX; } set { this.mMinPageX = value; } }
-        public int MaxPageX { get { return this.mMaxPageX; } set { this.mMaxPageX = value; } }
-        public int MinPageY { get { return this.mMinPageY; } set { this.mMinPageY = value; } }
-        public int MaxPageY { get { return this.mMaxPageY; } set { this.mMaxPageY = value; } }
+        public JCS_SlideScreenPanelHolder panelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
+        public JCS_UnityGUIType unityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
+        public bool interactableSwipe { get { return this.mInteractableSwipe; } set { this.mInteractableSwipe = value; } }
+        public Vector2 swipeArea { get { return this.mSwipeArea; } set { this.mSwipeArea = value; } }
+        public float swipeSpeedX { get { return this.mSwipeSpeedX; } set { this.mSwipeSpeedX = value; } }
+        public float swipeSpeedY { get { return this.mSwipeSpeedY; } set { this.mSwipeSpeedY = value; } }
+        public bool freezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
+        public bool freezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
+        public AudioClip switchSceneSound { get { return this.mSwitchSceneSound; } set { this.mSwitchSceneSound = value; } }
+        public Vector2 currentPage { get { return this.mCurrentPage; } }
+        public int minPageX { get { return this.mMinPageX; } set { this.mMinPageX = value; } }
+        public int maxPageX { get { return this.mMaxPageX; } set { this.mMaxPageX = value; } }
+        public int minPageY { get { return this.mMinPageY; } set { this.mMinPageY = value; } }
+        public int maxPageY { get { return this.mMaxPageY; } set { this.mMaxPageY = value; } }
 
         /* Functions */
 
@@ -361,9 +361,9 @@ namespace JCSUnity
 
             bool enableSlidePanel = true;
 
-            if (mInteractableSwipe && ti.Touched)
+            if (mInteractableSwipe && ti.touched)
             {
-                Vector3 deltaPos = ti.DeltaPos;
+                Vector3 deltaPos = ti.deltaPos;
 
                 bool cancelX = false;
                 bool cancelY = false;
@@ -400,19 +400,19 @@ namespace JCSUnity
 
             if (mInteractableSwipe && JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
             {
-                Vector3 posDiff = ti.DragDistance;
+                Vector3 posDiff = ti.dragDistance;
                 JCS_ScreenSizef vs = JCS_ScreenSettings.FirstInstance().VisibleScreenSize();
                 var target_vs = new JCS_ScreenSizef(vs.width * mSwipeArea.x, vs.height * mSwipeArea.y);
 
-                var speedX = ti.DragDistance.x / ti.TouchTime;
-                var speedY = ti.DragDistance.y / ti.TouchTime;
+                var speedX = ti.dragDistance.x / ti.touchTime;
+                var speedY = ti.dragDistance.y / ti.touchTime;
 
                 bool reachedX = posDiff.x > target_vs.width;  // distance
                 bool speedExceedX = speedX > mSwipeSpeedX;    // speed
 
                 if (!mFreezeX && (reachedX || speedExceedX))
                 {
-                    if (JCS_Mathf.IsPositive(ti.DragDisplacement.x))
+                    if (JCS_Mathf.IsPositive(ti.dragDisplacement.x))
                         SwitchScene(JCS_2D4Direction.LEFT);
                     else
                         SwitchScene(JCS_2D4Direction.RIGHT);
@@ -426,7 +426,7 @@ namespace JCSUnity
 
                 if (!mFreezeY && (reachedY || speedExceedY))
                 {
-                    if (JCS_Mathf.IsPositive(ti.DragDisplacement.y))
+                    if (JCS_Mathf.IsPositive(ti.dragDisplacement.y))
                         SwitchScene(JCS_2D4Direction.BOTTOM);
                     else
                         SwitchScene(JCS_2D4Direction.TOP);
@@ -486,8 +486,8 @@ namespace JCSUnity
                     break;
                 case JCS_UnityGUIType.nGUI_3D:
                     {
-                        screenWidth = cam.CamRectSize.x;
-                        screenHeight = cam.CamRectSize.y;
+                        screenWidth = cam.camRectSize.x;
+                        screenHeight = cam.camRectSize.y;
                     }
                     break;
             }

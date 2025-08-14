@@ -36,10 +36,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool DONE_INITIALIZE { get { return this.mDoneInitialize; } }
-        public bool GAME_PAUSE
+        public bool doneInitialized { get { return mDoneInitialize; } }
+        public bool gamePaused
         {
-            get { return JCS_PauseManager.FirstInstance().Paused; }
+            get { return JCS_PauseManager.FirstInstance().paused; }
             set
             {
                 var pm = JCS_PauseManager.FirstInstance();
@@ -47,7 +47,7 @@ namespace JCSUnity
                 // check if need the game pause the same as the value previously
                 // set. In order to save some perforce by enable/disable all the
                 // JCS_PauseAction in the game.
-                if (pm.Paused != value)
+                if (pm.paused != value)
                 {
                     if (value)
                         pm.Pause();
@@ -56,7 +56,7 @@ namespace JCSUnity
                 }
             }
         }
-        public JCS_Player Player { get { return this.mPlayer; } set { this.mPlayer = value; } }
+        public JCS_Player Player { get { return mPlayer; } set { mPlayer = value; } }
 
         /* Functions */
 

@@ -52,15 +52,15 @@ to get the information from them.")]
 
         /* Setter & Getter */
 
-        public JCS_2DAnimator LiveObjectAnimator { get { return this.m2DAnimator; } }
-        public SpriteRenderer spriteRenderer { get { return this.mSpriteRenderer; } }
-        public bool BeenTarget { get { return this.mBeenTarget; } set { this.mBeenTarget = value; } }
-        public bool DamageTextEffect { get { return this.mDamageTextEffect; } set { this.mDamageTextEffect = value; } }
-        public bool IsPlayer { get { return this.mIsPlayer; } set { this.mIsPlayer = value; } }
+        public JCS_2DAnimator liveObjectAnimator { get { return m2DAnimator; } }
+        public SpriteRenderer spriteRenderer { get { return mSpriteRenderer; } }
+        public bool beenTarget { get { return mBeenTarget; } set { mBeenTarget = value; } }
+        public bool damageTextEffect { get { return mDamageTextEffect; } set { mDamageTextEffect = value; } }
+        public bool isPlayer { get { return mIsPlayer; } set { mIsPlayer = value; } }
 
         // Optional Variables
-        public JCS_VelocityInfo VelocityInfo { get { return this.mVelocityInfo; } }
-        public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } }
+        public JCS_VelocityInfo velocityInfo { get { return mVelocityInfo; } }
+        public JCS_AbilityFormat abilityFormat { get { return mAbilityFormat; } }
 
         /* Functions */
 
@@ -89,12 +89,12 @@ to get the information from them.")]
                 mIsPlayer = false;
 
             // set hp the same
-            mPreCalHP = HP;
+            mPreCalHP = hp;
         }
 
         public bool IsDead()
         {
-            return (HP <= 0);
+            return (hp <= 0);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ to get the information from them.")]
         /// <param name="val"> value add on mana, could + or -. </param>
         public void DeltaMP(int val)
         {
-            MP += val;
+            mp += val;
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ to get the information from them.")]
         {
             // if something still targeting this, 
             // return until have not been target.
-            if (BeenTarget)
+            if (beenTarget)
                 return;
 
             // force play animation.
@@ -126,16 +126,16 @@ to get the information from them.")]
             if (mSpriteRenderer != null)
                 mSpriteRenderer.color = Color.white;
 
-            HP = 0;
-            MP = 0;
+            hp = 0;
+            mp = 0;
             mCanDamage = false;
 
             // disable all the collision.
-            BoxCollider boxCollider = this.GetComponent<BoxCollider>();
+            BoxCollider boxCollider = GetComponent<BoxCollider>();
             if (boxCollider != null)
                 boxCollider.enabled = false;
 
-            CharacterController cc = this.GetComponent<CharacterController>();
+            CharacterController cc = GetComponent<CharacterController>();
             if (cc != null)
                 cc.enabled = false;
 
@@ -151,7 +151,7 @@ to get the information from them.")]
         /// </summary>
         public void CheckDie()
         {
-            if (HP <= 0)
+            if (hp <= 0)
             {
                 Die();
             }
@@ -256,7 +256,7 @@ to get the information from them.")]
                     hit, 
                     criticalChance,
                     defenseValue,        // defense value
-                    IsPlayer, 
+                    isPlayer, 
                     hitSound);
             }
             // Do damage without damage text.
@@ -312,7 +312,7 @@ to get the information from them.")]
                     damages, 
                     pos, 
                     criticalChance, 
-                    IsPlayer,
+                    isPlayer,
                     hitSound);
             }
             // Do damage without damage text.
@@ -354,9 +354,9 @@ to get the information from them.")]
                 return;
 
             if (attacker.position.x > this.transform.position.x)
-                mVelocityInfo.MoveSpeedX = -force;
+                mVelocityInfo.moveSpeedX = -force;
             else
-                mVelocityInfo.MoveSpeedX = force;
+                mVelocityInfo.moveSpeedX = force;
                 
         }
 
@@ -383,7 +383,7 @@ to get the information from them.")]
         /// <param name="damage"> damage value </param>
         private void ApplyDamage(int damage)
         {
-            HP -= damage;
+            hp -= damage;
         }
 
         /// <summary>
@@ -396,10 +396,10 @@ to get the information from them.")]
 
             foreach (int damage in damages)
             {
-                if (HP <= 0)
+                if (hp <= 0)
                 {
-                    if (m2DAnimator.AnimDisplayHolder != null)
-                        m2DAnimator.AnimDisplayHolder.StopHolding();
+                    if (m2DAnimator.animDisplayHolder != null)
+                        m2DAnimator.animDisplayHolder.StopHolding();
                     break;
                 }
 
@@ -409,8 +409,8 @@ to get the information from them.")]
                 {
                     KnockBack(attacker);
 
-                    if (m2DAnimator.AnimDisplayHolder != null)
-                        m2DAnimator.AnimDisplayHolder.HoldAnimation((int)JCS_LiveObjectState.HIT);
+                    if (m2DAnimator.animDisplayHolder != null)
+                        m2DAnimator.animDisplayHolder.HoldAnimation((int)JCS_LiveObjectState.HIT);
                 }
 
                 ApplyDamage(damage);
@@ -430,7 +430,7 @@ to get the information from them.")]
             if (mAttackRecorder == null)
                 return;
 
-            mAttackRecorder.LastAttacker = lastAttacker;
+            mAttackRecorder.lastAttacker = lastAttacker;
         }
     }
 }

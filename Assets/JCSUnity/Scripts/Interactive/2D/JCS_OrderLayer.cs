@@ -35,8 +35,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int OrderLayer { get { return this.mOrderLayer; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public int orderLayer { get { return mOrderLayer; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -51,10 +51,10 @@ namespace JCSUnity
 
             float dt = JCS_Time.ItTime(mTimeType);
 
-            Vector3 newPos = this.transform.position;
-            newPos.x += cam.Velocity.x / mLayerFriction * dt;
-            newPos.y += cam.Velocity.y / mLayerFriction * dt;
-            this.transform.position = newPos;
+            Vector3 newPos = transform.position;
+            newPos.x += cam.velocity.x / mLayerFriction * dt;
+            newPos.y += cam.velocity.y / mLayerFriction * dt;
+            transform.position = newPos;
         }
     }
 }

@@ -52,22 +52,22 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool ReverseDirection { get { return this.mReverseDirection; } set { this.mReverseDirection = value; } }
+        public bool reverseDirection { get { return mReverseDirection; } set { mReverseDirection = value; } }
         public void SetTarget(JCS_UnityObject trans)
         {
             // update target position.
-            this.mTarget = trans;
+            mTarget = trans;
         }
-        public float Range { get { return this.mRange; } set { this.mRange = value; } }
-        public float AdjustRange { get { return this.mAdjustRange; } set { this.mAdjustRange = value; } }
-        public bool IncludeDepth { get { return this.mIncludeDepth; } set { this.mIncludeDepth = value; } }
+        public float range { get { return mRange; } set { mRange = value; } }
+        public float adjustRange { get { return mAdjustRange; } set { mAdjustRange = value; } }
+        public bool includeDepth { get { return mIncludeDepth; } set { mIncludeDepth = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mTweener = this.GetComponent<JCS_TransformTweener>();
-            this.mDisableWidthCertainRangeEvent = this.GetComponent<JCS_DisableWithCertainRangeEvent>();
+            mTweener = GetComponent<JCS_TransformTweener>();
+            mDisableWidthCertainRangeEvent = GetComponent<JCS_DisableWithCertainRangeEvent>();
 
             // set destination callback.
             mTweener.onDone = DestinationCallback;
@@ -91,17 +91,17 @@ namespace JCSUnity
             if (mReverseDirection)
             {
                 // set the target transform.
-                this.mDisableWidthCertainRangeEvent.SetTarget(null);
-                this.mDisableWidthCertainRangeEvent.TargetPosition = newPos;
+                mDisableWidthCertainRangeEvent.SetTarget(null);
+                mDisableWidthCertainRangeEvent.targetPosition = newPos;
 
                 // starting position.
-                SetPosition(this.mTarget.transform.position);
+                SetPosition(mTarget.transform.position);
             }
             else
             {
                 // set the target transform.
-                this.mTweener.SetTarget(this.mTarget);
-                this.mDisableWidthCertainRangeEvent.SetTarget(this.mTarget);
+                mTweener.SetTarget(mTarget);
+                mDisableWidthCertainRangeEvent.SetTarget(mTarget);
 
                 // starting position.
                 SetPosition(newPos);
@@ -110,10 +110,10 @@ namespace JCSUnity
             mTweener.UpdateUnityData();
 
             // reset alpha change.
-            mTweener.LocalAlpha = 1.0f;
+            mTweener.localAlpha = 1.0f;
 
             // enable the sprite renderer component.
-            mTweener.LocalEnabled = true;
+            mTweener.localEnabled = true;
 
             // reset tweener
             mTweener.ResetTweener();
@@ -128,7 +128,7 @@ namespace JCSUnity
                 mTweener.DoTween(newPos);
             }
             else
-                mTweener.DoTweenContinue(this.mTarget);
+                mTweener.DoTweenContinue(mTarget);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace JCSUnity
         /// </summary>
         private void DestinationCallback()
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }

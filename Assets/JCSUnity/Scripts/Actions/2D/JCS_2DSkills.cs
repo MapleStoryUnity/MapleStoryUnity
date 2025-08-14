@@ -101,14 +101,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         protected virtual void Awake()
         {
             if (mSoundPlayer == null)
-                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+                mSoundPlayer = GetComponent<JCS_SoundPlayer>();
         }
 
         protected virtual void Update()
@@ -186,17 +186,17 @@ namespace JCSUnity
             GameObject obj = JCS_Util.SpawnAnimateObject(mMainAnim1, mOrderLayer);
 
             if (mSamePosition)
-                obj.transform.position = this.transform.position + mAnimPosOffset1;
+                obj.transform.position = transform.position + mAnimPosOffset1;
             if (mSameRotation)
-                obj.transform.rotation = this.transform.rotation;
+                obj.transform.rotation = transform.rotation;
             if (mSameScale)
-                obj.transform.localScale = this.transform.localScale;
+                obj.transform.localScale = transform.localScale;
 
             // if stay with player, simple set the position to
             // same position and set to child so it will follows
             // the active target!
             if (mStayWithActiveTarget)
-                obj.transform.SetParent(this.transform);
+                obj.transform.SetParent(transform);
 
 
             // add anim death event,
@@ -220,17 +220,17 @@ namespace JCSUnity
             GameObject obj = JCS_Util.SpawnAnimateObject(mMainAnim2, mOrderLayer + 1);
 
             if (mSamePosition)
-                obj.transform.position = this.transform.position + mAnimPosOffset2;
+                obj.transform.position = transform.position + mAnimPosOffset2;
             if (mSameRotation)
-                obj.transform.rotation = this.transform.rotation;
+                obj.transform.rotation = transform.rotation;
             if (mSameScale)
-                obj.transform.localScale = this.transform.localScale;
+                obj.transform.localScale = transform.localScale;
 
             // if stay with player, simple set the position to
             // same position and set to child so it will follows
             // the active target!
             if (mStayWithActiveTarget)
-                obj.transform.SetParent(this.transform);
+                obj.transform.SetParent(transform);
 
 
             // add anim death event,

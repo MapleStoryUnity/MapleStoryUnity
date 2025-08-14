@@ -74,10 +74,10 @@ namespace JCSUnity
             var sm = JCS_SoundManager.FirstInstance();
 
             // check if override the setting.
-            if (sm.OverrideSetting)
+            if (sm.overrideSetting)
             {
                 // return the override value.
-                return sm.SoundFadeOutTime;
+                return sm.soundFadeOutTime;
             }
 
             // if not override, 
@@ -95,10 +95,10 @@ namespace JCSUnity
             var sm = JCS_SoundManager.FirstInstance();
 
             // check if override the setting.
-            if (sm.OverrideSetting)
+            if (sm.overrideSetting)
             {
                 // return the override value.
-                return sm.SoundFadeInTime;
+                return sm.soundFadeInTime;
             }
 
             // if not override, 

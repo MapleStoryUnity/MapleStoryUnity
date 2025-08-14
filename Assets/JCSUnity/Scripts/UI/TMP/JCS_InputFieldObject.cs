@@ -42,29 +42,29 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public InputField InputFieldLegacy { get { return this.mInputFieldLegacy; } set { this.mInputFieldLegacy = value; } }
+        public InputField InputFieldLegacy { get { return mInputFieldLegacy; } set { mInputFieldLegacy = value; } }
 #if TMP_PRO
-        public TMP_InputField InputFieldTMP { get { return this.mInputFieldTMP; } set { this.mInputFieldTMP = value; } }
+        public TMP_InputField InputFieldTMP { get { return mInputFieldTMP; } set { mInputFieldTMP = value; } }
 #endif
 
         public string text
         {
             get
             {
-                if (this.mInputFieldLegacy)
-                    return this.mInputFieldLegacy.text;
+                if (mInputFieldLegacy)
+                    return mInputFieldLegacy.text;
 #if TMP_PRO
-                return this.InputFieldTMP.text;
+                return mInputFieldTMP.text;
 #endif
             }
 
             set
             {
-                if (this.mInputFieldLegacy)
-                    this.mInputFieldLegacy.text = value;
+                if (mInputFieldLegacy)
+                    mInputFieldLegacy.text = value;
 #if TMP_PRO
-                if (this.InputFieldTMP)
-                    this.InputFieldTMP.text = value;
+                if (mInputFieldTMP)
+                    mInputFieldTMP.text = value;
 #endif
             }
         }
@@ -72,10 +72,10 @@ namespace JCSUnity
         {
             get
             {
-                if (this.mInputFieldLegacy)
-                    return this.mInputFieldLegacy.isFocused;
+                if (mInputFieldLegacy)
+                    return mInputFieldLegacy.isFocused;
 #if TMP_PRO
-                return this.InputFieldTMP.isFocused;
+                return mInputFieldTMP.isFocused;
 #endif
             }
         }

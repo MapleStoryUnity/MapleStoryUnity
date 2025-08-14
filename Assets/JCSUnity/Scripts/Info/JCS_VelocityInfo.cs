@@ -34,7 +34,7 @@ namespace JCSUnity
         [Tooltip("Do this character controll applies gravity.")]
         [SerializeField]
         private bool mApplyGravity = true;
-        
+
         [Tooltip("How fast it get back to original speed?")]
         [SerializeField]
         [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
@@ -64,31 +64,31 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public CharacterController GetCharacterController() { return this.mCharacterController; }
-        public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
-        public float VelX { get { return this.mVelocity.x; } set { this.mVelocity.x = value; } }
-        public float VelY { get { return this.mVelocity.y; } set { this.mVelocity.y = value; } }
-        public float VelZ { get { return this.mVelocity.z; } set { this.mVelocity.z = value; } }
-        public Vector3 MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
-        public float MoveSpeedX { get { return this.mMoveSpeed.x; } set { this.mMoveSpeed.x = value; } }
-        public float MoveSpeedY { get { return this.mMoveSpeed.y; } set { this.mMoveSpeed.y = value; } }
-        public float MoveSpeedZ { get { return this.mMoveSpeed.z; } set { this.mMoveSpeed.z = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public Vector3 RecordSpeed { get { return this.mRecordSpeed; } set { this.mRecordSpeed = value; } }
-        public float RecordSpeedX { get { return this.mRecordSpeed.x; } set { this.mRecordSpeed.x = value; } }
-        public float RecordSpeedY { get { return this.mRecordSpeed.y; } set { this.mRecordSpeed.y = value; } }
-        public float RecordSpeedZ { get { return this.mRecordSpeed.z; } set { this.mRecordSpeed.z = value; } }
-        public bool ApplyGravity { get { return this.mApplyGravity; } set { this.mApplyGravity = value; } }
-        public bool isGrounded { get { return this.mCharacterController.isGrounded; } }
-        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
-        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
-        public bool FreezeZ { get { return this.mFreezeZ; } set { this.mFreezeZ = value; } }
+        public CharacterController GetCharacterController() { return mCharacterController; }
+        public Vector3 velocity { get { return mVelocity; } set { mVelocity = value; } }
+        public float velX { get { return mVelocity.x; } set { mVelocity.x = value; } }
+        public float velY { get { return mVelocity.y; } set { mVelocity.y = value; } }
+        public float velZ { get { return mVelocity.z; } set { mVelocity.z = value; } }
+        public Vector3 moveSpeed { get { return mMoveSpeed; } set { mMoveSpeed = value; } }
+        public float moveSpeedX { get { return mMoveSpeed.x; } set { mMoveSpeed.x = value; } }
+        public float moveSpeedY { get { return mMoveSpeed.y; } set { mMoveSpeed.y = value; } }
+        public float moveSpeedZ { get { return mMoveSpeed.z; } set { mMoveSpeed.z = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public Vector3 recordSpeed { get { return mRecordSpeed; } set { mRecordSpeed = value; } }
+        public float recordSpeedX { get { return mRecordSpeed.x; } set { mRecordSpeed.x = value; } }
+        public float recordSpeedY { get { return mRecordSpeed.y; } set { mRecordSpeed.y = value; } }
+        public float recordSpeedZ { get { return mRecordSpeed.z; } set { mRecordSpeed.z = value; } }
+        public bool applyGravity { get { return mApplyGravity; } set { mApplyGravity = value; } }
+        public bool isGrounded { get { return mCharacterController.isGrounded; } }
+        public bool freezeX { get { return mFreezeX; } set { mFreezeX = value; } }
+        public bool freezeY { get { return mFreezeY; } set { mFreezeY = value; } }
+        public bool freezeZ { get { return mFreezeZ; } set { mFreezeZ = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mCharacterController = this.GetComponent<CharacterController>();
+            mCharacterController = GetComponent<CharacterController>();
         }
 
         private void FixedUpdate()
@@ -105,27 +105,28 @@ namespace JCSUnity
                  * NOTE(jenchieh): Move function cost so much 
                  * performance.
                  */
-                mCharacterController.Move(Velocity * dt);
+                mCharacterController.Move(mVelocity * dt);
             }
 
             // getting back speed
-            this.mMoveSpeed += (this.mRecordSpeed - this.mMoveSpeed) / mSpeedFriction * Time.deltaTime;
-            this.VelX = mMoveSpeed.x;
-            this.VelZ = mMoveSpeed.z;
+            mMoveSpeed += (mRecordSpeed - mMoveSpeed) / mSpeedFriction * Time.deltaTime;
+            velX = mMoveSpeed.x;
+            velZ = mMoveSpeed.z;
 
             // apply gravit
-            if (ApplyGravity)
+            if (mApplyGravity)
             {
                 if (!isGrounded)
                 {
-                    VelY +=
+                    velY +=
                         JCS_Physics.GRAVITY *
                         dt *
                         JCS_GameSettings.FirstInstance().GRAVITY_PRODUCT;
                 }
                 // if touches the ground set to negative one.
-                else {
-                    VelY = -1;
+                else
+                {
+                    velY = -1;
                 }
             }
         }
@@ -151,9 +152,9 @@ namespace JCSUnity
 
         private void DoFreeze()
         {
-            if (mFreezeX) VelX = 0;
-            if (mFreezeY) VelY = 0;
-            if (mFreezeZ) VelZ = 0;
+            if (mFreezeX) velX = 0;
+            if (mFreezeY) velY = 0;
+            if (mFreezeZ) velZ = 0;
         }
 
     }

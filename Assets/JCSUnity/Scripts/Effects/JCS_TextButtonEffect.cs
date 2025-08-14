@@ -26,7 +26,7 @@ namespace JCSUnity
 
         private Button mButton = null;
 
-        private JCS_Button mJCS_Button = null;
+        private JCS_Button mBtn = null;
 
         [Separator("Runtime Variables (JCS_TextButtonEffect)")]
 
@@ -52,23 +52,23 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Text TextComp { get { return this.mText; } }
-        public Color NormalColor { get { return this.mNormalColor; } set { this.mNormalColor = value; } }
-        public Color HighlightedColor { get { return this.mHighlightedColor; } set { this.mHighlightedColor = value; } }
-        public Color PressedColor { get { return this.mPressedColor; } set { this.mPressedColor = value; } }
-        public Color DisabledColor { get { return this.mDisabledColor; } set { this.mDisabledColor = value; } }
+        public Text textComp { get { return mText; } }
+        public Color normalColor { get { return mNormalColor; } set { mNormalColor = value; } }
+        public Color highlightedColor { get { return mHighlightedColor; } set { mHighlightedColor = value; } }
+        public Color pressedColor { get { return mPressedColor; } set { mPressedColor = value; } }
+        public Color disabledColor { get { return mDisabledColor; } set { mDisabledColor = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mEventTrigger = this.GetComponent<EventTrigger>();
-            this.mButton = this.GetComponent<Button>();
-            this.mJCS_Button = this.GetComponent<JCS_Button>();
+            mEventTrigger = GetComponent<EventTrigger>();
+            mButton = GetComponent<Button>();
+            mBtn = GetComponent<JCS_Button>();
 
             // Try find it.
-            if (this.mText == null)
-                this.mText = this.GetComponentInChildren<Text>();
+            if (mText == null)
+                mText = GetComponentInChildren<Text>();
 
             JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, 
                 EventTriggerType.PointerEnter, 
@@ -167,8 +167,8 @@ namespace JCSUnity
         {
             // JCSUnity.JCS_Button have the higher priority then 
             // normal UnityEngine.UI.Button class.
-            if (mJCS_Button != null)
-                return mJCS_Button.Interactable;
+            if (mBtn != null)
+                return mBtn.interactable;
             if (mButton != null)
                 return mButton.interactable;
 

@@ -24,7 +24,7 @@ namespace JCSUnity
 
         [Tooltip("Label of this language.")]
         [SerializeField]
-        private SystemLanguage mLanguage = SystemLanguage.Unknown;
+        private SystemLanguage mSystemLanguage = SystemLanguage.Unknown;
 
         [Tooltip("String data for this specific language.")]
         [SerializeField]
@@ -33,8 +33,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public SystemLanguage Language { get { return this.mLanguage; } }
-        public string Data { get { return this.mData; } }
+        public SystemLanguage systemLanguage { get { return mSystemLanguage; } }
+        public string data { get { return mData; } }
 
         /* Functions */
 

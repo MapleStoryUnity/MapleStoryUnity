@@ -78,42 +78,43 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool SimulatePlatformType { get { return this.mSimulatePlatformType; } set { this.mSimulatePlatformType = value; } }
-        public JCS_PlatformType PlatformType
+        public bool simulatePlatformType { get { return mSimulatePlatformType; } set { mSimulatePlatformType = value; } }
+        public JCS_PlatformType platformType
         {
-            get { return this.mPlatformType; }
+            get { return mPlatformType; }
             set
             {
-                if (mSimulatePlatformType) return;
-                this.mPlatformType = value;
+                if (mSimulatePlatformType) 
+                    return;
+                mPlatformType = value;
             }
         }
         public SystemLanguage systemLanguage
         {
-            get { return this.mSystemLanguage; }
+            get { return mSystemLanguage; }
             set
             {
-                this.mSystemLanguage = value;
+                mSystemLanguage = value;
                 RefreshLangTexts();
 
                 onSystemLanguageChanged?.Invoke(value);
             }
         }
-        public bool SimulateSystemLanguage { get { return this.mSimulateSystemLanguage; } set { this.mSimulateSystemLanguage = value; } }
-        public SystemLanguage SimulateLanguage
+        public bool simulateSystemLanguage { get { return mSimulateSystemLanguage; } set { mSimulateSystemLanguage = value; } }
+        public SystemLanguage simulateLanguage
         {
-            get { return this.mSimulateLanguage; }
+            get { return mSimulateLanguage; }
             set
             {
-                this.mSimulateLanguage = value;
+                mSimulateLanguage = value;
 
                 if (mSimulateSystemLanguage)
                     systemLanguage = value;
             }
         }
-        public bool RequestCamera { get { return this.mRequestCamera; } }
-        public bool RequestMicrophone { get { return this.mRequestMicrophone; } }
-        public bool RequestLocation { get { return this.mRequestLocation; } }
+        public bool requestCamera { get { return mRequestCamera; } }
+        public bool requestMicrophone { get { return mRequestMicrophone; } }
+        public bool requestLocation { get { return mRequestLocation; } }
 
         /* Functions */
 
@@ -138,11 +139,11 @@ namespace JCSUnity
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
             // set platform type
-            PlatformType = JCS_PlatformType.PC;
+            mPlatformType = JCS_PlatformType.PC;
 
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
             // set platform type
-            PlatformType = JCS_PlatformType.MOBILE;
+            mPlatformType = JCS_PlatformType.MOBILE;
 
             // set the sleep time to never
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -164,8 +165,8 @@ namespace JCSUnity
             RefreshSimulateLanguage();
         }
 
-        public bool IsPC() { return (PlatformType == JCS_PlatformType.PC); }
-        public bool IsMobile() { return (PlatformType == JCS_PlatformType.MOBILE); }
+        public bool IsPC() { return (mPlatformType == JCS_PlatformType.PC); }
+        public bool IsMobile() { return (mPlatformType == JCS_PlatformType.MOBILE); }
 
         /// <summary>
         /// Quit the application
@@ -191,7 +192,7 @@ namespace JCSUnity
         public void RefreshSimulateLanguage()
         {
             if (mSimulateSystemLanguage)
-                systemLanguage = SimulateLanguage;
+                systemLanguage = simulateLanguage;
         }
 
         /// <summary>

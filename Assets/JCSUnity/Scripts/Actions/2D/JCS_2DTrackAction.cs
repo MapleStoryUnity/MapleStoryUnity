@@ -45,13 +45,13 @@ namespace JCSUnity
         private Vector3 mVelocity = Vector3.zero;
 
         //-- Smooth Track
-        [Tooltip("Invers of speed, if smooth track is enable use this.")]
+        [Tooltip("Invers of speed, if smooth track is enable use ")]
         [SerializeField]
         [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mMoveFriction = 0.2f;
 
         //-- Hard Track
-        [Tooltip("If smooth track is disable use this.")]
+        [Tooltip("If smooth track is disable use ")]
         [SerializeField]
         private float mMoveSpeed = 10.0f;
 
@@ -87,16 +87,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
-        public float MoveFriction { get { return this.mMoveFriction; } set { this.mMoveFriction = value; } }
-        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
-        public float Index { get { return this.mIndex; } set { this.mIndex = value; } }
-        public int OrderIndex { get { return this.mOrderIndex; } set { this.mOrderIndex = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public bool Following { get { return this.mFollowing; } set { this.mFollowing = value; } }
-        public bool HardOnX { get { return this.mHardOnX; } set { this.mHardOnX = value; } }
-        public bool HardOnY { get { return this.mHardOnY; } set { this.mHardOnY = value; } }
-        public bool HardOnZ { get { return this.mHardOnZ; } set { this.mHardOnZ = value; } }
+        public Transform targetTransform { get { return mTargetTransform; } set { mTargetTransform = value; } }
+        public float moveFriction { get { return mMoveFriction; } set { mMoveFriction = value; } }
+        public float moveSpeed { get { return mMoveSpeed; } set { mMoveSpeed = value; } }
+        public float index { get { return mIndex; } set { mIndex = value; } }
+        public int orderIndex { get { return mOrderIndex; } set { mOrderIndex = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public bool following { get { return mFollowing; } set { mFollowing = value; } }
+        public bool hardOnX { get { return mHardOnX; } set { mHardOnX = value; } }
+        public bool hardOnY { get { return mHardOnY; } set { mHardOnY = value; } }
+        public bool hardOnZ { get { return mHardOnZ; } set { mHardOnZ = value; } }
 
         /* Functions */
 
@@ -123,7 +123,7 @@ namespace JCSUnity
             if (mOrderEffect)
                 targetPos += mGap * mIndex;
 
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
 
             SmoothTrack(ref targetPos, ref newPos);
             HardTrack(ref targetPos, ref newPos);
@@ -132,7 +132,7 @@ namespace JCSUnity
            // apply force
             newPos += mVelocity * JCS_Time.ItTime(mTimeType);
 
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace JCSUnity
         /// </summary>
         private void KeepOnSameDirection()
         {
-            this.transform.position += mVelocity * JCS_Time.ItTime(mTimeType);
+            transform.position += mVelocity * JCS_Time.ItTime(mTimeType);
         }
 
         /// <summary>

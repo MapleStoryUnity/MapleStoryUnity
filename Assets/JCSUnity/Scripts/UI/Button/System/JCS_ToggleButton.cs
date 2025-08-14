@@ -44,7 +44,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active
+        public bool active
         {
             get { return this.mActive; }
             set
@@ -56,8 +56,8 @@ namespace JCSUnity
                 }
             }
         }
-        public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
-        public UnityEvent OffAction { get { return this.mOffAction; } set { this.mOffAction = value; } }
+        public UnityEvent onAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
+        public UnityEvent offAction { get { return this.mOffAction; } set { this.mOffAction = value; } }
 
         /* Functions */
 

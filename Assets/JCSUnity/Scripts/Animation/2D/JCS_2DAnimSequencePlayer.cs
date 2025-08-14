@@ -73,11 +73,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public bool DonePlayingSequence { get { return this.mDonePlayingSequence; } }
-        public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
-        public float TimePerAnim { get { return this.mTimePerAnim; } set { this.mTimePerAnim = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public bool donePlayingSequence { get { return mDonePlayingSequence; } }
+        public bool loop { get { return mLoop; } set { mLoop = value; } }
+        public float timePerAnim { get { return mTimePerAnim; } set { mTimePerAnim = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -97,7 +97,7 @@ namespace JCSUnity
                 return;
 
             // check if done playing the sequence, and is not looping.
-            if (mDonePlayingSequence && !Loop)
+            if (mDonePlayingSequence && !mLoop)
                 return;
 
             // check if reach the animation count.
@@ -106,7 +106,7 @@ namespace JCSUnity
                 // done playing.
                 mDonePlayingSequence = true;
 
-                if (Loop)
+                if (mLoop)
                 {
                     // start with zero.
                     mAnimCounter = 0;

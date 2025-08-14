@@ -29,7 +29,7 @@ namespace JCSUnity
         {
             this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
 
-            foreach (JCS_2DAnimation anim in m2DAnimator.Animations)
+            foreach (JCS_2DAnimation anim in m2DAnimator.animations)
             {
                 if (anim == null)
                     continue;
@@ -44,7 +44,7 @@ namespace JCSUnity
         /// </summary>
         private void RandomPlayAnimationInAnimator()
         {
-            int animLength = m2DAnimator.AnimationsLength;
+            int animLength = m2DAnimator.animationsLength;
             if (animLength == 0)
                 return;
 

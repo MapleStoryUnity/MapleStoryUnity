@@ -30,10 +30,10 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
-            this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
+            m2DAnimator = GetComponent<JCS_2DAnimator>();
+            mAdjustTimeTrigger = GetComponent<JCS_AdjustTimeTrigger>();
 
-            this.mAdjustTimeTrigger.onAction = RandomPlayAnimationInAnimator;
+            mAdjustTimeTrigger.onAction = RandomPlayAnimationInAnimator;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace JCSUnity
         /// </summary>
         private void RandomPlayAnimationInAnimator()
         {
-            int animLength = m2DAnimator.AnimationsLength;
+            int animLength = m2DAnimator.animationsLength;
             if (animLength == 0)
                 return;
 

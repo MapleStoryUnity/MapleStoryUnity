@@ -37,16 +37,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_ShootAction GetShootAction() { return this.mShootAction; }
-        public float DegreePerShoot { get { return this.mDegreePerShoot; } }
-        public float MinDegree { get { return this.mMinDegree; } }
-        public float MaxDegree { get { return this.mMaxDegree; } }
+        public JCS_ShootAction GetShootAction() { return mShootAction; }
+        public float degreePerShoot { get { return mDegreePerShoot; } }
+        public float minDegree { get { return mMinDegree; } }
+        public float maxDegree { get { return mMaxDegree; } }
         
         /* Functions */
 
         private void Awake()
         {
-            this.mShootAction = this.GetComponent<JCS_ShootAction>();
+            mShootAction = GetComponent<JCS_ShootAction>();
         }
     }
 }

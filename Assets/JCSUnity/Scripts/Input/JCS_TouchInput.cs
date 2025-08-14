@@ -100,19 +100,19 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Touched { get { return this.mTouched; } }
-        public Vector2 DeltaPos { get { return this.mDeltaPos; } }
-        public Vector2 DragDistance { get { return this.mDragDistance; } }
-        public Vector2 DragDisplacement { get { return this.mDragDisplacement; } }
-        public bool Dragging { get { return this.mDragging; } }
-        public float TouchTime { get { return this.mTouchTime; } }
+        public bool touched { get { return this.mTouched; } }
+        public Vector2 deltaPos { get { return this.mDeltaPos; } }
+        public Vector2 dragDistance { get { return this.mDragDistance; } }
+        public Vector2 dragDisplacement { get { return this.mDragDisplacement; } }
+        public bool dragging { get { return this.mDragging; } }
+        public float touchTime { get { return this.mTouchTime; } }
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-        public bool MultiTouch { get { return this.mMultiTouch; } }
-        public float TouchDistance { get { return this.mTouchDistance; } }
-        public float TouchDistanceDelta { get { return this.mTouchDistanceDelta; } }
-        public int DetectTouchCount { get { return this.mDetectTouchCount; } set { this.mDetectTouchCount = value; } }
+        public bool multiTouch { get { return this.mMultiTouch; } }
+        public float touchDistance { get { return this.mTouchDistance; } }
+        public float touchDistanceDelta { get { return this.mTouchDistanceDelta; } }
+        public int detectTouchCount { get { return this.mDetectTouchCount; } set { this.mDetectTouchCount = value; } }
 #else
-        public JCS_MouseButton MouseType { get { return this.mMouseType; } set { this.mMouseType = value; } }
+        public JCS_MouseButton mouseType { get { return this.mMouseType; } set { this.mMouseType = value; } }
 #endif
 
         /* Functions */
@@ -176,21 +176,29 @@ namespace JCSUnity
 
             if (mDeltaPos == Vector2.zero && mDragDistance == Vector2.zero)
             {
-                this.mDragStartPosition = currPos;
+                mDragStartPosition = currPos;
             }
             else
             {
-                this.mDragging = true;
+                mDragging = true;
                 Vector2 dragEndPosition = currPos;
 
-                this.mDragDistance.x = JCS_Mathf.DistanceOfUnitVector(mDragStartPosition.x, dragEndPosition.x);
-                this.mDragDistance.y = JCS_Mathf.DistanceOfUnitVector(mDragStartPosition.y, dragEndPosition.y);
+                mDragDistance.x = JCS_Mathf.DistanceOfUnitVector(mDragStartPosition.x, dragEndPosition.x);
+                mDragDistance.y = JCS_Mathf.DistanceOfUnitVector(mDragStartPosition.y, dragEndPosition.y);
+
+                // 標準視窗的變動係數.
+                {
+                    float scaleFactor = JCS_Canvas.SCALE_FACTOR;
+
+                    mDragDistance.x /= scaleFactor;
+                    mDragDistance.y /= scaleFactor;
+                }
 
                 float xDiff = dragEndPosition.x - mDragStartPosition.x;
                 float yDiff = dragEndPosition.y - mDragStartPosition.y;
 
-                this.mDragDisplacement.x = mDragDistance.x * JCS_Mathf.GetSign(xDiff);
-                this.mDragDisplacement.y = mDragDistance.y * JCS_Mathf.GetSign(yDiff);
+                mDragDisplacement.x = mDragDistance.x * JCS_Mathf.GetSign(xDiff);
+                mDragDisplacement.y = mDragDistance.y * JCS_Mathf.GetSign(yDiff);
             }
 
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)

@@ -58,15 +58,15 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform LookPoint { get { return this.mLookPoint; } set { this.mLookPoint = value; } }
-        public float LookDistance { get { return this.mLookDistance; } set { this.mLookDistance = value; } }
+        public Transform lookPoint { get { return mLookPoint; } set { mLookPoint = value; } }
+        public float lookDistance { get { return mLookDistance; } set { mLookDistance = value; } }
 
-        public float JumpForce { get { return this.mJumpForce; } set { this.mJumpForce = value; } }
+        public float jumpForce { get { return mJumpForce; } set { mJumpForce = value; } }
 
-        public KeyCode UpKey { get { return this.mUpKey; } set { this.mUpKey = value; } }
-        public KeyCode DownKey { get { return this.mDownKey; } set { this.mDownKey = value; } }
-        public KeyCode RightKey { get { return this.mRightKey; } set { this.mRightKey = value; } }
-        public KeyCode LeftKey { get { return this.mLeftKey; } set { this.mLeftKey = value; } }
+        public KeyCode upKey { get { return mUpKey; } set { mUpKey = value; } }
+        public KeyCode downKey { get { return mDownKey; } set { mDownKey = value; } }
+        public KeyCode rightKey { get { return mRightKey; } set { mRightKey = value; } }
+        public KeyCode leftKey { get { return mLeftKey; } set { mLeftKey = value; } }
 
         /* Functions */
 
@@ -74,7 +74,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mLookAtAction = this.GetComponent<JCS_3DLookAtAction>();
+            mLookAtAction = GetComponent<JCS_3DLookAtAction>();
             mLookAtAction.SetTargetTransform(mLookPoint);
         }
 

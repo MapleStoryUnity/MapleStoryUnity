@@ -96,14 +96,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public RectTransform GetRectTransfom() { return this.mRectTransform; }
-        public Button ButtonComp { get { return this.mButton; } }
-        public Image Image { get { return this.mImage; } }
-        public int DialogueIndex { get { return this.mDialogueIndex; } set { this.mDialogueIndex = value; } }
-        public bool AutoListener { get { return this.mAutoListener; } set { this.mAutoListener = value; } }
-        public bool Interactable
+        public RectTransform GetRectTransfom() { return mRectTransform; }
+        public Button buttonComp { get { return mButton; } }
+        public Image image { get { return mImage; } }
+        public int dialogueIndex { get { return mDialogueIndex; } set { mDialogueIndex = value; } }
+        public bool autoListener { get { return mAutoListener; } set { mAutoListener = value; } }
+        public bool interactable
         {
-            get { return this.mInteractable; }
+            get { return mInteractable; }
             set
             {
                 mInteractable = value;
@@ -112,20 +112,20 @@ namespace JCSUnity
                 SetInteractable();
             }
         }
-        public JCS_TextObject ItText { get { return this.mItText; } }
-        public JCS_ButtonSelection ButtonSelection { get { return this.mButtonSelection; } set { this.mButtonSelection = value; } }
-        public bool IsSelectedInGroup { get { return this.mIsSelectedInGroup; } }
+        public JCS_TextObject itText { get { return mItText; } }
+        public JCS_ButtonSelection buttonSelection { get { return mButtonSelection; } set { mButtonSelection = value; } }
+        public bool isSelectedInGroup { get { return mIsSelectedInGroup; } }
 
         /* Compatible with version 1.5.3 */
-        public void SetSystemCallback(Action func) { this.sysOnClick += func; }
-        public void SetSystemCallback(Action<JCS_Button> func) { this.sysOnClickBtn += func; }
+        public void SetSystemCallback(Action func) { sysOnClick += func; }
+        public void SetSystemCallback(Action<JCS_Button> func) { sysOnClickBtn += func; }
         public void SetSystemCallback(Action<int> func, int selection)
         {
-            this.sysOnClickSelection += func;
-            this.mDialogueSelection = selection;
+            sysOnClickSelection += func;
+            mDialogueSelection = selection;
         }
 
-        public int DialogueSelection { get { return this.mDialogueSelection; } }
+        public int dialogueSelection { get { return mDialogueSelection; } }
 
         /* Functions */
 
@@ -141,24 +141,24 @@ namespace JCSUnity
         {
             if (!forceInit)
             {
-                if (this.mInitialized)
+                if (mInitialized)
                     return;
             }
 
-            this.mRectTransform = this.GetComponent<RectTransform>();
-            this.mButton = this.GetComponent<Button>();
-            this.mImage = this.GetComponent<Image>();
+            mRectTransform = GetComponent<RectTransform>();
+            mButton = GetComponent<Button>();
+            mImage = GetComponent<Image>();
 
             // try to get the text from the child.
             if (mItText == null)
-                mItText = this.GetComponent<JCS_TextObject>();
+                mItText = GetComponent<JCS_TextObject>();
 
             if (mItText != null)
             {
-                if (mItText.TextLegacy == null)
-                    mItText.TextLegacy = this.GetComponentInChildren<Text>();
-                if (mItText.TextTMP == null)
-                    mItText.TextTMP = this.GetComponentInChildren<TMP_Text>();
+                if (mItText.textLegacy == null)
+                    mItText.textLegacy = GetComponentInChildren<Text>();
+                if (mItText.textTMP == null)
+                    mItText.textTMP = GetComponentInChildren<TMP_Text>();
             }
 
             if (mAutoListener)
@@ -173,7 +173,7 @@ namespace JCSUnity
             // part of the on click callback
             SetSystemCallback(OnClick);
 
-            this.mInitialized = true;
+            mInitialized = true;
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace JCSUnity
             /* System callback */
             sysOnClick?.Invoke();
             sysOnClickBtn?.Invoke(this);
-            sysOnClickSelection?.Invoke(this.mDialogueSelection);
+            sysOnClickSelection?.Invoke(mDialogueSelection);
 
             /* User callback */
 

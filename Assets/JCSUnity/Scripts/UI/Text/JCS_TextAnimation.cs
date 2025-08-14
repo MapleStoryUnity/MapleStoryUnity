@@ -50,10 +50,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public int CurrentFrame { get { return this.mCurrentFrame; } }
-        public float SPF { get { return this.mSPF; } set { this.mSPF = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public int currentFrame { get { return mCurrentFrame; } }
+        public float spf { get { return mSPF; } set { mSPF = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -76,7 +76,7 @@ namespace JCSUnity
         /// </summary>
         public void UpdateTextFrame()
         {
-            UpdateTextFrame(this.mCurrentFrame);
+            UpdateTextFrame(mCurrentFrame);
         }
 
         /// <summary>
@@ -85,19 +85,19 @@ namespace JCSUnity
         /// <param name="frameIndex"> Frame index to displayed. </param>
         public void UpdateTextFrame(int frameIndex)
         {
-            if (this.mCurrentFrame < 0 ||
-                this.mCurrentFrame >= textFrame.Count)
+            if (mCurrentFrame < 0 ||
+                mCurrentFrame >= textFrame.Count)
                 return;
 
-            this.mCurrentFrame = frameIndex;
+            mCurrentFrame = frameIndex;
 
             /* Ensure in display range. */
-            if (this.mCurrentFrame >= textFrame.Count)
-                this.mCurrentFrame = textFrame.Count - 1;
-            else if (this.mCurrentFrame < 0)
-                this.mCurrentFrame = 0;
+            if (mCurrentFrame >= textFrame.Count)
+                mCurrentFrame = textFrame.Count - 1;
+            else if (mCurrentFrame < 0)
+                mCurrentFrame = 0;
 
-            text = textFrame[this.mCurrentFrame];
+            text = textFrame[mCurrentFrame];
         }
 
         /// <summary>

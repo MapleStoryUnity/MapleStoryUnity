@@ -15,7 +15,6 @@ namespace JCSUnity
     /// </summary>
     public class JCS_DefaultPacketDecoder : JCS_PacketDecoder
     {
-
         /// <summary>
         /// Decode the buffer by the public key.
         /// </summary>

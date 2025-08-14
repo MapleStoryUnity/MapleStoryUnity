@@ -50,7 +50,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<JCS_TweenInfo> TweenInfos { get { return this.mTweenInfos; } }
+        public List<JCS_TweenInfo> tweenInfos { get { return mTweenInfos; } }
 
         /* Functions */
 
@@ -63,17 +63,17 @@ namespace JCSUnity
 
                 RectTransform rt = ti.transformTweener.GetRectTransform();
 
-                switch (ti.transformTweener.TweenType)
+                switch (ti.transformTweener.tweenType)
                 {
                     /* Transform */
                     case JCS_TransformType.POSITION:
-                        ti.startingValue = ti.transformTweener.LocalPosition;
+                        ti.startingValue = ti.transformTweener.localPosition;
                         break;
                     case JCS_TransformType.ROTATION:
-                        ti.startingValue = ti.transformTweener.LocalEulerAngles;
+                        ti.startingValue = ti.transformTweener.localEulerAngles;
                         break;
                     case JCS_TransformType.SCALE:
-                        ti.startingValue = ti.transformTweener.LocalScale;
+                        ti.startingValue = ti.transformTweener.localScale;
                         break;
                     /* RectTransform */
                     case JCS_TransformType.ANCHOR_MIN:
@@ -105,14 +105,15 @@ namespace JCSUnity
 
             // NOTE: Make compatible to resizable screen.
             {
-                this.mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
-                if (mPanelRoot != null && this.mPanelRoot.transform == this.transform.parent)
+                mPanelRoot = JCS_PanelRoot.GetFromParent(transform);
+
+                if (mPanelRoot != null && mPanelRoot.transform == transform.parent)
                 {
                     for (int index = 0; index < mTweenInfos.Count; ++index)
                     {
                         JCS_TweenInfo tt = mTweenInfos[index];
-                        tt.targetValue.x *= mPanelRoot.PanelDeltaWidthRatio;
-                        tt.targetValue.y *= mPanelRoot.PanelDeltaHeightRatio;
+                        tt.targetValue.x *= mPanelRoot.panelDeltaWidthRatio;
+                        tt.targetValue.y *= mPanelRoot.panelDeltaHeightRatio;
                     }
                 }
             }
@@ -143,7 +144,7 @@ namespace JCSUnity
         {
             foreach (JCS_TweenInfo ti in mTweenInfos)
             {
-                if (!ti.transformTweener.IsDoneTweening)
+                if (!ti.transformTweener.isDoneTweening)
                     return false;
             }
             return true;

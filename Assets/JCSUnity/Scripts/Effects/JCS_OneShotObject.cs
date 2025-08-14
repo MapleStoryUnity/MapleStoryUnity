@@ -55,19 +55,19 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public bool EffectOnAwake { get { return this.mEffectOnAwake; } set { this.mEffectOnAwake = value; } }
-        public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public bool StayAtLastPosition { get { return this.mStayAtLastPosition; } set { this.mStayAtLastPosition = value; } }
-        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
-        public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
+        public JCS_Axis axis { get { return mAxis; } set { mAxis = value; } }
+        public bool effectOnAwake { get { return mEffectOnAwake; } set { mEffectOnAwake = value; } }
+        public bool loop { get { return mLoop; } set { mLoop = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public bool stayAtLastPosition { get { return mStayAtLastPosition; } set { mStayAtLastPosition = value; } }
+        public float moveSpeed { get { return mMoveSpeed; } set { mMoveSpeed = value; } }
+        public float distance { get { return mDistance; } set { mDistance = value; } }
 
         /* Functions */
 
         private void Start()
         {
-            mRecordPosition = this.transform.position;
+            mRecordPosition = transform.position;
             mEffect = mEffectOnAwake;
 
             if (mStayAtLastPosition)
@@ -86,7 +86,7 @@ namespace JCSUnity
                 mDistanceRecorder = 0;
 
                 if (!mStayAtLastPosition)
-                    this.transform.position = mRecordPosition;
+                    transform.position = mRecordPosition;
 
                 // if is not loop disable the effect
                 if (!mLoop)
@@ -130,13 +130,13 @@ namespace JCSUnity
             switch (ax)
             {
                 case JCS_Axis.AXIS_X:
-                    this.transform.position += new Vector3(speed, 0, 0) * dt;
+                    transform.position += new Vector3(speed, 0, 0) * dt;
                     break;
                 case JCS_Axis.AXIS_Y:
-                    this.transform.position += new Vector3(0, speed, 0) * dt;
+                    transform.position += new Vector3(0, speed, 0) * dt;
                     break;
                 case JCS_Axis.AXIS_Z:
-                    this.transform.position += new Vector3(0, 0, speed) * dt;
+                    transform.position += new Vector3(0, 0, speed) * dt;
                     break;
             }
         }

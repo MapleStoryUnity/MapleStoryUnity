@@ -44,7 +44,7 @@ namespace JCSUnity
             // script is the same as the 'JCS_ApplicationQuitOnLoadAction'.
             // But just a simple check before quiting the application 
             // layer.
-            if (JCS_PacketLostPreventer.FirstInstance().PacketIds.Count != 0)
+            if (JCS_PacketLostPreventer.FirstInstance().packetIds.Count != 0)
                 return;
 
 #if UNITY_EDITOR

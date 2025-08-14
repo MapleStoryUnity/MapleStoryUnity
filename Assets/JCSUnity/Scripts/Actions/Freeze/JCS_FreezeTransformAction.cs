@@ -58,39 +58,39 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public Vector3 PositionToFreeze { get { return this.mPositionToFreeze; } set { this.mPositionToFreeze = value; } }
-        public Vector3 RotationToFreeze { get { return this.mRotationToFreeze; } set { this.mRotationToFreeze = value; } }
-        public Vector3 ScaleToFreeze { get { return this.mScaleToFreeze; } set { this.mScaleToFreeze = value; } }
-        public JCS_Bool3 FreezePosition { get { return this.mFreezePosition; } set { this.mFreezePosition = value; } }
-        public JCS_Bool3 FreezeRotation { get { return this.mFreezeRotation; } set { this.mFreezeRotation = value; } }
-        public JCS_Bool3 FreezeScale { get { return this.mFreezeScale; } set { this.mFreezeScale = value; } }
-        public bool IsLocalPosition
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public Vector3 positionToFreeze { get { return mPositionToFreeze; } set { mPositionToFreeze = value; } }
+        public Vector3 rotationToFreeze { get { return mRotationToFreeze; } set { mRotationToFreeze = value; } }
+        public Vector3 scaleToFreeze { get { return mScaleToFreeze; } set { mScaleToFreeze = value; } }
+        public JCS_Bool3 freezePosition { get { return mFreezePosition; } set { mFreezePosition = value; } }
+        public JCS_Bool3 freezeRotation { get { return mFreezeRotation; } set { mFreezeRotation = value; } }
+        public JCS_Bool3 freezeScale { get { return mFreezeScale; } set { mFreezeScale = value; } }
+        public bool isLocalPosition
         {
-            get { return this.mIsLocalPosition; }
+            get { return mIsLocalPosition; }
             set
             {
-                this.mIsLocalPosition = value;
+                mIsLocalPosition = value;
 
                 // get the new freeze position.
                 if (mIsLocalPosition)
-                    this.mPositionToFreeze = this.LocalPosition;
+                    mPositionToFreeze = localPosition;
                 else
-                    this.mPositionToFreeze = this.Position;
+                    mPositionToFreeze = position;
             }
         }
-        public bool IsLocalRotation
+        public bool isLocalRotation
         {
-            get { return this.mIsLocalRotation; }
+            get { return mIsLocalRotation; }
             set
             {
-                this.mIsLocalRotation = value;
+                mIsLocalRotation = value;
 
                 // get the new freeze position.
                 if (mIsLocalRotation)
-                    this.mRotationToFreeze = this.LocalEulerAngles;
+                    mRotationToFreeze = localEulerAngles;
                 else
-                    this.mRotationToFreeze = this.EulerAngles;
+                    mRotationToFreeze = eulerAngles;
             }
         }
 
@@ -99,17 +99,17 @@ namespace JCSUnity
         private void Start()
         {
             // record down all the transform info value.
-            if (IsLocalPosition)
-                this.mPositionToFreeze = this.LocalPosition;
+            if (mIsLocalPosition)
+                mPositionToFreeze = localPosition;
             else
-                this.mPositionToFreeze = this.Position;
+                mPositionToFreeze = position;
 
             if (mIsLocalRotation)
-                this.mRotationToFreeze = this.LocalEulerAngles;
+                mRotationToFreeze = localEulerAngles;
             else
-                this.mRotationToFreeze = this.EulerAngles;
+                mRotationToFreeze = eulerAngles;
 
-            this.mScaleToFreeze = this.LocalScale;
+            mScaleToFreeze = localScale;
         }
 
         private void LateUpdate()
@@ -135,9 +135,9 @@ namespace JCSUnity
         /// </summary>
         private void DoFreezePosition()
         {
-            Vector3 newPos = this.Position;
-            if (IsLocalPosition)
-                newPos = this.LocalPosition;
+            Vector3 newPos = position;
+            if (mIsLocalPosition)
+                newPos = localPosition;
 
             /* Freeze position */
             if (mFreezePosition.check1)
@@ -148,10 +148,10 @@ namespace JCSUnity
                 newPos.z = mPositionToFreeze.z;
 
             /* Apply new value to transform. */
-            if (IsLocalPosition)
-                this.LocalPosition = newPos;
+            if (mIsLocalPosition)
+                localPosition = newPos;
             else
-                this.Position = newPos;
+                position = newPos;
         }
 
         /// <summary>
@@ -159,9 +159,9 @@ namespace JCSUnity
         /// </summary>
         private void DoFreezeRotation()
         {
-            Vector3 newRot = this.EulerAngles;
-            if (IsLocalRotation)
-                newRot = this.LocalEulerAngles;
+            Vector3 newRot = eulerAngles;
+            if (mIsLocalRotation)
+                newRot = localEulerAngles;
 
             /* Freeze euler angles */
             if (mFreezeRotation.check1)
@@ -171,10 +171,10 @@ namespace JCSUnity
             if (mFreezeRotation.check3)
                 newRot.z = mRotationToFreeze.z;
 
-            if (IsLocalRotation)
-                this.LocalEulerAngles = newRot;
+            if (mIsLocalRotation)
+                localEulerAngles = newRot;
             else
-                this.EulerAngles = newRot;
+                eulerAngles = newRot;
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace JCSUnity
         /// </summary>
         private void DoFreezeScale()
         {
-            Vector3 newScale = this.LocalScale;
+            Vector3 newScale = localScale;
 
             /* Freeze scale */
             if (mFreezeScale.check1)
@@ -192,7 +192,7 @@ namespace JCSUnity
             if (mFreezeScale.check3)
                 newScale.z = mScaleToFreeze.z;
 
-            this.LocalScale = newScale;
+            localScale = newScale;
         }
     }
 }

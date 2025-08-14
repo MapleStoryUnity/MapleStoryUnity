@@ -27,16 +27,16 @@ namespace JCSUnity
         /* Functions */
         private void Awake()
         {
-            this.mTweener = this.GetComponent<JCS_TransformTweener>();
+            mTweener = GetComponent<JCS_TransformTweener>();
         }
 
         private void Start()
         {
             // everytime it reload the scene.
             // move to the last child make sure everything get cover by this.
-            JCS_Util.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(transform);
 
-            this.mStartingPosition = this.transform.localPosition;
+            mStartingPosition = transform.localPosition;
         }
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace JCSUnity
         /// <param name="align"> align type </param>
         public void StartSlideIn(JCS_Align align, float time)
         {
-            mTweener.DurationX = time;
-            mTweener.DurationY = time;
-            mTweener.DurationZ = time;
+            mTweener.durationX = time;
+            mTweener.durationY = time;
+            mTweener.durationZ = time;
 
             // tween back to where we are.
             mTweener.DoTween(mStartingPosition);
@@ -59,16 +59,16 @@ namespace JCSUnity
         /// <param name="align"> align type </param>
         public void StartSlideOut(JCS_Align align, float time)
         {
-            Vector2 sizeDelta = JCS_Canvas.GuessCanvas().AppRect.sizeDelta;
+            Vector2 sizeDelta = JCS_Canvas.GuessCanvas().appRect.sizeDelta;
 
             float imageSize = 1200;
             float distanceX = sizeDelta.x + imageSize;
             float distanceY = sizeDelta.y + imageSize;
 
             // NOTE(jenchieh): this is just some tweeking.
-            mTweener.DurationX = time;
-            mTweener.DurationY = time;
-            mTweener.DurationZ = time;
+            mTweener.durationX = time;
+            mTweener.durationY = time;
+            mTweener.durationZ = time;
 
             Vector3 tweenTo = this.transform.localPosition;
 
@@ -115,7 +115,7 @@ namespace JCSUnity
         /// </returns>
         public bool IsDoneSliding()
         {
-            return mTweener.IsDoneTweening;
+            return mTweener.isDoneTweening;
         }
 
         /// <summary>

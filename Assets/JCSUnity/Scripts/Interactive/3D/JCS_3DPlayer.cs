@@ -28,7 +28,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float RotateSpeed { get { return this.mRotateSpeed; } }
+        public float rotateSpeed { get { return mRotateSpeed; } }
 
         /* Functions */
 

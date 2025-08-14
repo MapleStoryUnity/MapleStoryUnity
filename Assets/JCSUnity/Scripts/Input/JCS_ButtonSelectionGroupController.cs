@@ -68,7 +68,7 @@ namespace JCSUnity
 
         [Tooltip("Which device we are listening to?")]
         [SerializeField]
-        private JCS_JoystickId mGamePadId = JCS_JoystickId.ANY;
+        private JCS_JoystickId mGamepadId = JCS_JoystickId.ANY;
 
         [Tooltip("Next selection. (Gamepad)")]
         [SerializeField]
@@ -160,49 +160,49 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } }
+        public JCS_ButtonSelectionGroup buttonSelectionGroup { get { return mButtonSelectionGroup; } }
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
 
-        public KeyCode MNext { get { return this.mMNext; } set { this.mMNext = value; } }
-        public KeyCode MMPrev { get { return this.mMNext; } set { this.mMNext = value; } }
-        public KeyCode MOkay { get { return this.mMNext; } set { this.mMNext = value; } }
-        public KeyCode MUp { get { return this.mMNext; } set { this.mMNext = value; } }
-        public KeyCode MDown { get { return this.mMNext; } set { this.mMNext = value; } }
-        public KeyCode MRight { get { return this.mMNext; } set { this.mMNext = value; } }
-        public KeyCode MLeft { get { return this.mMNext; } set { this.mMNext = value; } }
+        public KeyCode mNext { get { return mMNext; } set { mMNext = value; } }
+        public KeyCode mNPrev { get { return mMNext; } set { mMNext = value; } }
+        public KeyCode mOkay { get { return mMNext; } set { mMNext = value; } }
+        public KeyCode nUp { get { return mMNext; } set { mMNext = value; } }
+        public KeyCode nDown { get { return mMNext; } set { mMNext = value; } }
+        public KeyCode nRight { get { return mMNext; } set { mMNext = value; } }
+        public KeyCode nLeft { get { return mMNext; } set { mMNext = value; } }
 
-        public JCS_JoystickId GamePadId { get { return this.mGamePadId; } set { this.mGamePadId = value; } }
+        public JCS_JoystickId gamepadId { get { return mGamepadId; } set { mGamepadId = value; } }
 
-        public JCS_JoystickButton JNext { get { return this.mJNext; } set { this.mJNext = value; } }
-        public JCS_JoystickButton JPrev { get { return this.mJPrev; } set { this.mJPrev = value; } }
-        public JCS_JoystickButton JOkay { get { return this.mJOkay; } set { this.mJOkay = value; } }
-        public JCS_JoystickButton JUp { get { return this.mJUp; } set { this.mJUp = value; } }
-        public JCS_JoystickButton JDown { get { return this.mJDown; } set { this.mJDown = value; } }
-        public JCS_JoystickButton JRight { get { return this.mJRight; } set { this.mJRight = value; } }
-        public JCS_JoystickButton JLeft { get { return this.mJLeft; } set { this.mJLeft = value; } }
+        public JCS_JoystickButton jNext { get { return mJNext; } set { mJNext = value; } }
+        public JCS_JoystickButton jPrev { get { return mJPrev; } set { mJPrev = value; } }
+        public JCS_JoystickButton jOkay { get { return mJOkay; } set { mJOkay = value; } }
+        public JCS_JoystickButton jUp { get { return mJUp; } set { mJUp = value; } }
+        public JCS_JoystickButton jDown { get { return mJDown; } set { mJDown = value; } }
+        public JCS_JoystickButton jRight { get { return mJRight; } set { mJRight = value; } }
+        public JCS_JoystickButton jLeft { get { return mJLeft; } set { mJLeft = value; } }
 
-        public AudioClip NextSound { get { return this.mNextSound; } set { this.mNextSound = value; } }
-        public AudioClip PrevSound { get { return this.mPrevSound; } set { this.mPrevSound = value; } }
-        public AudioClip OkaySound { get { return this.mOkaySound; } set { this.mOkaySound = value; } }
-        public AudioClip UpSound { get { return this.mUpSound; } set { this.mUpSound = value; } }
-        public AudioClip DownSound { get { return this.mDownSound; } set { this.mDownSound = value; } }
-        public AudioClip RightSound { get { return this.mRightSound; } set { this.mRightSound = value; } }
-        public AudioClip LeftSound { get { return this.mLeftSound; } set { this.mLeftSound = value; } }
+        public AudioClip nextSound { get { return mNextSound; } set { mNextSound = value; } }
+        public AudioClip prevSound { get { return mPrevSound; } set { mPrevSound = value; } }
+        public AudioClip okaySound { get { return mOkaySound; } set { mOkaySound = value; } }
+        public AudioClip upSound { get { return mUpSound; } set { mUpSound = value; } }
+        public AudioClip downSound { get { return mDownSound; } set { mDownSound = value; } }
+        public AudioClip rightSound { get { return mRightSound; } set { mRightSound = value; } }
+        public AudioClip leftSound { get { return mLeftSound; } set { mLeftSound = value; } }
 
-        public JCS_SoundMethod NextSoundMethod { get { return this.mNextSoundMethod; } set { this.mNextSoundMethod = value; } }
-        public JCS_SoundMethod PrevSoundMethod { get { return this.mPrevSoundMethod; } set { this.mPrevSoundMethod = value; } }
-        public JCS_SoundMethod OkaySoundMethod { get { return this.mOkaySoundMethod; } set { this.mOkaySoundMethod = value; } }
-        public JCS_SoundMethod UpSoundMethod { get { return this.mUpSoundMethod; } set { this.mUpSoundMethod = value; } }
-        public JCS_SoundMethod DownSoundMethod { get { return this.mDownSoundMethod; } set { this.mDownSoundMethod = value; } }
-        public JCS_SoundMethod RightSoundMethod { get { return this.mRightSoundMethod; } set { this.mRightSoundMethod = value; } }
-        public JCS_SoundMethod LeftSoundMethod { get { return this.mLeftSoundMethod; } set { this.mLeftSoundMethod = value; } }
+        public JCS_SoundMethod nextSoundMethod { get { return mNextSoundMethod; } set { mNextSoundMethod = value; } }
+        public JCS_SoundMethod prevSoundMethod { get { return mPrevSoundMethod; } set { mPrevSoundMethod = value; } }
+        public JCS_SoundMethod okaySoundMethod { get { return mOkaySoundMethod; } set { mOkaySoundMethod = value; } }
+        public JCS_SoundMethod upSoundMethod { get { return mUpSoundMethod; } set { mUpSoundMethod = value; } }
+        public JCS_SoundMethod downSoundMethod { get { return mDownSoundMethod; } set { mDownSoundMethod = value; } }
+        public JCS_SoundMethod rightSoundMethod { get { return mRightSoundMethod; } set { mRightSoundMethod = value; } }
+        public JCS_SoundMethod leftSoundMethod { get { return mLeftSoundMethod; } set { mLeftSoundMethod = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mButtonSelectionGroup = this.GetComponent<JCS_ButtonSelectionGroup>();
+            mButtonSelectionGroup = GetComponent<JCS_ButtonSelectionGroup>();
         }
 
         private void Update()
@@ -270,7 +270,7 @@ namespace JCSUnity
         private bool ActiveNext()
         {
             return JCS_Input.GetKeyByAction(mKeyActionType, mMNext) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJNext);
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamepadId, mJNext);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace JCSUnity
         private bool ActivePrev()
         {
             return JCS_Input.GetKeyByAction(mKeyActionType, mMPrev) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJPrev);
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamepadId, mJPrev);
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace JCSUnity
         private bool ActiveOkay()
         {
             return JCS_Input.GetKeyByAction(mKeyActionType, mMOkay) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJOkay);
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamepadId, mJOkay);
         }
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace JCSUnity
         private bool ActiveUp()
         {
             return JCS_Input.GetKeyByAction(mKeyActionType, mMUp) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJUp);
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamepadId, mJUp);
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace JCSUnity
         private bool ActiveDown()
         {
             return JCS_Input.GetKeyByAction(mKeyActionType, mMDown) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJDown);
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamepadId, mJDown);
         }
 
         /// <summary>
@@ -320,7 +320,7 @@ namespace JCSUnity
         private bool ActiveRight()
         {
             return JCS_Input.GetKeyByAction(mKeyActionType, mMRight) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJRight);
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamepadId, mJRight);
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace JCSUnity
         private bool ActiveLeft()
         {
             return JCS_Input.GetKeyByAction(mKeyActionType, mMLeft) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJLeft);
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamepadId, mJLeft);
         }
 
         /* Play the next sound. */

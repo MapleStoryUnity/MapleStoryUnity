@@ -26,17 +26,17 @@ namespace JCSUnity
 
         private void Start()
         {
-            this.mRectTransform = this.GetComponent<RectTransform>();
+            mRectTransform = GetComponent<RectTransform>();
 
             List<RectTransform> childs = JCS_Util.ForceDetachChildren(this.mRectTransform);
 
-            JCS_Util.ReattachSelf(this.mRectTransform, (parent) =>
+            JCS_Util.ReattachSelf(mRectTransform, (parent) =>
             {
                 mRectTransform.localScale = Vector3.one;
                 mRectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
             });
 
-            JCS_Util.AttachChildren(this.mRectTransform, childs);
+            JCS_Util.AttachChildren(mRectTransform, childs);
 
             mRectTransform.localPosition = Vector3.zero;
         }

@@ -61,10 +61,10 @@ namespace JCSUnity
         /* Setter & Getter */
 
 #if UNITY_EDITOR
-        public Vector3 CastToScreenPosition { get { return this.mCastToScreenPosition; } }
-        public Vector3 CastToWorldPosition { get { return this.mCastToWorldPosition; } }
+        public Vector3 castToScreenPosition { get { return this.mCastToScreenPosition; } }
+        public Vector3 castToWorldPosition { get { return this.mCastToWorldPosition; } }
 #endif
-        public Vector3 PositionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
+        public Vector3 positionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
 
         /* Functions */
 
@@ -109,8 +109,8 @@ namespace JCSUnity
 
             if (mPanelRoot != null)
             {
-                positionOffset.x *= mPanelRoot.PanelDeltaWidthRatio;
-                positionOffset.y *= mPanelRoot.PanelDeltaHeightRatio;
+                positionOffset.x *= mPanelRoot.panelDeltaWidthRatio;
+                positionOffset.y *= mPanelRoot.panelDeltaHeightRatio;
             }
 
             switch (GetObjectType())
@@ -121,22 +121,22 @@ namespace JCSUnity
                         Vector2 worldToCanvasSpace = camera.WorldToCanvasSpace(pos);
 
                         var canvas = JCS_Canvas.GuessCanvas();
-                        var resizeUI = canvas.ResizeUI;
+                        var resizeUI = canvas.resizeUI;
 
-                        float targetScale = resizeUI.TargetScale;
+                        float targetScale = resizeUI.targetScale;
 
                         if (targetScale != 0.0f)
                         {
-                            worldToCanvasSpace.x /= resizeUI.TargetScale;
-                            worldToCanvasSpace.y /= resizeUI.TargetScale;
+                            worldToCanvasSpace.x /= resizeUI.targetScale;
+                            worldToCanvasSpace.y /= resizeUI.targetScale;
                         }
 
-                        this.LocalPosition = worldToCanvasSpace + (Vector2)positionOffset;
+                        this.localPosition = worldToCanvasSpace + (Vector2)positionOffset;
                     }
                     break;
             }
 
-            return this.LocalPosition;
+            return this.localPosition;
         }
 
         /// <summary>
@@ -156,12 +156,12 @@ namespace JCSUnity
                 case JCS_UnityObjectType.GAME_OBJECT:
                 case JCS_UnityObjectType.SPRITE:
                     {
-                        this.LocalPosition = camera.CanvasToWorldSpace(pos) + mPositionOffset;
+                        this.localPosition = camera.CanvasToWorldSpace(pos) + mPositionOffset;
                     }
                     break;
             }
 
-            return this.LocalPosition;
+            return this.localPosition;
         }
     }
 }

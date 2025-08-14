@@ -37,9 +37,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Slider slider { get { return this.mSlider; } set { this.mSlider = value; } }
-        public string Format { get { return this.mFormat; } set { this.mFormat = value; } }
-        public int RoundPlace { get { return this.mRoundPlace; } set { this.mRoundPlace = value; } }
+        public Slider slider { get { return mSlider; } set { mSlider = value; } }
+        public string format { get { return mFormat; } set { mFormat = value; } }
+        public int roundPlace { get { return mRoundPlace; } set { mRoundPlace = value; } }
 
         /* Functions */
 

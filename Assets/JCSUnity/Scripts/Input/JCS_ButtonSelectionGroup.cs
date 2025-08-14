@@ -37,7 +37,6 @@ namespace JCSUnity
             LEFT,
         };
 
-
         [Separator("Check Variables (JCS_ButtonSelectionGroup)")]
 
         [Tooltip("Current selecting index.")]
@@ -61,8 +60,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool OnEnableResetSelections { get { return this.mOnEnableResetSelections; } set { this.mOnEnableResetSelections = value; } }
-        public JCS_ButtonSelection StartingSelection { get { return this.mStartingSelection; } set { this.mStartingSelection = value; } }
+        public bool onEnableResetSelections { get { return mOnEnableResetSelections; } set { mOnEnableResetSelections = value; } }
+        public JCS_ButtonSelection startingSelection { get { return mStartingSelection; } set { mStartingSelection = value; } }
 
 
         /* Functions */
@@ -73,7 +72,7 @@ namespace JCSUnity
 
             // let them know the grouper.
             foreach (JCS_ButtonSelection bs in mSelections)
-                bs.ButtonSelectionGroup = this;
+                bs.buttonSelectionGroup = this;
 
             selectionChanged = EmptyCallbackSelectionChanged;
         }
@@ -119,7 +118,7 @@ namespace JCSUnity
             CloseAllSelections();
 
             // start with the starting selection.
-            if (mStartingSelection != null && !mStartingSelection.Skip)
+            if (mStartingSelection != null && !mStartingSelection.skip)
             {
                 mCurrentSelectIndex = -1;
 
@@ -141,7 +140,7 @@ namespace JCSUnity
         public void CloseAllSelections()
         {
             foreach (JCS_ButtonSelection item in mSelections)
-                item.Active = false;
+                item.active = false;
 
             mCurrentSelectIndex = 0;
         }
@@ -169,7 +168,7 @@ namespace JCSUnity
             SelectSelection(tempSelectIndex);
 
             // if skip keep looking for the next selection.
-            if (mSelections[mCurrentSelectIndex].Skip)
+            if (mSelections[mCurrentSelectIndex].skip)
                 NextSelection();
 
             return true;
@@ -190,7 +189,7 @@ namespace JCSUnity
             SelectSelection(tempSelectIndex);
 
             // if skip keep looking for the previous selection.
-            if (mSelections[mCurrentSelectIndex].Skip)
+            if (mSelections[mCurrentSelectIndex].skip)
                 PrevSelection();
 
             return true;
@@ -206,7 +205,7 @@ namespace JCSUnity
             {
                 if (JCS_Util.WithInRange(selectionIndex, mSelections))
                 {
-                    if (mSelections[selectionIndex].Skip)
+                    if (mSelections[selectionIndex].skip)
                         return;
                 }
             }
@@ -218,7 +217,7 @@ namespace JCSUnity
             if (JCS_Util.WithInRange(mCurrentSelectIndex, mSelections))
             {
                 // disable current active selection.
-                mSelections[mCurrentSelectIndex].Active = false;
+                mSelections[mCurrentSelectIndex].active = false;
             }
 
             this.mCurrentSelectIndex = selectionIndex;
@@ -226,7 +225,7 @@ namespace JCSUnity
             this.mCurrentSelectIndex = JCS_Array.LoopIn(this.mCurrentSelectIndex, mSelections);
 
             // active the new active selection.
-            mSelections[mCurrentSelectIndex].Active = true;
+            mSelections[mCurrentSelectIndex].active = true;
 
             if (selectionChanged != null)
                 selectionChanged.Invoke();
@@ -297,7 +296,7 @@ selection is not in the group...");
             SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.UP));
 
             // if skip keep looking for the previous selection.
-            if (mSelections[mCurrentSelectIndex].Skip)
+            if (mSelections[mCurrentSelectIndex].skip)
                 UpSelection();
 
             return true;
@@ -318,7 +317,7 @@ selection is not in the group...");
             SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.DOWN));
 
             // if skip keep looking for the previous selection.
-            if (mSelections[mCurrentSelectIndex].Skip)
+            if (mSelections[mCurrentSelectIndex].skip)
                 DownSelection();
 
             return true;
@@ -339,7 +338,7 @@ selection is not in the group...");
             SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.RIGHT));
 
             // if skip keep looking for the previous selection.
-            if (mSelections[mCurrentSelectIndex].Skip)
+            if (mSelections[mCurrentSelectIndex].skip)
                 RightSelection();
 
             return true;
@@ -360,7 +359,7 @@ selection is not in the group...");
             SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.LEFT));
 
             // if skip keep looking for the previous selection.
-            if (mSelections[mCurrentSelectIndex].Skip)
+            if (mSelections[mCurrentSelectIndex].skip)
                 LeftSelection();
 
             return true;
@@ -380,10 +379,10 @@ selection is not in the group...");
         {
             switch (direction)
             {
-                case Direction.UP: return bs.UpSelection;
-                case Direction.DOWN: return bs.DownSelection;
-                case Direction.RIGHT: return bs.RightSelection;
-                case Direction.LEFT: return bs.LeftSelection;
+                case Direction.UP: return bs.upSelection;
+                case Direction.DOWN: return bs.downSelection;
+                case Direction.RIGHT: return bs.rightSelection;
+                case Direction.LEFT: return bs.leftSelection;
             }
 
             Debug.Log("Failed to get button selection by direction, this should not happens...");
@@ -403,7 +402,7 @@ selection is not in the group...");
         {
             foreach (JCS_ButtonSelection item in mSelections)
             {
-                if (!item.Skip)
+                if (!item.skip)
                     return false;
             }
 
@@ -482,7 +481,7 @@ selection is not in the group...");
                 return true;
 
             // if not skip, break the loop.
-            if (!newBs.Skip)
+            if (!newBs.skip)
                 return false;
 
             return IsAllSelectionsIsSkipDirection(newBs, direction);

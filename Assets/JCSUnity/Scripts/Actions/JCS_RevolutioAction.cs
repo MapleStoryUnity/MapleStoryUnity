@@ -43,11 +43,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public bool RevoluteAsLocalPosition { get { return this.mRevoluteAsLocalPosition; } set { this.mRevoluteAsLocalPosition = value; } }
-        public Transform Origin { get { return this.mOrigin; } set { this.mOrigin = value; } }
-        public float Radius { get { return this.mRadius; } set { this.mRadius = value; } }
-        public int Degree { get { return this.mDegree; } set { this.mDegree = value; } }
+        public JCS_Axis axis { get { return mAxis; } set { mAxis = value; } }
+        public bool revoluteAsLocalPosition { get { return mRevoluteAsLocalPosition; } set { mRevoluteAsLocalPosition = value; } }
+        public Transform origin { get { return mOrigin; } set { mOrigin = value; } }
+        public float radius { get { return mRadius; } set { mRadius = value; } }
+        public int degree { get { return mDegree; } set { mDegree = value; } }
 
         /* Functions */
 
@@ -70,21 +70,21 @@ namespace JCSUnity
                     {
                         if (mRevoluteAsLocalPosition)
                         {
-                            this.transform.localPosition
+                            transform.localPosition
                                 = JCS_Mathf.CirclePositionX(
-                                    this.mOrigin.localPosition,
-                                    this.transform.localPosition,
-                                    this.mDegree,
-                                    this.mRadius);
+                                    mOrigin.localPosition,
+                                    transform.localPosition,
+                                    mDegree,
+                                    mRadius);
                         }
                         else
                         {
-                            this.transform.position
+                            transform.position
                                 = JCS_Mathf.CirclePositionX(
-                                    this.mOrigin.position,
-                                    this.transform.position,
-                                    this.mDegree,
-                                    this.mRadius);
+                                    mOrigin.position,
+                                    transform.position,
+                                    mDegree,
+                                    mRadius);
                         }
                     }
                     break;
@@ -92,21 +92,21 @@ namespace JCSUnity
                     {
                         if (mRevoluteAsLocalPosition)
                         {
-                            this.transform.localPosition
+                            transform.localPosition
                                 = JCS_Mathf.CirclePositionY(
-                                    this.mOrigin.localPosition,
-                                    this.transform.localPosition,
-                                    this.mDegree,
-                                    this.mRadius);
+                                    mOrigin.localPosition,
+                                    transform.localPosition,
+                                    mDegree,
+                                    mRadius);
                         }
                         else
                         {
-                            this.transform.position
+                            transform.position
                                 = JCS_Mathf.CirclePositionY(
-                                    this.mOrigin.position,
-                                    this.transform.position,
-                                    this.mDegree,
-                                    this.mRadius);
+                                    mOrigin.position,
+                                    transform.position,
+                                    mDegree,
+                                    mRadius);
                         }
                     }
                     break;
@@ -114,21 +114,21 @@ namespace JCSUnity
                     {
                         if (mRevoluteAsLocalPosition)
                         {
-                            this.transform.localPosition
+                            transform.localPosition
                                 = JCS_Mathf.CirclePositionZ(
-                                    this.mOrigin.localPosition,
-                                    this.transform.localPosition,
-                                    this.mDegree,
-                                    this.mRadius);
+                                    mOrigin.localPosition,
+                                    transform.localPosition,
+                                    mDegree,
+                                    mRadius);
                         }
                         else
                         {
-                            this.transform.position
+                            transform.position
                                 = JCS_Mathf.CirclePositionZ(
-                                    this.mOrigin.position,
-                                    this.transform.position,
-                                    this.mDegree,
-                                    this.mRadius);
+                                    mOrigin.position,
+                                    transform.position,
+                                    mDegree,
+                                    mRadius);
                         }
                     }
                     break;

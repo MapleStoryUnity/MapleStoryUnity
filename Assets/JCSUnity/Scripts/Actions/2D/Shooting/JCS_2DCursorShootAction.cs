@@ -30,7 +30,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool OverrideShoot { get { return this.mOverrideShoot; } set { this.mOverrideShoot = value; } }
+        public bool overrideShoot { get { return mOverrideShoot; } set { mOverrideShoot = value; } }
 
         /// <summary>
         /// Call back during shooting a bullet.
@@ -38,7 +38,7 @@ namespace JCSUnity
         /// <param name="func"> function to set. </param>
         public void SetShootCallback(Action func)
         {
-            this.mShootAction.SetShootCallback(func);
+            mShootAction.SetShootCallback(func);
         }
 
         /// <summary>
@@ -47,23 +47,23 @@ namespace JCSUnity
         /// <param name="func"></param>
         public void SetCheckAbleToShootFunction(Func<bool> func)
         {
-            this.mShootAction.SetCheckAbleToShootFunction(func);
+            mShootAction.SetCheckAbleToShootFunction(func);
         }
 
         /* Functions */
 
         private void Awake()
         {
-            mShootAction = this.GetComponent<JCS_ShootAction>();
+            mShootAction = GetComponent<JCS_ShootAction>();
 
-            mShootAction.OverrideShoot = true;
+            mShootAction.overrideShoot = true;
         }
 
         private void Update()
         {
             LookAtMouse();
 
-            if (!OverrideShoot)
+            if (!mOverrideShoot)
                 ProcessInput();
         }
 
@@ -93,18 +93,18 @@ namespace JCSUnity
             if (JCS_Mathf.IsPositive(transform.localScale.x))
             {
                 lockPos = new Vector3(0, 0,
-                    Mathf.Atan2((mouse.y - mShootAction.SpawnPoint.position.y),
-                    (mouse.x - mShootAction.SpawnPoint.position.x)) * Mathf.Rad2Deg);
+                    Mathf.Atan2((mouse.y - mShootAction.spawnPoint.position.y),
+                    (mouse.x - mShootAction.spawnPoint.position.x)) * Mathf.Rad2Deg);
             }
             else
             {
                 lockPos = new Vector3(0, 0,
-                    Mathf.Atan2((-mouse.y + mShootAction.SpawnPoint.position.y),
-                    (-mouse.x + mShootAction.SpawnPoint.position.x)) * Mathf.Rad2Deg);
+                    Mathf.Atan2((-mouse.y + mShootAction.spawnPoint.position.y),
+                    (-mouse.x + mShootAction.spawnPoint.position.x)) * Mathf.Rad2Deg);
             }
 
             // Have the Gun Object look at the `mouse` Var
-            mShootAction.SpawnPoint.eulerAngles = lockPos;
+            mShootAction.spawnPoint.eulerAngles = lockPos;
         }
 
         /// <summary>
@@ -112,8 +112,8 @@ namespace JCSUnity
         /// </summary>
         private void ProcessInput()
         {
-            if (JCS_Input.GetMouseByAction(mShootAction.KeyAct, mShootAction.MouseButton) ||
-                JCS_Input.GetKeyByAction(mShootAction.KeyAct, mShootAction.ShootKeyCode))
+            if (JCS_Input.GetMouseByAction(mShootAction.keyAct, mShootAction.mouseButton) ||
+                JCS_Input.GetKeyByAction(mShootAction.keyAct, mShootAction.shootKeyCode))
             {
                 if (mShootAction.GetCheckAbleToShootFunction().Invoke())
                 {
@@ -121,7 +121,7 @@ namespace JCSUnity
                     mShootAction.GetShootCallback().Invoke();
 
                     // shoot a bullet.
-                    for (int count = 0; count < mShootAction.ShootCount; ++count)
+                    for (int count = 0; count < mShootAction.shootCount; ++count)
                     {
                         mShootAction.Shoot();
                     }

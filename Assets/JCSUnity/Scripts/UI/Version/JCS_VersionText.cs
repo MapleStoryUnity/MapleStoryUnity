@@ -26,6 +26,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public string format { get { return mFormat; } set { mFormat = value; } }
+
         /* Functions */
 
         private void Awake()

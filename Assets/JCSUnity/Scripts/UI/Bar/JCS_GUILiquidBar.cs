@@ -141,7 +141,7 @@ namespace JCSUnity
 
             // half
             if (JCS_Input.GetKeyDown(mHalfKey))
-                SetCurrentValue(MaxValue / 2.0f);
+                SetCurrentValue(maxValue / 2.0f);
 
             if (JCS_Input.GetKeyDown(mFixedKey))
                 FixPercentage();
@@ -175,7 +175,7 @@ namespace JCSUnity
             this.mMaxValue = val;
 
             if (mInfo != null)
-                mInfo.MaxValue = (int)val;
+                mInfo.maxValue = (int)val;
 
             FixPercentage();
         }
@@ -195,7 +195,7 @@ namespace JCSUnity
             this.mMinValue = val;
 
             if (mInfo != null)
-                mInfo.MinValue = (int)val;
+                mInfo.minValue = (int)val;
 
             FixPercentage();
         }
@@ -231,7 +231,7 @@ namespace JCSUnity
                 mCurrentValue = mMaxValue;
 
             if (mInfo != null)
-                mInfo.CurrentValue = (int)mCurrentValue;
+                mInfo.currentValue = (int)mCurrentValue;
 
             FixPercentage();
 
@@ -469,13 +469,13 @@ namespace JCSUnity
                     case JCS_Align.ALIGN_LEFT:
                     case JCS_Align.ALIGN_RIGHT:
                         {
-                            tmpSpeed *= mPanelRoot.PanelDeltaWidthRatio;
+                            tmpSpeed *= mPanelRoot.panelDeltaWidthRatio;
                         }
                         break;
                     case JCS_Align.ALIGN_BOTTOM:
                     case JCS_Align.ALIGN_TOP:
                         {
-                            tmpSpeed *= mPanelRoot.PanelDeltaHeightRatio;
+                            tmpSpeed *= mPanelRoot.panelDeltaHeightRatio;
                         }
                         break;
                 }
@@ -573,13 +573,13 @@ namespace JCSUnity
         {
             // without info attach, we cannot
             // do anything.
-            if (Info == null)
+            if (mInfo == null)
                 return;
 
-            SetMinValue(mInfo.MinValue);
-            SetMaxValue(mInfo.MaxValue);
+            SetMinValue(mInfo.minValue);
+            SetMaxValue(mInfo.maxValue);
 
-            SetCurrentValue(mInfo.CurrentValue);
+            SetCurrentValue(mInfo.currentValue);
         }
     }
 }

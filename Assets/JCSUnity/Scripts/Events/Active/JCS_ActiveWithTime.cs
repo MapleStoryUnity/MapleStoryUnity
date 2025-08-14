@@ -38,10 +38,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<GameObject> GameObjects { get { return this.mGameObjects; } set { this.mGameObjects = value; } }
-        public float time { get { return this.mTime; } set { this.mTime = value; } }
-        public float timer { get { return this.mTimer; } set { this.mTimer = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public List<GameObject> gameObjects { get { return mGameObjects; } set { mGameObjects = value; } }
+        public float time { get { return mTime; } set { mTime = value; } }
+        public float timer { get { return mTimer; } set { mTimer = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -55,7 +55,7 @@ namespace JCSUnity
                 mTimer = 0.0f;
 
                 // active all
-                foreach (var comp in mGameObjects)
+                foreach (GameObject comp in mGameObjects)
                     comp.SetActive(true);
             }
         }

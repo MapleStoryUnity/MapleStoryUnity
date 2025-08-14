@@ -71,10 +71,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public AudioListener GetAudioListener() { return this.mAudioListener; }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public float MinFieldOfView { get { return this.mMinFieldOfView; } set { this.mMinFieldOfView = value; } }
-        public float MaxFieldOfView { get { return this.mMaxFieldOfView; } set { this.mMaxFieldOfView = value; } }
+        public AudioListener audioListener { get { return mAudioListener; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public float minFieldOfView { get { return mMinFieldOfView; } set { mMinFieldOfView = value; } }
+        public float maxFieldOfView { get { return mMaxFieldOfView; } set { mMaxFieldOfView = value; } }
 
         /* Functions */
 
@@ -98,7 +98,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_SoundManager.FirstInstance().SetAudioListener(GetAudioListener());
+            JCS_SoundManager.FirstInstance().SetAudioListener(audioListener);
         }
 
         private void Update()

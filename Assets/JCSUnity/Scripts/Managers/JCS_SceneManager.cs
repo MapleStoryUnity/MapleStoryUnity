@@ -90,7 +90,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_SwitchSceneType SwitchSceneType { get { return this.mSwitchSceneType; } set { this.mSwitchSceneType = value; } }
+        public JCS_SwitchSceneType switchSceneType { get { return this.mSwitchSceneType; } set { this.mSwitchSceneType = value; } }
         public JCS_DynamicScene GetDynamicScene() { return this.mDynamicScene; }
         public void SetDynamicScene(JCS_DynamicScene ds) { this.mDynamicScene = ds; }
         public void SetBlackScreen(JCS_BlackScreen bs) { this.mBlackScreen = bs; }
@@ -99,9 +99,9 @@ namespace JCSUnity
         public JCS_WhiteScreen GetWhiteScreen() { return this.mWhiteScreen; }
         public JCS_BlackScreen GetBlackScreen() { return this.mBlackScreen; }
 
-        public bool OverrideSetting { get { return this.mOverrideSetting; } }
-        public float SceneFadeInTime { get { return this.mSceneFadeInTime; } set { this.mSceneFadeInTime = value; } }
-        public float SceneFadeOutTime { get { return this.mSceneFadeOutTime; } set { this.mSceneFadeOutTime = value; } }
+        public bool overrideSetting { get { return this.mOverrideSetting; } }
+        public float sceneFadeInTime { get { return this.mSceneFadeInTime; } set { this.mSceneFadeInTime = value; } }
+        public float sceneFadeOutTime { get { return this.mSceneFadeOutTime; } set { this.mSceneFadeOutTime = value; } }
 
         /* Functions */
 
@@ -152,7 +152,7 @@ namespace JCSUnity
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
                         // get the current screen color.
-                        mBlackScreen.LocalColor = ss.SCREEN_COLOR;
+                        mBlackScreen.localColor = ss.SCREEN_COLOR;
 
                         mBlackScreen.FadeOut(fadeoutTime);
                     }
@@ -199,7 +199,7 @@ namespace JCSUnity
             }
 
             // the game is loaded start the game agian
-            JCS_GameManager.FirstInstance().GAME_PAUSE = false;
+            JCS_GameManager.FirstInstance().gamePaused = false;
         }
 
         private void Update()
@@ -284,8 +284,8 @@ namespace JCSUnity
                         // set the screen color.
                         // NOTE(jenchieh): always start with opacity the same 
                         // as previous.
-                        screenColor.a = mBlackScreen.LocalColor.a;
-                        mBlackScreen.LocalColor = screenColor;
+                        screenColor.a = mBlackScreen.localColor.a;
+                        mBlackScreen.localColor = screenColor;
 
                         // record down the screen color.
                         JCS_SceneSettings.FirstInstance().SCREEN_COLOR = screenColor;

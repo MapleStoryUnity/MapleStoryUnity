@@ -41,9 +41,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public AudioClip SoundClip { get { return this.mSoundClip; } set { this.mSoundClip = value; } }
-        public float SoundFadeInTime { get { return this.mSoundFadeInTime; } set { this.mSoundFadeInTime = value; } }
-        public float SoundFadeOutTime { get { return this.mSoundFadeOutTime; } set { this.mSoundFadeOutTime = value; } }
+        public AudioClip soundClip { get { return mSoundClip; } set { mSoundClip = value; } }
+        public float soundFadeInTime { get { return mSoundFadeInTime; } set { mSoundFadeInTime = value; } }
+        public float soundFadeOutTime { get { return mSoundFadeOutTime; } set { mSoundFadeOutTime = value; } }
 
         /* Functions */
 

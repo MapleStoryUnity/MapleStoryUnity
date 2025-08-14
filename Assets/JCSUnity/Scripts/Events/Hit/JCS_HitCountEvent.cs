@@ -32,18 +32,18 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public uint HitCount { get { return this.mHitCount; } set { this.mHitCount = value; } }
+        public uint hitCount { get { return mHitCount; } set { mHitCount = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mHitList = this.GetComponent<JCS_HitListEvent>();
+            mHitList = GetComponent<JCS_HitListEvent>();
         }
 
         private void FixedUpdate()
         {
-            if (mHitList.IsHit)
+            if (mHitList.isHit)
             {
                 --mHitCount;
                 CheckDestroy();
@@ -61,7 +61,7 @@ namespace JCSUnity
             }
             else
             {
-                mHitList.IsHit = false;
+                mHitList.isHit = false;
             }
         }
     }

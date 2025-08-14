@@ -58,11 +58,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
-        public float RotateSpeed { get { return this.mRotateSpeed; } set { this.mRotateSpeed = value; } }
-        public JCS_Vector3Direction RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
-        public bool BySelf { get { return this.mBySelf; } set { this.mBySelf = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool effect { get { return mEffect; } set { mEffect = value; } }
+        public float rotateSpeed { get { return mRotateSpeed; } set { mRotateSpeed = value; } }
+        public JCS_Vector3Direction rotateDirection { get { return mRotateDirection; } set { mRotateDirection = value; } }
+        public bool bySelf { get { return mBySelf; } set { mBySelf = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -79,7 +79,7 @@ namespace JCSUnity
 
         protected virtual void Update()
         {
-            if (!Effect)
+            if (!effect)
                 return;
 
             DoRotation();
@@ -90,7 +90,7 @@ namespace JCSUnity
         /// </summary>
         public void Stop()
         {
-            Effect = false;
+            effect = false;
             this.transform.localEulerAngles = Vector3.zero;
         }
 

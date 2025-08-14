@@ -35,14 +35,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public uint LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public uint loopTimes { get { return mLoopTimes; } set { mLoopTimes = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mAnimator = this.GetComponent<Animator>();
+            mAnimator = GetComponent<Animator>();
         }
 
         private void Update()
@@ -54,7 +54,7 @@ namespace JCSUnity
             if (mAnimationTimer > animatorStateInfo.length * mLoopTimes)
             {
                 mAnimationTimer = 0;
-                this.gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }
         }
     }

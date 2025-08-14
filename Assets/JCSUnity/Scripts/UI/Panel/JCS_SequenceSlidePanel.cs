@@ -81,27 +81,27 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float SpaceTime { get { return this.mSpaceTime; } set { this.mSpaceTime = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float spaceTime { get { return mSpaceTime; } set { mSpaceTime = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public AudioClip ActiveClip { get { return this.mActiveClip; } set { this.mActiveClip = value; } }
-        public AudioClip DeactiveClip { get { return this.mDeactiveClip; } set { this.mDeactiveClip = value; } }
-        public AudioClip InsideActiveClip { get { return this.mInsideActiveClip; } set { this.mInsideActiveClip = value; } }
-        public AudioClip InsideDeactiveClip { get { return this.mInsideDeactiveClip; } set { this.mInsideDeactiveClip = value; } }
+        public AudioClip activeClip { get { return mActiveClip; } set { mActiveClip = value; } }
+        public AudioClip deactiveClip { get { return mDeactiveClip; } set { mDeactiveClip = value; } }
+        public AudioClip insideActiveClip { get { return mInsideActiveClip; } set { mInsideActiveClip = value; } }
+        public AudioClip insideDeactiveClip { get { return mInsideDeactiveClip; } set { mInsideDeactiveClip = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mRectTransform = this.GetComponent<RectTransform>();
-            mSlideEffect = this.GetComponent<JCS_SlideEffect>();
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            mRectTransform = GetComponent<RectTransform>();
+            mSlideEffect = GetComponent<JCS_SlideEffect>();
+            mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
             InitSequenceButtons();
 
             // do not auto check this exit, 
             // so it wont exit itself.
-            mSlideEffect.AutoAddEvent = false;
+            mSlideEffect.autoAddEvent = false;
 
             // if button not equals to null, 
             // then we can do the button to close the panel instead of 
@@ -124,7 +124,7 @@ namespace JCSUnity
         private void LateUpdate()
         {
             // once is detect that is on the gui
-            if (mSlideEffect.IsActive)
+            if (mSlideEffect.isActive)
             {
                 // active the animation.
                 ActiveAnim();
@@ -166,7 +166,7 @@ namespace JCSUnity
                 // 
                 se.transform.SetParent(this.transform);
 
-                se.AutoAddEvent = false;
+                se.autoAddEvent = false;
             }
 
             for (int index = 0; index < mAreaEffects.Length; ++index)
@@ -209,7 +209,7 @@ namespace JCSUnity
             JCS_SlideEffect se = mSlideButtons[mBtnCounter];
 
             // stop checking if exits
-            se.AutoAddEvent = false;
+            se.autoAddEvent = false;
 
             se.Active();
 

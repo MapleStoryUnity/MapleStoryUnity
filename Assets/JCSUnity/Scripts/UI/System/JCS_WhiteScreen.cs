@@ -47,8 +47,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float FadeOutTime { get { return this.mFadeOutTime; } set { this.mFadeOutTime = value; } }
-        public float FadeInTime { get { return this.mFadeInTime; } set { this.mFadeInTime = value; } }
+        public float fadeOutTime { get { return mFadeOutTime; } set { mFadeOutTime = value; } }
+        public float fadeInTime { get { return mFadeInTime; } set { mFadeInTime = value; } }
 
         /* Functions */
 
@@ -56,7 +56,7 @@ namespace JCSUnity
         {
             this.mAO = this.GetComponent<JCS_FadeObject>();
 
-            mAO.LocalAlpha = 0;
+            mAO.localAlpha = 0;
         }
 
 #if UNITY_EDITOR

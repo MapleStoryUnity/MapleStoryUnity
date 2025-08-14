@@ -23,13 +23,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Animator GetAnimator() { return this.mAnimator; }
+        public Animator animator { get { return mAnimator; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mAnimator = this.GetComponent<Animator>();
+            mAnimator = GetComponent<Animator>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace JCSUnity
         /// </summary>
         public virtual void PlayAnimationInFrame()
         {
-            GetAnimator().enabled = true;
+            animator.enabled = true;
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace JCSUnity
         /// </summary>
         public virtual void StopAnimationInFrame()
         {
-            GetAnimator().enabled = false;
+            animator.enabled = false;
         }
     }
 }

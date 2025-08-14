@@ -65,7 +65,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<JCS_Canvas> Canvases { get { return this.mCanvases; } }
+        public List<JCS_Canvas> canvases { get { return mCanvases; } }
         public void SetDialogue(JCS_DialogueType type, JCS_DialogueObject jdo)
         {
             switch (type)
@@ -78,7 +78,7 @@ namespace JCSUnity
                             return;
                         }
 
-                        this.mGameUI = jdo;
+                        mGameUI = jdo;
                     }
                     break;
                 case JCS_DialogueType.PLAYER_DIALOGUE:
@@ -111,21 +111,21 @@ namespace JCSUnity
             {
                 // Game UI
                 case JCS_DialogueType.GAME_UI:
-                    return this.mGameUI;
+                    return mGameUI;
 
                 // Dialogue Box
                 case JCS_DialogueType.PLAYER_DIALOGUE:
-                    return this.mFocusGameDialogue;
+                    return mFocusGameDialogue;
                 case JCS_DialogueType.SYSTEM_DIALOGUE:
-                    return this.mForceDialogue;
+                    return mForceDialogue;
             }
 
             Debug.LogError("Failed to get Dialogue -> " + type);
             return null;
         }
-        public LinkedList<JCS_DialogueObject> GetOpenWindow() { return this.mOpenWindow; }
-        public JCS_FadeScreen FadeScreen { get { return this.mFadeScreen; } set { this.mFadeScreen = value; } }
-        public JCS_UndoRedoSystem GetGlobalUndoRedoSystem() { return this.mGlobalUndoRedoSystem; }
+        public LinkedList<JCS_DialogueObject> GetOpenWindow() { return mOpenWindow; }
+        public JCS_FadeScreen fadeScreen { get { return mFadeScreen; } set { mFadeScreen = value; } }
+        public JCS_UndoRedoSystem GetGlobalUndoRedoSystem() { return mGlobalUndoRedoSystem; }
 
         /* Functions */
 
@@ -251,7 +251,7 @@ namespace JCSUnity
         /// <param name="time"> time to fade. </param>
         public void Focus()
         {
-            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
             fadeObj.FadeIn();
         }
 
@@ -261,7 +261,7 @@ namespace JCSUnity
         /// <param name="time"> time to fade. </param>
         public void Focus(float time)
         {
-            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
             fadeObj.FadeIn(time);
         }
 
@@ -273,13 +273,13 @@ namespace JCSUnity
         {
             float alpha = color.a;
 
-            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
 
             Color fakeColor = color;
             fakeColor.a = 0;
 
-            fadeObj.LocalColor = fakeColor;
-            fadeObj.FadeInAmount = alpha;
+            fadeObj.localColor = fakeColor;
+            fadeObj.fadeInAmount = alpha;
             fadeObj.FadeIn();
         }
 
@@ -292,13 +292,13 @@ namespace JCSUnity
         {
             float alpha = color.a;
 
-            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
 
             Color fakeColor = color;
             fakeColor.a = 0;
 
-            fadeObj.LocalColor = fakeColor;
-            fadeObj.FadeInAmount = alpha;
+            fadeObj.localColor = fakeColor;
+            fadeObj.fadeInAmount = alpha;
             fadeObj.FadeIn(time);
         }
 
@@ -307,7 +307,7 @@ namespace JCSUnity
         /// </summary>
         public void UnFocus()
         {
-            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
             fadeObj.FadeOut();
         }
 
@@ -316,7 +316,7 @@ namespace JCSUnity
         /// </summary>
         public void UnFocus(float time)
         {
-            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
             fadeObj.FadeOut(time);
         }
     }

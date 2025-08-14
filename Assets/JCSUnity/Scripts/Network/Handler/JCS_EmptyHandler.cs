@@ -19,7 +19,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="client"></param>
-        public override void handlePacket(JCS_BinaryReader br, JCS_Client client)
+        public override void HandlePacket(JCS_BinaryReader br, JCS_Client client)
         {
             // empty..
         }
@@ -34,7 +34,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="client"> the client </param>
         /// <returns> validate state? </returns>
-        public override bool validateState(JCS_Client client)
+        public override bool ValidateState(JCS_Client client)
         {
             // Check if the valid client.
             return true;

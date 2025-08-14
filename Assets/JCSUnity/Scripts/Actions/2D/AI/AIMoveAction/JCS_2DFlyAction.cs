@@ -156,35 +156,35 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public CharacterController GetCharacterController() { return this.mCharacterControllerInfo.GetCharacterController(); }
-        public Vector3 Velocity { get { return this.mVelocityInfo.Velocity; } set { this.mVelocityInfo.Velocity = value; } }
-        public float VelX { get { return mVelocityInfo.VelX; } set { mVelocityInfo.VelX = value; } }
-        public float VelY { get { return mVelocityInfo.VelY; } set { mVelocityInfo.VelY = value; } }
-        public float VelZ { get { return mVelocityInfo.VelZ; } set { mVelocityInfo.VelZ = value; } }
-        public bool isGrounded { get { return this.mCharacterControllerInfo.isGrounded; } }
-        public Vector3 MoveSpeed { get { return mVelocityInfo.MoveSpeed; } set { mVelocityInfo.MoveSpeed = value; } }
-        public Vector3 RecordSpeed { get { return mVelocityInfo.RecordSpeed; } set { mVelocityInfo.RecordSpeed = value; } }
+        public CharacterController GetCharacterController() { return mCharacterControllerInfo.GetCharacterController(); }
+        public Vector3 velocity { get { return mVelocityInfo.velocity; } set { mVelocityInfo.velocity = value; } }
+        public float velX { get { return mVelocityInfo.velX; } set { mVelocityInfo.velX = value; } }
+        public float velY { get { return mVelocityInfo.velY; } set { mVelocityInfo.velY = value; } }
+        public float velZ { get { return mVelocityInfo.velZ; } set { mVelocityInfo.velZ = value; } }
+        public bool isGrounded { get { return mCharacterControllerInfo.isGrounded; } }
+        public Vector3 moveSpeed { get { return mVelocityInfo.moveSpeed; } set { mVelocityInfo.moveSpeed = value; } }
+        public Vector3 recordSpeed { get { return mVelocityInfo.recordSpeed; } set { mVelocityInfo.recordSpeed = value; } }
 
-        public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
+        public bool madEffect { get { return mMadEffect; } set { mMadEffect = value; } }
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mVelocityInfo = this.GetComponent<JCS_VelocityInfo>();
-            this.mCharacterControllerInfo = this.GetComponent<JCS_CharacterControllerInfo>();
+            mVelocityInfo = GetComponent<JCS_VelocityInfo>();
+            mCharacterControllerInfo = GetComponent<JCS_CharacterControllerInfo>();
 
             // try to get the sound
             if (mSoundPlayer == null)
-                this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+                mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
             // try to get the component in the same transform
             if (mAttackRecorder == null)
-                mAttackRecorder = this.GetComponent<JCS_AttackerRecorder>();
+                mAttackRecorder = GetComponent<JCS_AttackerRecorder>();
             if (mLiveObjectAnimator == null)
-                mLiveObjectAnimator = this.GetComponent<JCS_2DLiveObjectAnimator>();
+                mLiveObjectAnimator = GetComponent<JCS_2DLiveObjectAnimator>();
         }
 
         private void Start()
@@ -193,10 +193,11 @@ namespace JCSUnity
 
             // ignore all the tags.
             JCS_2DFlyActionIgnore[] tags = Resources.FindObjectsOfTypeAll<JCS_2DFlyActionIgnore>();
+
             foreach (JCS_2DFlyActionIgnore tag in tags)
             {
                 Physics.IgnoreCollision(tag.GetComponent<Collider>(),
-                    this.GetCharacterController());
+                    GetCharacterController());
             }
 
             // ignore all platforms
@@ -204,15 +205,16 @@ namespace JCSUnity
             {
                 // get all the paltform in the scene
                 JCS_2DPositionPlatform[] platforms = Resources.FindObjectsOfTypeAll<JCS_2DPositionPlatform>();
+
                 foreach (JCS_2DPositionPlatform platform in platforms)
                 {
-                    if (platform.CannotBeGoThrough)
+                    if (platform.cannotBeGoThrough)
                         return;
 
                     Physics.IgnoreCollision(platform.GetPlatformCollider(),
-                        this.GetCharacterController());
+                        GetCharacterController());
                     Physics.IgnoreCollision(platform.GetPlatformTrigger(),
-                        this.GetCharacterController());
+                        GetCharacterController());
                 }
             }
         }
@@ -257,7 +259,7 @@ namespace JCSUnity
             // if is already get attack do the mad effect.
             if (mMadEffect && mAttackRecorder != null)
             {
-                Transform lastAttacker = mAttackRecorder.LastAttacker;
+                Transform lastAttacker = mAttackRecorder.lastAttacker;
 
                 // if the last attacker does not exist, do nothing.
                 if (lastAttacker != null)
@@ -265,13 +267,13 @@ namespace JCSUnity
                     // NOTE(JenChieh): if does exist, start following the attacker.
 
                     // X-axis
-                    if (lastAttacker.position.x < this.transform.position.x)
+                    if (lastAttacker.position.x < transform.position.x)
                         directionX = StatusX.LEFT;
                     else
                         directionX = StatusX.RIGHT;
 
                     // Y-axis
-                    if (lastAttacker.position.y < this.transform.position.y)
+                    if (lastAttacker.position.y < transform.position.y)
                         directionY = StatusY.DOWN;
                     else
                         directionY = StatusY.UP;
@@ -310,7 +312,6 @@ namespace JCSUnity
                 directionX = StatusX.RIGHT;
                 ++resultCounterX;
             }
-
 
             float idlePossiblityY = JCS_Random.Range(0, 100);
             float upPossiblity = JCS_Random.Range(0, 100);
@@ -422,7 +423,7 @@ namespace JCSUnity
         /// <param name="force"> foce to apply </param>
         public void FlyX(float force)
         {
-            mVelocityInfo.RecordSpeedX = force;
+            mVelocityInfo.recordSpeedX = force;
 
             mFlyed = true;
         }
@@ -440,7 +441,7 @@ namespace JCSUnity
         /// <param name="force"> foce to apply </param>
         public void FlyY(float force)
         {
-            mVelocityInfo.VelY = force;
+            mVelocityInfo.velY = force;
 
             mFlyed = true;
         }

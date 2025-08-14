@@ -43,14 +43,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_DeltaNumber CounterTextSprite { get { return this.mCounterTextSprite; } set { this.mCounterTextSprite = value; } }
-        public JCS_DeltaNumber FullTextSprite { get { return this.mFullTextSprite; } set { this.mFullTextSprite = value; } }
+        public JCS_DeltaNumber counterTextSprite { get { return mCounterTextSprite; } set { mCounterTextSprite = value; } }
+        public JCS_DeltaNumber fullTextSprite { get { return mFullTextSprite; } set { mFullTextSprite = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mLiquidBar = this.GetComponent<JCS_GUILiquidBar>();
+            mLiquidBar = GetComponent<JCS_GUILiquidBar>();
         }
 
         private void LateUpdate()
@@ -70,7 +70,7 @@ namespace JCSUnity
 
             if (mFullText != null)
             {
-                mFullText.text = mLiquidBar.MaxValue.ToString();
+                mFullText.text = mLiquidBar.maxValue.ToString();
             }
 
             if (mCounterTextSprite != null)
@@ -80,7 +80,7 @@ namespace JCSUnity
 
             if (mFullTextSprite != null)
             {
-                mFullTextSprite.UpdateNumber((int)mLiquidBar.MaxValue);
+                mFullTextSprite.UpdateNumber((int)mLiquidBar.maxValue);
             }
         }
     }

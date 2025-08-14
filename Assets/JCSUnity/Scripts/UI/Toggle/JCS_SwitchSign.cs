@@ -25,8 +25,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TransformTweener TransformTweener { get { return this.mTransformTweener; } }
-        public JCS_ColorTweener ColorTweener { get { return this.mColorTweener; } }
+        public JCS_TransformTweener transformTweener { get { return this.mTransformTweener; } }
+        public JCS_ColorTweener colorTweener { get { return this.mColorTweener; } }
 
         /* Functions */
 

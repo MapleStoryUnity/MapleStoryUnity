@@ -238,7 +238,7 @@ namespace JCSUnity
         public JCS_Button DeclineBtn { get { return this.mDeclineBtn; } }
 
         public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
         public string SelectStringFront { get { return this.mSelectStringFront; } }
         public string SelectStringBack { get { return this.mSelectStringBack; } }
@@ -646,7 +646,7 @@ namespace JCSUnity
             var sm = JCS_SoundManager.FirstInstance();
 
             // Check initialize to ignore dispose called at the very beginning!
-            if (gs.DONE_INITIALIZE && onDispose != null)
+            if (gs.doneInitialized && onDispose != null)
                 onDispose.Invoke();
 
             // Play the dispose dialogue sound.
@@ -991,10 +991,10 @@ namespace JCSUnity
                 ||
                 // if the text are the same skip it too.
                 (mSelectMessage[mRenderSelectTextIndex] ==
-                mSelectBtn[mRenderSelectTextIndex].ItText.text))
+                mSelectBtn[mRenderSelectTextIndex].itText.text))
             {
                 // set directly to the text box.
-                mSelectBtn[mRenderSelectTextIndex].ItText.text
+                mSelectBtn[mRenderSelectTextIndex].itText.text
                     = mSelectMessage[mRenderSelectTextIndex];
 
                 // increament one, start render next selection!
@@ -1019,7 +1019,7 @@ namespace JCSUnity
             else
             {
                 // do the scrolling
-                mSelectBtn[mRenderSelectTextIndex].ItText.text
+                mSelectBtn[mRenderSelectTextIndex].itText.text
                     = mSelectMessage[mRenderSelectTextIndex].Substring(0, mSelectTextIndex);
             }
 
@@ -1034,7 +1034,7 @@ namespace JCSUnity
         {
             for (int index = mRenderSelectTextIndex; index < mSelectBtn.Length; ++index)
             {
-                mSelectBtn[index].ItText.text = mSelectMessage[index];
+                mSelectBtn[index].itText.text = mSelectMessage[index];
             }
         }
 
@@ -1173,8 +1173,8 @@ namespace JCSUnity
 
             selectBtn.gameObject.SetActive(act);
 
-            if (selectBtn.ButtonSelection != null)
-                selectBtn.ButtonSelection.SetSkip(!act);
+            if (selectBtn.buttonSelection != null)
+                selectBtn.buttonSelection.SetSkip(!act);
         }
         /// <summary>
         /// Active the current selected button.
@@ -1230,7 +1230,7 @@ namespace JCSUnity
             JCS_Loop.Times(mSelectMessage.Length, (index) =>
             {
                 mSelectMessage[index] = "";
-                mSelectBtn[index].ItText.text = "";
+                mSelectBtn[index].itText.text = "";
             });
         }
 
@@ -1274,7 +1274,7 @@ namespace JCSUnity
 
                 if (mMakeHoverSelect)
                 {
-                    if (btn.ButtonSelection == null)
+                    if (btn.buttonSelection == null)
                     {
                         Debug.LogWarning(@"Cannot make hover select 
 because button selection is not attach to all selections in the list!");
@@ -1289,7 +1289,7 @@ because button selection is not attach to all selections in the list!");
                             eventTrigger,
                             EventTriggerType.PointerEnter,
                             mButtonSelectionGroup.SelectSelection,
-                            btn.ButtonSelection);
+                            btn.buttonSelection);
                     }
                 }
             }
@@ -1323,10 +1323,10 @@ because button selection is not attach to all selections in the list!");
             {
                 JCS_Button btn = mSelectBtn[index];
 
-                if (btn == null || btn.ButtonSelection == null)
+                if (btn == null || btn.buttonSelection == null)
                     continue;
 
-                if (btn.ButtonSelection.Active)
+                if (btn.buttonSelection.active)
                     return index;
             }
 

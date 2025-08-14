@@ -184,19 +184,19 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool isActive() { return this.mActive; }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mSpriteRenderers = new List<SpriteRenderer>();
+            mSpriteRenderers = new List<SpriteRenderer>();
 
-            if (this.mCriticalSprite == null && JCS_Util.IsClone(transform))
+            if (mCriticalSprite == null && JCS_Util.IsClone(transform))
             {
                 var gm = new GameObject();
-                this.mCriticalSprite = gm.AddComponent<SpriteRenderer>();
-                gm.transform.SetParent(this.transform);
+                mCriticalSprite = gm.AddComponent<SpriteRenderer>();
+                gm.transform.SetParent(transform);
 #if UNITY_EDITOR
                 gm.name = "Criticl Sprite";
 #endif
@@ -219,7 +219,7 @@ namespace JCSUnity
         /// <param name="pos"> effect position. (world space) </param>
         public void SpawnDamageText(int damage, Vector3 pos)
         {
-            this.transform.position = pos;
+            transform.position = pos;
 
             int totalDigit = damage.ToString().Length;
 
@@ -232,6 +232,7 @@ namespace JCSUnity
                 totalDigit = 1;
 
             bool isEvenNumber = false;
+
             if ((totalDigit % 2) == 0)
                 isEvenNumber = true;
 

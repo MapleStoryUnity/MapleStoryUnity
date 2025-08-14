@@ -363,7 +363,7 @@ just stop there.")]
                 if (isEvenIndex)
                     gapDirection = -mSpreadGap;
 
-                oj.BounceBackfromWall = BounceBackfromWall;
+                oj.bounceBackfromWall = BounceBackfromWall;
 
                 float gapForce = 0;
 
@@ -405,24 +405,24 @@ just stop there.")]
                 if (rotateDrop)
                 {
                     var irx = newItem.gameObject.AddComponent<JCS_ItemRotation>();
-                    irx.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
-                    irx.Effect = true;
-                    irx.RotateDirection = JCS_Vector3Direction.FORWARD;
+                    irx.rotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
+                    irx.effect = true;
+                    irx.rotateDirection = JCS_Vector3Direction.FORWARD;
 
                     // if z axis interact in game
                     if (mIncludeDepth)
                     {
                         // add rotation on y axis.
                         var iry = newItem.gameObject.AddComponent<JCS_ItemRotation>();
-                        iry.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
-                        iry.Effect = true;
-                        iry.RotateDirection = JCS_Vector3Direction.UP;
+                        iry.rotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
+                        iry.effect = true;
+                        iry.rotateDirection = JCS_Vector3Direction.UP;
 
                         // add rotation on z axis.
                         var irz = newItem.gameObject.AddComponent<JCS_ItemRotation>();
-                        irz.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
-                        irz.Effect = true;
-                        irz.RotateDirection = JCS_Vector3Direction.RIGHT;
+                        irz.rotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
+                        irz.effect = true;
+                        irz.rotateDirection = JCS_Vector3Direction.RIGHT;
                     }
                 }
             }
@@ -431,14 +431,14 @@ just stop there.")]
             {
                 var cwe = newItem.gameObject.AddComponent<JCS_3DConstWaveEffect>();
                 cwe.SetObjectType(newItem.GetObjectType());
-                cwe.Effect = true;
+                cwe.effect = true;
             }
 
             if (destroyFade)
             {
                 var dowt = newItem.gameObject.AddComponent<JCS_DestroyObjectWithTime>();
-                dowt.FadeTime = mFadeTime;
-                dowt.DestroyTime = mDestroyTime;
+                dowt.fadeTime = mFadeTime;
+                dowt.destroyTime = mDestroyTime;
 
                 Renderer[] renderers = newItem.GetComponentsInChildren<Renderer>();
 
@@ -446,7 +446,7 @@ just stop there.")]
                 {
                     var fo = rdr.gameObject.AddComponent<JCS_FadeObject>();
 
-                    dowt.FadeObjects.Add(fo);
+                    dowt.fadeObjects.Add(fo);
 
                     // set the object type the same.
                     fo.SetObjectType(item.GetObjectType());

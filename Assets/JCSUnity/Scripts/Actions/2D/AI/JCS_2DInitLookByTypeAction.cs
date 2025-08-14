@@ -63,15 +63,15 @@ which to target which not to.")]
 
         /* Setter & Getter */
 
-        public FindMethod Method { get { return this.mMethod; } set { this.mMethod = value; } }
-        public bool ActiveEffect { get { return this.mActiveEffect; } set { this.mActiveEffect = value; } }
-        public bool UseAttacker { get { return this.mUseAttacker; } set { this.mUseAttacker = value; } }
+        public FindMethod method { get { return mMethod; } set { mMethod = value; } }
+        public bool activeEffect { get { return mActiveEffect; } set { mActiveEffect = value; } }
+        public bool useAttacker { get { return mUseAttacker; } set { mUseAttacker = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mAttackerInfo = this.GetComponent<JCS_AttackerInfo>();
+            mAttackerInfo = GetComponent<JCS_AttackerInfo>();
         }
 
         private void Start()
@@ -124,17 +124,17 @@ which to target which not to.")]
             Vector3 newLookPoint = closestliveObj.transform.position;
 
             // look at the target object
-            this.transform.LookAt(newLookPoint);
+            transform.LookAt(newLookPoint);
 
             // rotate back to original point.
             if (mRotateBack90)
-                this.transform.Rotate(0, -90, 0);
+                transform.Rotate(0, -90, 0);
 
-            if (mAttackerInfo.Attacker != null)
+            if (mAttackerInfo.attacker != null)
             {
                 if (mDirection == State.NONE)
                 {
-                    if (JCS_Mathf.IsNegative(mAttackerInfo.Attacker.localScale.x))
+                    if (JCS_Mathf.IsNegative(mAttackerInfo.attacker.localScale.x))
                         mDirection = State.NEGATIVE;
                     else
                         mDirection = State.POSITIVE;
@@ -142,7 +142,7 @@ which to target which not to.")]
 
                 // 我們規定所有的圖往一邊, 所以只檢查一邊.
                 if (mDirection == State.NEGATIVE)
-                    this.transform.Rotate(0, 0, 180);
+                    transform.Rotate(0, 0, 180);
             }
 
 #if UNITY_EDITOR
@@ -164,13 +164,13 @@ which to target which not to.")]
         /// </returns>
         private bool AbleTarget(JCS_2DLiveObject liveObj)
         {
-            if (mAttackerInfo.Attacker != null)
+            if (mAttackerInfo.attacker != null)
             {
                 // cannot target it-self.
-                if (liveObj.transform == mAttackerInfo.Attacker)
+                if (liveObj.transform == mAttackerInfo.attacker)
                     return false;
 
-                JCS_2DLiveObject owenerLiveObject = mAttackerInfo.Attacker.GetComponent<JCS_2DLiveObject>();
+                JCS_2DLiveObject owenerLiveObject = mAttackerInfo.attacker.GetComponent<JCS_2DLiveObject>();
 
                 if (!JCS_GameSettings.FirstInstance().TRIBE_DAMAGE_EACH_OTHER)
                 {
@@ -189,7 +189,7 @@ which to target which not to.")]
                 return false;
 
             // make sure the object can be target/damage.
-            if (!liveObj.CanDamage)
+            if (!liveObj.canDamage)
                 return false;
 
             return true;
@@ -224,7 +224,7 @@ which to target which not to.")]
                 if (!firstAssign)
                 {
                     targetFound = obj;
-                    distance = Vector3.Distance(obj.transform.position, this.transform.position);
+                    distance = Vector3.Distance(obj.transform.position, transform.position);
 
                     // no more first assign
                     firstAssign = true;
@@ -233,7 +233,7 @@ which to target which not to.")]
                 }
 
                 // current distance we are checking.
-                float checkingDistance = Vector3.Distance(obj.transform.position, this.transform.position);
+                float checkingDistance = Vector3.Distance(obj.transform.position, transform.position);
 
                 // check if the distance are closer.
                 if (checkingDistance < distance)
@@ -284,7 +284,7 @@ which to target which not to.")]
                     if (CheckIsRight(obj.transform))
                     {
                         targetFound = obj;
-                        distance = Vector3.Distance(obj.transform.position, this.transform.position);
+                        distance = Vector3.Distance(obj.transform.position, transform.position);
 
                         // no more first assign
                         firstAssign = true;
@@ -294,7 +294,7 @@ which to target which not to.")]
                 }
 
                 // current distance we are checking.
-                float checkingDistance = Vector3.Distance(obj.transform.position, this.transform.position);
+                float checkingDistance = Vector3.Distance(obj.transform.position, transform.position);
 
                 // check if the distance are closer.
                 if (checkingDistance < distance)
@@ -327,7 +327,7 @@ which to target which not to.")]
         /// </returns>
         private bool CheckIsRight(Transform trans)
         {
-            if (trans.position.x < this.transform.position.x)
+            if (trans.position.x < transform.position.x)
                 return false;       // is at the left
 
             return true;        // is at the right
@@ -343,7 +343,7 @@ which to target which not to.")]
         /// </returns>
         private bool CheckIsTop(Transform trans)
         {
-            if (trans.position.y < this.transform.position.y)
+            if (trans.position.y < transform.position.y)
                 return false;       // is at the bot
 
             return true;        // is at the top
@@ -381,7 +381,7 @@ which to target which not to.")]
                     if (!CheckIsRight(obj.transform))
                     {
                         targetFound = obj;
-                        distance = Vector3.Distance(obj.transform.position, this.transform.position);
+                        distance = Vector3.Distance(obj.transform.position, transform.position);
 
                         // no more first assign
                         firstAssign = true;
@@ -391,7 +391,7 @@ which to target which not to.")]
                 }
 
                 // current distance we are checking.
-                float checkingDistance = Vector3.Distance(obj.transform.position, this.transform.position);
+                float checkingDistance = Vector3.Distance(obj.transform.position, transform.position);
 
                 // check if the distance are closer.
                 if (checkingDistance < distance)
@@ -445,7 +445,7 @@ which to target which not to.")]
                     if (CheckIsTop(obj.transform))
                     {
                         targetFound = obj;
-                        distance = Vector3.Distance(obj.transform.position, this.transform.position);
+                        distance = Vector3.Distance(obj.transform.position, transform.position);
 
                         // no more first assign
                         firstAssign = true;
@@ -455,7 +455,7 @@ which to target which not to.")]
                 }
 
                 // current distance we are checking.
-                float checkingDistance = Vector3.Distance(obj.transform.position, this.transform.position);
+                float checkingDistance = Vector3.Distance(obj.transform.position, transform.position);
 
                 // check if the distance are closer.
                 if (checkingDistance < distance)
@@ -509,7 +509,7 @@ which to target which not to.")]
                     if (!CheckIsTop(obj.transform))
                     {
                         targetFound = obj;
-                        distance = Vector3.Distance(obj.transform.position, this.transform.position);
+                        distance = Vector3.Distance(obj.transform.position, transform.position);
 
                         // no more first assign
                         firstAssign = true;
@@ -519,7 +519,7 @@ which to target which not to.")]
                 }
 
                 // current distance we are checking.
-                float checkingDistance = Vector3.Distance(obj.transform.position, this.transform.position);
+                float checkingDistance = Vector3.Distance(obj.transform.position, transform.position);
 
                 // check if the distance are closer.
                 if (checkingDistance < distance)

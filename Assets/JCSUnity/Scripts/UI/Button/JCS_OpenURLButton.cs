@@ -31,7 +31,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public string URL { get { return this.mURL; } set { this.mURL = value; } }
+        public string url { get { return this.mURL; } set { this.mURL = value; } }
 
         /* Functions */
 

@@ -32,24 +32,24 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
+        public int loopTimes { get { return mLoopTimes; } set { mLoopTimes = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.m2DAnimation = this.GetComponent<JCS_2DAnimation>();
+            m2DAnimation = GetComponent<JCS_2DAnimation>();
         }
 
         private void LateUpdate()
         {
-            if (!this.m2DAnimation.IsDonePlaying)
+            if (!m2DAnimation.isDonePlaying)
                 return;
 
             ++mLoopCount;
 
             if (mLoopCount <= mLoopTimes)
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             else
             {
                 // play once more.

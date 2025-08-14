@@ -36,11 +36,11 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
-            this.mSoundPool = this.GetComponent<JCS_SoundPool>();
-            this.mAnimPool = this.GetComponent<JCS_AnimPool>();
+            mSoundPlayer = GetComponent<JCS_SoundPlayer>();
+            mSoundPool = GetComponent<JCS_SoundPool>();
+            mAnimPool = GetComponent<JCS_AnimPool>();
 
-            this.mAnimator = this.GetComponent<Animator>();
+            mAnimator = GetComponent<Animator>();
         }
         
         private void OnEnable()
@@ -59,7 +59,7 @@ namespace JCSUnity
         /// </summary>
         private void PlayLightningSound()
         {
-            AudioClip ac = this.mSoundPool.GetRandomSound();
+            AudioClip ac = mSoundPool.GetRandomSound();
 
             mSoundPlayer.PlayOneShotWhileNotPlaying(ac);
         }
@@ -69,7 +69,7 @@ namespace JCSUnity
         /// </summary>
         private void PlayLightningAnim()
         {
-            RuntimeAnimatorController con = this.mAnimPool.GetRandomAnim();
+            RuntimeAnimatorController con = mAnimPool.GetRandomAnim();
             mAnimator.runtimeAnimatorController = con;
         }
     }

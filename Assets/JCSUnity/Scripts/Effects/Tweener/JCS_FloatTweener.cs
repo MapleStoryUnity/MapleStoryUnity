@@ -124,21 +124,21 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Animating { get { return this.mAnimating; } }
-        public bool Tween { get { return this.mTween; } set { this.mTween = value; } }
-        public float ValueOffset { get { return this.mValueOffset; } set { this.mValueOffset = value; } }
-        public float Duration { get { return this.mDuration; } set { this.mDuration = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public JCS_TweenType Easing
+        public bool animating { get { return mAnimating; } }
+        public bool tween { get { return mTween; } set { mTween = value; } }
+        public float valueOffset { get { return mValueOffset; } set { mValueOffset = value; } }
+        public float duration { get { return mDuration; } set { mDuration = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public JCS_TweenType easing
         {
-            get { return this.mEasing; }
+            get { return mEasing; }
             set
             {
-                this.mEasing = value;
-                this.mEasingFunc = JCS_Util.GetEasing(this.mEasing);
+                mEasing = value;
+                mEasingFunc = JCS_Util.GetEasing(mEasing);
             }
         }
-        public UnityEvent UnityCallback { get { return this.mUnityCallback; } set { this.mUnityCallback = value; } }
+        public UnityEvent unityCallback { get { return mUnityCallback; } set { mUnityCallback = value; } }
 
         /* Functions */
 
@@ -187,26 +187,26 @@ namespace JCSUnity
         /// </summary>
         public void DoTween(float to)
         {
-            DoTween(this.onValueReturn.Invoke(), to, this.mDuration, this.mEasing);
+            DoTween(onValueReturn.Invoke(), to, mDuration, mEasing);
         }
         public void DoTween(float from, float to)
         {
-            DoTween(from, to, this.mDuration, this.mEasing);
+            DoTween(from, to, mDuration, mEasing);
         }
         public void DoTween(float from, float to, float duration)
         {
-            DoTween(from, to, duration, this.mEasing);
+            DoTween(from, to, duration, mEasing);
         }
         public void DoTween(float from, float to, float duration, JCS_TweenType type)
         {
-            this.mStartingValue = from;
-            this.mTargetValue = to + mValueOffset;
+            mStartingValue = from;
+            mTargetValue = to + mValueOffset;
 
-            this.Easing = type;
+            mEasing = type;
 
-            this.mRealDuration = this.mDuration;
+            mRealDuration = mDuration;
 
-            this.mAnimating = true;
+            mAnimating = true;
         }
 
         /// <summary>

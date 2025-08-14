@@ -117,21 +117,21 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
-        public int Hit { get { return this.mHit; } set { this.mHit = value; } }
-        public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } set { this.mAbilityFormat = value; } }
-        public bool InSequence { get { return this.mInSequence; } set { this.mInSequence = value; } }
+        public Transform targetTransform { get { return mTargetTransform; } set { mTargetTransform = value; } }
+        public int hit { get { return mHit; } set { mHit = value; } }
+        public JCS_AbilityFormat abilityFormat { get { return mAbilityFormat; } set { mAbilityFormat = value; } }
+        public bool inSequence { get { return mInSequence; } set { mInSequence = value; } }
 
-        public int[] DamageApplying { get { return this.mDamageApplying; } set { this.mDamageApplying = value; } }
-        public JCS_AttackerInfo AttackerInfo { get { return this.mAttackerInfo; } set { this.mAttackerInfo = value; } }
+        public int[] damageApplying { get { return mDamageApplying; } set { mDamageApplying = value; } }
+        public JCS_AttackerInfo attackerInfo { get { return mAttackerInfo; } set { mAttackerInfo = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mAttackerInfo = this.GetComponent<JCS_AttackerInfo>();
+            mAttackerInfo = GetComponent<JCS_AttackerInfo>();
 
-            this.mRecordAOECount = this.mAOECount;
+            mRecordAOECount = mAOECount;
         }
 
         private void OnEnable()
@@ -148,7 +148,7 @@ namespace JCSUnity
                 return;
 
             // do not target itself.
-            if (other.transform == mAttackerInfo.Attacker)
+            if (other.transform == mAttackerInfo.attacker)
                 return;
 
 
@@ -157,7 +157,7 @@ namespace JCSUnity
                 if (mDestroyByThisAction)
                 {
                     if (mTargetTransform == other.transform)
-                        Destroy(this.gameObject);
+                        Destroy(gameObject);
                 }
 
                 return;
@@ -175,14 +175,14 @@ namespace JCSUnity
 
                     if (liveObject != null)
                     {
-                        JCS_2DTrackAction tact = this.GetComponent<JCS_2DTrackAction>();
+                        var tact = GetComponent<JCS_2DTrackAction>();
 
                         // only the last bullet in sequence will check dead.
                         if (tact != null)
                         {
-                            if (tact.OrderIndex == Hit)
+                            if (tact.orderIndex == hit)
                             {
-                                liveObject.BeenTarget = false;
+                                liveObject.beenTarget = false;
                                 liveObject.CheckDie();
                             }
                         }
@@ -197,7 +197,7 @@ namespace JCSUnity
                 if (liveObject == null)
                     return;
 
-                if (!liveObject.CanDamage)
+                if (!liveObject.canDamage)
                 {
                     return;
                 }
@@ -210,10 +210,10 @@ namespace JCSUnity
                 }
             }
 
-            Transform attacker = mAttackerInfo.Attacker;
+            Transform attacker = mAttackerInfo.attacker;
             if (attacker != null)
             {
-                JCS_2DLiveObject owenerLiveObject = mAttackerInfo.Attacker.GetComponent<JCS_2DLiveObject>();
+                JCS_2DLiveObject owenerLiveObject = mAttackerInfo.attacker.GetComponent<JCS_2DLiveObject>();
 
                 if (owenerLiveObject != null)
                 {
@@ -221,7 +221,7 @@ namespace JCSUnity
                     {
                         // if both player does not need to add in to list.
                         // or if both enemy does not need to add in to list.
-                        if (liveObject.IsPlayer == owenerLiveObject.IsPlayer)
+                        if (liveObject.isPlayer == owenerLiveObject.isPlayer)
                             return;
                     }
                 }
@@ -245,18 +245,18 @@ namespace JCSUnity
             if (mPreCalculateEffect)
             {
                 liveObject.ApplyDamageText(
-                    this.mAttackerInfo.Attacker,
+                    mAttackerInfo.attacker,
                     mDamageApplying,
                     currentPos,
                     mCriticalChance,
                     mHitSound);
 
-                mHit = this.mDamageApplying.Length;
+                mHit = mDamageApplying.Length;
             }
             else
             {
                 liveObject.ApplyDamageText(
-                    this.mAttackerInfo.Attacker,
+                    mAttackerInfo.attacker,
                     mMinDamage,
                     mMaxDamage,
                     currentPos,
@@ -265,9 +265,9 @@ namespace JCSUnity
                     mHitSound);
             }
 
-            // only if there is only one hit need to do this.
+            // only if there is only one hit need to do 
             if (mHit == 1)
-                liveObject.BeenTarget = false;
+                liveObject.beenTarget = false;
 
             liveObject.CheckDie();
 
@@ -279,9 +279,9 @@ namespace JCSUnity
         /// </summary>
         public void CopyToThis(JCS_ApplyDamageTextToLiveObjectAction copy)
         {
-            this.AbilityFormat = copy.AbilityFormat;
-            this.Hit = copy.Hit;
-            this.AttackerInfo = copy.AttackerInfo;
+            abilityFormat = copy.abilityFormat;
+            hit = copy.hit;
+            attackerInfo = copy.attackerInfo;
         }
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace JCSUnity
 
             if (mDestroyByThisAction)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
 
             // once is destroy, this action will 

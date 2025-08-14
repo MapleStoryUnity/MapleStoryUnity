@@ -63,10 +63,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int MaxLetters { get { return this.mMaxLetters; } set { this.mMaxLetters = value; } }
-        public int DotCount { get { return this.mDotCount; } set { this.mDotCount = value; } }
-        public List<string> DropdownRealTexts { get { return this.mDropdownRealTexts; } }
-        public List<string> DropdownBackupTexts { get { return this.mDropdownBackupTexts; } }
+        public int maxLetters { get { return this.mMaxLetters; } set { this.mMaxLetters = value; } }
+        public int dotCount { get { return this.mDotCount; } set { this.mDotCount = value; } }
+        public List<string> dropdownRealTexts { get { return this.mDropdownRealTexts; } }
+        public List<string> dropdownBackupTexts { get { return this.mDropdownBackupTexts; } }
 
         /* Functions */
 

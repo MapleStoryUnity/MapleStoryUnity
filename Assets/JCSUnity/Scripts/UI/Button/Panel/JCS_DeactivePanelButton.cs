@@ -43,11 +43,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform[] transforms { get { return this.mTransforms; } }
-        public JCS_PanelRoot[] PanelRoots { get { return this.mPanelRoots; } }
-        public JCS_TweenPanel[] TweenPanels { get { return this.mTweenPanels; } }
+        public Transform[] transforms { get { return mTransforms; } }
+        public JCS_PanelRoot[] panelRoots { get { return mPanelRoots; } }
+        public JCS_TweenPanel[] tweenPanels { get { return mTweenPanels; } }
 
-        public bool PlaySound { get { return this.mPlaySound; } set { this.mPlaySound = value; } }
+        public bool playSound { get { return mPlaySound; } set { mPlaySound = value; } }
 
         /* Functions */
 

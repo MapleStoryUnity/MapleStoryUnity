@@ -38,33 +38,33 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public Vector3 PositionToFreeze { get { return this.mPositionToFreeze; } set { this.mPositionToFreeze = value; } }
-        public bool IsLocalPosition
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public Vector3 positionToFreeze { get { return mPositionToFreeze; } set { mPositionToFreeze = value; } }
+        public bool isLocalPosition
         {
-            get { return this.mIsLocalPosition; }
+            get { return mIsLocalPosition; }
             set
             {
-                this.mIsLocalPosition = value;
+                mIsLocalPosition = value;
 
                 // get the new freeze position.
                 if (mIsLocalPosition)
-                    this.mPositionToFreeze = this.LocalPosition;
+                    mPositionToFreeze = localPosition;
                 else
-                    this.mPositionToFreeze = this.Position;
+                    mPositionToFreeze = position;
             }
         }
-        public JCS_Bool3 FreezePosition { get { return this.mFreezePosition; } set { this.mFreezePosition = value; } }
+        public JCS_Bool3 freezePosition { get { return mFreezePosition; } set { mFreezePosition = value; } }
 
         /* Functions */
 
         private void Start()
         {
             // get the new freeze position.
-            if (IsLocalPosition)
-                this.mPositionToFreeze = this.LocalPosition;
+            if (mIsLocalPosition)
+                mPositionToFreeze = localPosition;
             else
-                this.mPositionToFreeze = this.Position;
+                mPositionToFreeze = position;
         }
 
         private void Update()
@@ -80,9 +80,9 @@ namespace JCSUnity
         /// </summary>
         private void DoFreezePosition()
         {
-            Vector3 newPos = this.Position;
-            if (IsLocalPosition)
-                newPos = this.LocalPosition;
+            Vector3 newPos = position;
+            if (mIsLocalPosition)
+                newPos = localPosition;
 
             /* Freeze position */
             if (mFreezePosition.check1)
@@ -93,10 +93,10 @@ namespace JCSUnity
                 newPos.z = mPositionToFreeze.z;
 
             /* Apply new value to transform. */
-            if (IsLocalPosition)
-                this.LocalPosition = newPos;
+            if (mIsLocalPosition)
+                localPosition = newPos;
             else
-                this.Position = newPos;
+                position = newPos;
         }
     }
 }

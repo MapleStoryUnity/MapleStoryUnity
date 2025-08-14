@@ -142,9 +142,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_UndoRedoSystem UndoRedoSystem { get { return this.mUndoRedoSystem; } set { this.mUndoRedoSystem = value; } }
-        public bool FocusAfterUndo { get { return this.mFocusAfterUndo; } set { this.mFocusAfterUndo = value; } }
-        public bool FocusAfterRedo { get { return this.mFocusAfterRedo; } set { this.mFocusAfterRedo = value; } }
+        public JCS_UndoRedoSystem undoRedoSystem { get { return this.mUndoRedoSystem; } set { this.mUndoRedoSystem = value; } }
+        public bool focusAfterUndo { get { return this.mFocusAfterUndo; } set { this.mFocusAfterUndo = value; } }
+        public bool focusAfterRedo { get { return this.mFocusAfterRedo; } set { this.mFocusAfterRedo = value; } }
 
         /* Functions */
 

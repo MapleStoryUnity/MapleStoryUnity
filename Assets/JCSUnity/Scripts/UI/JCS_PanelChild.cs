@@ -41,13 +41,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_PanelRoot PanelRoot { get { return this.mPanelRoot; } set { this.mPanelRoot = value; } }
+        public JCS_PanelRoot panelRoot { get { return mPanelRoot; } set { this.mPanelRoot = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mRectTransform = this.GetComponent<RectTransform>();
+            mRectTransform = GetComponent<RectTransform>();
 
             if (mPanelRoot == null)
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
@@ -67,8 +67,8 @@ namespace JCSUnity
                 if (mPanelRoot != null)
                 {
                     FitPerfectSize(
-                        mPanelRoot.PanelDeltaWidthRatio,
-                        mPanelRoot.PanelDeltaHeightRatio);
+                        mPanelRoot.panelDeltaWidthRatio,
+                        mPanelRoot.panelDeltaHeightRatio);
                 }
 
                 if (mApplyToChildren)
@@ -146,7 +146,7 @@ namespace JCSUnity
         /// </summary>
         private void AddPanelChild()
         {
-            Transform tempTrans = this.transform;
+            Transform tempTrans = transform;
 
             for (int index = 0; index < transform.childCount; ++index)
             {
@@ -157,7 +157,7 @@ namespace JCSUnity
                     continue;
 
                 var panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
-                panelChild.PanelRoot = mPanelRoot;
+                panelChild.panelRoot = mPanelRoot;
             }
         }
 

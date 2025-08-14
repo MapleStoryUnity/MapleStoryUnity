@@ -55,7 +55,7 @@ namespace JCSUnity
             var uim = JCS_UIManager.FirstInstance();
 
             mDialogueObject.MoveToTheLastChild();
-            if (mDialogueObject.DialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
+            if (mDialogueObject.dialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
                 uim.SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, mDialogueObject);
         }
 

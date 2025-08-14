@@ -187,51 +187,51 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool TargetingRecord { get { return this.mTargetingRecord; } }
+        public bool targetingRecord { get { return this.mTargetingRecord; } }
 
         /* X axis */
-        public Transform RightPoint { get { return this.mRightPoint; } set { this.mRightPoint = value; } }
-        public Transform LeftPoint { get { return this.mLeftPoint; } set { this.mLeftPoint = value; } }
-        public Transform RightUpPoint { get { return this.mRightUpPoint; } set { this.mRightUpPoint = value; } }
-        public Transform RightDownPoint { get { return this.mRightDownPoint; } set { this.mRightDownPoint = value; } }
-        public Transform LefttUpPoint { get { return this.mLefttUpPoint; } set { this.mLefttUpPoint = value; } }
-        public Transform LeftDownPoint { get { return this.mLeftDownPoint; } set { this.mLeftDownPoint = value; } }
+        public Transform rightPoint { get { return mRightPoint; } set { mRightPoint = value; } }
+        public Transform leftPoint { get { return mLeftPoint; } set { mLeftPoint = value; } }
+        public Transform rightUpPoint { get { return mRightUpPoint; } set { mRightUpPoint = value; } }
+        public Transform rightDownPoint { get { return mRightDownPoint; } set { mRightDownPoint = value; } }
+        public Transform lefttUpPoint { get { return mLefttUpPoint; } set { mLefttUpPoint = value; } }
+        public Transform leftDownPoint { get { return mLeftDownPoint; } set { mLeftDownPoint = value; } }
 
         /* Y axis */
-        public Transform UpPoint { get { return this.mUpPoint; } set { this.mUpPoint = value; } }
-        public Transform DownPoint { get { return this.mDownPoint; } set { this.mDownPoint = value; } }
-        public Transform UpForwardPoint { get { return this.mUpForwardPoint; } set { this.mUpForwardPoint = value; } }
-        public Transform UpBackwardPoint { get { return this.mUpBackwardPoint; } set { this.mUpBackwardPoint = value; } }
-        public Transform DownForwardPoint { get { return this.mDownForwardPoint; } set { this.mDownForwardPoint = value; } }
-        public Transform DownBackwardPoint { get { return this.mDownBackwardPoint; } set { this.mDownBackwardPoint = value; } }
+        public Transform upPoint { get { return mUpPoint; } set { mUpPoint = value; } }
+        public Transform downPoint { get { return mDownPoint; } set { mDownPoint = value; } }
+        public Transform upForwardPoint { get { return mUpForwardPoint; } set { mUpForwardPoint = value; } }
+        public Transform upBackwardPoint { get { return mUpBackwardPoint; } set { mUpBackwardPoint = value; } }
+        public Transform downForwardPoint { get { return mDownForwardPoint; } set { mDownForwardPoint = value; } }
+        public Transform downBackwardPoint { get { return mDownBackwardPoint; } set { mDownBackwardPoint = value; } }
 
         /* Z axis */
-        public Transform ForwardPoint { get { return this.mForwardPoint; } set { this.mForwardPoint = value; } }
-        public Transform BackwardPoint { get { return this.mBackwardPoint; } set { this.mBackwardPoint = value; } }
-        public Transform ForwardRightPoint { get { return this.mForwardRightPoint; } set { this.mForwardRightPoint = value; } }
-        public Transform ForwardLeftPoint { get { return this.mForwardLeftPoint; } set { this.mForwardLeftPoint = value; } }
-        public Transform BackwardRightPoint { get { return this.mBackwardRightPoint; } set { this.mBackwardRightPoint = value; } }
-        public Transform BackwardLeftPoint { get { return this.mBackwardLeftPoint; } set { this.mBackwardLeftPoint = value; } }
+        public Transform forwardPoint { get { return mForwardPoint; } set { mForwardPoint = value; } }
+        public Transform backwardPoint { get { return mBackwardPoint; } set { mBackwardPoint = value; } }
+        public Transform forwardRightPoint { get { return mForwardRightPoint; } set { mForwardRightPoint = value; } }
+        public Transform forwardLeftPoint { get { return mForwardLeftPoint; } set { mForwardLeftPoint = value; } }
+        public Transform backwardRightPoint { get { return mBackwardRightPoint; } set { mBackwardRightPoint = value; } }
+        public Transform backwardLeftPoint { get { return mBackwardLeftPoint; } set { mBackwardLeftPoint = value; } }
 
         /* 8 Corners */
-        public Transform RightUpForwardPoint { get { return this.mRightUpForwardPoint; } set { this.mRightUpForwardPoint = value; } }
-        public Transform RightUpBackwardPoint { get { return this.mRightUpBackwardPoint; } set { this.mRightUpBackwardPoint = value; } }
-        public Transform RightDownForwardPoint { get { return this.mRightDownForwardPoint; } set { this.mRightDownForwardPoint = value; } }
-        public Transform RightDownBackwardPoint { get { return this.mRightDownBackwardPoint; } set { this.mRightDownBackwardPoint = value; } }
-        public Transform LeftUpForwardPoint { get { return this.mLeftUpForwardPoint; } set { this.mLeftUpForwardPoint = value; } }
-        public Transform LeftUpBackwardPoint { get { return this.mLeftUpBackwardPoint; } set { this.mLeftUpBackwardPoint = value; } }
-        public Transform LeftDownForwardPoint { get { return this.mLeftDownForwardPoint; } set { this.mLeftDownForwardPoint = value; } }
-        public Transform LeftDownBackwardPoint { get { return this.mLeftDownBackwardPoint; } set { this.mLeftDownBackwardPoint = value; } }
+        public Transform rightUpForwardPoint { get { return mRightUpForwardPoint; } set { mRightUpForwardPoint = value; } }
+        public Transform rightUpBackwardPoint { get { return mRightUpBackwardPoint; } set { mRightUpBackwardPoint = value; } }
+        public Transform rightDownForwardPoint { get { return mRightDownForwardPoint; } set { mRightDownForwardPoint = value; } }
+        public Transform rightDownBackwardPoint { get { return mRightDownBackwardPoint; } set { mRightDownBackwardPoint = value; } }
+        public Transform leftUpForwardPoint { get { return mLeftUpForwardPoint; } set { mLeftUpForwardPoint = value; } }
+        public Transform leftUpBackwardPoint { get { return mLeftUpBackwardPoint; } set { mLeftUpBackwardPoint = value; } }
+        public Transform leftDownForwardPoint { get { return mLeftDownForwardPoint; } set { mLeftDownForwardPoint = value; } }
+        public Transform leftDownBackwardPoint { get { return mLeftDownBackwardPoint; } set { mLeftDownBackwardPoint = value; } }
 
         /* Functions */
 
         private void Awake()
         {
             // try to get camera from it transform.
-            if (this.mCamera == null)
-                this.mCamera = this.GetComponent<JCS_Camera>();
+            if (mCamera == null)
+                mCamera = GetComponent<JCS_Camera>();
 
-            SetEffectCamera(this.mCamera);
+            SetEffectCamera(mCamera);
         }
 
 #if UNITY_EDITOR

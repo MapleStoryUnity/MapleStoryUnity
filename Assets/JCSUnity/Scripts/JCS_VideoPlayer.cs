@@ -317,7 +317,7 @@ namespace JCSUnity
                 Debug.LogError("Loop does not work in Andriod Platform...");
             }
         }
-        public AudioSource AudioSource { get { return this.mAudioSource; } }
+        public AudioSource audioSource { get { return this.mAudioSource; } }
 
         /* Functions */
 

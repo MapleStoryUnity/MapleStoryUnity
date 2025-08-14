@@ -26,7 +26,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool EffectToAllChild { get { return this.mEffectToAllChild; } set { this.mEffectToAllChild = value; } }
+        public bool effectToAllChild { get { return mEffectToAllChild; } set { mEffectToAllChild = value; } }
 
         /* Functions */
 
@@ -41,7 +41,7 @@ namespace JCSUnity
                 return;
 
             // add to all the child as the same effect
-            for (int index = 0; index < this.transform.childCount; ++index)
+            for (int index = 0; index < transform.childCount; ++index)
             {
                 transform.GetChild(index).gameObject.AddComponent<JCS_ItemIgnore>();
             }

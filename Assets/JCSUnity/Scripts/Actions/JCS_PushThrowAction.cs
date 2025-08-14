@@ -40,10 +40,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
-        public float Angle { get { return this.mAngle; } set { this.mAngle = value; } }
-        public float G { get { return this.mG; } set { this.mG = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool effect { get { return mEffect; } set { mEffect = value; } }
+        public float angle { get { return mAngle; } set { mAngle = value; } }
+        public float g { get { return mG; } set { mG = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -55,8 +55,8 @@ namespace JCSUnity
 
             float dt = JCS_Time.ItTime(mTimeType);
 
-            this.mVelocity.y -= mG * dt;
-            this.transform.position += this.mVelocity * dt;
+            mVelocity.y -= mG * dt;
+            transform.position += mVelocity * dt;
         }
 
         /// <summary>
@@ -90,10 +90,10 @@ namespace JCSUnity
         public void SetStart(Vector3 start, Vector3 target, float angle, float force)
         {
             // set the starting position.
-            this.transform.position = start;
+            transform.position = start;
 
             // get the force.
-            this.mG = force;
+            mG = force;
 
             // calculate start velocity
             float tan = Mathf.Tan(angle * Mathf.Deg2Rad);
@@ -104,7 +104,7 @@ namespace JCSUnity
             float vY = tan * vX;
 
             vX = (target.x - start.x) < 0 ? vX : -vX;
-            this.mVelocity = new Vector2(-vX, vY);
+            mVelocity = new Vector2(-vX, vY);
         }
     }
 }

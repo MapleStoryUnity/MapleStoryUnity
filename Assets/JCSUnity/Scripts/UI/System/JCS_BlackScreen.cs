@@ -22,8 +22,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_FadeObject FadeObject { get { return this.mFadeObject; } }
-        public Color LocalColor { get { return this.mFadeObject.LocalColor; } set { this.mFadeObject.LocalColor = value; } }
+        public JCS_FadeObject fadeObject { get { return mFadeObject; } }
+        public Color localColor { get { return mFadeObject.localColor; } set { mFadeObject.localColor = value; } }
 
         /* Functions */
 

@@ -39,10 +39,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Action { get { return this.mAction; } set { this.mAction = value; } }
-        public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
-        public JCS_2DFaceType RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool action { get { return mAction; } set { mAction = value; } }
+        public float turnSpeed { get { return mTurnSpeed; } set { mTurnSpeed = value; } }
+        public JCS_2DFaceType rotateDirection { get { return mRotateDirection; } set { mRotateDirection = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -51,7 +51,7 @@ namespace JCSUnity
             if (!mAction)
                 return;
 
-            this.transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * JCS_Time.ItTime(mTimeType));
+            transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * JCS_Time.ItTime(mTimeType));
         }
     }
 }

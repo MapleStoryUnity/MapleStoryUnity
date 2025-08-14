@@ -24,7 +24,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            
+            // ..
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace JCSUnity
         /// </summary>
         private void ProcessMovement()
         {
-
+            // ..
         }
     }
 }

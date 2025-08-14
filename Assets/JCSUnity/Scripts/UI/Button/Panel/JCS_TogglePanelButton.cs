@@ -34,10 +34,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_DialogueObject[] DialogueObjects { get { return this.mDialogueObjects; } }
-        public JCS_TweenPanel[] TweenPanels { get { return this.mTweenPanels; } }
+        public JCS_DialogueObject[] dialogueObjects { get { return mDialogueObjects; } }
+        public JCS_TweenPanel[] tweenPanels { get { return mTweenPanels; } }
 
-        public bool PlaySound { get { return this.mPlaySound; } set { this.mPlaySound = value; } }
+        public bool playSound { get { return mPlaySound; } set { mPlaySound = value; } }
 
         /* Functions */
 

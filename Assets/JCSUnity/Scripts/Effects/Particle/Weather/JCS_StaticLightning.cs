@@ -54,16 +54,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
-            this.mSoundPool = this.GetComponent<JCS_SoundPool>();
+            mSoundPlayer = GetComponent<JCS_SoundPlayer>();
+            mSoundPool = GetComponent<JCS_SoundPool>();
 
-            mRecordTime = this.mLimitTime;
+            mRecordTime = mLimitTime;
         }
 
         private void Start()
@@ -107,7 +107,7 @@ namespace JCSUnity
         /// </summary>
         private void PlayLightningSound()
         {
-            AudioClip ac = this.mSoundPool.GetRandomSound();
+            AudioClip ac = mSoundPool.GetRandomSound();
 
             mSoundPlayer.PlayOneShotWhileNotPlaying(ac);
         }

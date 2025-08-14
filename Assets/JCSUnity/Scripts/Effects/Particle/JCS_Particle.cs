@@ -19,64 +19,64 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float PosX
+        public float posX
         {
-            get { return this.transform.position.x; }
+            get { return transform.position.x; }
             set
             {
-                Vector3 tempPos = this.transform.position;
+                Vector3 tempPos = transform.position;
                 tempPos.x = value;
-                this.transform.position = tempPos;
+                transform.position = tempPos;
             }
         }
-        public float PosY
+        public float posY
         {
-            get { return this.transform.position.y; }
+            get { return transform.position.y; }
             set
             {
-                Vector3 tempPos = this.transform.position;
+                Vector3 tempPos = transform.position;
                 tempPos.y = value;
-                this.transform.position = tempPos;
+                transform.position = tempPos;
             }
         }
-        public float PosZ
+        public float posZ
         {
-            get { return this.transform.position.z; }
+            get { return transform.position.z; }
             set
             {
-                Vector3 tempPos = this.transform.position;
+                Vector3 tempPos = transform.position;
                 tempPos.z = value;
-                this.transform.position = tempPos;
+                transform.position = tempPos;
             }
         }
         public float LocalPosX
         {
-            get { return this.transform.localPosition.x; }
+            get { return transform.localPosition.x; }
             set
             {
-                Vector3 tempPos = this.transform.localPosition;
+                Vector3 tempPos = transform.localPosition;
                 tempPos.x = value;
-                this.transform.localPosition = tempPos;
+                transform.localPosition = tempPos;
             }
         }
-        public float LocalPosY
+        public float localPosY
         {
-            get { return this.transform.localPosition.y; }
+            get { return transform.localPosition.y; }
             set
             {
-                Vector3 tempPos = this.transform.localPosition;
+                Vector3 tempPos = transform.localPosition;
                 tempPos.y = value;
-                this.transform.localPosition = tempPos;
+                transform.localPosition = tempPos;
             }
         }
-        public float LocalPosZ
+        public float localPosZ
         {
-            get { return this.transform.localPosition.z; }
+            get { return transform.localPosition.z; }
             set
             {
-                Vector3 tempPos = this.transform.localPosition;
+                Vector3 tempPos = transform.localPosition;
                 tempPos.z = value;
-                this.transform.localPosition = tempPos;
+                transform.localPosition = tempPos;
             }
         }
 
@@ -84,11 +84,11 @@ namespace JCSUnity
 
         public void SetPosition(Vector3 pos)
         {
-            this.transform.position = pos;
+            transform.position = pos;
         }
         public void SetLocalPosition(Vector3 pos)
         {
-            this.transform.localPosition = pos;
+            transform.localPosition = pos;
         }
     }
 }

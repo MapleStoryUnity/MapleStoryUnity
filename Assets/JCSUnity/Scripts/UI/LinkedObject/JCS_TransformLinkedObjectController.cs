@@ -75,9 +75,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<JCS_TransformLinkedObject> ManagedList { get { return this.mManagedList; } }
-        public JCS_TransformLinkedObject Clone { get { return this.mClone; } }
-        public Vector3 IndexOffset { get { return this.mIndexOffset; } set { this.mIndexOffset = value; } }
+        public List<JCS_TransformLinkedObject> managedList { get { return this.mManagedList; } }
+        public JCS_TransformLinkedObject clone { get { return this.mClone; } }
+        public Vector3 indexOffset { get { return this.mIndexOffset; } set { this.mIndexOffset = value; } }
 
         /* Functions */
 

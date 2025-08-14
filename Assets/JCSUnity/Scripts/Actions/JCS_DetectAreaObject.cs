@@ -26,13 +26,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_2DLiveObject GetLiveObject() { return this.mLiveObject; }
+        public JCS_2DLiveObject GetLiveObject() { return mLiveObject; }
 
         /* Functions */
 
         private void Awake()
         {
-            mLiveObject = this.GetComponent<JCS_2DLiveObject>();
+            mLiveObject = GetComponent<JCS_2DLiveObject>();
         }
     }
 }

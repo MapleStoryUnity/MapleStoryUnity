@@ -24,7 +24,7 @@ namespace JCSUnity
 
         [Tooltip("Next level load after the patch checked.")]
         [SerializeField]
-        private string mNextLevel = "JCS_LogoScene";
+        private string mNextScene = "JCS_LogoScene";
 
         [Tooltip("What do the server time out?")]
         [SerializeField]
@@ -36,7 +36,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public string NextLevel() { return this.mNextLevel; }
+        public string nextScene { get { return mNextScene; } }
 
         /* Functions */
 
@@ -77,7 +77,7 @@ namespace JCSUnity
         /// </summary>
         public void LoadNextLevel()
         {
-            JCS_SceneManager.FirstInstance().LoadScene(mNextLevel);
+            JCS_SceneManager.FirstInstance().LoadScene(mNextScene);
         }
 
         /// <summary>

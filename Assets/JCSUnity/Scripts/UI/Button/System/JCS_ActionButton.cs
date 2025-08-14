@@ -31,11 +31,11 @@ namespace JCSUnity
 
         [Tooltip("Execute this when it's triggered.")]
         [SerializeField]
-        protected UnityEvent mOnAction = null;
+        protected UnityEvent mOnActionUE = null;
 
         /* Setter & Getter */
 
-        public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
+        public UnityEvent onActionUE { get { return mOnActionUE; } set { mOnActionUE = value; } }
 
         /* Functions */
 
@@ -52,11 +52,9 @@ namespace JCSUnity
         /// </summary>
         public void Execute()
         {
-            if (onAction != null)
-                onAction.Invoke();
+            onAction?.Invoke();
 
-            if (mOnAction != null)
-                mOnAction.Invoke();
+            mOnActionUE?.Invoke();
         }
     }
 }

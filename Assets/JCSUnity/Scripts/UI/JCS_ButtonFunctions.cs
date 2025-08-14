@@ -31,7 +31,7 @@ namespace JCSUnity
         /// <param name="act"></param>
         public static void PauseGame(bool act = true)
         {
-            JCS_GameManager.FirstInstance().GAME_PAUSE = act;
+            JCS_GameManager.FirstInstance().gamePaused = act;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace JCSUnity
         /// <param name="type"></param>
         public static void DestoryCurrentDialogue(JCS_DialogueType type)
         {
-            if (JCS_GameManager.FirstInstance().GAME_PAUSE)
+            if (JCS_GameManager.FirstInstance().gamePaused)
                 return;
 
             JCS_UIManager.FirstInstance().HideTheLastOpenDialogue();

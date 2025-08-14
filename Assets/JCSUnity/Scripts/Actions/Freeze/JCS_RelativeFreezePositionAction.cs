@@ -34,9 +34,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform TargetTransform { get { return this.mTargetTrans; } set { this.mTargetTrans = value; } }
-        public Vector3 Distance { get { return this.mDistance; } set { this.mDistance = value; } }
-        public bool IsLocalPosition { get { return this.mIsLocalPosition; } set { this.mIsLocalPosition = value; } }
+        public Transform targetTransform { get { return mTargetTrans; } set { mTargetTrans = value; } }
+        public Vector3 distance { get { return mDistance; } set { mDistance = value; } }
+        public bool isLocalPosition { get { return mIsLocalPosition; } set { mIsLocalPosition = value; } }
 
         /* Functions */
 
@@ -48,7 +48,7 @@ namespace JCSUnity
 
             if (mIsLocalPosition)
             {
-                Vector3 newPos = this.LocalPosition;
+                Vector3 newPos = localPosition;
 
                 /**
                  * No need to let the target transform to set to local.
@@ -59,11 +59,11 @@ namespace JCSUnity
                 newPos.y = mTargetTrans.transform.position.y + mDistance.y;
                 newPos.z = mTargetTrans.transform.position.z + mDistance.z;
 
-                this.LocalPosition = newPos;
+                localPosition = newPos;
             }
             else
             {
-                Vector3 newPos = this.Position;
+                Vector3 newPos = position;
 
                 /**
                  * No need to let the target transform to set to local.
@@ -74,7 +74,7 @@ namespace JCSUnity
                 newPos.y = mTargetTrans.transform.position.y + mDistance.y;
                 newPos.z = mTargetTrans.transform.position.z + mDistance.z;
 
-                this.Position = newPos;
+                position = newPos;
             }
         }
     }

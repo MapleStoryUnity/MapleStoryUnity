@@ -32,7 +32,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_DragDropType DragDropType { get { return this.mDragDropType; } set { this.mDragDropType = value; } }
+        public JCS_DragDropType dragDropType { get { return mDragDropType; } set { mDragDropType = value; } }
 
         /* Functions */
 

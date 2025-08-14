@@ -91,12 +91,12 @@ object that we target.")]
 
         /* Setter & Getter */
 
-        public bool AutoPickColliderTouched { get { return this.mAutoPickColliderTouched; } set { this.mAutoPickColliderTouched = value; } }
-        public bool PickByMouseDown { get { return this.mPickByMouseDown; } set { this.mPickByMouseDown = value; } }
-        public bool AutoPickWhileCan { get { return this.mAutoPickWhileCan; } set { this.mAutoPickWhileCan = value; } }
-        public bool CanPick { get { return this.mCanPick; } set { this.mCanPick = value; } }
-        public BoxCollider GetBoxCollider() { return this.mBoxCollider; }
-        public Collider PickCollider { get { return this.mPickCollider; } set { this.mPickCollider = value; } }
+        public bool autoPickColliderTouched { get { return mAutoPickColliderTouched; } set { mAutoPickColliderTouched = value; } }
+        public bool pickByMouseDown { get { return mPickByMouseDown; } set { mPickByMouseDown = value; } }
+        public bool autoPickWhileCan { get { return mAutoPickWhileCan; } set { mAutoPickWhileCan = value; } }
+        public bool canPick { get { return mCanPick; } set { mCanPick = value; } }
+        public BoxCollider GetBoxCollider() { return mBoxCollider; }
+        public Collider pickCollider { get { return mPickCollider; } set { mPickCollider = value; } }
 
         /* Functions */
 
@@ -105,15 +105,15 @@ object that we target.")]
             // Update the data once depends on what game object is.
             base.Awake();
 
-            mBoxCollider = this.GetComponent<BoxCollider>();
+            mBoxCollider = GetComponent<BoxCollider>();
         }
 
         protected virtual void Start()
         {
             if (mTweener == null)
-                mTweener = this.GetComponent<JCS_TransformTweener>();
+                mTweener = GetComponent<JCS_TransformTweener>();
             if (mDestinationDestroy == null)
-                mDestinationDestroy = this.GetComponent<JCS_DestinationDestroy>();
+                mDestinationDestroy = GetComponent<JCS_DestinationDestroy>();
         }
 
         protected virtual void Update()
@@ -159,7 +159,7 @@ object that we target.")]
             if (!mCanPick)
                 return;
 
-            var joj = this.GetComponent<JCS_OneJump>();
+            var joj = GetComponent<JCS_OneJump>();
             if (joj != null)
             {
                 // Only when item is on the ground!
@@ -225,7 +225,7 @@ object that we target.")]
         {
             // Throw Action Effect...
             {
-                //var ta = this.gameObject.AddComponent<JCS_ThrowAction>();
+                //var ta = gameObject.AddComponent<JCS_ThrowAction>();
                 //ta.SetTargetTransform(other.transform);
                 //ta.ActiveEffect();
             }
@@ -235,14 +235,14 @@ object that we target.")]
                 if (mTweener == null)
                 {
                     // default settings
-                    mTweener = this.gameObject.AddComponent<JCS_TransformTweener>();
-                    mTweener.SetObjectType(this.mObjectType);
+                    mTweener = gameObject.AddComponent<JCS_TransformTweener>();
+                    mTweener.SetObjectType(mObjectType);
 
-                    mTweener.EasingY = JCS_TweenType.EASE_OUT_BACK;
-                    mTweener.DurationX = 2.0f;
-                    mTweener.DurationY = 5.0f;
-                    mTweener.DurationZ = 0;
-                    mTweener.StopTweenDistance = 0.2f;
+                    mTweener.easingY = JCS_TweenType.EASE_OUT_BACK;
+                    mTweener.durationX = 2.0f;
+                    mTweener.durationY = 5.0f;
+                    mTweener.durationZ = 0;
+                    mTweener.stopTweenDistance = 0.2f;
                 }
                 mTweener.DoTweenContinue(other.GetComponent<JCS_UnityObject>());
             }
@@ -251,10 +251,10 @@ object that we target.")]
             if (mDestinationDestroy == null)
             {
                 // default settings
-                mDestinationDestroy = this.gameObject.AddComponent<JCS_DestinationDestroy>();
-                mDestinationDestroy.SetObjectType(this.mObjectType);
+                mDestinationDestroy = gameObject.AddComponent<JCS_DestinationDestroy>();
+                mDestinationDestroy.SetObjectType(mObjectType);
 
-                mDestinationDestroy.DestroyDistance = 0.5f;
+                mDestinationDestroy.destroyDistance = 0.5f;
             }
             mDestinationDestroy.SetTargetTransform(other.transform);
         }

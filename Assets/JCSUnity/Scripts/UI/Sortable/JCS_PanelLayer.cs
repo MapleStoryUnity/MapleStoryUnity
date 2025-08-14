@@ -41,7 +41,7 @@ namespace JCSUnity
         private void Start()
         {
             // if already sorted, return.
-            if (this.Sorted)
+            if (sorted)
                 return;
 
             // get all the panel layers in the scene
@@ -86,7 +86,7 @@ namespace JCSUnity
                 JCS_Util.MoveToTheLastChild(layer.transform);
 
                 // make sure is sorted already.
-                layer.Sorted = true;
+                layer.sorted = true;
             }
         }
     }

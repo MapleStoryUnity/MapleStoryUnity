@@ -114,34 +114,34 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
 
         /* Setter & Getter */
 
-        public CharacterController GetCharacterController() { return this.mCharacterControllerInfo.GetCharacterController(); }
-        public Vector3 Velocity { get { return this.mVelocityInfo.Velocity; } set { this.mVelocityInfo.Velocity = value; } }
-        public float VelX { get { return mVelocityInfo.VelX; } set { mVelocityInfo.VelX = value; } }
-        public float VelY { get { return mVelocityInfo.VelY; } set { mVelocityInfo.VelY = value; } }
-        public float VelZ { get { return mVelocityInfo.VelZ; } set { mVelocityInfo.VelZ = value; } }
-        public bool isGrounded { get { return this.mCharacterControllerInfo.isGrounded; } }
-        public Vector3 MoveSpeed { get { return mVelocityInfo.MoveSpeed; } set { mVelocityInfo.MoveSpeed = value; } }
-        public Vector3 RecordSpeed { get { return mVelocityInfo.RecordSpeed; } set { mVelocityInfo.RecordSpeed = value; } }
-        public float RecordSpeedX { get { return this.mVelocityInfo.RecordSpeed.x; } set { this.mVelocityInfo.RecordSpeedX = value; } }
-        public float RecordSpeedY { get { return this.mVelocityInfo.RecordSpeed.y; } set { this.mVelocityInfo.RecordSpeedY = value; } }
-        public float RecordSpeedZ { get { return this.mVelocityInfo.RecordSpeed.z; } set { this.mVelocityInfo.RecordSpeedZ = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public CharacterController GetCharacterController() { return mCharacterControllerInfo.GetCharacterController(); }
+        public Vector3 velocity { get { return mVelocityInfo.velocity; } set { mVelocityInfo.velocity = value; } }
+        public float velX { get { return mVelocityInfo.velX; } set { mVelocityInfo.velX = value; } }
+        public float velY { get { return mVelocityInfo.velY; } set { mVelocityInfo.velY = value; } }
+        public float velZ { get { return mVelocityInfo.velZ; } set { mVelocityInfo.velZ = value; } }
+        public bool isGrounded { get { return mCharacterControllerInfo.isGrounded; } }
+        public Vector3 moveSpeed { get { return mVelocityInfo.moveSpeed; } set { mVelocityInfo.moveSpeed = value; } }
+        public Vector3 recordSpeed { get { return mVelocityInfo.recordSpeed; } set { mVelocityInfo.recordSpeed = value; } }
+        public float recordSpeedX { get { return mVelocityInfo.recordSpeed.x; } set { mVelocityInfo.recordSpeedX = value; } }
+        public float recordSpeedY { get { return mVelocityInfo.recordSpeed.y; } set { mVelocityInfo.recordSpeedY = value; } }
+        public float recordSpeedZ { get { return mVelocityInfo.recordSpeed.z; } set { mVelocityInfo.recordSpeedZ = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         // Track Effects
-        public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
+        public bool madEffect { get { return mMadEffect; } set { mMadEffect = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mVelocityInfo = this.GetComponent<JCS_VelocityInfo>();
-            mCharacterControllerInfo = this.GetComponent<JCS_CharacterControllerInfo>();
+            mVelocityInfo = GetComponent<JCS_VelocityInfo>();
+            mCharacterControllerInfo = GetComponent<JCS_CharacterControllerInfo>();
 
             // try to get the component in the same transform
             if (mAttackRecorder == null)
-                mAttackRecorder = this.GetComponent<JCS_AttackerRecorder>();
+                mAttackRecorder = GetComponent<JCS_AttackerRecorder>();
             if (mLiveObjectAnimator == null)
-                mLiveObjectAnimator = this.GetComponent<JCS_2DLiveObjectAnimator>();
+                mLiveObjectAnimator = GetComponent<JCS_2DLiveObjectAnimator>();
         }
 
         private void Start()
@@ -186,7 +186,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             // if is already get attack do the mad effect.
             if (mMadEffect && mAttackRecorder != null)
             {
-                Transform lastAttacker = mAttackRecorder.LastAttacker;
+                Transform lastAttacker = mAttackRecorder.lastAttacker;
 
                 // if the last attacker does not exist, do nothing.
                 if (lastAttacker != null)
@@ -320,7 +320,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             if (!isGrounded)
                 return;
 
-            RecordSpeedX = speed;
+            recordSpeedX = speed;
 
             mWalked = true;
         }

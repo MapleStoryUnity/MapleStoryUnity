@@ -25,19 +25,19 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public BinaryReader GetBinaryReader() { return this.mBuffer; }
+        public BinaryReader GetBinaryReader() { return mBuffer; }
 
         /// <summary>
         /// How the float precise? (Default : 1000)
         /// </summary>
         /// <param name="fp"> Float precise value. </param>
-        public void SetFloatPercise(int fp) { this.mFloatPrecise = fp; }
+        public void SetFloatPercise(int fp) { mFloatPrecise = fp; }
 
         /* Functions */
 
         public JCS_BinaryReader(BinaryReader br)
         {
-            this.mBuffer = br;
+            mBuffer = br;
         }
 
 

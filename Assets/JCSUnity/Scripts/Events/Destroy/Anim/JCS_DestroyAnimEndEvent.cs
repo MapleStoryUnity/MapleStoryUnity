@@ -20,6 +20,7 @@ namespace JCSUnity
         /* Variables */
 
         private Animator mAnimator = null;
+
         private float mAnimationTimer = 0.0f;
 
         [Separator("Runtime Variables (JCS_DestroyAnimEndEvent)")]
@@ -34,14 +35,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public int loopTimes { get { return mLoopTimes; } set { mLoopTimes = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mAnimator = this.GetComponent<Animator>();
+            mAnimator = GetComponent<Animator>();
         }
 
         private void Update()
@@ -52,7 +53,7 @@ namespace JCSUnity
 
             if (mAnimationTimer > animatorStateInfo.length * mLoopTimes)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
     }

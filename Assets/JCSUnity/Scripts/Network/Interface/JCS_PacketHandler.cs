@@ -25,7 +25,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="client"></param>
-        public abstract void handlePacket(JCS_BinaryReader br, JCS_Client client);
+        public abstract void HandlePacket(JCS_BinaryReader br, JCS_Client client);
 
         /// <summary>
         /// This method validates some general state constrains.
@@ -37,6 +37,6 @@ namespace JCSUnity
         /// </summary>
         /// <param name="client"> the client </param>
         /// <returns> validate state? </returns>
-        public abstract bool validateState(JCS_Client client);
+        public abstract bool ValidateState(JCS_Client client);
     }
 }

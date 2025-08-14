@@ -47,11 +47,11 @@ move speed to negative move speed.")]
 
         /* Setter & Getter */
 
-        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
-        public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public bool RandomizeSpeedAtStart { get { return this.mRandomizeSpeedAtStart; } set { this.mRandomizeSpeedAtStart = value; } }
-        public float RandomSpeedValue { get { return this.mRandomSpeedValue; } set { this.mRandomSpeedValue = value; } }
+        public float moveSpeed { get { return mMoveSpeed; } set { mMoveSpeed = value; } }
+        public JCS_Axis axis { get { return mAxis; } set { mAxis = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public bool randomizeSpeedAtStart { get { return mRandomizeSpeedAtStart; } set { mRandomizeSpeedAtStart = value; } }
+        public float randomSpeedValue { get { return mRandomSpeedValue; } set { mRandomSpeedValue = value; } }
 
         /* Functions */
 
@@ -59,7 +59,7 @@ move speed to negative move speed.")]
         {
             // randomize speed?
             if (mRandomizeSpeedAtStart)
-                this.MoveSpeed += JCS_Random.Range(-mRandomSpeedValue, mRandomSpeedValue);
+                mMoveSpeed += JCS_Random.Range(-mRandomSpeedValue, mRandomSpeedValue);
         }
 
         /**
@@ -80,24 +80,24 @@ move speed to negative move speed.")]
             {
                 case JCS_Axis.AXIS_X:
                     {
-                        newPos = Vector3.right * MoveSpeed * dt;
+                        newPos = Vector3.right * moveSpeed * dt;
                     }
                     break;
                 case JCS_Axis.AXIS_Z:
                     {
-                        newPos = Vector3.forward * MoveSpeed * dt;
+                        newPos = Vector3.forward * moveSpeed * dt;
                     }
                     break;
                 case JCS_Axis.AXIS_Y:
                     {
-                        newPos = Vector3.up * MoveSpeed * dt;
+                        newPos = Vector3.up * moveSpeed * dt;
                     }
                     break;
             }
 
             // if is valid, do action.
             //if (!JCS_Mathf.IsNaN(newPos))
-            this.transform.Translate(newPos);
+            transform.Translate(newPos);
         }
     }
 }

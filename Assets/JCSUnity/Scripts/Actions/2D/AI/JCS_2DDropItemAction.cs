@@ -56,17 +56,17 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool DropWhenDies { get { return this.mDropWhenDies; } set { this.mDropWhenDies = value; } }
-        public bool DropByTime { get { return this.mDropByTime; } set { this.mDropByTime = value; } }
-        public float TimePerDrop { get { return this.mTimePerDrop; } set { this.mTimePerDrop = value; } }
-        public float RandomTimeRange { get { return this.mRandomTimeRange; } set { this.mRandomTimeRange = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool dropWhenDies { get { return mDropWhenDies; } set { mDropWhenDies = value; } }
+        public bool dropByTime { get { return mDropByTime; } set { mDropByTime = value; } }
+        public float timePerDrop { get { return mTimePerDrop; } set { mTimePerDrop = value; } }
+        public float randomTimeRange { get { return mRandomTimeRange; } set { mRandomTimeRange = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mItemDroppable = this.GetComponent<JCS_ItemDroppable>();
+            mItemDroppable = GetComponent<JCS_ItemDroppable>();
         }
 
         private void Update()

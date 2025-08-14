@@ -75,16 +75,16 @@ we calculate the real time.")]
 
         [Tooltip("Event that will be triggered.")]
         [SerializeField]
-        private UnityEvent mOnAction = null;
+        private UnityEvent mOnActionUE = null;
 
         /* Setter & Getter */
 
-        public bool InvokeOnStart { get { return this.mInvokeOnStart; } set { this.mInvokeOnStart = value; } }
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public float Time { get { return this.mTime; } set { this.mTime = value; } }
-        public float AdjustTime { get { return this.mAdjustTime; } set { this.mAdjustTime = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
+        public bool invokeOnStart { get { return mInvokeOnStart; } set { mInvokeOnStart = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public float time { get { return mTime; } set { mTime = value; } }
+        public float adjustTime { get { return mAdjustTime; } set { mAdjustTime = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public UnityEvent onActionUE { get { return mOnActionUE; } set { mOnActionUE = value; } }
 
         /* Functions */
 
@@ -171,7 +171,7 @@ we calculate the real time.")]
 
             onAction?.Invoke();
 
-            mOnAction?.Invoke();
+            mOnActionUE?.Invoke();
 
             onAfterAction?.Invoke();
         }

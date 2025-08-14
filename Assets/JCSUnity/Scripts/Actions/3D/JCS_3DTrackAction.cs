@@ -35,9 +35,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
-        public float MoveFriction { get { return this.mMoveFriction; } set { this.mMoveFriction = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public Transform targetTransform { get { return mTargetTransform; } set { mTargetTransform = value; } }
+        public float moveFriction { get { return mMoveFriction; } set { mMoveFriction = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -55,11 +55,11 @@ namespace JCSUnity
                 return;
 
             Vector3 targetPos = mTargetTransform.position;
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
 
             newPos += (targetPos - newPos) / mMoveFriction * JCS_Time.ItTime(mTimeType);
 
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
     }
 }

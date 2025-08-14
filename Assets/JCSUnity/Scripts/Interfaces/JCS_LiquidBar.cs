@@ -135,26 +135,26 @@ Careful that recover can be damage too.")]
 
         /* Setter & Getter */
 
-        public JCS_LiquidBarInfo Info { get { return this.mInfo; } set { this.mInfo = value; } }
-        public Image InfoImage { get { return this.mInfoImage; } set { this.mInfoImage = value; } }
+        public JCS_LiquidBarInfo info { get { return mInfo; } set { mInfo = value; } }
+        public Image infoImage { get { return mInfoImage; } set { mInfoImage = value; } }
 
-        public bool OverrideZero { get { return this.mOverrideZero; } set { this.mOverrideZero = value; } }
+        public bool overrideZero { get { return mOverrideZero; } set { mOverrideZero = value; } }
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public float DeltaFriction { get { return this.mDeltaFriction; } set { this.mDeltaFriction = value; } }
-        public float DistanceThreshold { get { return this.mDistanceThreshold; } set { this.mDistanceThreshold = value; } }
+        public float deltaFriction { get { return mDeltaFriction; } set { mDeltaFriction = value; } }
+        public float distanceThreshold { get { return mDistanceThreshold; } set { mDistanceThreshold = value; } }
 
-        public bool RecoverEffect { get { return this.mRecoverEffect; } set { this.mRecoverEffect = value; } }
-        public float TimeToRecover { get { return this.mTimeToRecover; } set { this.mTimeToRecover = value; } }
-        public float RecoverValue { get { return this.mRecoverValue; } set { this.mRecoverValue = value; } }
+        public bool recoverEffect { get { return mRecoverEffect; } set { mRecoverEffect = value; } }
+        public float timeToRecover { get { return mTimeToRecover; } set { mTimeToRecover = value; } }
+        public float recoverValue { get { return mRecoverValue; } set { mRecoverValue = value; } }
 
-        public float MinValue { get { return this.mMinValue; } }
-        public float MaxValue { get { return this.mMaxValue; } }
+        public float minValue { get { return mMinValue; } }
+        public float maxValue { get { return mMaxValue; } }
 
-        public bool BackToRecordRecoverValue { get { return this.mBackToRecordRecoverValue; } set { this.mBackToRecordRecoverValue = value; } }
+        public bool backToRecordRecoverValue { get { return mBackToRecordRecoverValue; } set { mBackToRecordRecoverValue = value; } }
 
-        public JCS_Align GetAlign() { return this.mAlign; }
+        public JCS_Align GetAlign() { return mAlign; }
 
         /* Functions */
 
@@ -168,7 +168,7 @@ Careful that recover can be damage too.")]
                 this.mInfoImage = this.GetComponent<Image>();
 
             if (mInfo != null)
-                mInfo.LiquidBar = this;
+                mInfo.liquidBar = this;
         }
 
         protected virtual void Update()

@@ -40,9 +40,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int Port { get { return this.mPort; } set { this.mPort = value; } }
-        public string Host { get { return this.mHost; } set { this.mHost = value; } }
-        public bool Force { get { return this.mForce; } set { this.mForce = value; } }
+        public int port { get { return mPort; } set { mPort = value; } }
+        public string host { get { return mHost; } set { mHost = value; } }
+        public bool force { get { return mForce; } set { mForce = value; } }
 
         /* Functions */
 

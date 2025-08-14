@@ -96,23 +96,23 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Vector3 PositionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
-        public Vector3 CamRectSize { get { return this.mCamRectSize; } set { this.mCamRectSize = value; } }
-        public Rect CamRect { get { return this.mCamRect; } }
+        public Vector3 positionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
+        public Vector3 camRectSize { get { return this.mCamRectSize; } set { this.mCamRectSize = value; } }
+        public Rect camRect { get { return this.mCamRect; } }
         public Camera GetCamera() { return this.mCamera; }
         public float fieldOfView { get { return this.mCamera.fieldOfView; } set { this.mCamera.fieldOfView = value; } }
-        public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
-        public bool Following { get { return this.mFollowing; } set { this.mFollowing = value; } }
-        public bool SmoothTrack { get { return this.mSmoothTrack; } set { this.mSmoothTrack = value; } }
+        public Vector3 velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
+        public bool following { get { return this.mFollowing; } set { this.mFollowing = value; } }
+        public bool smoothTrack { get { return this.mSmoothTrack; } set { this.mSmoothTrack = value; } }
 
         public virtual void SetFollowTarget(Transform trans) { this.mTargetTransform = trans; }
         public virtual Transform GetFollowTarget() { return mTargetTransform; }
 
-        public float ScreenAspect { get { return (float)mCamera.pixelWidth / (float)mCamera.pixelHeight; } }
+        public float screenAspect { get { return (float)mCamera.pixelWidth / (float)mCamera.pixelHeight; } }
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
-        public JCS_Boundary Boundary { get { return this.mBoundary; } set { this.mBoundary = value; } }
+        public JCS_Boundary boundary { get { return this.mBoundary; } set { this.mBoundary = value; } }
 
         /* Functions */
 
@@ -285,7 +285,7 @@ namespace JCSUnity
 
             float camToGameDepthDistance = Vector3.Distance(camPos, depth);
 
-            RectTransform appRect = canvas.AppRect;
+            RectTransform appRect = canvas.appRect;
             Vector2 canvasRect = appRect.sizeDelta;
             // transfer rect from screen space to world space
             {
@@ -469,7 +469,7 @@ namespace JCSUnity
             float objTop = objPos.y + (objectRect.y / JCS_Mathf.D_HALF);
             float objBot = objPos.y - (objectRect.y / JCS_Mathf.D_HALF);
 
-            RectTransform appRect = JCS_Canvas.GuessCanvas().AppRect;
+            RectTransform appRect = JCS_Canvas.GuessCanvas().appRect;
 
             float camWidth = appRect.sizeDelta.x;
             float camHeight = appRect.sizeDelta.y;
@@ -542,7 +542,7 @@ namespace JCSUnity
             Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);
 
             // Get application rect
-            RectTransform appRect = JCS_Canvas.GuessCanvas().AppRect;
+            RectTransform appRect = JCS_Canvas.GuessCanvas().appRect;
             Vector2 screenRect = appRect.sizeDelta;
 
             float camLeftBorder = camPosToScreen.x - screenRect.x / JCS_Mathf.D_HALF;
@@ -572,7 +572,7 @@ namespace JCSUnity
             Camera cam = GetCamera();
 
             //first you need the RectTransform component of your canvas
-            RectTransform canvasRect = JCS_Canvas.GuessCanvas().AppRect;
+            RectTransform canvasRect = JCS_Canvas.GuessCanvas().appRect;
 
             //then you calculate the position of the UI element
 
@@ -605,7 +605,7 @@ namespace JCSUnity
             Camera cam = GetCamera();
 
             //first you need the RectTransform component of your canvas
-            RectTransform canvasRect = JCS_Canvas.GuessCanvas().AppRect;
+            RectTransform canvasRect = JCS_Canvas.GuessCanvas().appRect;
 
             var canvasObject_WorldPosition = new Vector2(
                 ((targetCanvasPos.x + (canvasRect.sizeDelta.x * JCS_Mathf.T_HALF)) / canvasRect.sizeDelta.x),
@@ -798,7 +798,7 @@ namespace JCSUnity
             var ss = JCS_ScreenSettings.FirstInstance();
             JCS_ScreenSize standard = ss.STANDARD_SCREEN_SIZE;
             float mainAreaAspectRatio = (float)standard.width / (float)standard.height;
-            float aspectDifference = Mathf.Min(1f, ScreenAspect / mainAreaAspectRatio);
+            float aspectDifference = Mathf.Min(1f, screenAspect / mainAreaAspectRatio);
             return 1 / aspectDifference;
         }
 

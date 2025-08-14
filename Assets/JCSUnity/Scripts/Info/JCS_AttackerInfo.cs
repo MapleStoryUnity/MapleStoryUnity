@@ -38,7 +38,7 @@ namespace JCSUnity
         /// 
         /// etc.
         /// </summary>
-        public Transform Attacker { get { return this.mAttacker; } set { this.mAttacker = value; } }
+        public Transform attacker { get { return mAttacker; } set { mAttacker = value; } }
 
         /* Functions */
 

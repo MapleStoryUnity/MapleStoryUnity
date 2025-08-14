@@ -26,13 +26,13 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mParticleSystem = this.GetComponent<JCS_ParticleSystem>();
+            mParticleSystem = GetComponent<JCS_ParticleSystem>();
         }
 
         private void Update()
         {
             if (mParticleSystem.IsParticleEnd())
-                Destroy(this.gameObject);
+                Destroy(gameObject);
         }
     }
 }

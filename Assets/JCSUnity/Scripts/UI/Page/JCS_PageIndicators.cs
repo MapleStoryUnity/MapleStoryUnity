@@ -36,9 +36,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<Image> Indicators { get { return this.mIndicators; } set { this.mIndicators = value; } }
-        public Sprite ActiveSprite { get { return this.mActiveSprite; } set { this.mActiveSprite = value; } }
-        public Sprite InactiveSprite { get { return this.mInactiveSprite; } set { this.mInactiveSprite = value; } }
+        public List<Image> indicators { get { return this.mIndicators; } set { this.mIndicators = value; } }
+        public Sprite activeSprite { get { return this.mActiveSprite; } set { this.mActiveSprite = value; } }
+        public Sprite inactiveSprite { get { return this.mInactiveSprite; } set { this.mInactiveSprite = value; } }
 
         /* Functions */
 

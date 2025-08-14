@@ -101,22 +101,22 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
-        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
-        public bool FreezeZ { get { return this.mFreezeZ; } set { this.mFreezeZ = value; } }
+        public bool freezeX { get { return mFreezeX; } set { mFreezeX = value; } }
+        public bool freezeY { get { return mFreezeY; } set { mFreezeY = value; } }
+        public bool freezeZ { get { return mFreezeZ; } set { mFreezeZ = value; } }
 
-        public Transform FollowTarget { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
-        public override void SetFollowTarget(Transform trans) { this.mTargetTransform = trans; }
-        public override Transform GetFollowTarget() { return this.mTargetTransform; }
+        public Transform followTarget { get { return mTargetTransform; } set { mTargetTransform = value; } }
+        public override void SetFollowTarget(Transform trans) { mTargetTransform = trans; }
+        public override Transform GetFollowTarget() { return mTargetTransform; }
 
-        public bool GetFollowing() { return this.mFollowing; }
-        public void SetFollowing(bool val) { this.mFollowing = val; }
-        public Transform GetTargetTransform() { return this.mTargetTransform; }
-        public bool ResetVelocityToZeroWhileNotActive { get { return this.mResetVelocityToZeroWhileNotActive; } set { this.mResetVelocityToZeroWhileNotActive = value; } }
-        public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
-        public bool ZoomWithMouseOrTouch { get { return this.mZoomWithMouseOrTouch; } set { this.mZoomWithMouseOrTouch = value; } }
-        public float ScrollRange_Mouse { get { return this.mScrollRange_Mouse; } set { this.mScrollRange_Mouse = value; } }
-        public float ScrollRange_Touch { get { return this.mScrollRange_Touch; } set { this.mScrollRange_Touch = value; } }
+        public bool GetFollowing() { return mFollowing; }
+        public void SetFollowing(bool val) { mFollowing = val; }
+        public Transform GetTargetTransform() { return mTargetTransform; }
+        public bool resetVelocityToZeroWhileNotActive { get { return mResetVelocityToZeroWhileNotActive; } set { this.mResetVelocityToZeroWhileNotActive = value; } }
+        public bool zoomEffect { get { return mZoomEffect; } set { mZoomEffect = value; } }
+        public bool zoomWithMouseOrTouch { get { return mZoomWithMouseOrTouch; } set { mZoomWithMouseOrTouch = value; } }
+        public float scrollRange_Mouse { get { return mScrollRange_Mouse; } set { mScrollRange_Mouse = value; } }
+        public float scrollRange_Touch { get { return mScrollRange_Touch; } set { mScrollRange_Touch = value; } }
 
         /* Functions */
 
@@ -124,7 +124,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mFreezeRecord = this.transform.position;
+            mFreezeRecord = transform.position;
         }
 
         protected override void Start()
@@ -132,7 +132,7 @@ namespace JCSUnity
             base.Start();
 
             // Use player from "JCS_GameManager" as default
-            if (this.mTargetTransform == null)
+            if (mTargetTransform == null)
             {
                 JCS_Player player = JCS_GameManager.FirstInstance().Player;
                 if (player != null)
@@ -142,10 +142,10 @@ namespace JCSUnity
             if (mTargetTransform != null)
             {
                 // first assign the target transform's position to target position.
-                mTargetPosition = this.mTargetTransform.position;
+                mTargetPosition = mTargetTransform.position;
 
                 // record the target position
-                mLastFramePos = this.mTargetTransform.position;
+                mLastFramePos = mTargetTransform.position;
             }
 
             if (mSetToPlayerPositionAtStart)
@@ -162,7 +162,7 @@ namespace JCSUnity
 
         protected virtual void FixedUpdate()
         {
-            if (this.mTargetTransform == null)
+            if (mTargetTransform == null)
             {
                 ResetVelocityWhileNotActive();
                 return;
@@ -176,7 +176,7 @@ namespace JCSUnity
 
             // if freezing effect in runtime, we have to record down this
             if (mFreezeInRuntime)
-                this.mFreezeRecord = this.transform.position;
+                mFreezeRecord = transform.position;
 
             if (mZoomWithMouseOrTouch)
             {
@@ -199,15 +199,15 @@ namespace JCSUnity
             if (mSmoothTrack)
             {
                 // Try to approach to the target position.
-                mVelocity.x = ((this.mTargetTransform.position.x + mPositionOffset.x) -
-                    this.transform.position.x) / mFrictionX;
-                mVelocity.y = ((this.mTargetTransform.position.y + mPositionOffset.y) -
-                    this.transform.position.y) / mFrictionY;
-                mVelocity.z = ((this.mTargetPosition.z + mPositionOffset.z) -
-                    this.transform.position.z) / mScrollFriction;
+                mVelocity.x = ((mTargetTransform.position.x + mPositionOffset.x) -
+                    transform.position.x) / mFrictionX;
+                mVelocity.y = ((mTargetTransform.position.y + mPositionOffset.y) -
+                    transform.position.y) / mFrictionY;
+                mVelocity.z = ((mTargetPosition.z + mPositionOffset.z) -
+                    transform.position.z) / mScrollFriction;
 
                 // Update self position
-                this.transform.position += this.mVelocity * JCS_Time.ItTime(mTimeType);
+                transform.position += mVelocity * JCS_Time.ItTime(mTimeType);
             }
             // Hard track
             else
@@ -215,7 +215,7 @@ namespace JCSUnity
                 // follow the object with frame distance.
                 // distance = current frame position - last frame position
                 Vector3 currentFramePos = mTargetTransform.position + mPositionOffset;
-                this.transform.position += currentFramePos - mLastFramePos;
+                transform.position += currentFramePos - mLastFramePos;
                 mLastFramePos = currentFramePos;
             }
 
@@ -233,12 +233,12 @@ namespace JCSUnity
 
             Vector3 targetPos = GetTargetTransform().position;
 
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
 
             newPos.x = targetPos.x;
             newPos.y = targetPos.y;
 
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace JCSUnity
             float cameraDepth = depthDistance * mScrollRange_Mouse;
 #endif
 
-            this.mTargetPosition.z += cameraDepth;
+            mTargetPosition.z += cameraDepth;
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace JCSUnity
         /// </summary>
         private void DoFreezing()
         {
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
             if (mFreezeX)
             {
                 newPos.x = mFreezeRecord.x;
@@ -285,7 +285,7 @@ namespace JCSUnity
                 mVelocity.z = 0;
             }
 
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
 
         /// <summary>

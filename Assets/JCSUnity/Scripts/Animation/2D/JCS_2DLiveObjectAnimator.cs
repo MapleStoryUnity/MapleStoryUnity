@@ -39,15 +39,15 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_2DAnimator Animator { get { return this.m2DAnimator; } }
-        public JCS_LiveObjectState GetCurrentAnimationState() { return this.mCurrentState; }
+        public JCS_2DAnimator animator { get { return m2DAnimator; } }
+        public JCS_LiveObjectState GetCurrentAnimationState() { return mCurrentState; }
 
         /* Functions */
         protected override void Awake()
         {
             base.Awake();
 
-            this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
+            m2DAnimator = GetComponent<JCS_2DAnimator>();
         }
 
         /// <summary>

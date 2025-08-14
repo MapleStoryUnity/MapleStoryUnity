@@ -23,7 +23,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public T[] Array { get { return this.mArray; } }
+        public T[] array { get { return mArray; } }
 
         /* Functions */
 
@@ -58,7 +58,7 @@ namespace JCSUnity
             {
                 for (int j = i; j > 0; --j)
                 {
-                    if (mArray[j].OrderIndex < mArray[j - 1].OrderIndex)
+                    if (mArray[j].orderIndex < mArray[j - 1].orderIndex)
                     {
                         T temp = mArray[j];
                         mArray[j] = mArray[j - 1];

@@ -67,23 +67,23 @@ just stop there.")]
 
         /* Setter & Getter */
 
-        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
-        public Vector3 GetVelocity() { return this.mVelocity; }
+        public bool fffect { get { return mEffect; } set { mEffect = value; } }
+        public Vector3 GetVelocity() { return mVelocity; }
 
-        public Rigidbody GetRigidbody() { return this.mRigidbody; }
-        public Collider GetFixCollider() { return this.mFixCollider; }
+        public Rigidbody GetRigidbody() { return mRigidbody; }
+        public Collider GetFixCollider() { return mFixCollider; }
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
-        public float BounceFriction { get { return this.mBounceFriction; } set { this.mBounceFriction = value; } }
+        public bool bounceBackfromWall { get { return mBounceBackfromWall; } set { mBounceBackfromWall = value; } }
+        public float bounceFriction { get { return mBounceFriction; } set { mBounceFriction = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mBoxCollider = this.GetComponent<BoxCollider>();
-            mRigidbody = this.GetComponent<Rigidbody>();
+            mBoxCollider = GetComponent<BoxCollider>();
+            mRigidbody = GetComponent<Rigidbody>();
         }
         private void Start()
         {
@@ -104,7 +104,7 @@ just stop there.")]
 
             float dt = JCS_Time.ItTime(mTimeType);
 
-            this.transform.position += mVelocity * dt;
+            transform.position += mVelocity * dt;
             mVelocity.y += JCS_Physics.GRAVITY * dt * mItemGravity;
         }
 
@@ -153,8 +153,8 @@ just stop there.")]
         {
             mVelocity.y = jumpForce;
             mVelocity.x = moveForce;
-            this.mMoveForce = moveForce;
-            this.mJumpForce = jumpForce;
+            mMoveForce = moveForce;
+            mJumpForce = jumpForce;
             mEffect = true;
 
             // including depth!
@@ -184,7 +184,7 @@ just stop there.")]
             if (ignore != null)
                 return;
 
-            var otherItem = this.GetComponent<JCS_Item>();
+            var otherItem = GetComponent<JCS_Item>();
             // if itself is a item, we check other is a item or not.
             if (otherItem != null)
             {
@@ -217,7 +217,7 @@ just stop there.")]
                 JCS_Physics.SetOnTopOfBoxWithSlope(mBoxCollider, beSetBox);
 
             // enable the physic once on the ground
-            JCS_PlayerManager.FirstInstance().IgnorePhysicsToAllPlayer(this.mBoxCollider, false);
+            JCS_PlayerManager.FirstInstance().IgnorePhysicsToAllPlayer(mBoxCollider, false);
         }
     }
 }

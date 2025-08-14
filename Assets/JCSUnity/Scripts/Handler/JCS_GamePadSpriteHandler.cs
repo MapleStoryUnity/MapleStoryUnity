@@ -46,7 +46,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            this.spriteSets = JCS_Array.RemoveEmpty(this.spriteSets);
+            spriteSets = JCS_Array.RemoveEmpty(spriteSets);
 
             /* Register callback */
             {
@@ -77,7 +77,7 @@ namespace JCSUnity
                     continue;
 
                 // set to gamepad's sprite.
-                ss.objectSprite.LocalSprite = ss.gamePadSprite;
+                ss.objectSprite.localSprite = ss.gamePadSprite;
             }
         }
 
@@ -92,7 +92,7 @@ namespace JCSUnity
                     continue;
 
                 // set to gamepad's sprite.
-                ss.objectSprite.LocalSprite = ss.keyboardSprite;
+                ss.objectSprite.localSprite = ss.keyboardSprite;
             }
         }
     }

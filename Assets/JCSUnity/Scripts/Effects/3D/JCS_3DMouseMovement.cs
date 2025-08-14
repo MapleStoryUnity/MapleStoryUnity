@@ -45,10 +45,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool ScreenScroll { get { return this.mScreenScroll; } set { this.mScreenScroll = value; } }
-        public float ScrollScreenRange { get { return this.mScrollScreenRange; } set { this.mScrollScreenRange = value; } }
-        public float ScrollScreenSpeed { get { return this.mScrollScreenSpeed; } set { this.mScrollScreenSpeed = value; } }
-        public bool ScrollDepth { get { return this.mScrollDepth; } set { this.mScrollDepth = value; } }
+        public bool screenScroll { get { return mScreenScroll; } set { mScreenScroll = value; } }
+        public float scrollScreenRange { get { return mScrollScreenRange; } set { mScrollScreenRange = value; } }
+        public float scrollScreenSpeed { get { return mScrollScreenSpeed; } set { mScrollScreenSpeed = value; } }
+        public bool scrollDepth { get { return mScrollDepth; } set { mScrollDepth = value; } }
 
         /* Functions */
 
@@ -57,7 +57,7 @@ namespace JCSUnity
             DoScreenScroll();
 
             // move the camera.
-            this.transform.localPosition += mVelocity;
+            transform.localPosition += mVelocity;
         }
 
         /// <summary>

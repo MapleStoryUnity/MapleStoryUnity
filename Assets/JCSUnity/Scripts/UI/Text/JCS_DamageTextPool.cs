@@ -99,14 +99,14 @@ namespace JCSUnity
 
         public int GetNumberOfHandle() { return this.mNumberOfHandle; }
 
-        public float SpacingPerText { get { return this.mSpacingPerText; } set { this.mSpacingPerText = value; } }
-        public float TimePerSpawn { get { return this.mTimePerSpawn; } set { this.mTimePerSpawn = value; } }
-        public bool FaceCamera { get { return this.mFaceCamera; } set { this.mFaceCamera = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float spacingPerText { get { return this.mSpacingPerText; } set { this.mSpacingPerText = value; } }
+        public float timePerSpawn { get { return this.mTimePerSpawn; } set { this.mTimePerSpawn = value; } }
+        public bool faceCamera { get { return this.mFaceCamera; } set { this.mFaceCamera = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
-        public bool ZiggeEffect { get { return this.mZiggeEffect; } set { this.mZiggeEffect = value; } }
-        public float RightAlign { get { return this.mRightAlign; } set { this.mRightAlign = value; } }
-        public float LeftAlign { get { return this.mLeftAlign; } set { this.mLeftAlign = value; } }
+        public bool ziggeEffect { get { return this.mZiggeEffect; } set { this.mZiggeEffect = value; } }
+        public float rightAlign { get { return this.mRightAlign; } set { this.mRightAlign = value; } }
+        public float leftAlign { get { return this.mLeftAlign; } set { this.mLeftAlign = value; } }
 
         public void SetHitSound(AudioClip hitSound) { this.mHitSound = hitSound; }
 
@@ -114,7 +114,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
             // spawn the pool
             InitDamageTextToArray();

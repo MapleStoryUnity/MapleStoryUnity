@@ -91,19 +91,19 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         /* Setter & Getter */
 
         // Info Variables
-        public CharacterController GetCharacterController() { return this.mCharacterControllerInfo.GetCharacterController(); }
-        public Vector3 Velocity { get { return this.mVelocityInfo.Velocity; } set { this.mVelocityInfo.Velocity = value; } }
-        public float VelX { get { return mVelocityInfo.VelX; } set { mVelocityInfo.VelX = value; } }
-        public float VelY { get { return mVelocityInfo.VelY; } set { mVelocityInfo.VelY = value; } }
-        public float VelZ { get { return mVelocityInfo.VelZ; } set { mVelocityInfo.VelZ = value; } }
-        public bool isGrounded { get { return this.mCharacterControllerInfo.isGrounded; } }
+        public CharacterController GetCharacterController() { return mCharacterControllerInfo.GetCharacterController(); }
+        public Vector3 velocity { get { return mVelocityInfo.velocity; } set { mVelocityInfo.velocity = value; } }
+        public float velX { get { return mVelocityInfo.velX; } set { mVelocityInfo.velX = value; } }
+        public float velY { get { return mVelocityInfo.velY; } set { mVelocityInfo.velY = value; } }
+        public float velZ { get { return mVelocityInfo.velZ; } set { mVelocityInfo.velZ = value; } }
+        public bool isGrounded { get { return mCharacterControllerInfo.isGrounded; } }
 
         // Action Variables
-        public float JumpForce { get { return this.mJumpForce; } set { this.mJumpForce = value; } }
-        public float AdjustTime { get { return this.mAdjustTime; } set { this.mAdjustTime = value; } }
-        public float Time { get { return this.mTime; } set { this.mTime = value; } }
-        public float Possibility { get { return this.mPossibility; } set { this.mPossibility = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float jumpForce { get { return mJumpForce; } set { mJumpForce = value; } }
+        public float adjustTime { get { return mAdjustTime; } set { mAdjustTime = value; } }
+        public float time { get { return mTime; } set { mTime = value; } }
+        public float possibility { get { return mPossibility; } set { mPossibility = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -167,7 +167,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
             if (!isGrounded)
                 return;
 
-            VelY = force;
+            velY = force;
 
             // record down the animation before do jump animation
             mAnimStateBeforeJump = mLiveObjectAnimator.GetCurrentAnimationState();

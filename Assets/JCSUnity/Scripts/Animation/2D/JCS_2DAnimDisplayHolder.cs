@@ -37,7 +37,8 @@ holding we could play the animation back in time.")]
         [Separator("Runtime Variables (JCS_2DAnimDisplayHolder)")]
 
         [Tooltip("How long to hold this animation.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mHoldTime = 0.5f;
 
         private float mHoldTimer = 0.0f;
@@ -48,13 +49,13 @@ holding we could play the animation back in time.")]
 
         /* Setter & Getter */
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
+            m2DAnimator = GetComponent<JCS_2DAnimator>();
         }
 
         private void LateUpdate()
@@ -80,8 +81,8 @@ holding we could play the animation back in time.")]
         {
             this.mHoldAnimIndex = animIndex;
 
-            if (this.m2DAnimator.CurrentAnimId != mHoldAnimIndex)
-                this.mStoreAnimIndex = this.m2DAnimator.CurrentAnimId;
+            if (this.m2DAnimator.currentAnimId != mHoldAnimIndex)
+                this.mStoreAnimIndex = this.m2DAnimator.currentAnimId;
 
             this.m2DAnimator.DoAnimation(this.mHoldAnimIndex);
 
@@ -113,8 +114,8 @@ holding we could play the animation back in time.")]
             mHoldTimer += JCS_Time.ItTime(mTimeType);
 
             // record down whats the current animation playing.
-            if (this.m2DAnimator.CurrentAnimId != mHoldAnimIndex)
-                this.mStoreAnimIndex = this.m2DAnimator.CurrentAnimId;
+            if (m2DAnimator.currentAnimId != mHoldAnimIndex)
+                mStoreAnimIndex = m2DAnimator.currentAnimId;
 
             // start holding the animation.
             m2DAnimator.DoAnimation(mHoldAnimIndex);

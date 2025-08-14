@@ -84,10 +84,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Vector3 RecordScale { get { return this.mRecordScale; } set { this.mRecordScale = value; } }
-        public Vector3 TowardScale { get { return this.mTowardScale; } set { this.mTowardScale = value; } }
-        public Vector3 GetScaleValue() { return this.mScaleValue; }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public Vector3 recordScale { get { return mRecordScale; } set { mRecordScale = value; } }
+        public Vector3 towardScale { get { return mTowardScale; } set { mTowardScale = value; } }
+        public Vector3 GetScaleValue() { return mScaleValue; }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -99,16 +99,16 @@ namespace JCSUnity
             {
                 // Get panel root, in order to calculate the correct distance 
                 // base on the resolution.
-                mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
+                mPanelRoot = JCS_PanelRoot.GetFromParent(transform);
 
                 if (mAutoAddEvent)
                 {
                     // Event trigger is the must if we need to add the 
                     // event to event trigger system.
                     {
-                        this.mEventTrigger = this.GetComponent<EventTrigger>();
-                        if (this.mEventTrigger == null)
-                            this.mEventTrigger = this.gameObject.AddComponent<EventTrigger>();
+                        mEventTrigger = GetComponent<EventTrigger>();
+                        if (mEventTrigger == null)
+                            mEventTrigger = gameObject.AddComponent<EventTrigger>();
                     }
 
                     JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, mActiveEventTriggerType, JCS_OnMouseOver);
@@ -116,7 +116,7 @@ namespace JCSUnity
                 }
             }
 
-            Vector3 currentScale = this.transform.localScale;
+            Vector3 currentScale = transform.localScale;
 
             // record down the scale.
             mRecordScale = currentScale;
@@ -195,7 +195,7 @@ namespace JCSUnity
                 // mPanelRoot will be null is the object isn't
                 // UI game object.
                 if (mPanelRoot != null)
-                    mScaleValue.x *= mPanelRoot.PanelDeltaWidthRatio;
+                    mScaleValue.x *= mPanelRoot.panelDeltaWidthRatio;
 
                 newTargetScale.x += mScaleValue.x;
             }
@@ -205,7 +205,7 @@ namespace JCSUnity
                 // mPanelRoot will be null is the object isn't
                 // UI game object.
                 if (mPanelRoot != null)
-                    mScaleValue.y *= mPanelRoot.PanelDeltaHeightRatio;
+                    mScaleValue.y *= mPanelRoot.panelDeltaHeightRatio;
 
                 newTargetScale.y += mScaleValue.y;
             }

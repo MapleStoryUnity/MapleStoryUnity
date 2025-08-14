@@ -85,18 +85,18 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform GetTargetTransform() { return this.mTargetTransform; }
-        public void SetTargetTransform(Transform t) { this.mTargetTransform = t; }
-        public JCS_Vector3Direction LookDirection { get { return this.mLookDirection; } set { this.mLookDirection = value; } }
-        public State state { get { return this.mState; } set { this.mState = value; } }
-        public bool RotateBack90 { get { return this.mRotateBack90; } set { this.mRotateBack90 = value; } }
+        public Transform GetTargetTransform() { return mTargetTransform; }
+        public void SetTargetTransform(Transform t) { mTargetTransform = t; }
+        public JCS_Vector3Direction lookDirection { get { return mLookDirection; } set { mLookDirection = value; } }
+        public State state { get { return mState; } set { mState = value; } }
+        public bool rotateBack90 { get { return mRotateBack90; } set { mRotateBack90 = value; } }
 
-        public bool LookAction { get { return this.mLookAction; } set { this.mLookAction = value; } }
-        public bool LocalEulerAngles { get { return this.mLocalEulerAngles; } set { this.mLocalEulerAngles = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool lookAction { get { return mLookAction; } set { mLookAction = value; } }
+        public bool localEulerAngles { get { return mLocalEulerAngles; } set { mLocalEulerAngles = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public bool AsympLook { get { return this.mAsympLook; } set { this.mAsympLook = value; } }
-        public float LookFriction { get { return this.mLookFriction; } set { this.mLookFriction = value; } }
+        public bool asympLook { get { return mAsympLook; } set { mAsympLook = value; } }
+        public float lookFriction { get { return mLookFriction; } set { mLookFriction = value; } }
 
         /* Functions */
 
@@ -108,9 +108,9 @@ namespace JCSUnity
 
             // record the current rotation.
             if (mLocalEulerAngles)
-                mCurrentEulerAngles = this.transform.localEulerAngles;
+                mCurrentEulerAngles = transform.localEulerAngles;
             else
-                mCurrentEulerAngles = this.transform.eulerAngles;
+                mCurrentEulerAngles = transform.eulerAngles;
 
             DoLookAt();
             DoAsympLook();
@@ -133,9 +133,9 @@ namespace JCSUnity
 
             // apply offset angle
             if (mLocalEulerAngles)
-                this.transform.localEulerAngles += mAngleOffset;
+                transform.localEulerAngles += mAngleOffset;
             else
-                this.transform.eulerAngles += mAngleOffset;
+                transform.eulerAngles += mAngleOffset;
 
             // TODO(jenchieh): study the rotation going on in Unity lower 
             // level archietecture.
@@ -173,9 +173,9 @@ namespace JCSUnity
         /// </summary>
         private void DoFreeze()
         {
-            Vector3 newEulerAngles = this.transform.eulerAngles;
+            Vector3 newEulerAngles = transform.eulerAngles;
             if (mLocalEulerAngles)
-                newEulerAngles = this.transform.localEulerAngles;
+                newEulerAngles = transform.localEulerAngles;
 
             //------------------------------------------------
             // if freeze, set to previous rotation.
@@ -190,9 +190,9 @@ namespace JCSUnity
             //------------------------------------------------
 
             if (mLocalEulerAngles)
-                this.transform.localEulerAngles = newEulerAngles;
+                transform.localEulerAngles = newEulerAngles;
             else
-                this.transform.eulerAngles = newEulerAngles;
+                transform.eulerAngles = newEulerAngles;
         }
     }
 }

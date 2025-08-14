@@ -56,8 +56,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool ActiveOnAwake { get { return this.mActiveOnAwake; } set { this.mActiveOnAwake = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool activeOnAwake { get { return mActiveOnAwake; } set { mActiveOnAwake = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 

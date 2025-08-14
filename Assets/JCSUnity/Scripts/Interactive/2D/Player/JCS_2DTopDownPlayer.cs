@@ -102,32 +102,32 @@ namespace JCSUnity
             if (!mIsControllable)
                 return;
 
-            this.mVelocity.y = MoveSpeed;
+            mVelocity.y = mMoveSpeed;
         }
         public void GoDown()
         {
             if (!mIsControllable)
                 return;
 
-            this.mVelocity.y = -MoveSpeed;
+            mVelocity.y = -mMoveSpeed;
         }
         public void GoRight()
         {
             if (!mIsControllable)
                 return;
 
-            this.mVelocity.x = MoveSpeed;
+            mVelocity.x = mMoveSpeed;
         }
         public void GoLeft()
         {
             if (!mIsControllable)
                 return;
 
-            this.mVelocity.x = -MoveSpeed;
+            mVelocity.x = -mMoveSpeed;
         }
         public void Idle()
         {
-            this.mVelocity = Vector3.zero;
+            mVelocity = Vector3.zero;
         }
 
         public override void Stand()

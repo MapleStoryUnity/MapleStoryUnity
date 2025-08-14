@@ -120,7 +120,7 @@ namespace JCSUnity
         /// </summary>
         public void SetTrackPosition()
         {
-            mTrackAction.TargetPosition = this.transform.localPosition;
+            mTrackAction.targetPosition = this.transform.localPosition;
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace JCSUnity
                 if (b == this)
                     continue;
 
-                b.AutoListener = false;
+                b.autoListener = false;
             }
         }
 

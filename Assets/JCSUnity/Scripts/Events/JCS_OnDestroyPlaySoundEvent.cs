@@ -49,7 +49,7 @@ namespace JCSUnity
 
             // this object will play the sound, after the sound is played.
             // will destroy it self automatically.
-            JCS_DestroySoundEndEvent dsee = obj.AddComponent<JCS_DestroySoundEndEvent>();
+            var dsee = obj.AddComponent<JCS_DestroySoundEndEvent>();
 
 #if UNITY_EDITOR
             obj.name = "JCS_OnDestroyPlaySoundEvent";

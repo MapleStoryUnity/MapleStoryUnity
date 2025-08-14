@@ -30,8 +30,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_FloatTweener FloatTweener { get { return this.mFloatTweener; } }
-        public List<string> ShaderProps { get { return mShaderProps; } set { this.mShaderProps = value; } }
+        public JCS_FloatTweener floatTweener { get { return mFloatTweener; } }
+        public List<string> shaderProps { get { return mShaderProps; } set { mShaderProps = value; } }
 
         /* Functions */
 
@@ -39,7 +39,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mFloatTweener = this.GetComponent<JCS_FloatTweener>();
+            mFloatTweener = GetComponent<JCS_FloatTweener>();
 
             mFloatTweener.onValueChange = SetValue;
             mFloatTweener.onValueReturn = GetValue;
@@ -53,7 +53,7 @@ namespace JCSUnity
         {
             foreach (string prop in mShaderProps)
             {
-                this.LocalMaterial.SetFloat(prop, val);
+                localMaterial.SetFloat(prop, val);
             }
         }
 
@@ -64,7 +64,7 @@ namespace JCSUnity
         {
             foreach (string prop in mShaderProps)
             {
-                return this.LocalMaterial.GetFloat(prop);
+                return localMaterial.GetFloat(prop);
             }
 
             return 0.0f;

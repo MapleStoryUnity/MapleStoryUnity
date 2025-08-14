@@ -28,7 +28,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public AudioClip audioClip { get { return this.mAudioClip; } set { this.mAudioClip = value; } }
+        public AudioClip audioClip { get { return mAudioClip; } set { mAudioClip = value; } }
         
         /* Functions */
 

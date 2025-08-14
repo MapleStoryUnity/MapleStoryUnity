@@ -49,15 +49,15 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_LiquidBar LiquidBar { get { return this.mLiquidBar; } set { this.mLiquidBar = value; } }
+        public JCS_LiquidBar liquidBar { get { return mLiquidBar; } set { mLiquidBar = value; } }
 
-        public string TagName { get { return this.mTagName; } set { this.mTagName = value; } }
-        public int CurrentValue
+        public string tagName { get { return mTagName; } set { mTagName = value; } }
+        public int currentValue
         {
-            get { return this.mCurrentValue; }
+            get { return mCurrentValue; }
             set
             {
-                this.mCurrentValue = value;
+                mCurrentValue = value;
 
                 // cannot lower than min value
                 if (mCurrentValue < mMinValue)
@@ -68,8 +68,8 @@ namespace JCSUnity
                     mCurrentValue = mMaxValue;
             }
         }
-        public int MinValue { get { return this.mMinValue; } set { this.mMinValue = value; } }
-        public int MaxValue { get { return this.mMaxValue; } set { this.mMaxValue = value; } }
+        public int minValue { get { return mMinValue; } set { mMinValue = value; } }
+        public int maxValue { get { return mMaxValue; } set { mMaxValue = value; } }
 
         /* Functions */
 

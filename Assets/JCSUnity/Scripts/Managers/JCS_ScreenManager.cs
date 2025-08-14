@@ -55,10 +55,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_ResizableScreenPanel TopASP { get { return this.mTopASP; } }
-        public JCS_ResizableScreenPanel BottomASP { get { return this.mBottomASP; } }
-        public JCS_ResizableScreenPanel LeftASP { get { return this.mLeftASP; } }
-        public JCS_ResizableScreenPanel RightASP { get { return this.mRightASP; } }
+        public JCS_ResizableScreenPanel topASP { get { return mTopASP; } }
+        public JCS_ResizableScreenPanel bottomASP { get { return mBottomASP; } }
+        public JCS_ResizableScreenPanel leftASP { get { return mLeftASP; } }
+        public JCS_ResizableScreenPanel rightASP { get { return mRightASP; } }
 
         /* Functions */
 
@@ -69,16 +69,16 @@ namespace JCSUnity
             if (ShouldSpawnResizablePanels())
             {
                 // Spawn the four aspect screen panels.
-                this.mTopASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                this.mBottomASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                this.mLeftASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                this.mRightASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                mTopASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                mBottomASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                mLeftASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                mRightASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
 
                 // Set the ASP direction.
-                this.mTopASP.PlaceDirection = JCS_2D4Direction.TOP;
-                this.mBottomASP.PlaceDirection = JCS_2D4Direction.BOTTOM;
-                this.mLeftASP.PlaceDirection = JCS_2D4Direction.LEFT;
-                this.mRightASP.PlaceDirection = JCS_2D4Direction.RIGHT;
+                mTopASP.placeDirection = JCS_2D4Direction.TOP;
+                mBottomASP.placeDirection = JCS_2D4Direction.BOTTOM;
+                mLeftASP.placeDirection = JCS_2D4Direction.LEFT;
+                mRightASP.placeDirection = JCS_2D4Direction.RIGHT;
             }
         }
 

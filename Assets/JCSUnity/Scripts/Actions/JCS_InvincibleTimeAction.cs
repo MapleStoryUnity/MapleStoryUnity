@@ -21,6 +21,7 @@ namespace JCSUnity
         /* Variables */
 
         private JCS_LiveObject mLiveObject = null;
+
         private JCS_OrderLayerObject mOrderLayerObject = null;
 
         [Separator("Runtime Variables (JCS_InvincibleTimeAction)")]
@@ -66,10 +67,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
+        public float invicibleTime { get { return mInvicibleTime; } set { mInvicibleTime = value; } }
         // Use to check if this effect is active?
-        public bool IsInvincible { get { return this.mTriggerAction; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool isInvincible { get { return mTriggerAction; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -96,7 +97,7 @@ namespace JCSUnity
             if (mInvicibleTime > mInvicibleTimer)
                 return;
 
-            mLiveObject.CanDamage = true;
+            mLiveObject.canDamage = true;
 
             // set back the local color to record color.
             if (mOrderLayerObject.GetSpriteRenderer() != null)
@@ -114,7 +115,7 @@ namespace JCSUnity
             // reset timer.
             mInvicibleTimer = 0.0f;
 
-            this.mFlashToggle = false;
+            mFlashToggle = false;
 
             // cancel action
             mTriggerAction = false;
@@ -139,14 +140,14 @@ namespace JCSUnity
                 return;
 
             // get the time.
-            this.mInvicibleTime = time;
+            mInvicibleTime = time;
 
             // reset timer.
-            this.mInvicibleTimer = 0.0f;
+            mInvicibleTimer = 0.0f;
 
             // set the live object's can damage immdeiate to false.
             // so it won't get damage in the same frame.
-            mLiveObject.CanDamage = false;
+            mLiveObject.canDamage = false;
 
             // record down the current color.
             if (mOrderLayerObject.GetSpriteRenderer() != null)
@@ -155,7 +156,7 @@ namespace JCSUnity
                 mRecordColor = Color.white;
 
             // reset the flash toggle.
-            this.mFlashToggle = false;
+            mFlashToggle = false;
 
             // start the action.
             mTriggerAction = true;

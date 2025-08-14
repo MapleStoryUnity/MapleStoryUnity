@@ -27,7 +27,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mSlider = this.GetComponent<Slider>();
+            mSlider = GetComponent<Slider>();
 
             AddListener();
         }

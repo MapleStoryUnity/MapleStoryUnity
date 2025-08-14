@@ -45,11 +45,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float SlideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
-        public float SlideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
+        public float slideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
+        public float slideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
         public void SetTargetPosition(Vector3 pos) { this.mTargetPosition = pos; }
         public Vector3 GetTargetPosition() { return this.mTargetPosition; }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 

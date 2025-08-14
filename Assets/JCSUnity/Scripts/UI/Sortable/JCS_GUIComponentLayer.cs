@@ -28,7 +28,7 @@ namespace JCSUnity
         private void Start()
         {
             // if already sorted, return.
-            if (this.Sorted)
+            if (sorted)
                 return;
 
             // get the parent.
@@ -61,7 +61,7 @@ namespace JCSUnity
                 JCS_Util.MoveToTheLastChild(arr[index].transform);
 
                 // make sure is sorted already.
-                arr[index].Sorted = true;
+                arr[index].sorted = true;
             }
         }
     }

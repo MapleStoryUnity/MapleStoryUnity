@@ -27,7 +27,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public AudioClip SkillSound { get { return this.mSkillSound; } set { this.mSkillSound = value; } }
+        public AudioClip skillSound { get { return mSkillSound; } set { mSkillSound = value; } }
 
         /* Functions */
 

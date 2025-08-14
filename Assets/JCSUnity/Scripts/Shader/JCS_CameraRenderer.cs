@@ -24,7 +24,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Material RenderMaterial { get { return this.mRenderMaterial; } set { this.mRenderMaterial = value; } }
+        public Material renderMaterial { get { return mRenderMaterial; } set { mRenderMaterial = value; } }
 
         /* Functions */
 

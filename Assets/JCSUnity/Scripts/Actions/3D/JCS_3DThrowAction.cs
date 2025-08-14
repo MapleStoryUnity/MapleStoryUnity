@@ -81,17 +81,17 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public Vector3 Velocity { get { return this.mVelocity; } }
-        public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public bool FaceFoward { get { return this.mFaceFoward; } set { this.mFaceFoward = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public Vector3 velocity { get { return mVelocity; } }
+        public float gravityProduct { get { return mGravityProduct; } set { mGravityProduct = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public bool faceFoward { get { return mFaceFoward; } set { mFaceFoward = value; } }
 
-        public float Force { get { return this.mForce; } set { this.mForce = value; } }
-        public float Degree { get { return this.mDegree; } set { this.mDegree = value; } }
-        public float Time { get { return this.mTime; } set { this.mTime = value; } }
+        public float force { get { return mForce; } set { mForce = value; } }
+        public float degree { get { return mDegree; } set { mDegree = value; } }
+        public float time { get { return mTime; } set { mTime = value; } }
 
-        private float G
+        private float g
         {
             get { return JCS_Physics.GRAVITY * mGravityProduct; }
         }
@@ -110,12 +110,12 @@ namespace JCSUnity
             float dt = JCS_Time.ItTime(mTimeType);
 
             // make it effect by gravity.
-            this.mVelocity.y += JCS_Physics.GRAVITY * mGravityProduct * dt;
+            mVelocity.y += JCS_Physics.GRAVITY * mGravityProduct * dt;
 
             if (!JCS_Mathf.IsNaNOrInfinity(mVelocity))
             {
                 // add up velocity.
-                this.transform.position += mVelocity * dt;
+                transform.position += mVelocity * dt;
             }
 
             if (mFaceFoward)
@@ -124,7 +124,7 @@ namespace JCSUnity
 
                 Vector3 point = transform.position + direction * JCS_Physics.LOOK_DISTANCE;
 
-                this.transform.LookAt(point);
+                transform.LookAt(point);
             }
         }
 
@@ -151,16 +151,16 @@ namespace JCSUnity
         }
         public void ThrowByTime(Vector3 targetPos, float time)
         {
-            Vector3 displacement = targetPos - this.transform.position;
+            Vector3 displacement = targetPos - transform.position;
 
             // Calculate initial velocity.
             mVelocity.x = displacement.x / time;
             mVelocity.z = displacement.z / time;
 
-            mVelocity.y = (displacement.y - (0.5f * G * Mathf.Pow(time, 2))) / time;
+            mVelocity.y = (displacement.y - (0.5f * g * Mathf.Pow(time, 2))) / time;
 
             // start the action.
-            this.mActive = true;
+            mActive = true;
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace JCSUnity
         }
         public void ThrowByForce(Vector3 targetPos, float vel, float degree)
         {
-            Vector3 displacement = targetPos - this.transform.position;
+            Vector3 displacement = targetPos - transform.position;
             var displacementXZ = new Vector3(displacement.x, 0, displacement.z);
             float horizontalDistance = displacementXZ.magnitude;
 

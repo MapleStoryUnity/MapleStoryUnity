@@ -62,14 +62,14 @@ namespace JCSUnity
                     JCS_NetworkSettings.FirstInstance().CLIENT_MODE
                     ).GetHandler(packetId);
 
-            if (packetHandler != null && packetHandler.validateState(client))
+            if (packetHandler != null && packetHandler.ValidateState(client))
             {
                 // set the client and packet data buffer sequence.
                 packetHandler.Client = client;
                 packetHandler.PacketData = jbr;
 
                 // register request.
-                JCS_ServerRequestProcessor.FirstInstance().RegisterRequest(packetHandler.handlePacket, jbr, client);
+                JCS_ServerRequestProcessor.FirstInstance().RegisterRequest(packetHandler.HandlePacket, jbr, client);
             }
             else
             {

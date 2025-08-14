@@ -71,33 +71,33 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool CanShoot { get { return this.mCanShoot; } set { this.mCanShoot = value; } }
-        public bool AutoShootInFrame { get { return this.mAutoShootInFrame; } set { this.mAutoShootInFrame = value; } }
-        public bool AutoShootByOrder { get { return this.mAutoShootByOrder; } set { this.mAutoShootByOrder = value; } }
-        public float DegreePerShoot { get { return this.mDegreePerShoot; } set { this.mDegreePerShoot = value; } }
-        public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
-        public float AdjustTime { get { return this.mAdjustTime; } set { this.mAdjustTime = value; } }
-        public JCS_Axis ShootAxis { get { return this.mShootAxis; } set { this.mShootAxis = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool canShoot { get { return mCanShoot; } set { mCanShoot = value; } }
+        public bool autoShootInFrame { get { return mAutoShootInFrame; } set { mAutoShootInFrame = value; } }
+        public bool autoShootByOrder { get { return mAutoShootByOrder; } set { mAutoShootByOrder = value; } }
+        public float degreePerShoot { get { return mDegreePerShoot; } set { mDegreePerShoot = value; } }
+        public float delayTime { get { return mDelayTime; } set { mDelayTime = value; } }
+        public float adjustTime { get { return mAdjustTime; } set { mAdjustTime = value; } }
+        public JCS_Axis shootAxis { get { return mShootAxis; } set { mShootAxis = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mShootAction = this.GetComponent<JCS_ShootAction>();
+            mShootAction = GetComponent<JCS_ShootAction>();
 
-            mShootAction.CanShoot = false;
+            mShootAction.canShoot = false;
 
             // disable auto shoot be default
-            mShootAction.AutoShoot = false;
+            mShootAction.autoShoot = false;
         }
 
         private void Update()
         {
-            if (AutoShootInFrame)
+            if (mAutoShootInFrame)
                 AutoShootActionByFrame();
 
-            if (AutoShootByOrder)
+            if (mAutoShootByOrder)
                 AutoShootActionByOrder();
         }
 
@@ -106,7 +106,7 @@ namespace JCSUnity
         /// </summary>
         public void ShootAllAngleByFrame()
         {
-            Vector3 newRotation = this.transform.localEulerAngles;
+            Vector3 newRotation = transform.localEulerAngles;
             Vector3 recordRotation = newRotation;
 
             for (int count = 0; count < 360 / mDegreePerShoot; ++count)
@@ -140,7 +140,7 @@ namespace JCSUnity
         /// </summary>
         public void ShootAllAngleByOrder()
         {
-            Vector3 newRotation = this.transform.localEulerAngles;
+            Vector3 newRotation = transform.localEulerAngles;
             Vector3 recordRotation = newRotation;
 
             switch (mShootAxis)
@@ -174,7 +174,7 @@ namespace JCSUnity
         /// </summary>
         private void AutoShootActionByFrame()
         {
-            if (!CanShoot)
+            if (!mCanShoot)
                 return;
 
             if (mShooted)
@@ -196,7 +196,7 @@ namespace JCSUnity
         /// </summary>
         private void AutoShootActionByOrder()
         {
-            if (!CanShoot)
+            if (!mCanShoot)
                 return;
 
             if (mShooted)

@@ -72,10 +72,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float Force { get { return this.mForce; } set { this.mForce = value; } }
-        public float Gravity { get { return this.mGravity; } set { this.mGravity = value; } }
-        public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float force { get { return mForce; } set { mForce = value; } }
+        public float gravity { get { return mGravity; } set { mGravity = value; } }
+        public JCS_Axis axis { get { return mAxis; } set { mAxis = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -109,7 +109,7 @@ namespace JCSUnity
         /// </summary>
         public void StartHop(bool recordStarting = true)
         {
-            StartHop(this.mForce, this.mGravity, recordStarting);
+            StartHop(mForce, mGravity, recordStarting);
         }
 
         /// <summary>
@@ -120,18 +120,18 @@ namespace JCSUnity
             mActive = true;
 
             if (recordStarting)
-                mStartingPosition = this.LocalPosition;
+                mStartingPosition = localPosition;
 
             switch (mAxis)
             {
                 case JCS_Axis.AXIS_X:
-                    mVelocity.x = this.mForce;
+                    mVelocity.x = mForce;
                     break;
                 case JCS_Axis.AXIS_Y:
-                    mVelocity.y = this.mForce;
+                    mVelocity.y = mForce;
                     break;
                 case JCS_Axis.AXIS_Z:
-                    mVelocity.z = this.mForce;
+                    mVelocity.z = mForce;
                     break;
             }
         }
@@ -147,7 +147,7 @@ namespace JCSUnity
             float dt = JCS_Time.ItTime(mTimeType);
 
             float prevPos = GetLocalPositionByAxis();
-            this.LocalPosition += mVelocity * dt;
+            this.localPosition += mVelocity * dt;
             float currPos = GetLocalPositionByAxis();
 
             float startingPos = GetStartingPositionByAxis();
@@ -163,7 +163,7 @@ namespace JCSUnity
             {
                 case JCS_Axis.AXIS_X:
                     {
-                        if (this.LocalPosition.x > mStartingPosition.x)
+                        if (localPosition.x > mStartingPosition.x)
                             mRealGravity = JCS_Mathf.ToNegative(mGravity);
                         else
                             mRealGravity = JCS_Mathf.ToPositive(mGravity);
@@ -173,7 +173,7 @@ namespace JCSUnity
                     break;
                 case JCS_Axis.AXIS_Y:
                     {
-                        if (this.LocalPosition.y > mStartingPosition.y)
+                        if (localPosition.y > mStartingPosition.y)
                             mRealGravity = JCS_Mathf.ToNegative(mGravity);
                         else
                             mRealGravity = JCS_Mathf.ToPositive(mGravity);
@@ -183,7 +183,7 @@ namespace JCSUnity
                     break;
                 case JCS_Axis.AXIS_Z:
                     {
-                        if (this.LocalPosition.z > mStartingPosition.z)
+                        if (localPosition.z > mStartingPosition.z)
                             mRealGravity = JCS_Mathf.ToNegative(mGravity);
                         else
                             mRealGravity = JCS_Mathf.ToPositive(mGravity);
@@ -196,7 +196,7 @@ namespace JCSUnity
 
         private void SetLocalPositionByAxis(float val)
         {
-            Vector3 newPos = this.LocalPosition;
+            Vector3 newPos = this.localPosition;
             switch (mAxis)
             {
                 case JCS_Axis.AXIS_X: newPos.x = val; break;
@@ -204,7 +204,7 @@ namespace JCSUnity
                 case JCS_Axis.AXIS_Z: newPos.z = val; break;
 
             }
-            this.LocalPosition = newPos;
+            localPosition = newPos;
         }
 
         private float GetLocalPositionByAxis()
@@ -213,9 +213,9 @@ namespace JCSUnity
 
             switch (mAxis)
             {
-                case JCS_Axis.AXIS_X: val = LocalPosition.x; break;
-                case JCS_Axis.AXIS_Y: val = LocalPosition.y; break;
-                case JCS_Axis.AXIS_Z: val = LocalPosition.z; break;
+                case JCS_Axis.AXIS_X: val = localPosition.x; break;
+                case JCS_Axis.AXIS_Y: val = localPosition.y; break;
+                case JCS_Axis.AXIS_Z: val = localPosition.z; break;
 
             }
             return val;

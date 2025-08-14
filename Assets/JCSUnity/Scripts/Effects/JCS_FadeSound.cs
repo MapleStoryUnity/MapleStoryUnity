@@ -48,11 +48,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void SetFadeOutTime(float t) { this.mFadeOutTime = t; }
-        public void SetFadeInTime(float t) { this.mFadeInTime = t; }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public void SetFadeOutTime(float t) { mFadeOutTime = t; }
+        public void SetFadeInTime(float t) { mFadeInTime = t; }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public AudioSource GetAudioSource() { return this.mAudioSource; }
+        public AudioSource audioSource { get { return mAudioSource; } }
 
         /* Functions */
 
@@ -76,7 +76,7 @@ namespace JCSUnity
                 return;
             }
 
-            this.mAudioSource = source;
+            mAudioSource = source;
 
             // record down the volume, 
             // so when is fade in this will become the 

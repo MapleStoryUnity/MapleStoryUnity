@@ -56,7 +56,7 @@ namespace JCSUnity
             // start at the current position. 
             // so trick make the trackaction not moving at all at the 
             // beginning of the action.
-            this.mSimpleTrackAction.TargetPosition = this.transform.localPosition;
+            this.mSimpleTrackAction.targetPosition = this.transform.localPosition;
 
             for (int index = 0; index < mButtons.Length; ++index)
             {
@@ -69,13 +69,13 @@ namespace JCSUnity
 
         private void Start()
         {
-            this.mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
+            mPanelRoot = JCS_PanelRoot.GetFromParent(transform);
 
             if (mPanelRoot != null)
             {
                 // Adjust the offset base on the screen size.
-                mPointerOffset.x *= mPanelRoot.PanelDeltaWidthRatio;
-                mPointerOffset.y *= mPanelRoot.PanelDeltaHeightRatio;
+                mPointerOffset.x *= mPanelRoot.panelDeltaWidthRatio;
+                mPointerOffset.y *= mPanelRoot.panelDeltaHeightRatio;
             }
         }
 
@@ -86,7 +86,7 @@ namespace JCSUnity
         {
             if (mDontPointIfButtonNotActive)
             {
-                if (!btn.Interactable)
+                if (!btn.interactable)
                     return;
             }
 
@@ -94,7 +94,7 @@ namespace JCSUnity
                 btn.GetRectTransfom().localPosition +  // Target position. 
                 mPointerOffset;  // Offset value.
 
-            mSimpleTrackAction.TargetPosition = targetPoint;
+            mSimpleTrackAction.targetPosition = targetPoint;
         }
     }
 }

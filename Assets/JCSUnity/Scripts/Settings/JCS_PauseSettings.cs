@@ -44,10 +44,10 @@ namespace JCSUnity
             var pm = JCS_PauseManager.FirstInstance();
 
             // check if override the setting.
-            if (pm.OverrideSetting)
+            if (pm.overrideSetting)
             {
                 // return the override value.
-                return pm.Asymptotic;
+                return pm.asymptotic;
             }
 
             // if not override, 
@@ -63,10 +63,10 @@ namespace JCSUnity
             var pm = JCS_PauseManager.FirstInstance();
 
             // check if override the setting.
-            if (pm.OverrideSetting)
+            if (pm.overrideSetting)
             {
                 // return the override value.
-                return pm.Friction;
+                return pm.friction;
             }
 
             // if not override, 

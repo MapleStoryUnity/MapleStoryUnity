@@ -45,11 +45,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Done { get { return this.mDone; } }
-        public List<Component> Components { get { return this.mComponents; } set { this.mComponents = value; } }
-        public float time { get { return this.mTime; } set { this.mTime = value; } }
-        public float timer { get { return this.mTimer; } set { this.mTimer = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool done { get { return mDone; } }
+        public List<Component> components { get { return mComponents; } set { mComponents = value; } }
+        public float time { get { return mTime; } set { mTime = value; } }
+        public float timer { get { return mTimer; } set { mTimer = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 

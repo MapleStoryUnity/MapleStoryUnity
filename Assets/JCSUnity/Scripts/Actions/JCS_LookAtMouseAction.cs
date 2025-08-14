@@ -32,8 +32,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float Speed { get { return this.mSpeed; } set { this.mSpeed = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float speed { get { return mSpeed; } set { mSpeed = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 

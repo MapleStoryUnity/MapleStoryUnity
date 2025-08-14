@@ -42,9 +42,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Text TextLegacy { get { return this.mTextLegacy; } set { this.mTextLegacy = value; } }
+        public Text textLegacy { get { return mTextLegacy; } set { mTextLegacy = value; } }
 #if TMP_PRO
-        public TMP_Text TextTMP { get { return this.mTextTMP; } set { this.mTextTMP = value; } }
+        public TMP_Text textTMP { get { return mTextTMP; } set { mTextTMP = value; } }
 #endif
 
         /* Functions */
@@ -53,19 +53,19 @@ namespace JCSUnity
         {
             get 
             { 
-                if (this.mTextLegacy)
-                    return this.mTextLegacy.text;
+                if (mTextLegacy)
+                    return mTextLegacy.text;
 
-                return this.mTextTMP.text;
+                return mTextTMP.text;
             }
 
             set
             {
-                if (this.mTextLegacy) 
-                    this.mTextLegacy.text = value;
+                if (mTextLegacy) 
+                    mTextLegacy.text = value;
 #if TMP_PRO
-                if (this.mTextTMP) 
-                    this.mTextTMP.text = value;
+                if (mTextTMP) 
+                    mTextTMP.text = value;
 #endif
             }
         }

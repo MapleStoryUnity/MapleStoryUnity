@@ -43,20 +43,20 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
-        public JCS_OrderLayer OrderLayer { get { return this.mOrderLayer; } }
-        public List<SpriteRenderer> SpriteRenderers() { return this.mSpriteRenderers; }
-        public SpriteRenderer SpriteRenderersAt(int index) { return this.mSpriteRenderers[index]; }
-        public bool AbsoluteLayerEffect { get { return this.mAbsoluteLayerEffect; } }
-        public int AbsotlueLayer { get { return this.mAbsotlueLayer; } }
-        public int sortingOrder { get { return this.mOrderLayer.OrderLayer; } }
+        public SpriteRenderer GetSpriteRenderer() { return mSpriteRenderer; }
+        public JCS_OrderLayer orderLayer { get { return mOrderLayer; } }
+        public List<SpriteRenderer> SpriteRenderers() { return mSpriteRenderers; }
+        public SpriteRenderer SpriteRenderersAt(int index) { return mSpriteRenderers[index]; }
+        public bool absoluteLayerEffect { get { return mAbsoluteLayerEffect; } }
+        public int absotlueLayer { get { return mAbsotlueLayer; } }
+        public int sortingOrder { get { return mOrderLayer.orderLayer; } }
 
         /* Functions */
 
         private void Awake()
         {
             /* Down compatible. */
-            this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+            mSpriteRenderer = GetComponent<SpriteRenderer>();
 
             // clean up empty slot.
             mSpriteRenderers = JCS_Array.RemoveEmpty(mSpriteRenderers);
@@ -64,7 +64,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            mOrderLayer = this.GetComponentInParent<JCS_OrderLayer>();
+            mOrderLayer = GetComponentInParent<JCS_OrderLayer>();
 
             foreach (SpriteRenderer spriteRenderer in mSpriteRenderers)
             {
@@ -72,11 +72,11 @@ namespace JCSUnity
                     continue;
 
                 // override the current order layer.
-                spriteRenderer.sortingOrder = mOrderLayer.OrderLayer;
+                spriteRenderer.sortingOrder = mOrderLayer.orderLayer;
             }
 
             if (mSpriteRenderer != null && mOrderLayer != null)
-                mSpriteRenderer.sortingOrder = mOrderLayer.OrderLayer;
+                mSpriteRenderer.sortingOrder = mOrderLayer.orderLayer;
 
             //if set absolute effect are enable set it to that specific layer.
             if (mAbsoluteLayerEffect)

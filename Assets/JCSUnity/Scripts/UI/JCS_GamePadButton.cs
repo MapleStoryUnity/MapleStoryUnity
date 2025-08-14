@@ -60,14 +60,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public KeyCode KKeyToListen { get { return this.mKKeyToListen; } set { this.mKKeyToListen = value; } }
-        public JCS_JoystickButton JKeyToListen { get { return this.mJKeyToListen; } set { this.mJKeyToListen = value; } }
-        public JCS_JoystickId JoystickLitener { get { return this.mJoystickLitener; } set { this.mJoystickLitener = value; } }
-        public bool ListenToAnyKey { get { return this.mListenToAnyKey; } set { this.mListenToAnyKey = value; } }
-        public JCS_KeyActionType KeyActionType { get { return this.mKeyActionType; } set { this.mKeyActionType = value; } }
+        public KeyCode kKeyToListen { get { return this.mKKeyToListen; } set { this.mKKeyToListen = value; } }
+        public JCS_JoystickButton jKeyToListen { get { return this.mJKeyToListen; } set { this.mJKeyToListen = value; } }
+        public JCS_JoystickId joystickLitener { get { return this.mJoystickLitener; } set { this.mJoystickLitener = value; } }
+        public bool listenToAnyKey { get { return this.mListenToAnyKey; } set { this.mListenToAnyKey = value; } }
+        public JCS_KeyActionType keyActionType { get { return this.mKeyActionType; } set { this.mKeyActionType = value; } }
 
-        public AudioClip ButtonClickSound { get { return this.mButtonClickSound; } set { this.mButtonClickSound = value; } }
-        public JCS_SoundMethod SoundMethod { get { return this.mSoundMethod; } set { this.mSoundMethod = value; } }
+        public AudioClip buttonClickSound { get { return this.mButtonClickSound; } set { this.mButtonClickSound = value; } }
+        public JCS_SoundMethod soundMethod { get { return this.mSoundMethod; } set { this.mSoundMethod = value; } }
 
         /* Functions */
 

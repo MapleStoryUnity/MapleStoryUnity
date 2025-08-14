@@ -26,7 +26,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool ShowCursor { get { return this.mShowCursor; } set { this.mShowCursor = value; } }
+        public bool showCursor { get { return mShowCursor; } set { mShowCursor = value; } }
 
         /* Functions */
 

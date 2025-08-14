@@ -63,19 +63,19 @@ namespace JCSUnity
             if (isTopOfBox)
             {
                 // show character behind the ladder
-                int backOrderLayer = OrderLayerObject.sortingOrder - cm.SORTING_ORDER_BEHIND_OFFSET;
+                int backOrderLayer = orderLayerObject.sortingOrder - cm.SORTING_ORDER_BEHIND_OFFSET;
                 SetPlayerSortingOrder(player, backOrderLayer);
             }
             else
             {
                 // show character infront
-                int frontOrderLayer = OrderLayerObject.sortingOrder + cm.SORTING_ORDER_INFRONT_OFFSET;
+                int frontOrderLayer = orderLayerObject.sortingOrder + cm.SORTING_ORDER_INFRONT_OFFSET;
                 SetPlayerSortingOrder(player, frontOrderLayer);
             }
 
-            player.CanLadder = true;
-            player.CanRope = false;
-            player.ClimbableObject = this;
+            player.canLadder = true;
+            player.canRope = false;
+            player.climbableObject = this;
         }
 
         protected virtual void OnTriggerExit(Collider other)
@@ -84,9 +84,9 @@ namespace JCSUnity
             if (player == null)
                 return;
 
-            player.ClimbableObject = null;
+            player.climbableObject = null;
             player.GetCharacterAnimator().PlayAnimationInFrame();
-            player.CanLadder = false;
+            player.canLadder = false;
 
             RemoveNullPlayerAndSelf(player);
         }
@@ -103,17 +103,17 @@ namespace JCSUnity
             {
                 if (player.isGrounded())
                 {
-                    player.CanLadder = true;
-                    player.CanRope = false;
-                    player.ClimbableObject = this;
+                    player.canLadder = true;
+                    player.canRope = false;
+                    player.climbableObject = this;
 
                     continue;
                 }
 
-                if (player.CharacterState == JCS_2DCharacterState.CLIMBING)
+                if (player.characterState == JCS_2DCharacterState.CLIMBING)
                 {
                     // show character infront
-                    int frontOrderLayer = OrderLayerObject.sortingOrder + cm.SORTING_ORDER_INFRONT_OFFSET;
+                    int frontOrderLayer = orderLayerObject.sortingOrder + cm.SORTING_ORDER_INFRONT_OFFSET;
                     SetPlayerSortingOrder(player, frontOrderLayer);
 
 
@@ -124,14 +124,14 @@ namespace JCSUnity
                     /* Check top of the platform */
                     if (isTopOfBox)
                     {
-                        player.ClimbableObject = null;
+                        player.climbableObject = null;
                         player.GetCharacterAnimator().PlayAnimationInFrame();
-                        player.CanLadder = false;
-                        player.VelY = 0;
-                        player.JustClimbOnTopOfBox = true;
+                        player.canLadder = false;
+                        player.velY = 0;
+                        player.justClimbOnTopOfBox = true;
 
                         // show character behind the ladder
-                        int backOrderLayer = OrderLayerObject.sortingOrder - cm.SORTING_ORDER_BEHIND_OFFSET;
+                        int backOrderLayer = orderLayerObject.sortingOrder - cm.SORTING_ORDER_BEHIND_OFFSET;
                         SetPlayerSortingOrder(player, backOrderLayer);
                     }
                 }
@@ -179,7 +179,7 @@ namespace JCSUnity
         /// <param name="layer"> layer number/id. </param>
         private void SetPlayerSortingOrder(JCS_2DSideScrollerPlayer player, int layer)
         {
-            player.OrderLayerObject.SetObjectParentToOrderLayerByOrderLayerIndex(
+            player.orderLayerObject.SetObjectParentToOrderLayerByOrderLayerIndex(
                 layer);
         }
     }

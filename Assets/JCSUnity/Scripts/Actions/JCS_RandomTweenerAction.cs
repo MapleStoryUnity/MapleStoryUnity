@@ -21,6 +21,7 @@ namespace JCSUnity
         /* Variables */
 
         private JCS_TransformTweener mTransformTweener = null;
+
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
 #if UNITY_EDITOR
@@ -49,11 +50,11 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
-            this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
+            mTransformTweener = GetComponent<JCS_TransformTweener>();
+            mAdjustTimeTrigger = GetComponent<JCS_AdjustTimeTrigger>();
 
             // set effect function pointer.
-            this.mAdjustTimeTrigger.onAction = TargetNewVectorValue;
+            mAdjustTimeTrigger.onAction = TargetNewVectorValue;
         }
 
         /// <summary>

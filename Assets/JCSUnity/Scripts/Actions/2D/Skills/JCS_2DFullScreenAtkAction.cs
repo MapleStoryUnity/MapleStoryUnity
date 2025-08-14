@@ -47,10 +47,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int AnimDesity { get { return this.mAnimDesity; } set { this.mAnimDesity = value; } }
-        public float SkillWide { get { return this.mSkillWide; } set { this.mSkillWide = value; } }
-        public float SkillHeight { get { return this.mSkillHeight; } set { this.mSkillHeight = value; } }
-        public int SkillHit { get { return this.mSkillHit; } }
+        public int animDesity { get { return mAnimDesity; } set { mAnimDesity = value; } }
+        public float skillWide { get { return mSkillWide; } set { mSkillWide = value; } }
+        public float skillHeight { get { return mSkillHeight; } set { mSkillHeight = value; } }
+        public int skillHit { get { return mSkillHit; } }
 
         /* Functions */
 
@@ -58,7 +58,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            mAnimPoolSupAnim = this.GetComponent<JCS_AnimPool>();
+            mAnimPoolSupAnim = GetComponent<JCS_AnimPool>();
         }
 
         /// <summary>
@@ -91,11 +91,11 @@ namespace JCSUnity
 #endif
 
                 if (mSamePosition)
-                    obj.transform.position = this.transform.position;
+                    obj.transform.position = transform.position;
                 if (mSameRotation)
-                    obj.transform.rotation = this.transform.rotation;
+                    obj.transform.rotation = transform.rotation;
                 if (mSameScale)
-                    obj.transform.localScale = this.transform.localScale;
+                    obj.transform.localScale = transform.localScale;
 
                 AddHitSound(ref obj);
                 SetToRandomPos(ref obj);

@@ -22,7 +22,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_FadeObject FadeObject { get { return this.mFadeObject; } }
+        public JCS_FadeObject fadeObject { get { return this.mFadeObject; } }
 
         /* Functions */
 

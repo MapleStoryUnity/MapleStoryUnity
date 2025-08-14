@@ -102,14 +102,14 @@ object you have in the list.")]
 
         /* Setter & Getter */
 
-        public bool Paused { get { return this.mPaused; } }
-        public List<JCS_PauseAction> PausesActions { get { return this.mPauseActions; } }
-        public float ResizePauseActionListTime { get { return this.mResizePauseActionListTime; } set { this.mResizePauseActionListTime = value; } }
-        public float DefaultTimeScale { get { return this.mDefaultTimeScale; } set { this.mDefaultTimeScale = value; } }
+        public bool paused { get { return mPaused; } }
+        public List<JCS_PauseAction> pausesActions { get { return mPauseActions; } }
+        public float resizePauseActionListTime { get { return mResizePauseActionListTime; } set { mResizePauseActionListTime = value; } }
+        public float defaultTimeScale { get { return mDefaultTimeScale; } set { mDefaultTimeScale = value; } }
 
-        public bool OverrideSetting { get { return this.mOverrideSetting; } }
-        public bool Asymptotic { get { return this.mAsymptotic; } set { this.mAsymptotic = value; } }
-        public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
+        public bool overrideSetting { get { return mOverrideSetting; } }
+        public bool asymptotic { get { return mAsymptotic; } set { mAsymptotic = value; } }
+        public float friction { get { return mFriction; } set { mFriction = value; } }
 
         /* Functions */
 
@@ -146,7 +146,7 @@ object you have in the list.")]
             {
                 var gm = JCS_GameManager.FirstInstance();
 
-                gm.GAME_PAUSE = !gm.GAME_PAUSE;
+                gm.gamePaused = !gm.gamePaused;
             }
 
             if (Input.GetKeyDown(mIncTime))

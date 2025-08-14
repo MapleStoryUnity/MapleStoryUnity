@@ -56,14 +56,14 @@ namespace JCSUnity
                 return;
 
             // if cannot damage
-            if (!dao.GetLiveObject().CanDamage)
+            if (!dao.GetLiveObject().canDamage)
                 return;
 
             if (!JCS_GameSettings.FirstInstance().TRIBE_DAMAGE_EACH_OTHER)
             {
                 // if both player does not need to add in to list.
                 // or if both enemy does not need to add in to list.
-                if (dao.GetLiveObject().IsPlayer == mDetectAreaAction.GetLiveObject().IsPlayer)
+                if (dao.GetLiveObject().isPlayer == mDetectAreaAction.GetLiveObject().isPlayer)
                     return;
             }
 

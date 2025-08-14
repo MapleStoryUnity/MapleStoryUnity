@@ -75,38 +75,38 @@ namespace JCSUnity
                     HideResizePanel();
             }
         }
-        public Color ResizePanelColor { get { return this.mResizePanelColor; } set { this.mResizePanelColor = value; } }
+        public Color resizePanelColor { get { return this.mResizePanelColor; } set { this.mResizePanelColor = value; } }
 #endif
         public RectTransform GetResizeRect() { return this.mRect; }
-        public float WScale { get { return this.mWScale; } }
-        public float HScale { get { return this.mHScale; } }
-        public float TargetScale { get { return this.mTargetScale; } }
+        public float wScale { get { return this.mWScale; } }
+        public float hScale { get { return this.mHScale; } }
+        public float targetScale { get { return this.mTargetScale; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mRect = this.GetComponent<RectTransform>();
+            mRect = GetComponent<RectTransform>();
 
             // if this is the root object set this as un destroyable
-            this.gameObject.AddComponent<JCS_UniqueObject>();
+            gameObject.AddComponent<JCS_UniqueObject>();
         }
 
         private void Start()
         {
 #if (UNITY_5_4_OR_NEWER)
-            RectTransform appRect = JCS_Canvas.GuessCanvas().AppRect;
+            RectTransform appRect = JCS_Canvas.GuessCanvas().appRect;
 
             // TODO(jenchieh): unknown reason that something changes this to 
             // somewhere else. (since 5.4.0f3)
             Vector3 tempPos = appRect.localPosition;
             tempPos.z = 0;
-            this.transform.localPosition = Vector3.zero;
+            transform.localPosition = Vector3.zero;
 #endif
 
-            this.transform.localEulerAngles = Vector3.zero;
+            transform.localEulerAngles = Vector3.zero;
 
-            this.transform.localScale = Vector3.one;
+            transform.localScale = Vector3.one;
         }
 
         private void Update()

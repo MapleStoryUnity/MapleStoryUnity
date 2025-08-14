@@ -75,13 +75,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int Hit { get { return this.mHit; } set { this.mHit = value; } }
-        public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
-        public bool KeepShootAngle { get { return this.mKeepShootAngle; } set { this.mKeepShootAngle = value; } }
-        public bool ShootGapEffect { get { return this.mShootGapEffect; } set { this.mShootGapEffect = value; } }
-        public float ShootGap { get { return this.mShootGap; } set { this.mShootGap = value; } }
+        public int hit { get { return mHit; } set { mHit = value; } }
+        public float timePerShoot { get { return mTimePerShoot; } set { mTimePerShoot = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public bool sequenceStay { get { return mSequenceStay; } set { mSequenceStay = value; } }
+        public bool keepShootAngle { get { return mKeepShootAngle; } set { mKeepShootAngle = value; } }
+        public bool shootGapEffect { get { return mShootGapEffect; } set { mShootGapEffect = value; } }
+        public float shootGap { get { return mShootGap; } set { mShootGap = value; } }
 
         /// <summary>
         /// Call back during shooting a bullet.
@@ -89,25 +89,25 @@ namespace JCSUnity
         /// <param name="func"> function to set. </param>
         public void SetShootCallback(Action func)
         {
-            this.mShootAction.SetShootCallback(func);
+            mShootAction.SetShootCallback(func);
         }
 
         public void SetCheckAbleToShootFunction(Func<bool> func)
         {
-            this.mShootAction.SetCheckAbleToShootFunction(func);
+            mShootAction.SetCheckAbleToShootFunction(func);
         }
 
         /* Functions */
 
         private void Awake()
         {
-            mShootAction = this.GetComponent<JCS_ShootAction>();
-            mCursorShootAction = this.GetComponent<JCS_2DCursorShootAction>();
+            mShootAction = GetComponent<JCS_ShootAction>();
+            mCursorShootAction = GetComponent<JCS_2DCursorShootAction>();
 
             // overwrite both shoot action,
             // so they won't process the input.
-            mShootAction.OverrideShoot = true;
-            mCursorShootAction.OverrideShoot = true;
+            mShootAction.overrideShoot = true;
+            mCursorShootAction.overrideShoot = true;
 
             mThread = new JCS_Vec<int>();
             mTimers = new JCS_Vec<float>();
@@ -129,7 +129,7 @@ namespace JCSUnity
         /// </summary>
         public void ShootsInSequence()
         {
-            ShootsInSequence(mHit, this.transform.position);
+            ShootsInSequence(mHit, transform.position);
         }
         /// <summary>
         /// Shoot bullets in sequence queue.
@@ -138,9 +138,9 @@ namespace JCSUnity
         /// <param name="pos"></param>
         public void ShootsInSequence(int hit, Vector3 pos)
         {
-            if (mShootAction.Bullet == null)
+            if (mShootAction.bullet == null)
             {
-                Debug.Log("There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
+                Debug.Log("There is no bullet assign to `JCS_ShootAction`, so we cannot shoot a sequence...");
                 return;
             }
 
@@ -158,7 +158,7 @@ namespace JCSUnity
             mShootCount.push(hit);          // hit per sequence.
             mShootCounter.push(0);          // counter to count how many shoot left?
             mShootPos.push(pos);            // position to spawn the bullet implements the position stay effect!
-            mShootAngles.push(mShootAction.SpawnPoint.eulerAngles);
+            mShootAngles.push(mShootAction.spawnPoint.eulerAngles);
 
         }
 
@@ -167,11 +167,11 @@ namespace JCSUnity
         /// </summary>
         private void ProcessInput()
         {
-            if (JCS_Input.GetMouseByAction(mShootAction.KeyAct, mShootAction.MouseButton) ||
-                JCS_Input.GetKeyByAction(mShootAction.KeyAct, mShootAction.ShootKeyCode))
+            if (JCS_Input.GetMouseByAction(mShootAction.keyAct, mShootAction.mouseButton) ||
+                JCS_Input.GetKeyByAction(mShootAction.keyAct, mShootAction.shootKeyCode))
             {
                 // check we are able to shoot.
-                // like enough mana to cast? or something like this.
+                // like enough mana to cast? or something like 
                 if (mShootAction.GetCheckAbleToShootFunction().Invoke())
                 {
                     // do callback
@@ -218,8 +218,8 @@ namespace JCSUnity
                     return;
                 }
 
-                Vector3 spawnPos = this.transform.position;
-                Vector3 shootAngle = this.mShootAction.SpawnPoint.eulerAngles;
+                Vector3 spawnPos = transform.position;
+                Vector3 shootAngle = mShootAction.spawnPoint.eulerAngles;
 
                 // if stay in the same position
                 if (mSequenceStay)

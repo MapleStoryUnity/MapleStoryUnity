@@ -75,8 +75,8 @@ namespace JCSUnity
 #if TMP_PRO
         public TMP_Text GetTextMesh() { return this.mTextMesh; }
 #endif
-        public bool MakeUnique { get { return this.mMakeUnique; } set { this.mMakeUnique = value; } }
-        public List<string> ColorProps { get { return this.mColorProps; } set { this.mColorProps = value; } }
+        public bool makeUnique { get { return this.mMakeUnique; } set { this.mMakeUnique = value; } }
+        public List<string> colorProps { get { return this.mColorProps; } set { this.mColorProps = value; } }
 
         /* Functions */
 
@@ -180,7 +180,7 @@ namespace JCSUnity
         /// UI -> Image
         /// Text -> Text
         /// </summary>
-        public Component LocalType
+        public Component localType
         {
             get
             {
@@ -231,7 +231,7 @@ namespace JCSUnity
         /// <summary>
         /// Get Current type's transform.
         /// </summary>
-        public Transform LocalTransform
+        public Transform localTransform
         {
             get
             {
@@ -258,7 +258,7 @@ namespace JCSUnity
         /// <summary>
         /// Return the current type's material.
         /// </summary>
-        public Material LocalMaterial
+        public Material localMaterial
         {
             get
             {
@@ -309,7 +309,7 @@ namespace JCSUnity
         /// <summary>
         /// Get Current type's position
         /// </summary>
-        public Vector3 Position
+        public Vector3 position
         {
             get
             {
@@ -360,7 +360,7 @@ namespace JCSUnity
         /// <summary>
         /// Get Current type's position
         /// </summary>
-        public Vector3 LocalPosition
+        public Vector3 localPosition
         {
             get
             {
@@ -410,7 +410,7 @@ namespace JCSUnity
         /// <summary>
         /// Get Current type's rotation
         /// </summary>
-        public Vector3 EulerAngles
+        public Vector3 eulerAngles
         {
             get
             {
@@ -461,7 +461,7 @@ namespace JCSUnity
         /// <summary>
         /// Get Current type's rotation
         /// </summary>
-        public Vector3 LocalEulerAngles
+        public Vector3 localEulerAngles
         {
             get
             {
@@ -512,7 +512,7 @@ namespace JCSUnity
         /// <summary>
         /// Get Current type's scale
         /// </summary>
-        public Vector3 LocalScale
+        public Vector3 localScale
         {
             get
             {
@@ -561,7 +561,7 @@ namespace JCSUnity
         /// <summary>
         /// Get current type's Enable
         /// </summary>
-        public bool LocalEnabled
+        public bool localEnabled
         {
             get
             {
@@ -654,7 +654,7 @@ namespace JCSUnity
         /// <summary>
         /// Get current type's color
         /// </summary>
-        public Color LocalColor
+        public Color localColor
         {
             get
             {
@@ -708,7 +708,7 @@ namespace JCSUnity
         /// <summary>
         /// Get current type's alpha
         /// </summary>
-        public float LocalAlpha
+        public float localAlpha
         {
             get
             {
@@ -782,7 +782,7 @@ namespace JCSUnity
         /// <summary>
         /// Get current type's red
         /// </summary>
-        public float LocalRed
+        public float localRed
         {
             get
             {
@@ -856,7 +856,7 @@ namespace JCSUnity
         /// <summary>
         /// Get current type's green
         /// </summary>
-        public float LocalGreen
+        public float localGreen
         {
             get
             {
@@ -930,7 +930,7 @@ namespace JCSUnity
         /// <summary>
         /// Get current type's blue
         /// </summary>
-        public float LocalBlue
+        public float localBlue
         {
             get
             {
@@ -1004,7 +1004,7 @@ namespace JCSUnity
         /// <summary>
         /// Get current type's main texture
         /// </summary>
-        public Texture LocalMainTexture
+        public Texture localMainTexture
         {
             get
             {
@@ -1056,7 +1056,7 @@ namespace JCSUnity
         /// <summary>
         /// Get the sprite.
         /// </summary>
-        public Sprite LocalSprite
+        public Sprite localSprite
         {
             get
             {
@@ -1094,7 +1094,7 @@ namespace JCSUnity
         /// ...
         /// Unity, seriously?
         /// </summary>
-        public bool LocalIsVisible
+        public bool localIsVisible
         {
             get
             {
@@ -1115,7 +1115,7 @@ namespace JCSUnity
         /// Set the same flip x. If not SpriteRenderer 
         /// use negative scale instead.
         /// </summary>
-        public bool LocalFlipX
+        public bool localFlipX
         {
             get
             {
@@ -1182,7 +1182,7 @@ namespace JCSUnity
         /// Set the same flip y. If not SpriteRenderer 
         /// use negative scale instead.
         /// </summary>
-        public bool LocalFlipY
+        public bool localFlipY
         {
             get
             {

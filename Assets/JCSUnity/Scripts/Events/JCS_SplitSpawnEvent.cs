@@ -124,15 +124,15 @@ built-in Unity Engine.")]
 
         /* Setter & Getter */
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mObjectList = this.GetComponent<JCS_ObjectList>();
-            this.mHitList = this.GetComponent<JCS_HitListEvent>();
-            this.mDestroyObjectWithTime = this.GetComponent<JCS_DestroyObjectWithTime>();
+            mObjectList = GetComponent<JCS_ObjectList>();
+            mHitList = GetComponent<JCS_HitListEvent>();
+            mDestroyObjectWithTime = GetComponent<JCS_DestroyObjectWithTime>();
         }
 
         private void Update()
@@ -156,11 +156,11 @@ built-in Unity Engine.")]
             // It will cause big problem with memory, 
             // so stop this event while we hit something 
             // in the hit list.
-            if (mHitList.IsHit)
+            if (mHitList.isHit)
                 return;
 
             // same reason above.
-            if (mDestroyObjectWithTime.TimesUp)
+            if (mDestroyObjectWithTime.timesUp)
                 return;
 
             // spawn the object

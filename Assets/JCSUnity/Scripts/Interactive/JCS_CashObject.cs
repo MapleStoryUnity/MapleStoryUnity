@@ -38,9 +38,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int CashValue { get { return this.mCashValue; } set { this.mCashValue = value; } }
-        public bool RandomizeCashValueEffect { get { return this.mRandomizeCashValueEffect; } set { this.mRandomizeCashValueEffect = value; } }
-        public int RandomizeCashValue { get { return this.mRandomizeCashValue; } set { this.mRandomizeCashValue = value; } }
+        public int cashValue { get { return mCashValue; } set { mCashValue = value; } }
+        public bool randomizeCashValueEffect { get { return mRandomizeCashValueEffect; } set { mRandomizeCashValueEffect = value; } }
+        public int randomizeCashValue { get { return mRandomizeCashValue; } set { mRandomizeCashValue = value; } }
 
         /* Functions */
 
@@ -49,7 +49,7 @@ namespace JCSUnity
             base.Awake();
 
             // no effect happens
-            if (!RandomizeCashValueEffect ||
+            if (!mRandomizeCashValueEffect ||
                 mRandomizeCashValue == 0)
                 return;
 

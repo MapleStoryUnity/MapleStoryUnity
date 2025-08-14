@@ -50,22 +50,22 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool IsFacingUp { get { return this.mIsFacingUp; } }
-        public bool IsFacingRight { get { return this.mIsFacingRight; } }
-        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
-        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
+        public bool isFacingUp { get { return mIsFacingUp; } }
+        public bool isFacingRight { get { return mIsFacingRight; } }
+        public bool freezeX { get { return mFreezeX; } set { mFreezeX = value; } }
+        public bool freezeY { get { return mFreezeY; } set { mFreezeY = value; } }
 
         /* Functions */
 
         private void Awake()
         {
             // try to get the sprite renderer
-            this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+            mSpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void LateUpdate()
         {
-            Vector3 currentPos = this.transform.position;
+            Vector3 currentPos = transform.position;
 
             // if the position are the same, meaning the object
             // is idle. (have not been move)
@@ -112,7 +112,7 @@ namespace JCSUnity
                         sr.flipX = false;
                 }
 
-                if (JCS_Util.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                if (JCS_Util.WithInRange(90, 270, transform.localEulerAngles.z))
                     sr.flipX = !sr.flipX;
             }
 
@@ -136,7 +136,7 @@ namespace JCSUnity
                 }
 
                 // TODO(JenChieh): this have not test yet!!!
-                if (JCS_Util.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                if (JCS_Util.WithInRange(90, 270, transform.localEulerAngles.z))
                     sr.flipY = !sr.flipY;
             }
         }

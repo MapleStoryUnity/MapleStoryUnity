@@ -183,33 +183,33 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
 
         /* Setter & Getter */
 
-        public JCS_Vec<JCS_Particle> GetParticles() { return this.mParticles; }
+        public JCS_Vec<JCS_Particle> GetParticles() { return mParticles; }
 
         // Binds.
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public bool ActiveThread { get { return this.mActiveThread; } set { this.mActiveThread = value; } }
-        public int OrderLayer { get { return this.mOrderLayer; } set { this.mOrderLayer = value; } }
-        public int NumOfParticle { get { return this.mNumOfParticle; } set { this.mNumOfParticle = value; } }
-        public JCS_Particle Particle { get { return this.mParticle; } set { this.mParticle = value; } }
-        public int Density { get { return this.mDensity; } set { this.mDensity = value; } }
-        public float WindSpeed { get { return this.mWindSpeed; } set { this.mWindSpeed = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public bool AlwaysTheSameScale { get { return this.mAlwaysTheSameScale; } set { this.mAlwaysTheSameScale = value; } }
-        public bool SetChild { get { return this.mSetChild; } set { this.mSetChild = value; } }
-        public bool SetToSamePositionWhenActive { get { return this.mSetToSamePositionWhenActive; } set { this.mSetToSamePositionWhenActive = value; } }
-        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
-        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
-        public bool FreezeZ { get { return this.mFreezeZ; } set { this.mFreezeZ = value; } }
-        public float RandPosX { get { return this.mRandPosX; } set { this.mRandPosX = value; } }
-        public float RandPosY { get { return this.mRandPosY; } set { this.mRandPosY = value; } }
-        public float RandPosZ { get { return this.mRandPosZ; } set { this.mRandPosZ = value; } }
-        public float RandAngleX { get { return this.mRandAngleX; } set { this.mRandAngleX = value; } }
-        public float RandAngleY { get { return this.mRandAngleY; } set { this.mRandAngleY = value; } }
-        public float RandAngleZ { get { return this.mRandAngleZ; } set { this.mRandAngleZ = value; } }
-        public float RandScaleX { get { return this.mRandScaleX; } set { this.mRandScaleX = value; } }
-        public float RandScaleY { get { return this.mRandScaleY; } set { this.mRandScaleY = value; } }
-        public float RandScaleZ { get { return this.mRandScaleZ; } set { this.mRandScaleZ = value; } }
-        public bool DoShotImmediately { get { return this.mDoShotImmediately; } set { this.mDoShotImmediately = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public bool activeThread { get { return mActiveThread; } set { mActiveThread = value; } }
+        public int orderLayer { get { return mOrderLayer; } set { mOrderLayer = value; } }
+        public int numOfParticle { get { return mNumOfParticle; } set { mNumOfParticle = value; } }
+        public JCS_Particle particle { get { return mParticle; } set { mParticle = value; } }
+        public int density { get { return mDensity; } set { mDensity = value; } }
+        public float windSpeed { get { return mWindSpeed; } set { mWindSpeed = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public bool alwaysTheSameScale { get { return mAlwaysTheSameScale; } set { mAlwaysTheSameScale = value; } }
+        public bool setChild { get { return mSetChild; } set { mSetChild = value; } }
+        public bool setToSamePositionWhenActive { get { return mSetToSamePositionWhenActive; } set { mSetToSamePositionWhenActive = value; } }
+        public bool freezeX { get { return mFreezeX; } set { mFreezeX = value; } }
+        public bool freezeY { get { return mFreezeY; } set { mFreezeY = value; } }
+        public bool freezeZ { get { return mFreezeZ; } set { mFreezeZ = value; } }
+        public float randPosX { get { return mRandPosX; } set { mRandPosX = value; } }
+        public float randPosY { get { return mRandPosY; } set { mRandPosY = value; } }
+        public float randPosZ { get { return mRandPosZ; } set { mRandPosZ = value; } }
+        public float randAngleX { get { return mRandAngleX; } set { mRandAngleX = value; } }
+        public float randAngleY { get { return mRandAngleY; } set { mRandAngleY = value; } }
+        public float randAngleZ { get { return mRandAngleZ; } set { mRandAngleZ = value; } }
+        public float randScaleX { get { return mRandScaleX; } set { mRandScaleX = value; } }
+        public float randScaleY { get { return mRandScaleY; } set { mRandScaleY = value; } }
+        public float randScaleZ { get { return mRandScaleZ; } set { mRandScaleZ = value; } }
+        public bool doShotImmediately { get { return mDoShotImmediately; } set { mDoShotImmediately = value; } }
 
         /* Functions */
 
@@ -222,7 +222,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             mParticleCount = new JCS_Vec<int>();
             mParticleCounter = new JCS_Vec<int>();
 
-            mFreezePos = this.transform.position;
+            mFreezePos = transform.position;
         }
 
         private void Start()
@@ -329,7 +329,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         /// </returns>
         public bool IsParticleEnd()
         {
-            return (this.mThread.length == 0);
+            return (mThread.length == 0);
         }
 
         /// <summary>
@@ -359,7 +359,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
                 if (mSetChild)
                 {
                     // set parent
-                    trans.transform.SetParent(this.transform);
+                    trans.transform.SetParent(transform);
                 }
             }
 
@@ -371,7 +371,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         /// </summary>
         private void Freeze()
         {
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
 
             if (mFreezeX)
                 newPos.x = mFreezePos.x;
@@ -380,7 +380,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             if (mFreezeZ)
                 newPos.z = mFreezePos.z;
 
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
 
         /// <summary>
@@ -548,7 +548,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             {
                 // set position to the same position as particle 
                 // system's position.
-                particle.transform.position = this.transform.position;
+                particle.transform.position = transform.position;
             }
 
             // after we have set the position to current 

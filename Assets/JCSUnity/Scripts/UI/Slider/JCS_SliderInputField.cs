@@ -42,8 +42,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool AutoContentType { get { return mAutoContentType; } set { this.mAutoContentType = value; } }
-        public int RoundPlace { get { return this.mRoundPlace; } set { this.mRoundPlace = value; } }
+        public bool autoContentType { get { return mAutoContentType; } set { mAutoContentType = value; } }
+        public int roundPlace { get { return mRoundPlace; } set { mRoundPlace = value; } }
 
         /* Functions */
 

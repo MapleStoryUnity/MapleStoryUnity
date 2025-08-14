@@ -41,9 +41,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_GradientType GradientType { get { return this.mGradientType; } set { this.mGradientType = value; } }
-        public Color32 StartColor { get { return this.mStartColor; } set { this.mStartColor = value; } }
-        public Color32 EndColor { get { return this.mEndColor; } set { this.mEndColor = value; } }
+        public JCS_GradientType gradientType { get { return this.mGradientType; } set { this.mGradientType = value; } }
+        public Color32 startColor { get { return this.mStartColor; } set { this.mStartColor = value; } }
+        public Color32 endColor { get { return this.mEndColor; } set { this.mEndColor = value; } }
 
         /* Functions */
 
@@ -69,6 +69,7 @@ namespace JCSUnity
             }
 
             int count = vertexList.Count;
+
             if (count > 0)
             {
                 if (mGradientType == JCS_GradientType.TOP_DOWN)
@@ -76,7 +77,7 @@ namespace JCSUnity
                     float bottomY = vertexList[0].position.y;
                     float topY = vertexList[0].position.y;
 
-                    for (int i = 1; i < count; i++)
+                    for (int i = 1; i < count; ++i)
                     {
                         float y = vertexList[i].position.y;
                         if (y > topY)
@@ -91,7 +92,7 @@ namespace JCSUnity
 
                     float uiElementHeight = topY - bottomY;
 
-                    for (int i = 0; i < count; i++)
+                    for (int i = 0; i < count; ++i)
                     {
                         UIVertex uiVertex = vertexList[i];
                         uiVertex.color = Color32.Lerp(mEndColor, mStartColor, (uiVertex.position.y - bottomY) / uiElementHeight);
@@ -103,7 +104,7 @@ namespace JCSUnity
                     float RightX = vertexList[0].position.x;
                     float LeftX = vertexList[0].position.x;
 
-                    for (int i = 1; i < count; i++)
+                    for (int i = 1; i < count; ++i)
                     {
                         float x = vertexList[i].position.x;
                         if (x > RightX)
@@ -118,7 +119,7 @@ namespace JCSUnity
 
                     float uiElementWeight = LeftX - RightX;
 
-                    for (int i = 0; i < count; i++)
+                    for (int i = 0; i < count; ++i)
                     {
                         UIVertex uiVertex = vertexList[i];
                         uiVertex.color = Color32.Lerp(mEndColor, mStartColor, (uiVertex.position.x - RightX) / uiElementWeight);

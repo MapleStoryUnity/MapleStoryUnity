@@ -43,16 +43,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_AIMoveActionType GetAIMoveActionType() { return this.mAIMoveActionType; }
+        public JCS_AIMoveActionType GetAIMoveActionType() { return mAIMoveActionType; }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mAIActions = new JCS_Vec<JCS_AIAction>();
+            mAIActions = new JCS_Vec<JCS_AIAction>();
 
             // add all the ai action into the array.
-            JCS_AIAction[] actions = this.GetComponents<JCS_AIAction>();
+            JCS_AIAction[] actions = GetComponents<JCS_AIAction>();
             for (int index = 0; index < actions.Length; ++index)
             {
                 mAIActions.push(actions[index]);
@@ -85,11 +85,11 @@ namespace JCSUnity
                 case JCS_AIMoveActionType.WALK:
                     {
                         // try to get the component on this transform.
-                        JCS_2DWalkAction wa = this.GetComponent<JCS_2DWalkAction>();
+                        JCS_2DWalkAction wa = GetComponent<JCS_2DWalkAction>();
                         if (wa == null)  // if nothing here.
                         {
                             // add it on to it
-                            wa = this.gameObject.AddComponent<JCS_2DWalkAction>();
+                            wa = gameObject.AddComponent<JCS_2DWalkAction>();
 
                             // and push into array.
                             mAIActions.push(wa);
@@ -104,10 +104,10 @@ namespace JCSUnity
                     break;
                 case JCS_AIMoveActionType.JUMP:
                     {
-                        JCS_2DJumpAction ja = this.GetComponent<JCS_2DJumpAction>();
+                        JCS_2DJumpAction ja = GetComponent<JCS_2DJumpAction>();
                         if (ja == null)
                         {
-                            ja = this.gameObject.AddComponent<JCS_2DJumpAction>();
+                            ja = gameObject.AddComponent<JCS_2DJumpAction>();
                             mAIActions.push(ja);
                         }
                         DisableActions();
@@ -116,10 +116,10 @@ namespace JCSUnity
                     break;
                 case JCS_AIMoveActionType.FLY:
                     {
-                        JCS_2DFlyAction fa = this.GetComponent<JCS_2DFlyAction>();
+                        JCS_2DFlyAction fa = GetComponent<JCS_2DFlyAction>();
                         if (fa == null)
                         {
-                            fa = this.gameObject.AddComponent<JCS_2DFlyAction>();
+                            fa = gameObject.AddComponent<JCS_2DFlyAction>();
                             mAIActions.push(fa);
                         }
                         DisableActions();
@@ -128,10 +128,10 @@ namespace JCSUnity
                     break;
                 case JCS_AIMoveActionType.SWIM:
                     {
-                        JCS_2DSwimAction sa = this.GetComponent<JCS_2DSwimAction>();
+                        JCS_2DSwimAction sa = GetComponent<JCS_2DSwimAction>();
                         if (sa == null)
                         {
-                            sa = this.gameObject.AddComponent<JCS_2DSwimAction>();
+                            sa = gameObject.AddComponent<JCS_2DSwimAction>();
                             mAIActions.push(sa);
                         }
                         DisableActions();
@@ -140,7 +140,7 @@ namespace JCSUnity
                     break;
             }
 
-            this.mAIMoveActionType = type;
+            mAIMoveActionType = type;
         }
 
         /// <summary>

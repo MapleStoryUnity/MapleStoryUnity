@@ -119,29 +119,29 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<Transform> SpawnList { get { return this.mSpawnList; } set { this.mSpawnList = value; } }
-        public int SpawnCount { get { return this.mSpawnCount; } set { this.mSpawnCount = value; } }
+        public List<Transform> spawnList { get { return mSpawnList; } set { mSpawnList = value; } }
+        public int spawnCount { get { return mSpawnCount; } set { mSpawnCount = value; } }
 
-        public bool RandPosX { get { return this.mRandPosX; } set { this.mRandPosX = value; } }
-        public float RandPosRangeX { get { return this.mRandPosRangeX; } set { this.mRandPosRangeX = value; } }
-        public bool RandPosY { get { return this.mRandPosY; } set { this.mRandPosY = value; } }
-        public float RandPosRangeY { get { return this.mRandPosRangeY; } set { this.mRandPosRangeY = value; } }
-        public bool RandPosZ { get { return this.mRandPosZ; } set { this.mRandPosZ = value; } }
-        public float RandPosRangeZ { get { return this.mRandPosRangeZ; } set { this.mRandPosRangeZ = value; } }
+        public bool randPosX { get { return mRandPosX; } set { mRandPosX = value; } }
+        public float randPosRangeX { get { return mRandPosRangeX; } set { mRandPosRangeX = value; } }
+        public bool randPosY { get { return mRandPosY; } set { mRandPosY = value; } }
+        public float randPosRangeY { get { return mRandPosRangeY; } set { mRandPosRangeY = value; } }
+        public bool randPosZ { get { return mRandPosZ; } set { mRandPosZ = value; } }
+        public float randPosRangeZ { get { return mRandPosRangeZ; } set { mRandPosRangeZ = value; } }
 
-        public bool RandRotationX { get { return this.mRandRotationX; } set { this.mRandRotationX = value; } }
-        public float RandRotRangeX { get { return this.mRandRotRangeX; } set { this.mRandRotRangeX = value; } }
-        public bool RandRotationY { get { return this.mRandRotationY; } set { this.mRandRotationY = value; } }
-        public float RandRotRangeY { get { return this.mRandRotRangeY; } set { this.mRandRotRangeY = value; } }
-        public bool RandRotationZ { get { return this.mRandRotationZ; } set { this.mRandRotationZ = value; } }
-        public float RandRotRangeZ { get { return this.mRandRotRangeZ; } set { this.mRandRotRangeZ = value; } }
+        public bool randRotationX { get { return mRandRotationX; } set { mRandRotationX = value; } }
+        public float randRotRangeX { get { return mRandRotRangeX; } set { mRandRotRangeX = value; } }
+        public bool randRotationY { get { return mRandRotationY; } set { mRandRotationY = value; } }
+        public float randRotRangeY { get { return mRandRotRangeY; } set { mRandRotRangeY = value; } }
+        public bool randRotationZ { get { return mRandRotationZ; } set { mRandRotationZ = value; } }
+        public float randRotRangeZ { get { return mRandRotRangeZ; } set { mRandRotRangeZ = value; } }
 
-        public bool RandScaleX { get { return this.mRandScaleX; } set { this.mRandScaleX = value; } }
-        public float RandScaleRangeX { get { return this.mRandScaleRangeX; } set { this.mRandScaleRangeX = value; } }
-        public bool RandScaleY { get { return this.mRandScaleY; } set { this.mRandScaleY = value; } }
-        public float RandScaleRangeY { get { return this.mRandScaleRangeY; } set { this.mRandScaleRangeY = value; } }
-        public bool RandScaleZ { get { return this.mRandScaleZ; } set { this.mRandScaleZ = value; } }
-        public float RandScaleRangeZ { get { return this.mRandScaleRangeZ; } set { this.mRandScaleRangeZ = value; } }
+        public bool randScaleX { get { return mRandScaleX; } set { mRandScaleX = value; } }
+        public float randScaleRangeX { get { return mRandScaleRangeX; } set { mRandScaleRangeX = value; } }
+        public bool randScaleY { get { return mRandScaleY; } set { mRandScaleY = value; } }
+        public float randScaleRangeY { get { return mRandScaleRangeY; } set { mRandScaleRangeY = value; } }
+        public bool randScaleZ { get { return mRandScaleZ; } set { mRandScaleZ = value; } }
+        public float randScaleRangeZ { get { return mRandScaleRangeZ; } set { mRandScaleRangeZ = value; } }
 
         /* Functions */
 
@@ -171,7 +171,7 @@ namespace JCSUnity
             // spawn a object
             Transform objSpawned = (Transform)JCS_Util.Instantiate(
                 mSpawnList[spawnIndex],
-                this.transform.position);
+                transform.position);
 
 
             // randomize the position a bit.

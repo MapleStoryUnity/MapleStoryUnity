@@ -21,6 +21,7 @@ namespace JCSUnity
 
         // call back when done playing the animation.
         public Action donePlayingAnimCallback = null;
+
         public Action playFrameCallback = null;
 
         // animator using this animation?
@@ -114,37 +115,37 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public bool PlayOnAwake { get { return this.mPlayOnAwake; } set { this.mPlayOnAwake = value; } }
-        public int CurrentPlayingFrame
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public bool playOnAwake { get { return mPlayOnAwake; } set { mPlayOnAwake = value; } }
+        public int currentPlayingFrame
         {
-            get { return this.mCurrentPlayingFrame; }
+            get { return mCurrentPlayingFrame; }
             set
             {
-                this.mCurrentPlayingFrame = value;
+                mCurrentPlayingFrame = value;
 
                 // make sure animation in the valid frame.
                 PutAnimInFrame();
             }
         }
-        public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool loop { get { return mLoop; } set { mLoop = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
         // Is the animation done playing?
-        public bool IsDonePlaying { get { return this.mIsDonePlaying; } }
-        public void SetAnimator(JCS_2DAnimator animator) { this.mAnimator = animator; }
-        public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
-        public Sprite CurrentSprite { get { return this.mAnimFrames[mCurrentPlayingFrame]; } }
-        public Sprite NullSprite { get { return this.mNullSprite; } set { this.mNullSprite = value; } }
-        public bool NullSpriteAfterDonePlayingAnim { get { return this.mNullSpriteAfterDonePlayingAnim; } set { this.mNullSpriteAfterDonePlayingAnim = value; } }
+        public bool isDonePlaying { get { return mIsDonePlaying; } }
+        public void SetAnimator(JCS_2DAnimator animator) { mAnimator = animator; }
+        public float animationTimeProduction { get { return mAnimationTimeProduction; } }
+        public Sprite currentSprite { get { return mAnimFrames[mCurrentPlayingFrame]; } }
+        public Sprite nullSprite { get { return mNullSprite; } set { mNullSprite = value; } }
+        public bool nullSpriteAfterDonePlayingAnim { get { return mNullSpriteAfterDonePlayingAnim; } set { mNullSpriteAfterDonePlayingAnim = value; } }
 
         // Bind.
         public void SetAnimationFrame(Sprite[] frames)
         {
-            this.mAnimFrames = frames;
+            mAnimFrames = frames;
             Awake();
         }
-        public Sprite[] GetAnimationFrame() { return this.mAnimFrames; }
-        public float SecPerFrame { get { return this.mSecPerFrame; } set { this.mSecPerFrame = value; } }
+        public Sprite[] animationFrames { get { return mAnimFrames; } }
+        public float secPerFrame { get { return mSecPerFrame; } set { mSecPerFrame = value; } }
 
         /* Functions */
 
@@ -200,7 +201,7 @@ namespace JCSUnity
             if (mAnimFrames == null)
                 return;
 
-            this.mMaxFrame = this.mAnimFrames.Length;
+            mMaxFrame = mAnimFrames.Length;
         }
 
         /// <summary>
@@ -278,7 +279,7 @@ namespace JCSUnity
         /// </summary>
         public void Stop()
         {
-            this.LocalSprite = this.mNullSprite;
+            localSprite = mNullSprite;
 
             // stop the animation.
             mActive = false;
@@ -303,14 +304,14 @@ namespace JCSUnity
             if (mAnimFrames.Length == 0)
                 return;
 
-            this.mCurrentPlayingFrame = frame;
+            mCurrentPlayingFrame = frame;
 
             PutAnimInFrame();
 
-            Sprite currentPlayingSprite = mAnimFrames[this.mCurrentPlayingFrame];
+            Sprite currentPlayingSprite = mAnimFrames[mCurrentPlayingFrame];
 
             // set the current sprite.
-            LocalSprite = currentPlayingSprite;
+            localSprite = currentPlayingSprite;
 
             // callback..
             if (playFrameCallback != null)
@@ -322,7 +323,7 @@ namespace JCSUnity
         /// </summary>
         public void PlayNullFrame()
         {
-            this.LocalSprite = this.mNullSprite;
+            localSprite = mNullSprite;
         }
 
         /// <summary>
@@ -331,9 +332,9 @@ namespace JCSUnity
         private void PutAnimInFrame()
         {
             if (mCurrentPlayingFrame < 0)
-                this.mCurrentPlayingFrame = 0;
+                mCurrentPlayingFrame = 0;
             else if (mCurrentPlayingFrame >= mMaxFrame - 1)
-                this.mCurrentPlayingFrame = mMaxFrame - 1;
+                mCurrentPlayingFrame = mMaxFrame - 1;
         }
 
         /// <summary>
@@ -356,7 +357,7 @@ namespace JCSUnity
             // if there is animator taking over this animation.
             // times the production time!
             if (mAnimator != null)
-                timePerSec = mSecPerFrame * mAnimator.AnimationTimeProduction;
+                timePerSec = mSecPerFrame * mAnimator.animationTimeProduction;
 
             // check timer reach the next frame time.
             if (mFrameTimer < timePerSec)

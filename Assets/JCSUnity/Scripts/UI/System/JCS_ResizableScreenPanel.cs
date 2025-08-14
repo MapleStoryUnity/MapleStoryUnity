@@ -37,26 +37,26 @@ namespace JCSUnity
 
         public Image image { get { return this.mImage; } }
         public RectTransform sRectTransform { get { return this.mRectTransform; } }
-        public JCS_2D4Direction PlaceDirection { get { return this.mPlaceDirection; } set { this.mPlaceDirection = value; } }
+        public JCS_2D4Direction placeDirection { get { return this.mPlaceDirection; } set { this.mPlaceDirection = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mRectTransform = this.GetComponent<RectTransform>();
-            this.mImage = this.GetComponent<Image>();
+            mRectTransform = GetComponent<RectTransform>();
+            mImage = GetComponent<Image>();
         }
 
         private void Start()
         {
             // Set the canvas to be our root.
-            this.transform.SetParent(JCS_Canvas.GuessCanvas(transform).transform);
+            transform.SetParent(JCS_Canvas.GuessCanvas(transform).transform);
 
             // Add panel root without losing the original size.
             {
                 Vector2 originalSize = mRectTransform.sizeDelta;
 
-                this.mPanelRoot = this.gameObject.AddComponent<JCS_PanelRoot>();
+                mPanelRoot = gameObject.AddComponent<JCS_PanelRoot>();
 
                 mRectTransform.sizeDelta = originalSize;
             }
@@ -66,7 +66,7 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-            JCS_Util.MoveToTheLastChild(this.mRectTransform);
+            JCS_Util.MoveToTheLastChild(mRectTransform);
         }
 
         /// <summary>

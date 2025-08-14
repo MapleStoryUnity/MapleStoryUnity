@@ -28,7 +28,6 @@ namespace JCSUnity
         [SerializeField]
         private BoxCollider mPlatformTrigger = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

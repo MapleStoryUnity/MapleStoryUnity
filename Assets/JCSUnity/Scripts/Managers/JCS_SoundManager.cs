@@ -71,14 +71,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void SetAudioListener(AudioListener al) { this.mAudioListener = al; }
-        public AudioListener GetAudioListener() { return this.mAudioListener; }
-        public JCS_SoundPlayer GlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
+        public void SetAudioListener(AudioListener al) { mAudioListener = al; }
+        public AudioListener GetAudioListener() { return mAudioListener; }
+        public JCS_SoundPlayer GlobalSoundPlayer() { return mGlobalSoundPlayer; }
 
-        public bool OverrideSetting { get { return this.mOverrideSetting; } }
-        public float SoundFadeInTime { get { return this.mSoundFadeInTime; } set { this.mSoundFadeInTime = value; } }
-        public float SoundFadeOutTime { get { return this.mSoundFadeOutTime; } set { this.mSoundFadeOutTime = value; } }
-        public bool DisableSoundWheWindowNotFocus { get { return this.mDisableSoundWheWindowNotFocus; } set { this.mDisableSoundWheWindowNotFocus = value; } }
+        public bool overrideSetting { get { return mOverrideSetting; } }
+        public float soundFadeInTime { get { return mSoundFadeInTime; } set { mSoundFadeInTime = value; } }
+        public float soundFadeOutTime { get { return mSoundFadeOutTime; } set { mSoundFadeOutTime = value; } }
+        public bool disableSoundWheWindowNotFocus { get { return mDisableSoundWheWindowNotFocus; } set { mDisableSoundWheWindowNotFocus = value; } }
 
         /* Functions */
 

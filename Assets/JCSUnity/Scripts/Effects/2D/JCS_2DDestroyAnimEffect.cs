@@ -99,32 +99,32 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int OrderLayer { get { return this.mOrderLayer; } set { this.mOrderLayer = value; } }
-        public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
+        public int orderLayer { get { return mOrderLayer; } set { mOrderLayer = value; } }
+        public int loopTimes { get { return mLoopTimes; } set { mLoopTimes = value; } }
 
-        public bool ActiveWhatever { get { return this.mActiveWhatever; } set { this.mActiveWhatever = value; } }
-        public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
-        public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
+        public bool activeWhatever { get { return mActiveWhatever; } set { mActiveWhatever = value; } }
+        public bool activeWithHitList { get { return mActiveWithHitList; } set { mActiveWithHitList = value; } }
+        public bool activeWithDestroyTime { get { return mActiveWithDestroyTime; } set { mActiveWithDestroyTime = value; } }
 
-        public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
-        public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
-        public bool SameScale { get { return this.mSameScale; } set { this.mSameScale = value; } }
+        public bool samePosition { get { return mSamePosition; } set { mSamePosition = value; } }
+        public bool sameRotation { get { return mSameRotation; } set { mSameRotation = value; } }
+        public bool sameScale { get { return mSameScale; } set { mSameScale = value; } }
 
-        public bool RandPos { get { return this.mRandPos; } set { this.mRandPos = value; } }
-        public bool RandRot { get { return this.mRandRot; } set { this.mRandRot = value; } }
-        public bool RandScale { get { return this.mRandScale; } set { this.mRandScale = value; } }
-        public float RandPosRange { get { return this.mRandPosRange; } set { this.mRandPosRange = value; } }
-        public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
-        public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
+        public bool randPos { get { return mRandPos; } set { mRandPos = value; } }
+        public bool randRot { get { return mRandRot; } set { mRandRot = value; } }
+        public bool randScale { get { return mRandScale; } set { mRandScale = value; } }
+        public float randPosRange { get { return mRandPosRange; } set { mRandPosRange = value; } }
+        public float randRotRange { get { return mRandRotRange; } set { mRandRotRange = value; } }
+        public float randScaleRange { get { return mRandScaleRange; } set { mRandScaleRange = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mHitList = this.GetComponent<JCS_HitListEvent>();
-            this.m2DAnimPool = this.GetComponent<JCS_2DAnimPool>();
+            mHitList = GetComponent<JCS_HitListEvent>();
+            m2DAnimPool = GetComponent<JCS_2DAnimPool>();
 
-            this.mDestroyObjectWithTime = this.GetComponent<JCS_DestroyObjectWithTime>();
+            mDestroyObjectWithTime = GetComponent<JCS_DestroyObjectWithTime>();
         }
 
         private void OnDestroy()
@@ -151,7 +151,7 @@ namespace JCSUnity
                 // if checking for hit list
                 if (mActiveWithHitList)
                 {
-                    if (mHitList.IsHit)
+                    if (mHitList.isHit)
                         onTrigger = true;
                 }
 
@@ -160,7 +160,7 @@ namespace JCSUnity
                 {
                     if (mDestroyObjectWithTime != null)
                     {
-                        if (mDestroyObjectWithTime.TimesUp)
+                        if (mDestroyObjectWithTime.timesUp)
                             onTrigger = true;
                     }
                     else
@@ -175,36 +175,36 @@ namespace JCSUnity
                 return;
 
 
-            GameObject gm = new GameObject();
+            var gm = new GameObject();
 #if UNITY_EDITOR
             gm.name = "JCS_2DDestroyAnimEffect";
 #endif
 
-            SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
+            var sr = gm.AddComponent<SpriteRenderer>();
             sr.sortingOrder = mOrderLayer;
 
             JCS_2DAnimation randAnim = m2DAnimPool.GetRandomAnim();
-            JCS_2DAnimation newAnim = gm.AddComponent<JCS_2DAnimation>();
+            var newAnim = gm.AddComponent<JCS_2DAnimation>();
 
-            newAnim.Active = randAnim.Active;
-            newAnim.Loop = randAnim.Loop;
-            newAnim.PlayOnAwake = randAnim.PlayOnAwake;
-            newAnim.SecPerFrame = randAnim.SecPerFrame;
+            newAnim.active = randAnim.active;
+            newAnim.loop = randAnim.loop;
+            newAnim.playOnAwake = randAnim.playOnAwake;
+            newAnim.secPerFrame = randAnim.secPerFrame;
 
             // set the animation to just spawn animation.
-            newAnim.SetAnimationFrame(randAnim.GetAnimationFrame());
+            newAnim.SetAnimationFrame(randAnim.animationFrames);
             newAnim.Play();
 
             // add this event, so the when animation done play it will get destroy.
-            JCS_2DDestroyAnimEndEvent das = gm.AddComponent<JCS_2DDestroyAnimEndEvent>();
-            das.LoopTimes = mLoopTimes;
+            var das = gm.AddComponent<JCS_2DDestroyAnimEndEvent>();
+            das.loopTimes = mLoopTimes;
 
             if (mSamePosition)
-                sr.transform.position = this.transform.position;
+                sr.transform.position = transform.position;
             if (mSameRotation)
-                sr.transform.rotation = this.transform.rotation;
+                sr.transform.rotation = transform.rotation;
             if (mSameScale)
-                sr.transform.localScale = this.transform.localScale;
+                sr.transform.localScale = transform.localScale;
 
             // Random Effect
             if (mRandPos)

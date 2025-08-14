@@ -90,20 +90,20 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
-        public bool Visible { get { return this.mVisible; } set { this.mVisible = value; } }
-        public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
-        public bool OverrideFade { get { return this.mOverrideFade; } set { this.mOverrideFade = value; } }
-        public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
-        public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
-        public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool effect { get { return mEffect; } set { mEffect = value; } }
+        public bool visible { get { return mVisible; } set { mVisible = value; } }
+        public float fadeTime { get { return mFadeTime; } set { mFadeTime = value; } }
+        public bool overrideFade { get { return mOverrideFade; } set { mOverrideFade = value; } }
+        public float alpha { get { return mAlpha; } set { mAlpha = value; } }
+        public float fadeInAmount { get { return mFadeInAmount; } set { mFadeInAmount = value; } }
+        public float fadeOutAmount { get { return mFadeOutAmount; } set { mFadeOutAmount = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Start()
         {
-            if (LocalColor.a <= 0.0f)
+            if (localColor.a <= 0.0f)
                 mVisible = false;
             else
                 mVisible = true;
@@ -197,7 +197,7 @@ namespace JCSUnity
             }
 
             // enable the effect component
-            this.LocalEnabled = true;
+            this.localEnabled = true;
 
             switch (type)
             {
@@ -232,7 +232,7 @@ namespace JCSUnity
         private void DoFade()
         {
             if (GetObjectType() == JCS_UnityObjectType.GAME_OBJECT &&
-                JCS_GameManager.FirstInstance().GAME_PAUSE)
+                JCS_GameManager.FirstInstance().gamePaused)
                 return;
 
             if (!mEffect)
@@ -245,7 +245,7 @@ namespace JCSUnity
                         // Fade out effect complete
                         if (mAlpha < mFadeOutAmount)
                         {
-                            this.LocalEnabled = false;
+                            this.localEnabled = false;
 
                             mEffect = false;
 
@@ -283,9 +283,9 @@ namespace JCSUnity
                     break;
             }
 
-            Color screenColor = this.LocalColor;
+            Color screenColor = this.localColor;
             screenColor.a = mAlpha;
-            this.LocalColor = screenColor;
+            this.localColor = screenColor;
 
             onFading?.Invoke(mAlpha);
         }

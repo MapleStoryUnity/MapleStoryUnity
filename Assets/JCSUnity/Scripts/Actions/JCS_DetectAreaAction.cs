@@ -15,7 +15,7 @@ namespace JCSUnity
     /// Action detects 'JCS_DetectAreaObject'.
     /// </summary>
     // NOTE(jenchieh): Anything with can dectect area must be living thing.
-    [RequireComponent(typeof(JCS_2DLiveObject))]  
+    [RequireComponent(typeof(JCS_2DLiveObject))]
     public class JCS_DetectAreaAction : MonoBehaviour
     {
         /* Variables */
@@ -35,13 +35,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_2DLiveObject GetLiveObject() { return this.mLiveObject; }
+        public JCS_2DLiveObject GetLiveObject() { return mLiveObject; }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mLiveObject = this.GetComponent<JCS_2DLiveObject>();
+            mLiveObject = GetComponent<JCS_2DLiveObject>();
 
             if (mDetectCollider.Length == 0)
             {
@@ -122,7 +122,7 @@ namespace JCSUnity
                 if (liveObj != null)
                 {
                     // cannot target object that cannot be damage.
-                    if (!liveObj.CanDamage)
+                    if (!liveObj.canDamage)
                         continue;
                 }
 
@@ -184,7 +184,7 @@ namespace JCSUnity
                 if (liveObj != null)
                 {
                     // cannot target object that cannot be damage.
-                    if (!liveObj.CanDamage)
+                    if (!liveObj.canDamage)
                         continue;
                 }
 

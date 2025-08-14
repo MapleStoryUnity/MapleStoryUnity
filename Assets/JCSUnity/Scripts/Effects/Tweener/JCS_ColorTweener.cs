@@ -174,63 +174,63 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Animating { get { return (mEasingR || mEasingG || mEasingB || mEasingA); } }
-        public Color ProgressionColor { get { return mProgressionColor; } }
-        public Color ProgressPctColor { get { return mProgressPctColor; } }
-        public Color TargetColor { get { return mTargetColor; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public JCS_TweenType EaseTypeR
+        public bool animating { get { return (mEasingR || mEasingG || mEasingB || mEasingA); } }
+        public Color progressionColor { get { return mProgressionColor; } }
+        public Color progressPctColor { get { return mProgressPctColor; } }
+        public Color targetColor { get { return mTargetColor; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public JCS_TweenType easeTypeR
         {
-            get { return this.mEaseTypeR; }
+            get { return mEaseTypeR; }
             set
             {
-                this.mEaseTypeR = value;
+                mEaseTypeR = value;
 
                 // update easing function pointer / function formula.
-                this.mEasingRed = JCS_Util.GetEasing(mEaseTypeR);
+                mEasingRed = JCS_Util.GetEasing(mEaseTypeR);
             }
         }
-        public JCS_TweenType EaseTypeG
+        public JCS_TweenType easeTypeG
         {
-            get { return this.mEaseTypeG; }
+            get { return mEaseTypeG; }
             set
             {
-                this.mEaseTypeG = value;
+                mEaseTypeG = value;
 
                 // update easing function pointer / function formula.
-                this.mEasingGreen = JCS_Util.GetEasing(mEaseTypeG);
+                mEasingGreen = JCS_Util.GetEasing(mEaseTypeG);
             }
         }
-        public JCS_TweenType EaseTypeB
+        public JCS_TweenType easeTypeB
         {
-            get { return this.mEaseTypeB; }
+            get { return mEaseTypeB; }
             set
             {
-                this.mEaseTypeB = value;
+                mEaseTypeB = value;
 
                 // update easing function pointer / function formula.
-                this.mEasingBlue = JCS_Util.GetEasing(mEaseTypeB);
+                mEasingBlue = JCS_Util.GetEasing(mEaseTypeB);
             }
         }
-        public JCS_TweenType EaseTypeA
+        public JCS_TweenType easeTypeA
         {
-            get { return this.mEaseTypeA; }
+            get { return mEaseTypeA; }
             set
             {
-                this.mEaseTypeA = value;
+                mEaseTypeA = value;
 
                 // update easing function pointer / function formula.
-                this.mEasingAlpha = JCS_Util.GetEasing(mEaseTypeA);
+                mEasingAlpha = JCS_Util.GetEasing(mEaseTypeA);
             }
         }
-        public float DurationRed { get { return this.mDurationRed; } set { this.mDurationRed = value; } }
-        public float DurationGreen { get { return this.mDurationGreen; } set { this.mDurationGreen = value; } }
-        public float DurationBlue { get { return this.mDurationBlue; } set { this.mDurationBlue = value; } }
-        public float DurationAlpha { get { return this.mDurationAlpha; } set { this.mDurationAlpha = value; } }
-        public bool IgnoreR { get { return this.mIgnoreR; } set { this.mIgnoreR = value; } }
-        public bool IgnoreG { get { return this.mIgnoreG; } set { this.mIgnoreG = value; } }
-        public bool IgnoreB { get { return this.mIgnoreB; } set { this.mIgnoreB = value; } }
-        public bool IgnoreA { get { return this.mIgnoreA; } set { this.mIgnoreA = value; } }
+        public float durationRed { get { return mDurationRed; } set { mDurationRed = value; } }
+        public float durationGreen { get { return mDurationGreen; } set { mDurationGreen = value; } }
+        public float durationBlue { get { return mDurationBlue; } set { mDurationBlue = value; } }
+        public float durationAlpha { get { return mDurationAlpha; } set { mDurationAlpha = value; } }
+        public bool ignoreR { get { return mIgnoreR; } set { mIgnoreR = value; } }
+        public bool ignoreG { get { return mIgnoreG; } set { mIgnoreG = value; } }
+        public bool ignoreB { get { return mIgnoreB; } set { mIgnoreB = value; } }
+        public bool ignoreA { get { return mIgnoreA; } set { mIgnoreA = value; } }
 
         /* Functions */
 
@@ -239,10 +239,10 @@ namespace JCSUnity
             base.Awake();
 
             // get all function pointer/formula.
-            this.mEasingRed = JCS_Util.GetEasing(mEaseTypeR);
-            this.mEasingGreen = JCS_Util.GetEasing(mEaseTypeG);
-            this.mEasingBlue = JCS_Util.GetEasing(mEaseTypeB);
-            this.mEasingAlpha = JCS_Util.GetEasing(mEaseTypeA);
+            mEasingRed = JCS_Util.GetEasing(mEaseTypeR);
+            mEasingGreen = JCS_Util.GetEasing(mEaseTypeG);
+            mEasingBlue = JCS_Util.GetEasing(mEaseTypeB);
+            mEasingAlpha = JCS_Util.GetEasing(mEaseTypeA);
         }
 
         private void Update()
@@ -320,7 +320,7 @@ namespace JCSUnity
             Action func = null)
         {
             DoTween(
-                this.LocalColor,
+                this.localColor,
                 inToColor,
                 inTweenTypeR,
                 inTweenTypeG,
@@ -361,23 +361,23 @@ namespace JCSUnity
         {
             onStart?.Invoke();
 
-            this.mFromColor = inFromColor;
-            this.mTargetColor = inToColor;
+            mFromColor = inFromColor;
+            mTargetColor = inToColor;
 
-            EaseTypeR = inTweenTypeR;
-            EaseTypeG = inTweenTypeG;
-            EaseTypeB = inTweenTypeB;
-            EaseTypeA = inTweenTypeA;
+            mEaseTypeR = inTweenTypeR;
+            mEaseTypeG = inTweenTypeG;
+            mEaseTypeB = inTweenTypeB;
+            mEaseTypeA = inTweenTypeA;
 
-            this.mRealDurationRed = inDurationR;
-            this.mRealDurationGreen = inDurationG;
-            this.mRealDurationBlue = inDurationB;
-            this.mRealDurationAlpha = inDurationA;
+            mRealDurationRed = inDurationR;
+            mRealDurationGreen = inDurationG;
+            mRealDurationBlue = inDurationB;
+            mRealDurationAlpha = inDurationA;
 
-            this.mEasingR = true;
-            this.mEasingG = true;
-            this.mEasingB = true;
-            this.mEasingA = true;
+            mEasingR = true;
+            mEasingG = true;
+            mEasingB = true;
+            mEasingA = true;
 
             mOnDone = func;
         }
@@ -543,7 +543,7 @@ namespace JCSUnity
         /// </summary>
         private void DoTweening()
         {
-            if (!Animating)
+            if (!animating)
                 return;
 
             UpdateRed();
@@ -552,7 +552,7 @@ namespace JCSUnity
             UpdateAlpha();
 
             // update color.
-            this.LocalColor = this.mProgressionColor;
+            localColor = mProgressionColor;
         }
     }
 }

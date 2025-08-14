@@ -25,13 +25,14 @@ namespace JCSUnity
         private bool mContinuousPush = false;
 
         [Tooltip("How much force it pushed.")]
-        [SerializeField] [Range(1.0f, 100.0f)]
+        [SerializeField]
+        [Range(1.0f, 100.0f)]
         private float mPushForce = 10.0f;
 
         /* Setter & Getter */
 
-        public bool ContinuousPush { get { return this.mContinuousPush; } set { this.mContinuousPush = value; } }
-        public float PushForce { get { return this.mPushForce; } set { this.mPushForce = value; } }
+        public bool continuousPush { get { return mContinuousPush; } set { mContinuousPush = value; } }
+        public float pushForce { get { return mPushForce; } set { mPushForce = value; } }
 
         /* Functions */
 

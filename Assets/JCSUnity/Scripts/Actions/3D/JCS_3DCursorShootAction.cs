@@ -41,15 +41,15 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public KeyCode ShooKeyCode { get { return this.mShootKeyCode; } }
-        public JCS_Vector3Direction Direction { get { return this.mDirection; } set { this.mDirection = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public KeyCode shooKeyCode { get { return mShootKeyCode; } }
+        public JCS_Vector3Direction direction { get { return mDirection; } set { mDirection = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mShootAction = this.GetComponent<JCS_ShootAction>();
+            mShootAction = GetComponent<JCS_ShootAction>();
 
             // override the shoot action.
             //mShootAction.OverrideShoot = true;
@@ -70,7 +70,7 @@ namespace JCSUnity
             Vector3 direction = JCS_Vector.Direction(mDirection);
 
             // Generate a plane that intersects the transform's position with an upwards normal.
-            Plane playerPlane = new Plane(direction, mShootAction.SpawnPoint.position);
+            Plane playerPlane = new Plane(direction, mShootAction.spawnPoint.position);
 
             // Generate a ray from the cursor position
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -88,10 +88,10 @@ namespace JCSUnity
                 Vector3 targetPoint = ray.GetPoint(hitdist);
 
                 // Determine the target rotation.  This is the rotation if the transform looks at the target point.
-                Quaternion targetRotation = Quaternion.LookRotation(targetPoint - mShootAction.SpawnPoint.position);
+                Quaternion targetRotation = Quaternion.LookRotation(targetPoint - mShootAction.spawnPoint.position);
 
                 // Smoothly rotate towards the target point.
-                mShootAction.SpawnPoint.rotation = Quaternion.Slerp(mShootAction.SpawnPoint.rotation, targetRotation, speed * JCS_Time.ItTime(mTimeType));
+                mShootAction.spawnPoint.rotation = Quaternion.Slerp(mShootAction.spawnPoint.rotation, targetRotation, speed * JCS_Time.ItTime(mTimeType));
             }
         }
     }

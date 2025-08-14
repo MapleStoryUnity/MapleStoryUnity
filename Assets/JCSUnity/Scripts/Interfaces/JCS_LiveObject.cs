@@ -62,25 +62,25 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_LiquidBarInfo HPInfo { get { return this.mHPInfo; } }
-        public JCS_LiquidBarInfo MPInfo { get { return this.mMPInfo; } }
-        public JCS_LiquidBarInfo EXPInfo { get { return this.mEXPInfo; } }
-        public int HP { get { return this.mHPInfo.CurrentValue; } set { this.mHPInfo.CurrentValue = value; } }
-        public int MP { get { return this.mMPInfo.CurrentValue; } set { this.mMPInfo.CurrentValue = value; } }
-        public int EXP { get { return this.mEXPInfo.CurrentValue; } set { this.mEXPInfo.CurrentValue = value; } }
+        public JCS_LiquidBarInfo hpInfo { get { return mHPInfo; } }
+        public JCS_LiquidBarInfo mpInfo { get { return mMPInfo; } }
+        public JCS_LiquidBarInfo expInfo { get { return mEXPInfo; } }
+        public int hp { get { return mHPInfo.currentValue; } set { mHPInfo.currentValue = value; } }
+        public int mp { get { return mMPInfo.currentValue; } set { mMPInfo.currentValue = value; } }
+        public int exp { get { return mEXPInfo.currentValue; } set { mEXPInfo.currentValue = value; } }
         public void SetHP(int val)
         {
             if (val < 0)
                 val = 0;
-            this.HP = val;
+            hp = val;
         }
         public void SetMP(int val)
         {
             if (val < 0)
                 val = 0;
-            this.MP = val;
+            mp = val;
         }
-        public bool CanDamage { get { return this.mCanDamage; } set { this.mCanDamage = value; } }
+        public bool canDamage { get { return mCanDamage; } set { mCanDamage = value; } }
 
         /* Functions */
 
@@ -88,26 +88,25 @@ namespace JCSUnity
         {
             // try to get the action component by itself.
             if (mInvincibleTimeAction == null)
-                mInvincibleTimeAction = this.GetComponent<JCS_InvincibleTimeAction>();
+                mInvincibleTimeAction = GetComponent<JCS_InvincibleTimeAction>();
 
             // Auto add, for better design plz 
             // add "JCS_LiquidBarInfo" manually.
             if (mHPInfo == null)
-                mHPInfo = this.gameObject.AddComponent<JCS_LiquidBarInfo>();
-            mHPInfo.TagName = "HP";
-
+                mHPInfo = gameObject.AddComponent<JCS_LiquidBarInfo>();
+            mHPInfo.tagName = "HP";
 
             if (mMPInfo == null)
-                mMPInfo = this.gameObject.AddComponent<JCS_LiquidBarInfo>();
-            mMPInfo.TagName = "MP";
+                mMPInfo = gameObject.AddComponent<JCS_LiquidBarInfo>();
+            mMPInfo.tagName = "MP";
 
 
             if (mEXPInfo == null)
             {
-                mEXPInfo = this.gameObject.AddComponent<JCS_LiquidBarInfo>();
-                mEXPInfo.CurrentValue = 0;
+                mEXPInfo = gameObject.AddComponent<JCS_LiquidBarInfo>();
+                mEXPInfo.currentValue = 0;
             }
-            mEXPInfo.TagName = "EXP";
+            mEXPInfo.tagName = "EXP";
         }
 
         /// <summary>

@@ -107,11 +107,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public JCS_DamageTextPool CriticalDamageTextPool { get { return this.mCritDamageTextPool; } }
-        public JCS_DamageTextPool NormralDamageTextPool { get { return this.mNormalDamageTextPool; } }
-        public JCS_DamageTextPool GetDamageDamageTextPool { get { return this.mGetDamageDamageTextPool; } }
-        public JCS_DamageTextPool HealDamageTextPoll { get { return this.mHealDamageTextPool; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_DamageTextPool criticalDamageTextPool { get { return this.mCritDamageTextPool; } }
+        public JCS_DamageTextPool normralDamageTextPool { get { return this.mNormalDamageTextPool; } }
+        public JCS_DamageTextPool getDamageDamageTextPool { get { return this.mGetDamageDamageTextPool; } }
+        public JCS_DamageTextPool healDamageTextPoll { get { return this.mHealDamageTextPool; } }
 
         /* Functions */
 
@@ -458,13 +458,13 @@ namespace JCSUnity
             switch (type)
             {
                 case DamageTextType.NORMAL:
-                    return this.NormralDamageTextPool;
+                    return normralDamageTextPool;
                 case DamageTextType.CRITICAL:
-                    return this.CriticalDamageTextPool;
+                    return criticalDamageTextPool;
                 case DamageTextType.GET_DAMAGE:
-                    return this.GetDamageDamageTextPool;
+                    return getDamageDamageTextPool;
                 case DamageTextType.HEAL:
-                    return this.HealDamageTextPoll;
+                    return healDamageTextPoll;
             }
             return null;
         }

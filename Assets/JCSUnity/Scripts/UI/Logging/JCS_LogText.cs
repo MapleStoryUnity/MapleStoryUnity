@@ -37,10 +37,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool IsActive { get { return this.mActive; } }
+        public bool isActive { get { return this.mActive; } }
 
-        public JCS_SimpleTrackAction SimpleTrackAction { get { return this.mSimpleTrackAction; } }
-        public JCS_FadeObject FadeObject { get { return this.mFadeObject; } }
+        public JCS_SimpleTrackAction simpleTrackAction { get { return this.mSimpleTrackAction; } }
+        public JCS_FadeObject fadeObject { get { return this.mFadeObject; } }
 
         /* Functions */
 

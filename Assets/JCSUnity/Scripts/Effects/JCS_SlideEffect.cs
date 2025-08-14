@@ -126,20 +126,20 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool IsActive { get { return this.mIsActive; } }
-        public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
-        public float Distance
+        public bool isActive { get { return mIsActive; } }
+        public JCS_Axis axis { get { return mAxis; } set { mAxis = value; } }
+        public float friction { get { return mFriction; } set { mFriction = value; } }
+        public float distance
         {
-            get { return this.mDistance; }
+            get { return mDistance; }
             set
             {
-                this.mDistance = value;
+                mDistance = value;
 
-                Vector3 newPos = this.transform.localPosition;
+                Vector3 newPos = transform.localPosition;
                 // record the original position
-                this.mRecordPosition = newPos;
-                this.mTargetPosition = newPos;
+                mRecordPosition = newPos;
+                mTargetPosition = newPos;
 
                 switch (mAxis)
                 {
@@ -154,18 +154,18 @@ namespace JCSUnity
                         break;
                 }
 
-                this.mTowardPosition = newPos;
+                mTowardPosition = newPos;
             }
         }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public bool AutoAddEvent { get { return this.mAutoAddEvent; } set { this.mAutoAddEvent = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public bool autoAddEvent { get { return mAutoAddEvent; } set { mAutoAddEvent = value; } }
 
-        public AudioClip ActiveClip { get { return this.mActiveClip; } set { this.mActiveClip = value; } }
-        public AudioClip DeactiveClip { get { return this.mDeactiveClip; } set { this.mDeactiveClip = value; } }
+        public AudioClip activeClip { get { return mActiveClip; } set { mActiveClip = value; } }
+        public AudioClip deactiveClip { get { return mDeactiveClip; } set { mDeactiveClip = value; } }
 
-        public bool IgnoreX { get { return this.mIgnoreX; } set { this.mIgnoreX = value; } }
-        public bool IgnoreY { get { return this.mIgnoreY; } set { this.mIgnoreY = value; } }
-        public bool IgnoreZ { get { return this.mIgnoreZ; } set { this.mIgnoreZ = value; } }
+        public bool ignoreX { get { return mIgnoreX; } set { mIgnoreX = value; } }
+        public bool ignoreY { get { return mIgnoreY; } set { mIgnoreY = value; } }
+        public bool ignoreZ { get { return mIgnoreZ; } set { mIgnoreZ = value; } }
 
         /* Functions */
 
@@ -175,7 +175,7 @@ namespace JCSUnity
 
             // sound player will be optional.
             if (mSoundPlayer == null)
-                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+                mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
             // set the call back function if there is button assigned.
             if (mActiveButton != null)
@@ -219,7 +219,7 @@ namespace JCSUnity
                         // mPanelRoot will be null is the object isn't UI
                         // game object.
                         if (mPanelRoot != null)
-                            mDistance *= mPanelRoot.PanelDeltaWidthRatio;
+                            mDistance *= mPanelRoot.panelDeltaWidthRatio;
 
                         newPos.x += mDistance;
                     }
@@ -229,7 +229,7 @@ namespace JCSUnity
                         // mPanelRoot will be null is the object isn't UI
                         // game object.
                         if (mPanelRoot != null)
-                            mDistance *= mPanelRoot.PanelDeltaHeightRatio;
+                            mDistance *= mPanelRoot.panelDeltaHeightRatio;
 
                         newPos.y += mDistance;
                     }
@@ -376,13 +376,13 @@ namespace JCSUnity
             Vector3 tempTargetPost = mTargetPosition;
 
             if (mIgnoreX)
-                tempTargetPost.x = this.LocalPosition.x;
+                tempTargetPost.x = this.localPosition.x;
             if (mIgnoreY)
-                tempTargetPost.y = this.LocalPosition.y;
+                tempTargetPost.y = this.localPosition.y;
             if (mIgnoreZ)
-                tempTargetPost.z = this.LocalPosition.z;
+                tempTargetPost.z = this.localPosition.z;
 
-            LocalPosition += (tempTargetPost - LocalPosition) / mFriction * JCS_Time.ItTime(mTimeType);
+            localPosition += (tempTargetPost - localPosition) / mFriction * JCS_Time.ItTime(mTimeType);
         }
     }
 }

@@ -37,10 +37,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Reflectable { get { return this.mReflectable; } }
-        public virtual float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public JCS_AttackerInfo AttackerInfo { get { return this.mAttackerInfo; } }
+        public bool reflectable { get { return mReflectable; } }
+        public virtual float moveSpeed { get { return mMoveSpeed; } set { mMoveSpeed = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public JCS_AttackerInfo attackerInfo { get { return mAttackerInfo; } }
 
         /* Functions */
 

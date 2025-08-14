@@ -43,23 +43,23 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool GetIsControllable() { return this.mIsControllable; }
-        public void SetIsControllable(bool act) { this.mIsControllable = act; }
-        public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
-        public float VelX { get { return this.mVelocity.x; } set { this.mVelocity.x = value; } }
-        public float VelY { get { return this.mVelocity.y; } set { this.mVelocity.y = value; } }
-        public float VelZ { get { return this.mVelocity.z; } set { this.mVelocity.z = value; } }
-        public CharacterController GetCharacterController() { return this.mCharacterController; }
-        public JCS_CharacterControllerInfo CharacterControllerInfo { get { return this.mCharacterControllerInfo; } }
-        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool GetIsControllable() { return mIsControllable; }
+        public void SetIsControllable(bool act) { mIsControllable = act; }
+        public Vector3 velocity { get { return mVelocity; } set { mVelocity = value; } }
+        public float velX { get { return mVelocity.x; } set { mVelocity.x = value; } }
+        public float velY { get { return mVelocity.y; } set { mVelocity.y = value; } }
+        public float velZ { get { return mVelocity.z; } set { mVelocity.z = value; } }
+        public CharacterController GetCharacterController() { return mCharacterController; }
+        public JCS_CharacterControllerInfo characterControllerInfo { get { return mCharacterControllerInfo; } }
+        public float moveSpeed { get { return mMoveSpeed; } set { mMoveSpeed = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         protected virtual void Awake()
         {
-            mCharacterController = this.GetComponent<CharacterController>();
-            mCharacterControllerInfo = this.GetComponent<JCS_CharacterControllerInfo>();
+            mCharacterController = GetComponent<CharacterController>();
+            mCharacterControllerInfo = GetComponent<JCS_CharacterControllerInfo>();
         }
 
         protected virtual void Start()

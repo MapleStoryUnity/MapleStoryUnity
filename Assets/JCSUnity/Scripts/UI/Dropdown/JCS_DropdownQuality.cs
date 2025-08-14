@@ -34,8 +34,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool RemoveAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
-        public bool ApplyExpensiveChanges { get { return mApplyExpensiveChanges; } set { this.mApplyExpensiveChanges = value; } }
+        public bool removeAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
+        public bool applyExpensiveChanges { get { return mApplyExpensiveChanges; } set { this.mApplyExpensiveChanges = value; } }
 
         /* Functions */
 

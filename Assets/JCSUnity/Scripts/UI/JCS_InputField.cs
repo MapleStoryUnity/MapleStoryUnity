@@ -60,7 +60,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public string RealText { get { return this.mRealText; } }
+        public string realText { get { return this.mRealText; } }
 
         /* Functions */
 

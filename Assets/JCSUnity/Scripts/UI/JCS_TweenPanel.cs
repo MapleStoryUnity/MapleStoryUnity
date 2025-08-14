@@ -76,9 +76,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool IsActive { get { return this.mIsActive; } }
-        public JCS_TweenerHandler TweenerHandler { get { return this.mTweenerHandler; } }
-        public bool OverrideTween { get { return this.mOverrideTween; } set { this.mOverrideTween = value; } }
+        public bool isActive { get { return this.mIsActive; } }
+        public JCS_TweenerHandler tweenerHandler { get { return this.mTweenerHandler; } }
+        public bool overrideTween { get { return this.mOverrideTween; } set { this.mOverrideTween = value; } }
 
         /* Functions */
 

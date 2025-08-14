@@ -37,18 +37,18 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public CharacterController GetCharacterController() { return this.mCharacterController; }
-        public bool isGrounded { get { return this.mCharacterController.isGrounded; } }
-        public float Width { get { return this.mWidth; } }
-        public float Height { get { return this.mHeight; } }
-        public float HalfWidth { get { return this.Width / 2.0f; } }
-        public float HalfHeight { get { return this.Height / 2.0f; } }
+        public CharacterController GetCharacterController() { return mCharacterController; }
+        public bool isGrounded { get { return mCharacterController.isGrounded; } }
+        public float width { get { return mWidth; } }
+        public float height { get { return mHeight; } }
+        public float halfWidth { get { return width / 2.0f; } }
+        public float HhalfHeight { get { return height / 2.0f; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mCharacterController = this.GetComponent<CharacterController>();
+            mCharacterController = GetComponent<CharacterController>();
 
             Vector2 widthHeight = JCS_Physics.GetColliderWidthHeight(mCharacterController);
 

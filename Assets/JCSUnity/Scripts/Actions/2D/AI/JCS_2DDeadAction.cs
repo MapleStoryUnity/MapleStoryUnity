@@ -65,7 +65,7 @@ namespace JCSUnity
         {
             // if still could damage this live object, mean this object isn't
             // dead yet.
-            if (0 < mLiveObject.HP)
+            if (0 < mLiveObject.hp)
                 return;
 
             // if dies
@@ -77,12 +77,12 @@ namespace JCSUnity
             }
 
             // do the dead animation
-            if (mLiveObjectAnimator.Animator.AnimDisplayHolder != null)
-                mLiveObjectAnimator.Animator.AnimDisplayHolder.StopHolding();
+            if (mLiveObjectAnimator.animator.animDisplayHolder != null)
+                mLiveObjectAnimator.animator.animDisplayHolder.StopHolding();
             mLiveObjectAnimator.DoAnimation(JCS_LiveObjectState.DIE);
 
             if (mFreezeWhileDie)
-                mLiveObject.VelocityInfo.Freeze();
+                mLiveObject.velocityInfo.Freeze();
 
             // disable other un-necessary components
             if (mDisableOtherComponentWhileDie)
@@ -105,7 +105,7 @@ namespace JCSUnity
             // dead animation is end or not.
             if (mLiveObjectAnimator.IsInState(JCS_LiveObjectState.DIE))
             {
-                if (mLiveObjectAnimator.Animator.CurrentAnimation.IsDonePlaying)
+                if (mLiveObjectAnimator.animator.currentAnimation.isDonePlaying)
                 {
                     // if is end destroy the object itself.
                     Destroy(this.gameObject);

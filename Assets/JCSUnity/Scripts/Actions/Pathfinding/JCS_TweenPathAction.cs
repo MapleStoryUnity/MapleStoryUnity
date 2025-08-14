@@ -47,16 +47,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<JCS_UnityObject> Points { get { return this.mPoints; } }
-        public bool Random { get { return this.mRandom; } set { this.mRandom = value; } }
-        public bool ContinueTween { get { return this.mContinueTween; } set { this.mContinueTween = value; } }
+        public List<JCS_UnityObject> points { get { return mPoints; } }
+        public bool random { get { return mRandom; } set { mRandom = value; } }
+        public bool continueTween { get { return mContinueTween; } set { mContinueTween = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
-            this.mAdjustTimerTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
+            mTransformTweener = GetComponent<JCS_TransformTweener>();
+            mAdjustTimerTrigger = GetComponent<JCS_AdjustTimeTrigger>();
 
 #if UNITY_EDITOR
             if (mPoints.Count == 0)

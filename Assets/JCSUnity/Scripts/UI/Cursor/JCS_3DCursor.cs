@@ -69,8 +69,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
-        public Vector3 CursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
+        public JCS_CursorCustomizeType cursorCustomizeType { get { return this.mCursorCustomizeType; } }
+        public Vector3 cursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
 
         /* Functions */
 

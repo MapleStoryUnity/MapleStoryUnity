@@ -38,12 +38,10 @@ namespace JCSUnity
             public int gamePadAnimationId;
         };
 
-
         [Separator("Runtime Variables (JCS_GamePadSpriteHandler)")]
 
         [Tooltip("Any animation element you want to change depends on controller connection.")]
         public List<AnimationSet> animationSets = null;
-
 
         /* Setter & Getter */
 
@@ -51,7 +49,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            this.animationSets = JCS_Array.RemoveEmpty(this.animationSets);
+            animationSets = JCS_Array.RemoveEmpty(animationSets);
 
             /* Register callback */
             {

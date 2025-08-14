@@ -37,8 +37,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<SystemLanguage> Options { get { return mOptions; } set { this.mOptions = value; } }
-        public bool RemoveAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
+        public List<SystemLanguage> options { get { return mOptions; } set { this.mOptions = value; } }
+        public bool removeAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
 
         /* Functions */
 

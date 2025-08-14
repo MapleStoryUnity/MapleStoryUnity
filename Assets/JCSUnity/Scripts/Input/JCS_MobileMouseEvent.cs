@@ -44,7 +44,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float RaycastDistance { get { return this.mRaycastDistance; } set { this.mRaycastDistance = value; } }
+        public float raycastDistance { get { return this.mRaycastDistance; } set { this.mRaycastDistance = value; } }
 
         /* Functions */
 
@@ -56,7 +56,7 @@ namespace JCSUnity
         private void Start()
         {
             if (mCamera == null)
-                this.mCamera = JCS_Camera.main.GetCamera();
+                mCamera = JCS_Camera.main.GetCamera();
         }
 
         private void Update()
@@ -115,7 +115,7 @@ namespace JCSUnity
                 if (mHits.Contains(hit))
                     continue;
 
-                if (im.Support_OnMouseEnter)
+                if (im.support_OnMouseEnter)
                     _SendMessage(obj, "OnMouseEnter");
             }
 
@@ -129,7 +129,7 @@ namespace JCSUnity
                 if (hits.Contains(hit))
                     continue;
 
-                if (im.Support_OnMouseExit)
+                if (im.support_OnMouseExit)
                     _SendMessage(obj, "OnMouseExit");
 
                 PrintName(hit.transform);
@@ -158,12 +158,12 @@ namespace JCSUnity
 
                 GameObject obj = hit.transform.gameObject;
 
-                if (im.Support_OnMouseOver)
+                if (im.support_OnMouseOver)
                     _SendMessage(obj, "OnMouseOver");
 
-                if (im.Support_OnMouseUp)
+                if (im.support_OnMouseUp)
                 {
-                    if (mTouchedLastFrame && !ti.Touched)
+                    if (mTouchedLastFrame && !ti.touched)
                         _SendMessage(obj, "OnMouseUp");
                 }
 
@@ -181,7 +181,7 @@ namespace JCSUnity
             var im = JCS_InputManager.FirstInstance();
             var ti = JCS_TouchInput.FirstInstance();
 
-            if (!ti.Touched)
+            if (!ti.touched)
             {
                 this.mTouchedLastFrame = false;
                 return;
@@ -200,17 +200,17 @@ namespace JCSUnity
 
                 GameObject obj = hit.transform.gameObject;
 
-                if (ti.Touched)
+                if (ti.touched)
                 {
-                    if (im.Support_OnMouseDown)
+                    if (im.support_OnMouseDown)
                     {
                         if (!mTouchedLastFrame)
                             _SendMessage(obj, "OnMouseDown");
                     }
 
-                    if (im.Support_OnMouseDrag)
+                    if (im.support_OnMouseDrag)
                     {
-                        if (ti.DeltaPos != Vector2.zero)
+                        if (ti.deltaPos != Vector2.zero)
                             _SendMessage(obj, "OnMouseDrag");
                     }
                 }

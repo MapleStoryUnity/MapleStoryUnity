@@ -27,7 +27,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_LiquidBar LiquidBar { get { return this.mLiquidBar; } }
+        public JCS_LiquidBar liquidBar { get { return mLiquidBar; } }
 
 
         /* Functions */
@@ -35,7 +35,7 @@ namespace JCSUnity
         private void Awake()
         {
             if (mLiquidBar == null)
-                mLiquidBar = this.GetComponent<JCS_LiquidBar>();
+                mLiquidBar = GetComponent<JCS_LiquidBar>();
         }
 
         /// <summary>

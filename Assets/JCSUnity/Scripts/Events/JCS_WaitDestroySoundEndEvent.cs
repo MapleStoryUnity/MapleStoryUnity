@@ -34,7 +34,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void SetAudioClip(AudioClip ac) { this.mAudioClip = ac; }
+        public void SetAudioClip(AudioClip ac) { mAudioClip = ac; }
 
         /* Functions */
 

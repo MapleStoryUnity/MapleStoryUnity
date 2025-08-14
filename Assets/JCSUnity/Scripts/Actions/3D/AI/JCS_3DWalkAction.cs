@@ -129,45 +129,45 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Vector3 StartingPosition { get { return this.mStartingPosition; } set { this.mStartingPosition = value; } }
-        public Vector3 TargetDestination { get { return this.mTargetDestination; } }
+        public Vector3 startingPosition { get { return mStartingPosition; } set { mStartingPosition = value; } }
+        public Vector3 targetDestination { get { return mTargetDestination; } }
 
-        public int SearchCount { get { return this.mSearchCount; } set { this.mSearchCount = value; } }
+        public int searchCount { get { return mSearchCount; } set { mSearchCount = value; } }
 
-        public NavMeshAgent navMeshAgent { get { return this.mNavMeshAgent; } }
-        public NavMeshObstacle navMeshObstacle { get { return this.mNavMeshObstacle; } }
-        public JCS_AdjustTimeTrigger AdjustTimeTrigger { get { return this.mAdjustTimeTrigger; } }
+        public NavMeshAgent navMeshAgent { get { return mNavMeshAgent; } }
+        public NavMeshObstacle navMeshObstacle { get { return mNavMeshObstacle; } }
+        public JCS_AdjustTimeTrigger adjustTimeTrigger { get { return mAdjustTimeTrigger; } }
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public JCS_3DWalkType WalkType { get { return this.mWalkType; } set { this.mWalkType = value; } }
-        public float AcceptRemainDistance { get { return this.mAcceptRemainDistance; } set { this.mAcceptRemainDistance = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public JCS_3DWalkType walkType { get { return mWalkType; } set { mWalkType = value; } }
+        public float acceptRemainDistance { get { return mAcceptRemainDistance; } set { mAcceptRemainDistance = value; } }
 
-        public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
+        public Transform targetTransform { get { return mTargetTransform; } set { mTargetTransform = value; } }
 
-        public float MinOffDistance { get { return this.mMinOffDistance; } set { this.mMinOffDistance = value; } }
-        public float MaxOffDistance { get { return this.mMaxOffDistance; } set { this.mMaxOffDistance = value; } }
+        public float minOffDistance { get { return mMinOffDistance; } set { mMinOffDistance = value; } }
+        public float maxOffDistance { get { return mMaxOffDistance; } set { mMaxOffDistance = value; } }
 
-        public bool AllowOverlapDestination { get { return this.mAllowOverlapDestination; } set { this.mAllowOverlapDestination = value; } }
-        public float OverlapDistance { get { return this.mOverlapDistance; } set { this.mOverlapDistance = value; } }
+        public bool allowOverlapDestination { get { return mAllowOverlapDestination; } set { mAllowOverlapDestination = value; } }
+        public float overlapDistance { get { return mOverlapDistance; } set { mOverlapDistance = value; } }
 
-        public float RangeDistance { get { return this.mRangeDistance; } set { this.mRangeDistance = value; } }
-        public float AdjustRangeDistance { get { return this.mAdjustRangeDistance; } set { this.mAdjustRangeDistance = value; } }
+        public float rangeDistance { get { return mRangeDistance; } set { mRangeDistance = value; } }
+        public float adjustRangeDistance { get { return mAdjustRangeDistance; } set { mAdjustRangeDistance = value; } }
 
-        public float SelfDistance { get { return this.mSelfDistance; } set { this.mSelfDistance = value; } }
+        public float selfDistance { get { return mSelfDistance; } set { mSelfDistance = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mNavMeshAgent = this.GetComponent<NavMeshAgent>();
-            this.mNavMeshObstacle = this.GetComponent<NavMeshObstacle>();
+            mNavMeshAgent = GetComponent<NavMeshAgent>();
+            mNavMeshObstacle = GetComponent<NavMeshObstacle>();
             ObstacleNow();
 
-            this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
+            mAdjustTimeTrigger = GetComponent<JCS_AdjustTimeTrigger>();
 
             mAdjustTimeTrigger.onAction = DoAI;
 
-            this.mStartingPosition = this.transform.position;
+            mStartingPosition = transform.position;
         }
 
         private void Start()
@@ -283,7 +283,7 @@ namespace JCSUnity
             ++mSearchCounter;
 
 #if UNITY_EDITOR
-            this.mFoundPath = found;
+            mFoundPath = found;
 #endif
 
             // if faild, try it again.
@@ -296,7 +296,7 @@ namespace JCSUnity
             }
             else
             {
-                this.mTargetDestination = targetPos;
+                mTargetDestination = targetPos;
 
                 // if succesed, reset search count.
                 mSearchCounter = 0;
@@ -311,7 +311,7 @@ namespace JCSUnity
             float remDist = Vector3.Distance(agent.destination, agent.transform.position);
 
 #if UNITY_EDITOR
-            this.mRemainingDistance = remDist;
+            mRemainingDistance = remDist;
 #endif
 
             if (!float.IsNaN(remDist) &&
@@ -349,7 +349,7 @@ namespace JCSUnity
                 return false;
 
             Vector3 targetPos = mTargetTransform.position;
-            Vector3 selfPos = this.transform.position;
+            Vector3 selfPos = transform.position;
             float distance = Vector3.Distance(targetPos, selfPos);
             float maxDistance = 0.0f;
 
@@ -407,13 +407,13 @@ namespace JCSUnity
         {
             Vector3 newTargetPos = targetPos;
 
-            Vector3 vec = this.transform.position - targetPos;
+            Vector3 vec = transform.position - targetPos;
 
             vec = vec.normalized;
 
             newTargetPos.x += vec.x * distance;
             newTargetPos.z += vec.z * distance;
-            newTargetPos.y = this.transform.position.y;
+            newTargetPos.y = transform.position.y;
 
             return newTargetPos;
         }

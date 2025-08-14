@@ -42,9 +42,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
-        public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public string sceneName { get { return mSceneName; } set { mSceneName = value; } }
+        public float delayTime { get { return mDelayTime; } set { mDelayTime = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -54,7 +54,7 @@ namespace JCSUnity
             JCS_UIManager.FirstInstance().HideAllOpenDialogue();
 
             // Plus the fade out time
-            mDelayTime += JCS_SceneManager.FirstInstance().SceneFadeOutTime;
+            mDelayTime += JCS_SceneManager.FirstInstance().sceneFadeOutTime;
         }
 
         private void Update()

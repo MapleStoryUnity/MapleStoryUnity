@@ -43,8 +43,8 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public RectTransform rectTransform { get { return this.mRectTransform; } }
-        public float SlideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
-        public float SlideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
+        public float slideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
+        public float slideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
 
         /* Functions */
 
@@ -73,8 +73,8 @@ namespace JCSUnity
                     slidePanels[index].gameObject.AddComponent<JCS_SlidePanel>();
 
                 // set friction
-                mSlidePanelsComponents[index].SlideFrictionX = mSlideFrictionX;
-                mSlidePanelsComponents[index].SlideFrictionY = mSlideFrictionY;
+                mSlidePanelsComponents[index].slideFrictionX = mSlideFrictionX;
+                mSlidePanelsComponents[index].slideFrictionY = mSlideFrictionY;
             }
         }
 

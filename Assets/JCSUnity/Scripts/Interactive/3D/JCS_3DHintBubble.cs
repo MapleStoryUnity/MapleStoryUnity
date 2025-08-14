@@ -68,22 +68,22 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool active { get { return this.mActive; } }
+        public bool active { get { return mActive; } }
 #if TMP_PRO
-        public TextMeshPro TextMesh { get { return this.mTextMesh; } }
+        public TextMeshPro textMesh { get { return mTextMesh; } }
 #endif
-        public JCS_TweenerHandler TweenerHandler { get { return this.mTweenerHandler; } }
-        public JCS_FadeObject FadeObject { get { return this.mFadeObject; } }
+        public JCS_TweenerHandler tweenerHandler { get { return mTweenerHandler; } }
+        public JCS_FadeObject fadeObject { get { return mFadeObject; } }
 
         /* Functions */
 
         private void Awake()
         {
 #if TMP_PRO
-            this.mTextMesh = this.GetComponent<TextMeshPro>();
+            mTextMesh = GetComponent<TextMeshPro>();
 #endif
-            this.mTweenerHandler = this.GetComponent<JCS_TweenerHandler>();
-            this.mFadeObject = this.GetComponent<JCS_FadeObject>();
+            mTweenerHandler = GetComponent<JCS_TweenerHandler>();
+            mFadeObject = GetComponent<JCS_FadeObject>();
         }
 
 #if UNITY_EDITOR
@@ -121,7 +121,7 @@ namespace JCSUnity
         /// </summary>
         public void Active()
         {
-            TweenerHandler.DoAllTweenToTargetValue();
+            mTweenerHandler.DoAllTweenToTargetValue();
             mFadeObject.FadeIn();
 
             this.mActive = true;
@@ -132,7 +132,7 @@ namespace JCSUnity
         /// </summary>
         public void Deactive()
         {
-            TweenerHandler.DoAllTweenToStartValue();
+            mTweenerHandler.DoAllTweenToStartValue();
             mFadeObject.FadeOut();
 
             this.mActive = false;

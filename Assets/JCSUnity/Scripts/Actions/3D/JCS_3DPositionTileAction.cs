@@ -61,15 +61,15 @@ be set to this position in each axis.")]
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public Vector3 AbsolutePositionInAxis { get { return this.mAbsolutePositionInAxis; } set { this.mAbsolutePositionInAxis = value; } }
-        public bool UseLocalPosition { get { return this.mUseLocalPosition; } set { this.mUseLocalPosition = value; } }
-        public float MaxX { get { return this.mMaxX; } set { this.mMaxX = value; } }
-        public float MaxY { get { return this.mMaxY; } set { this.mMaxY = value; } }
-        public float MaxZ { get { return this.mMaxZ; } set { this.mMaxZ = value; } }
-        public float MinX { get { return this.mMinX; } set { this.mMinX = value; } }
-        public float MinY { get { return this.mMinY; } set { this.mMinY = value; } }
-        public float MinZ { get { return this.mMinZ; } set { this.mMinZ = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public Vector3 absolutePositionInAxis { get { return mAbsolutePositionInAxis; } set { mAbsolutePositionInAxis = value; } }
+        public bool useLocalPosition { get { return mUseLocalPosition; } set { mUseLocalPosition = value; } }
+        public float maxX { get { return mMaxX; } set { mMaxX = value; } }
+        public float maxY { get { return mMaxY; } set { mMaxY = value; } }
+        public float maxZ { get { return mMaxZ; } set { mMaxZ = value; } }
+        public float minX { get { return mMinX; } set { mMinX = value; } }
+        public float minY { get { return mMinY; } set { mMinY = value; } }
+        public float minZ { get { return mMinZ; } set { mMinZ = value; } }
 
         /* Functions */
 
@@ -78,9 +78,9 @@ be set to this position in each axis.")]
             if (!mActive)
                 return;
 
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
             if (mUseLocalPosition)
-                newPos = this.transform.localPosition;
+                newPos = transform.localPosition;
 
             {
                 if (newPos.x < mMinX || newPos.x > mMaxX)
@@ -94,9 +94,9 @@ be set to this position in each axis.")]
             }
 
             if (mUseLocalPosition)
-                this.transform.localPosition = newPos;
+                transform.localPosition = newPos;
             else
-                this.transform.position = newPos;
+                transform.position = newPos;
         }
     }
 }

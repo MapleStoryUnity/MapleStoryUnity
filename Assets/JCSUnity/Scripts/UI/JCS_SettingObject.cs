@@ -39,7 +39,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public string SettingString { get { return this.mSettingString; } }
+        public string settingString { get { return this.mSettingString; } }
 
         /* Functions */
 

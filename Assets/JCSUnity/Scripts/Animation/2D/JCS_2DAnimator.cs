@@ -85,13 +85,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
-        public int CurrentAnimId { get { return this.mCurrentAnimId; } }
-        public JCS_2DAnimation CurrentAnimation { get { return this.mCurrentAnimation; } }
-        public List<JCS_2DAnimation> Animations { get { return this.mAnimations; } }
-        public int AnimationsLength { get { return this.mAnimations.Count; } }
+        public float animationTimeProduction { get { return mAnimationTimeProduction; } }
+        public int currentAnimId { get { return mCurrentAnimId; } }
+        public JCS_2DAnimation currentAnimation { get { return mCurrentAnimation; } }
+        public List<JCS_2DAnimation> animations { get { return mAnimations; } }
+        public int animationsLength { get { return mAnimations.Count; } }
 
-        public JCS_2DAnimDisplayHolder AnimDisplayHolder { get { return this.m2DAnimDisplayHolder; } }
+        public JCS_2DAnimDisplayHolder animDisplayHolder { get { return m2DAnimDisplayHolder; } }
 
         /* Functions */
 
@@ -102,7 +102,7 @@ namespace JCSUnity
              * this component is really handy.
              */
             if (m2DAnimDisplayHolder == null)
-                m2DAnimDisplayHolder = this.GetComponent<JCS_2DAnimDisplayHolder>();
+                m2DAnimDisplayHolder = GetComponent<JCS_2DAnimDisplayHolder>();
 
             // update the max animation count.
             UpdateMaxAnimCount();
@@ -123,7 +123,7 @@ namespace JCSUnity
                 // the animation.
                 anim.SetAnimator(this);
 
-                anim.PlayOnAwake = false;
+                anim.playOnAwake = false;
             }
         }
 
@@ -275,7 +275,7 @@ namespace JCSUnity
         /// </summary>
         public void UpdateMaxAnimCount()
         {
-            this.mMaxAnimCount = this.mAnimations.Count;
+            mMaxAnimCount = mAnimations.Count;
         }
 
         /// <summary>
@@ -285,9 +285,9 @@ namespace JCSUnity
         private void PutAnimaIdInSequence()
         {
             if (mCurrentAnimId < 0)
-                this.mCurrentAnimId = 0;
+                mCurrentAnimId = 0;
             else if (mCurrentAnimId >= mMaxAnimCount - 1)
-                this.mCurrentAnimId = mMaxAnimCount - 1;
+                mCurrentAnimId = mMaxAnimCount - 1;
         }
 
         /// <summary>
@@ -308,12 +308,12 @@ namespace JCSUnity
                     continue;
 
                 // disable all
-                anim.Active = false;
+                anim.active = false;
                 anim.Stop();
             }
 
             // only active playing target animation.
-            mAnimations[id].Active = true;
+            mAnimations[id].active = true;
         }
 
         /// <summary>
@@ -338,7 +338,7 @@ namespace JCSUnity
             /* During the one shot animation, if there are animation change  */
             if (mOneShotAnim != mCurrentAnimation ||
                 /* Of the animation done playing. */
-                mCurrentAnimation.IsDonePlaying)
+                mCurrentAnimation.isDonePlaying)
             {
                 // switch the animation back to original animation by stack id.
                 DoAnimation(mStackAnimId);

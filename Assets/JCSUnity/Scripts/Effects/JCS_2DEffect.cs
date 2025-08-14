@@ -27,7 +27,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
+        public bool fffect { get { return mEffect; } set { mEffect = value; } }
 
         /* Functions */
 

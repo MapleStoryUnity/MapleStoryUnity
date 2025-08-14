@@ -42,28 +42,28 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Dropdown DropdownLegacy { get { return this.mDropdownLegacy; } set { this.mDropdownLegacy = value; } }
+        public Dropdown DropdownLegacy { get { return mDropdownLegacy; } set { mDropdownLegacy = value; } }
 #if TMP_PRO
-        public TMP_Dropdown DropdownTMP { get { return this.mDropdownTMP; } set { this.mDropdownTMP = value; } }
+        public TMP_Dropdown DropdownTMP { get { return mDropdownTMP; } set { mDropdownTMP = value; } }
 #endif
 
         public int value
         {
             get
             {
-                if (this.mDropdownLegacy)
-                    return this.mDropdownLegacy.value;
+                if (mDropdownLegacy)
+                    return mDropdownLegacy.value;
 
-                return this.mDropdownTMP.value;
+                return mDropdownTMP.value;
             }
 
             set
             {
-                if (this.mDropdownLegacy)
-                    this.mDropdownLegacy.value = value;
+                if (mDropdownLegacy)
+                    mDropdownLegacy.value = value;
 
-                if (this.mDropdownTMP)
-                    this.mDropdownTMP.value = value;
+                if (mDropdownTMP)
+                    mDropdownTMP.value = value;
             }
         }
 
@@ -74,11 +74,11 @@ namespace JCSUnity
         /// </summary>
         public void ClearOptions()
         {
-            if (this.mDropdownLegacy)
-                this.mDropdownLegacy.ClearOptions();
+            if (mDropdownLegacy)
+                mDropdownLegacy.ClearOptions();
 
-            if (this.mDropdownTMP)
-                this.mDropdownTMP.ClearOptions();
+            if (mDropdownTMP)
+                mDropdownTMP.ClearOptions();
         }
     }
 }

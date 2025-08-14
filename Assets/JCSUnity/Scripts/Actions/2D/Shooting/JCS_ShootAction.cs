@@ -208,29 +208,29 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public TrackType GetTrackType() { return this.mTrackType; }
-        public JCS_DetectAreaAction GetDetectAreaAction() { return this.mDetectAreaAction; }
-        public bool OverrideShoot { get { return this.mOverrideShoot; } set { this.mOverrideShoot = value; } }
-        public JCS_Bullet Bullet { get { return this.mBullet; } set { this.mBullet = value; } }
-        public bool AutoShoot { get { return this.mAutoShoot; } set { this.mAutoShoot = value; } }
-        public bool CanShoot { get { return this.mCanShoot; } set { this.mCanShoot = value; } }
-        public float BulletSpeed { get { return this.mBulletSpeed; } set { this.mBulletSpeed = value; } }
-        public Transform SpawnPoint { get { return this.mSpawnPoint; } }
+        public TrackType GetTrackType() { return mTrackType; }
+        public JCS_DetectAreaAction GetDetectAreaAction() { return mDetectAreaAction; }
+        public bool overrideShoot { get { return mOverrideShoot; } set { mOverrideShoot = value; } }
+        public JCS_Bullet bullet { get { return mBullet; } set { mBullet = value; } }
+        public bool autoShoot { get { return mAutoShoot; } set { mAutoShoot = value; } }
+        public bool canShoot { get { return mCanShoot; } set { mCanShoot = value; } }
+        public float bulletSpeed { get { return mBulletSpeed; } set { mBulletSpeed = value; } }
+        public Transform spawnPoint { get { return mSpawnPoint; } }
 
-        public int ShootCount { get { return this.mShootCount; } }
+        public int shootCount { get { return mShootCount; } }
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public KeyCode ShootKeyCode { get { return this.mShootKeyCode; } set { this.mShootKeyCode = value; } }
-        public JCS_MouseButton MouseButton { get { return this.mMouseButton; } set { this.mMouseButton = value; } }
-        public JCS_KeyActionType KeyAct { get { return this.mKeyAct; } set { this.mKeyAct = value; } }
+        public KeyCode shootKeyCode { get { return mShootKeyCode; } set { mShootKeyCode = value; } }
+        public JCS_MouseButton mouseButton { get { return mMouseButton; } set { mMouseButton = value; } }
+        public JCS_KeyActionType keyAct { get { return mKeyAct; } set { mKeyAct = value; } }
 
         /// <summary>
         /// Call back during shooting a bullet.
         /// </summary>
         /// <param name="func"> function to set. </param>
-        public void SetShootCallback(Action func) { this.mShootCallback = func; }
-        public Action GetShootCallback() { return this.mShootCallback; }
+        public void SetShootCallback(Action func) { mShootCallback = func; }
+        public Action GetShootCallback() { return mShootCallback; }
 
         /// <summary>
         /// Function check before shooting the bullet.
@@ -239,30 +239,30 @@ namespace JCSUnity
         /// in order to check the shoot action.
         /// </summary>
         /// <param name="func"> functin to check able to do the shoot action. </param>
-        public void SetCheckAbleToShootFunction(Func<bool> func) { this.mCheckAbleToShoot = func; }
-        public Func<bool> GetCheckAbleToShootFunction() { return this.mCheckAbleToShoot; }
+        public void SetCheckAbleToShootFunction(Func<bool> func) { mCheckAbleToShoot = func; }
+        public Func<bool> GetCheckAbleToShootFunction() { return mCheckAbleToShoot; }
 
         /* Functions */
 
         private void Awake()
         {
-            mRandomMultiSoundAction = this.GetComponent<JCS_SoundPoolAction>();
+            mRandomMultiSoundAction = GetComponent<JCS_SoundPoolAction>();
 
             // assign default spawn point
             if (mSpawnPoint == null)
-                mSpawnPoint = this.transform;
+                mSpawnPoint = transform;
 
             // try to get the ability format it own
             if (mAbilityFormat == null)
-                this.mAbilityFormat = this.GetComponent<JCS_AbilityFormat>();
+                mAbilityFormat = GetComponent<JCS_AbilityFormat>();
 
             // try to get the detect area action it own
             if (mDetectAreaAction == null)
-                this.mDetectAreaAction = this.GetComponent<JCS_DetectAreaAction>();
+                mDetectAreaAction = GetComponent<JCS_DetectAreaAction>();
 
             // try to get the player
             if (mPlayer == null)
-                this.mPlayer = this.GetComponent<JCS_2DSideScrollerPlayer>();
+                mPlayer = GetComponent<JCS_2DSideScrollerPlayer>();
         }
 
         private void Update()
@@ -282,7 +282,7 @@ namespace JCSUnity
         {
             bool direction = true;      // default: left
 
-            if (this.transform.localScale.x < 0)
+            if (transform.localScale.x < 0)
             {
                 // facing right.
                 direction = false;
@@ -321,7 +321,7 @@ namespace JCSUnity
         {
             if (mPlayer != null)
             {
-                if (mPlayer.CharacterState != JCS_2DCharacterState.NORMAL)
+                if (mPlayer.characterState != JCS_2DCharacterState.NORMAL)
                     return null;
             }
 
@@ -344,48 +344,50 @@ namespace JCSUnity
                 tempBulletSpeed = -tempBulletSpeed;
 
             // set bullet speed
-            bullet.MoveSpeed = tempBulletSpeed;
+            bullet.moveSpeed = tempBulletSpeed;
 
             // Do devication Effect
             DeviationEffect(bullet.transform);
 
             if (bullet is JCS_2DBullet)
-                bullet.GetComponent<JCS_3DGoStraightAction>().MoveSpeed = bulletSpeed;
+                bullet.GetComponent<JCS_3DGoStraightAction>().moveSpeed = bulletSpeed;
 
 
             if (mTrackSoot &&
                 target != null)
             {
-                JCS_2DTrackAction ta = bullet.GetComponent<JCS_2DTrackAction>();
+                var ta = bullet.GetComponent<JCS_2DTrackAction>();
+
                 if (ta != null)
                 {
-                    ta.TargetTransform = target;
+                    ta.targetTransform = target;
 
                     // set to center
                     float newIndex = index - (hit / 2.0f);
 
                     // apply effect
-                    ta.Index = newIndex;
+                    ta.index = newIndex;
 
-                    ta.OrderIndex = index;
+                    ta.orderIndex = index;
                 }
             }
 
             if (mAbilityFormat != null)
             {
-                JCS_ApplyDamageTextToLiveObjectAction adta = bullet.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
+                var adta = bullet.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
+
                 if (adta != null)
                 {
                     // set the Ability Format
-                    adta.AbilityFormat = mAbilityFormat;
-                    adta.Hit = hit;
+                    adta.abilityFormat = mAbilityFormat;
+                    adta.hit = hit;
 
                     // if hit equal to 0,
                     // meaning this bullet is in the sequence
                     if (inSequence)
-                        adta.InSequence = true;
+                        adta.inSequence = true;
 
-                    adta.TargetTransform = target;
+                    adta.targetTransform = target;
                 }
             }
 
@@ -425,7 +427,7 @@ namespace JCSUnity
         {
             if (mPlayer != null)
             {
-                if (mPlayer.CharacterState != JCS_2DCharacterState.NORMAL)
+                if (mPlayer.characterState != JCS_2DCharacterState.NORMAL)
                     return null;
             }
 
@@ -450,48 +452,48 @@ namespace JCSUnity
                 tempBulletSpeed = -tempBulletSpeed;
 
             // set bullet speed
-            bullet.MoveSpeed = tempBulletSpeed;
+            bullet.moveSpeed = tempBulletSpeed;
 
             // Do devication Effect
             DeviationEffect(bullet.transform);
 
             if (bullet is JCS_2DBullet)
-                bullet.GetComponent<JCS_3DGoStraightAction>().MoveSpeed = bulletSpeed;
+                bullet.GetComponent<JCS_3DGoStraightAction>().moveSpeed = bulletSpeed;
 
 
-            if (mTrackSoot &&
-                target != null)
+            if (mTrackSoot && target != null)
             {
-                JCS_2DTrackAction ta = bullet.GetComponent<JCS_2DTrackAction>();
+                var ta = bullet.GetComponent<JCS_2DTrackAction>();
+
                 if (ta != null)
                 {
-                    ta.TargetTransform = target;
+                    ta.targetTransform = target;
 
                     // set to center
                     float newIndex = index - (hit / 2.0f);
 
                     // apply effect
-                    ta.Index = newIndex;
+                    ta.index = newIndex;
                 }
             }
 
             if (mAbilityFormat != null)
             {
-                JCS_ApplyDamageTextToLiveObjectAction adta = bullet.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
+                var adta = bullet.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
                 if (adta != null)
                 {
                     // set the Ability Format
-                    adta.AbilityFormat = mAbilityFormat;
-                    adta.Hit = hit;
+                    adta.abilityFormat = mAbilityFormat;
+                    adta.hit = hit;
 
-                    adta.DamageApplying = damages;
+                    adta.damageApplying = damages;
 
                     // if hit equal to 0,
                     // meaning this bullet is in the sequence
                     if (inSequence)
-                        adta.InSequence = true;
+                        adta.inSequence = true;
 
-                    adta.TargetTransform = target;
+                    adta.targetTransform = target;
                 }
             }
 
@@ -526,11 +528,11 @@ namespace JCSUnity
         /// </summary>
         public void ShootWithShootCount()
         {
-            ShootWithShootCount(this.transform.position, this.transform.eulerAngles);
+            ShootWithShootCount(transform.position, transform.eulerAngles);
         }
         public void ShootWithShootCount(Vector3 pos, Vector3 angle)
         {
-            for (int count = 0; count < ShootCount; ++count)
+            for (int count = 0; count < shootCount; ++count)
             {
                 JCS_Bullet bullet = Shoot();
 
@@ -550,7 +552,7 @@ namespace JCSUnity
         /// </summary>
         private void AutoShootAction()
         {
-            if (!CanShoot)
+            if (!mCanShoot)
                 return;
 
             mDelayTimer += JCS_Time.ItTime(mTimeType);
@@ -693,7 +695,7 @@ namespace JCSUnity
         /// <param name="bullet"> bullet we need to set attacker info with </param>
         private void SetAttackerInfo(JCS_Bullet bullet)
         {
-            SetAttackerInfo(bullet, this.transform);
+            SetAttackerInfo(bullet, transform);
         }
 
         /// <summary>
@@ -708,7 +710,7 @@ namespace JCSUnity
         /// <param name="trans"> transform which is the attacker, usually itself. </param>
         private void SetAttackerInfo(JCS_Bullet bullet, Transform trans)
         {
-            bullet.AttackerInfo.Attacker = trans;
+            bullet.attackerInfo.attacker = trans;
         }
     }
 }

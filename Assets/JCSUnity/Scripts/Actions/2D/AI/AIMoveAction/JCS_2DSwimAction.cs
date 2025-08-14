@@ -22,12 +22,12 @@ namespace JCSUnity
 
         private void Awake()
         {
-
+            // ..
         }
 
         private void Update()
         {
-
+            // ..
         }
     }
 }

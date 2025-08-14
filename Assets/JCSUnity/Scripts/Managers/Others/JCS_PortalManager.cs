@@ -26,7 +26,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_2DPortal[] Portals { get { return this.mPortals; } }
+        public JCS_2DPortal[] portals { get { return mPortals; } }
 
         /* Functions */
 
@@ -59,7 +59,7 @@ namespace JCSUnity
 
             foreach (JCS_2DPortal portal in mPortals)
             {
-                if (portal.PortalLabel == ps.SCENE_PORTAL_LABEL)
+                if (portal.portalLabel == ps.SCENE_PORTAL_LABEL)
                 {
                     // get the player
                     JCS_Player player = JCS_PlayerManager.FirstInstance().GetActivePlayer();

@@ -59,7 +59,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_GUIType GUIType { get { return this.mGUIType; } set { this.mGUIType = value; } }
+        public JCS_GUIType guiType { get { return this.mGUIType; } set { this.mGUIType = value; } }
         public InputField inputField { get { return this.mInputField; } }
         public Slider slider { get { return this.mSlider; } }
         public Toggle toggle { get { return this.mToggle; } }

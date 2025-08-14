@@ -65,16 +65,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
-        public bool EffectLocal { get { return this.mEffectLocal; } set { this.mEffectLocal = value; } }
-        public float Amplitude { get { return this.mAmplitude; } set { this.mAmplitude = value; } }
-        public float Frequency { get { return this.mFrequency; } set { this.mFrequency = value; } }
-        public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public JCS_TransformType TransformType { get { return this.mTransformType; } set { this.mTransformType = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool effect { get { return mEffect; } set { mEffect = value; } }
+        public bool effectLocal { get { return mEffectLocal; } set { mEffectLocal = value; } }
+        public float amplitude { get { return mAmplitude; } set { mAmplitude = value; } }
+        public float frequency { get { return mFrequency; } set { mFrequency = value; } }
+        public JCS_Axis axis { get { return mAxis; } set { mAxis = value; } }
+        public JCS_TransformType transformType { get { return mTransformType; } set { mTransformType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public float RandomizeAmplitudeAtStart { get { return this.mRandomizeAmplitudeAtStart; } set { this.mRandomizeAmplitudeAtStart = value; } }
-        public float RandomizeFrequencyAtStart { get { return this.mRandomizeFrequencyAtStart; } set { this.mRandomizeFrequencyAtStart = value; } }
+        public float randomizeAmplitudeAtStart { get { return mRandomizeAmplitudeAtStart; } set { mRandomizeAmplitudeAtStart = value; } }
+        public float randomizeFrequencyAtStart { get { return mRandomizeFrequencyAtStart; } set { mRandomizeFrequencyAtStart = value; } }
 
         /* Functions */
 
@@ -137,22 +137,22 @@ namespace JCSUnity
                 case JCS_TransformType.POSITION:
                     {
                         if (!local)
-                            val = Position;
+                            val = position;
                         else
-                            val = LocalPosition;
+                            val = localPosition;
                     }
                     break;
                 case JCS_TransformType.ROTATION:
                     {
                         if (!local)
-                            val = EulerAngles;
+                            val = eulerAngles;
                         else
-                            val = LocalEulerAngles;
+                            val = localEulerAngles;
                     }
                     break;
                 case JCS_TransformType.SCALE:
                     {
-                        val = LocalScale;
+                        val = localScale;
                     }
                     break;
                 /* RectTransform */
@@ -198,22 +198,22 @@ namespace JCSUnity
                 case JCS_TransformType.POSITION:
                     {
                         if (!local)
-                            this.Position = newVal;
+                            position = newVal;
                         else
-                            this.LocalPosition = newVal;
+                            localPosition = newVal;
                     }
                     break;
                 case JCS_TransformType.ROTATION:
                     {
                         if (!local)
-                            this.EulerAngles = newVal;
+                            eulerAngles = newVal;
                         else
-                            this.LocalEulerAngles = newVal;
+                            localEulerAngles = newVal;
                     }
                     break;
                 case JCS_TransformType.SCALE:
                     {
-                        this.LocalScale = newVal;
+                        localScale = newVal;
                     }
                     break;
                 /* RectTransform */

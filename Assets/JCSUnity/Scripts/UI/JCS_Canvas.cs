@@ -137,22 +137,33 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public RectTransform AppRect { get { return this.mAppRect; } }
+        public RectTransform appRect { get { return this.mAppRect; } }
         public Canvas canvas { get { return this.mCanvas; } }
         public CanvasGroup canvasGroup { get { return this.mCanvasGroup; } }
-        public JCS_ResizeUI ResizeUI { get { return this.mResizeUI; } }
+        public JCS_ResizeUI resizeUI { get { return this.mResizeUI; } }
 
-        public bool DisplayOnAwake { get { return this.mDisplayOnAwake; } }
-        public bool MainCanvas { get { return this.mMainCanvas; } }
+        public bool displayOnAwake { get { return this.mDisplayOnAwake; } }
+        public bool mainCanvas { get { return this.mMainCanvas; } }
         public ShowMethod showMethod { get { return this.mShowMethod; } set { this.mShowMethod = value; } }
 
-        public float FadeFriction { get { return this.mFadeFriction; } set { this.mFadeFriction = value; } }
-        public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
-        public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
+        public float fadeFriction { get { return this.mFadeFriction; } set { this.mFadeFriction = value; } }
+        public float fadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
+        public float fadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
 
-        public JCS_TimeType TimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public AudioClip SoundOnShow { get { return this.mSoundOnShow; } set { this.mSoundOnShow = value; } }
-        public AudioClip SoundOnHide { get { return this.mSoundOnHide; } set { this.mSoundOnHide = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public AudioClip soundOnShow { get { return this.mSoundOnShow; } set { this.mSoundOnShow = value; } }
+        public AudioClip soundOnHide { get { return this.mSoundOnHide; } set { this.mSoundOnHide = value; } }
+
+        public static float SCALE_FACTOR
+        {
+            get
+            {
+                if (main && main.canvas)
+                    return main.canvas.scaleFactor;
+
+                return 1.0f;
+            }
+        }
 
         /* Functions */
 
@@ -199,7 +210,7 @@ namespace JCSUnity
                     return;
 
                 // get the screen width and height
-                Vector2 actualRect = this.AppRect.sizeDelta;
+                Vector2 actualRect = appRect.sizeDelta;
 
                 // set it to the right resolution
                 mResizeUI.GetResizeRect().sizeDelta = actualRect;

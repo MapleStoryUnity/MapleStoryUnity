@@ -90,17 +90,17 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool ManuallySetSize { get { return this.mManuallySetSize; } set { this.mManuallySetSize = value; } }
-        public bool MustBeFullScreen { get { return this.mMustBeFullScreen; } set { this.mMustBeFullScreen = value; } }
-        public int FPS { get { return this.mFPS; } set { this.mFPS = value; } }
-        public float ResumeTime { get { return this.mResumeTime; } set { this.mResumeTime = value; } }
-        public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool manuallySetSize { get { return this.mManuallySetSize; } set { this.mManuallySetSize = value; } }
+        public bool mustBeFullScreen { get { return this.mMustBeFullScreen; } set { this.mMustBeFullScreen = value; } }
+        public int fps { get { return this.mFPS; } set { this.mFPS = value; } }
+        public float resumeTime { get { return this.mResumeTime; } set { this.mResumeTime = value; } }
+        public float delayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 #if (UNITY_STANDALONE || UNITY_EDITOR)
-        public KeyCode TakePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
+        public KeyCode takePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
 #endif
         public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
-        public AudioClip TakePhotoSound { get { return this.mTakePhotoSound; } set { this.mTakePhotoSound = value; } }
+        public AudioClip takePhotoSound { get { return this.mTakePhotoSound; } set { this.mTakePhotoSound = value; } }
 
         /* Functions */
 
@@ -454,13 +454,13 @@ namespace JCSUnity
 
             float scaleY = mWebCamTexture.videoVerticallyMirrored ? -1f : 1f;
             {
-                Vector3 newScale = this.LocalScale;
+                Vector3 newScale = this.localScale;
                 newScale.y *= scaleY;
-                this.LocalScale = newScale;
+                this.localScale = newScale;
             }
 
             int orient = -this.mWebCamTexture.videoRotationAngle;
-            this.LocalEulerAngles = new Vector3(0.0f, 0.0f, orient);
+            this.localEulerAngles = new Vector3(0.0f, 0.0f, orient);
         }
     }
 }

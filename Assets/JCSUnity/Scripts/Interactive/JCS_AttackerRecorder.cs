@@ -32,8 +32,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform LastAttacker { get { return this.mLastAttacker; } set { this.mLastAttacker = value; } }
-        public JCS_Vec<Transform> GetAttackers() { return this.mAttackers; }
+        public Transform lastAttacker { get { return mLastAttacker; } set { mLastAttacker = value; } }
+        public JCS_Vec<Transform> GetAttackers() { return mAttackers; }
 
         /* Functions */
 

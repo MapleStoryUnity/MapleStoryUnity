@@ -25,10 +25,10 @@ namespace JCSUnity
         public void SetAudioClipAndPlayOneShot(AudioClip clip)
         {
             if (mSoundPlayer == null)
-                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+                mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
-            this.mSoundPlayer.audioSource.clip = clip;
-            this.mSoundPlayer.PlayOneShot(clip);
+            mSoundPlayer.audioSource.clip = clip;
+            mSoundPlayer.PlayOneShot(clip);
         }
 
         /* Functions */
@@ -38,7 +38,7 @@ namespace JCSUnity
             if (mSoundPlayer.audioSource.isPlaying)
                 return;
 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

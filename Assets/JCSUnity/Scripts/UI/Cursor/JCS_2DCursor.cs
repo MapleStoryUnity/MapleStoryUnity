@@ -103,8 +103,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
-        public Vector3 CursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
+        public JCS_CursorCustomizeType cursorCustomizeType { get { return this.mCursorCustomizeType; } }
+        public Vector3 cursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
 
         /* Functions */
 
@@ -112,23 +112,23 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
+            m2DAnimator = GetComponent<JCS_2DAnimator>();
 
-            m2DAnimator.Animations.Add(mNormalSelect);
-            m2DAnimator.Animations.Add(mHelpSelect);
-            m2DAnimator.Animations.Add(mWorkingInBackground);
-            m2DAnimator.Animations.Add(mBusy);
-            m2DAnimator.Animations.Add(mPrecisionSelect);
-            m2DAnimator.Animations.Add(mTextSelect);
-            m2DAnimator.Animations.Add(mHandwriting);
-            m2DAnimator.Animations.Add(mUnavaliable);
-            m2DAnimator.Animations.Add(mVerticalResize);
-            m2DAnimator.Animations.Add(mHorizontalResize);
-            m2DAnimator.Animations.Add(mDiagonalResize1);
-            m2DAnimator.Animations.Add(mDiagonalResize2);
-            m2DAnimator.Animations.Add(mMove);
-            m2DAnimator.Animations.Add(mAlternateSelect);
-            m2DAnimator.Animations.Add(mLinkSelect);
+            m2DAnimator.animations.Add(mNormalSelect);
+            m2DAnimator.animations.Add(mHelpSelect);
+            m2DAnimator.animations.Add(mWorkingInBackground);
+            m2DAnimator.animations.Add(mBusy);
+            m2DAnimator.animations.Add(mPrecisionSelect);
+            m2DAnimator.animations.Add(mTextSelect);
+            m2DAnimator.animations.Add(mHandwriting);
+            m2DAnimator.animations.Add(mUnavaliable);
+            m2DAnimator.animations.Add(mVerticalResize);
+            m2DAnimator.animations.Add(mHorizontalResize);
+            m2DAnimator.animations.Add(mDiagonalResize1);
+            m2DAnimator.animations.Add(mDiagonalResize2);
+            m2DAnimator.animations.Add(mMove);
+            m2DAnimator.animations.Add(mAlternateSelect);
+            m2DAnimator.animations.Add(mLinkSelect);
         }
 
         private void LateUpdate()

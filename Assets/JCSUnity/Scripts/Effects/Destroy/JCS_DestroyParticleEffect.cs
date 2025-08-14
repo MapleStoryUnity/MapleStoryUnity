@@ -96,30 +96,30 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
 
         /* Setter & Getter */
 
-        public bool ActiveWhatever { get { return this.mActiveWhatever; } set { this.mActiveWhatever = value; } }
-        public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
-        public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
+        public bool activeWhatever { get { return mActiveWhatever; } set { mActiveWhatever = value; } }
+        public bool activeWithHitList { get { return mActiveWithHitList; } set { mActiveWithHitList = value; } }
+        public bool activeWithDestroyTime { get { return mActiveWithDestroyTime; } set { mActiveWithDestroyTime = value; } }
 
-        public bool DestroyByTime { get { return this.mDestroyByTime; } set { this.mDestroyByTime = value; } }
-        public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
+        public bool destroyByTime { get { return mDestroyByTime; } set { mDestroyByTime = value; } }
+        public float destroyTime { get { return mDestroyTime; } set { mDestroyTime = value; } }
 
-        public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
-        public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
-        public bool SameScale { get { return this.mSameScale; } set { this.mSameScale = value; } }
+        public bool samePosition { get { return mSamePosition; } set { mSamePosition = value; } }
+        public bool sameRotation { get { return mSameRotation; } set { mSameRotation = value; } }
+        public bool sameScale { get { return mSameScale; } set { mSameScale = value; } }
 
-        public bool RandPos { get { return this.mRandPos; } set { this.mRandPos = value; } }
-        public bool RandRot { get { return this.mRandRot; } set { this.mRandRot = value; } }
-        public bool RandScale { get { return this.mRandScale; } set { this.mRandScale = value; } }
-        public float RandPosRange { get { return this.mRandPosRange; } set { this.mRandPosRange = value; } }
-        public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
-        public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
+        public bool randPos { get { return mRandPos; } set { mRandPos = value; } }
+        public bool randRot { get { return mRandRot; } set { mRandRot = value; } }
+        public bool randScale { get { return mRandScale; } set { mRandScale = value; } }
+        public float randPosRange { get { return mRandPosRange; } set { mRandPosRange = value; } }
+        public float randRotRange { get { return mRandRotRange; } set { mRandRotRange = value; } }
+        public float randScaleRange { get { return mRandScaleRange; } set { mRandScaleRange = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mParticleSystem = this.GetComponent<JCS_ParticleSystem>();
-            this.mHitList = this.GetComponent<JCS_HitListEvent>();
+            mParticleSystem = GetComponent<JCS_ParticleSystem>();
+            mHitList = GetComponent<JCS_HitListEvent>();
         }
 
         private void OnDestroy()
@@ -146,7 +146,7 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
                 // if checking for hit list
                 if (mActiveWithHitList)
                 {
-                    if (mHitList.IsHit)
+                    if (mHitList.isHit)
                         onTrigger = true;
                 }
 
@@ -155,7 +155,7 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
                 {
                     if (mDestroyObjectWithTime != null)
                     {
-                        if (mDestroyObjectWithTime.TimesUp)
+                        if (mDestroyObjectWithTime.timesUp)
                             onTrigger = true;
                     }
                     else
@@ -177,11 +177,11 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
             var ps = gm.AddComponent<JCS_ParticleSystem>();
 
             if (mSamePosition)
-                ps.transform.position = this.transform.position;
+                ps.transform.position = transform.position;
             if (mSameRotation)
-                ps.transform.rotation = this.transform.rotation;
+                ps.transform.rotation = transform.rotation;
             if (mSameScale)
-                ps.transform.localScale = this.transform.localScale;
+                ps.transform.localScale = transform.localScale;
 
             // Random Effect
             if (mRandPos)
@@ -193,37 +193,37 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
 
             // copy and paste component to new one.
             {
-                ps.Particle = mParticleSystem.Particle;
-                ps.NumOfParticle = mParticleSystem.NumOfParticle;
+                ps.particle = mParticleSystem.particle;
+                ps.numOfParticle = mParticleSystem.numOfParticle;
 
-                ps.Active = mParticleSystem.Active;
-                ps.ActiveThread = mParticleSystem.ActiveThread;
-                ps.OrderLayer = mParticleSystem.OrderLayer;
-                ps.Density = mParticleSystem.Density;
-                ps.WindSpeed = mParticleSystem.WindSpeed;
+                ps.active = mParticleSystem.active;
+                ps.activeThread = mParticleSystem.activeThread;
+                ps.orderLayer = mParticleSystem.orderLayer;
+                ps.density = mParticleSystem.density;
+                ps.windSpeed = mParticleSystem.windSpeed;
 
-                ps.AlwaysTheSameScale = mParticleSystem.AlwaysTheSameScale;
+                ps.alwaysTheSameScale = mParticleSystem.alwaysTheSameScale;
 
-                ps.FreezeX = mParticleSystem.FreezeX;
-                ps.FreezeY = mParticleSystem.FreezeY;
-                ps.FreezeZ = mParticleSystem.FreezeZ;
+                ps.freezeX = mParticleSystem.freezeX;
+                ps.freezeY = mParticleSystem.freezeY;
+                ps.freezeZ = mParticleSystem.freezeZ;
 
-                ps.RandPosX = mParticleSystem.RandPosX;
-                ps.RandPosY = mParticleSystem.RandPosY;
-                ps.RandPosZ = mParticleSystem.RandPosZ;
+                ps.randPosX = mParticleSystem.randPosX;
+                ps.randPosY = mParticleSystem.randPosY;
+                ps.randPosZ = mParticleSystem.randPosZ;
 
-                ps.RandAngleX = mParticleSystem.RandAngleX;
-                ps.RandAngleY = mParticleSystem.RandAngleY;
-                ps.RandAngleZ = mParticleSystem.RandAngleZ;
+                ps.randAngleX = mParticleSystem.randAngleX;
+                ps.randAngleY = mParticleSystem.randAngleY;
+                ps.randAngleZ = mParticleSystem.randAngleZ;
 
-                ps.RandScaleX = mParticleSystem.RandScaleX;
-                ps.RandScaleY = mParticleSystem.RandScaleY;
-                ps.RandScaleZ = mParticleSystem.RandScaleZ;
+                ps.randScaleX = mParticleSystem.randScaleX;
+                ps.randScaleY = mParticleSystem.randScaleY;
+                ps.randScaleZ = mParticleSystem.randScaleZ;
 
-                ps.DoShotImmediately = mParticleSystem.DoShotImmediately;
+                ps.doShotImmediately = mParticleSystem.doShotImmediately;
 
-                ps.SetChild = mParticleSystem.SetChild;
-                ps.SetToSamePositionWhenActive = mParticleSystem.SetToSamePositionWhenActive;
+                ps.setChild = mParticleSystem.setChild;
+                ps.setToSamePositionWhenActive = mParticleSystem.setToSamePositionWhenActive;
             }
 
             // spawn the particle immediately.
@@ -236,7 +236,7 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
             if (mDestroyByTime)
             {
                 var dowt = gm.AddComponent<JCS_DestroyObjectWithTime>();
-                dowt.DestroyTime = mDestroyTime;
+                dowt.destroyTime = mDestroyTime;
             }
             else
             {

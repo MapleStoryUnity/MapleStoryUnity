@@ -93,26 +93,26 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int Hit { get { return this.mHit; } set { this.mHit = value; } }
-        public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
-        public bool InSequenceEffect { get { return this.mInSequenceEffect; } set { this.mInSequenceEffect = value; } }
-        public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public void SetShootCallback(Action func) { this.mShootAction.SetShootCallback(func); }
-        public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } set { this.mAbilityFormat = value; } }
-        public float TimeBeforeShoot { get { return this.mTimeBeforeShoot; } set { this.mTimeBeforeShoot = value; } }
-        public float TimeDelayAfterShoot { get { return this.mTimeDelayAfterShoot; } set { this.mTimeDelayAfterShoot = value; } }
-        public bool ShootGapEffect { get { return this.mShootGapEffect; } set { this.mShootGapEffect = value; } }
-        public float ShootGap { get { return this.mShootGap; } set { this.mShootGap = value; } }
+        public int hit { get { return mHit; } set { mHit = value; } }
+        public float timePerShoot { get { return mTimePerShoot; } set { mTimePerShoot = value; } }
+        public bool inSequenceEffect { get { return mInSequenceEffect; } set { mInSequenceEffect = value; } }
+        public bool sequenceStay { get { return mSequenceStay; } set { mSequenceStay = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public void SetShootCallback(Action func) { mShootAction.SetShootCallback(func); }
+        public JCS_AbilityFormat abilityFormat { get { return mAbilityFormat; } set { mAbilityFormat = value; } }
+        public float timeBeforeShoot { get { return mTimeBeforeShoot; } set { mTimeBeforeShoot = value; } }
+        public float timeDelayAfterShoot { get { return mTimeDelayAfterShoot; } set { mTimeDelayAfterShoot = value; } }
+        public bool shootGapEffect { get { return mShootGapEffect; } set { mShootGapEffect = value; } }
+        public float shootGap { get { return mShootGap; } set { mShootGap = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mShootAction = this.GetComponent<JCS_ShootAction>();
+            mShootAction = GetComponent<JCS_ShootAction>();
 
             // override the shoot effect in the base one.
-            mShootAction.OverrideShoot = true;
+            mShootAction.overrideShoot = true;
 
             mThread = new JCS_Vec<int>();
             mTimers = new JCS_Vec<float>();
@@ -124,7 +124,7 @@ namespace JCSUnity
 
             // try to get the ability format.
             if (mAbilityFormat == null)
-                mAbilityFormat = this.GetComponent<JCS_AbilityFormat>();
+                mAbilityFormat = GetComponent<JCS_AbilityFormat>();
         }
 
         private void Update()
@@ -140,7 +140,7 @@ namespace JCSUnity
         /// </summary>
         public void Shoots(int hit, Vector3 pos)
         {
-            if (mShootAction.Bullet == null)
+            if (mShootAction.bullet == null)
             {
                 Debug.Log("There is no bullet assign to `JCS_ShootAction`, so we can't shoot a sequence");
                 return;
@@ -183,8 +183,8 @@ namespace JCSUnity
                     int defenseVal = 0;
 
                     // get the targeting defense value
-                    if (liveObj.AbilityFormat != null)
-                        defenseVal = liveObj.AbilityFormat.GetDefenseValue();
+                    if (liveObj.abilityFormat != null)
+                        defenseVal = liveObj.abilityFormat.GetDefenseValue();
 
                     // calculate the damage we are going to apply to
                     // the target object.
@@ -202,7 +202,7 @@ namespace JCSUnity
                     liveObj.ReceivePreCalDamage(mDamageApplying);
 
                     // start targeting object to hit
-                    liveObj.BeenTarget = true;
+                    liveObj.beenTarget = true;
                 }
             }
 
@@ -217,7 +217,7 @@ namespace JCSUnity
 
 
             bool isLeft = true;
-            if (this.transform.localScale.x < 0)
+            if (transform.localScale.x < 0)
                 isLeft = false;
 
             // shoot direction
@@ -260,7 +260,7 @@ namespace JCSUnity
                     return;
                 }
 
-                Vector3 spawnPos = this.transform.position;
+                Vector3 spawnPos = transform.position;
 
                 // if stay in the same position
                 if (mSequenceStay)
@@ -336,8 +336,8 @@ namespace JCSUnity
         {
             if (!mAction)
             {
-                if (JCS_Input.GetKey(mShootAction.ShootKeyCode) ||
-                    JCS_Input.GetMouseByAction(mShootAction.KeyAct, mShootAction.MouseButton))
+                if (JCS_Input.GetKey(mShootAction.shootKeyCode) ||
+                    JCS_Input.GetMouseByAction(mShootAction.keyAct, mShootAction.mouseButton))
                 {
 
                     // find the target
@@ -387,7 +387,7 @@ namespace JCSUnity
                     }
 
                     // Do shooting effect
-                    Shoots(mHit, this.transform.position);
+                    Shoots(mHit, transform.position);
 
                     // start after delay timer.
                     mAfterDelay = true;

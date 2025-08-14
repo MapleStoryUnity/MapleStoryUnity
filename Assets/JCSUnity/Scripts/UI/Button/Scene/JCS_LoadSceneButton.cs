@@ -53,11 +53,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
-        public bool ReloadScene { get { return this.mReloadScene; } set { this.mReloadScene = value; } }
-        public Color ScreenColor { get { return this.mScreenColor; } set { this.mScreenColor = value; } }
-        public bool KeppBGM { get { return this.mKeppBGM; } set { this.mKeppBGM = value; } }
-        public LoadSceneMode Mode { get { return this.mMode; } set { this.mMode = value; } }
+        public string sceneName { get { return mSceneName; } set { mSceneName = value; } }
+        public bool reloadScene { get { return mReloadScene; } set { mReloadScene = value; } }
+        public Color screenColor { get { return mScreenColor; } set { mScreenColor = value; } }
+        public bool keppBGM { get { return mKeppBGM; } set { mKeppBGM = value; } }
+        public LoadSceneMode mode { get { return mMode; } set { mMode = value; } }
 
         /* Functions */
 
@@ -68,7 +68,7 @@ namespace JCSUnity
             {
                 // if the button and the platform are not the same, 
                 // dont load the scene and do nothing.
-                if (mPlatformType != JCS_AppManager.FirstInstance().PlatformType)
+                if (mPlatformType != JCS_AppManager.FirstInstance().platformType)
                     return;
             }
 

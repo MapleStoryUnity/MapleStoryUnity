@@ -51,7 +51,7 @@ namespace JCSUnity
                     continue;
 
                 // find the order layer with the index passed in!
-                if (ol.OrderLayer == orderLayerIndex)
+                if (ol.orderLayer == orderLayerIndex)
                     return ol;
             }
 

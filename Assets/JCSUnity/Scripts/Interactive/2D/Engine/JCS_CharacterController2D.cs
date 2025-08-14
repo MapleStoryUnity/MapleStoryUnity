@@ -93,7 +93,6 @@ namespace JCSUnity
         [ReadOnly]
         private List<Collider2D> mLeftColliders = null;
 
-        // 
         private Vector3 mCurrentFrame = Vector3.zero;
 
         [Separator("Runtime Variables Variables (JCS_CharacterController2D)")]
@@ -135,7 +134,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mFreezeY = false;
 
-
         [Header("- Optional")]
 
         [Tooltip("Zero out the rotation when collider is trigger.")]
@@ -144,34 +142,34 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Vector2 BoxInfo { get { return this.mBoxInfo; } }
-        public Vector3 Velocity { get { return this.mVelocity; } }
-        public float VelX { get { return this.mVelocity.x; } set { this.mVelocity.x = value; } }
-        public float VelY { get { return this.mVelocity.y; } set { this.mVelocity.y = value; } }
-        public float VelZ { get { return this.mVelocity.z; } set { this.mVelocity.z = value; } }
+        public Vector2 boxInfo { get { return mBoxInfo; } }
+        public Vector3 velocity { get { return mVelocity; } }
+        public float velX { get { return mVelocity.x; } set { mVelocity.x = value; } }
+        public float velY { get { return mVelocity.y; } set { mVelocity.y = value; } }
+        public float velZ { get { return mVelocity.z; } set { mVelocity.z = value; } }
 
-        public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
-        public BoxCollider2D GetBoxCollider2D() { return this.mBoxCollider2d; }
-        public Rigidbody2D GetRigidbody2D() { return this.mRigidbody2d; }
+        public SpriteRenderer GetSpriteRenderer() { return mSpriteRenderer; }
+        public BoxCollider2D GetBoxCollider2D() { return mBoxCollider2d; }
+        public Rigidbody2D GetRigidbody2D() { return mRigidbody2d; }
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public bool HitTop { get { return this.mHitTop; } }
-        public bool HitBottom { get { return this.mHitBottom; } }
-        public bool HitLeft { get { return this.mHitLeft; } }
-        public bool HitRight { get { return this.mHitRight; } }
+        public bool hitTop { get { return mHitTop; } }
+        public bool hitBottom { get { return mHitBottom; } }
+        public bool hitLeft { get { return mHitLeft; } }
+        public bool hitRight { get { return mHitRight; } }
 
-        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
-        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
+        public bool freezeX { get { return mFreezeX; } set { mFreezeX = value; } }
+        public bool freezeY { get { return mFreezeY; } set { mFreezeY = value; } }
 
 
         /* Functions */
 
         private void Awake()
         {
-            mBoxCollider2d = this.GetComponent<BoxCollider2D>();
-            mRigidbody2d = this.GetComponent<Rigidbody2D>();
-            mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+            mBoxCollider2d = GetComponent<BoxCollider2D>();
+            mRigidbody2d = GetComponent<Rigidbody2D>();
+            mSpriteRenderer = GetComponent<SpriteRenderer>();
 
             // get the box info.
             mBoxInfo = JCS_Physics.GetColliderInfo(mBoxCollider2d);
@@ -199,10 +197,10 @@ namespace JCSUnity
         {
             mLastFramePosition = this.transform.position;
 
-            if (mHitLeft && VelX < 0)
-                VelX = 0;
-            else if (mHitRight && VelX > 0)
-                VelX = 0;
+            if (mHitLeft && velX < 0)
+                velX = 0;
+            else if (mHitRight && velX > 0)
+                velX = 0;
 
 #if UNITY_EDITOR
             // draw the collider each frame.
@@ -638,11 +636,11 @@ namespace JCSUnity
 
             // Test..
             if (JCS_Input.GetKey(mRightKey))
-                VelX = speed;
+                velX = speed;
             else if (JCS_Input.GetKey(mLeftKey))
-                VelX = -speed;
+                velX = -speed;
             else
-                VelX = 0;
+                velX = 0;
 
             if (JCS_Input.GetKey(mJumpKey))
                 Jump();

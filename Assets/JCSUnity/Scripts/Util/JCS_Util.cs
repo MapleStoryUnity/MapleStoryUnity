@@ -518,7 +518,7 @@ namespace JCSUnity
                 childs.Add(rect);
 
                 // Remove from parent.
-                child.SetParent(canvas.AppRect);
+                child.SetParent(canvas.appRect);
             }
 
             return childs;
@@ -645,7 +645,7 @@ namespace JCSUnity
             var canvas = JCS_Canvas.GuessCanvas();
 
             var parent = trans.parent;
-            trans.SetParent(canvas.AppRect);
+            trans.SetParent(canvas.appRect);
 
             callback?.Invoke(parent);
 
@@ -735,9 +735,9 @@ namespace JCSUnity
         {
             GameObject gm = SpawnAnimateObject(anim, orderLayer);
 
-            JCS_DestroyAnimEndEvent daee = gm.AddComponent<JCS_DestroyAnimEndEvent>();
+            var daee = gm.AddComponent<JCS_DestroyAnimEndEvent>();
 
-            daee.LoopTimes = loopTimes;
+            daee.loopTimes = loopTimes;
 
             return gm;
         }
@@ -1224,7 +1224,7 @@ namespace JCSUnity
 
             // if both player does not need to add in to list.
             // or if both enemy does not need to add in to list.
-            return (liveObj1.IsPlayer == liveObj2.IsPlayer);
+            return (liveObj1.isPlayer == liveObj2.isPlayer);
         }
 
         #endregion

@@ -41,23 +41,23 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool IsFacingUp { get { return this.mIsFacingUp; } }
-        public bool IsFacingRight { get { return this.mIsFacingRight; } }
-        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
-        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
+        public bool isFacingUp { get { return mIsFacingUp; } }
+        public bool isFacingRight { get { return mIsFacingRight; } }
+        public bool freezeX { get { return mFreezeX; } set { mFreezeX = value; } }
+        public bool freezeY { get { return mFreezeY; } set { mFreezeY = value; } }
 
         /* Functions */
 
         private void LateUpdate()
         {
-            Vector3 currentPos = this.transform.position;
+            Vector3 currentPos = transform.position;
 
             // if the position are the same, meaning the object is idle. 
             // (have not been move)
             if (currentPos == mLastPosition)
                 return;
 
-            Vector3 newScale = this.transform.localScale;
+            Vector3 newScale = transform.localScale;
 
             if (!mFreezeX)
             {
@@ -78,7 +78,7 @@ namespace JCSUnity
                         newScale.x = JCS_Mathf.ToNegative(newScale.x);
                 }
 
-                if (JCS_Util.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                if (JCS_Util.WithInRange(90, 270, transform.localEulerAngles.z))
                     newScale.x = JCS_Mathf.ToReverse(newScale.x);
             }
 
@@ -102,7 +102,7 @@ namespace JCSUnity
                 }
 
                 // TODO(JenChieh): this have not test yet!!!
-                if (JCS_Util.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                if (JCS_Util.WithInRange(90, 270, transform.localEulerAngles.z))
                     newScale.y = JCS_Mathf.ToReverse(newScale.y);
             }
 
@@ -111,7 +111,7 @@ namespace JCSUnity
             mLastPosition = currentPos;
 
             // apply new scale
-            this.transform.localScale = newScale;
+            transform.localScale = newScale;
         }
     }
 }

@@ -121,14 +121,14 @@ namespace JCSUnity
 
             mRenderLogText.push(logText);
 
-            Vector3 newPos = logText.SimpleTrackAction.TargetPosition;
+            Vector3 newPos = logText.simpleTrackAction.targetPosition;
 
             // set back to position.
             // NOTE(jenchieh): 不太懂這邊的原理...
             newPos.y = 0.0f;
 
-            logText.SimpleTrackAction.TargetPosition = newPos;
-            logText.SimpleTrackAction.LocalPosition = newPos;
+            logText.simpleTrackAction.targetPosition = newPos;
+            logText.simpleTrackAction.localPosition = newPos;
 
             // this will set the log text active, 
             // so it wont be reuse until is fade out.
@@ -154,7 +154,7 @@ namespace JCSUnity
             {
                 JCS_LogText logText = mRenderLogText.at(index);
 
-                logText.SimpleTrackAction.DeltaTargetPosY(mLogSpacing * spaces);
+                logText.simpleTrackAction.DeltaTargetPosY(mLogSpacing * spaces);
             }
         }
     }

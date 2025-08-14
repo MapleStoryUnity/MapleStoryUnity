@@ -86,26 +86,26 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool DeactiveAtAwake { get { return this.mDeactiveAtAwake; } set { this.mDeactiveAtAwake = value; } }
-        public bool SelfAsButton { get { return this.mSelfAsButton; } set { this.mSelfAsButton = value; } }
-        public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
-        public UnityEvent SelectedEvent { get { return this.mSelectedEvent; } }
-        public bool Active
+        public bool deactiveAtAwake { get { return mDeactiveAtAwake; } set { mDeactiveAtAwake = value; } }
+        public bool selfAsButton { get { return mSelfAsButton; } set { mSelfAsButton = value; } }
+        public JCS_Button button { get { return mButton; } set { mButton = value; } }
+        public UnityEvent selectedEvent { get { return mSelectedEvent; } }
+        public bool active
         {
-            get { return this.mActive; }
+            get { return mActive; }
             set
             {
-                this.mActive = value;
+                mActive = value;
                 DoActive();
             }
         }
-        public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
-        public bool Skip { get { return this.mSkip; } }
+        public JCS_ButtonSelectionGroup buttonSelectionGroup { get { return mButtonSelectionGroup; } set { mButtonSelectionGroup = value; } }
+        public bool skip { get { return mSkip; } }
 
-        public JCS_ButtonSelection UpSelection { get { return this.mUpSelection; } set { this.mUpSelection = value; } }
-        public JCS_ButtonSelection DownSelection { get { return this.mDownSelection; } set { this.mDownSelection = value; } }
-        public JCS_ButtonSelection RightSelection { get { return this.mRightSelection; } set { this.mRightSelection = value; } }
-        public JCS_ButtonSelection LeftSelection { get { return this.mLeftSelection; } set { this.mLeftSelection = value; } }
+        public JCS_ButtonSelection upSelection { get { return mUpSelection; } set { mUpSelection = value; } }
+        public JCS_ButtonSelection downSelection { get { return mDownSelection; } set { mDownSelection = value; } }
+        public JCS_ButtonSelection rightSelection { get { return mRightSelection; } set { mRightSelection = value; } }
+        public JCS_ButtonSelection leftSelection { get { return mLeftSelection; } set { mLeftSelection = value; } }
 
         /* Functions */
 
@@ -114,18 +114,18 @@ namespace JCSUnity
             if (mDeactiveAtAwake)
             {
                 // Deactive every at start
-                this.Active = false;
+                active = false;
             }
 
             if (mSelfAsButton)
             {
-                if (this.mButton == null)
-                    this.mButton = this.GetComponent<JCS_Button>();
+                if (mButton == null)
+                    mButton = GetComponent<JCS_Button>();
             }
 
             // let the button know this is going to be control in the group.
             if (mButton != null)
-                mButton.ButtonSelection = this;
+                mButton.buttonSelection = this;
         }
 
         private void Start()
@@ -221,7 +221,7 @@ namespace JCSUnity
                 if (effect != null)
                 {
                     effect.UpdateUnityData();
-                    effect.LocalEnabled = act;
+                    effect.localEnabled = act;
                 }
             }
         }

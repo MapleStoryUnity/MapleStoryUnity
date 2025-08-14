@@ -49,12 +49,12 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public KeyCode KeyCode { get { return this.mKeyCode; } set { this.mKeyCode = value; } }
-        public int OrderLayer { get { return this.mOrderLayer; } set { this.mOrderLayer = value; } }
-        public RuntimeAnimatorController SkillAnim { get { return this.mSkillAnim; } set { this.mSkillAnim = value; } }
-        public bool StayWithActiveTarget { get { return this.mSameRotation; } set { this.mStayWithActiveTarget = value; } }
-        public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
-        public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
+        public KeyCode keyCode { get { return mKeyCode; } set { mKeyCode = value; } }
+        public int orderLayer { get { return mOrderLayer; } set { mOrderLayer = value; } }
+        public RuntimeAnimatorController skillAnim { get { return mSkillAnim; } set { mSkillAnim = value; } }
+        public bool stayWithActiveTarget { get { return mSameRotation; } set { mStayWithActiveTarget = value; } }
+        public bool samePosition { get { return mSamePosition; } set { mSamePosition = value; } }
+        public bool sameRotation { get { return mSameRotation; } set { mSameRotation = value; } }
 
         /* Functions */
 
@@ -80,15 +80,15 @@ namespace JCSUnity
             GameObject obj = JCS_Util.SpawnAnimateObject(mSkillAnim, mOrderLayer);
 
             if (mSamePosition)
-                obj.transform.position = this.transform.position;
+                obj.transform.position = transform.position;
             if (mSameRotation)
-                obj.transform.rotation = this.transform.rotation;
+                obj.transform.rotation = transform.rotation;
 
             // if stay with player, simple set the position to
             // same position and set to child so it will follows
             // the active target!
             if (mStayWithActiveTarget)
-                obj.transform.SetParent(this.transform);
+                obj.transform.SetParent(transform);
 
             // add anim death event,
             // so when animation ends destroy itself.

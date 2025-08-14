@@ -45,27 +45,27 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
 
-        public float MinRangeValue { get { return this.mMinRangeValue; } set { this.mMinRangeValue = value; } }
-        public float MaxRangeValue { get { return this.mMaxRangeValue; } set { this.mMaxRangeValue = value; } }
+        public float minRangeValue { get { return mMinRangeValue; } set { mMinRangeValue = value; } }
+        public float maxRangeValue { get { return mMaxRangeValue; } set { mMaxRangeValue = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mLight = this.GetComponent<Light>();
-            this.mAdjustTimerTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
-            this.mFloatTweener = this.GetComponent<JCS_FloatTweener>();
+            mLight = GetComponent<Light>();
+            mAdjustTimerTrigger = GetComponent<JCS_AdjustTimeTrigger>();
+            mFloatTweener = GetComponent<JCS_FloatTweener>();
 
-            this.mFloatTweener.onValueChange = SetLight_Range;
-            this.mFloatTweener.onValueReturn = GetLight_Range;
+            mFloatTweener.onValueChange = SetLight_Range;
+            mFloatTweener.onValueReturn = GetLight_Range;
 
-            this.mAdjustTimerTrigger.onAction = DoRange;
+            mAdjustTimerTrigger.onAction = DoRange;
         }
 
-        private void SetLight_Range(float newVal) { this.mLight.range = newVal; }
-        private float GetLight_Range() { return this.mLight.range; }
+        private void SetLight_Range(float newVal) { mLight.range = newVal; }
+        private float GetLight_Range() { return mLight.range; }
 
         /// <summary>
         /// Do the fade algorithm.

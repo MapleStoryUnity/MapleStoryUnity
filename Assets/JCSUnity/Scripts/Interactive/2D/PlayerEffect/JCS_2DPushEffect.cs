@@ -42,7 +42,7 @@ namespace JCSUnity
             if (player == null)
                 return;
 
-            player.VelX += mPushSpeed * -(int)mDirection * JCS_Time.ItTime(mTimeType);
+            player.velX += mPushSpeed * -(int)mDirection * JCS_Time.ItTime(mTimeType);
         }
 
         /// <summary>

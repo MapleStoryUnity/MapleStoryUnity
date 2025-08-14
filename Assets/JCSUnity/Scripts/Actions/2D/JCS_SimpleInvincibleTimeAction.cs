@@ -68,10 +68,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
+        public float invicibleTime { get { return mInvicibleTime; } set { mInvicibleTime = value; } }
         // Use to check if this effect is active?
-        public bool IsInvincible { get { return this.mTriggerAction; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool isInvincible { get { return mTriggerAction; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -103,13 +103,13 @@ namespace JCSUnity
             // set back the local color to record color.
             for (int index = 0; index < mUnityObjects.Length; ++index)
             {
-                mUnityObjects[index].LocalColor = mRecordColors[index];
+                mUnityObjects[index].localColor = mRecordColors[index];
             }
 
             // reset timer.
             mInvicibleTimer = 0;
 
-            this.mFlashToggle = false;
+            mFlashToggle = false;
 
             // cancel action
             mTriggerAction = false;
@@ -144,19 +144,19 @@ namespace JCSUnity
                 return;
 
             // get the time.
-            this.mInvicibleTime = time;
+            mInvicibleTime = time;
 
             // reset timer.
-            this.mInvicibleTimer = 0;
+            mInvicibleTimer = 0;
 
             // record down the current color.
             for (int index = 0; index < mUnityObjects.Length; ++index)
             {
-                mRecordColors[index] = mUnityObjects[index].LocalColor;
+                mRecordColors[index] = mUnityObjects[index].localColor;
             }
 
             // reset the flash toggle.
-            this.mFlashToggle = false;
+            mFlashToggle = false;
 
             // start the action.
             mTriggerAction = true;
@@ -180,7 +180,7 @@ namespace JCSUnity
             {
                 for (int index = 0; index < mUnityObjects.Length; ++index)
                 {
-                    mUnityObjects[index].LocalColor = this.mInvincibleColor;
+                    mUnityObjects[index].localColor = mInvincibleColor;
                 }
 
             }
@@ -188,7 +188,7 @@ namespace JCSUnity
             {
                 for (int index = 0; index < mUnityObjects.Length; ++index)
                 {
-                    mUnityObjects[index].LocalColor = this.mRecordColors[index];
+                    mUnityObjects[index].localColor = mRecordColors[index];
                 }
             }
 

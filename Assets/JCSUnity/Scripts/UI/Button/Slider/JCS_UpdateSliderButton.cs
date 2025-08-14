@@ -36,7 +36,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float TargetValue { get { return this.mTargetValue; } set { this.mTargetValue = value; } }
+        public float targetValue { get { return mTargetValue; } set { mTargetValue = value; } }
 
         /* Functions */
 

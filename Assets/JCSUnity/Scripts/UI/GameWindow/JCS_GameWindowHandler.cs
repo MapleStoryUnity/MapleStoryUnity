@@ -46,10 +46,10 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public JCS_DialogueObject GetPlayerDialogueAt(int index) { return this.mPlayerDialogue[index]; }
-        public JCS_DialogueObject NPCDialogue { get { return this.mNPCDialogue; } set { this.mNPCDialogue = value; } }
-        public JCS_DialogueObject[] PlayerDialogue { get { return this.mPlayerDialogue; } set { this.mPlayerDialogue = value; } }
-        public JCS_DialogueObject GameUI { get { return this.mGameUI; } set { this.mGameUI = value; } }
-        public JCS_DialogueObject[] SystemUI { get { return this.mSystemUI; } set { this.mSystemUI = value; } }
+        public JCS_DialogueObject npcDialogue { get { return this.mNPCDialogue; } set { this.mNPCDialogue = value; } }
+        public JCS_DialogueObject[] playerDialogue { get { return this.mPlayerDialogue; } set { this.mPlayerDialogue = value; } }
+        public JCS_DialogueObject gameUI { get { return this.mGameUI; } set { this.mGameUI = value; } }
+        public JCS_DialogueObject[] systemUI { get { return this.mSystemUI; } set { this.mSystemUI = value; } }
 
         /* Functions */
 
@@ -107,10 +107,10 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_GameWindowHandler _old, JCS_GameWindowHandler _new)
         {
-            _new.SystemUI = _old.SystemUI;
-            _new.NPCDialogue = _old.NPCDialogue;
-            _new.GameUI = _old.GameUI;
-            _new.PlayerDialogue = _old.PlayerDialogue;
+            _new.mSystemUI = _old.mSystemUI;
+            _new.mNPCDialogue = _old.mNPCDialogue;
+            _new.mGameUI = _old.mGameUI;
+            _new.mPlayerDialogue = _old.mPlayerDialogue;
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace JCSUnity
 
             obj = JCS_Util.Instantiate(obj) as JCS_DialogueObject;
             obj.Show();
-            obj.OpenKey = KeyCode.None;
+            obj.openKey = KeyCode.None;
 
             return obj;
         }

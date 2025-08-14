@@ -182,39 +182,39 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Tweener TweenerX { get { return this.mTweenerX; } }
-        public Tweener TweenerY { get { return this.mTweenerY; } }
-        public Tweener TweenerZ { get { return this.mTweenerZ; } }
+        public Tweener tweenerX { get { return mTweenerX; } }
+        public Tweener tweenerY { get { return mTweenerY; } }
+        public Tweener tweenerZ { get { return mTweenerZ; } }
 
-        public bool IsDoneTweening { get { return this.mIsDoneTweening; } }
-        public bool DoneTweenX { get { return this.mDoneTweenX; } }
-        public bool DoneTweenY { get { return this.mDoneTweenY; } }
-        public bool DoneTweenZ { get { return this.mDoneTweenZ; } }
+        public bool isDoneTweening { get { return mIsDoneTweening; } }
+        public bool doneTweenX { get { return mDoneTweenX; } }
+        public bool doneTweenY { get { return mDoneTweenY; } }
+        public bool doneTweenZ { get { return mDoneTweenZ; } }
 
-        public bool Tween { get { return this.mTween; } set { this.mTween = value; } }
-        public bool TrackAsLocalSelf { get { return this.mTrackAsLocalSelf; } set { this.mTrackAsLocalSelf = value; } }
-        public bool TrackAsLocalTarget { get { return this.mTrackAsLocalTarget; } set { this.mTrackAsLocalTarget = value; } }
-        public float StopTweenDistance { get { return this.mStopTweenDistance; } set { this.mStopTweenDistance = value; } }
+        public bool tween { get { return mTween; } set { mTween = value; } }
+        public bool trackAsLocalSelf { get { return mTrackAsLocalSelf; } set { mTrackAsLocalSelf = value; } }
+        public bool trackAsLocalTarget { get { return mTrackAsLocalTarget; } set { mTrackAsLocalTarget = value; } }
+        public float stopTweenDistance { get { return mStopTweenDistance; } set { mStopTweenDistance = value; } }
 
-        public float DurationX { get { return this.mDurationX; } set { this.mDurationX = value; } }
-        public float DurationY { get { return this.mDurationY; } set { this.mDurationY = value; } }
-        public float DurationZ { get { return this.mDurationZ; } set { this.mDurationZ = value; } }
+        public float durationX { get { return mDurationX; } set { mDurationX = value; } }
+        public float durationY { get { return mDurationY; } set { mDurationY = value; } }
+        public float durationZ { get { return mDurationZ; } set { mDurationZ = value; } }
 
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public JCS_TweenType EasingX { get { return this.mEasingX; } set { this.mEasingX = value; } }
-        public JCS_TweenType EasingY { get { return this.mEasingY; } set { this.mEasingY = value; } }
-        public JCS_TweenType EasingZ { get { return this.mEasingZ; } set { this.mEasingZ = value; } }
+        public JCS_TweenType easingX { get { return mEasingX; } set { mEasingX = value; } }
+        public JCS_TweenType easingY { get { return mEasingY; } set { mEasingY = value; } }
+        public JCS_TweenType easingZ { get { return mEasingZ; } set { mEasingZ = value; } }
 
-        public void SetTarget(JCS_UnityObject trans) { this.mTarget = trans; }
-        public JCS_UnityObject RecordTarget { get { return this.mRecordTarget; } }
-        public bool DestroyWhenDoneTweening { get { return this.mDestroyWhenDoneTweening; } set { this.mDestroyWhenDoneTweening = value; } }
-        public JCS_TransformType TweenType { get { return this.mTweenType; } set { this.mTweenType = value; } }
+        public void SetTarget(JCS_UnityObject trans) { mTarget = trans; }
+        public JCS_UnityObject recordTarget { get { return mRecordTarget; } }
+        public bool destroyWhenDoneTweening { get { return mDestroyWhenDoneTweening; } set { mDestroyWhenDoneTweening = value; } }
+        public JCS_TransformType tweenType { get { return mTweenType; } set { mTweenType = value; } }
 
-        public Vector3 ValueOffset { get { return this.mValueOffset; } set { this.mValueOffset = value; } }
-        public float ValueOffsetX { get { return this.mValueOffset.x; } set { this.mValueOffset.x = value; } }
-        public float ValueOffsetY { get { return this.mValueOffset.y; } set { this.mValueOffset.y = value; } }
-        public float ValueOffsetZ { get { return this.mValueOffset.z; } set { this.mValueOffset.z = value; } }
+        public Vector3 valueOffset { get { return mValueOffset; } set { mValueOffset = value; } }
+        public float valueOffsetX { get { return mValueOffset.x; } set { mValueOffset.x = value; } }
+        public float valueOffsetY { get { return mValueOffset.y; } set { mValueOffset.y = value; } }
+        public float valueOffsetZ { get { return mValueOffset.z; } set { mValueOffset.z = value; } }
 
         /* Functions */
 
@@ -236,7 +236,7 @@ namespace JCSUnity
 #endif
 
             // check the effect enable?
-            if (!Tween)
+            if (!tween)
                 return;
 
             // check if do continue tweening
@@ -430,21 +430,21 @@ namespace JCSUnity
                 case JCS_TransformType.POSITION:
                     {
                         if (mTrackAsLocalSelf)
-                            val = LocalPosition;
+                            val = localPosition;
                         else
-                            val = Position;
+                            val = position;
                     }
                     break;
                 case JCS_TransformType.ROTATION:
                     {
                         if (mTrackAsLocalSelf)
-                            val = LocalEulerAngles;
+                            val = localEulerAngles;
                         else
-                            val = EulerAngles;
+                            val = eulerAngles;
                     }
                     break;
                 case JCS_TransformType.SCALE:
-                    val = LocalScale;
+                    val = localScale;
                     break;
                 /* RectTransform */
                 case JCS_TransformType.ANCHOR_MIN:
@@ -487,21 +487,21 @@ namespace JCSUnity
                 case JCS_TransformType.POSITION:
                     {
                         if (mTrackAsLocalSelf)
-                            LocalPosition = newVal;
+                            localPosition = newVal;
                         else
-                            Position = newVal;
+                            position = newVal;
                     }
                     break;
                 case JCS_TransformType.ROTATION:
                     {
                         if (mTrackAsLocalSelf)
-                            LocalEulerAngles = newVal;
+                            localEulerAngles = newVal;
                         else
-                            EulerAngles = newVal;
+                            eulerAngles = newVal;
                     }
                     break;
                 case JCS_TransformType.SCALE:
-                    LocalScale = newVal;
+                    localScale = newVal;
                     break;
                 /* RectTransform */
                 case JCS_TransformType.ANCHOR_MIN:

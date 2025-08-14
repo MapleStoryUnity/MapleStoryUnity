@@ -27,13 +27,13 @@ namespace JCSUnity
 
         private void Start()
         {
-            mOneJump = this.GetComponent<JCS_OneJump>();
-            Effect = true;
+            mOneJump = GetComponent<JCS_OneJump>();
+            effect = true;
         }
 
         protected override void Update()
         {
-            if (!Effect)
+            if (!effect)
                 return;
 
             base.Update();

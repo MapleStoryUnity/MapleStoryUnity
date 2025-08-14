@@ -58,21 +58,21 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float StartingPosition { get { return this.mStartingDegree; } set { this.mStartingDegree = value; } }
-        public int RotateDegree { get { return this.mRotateDegree; } set { this.mRotateDegree = value; } }
-        public float RotateDegreeTimer { get { return this.mRotateDegreeTimer; } set { this.mRotateDegreeTimer = value; } }
-        public bool DoMovement { get { return this.mDoMovement; } set { this.mDoMovement = value; } }
-        public bool DoRotate { get { return this.mDoRotate; } set { this.mDoRotate = value; } }
-        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
-        public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float startingPosition { get { return mStartingDegree; } set { mStartingDegree = value; } }
+        public int rotateDegree { get { return mRotateDegree; } set { mRotateDegree = value; } }
+        public float rotateDegreeTimer { get { return mRotateDegreeTimer; } set { mRotateDegreeTimer = value; } }
+        public bool doMovement { get { return mDoMovement; } set { mDoMovement = value; } }
+        public bool doRotate { get { return mDoRotate; } set { mDoRotate = value; } }
+        public float moveSpeed { get { return mMoveSpeed; } set { mMoveSpeed = value; } }
+        public float turnSpeed { get { return mTurnSpeed; } set { mTurnSpeed = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
             // apply the starting position
-            this.transform.Rotate(Vector3.forward, -mStartingDegree);
+            transform.Rotate(Vector3.forward, -mStartingDegree);
         }
 
         private void Update()
@@ -90,7 +90,7 @@ namespace JCSUnity
                 return;
 
             // Do movement
-            this.transform.Translate(Vector3.right * MoveSpeed * JCS_Time.ItTime(mTimeType));
+            transform.Translate(Vector3.right * moveSpeed * JCS_Time.ItTime(mTimeType));
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace JCSUnity
             }
 
             // Do rotation!
-            this.transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * dt);
+            transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * dt);
         }
     }
 }

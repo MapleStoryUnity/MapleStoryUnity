@@ -43,19 +43,19 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
 
-        public float MinFadeValue { get { return this.mMinFadeValue; } set { this.mMinFadeValue = value; } }
-        public float MaxFadeValue { get { return this.mMaxFadeValue; } set { this.mMaxFadeValue = value; } }
+        public float minFadeValue { get { return mMinFadeValue; } set { mMinFadeValue = value; } }
+        public float maxFadeValue { get { return mMaxFadeValue; } set { mMaxFadeValue = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
-            this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
+            mAlphaObject = GetComponent<JCS_AlphaObject>();
+            mAdjustTimeTrigger = GetComponent<JCS_AdjustTimeTrigger>();
 
-            this.mAdjustTimeTrigger.onAction = DoFade;
+            mAdjustTimeTrigger.onAction = DoFade;
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace JCSUnity
         /// </summary>
         private void DoFade()
         {
-            this.mAlphaObject.TargetAlpha = JCS_Random.Range(mMinFadeValue, mMaxFadeValue);
+            mAlphaObject.targetAlpha = JCS_Random.Range(mMinFadeValue, mMaxFadeValue);
         }
     }
 }

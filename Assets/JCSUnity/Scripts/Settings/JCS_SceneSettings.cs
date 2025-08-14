@@ -67,10 +67,10 @@ namespace JCSUnity
             var sm = JCS_SceneManager.FirstInstance();
 
             // check if override the setting.
-            if (sm.OverrideSetting)
+            if (sm.overrideSetting)
             {
                 // return the override value.
-                return sm.SceneFadeOutTime;
+                return sm.sceneFadeOutTime;
             }
 
             // if not override, 
@@ -86,10 +86,10 @@ namespace JCSUnity
             var sm = JCS_SceneManager.FirstInstance();
 
             // check if override the setting.
-            if (sm.OverrideSetting)
+            if (sm.overrideSetting)
             {
                 // return the override value.
-                return sm.SceneFadeInTime;
+                return sm.sceneFadeInTime;
             }
 
             // if not override, 

@@ -73,16 +73,16 @@ degree lower than 90.")]
 
         private void Awake()
         {
-            this.mSoundPoolAction = this.GetComponent<JCS_SoundPoolAction>();
+            mSoundPoolAction = GetComponent<JCS_SoundPoolAction>();
 
             // try to get the collider by itself.
             if (mCollider == null)
-                mCollider = this.GetComponent<Collider>();
+                mCollider = GetComponent<Collider>();
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            JCS_Bullet bullet = other.GetComponent<JCS_Bullet>();
+            var bullet = other.GetComponent<JCS_Bullet>();
             if (bullet != null)
                 ReflectBullet(bullet);
         }
@@ -94,7 +94,7 @@ degree lower than 90.")]
         private void ReflectBullet(JCS_Bullet bullet)
         {
             // if object cannot be reflected, end function call
-            if (!bullet.Reflectable)
+            if (!bullet.reflectable)
                 return;
 
             float randDegree = JCS_Random.Range(-mRandomReflectDegree, mRandomReflectDegree);
@@ -104,7 +104,7 @@ degree lower than 90.")]
             bullet.transform.eulerAngles = rotation;
 
             // apply the force.
-            bullet.MoveSpeed += mReflectForce;
+            bullet.moveSpeed += mReflectForce;
 
             // play sound from sound pool
             mSoundPoolAction.PlayRandom();

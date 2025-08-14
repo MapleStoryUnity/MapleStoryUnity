@@ -34,16 +34,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public JCS_Bool3 FreezeScale { get { return this.mFreezeScale; } set { this.mFreezeScale = value; } }
-        public Vector3 ScaleToFreeze { get { return this.mScaleToFreeze; } set { this.mScaleToFreeze = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public JCS_Bool3 freezeScale { get { return mFreezeScale; } set { mFreezeScale = value; } }
+        public Vector3 scaleToFreeze { get { return mScaleToFreeze; } set { mScaleToFreeze = value; } }
 
         /* Functions */
 
         private void Start()
         {
             // record down all the transform info value.
-            this.mScaleToFreeze = this.LocalScale;
+            mScaleToFreeze = localScale;
         }
 
         private void LateUpdate()
@@ -59,7 +59,7 @@ namespace JCSUnity
         /// </summary>
         private void DoFreezeScale()
         {
-            Vector3 newScale = this.LocalScale;
+            Vector3 newScale = localScale;
 
             /* Freeze scale */
             if (mFreezeScale.check1)
@@ -69,7 +69,7 @@ namespace JCSUnity
             if (mFreezeScale.check3)
                 newScale.z = mScaleToFreeze.z;
 
-            this.LocalScale = newScale;
+            localScale = newScale;
         }
     }
 }

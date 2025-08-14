@@ -35,7 +35,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_ColliderType ColliderType { get { return this.mColliderType; } }
+        public JCS_ColliderType colliderType { get { return this.mColliderType; } }
 
         public CharacterController characterController { get { return this.mCharacterController; } }
         public BoxCollider boxCollider { get { return this.mBoxCollider; } }

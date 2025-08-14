@@ -26,9 +26,10 @@ namespace JCSUnity
 
         protected long[] mPacketNumbers = null;
         protected bool mLoggedIn = false;
-        
 
-        /* Check if the UDP client. */
+        /// <summary>
+        /// Check if the UDP client.
+        /// </summary>
         public bool IsOrderCheckServer()
         {
             return (JCS_NetworkSettings.FirstInstance().PROTOCAL_TYPE == JCS_ProtocalType.UDP);
@@ -54,7 +55,7 @@ namespace JCSUnity
         /// <summary>
         /// Check if the packet numbers is overflow.
         /// </summary>
-        public void resetPacketNumbers()
+        public void ResetPacketNumbers()
         {
             ResetPacketNumbers(GetPacketProcessor().GetHandlers().Length);
         }

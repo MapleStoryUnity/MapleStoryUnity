@@ -41,10 +41,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool DoAction { get { return this.mDoAction; } set { this.mDoAction = value; } }
-        public float ShakeSpeed { get { return this.mShakeSpeed; } set { this.mShakeSpeed = value; } }
-        public float ShakeMargin { get { return this.mShakeMargin; } set { this.mShakeMargin = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool doAction { get { return mDoAction; } set { mDoAction = value; } }
+        public float shakeSpeed { get { return mShakeSpeed; } set { mShakeSpeed = value; } }
+        public float shakeMargin { get { return mShakeMargin; } set { mShakeMargin = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -53,9 +53,9 @@ namespace JCSUnity
             if (!mDoAction)
                 return;
 
-            Vector3 newPos = this.transform.position;
-            newPos.x += JCS_Random.Range(-mShakeMargin, mShakeMargin) * ShakeSpeed * JCS_Time.ItTime(mTimeType);
-            this.transform.position = newPos;
+            Vector3 newPos = transform.position;
+            newPos.x += JCS_Random.Range(-mShakeMargin, mShakeMargin) * mShakeSpeed * JCS_Time.ItTime(mTimeType);
+            transform.position = newPos;
         }
     }
 }

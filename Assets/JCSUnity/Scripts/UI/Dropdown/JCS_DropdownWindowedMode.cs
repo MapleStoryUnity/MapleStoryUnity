@@ -36,8 +36,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<string> Options { get { return mOptions; } set { this.mOptions = value; } }
-        public bool RemoveAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
+        public List<string> options { get { return mOptions; } set { this.mOptions = value; } }
+        public bool removeAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
 
         /* Functions */
 

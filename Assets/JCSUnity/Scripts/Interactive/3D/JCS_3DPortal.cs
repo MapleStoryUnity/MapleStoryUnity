@@ -30,7 +30,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the portal.")]
         [SerializeField]
-        private JCS_3DPortalType mType = JCS_3DPortalType.SCENE_PORTAL;
+        private JCS_3DPortalType mPortalType = JCS_3DPortalType.SCENE_PORTAL;
 
         [Header("- Scene Portal")]
 
@@ -47,16 +47,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool AutoTrigger { get { return this.mAutoTrigger; } set { this.mAutoTrigger = value; } }
-        public JCS_3DPortalType Type { get { return this.mType; } set { this.mType = value; } }
-        public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
-        public Transform TargetPortal { get { return this.mTargetPortal; } set { this.mTargetPortal = value; } }
+        public bool autoTrigger { get { return mAutoTrigger; } set { mAutoTrigger = value; } }
+        public JCS_3DPortalType portalType { get { return mPortalType; } set { mPortalType = value; } }
+        public string sceneName { get { return mSceneName; } set { mSceneName = value; } }
+        public Transform targetPortal { get { return mTargetPortal; } set { mTargetPortal = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            if (mType == JCS_3DPortalType.TRANSFER_PORTAL && mTargetPortal == null)
+            if (mPortalType == JCS_3DPortalType.TRANSFER_PORTAL && mTargetPortal == null)
                 Debug.LogError("Transform portal does not exists.");
         }
 
@@ -67,7 +67,7 @@ namespace JCSUnity
                 return;
 
             // switch the scene.
-            DoPortal(mType, p);
+            DoPortal(mPortalType, p);
         }
 
         /// <summary>
