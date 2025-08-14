@@ -189,8 +189,8 @@ namespace JCSUnity
                 // to here...
                 mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-                var slideInput = JCS_TouchInput.FirstInstance();
-                mWheelDegree = slideInput.TouchDistanceDelta;
+                var input = JCS_TouchInput.FirstInstance();
+                mWheelDegree = input.touchDistanceDelta;
 #endif
                 ZoomCamera(mWheelDegree);
             }
