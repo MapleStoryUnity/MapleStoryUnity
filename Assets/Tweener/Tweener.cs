@@ -33,7 +33,7 @@ namespace PeterVuorela.Tweener
         public float from { get { return _From; } set { _From = value; } }
         public float to { get { return _To; } set { _To = value; } }
         public float progressPct { get { return _ProgressPct; } }
-        public JCS_TimeType deltaTimeType { get { return this._DeltaTimeType; } }
+        public JCS_TimeType timeType { get { return this._DeltaTimeType; } }
 
         /* Functions */
 

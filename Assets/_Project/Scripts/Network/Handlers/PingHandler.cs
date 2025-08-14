@@ -23,12 +23,12 @@ namespace MSU
 {
     public class PingHandler : JCS_PacketHandler
     {
-        public override void handlePacket(JCS_BinaryReader br, JCS_Client client)
+        public override void HandlePacket(JCS_BinaryReader br, JCS_Client client)
         {
             throw new System.NotImplementedException();
         }
 
-        public override bool validateState(JCS_Client client)
+        public override bool ValidateState(JCS_Client client)
         {
             throw new System.NotImplementedException();
         }
