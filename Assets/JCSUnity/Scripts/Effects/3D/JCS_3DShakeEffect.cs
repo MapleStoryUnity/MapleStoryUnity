@@ -86,7 +86,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Axis")]
+        [Header("Axis")]
 
         [Tooltip("Do shake on z axis.")]
         [SerializeField]
@@ -100,7 +100,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mOnZ = true;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Sound player for 3D sounds calculation.")]
         [SerializeField]

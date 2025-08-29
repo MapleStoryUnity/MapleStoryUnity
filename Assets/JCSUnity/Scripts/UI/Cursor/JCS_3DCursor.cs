@@ -38,7 +38,7 @@ namespace JCSUnity
         [Tooltip("Recommand that set this very hight so no object can block the cursor.")]
         [SerializeField] private int mOrderLayer = 100;
 
-        [Header("- Animation")]
+        [Header("Animation")]
 
         [SerializeField] private JCS_CursorCustomizeType mCursorCustomizeType = JCS_CursorCustomizeType.NORMAL_SELECT;
         [SerializeField] private RuntimeAnimatorController mNormalSelect = null;
@@ -57,7 +57,7 @@ namespace JCSUnity
         [SerializeField] private RuntimeAnimatorController mAlternateSelect = null;
         [SerializeField] private RuntimeAnimatorController mLinkSelect = null;
 
-        [Header("- Other")]
+        [Header("Other")]
 
         [Tooltip("If the art team do stuff correctly, no need to use this.")]
         [SerializeField]

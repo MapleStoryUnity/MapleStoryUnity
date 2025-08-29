@@ -30,7 +30,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = true;
 
-        [Header("- Min / Max")]
+        [Header("Min / Max")]
 
         [Tooltip("Mininum value of the light can fade.")]
         [SerializeField] [Range(0, 1.0f)]

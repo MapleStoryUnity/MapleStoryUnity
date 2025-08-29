@@ -33,7 +33,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mCounterTextWorldTransform = null;
 
-        [Header("- Text")]
+        [Header("Text")]
 
         [Tooltip("Text Render maxinum of the liquid bar value.")]
         [SerializeField]
@@ -43,7 +43,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mFullTextWorldTransform = null;
 
-        [Header("- Sprite")]
+        [Header("Sprite")]
 
         [Tooltip("Sprite Render the current value of the liquid bar.")]
         [SerializeField]

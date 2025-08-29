@@ -77,7 +77,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Zigge Right Left")]
+        [Header("Zigge Right Left")]
 
         [Tooltip("Do the zigge effect?")]
         [SerializeField]

@@ -73,7 +73,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mOffPos = new Vector3(-20.0f, 0.0f, 0.0f);
 
-        [Header("- Color")]
+        [Header("Color")]
 
         [Tooltip("Button color when is on.")]
         [SerializeField]

@@ -100,19 +100,19 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool touched { get { return this.mTouched; } }
-        public Vector2 deltaPos { get { return this.mDeltaPos; } }
-        public Vector2 dragDistance { get { return this.mDragDistance; } }
-        public Vector2 dragDisplacement { get { return this.mDragDisplacement; } }
-        public bool dragging { get { return this.mDragging; } }
-        public float touchTime { get { return this.mTouchTime; } }
+        public bool touched { get { return mTouched; } }
+        public Vector2 deltaPos { get { return mDeltaPos; } }
+        public Vector2 dragDistance { get { return mDragDistance; } }
+        public Vector2 dragDisplacement { get { return mDragDisplacement; } }
+        public bool dragging { get { return mDragging; } }
+        public float touchTime { get { return mTouchTime; } }
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-        public bool multiTouch { get { return this.mMultiTouch; } }
-        public float touchDistance { get { return this.mTouchDistance; } }
-        public float touchDistanceDelta { get { return this.mTouchDistanceDelta; } }
-        public int detectTouchCount { get { return this.mDetectTouchCount; } set { this.mDetectTouchCount = value; } }
+        public bool multiTouch { get { return mMultiTouch; } }
+        public float touchDistance { get { return mTouchDistance; } }
+        public float touchDistanceDelta { get { return mTouchDistanceDelta; } }
+        public int detectTouchCount { get { return mDetectTouchCount; } set { mDetectTouchCount = value; } }
 #else
-        public JCS_MouseButton mouseType { get { return this.mMouseType; } set { this.mMouseType = value; } }
+        public JCS_MouseButton mouseType { get { return mMouseType; } set { mMouseType = value; } }
 #endif
 
         /* Functions */
@@ -186,14 +186,6 @@ namespace JCSUnity
                 mDragDistance.x = JCS_Mathf.DistanceOfUnitVector(mDragStartPosition.x, dragEndPosition.x);
                 mDragDistance.y = JCS_Mathf.DistanceOfUnitVector(mDragStartPosition.y, dragEndPosition.y);
 
-                // 標準視窗的變動係數.
-                {
-                    float scaleFactor = JCS_Canvas.SCALE_FACTOR;
-
-                    mDragDistance.x /= scaleFactor;
-                    mDragDistance.y /= scaleFactor;
-                }
-
                 float xDiff = dragEndPosition.x - mDragStartPosition.x;
                 float yDiff = dragEndPosition.y - mDragStartPosition.y;
 
@@ -236,9 +228,9 @@ namespace JCSUnity
             // Check if multitouch.
             if (Input.touchCount <= 1)
             {
-                this.mMultiTouch = false;
-                this.mTouchDistance = 0.0f;
-                this.mTouchDistanceDelta = 0.0f;
+                mMultiTouch = false;
+                mTouchDistance = 0.0f;
+                mTouchDistanceDelta = 0.0f;
                 return;
             }
 
@@ -255,15 +247,15 @@ namespace JCSUnity
             float newTouchDistance = sumTotal / Input.touchCount;
 
             // We start apply `delta` value by after the first multi touches.
-            if (this.mMultiTouch)
+            if (mMultiTouch)
             {
-                this.mTouchDistanceDelta = newTouchDistance - this.mTouchDistance;
+                mTouchDistanceDelta = newTouchDistance - mTouchDistance;
             }
 
-            this.mTouchDistance = newTouchDistance;
+            mTouchDistance = newTouchDistance;
 
             // Multi-touch starts!
-            this.mMultiTouch = true;
+            mMultiTouch = true;
         }
 #endif
     }

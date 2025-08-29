@@ -45,14 +45,14 @@ namespace JCSUnity
         [SerializeField]
         private float mTargetRevolution = 0.0f;
 
-        [Header("- Speed / Friction")]
+        [Header("Speed / Friction")]
 
         [Tooltip("How fast the camera track in each axis?")]
         [SerializeField]
         [Range(0.01f, 10.0f)]
         private float mSmoothTrackFriction = 0.2f;
 
-        [Header("- Rotate Camera")]
+        [Header("Rotate Camera")]
 
         [Tooltip("How fast this camera rotates.")]
         [SerializeField]
@@ -85,7 +85,7 @@ namespace JCSUnity
         [Range(0.0f, 180.0f)]
         private float mResetTargetAngle = 0.0f;
 
-        [Header("- Up Down")]
+        [Header("Up Down")]
 
         [Tooltip("Up and Down movement enable?")]
         [SerializeField]
@@ -105,7 +105,7 @@ namespace JCSUnity
         [SerializeField]
         private float mUpDownSpacing = 10;
 
-        [Header("- Min / Max")]
+        [Header("Min / Max")]
 
         [Tooltip("How high the camera can reach.")]
         [SerializeField]
@@ -117,13 +117,13 @@ namespace JCSUnity
 
         private float mTargetHeight = 0;
 
-        [Header("- Speed / Friction")]
+        [Header("Speed / Friction")]
 
         [Tooltip("How fast it change the view up and down?")]
         [SerializeField]
         private float mUpDownFriction = 0.2f;
 
-        [Header("- Scroll / Zoom Settings")]
+        [Header("Scroll / Zoom Settings")]
 
         [Tooltip("Do the zoom effect?")]
         [SerializeField]
@@ -153,7 +153,7 @@ namespace JCSUnity
         // scroll distance.
         private float mWheelDegree = 0.0f;
 
-        [Header("- Min / Max")]
+        [Header("Min / Max")]
 
         [Tooltip("Mininum distance camera can approach to?")]
         [SerializeField]

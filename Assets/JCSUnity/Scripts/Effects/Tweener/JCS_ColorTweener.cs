@@ -166,7 +166,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreA = false;
 
-        [Header("- Callback")]
+        [Header("Callback")]
 
         [Tooltip("Callback after easing.")]
         [SerializeField]

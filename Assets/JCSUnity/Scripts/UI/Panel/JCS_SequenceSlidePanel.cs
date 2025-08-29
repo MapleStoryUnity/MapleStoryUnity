@@ -47,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Spacing")]
+        [Header("Spacing")]
 
         [Tooltip("Time to active one button animation.")]
         [SerializeField]
@@ -61,7 +61,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mExitByNoOverGUI = true;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Audio when active the animation the outer panel.")]
         [SerializeField]

@@ -127,7 +127,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Destroy")]
+        [Header("Destroy")]
 
         [Tooltip("Destroy this object when done tweening?")]
         [SerializeField]
@@ -138,14 +138,14 @@ namespace JCSUnity
         [Range(1, 10)]
         private int mDestroyDoneTweeningCount = 1;
 
-        [Header("- Randomize Duration")]
+        [Header("Randomize Duration")]
 
         [Tooltip("Randomize the durations with all axis at start. (x, y, z)")]
         [SerializeField]
         [Range(0.0f, 1000.0f)]
         private float mRandomizeDuration = 0.0f;
 
-        [Header("- Tweener Effect Transform")]
+        [Header("Tweener Effect Transform")]
 
         [Tooltip("Which transform's properties to tween.")]
         [SerializeField]
@@ -159,7 +159,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mTrackAsLocalTarget = false;
 
-        [Header("- Tweener Formula Type")]
+        [Header("Tweener Formula Type")]
 
         [Tooltip("Tweener formula on x axis.")]
         [SerializeField]
@@ -173,7 +173,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TweenType mEasingZ = JCS_TweenType.LINEAR;
 
-        [Header("- Continuous Tween (JCS_TransformTweener) ")]
+        [Header("Continuous Tween (JCS_TransformTweener) ")]
 
         [Tooltip("While continue tween when did the tweener algorithm stop?")]
         [SerializeField]

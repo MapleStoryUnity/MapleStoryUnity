@@ -68,7 +68,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Asymptotic Look")]
+        [Header("Asymptotic Look")]
 
         [Tooltip("Did the object gradually look at the target?")]
         [SerializeField]

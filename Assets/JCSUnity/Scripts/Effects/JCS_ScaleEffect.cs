@@ -68,7 +68,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- UI")]
+        [Header("UI")]
 
         [Tooltip("Add event to event trigger system.")]
         [SerializeField]

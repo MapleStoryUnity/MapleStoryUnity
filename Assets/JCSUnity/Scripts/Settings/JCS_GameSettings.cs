@@ -50,17 +50,17 @@ namespace JCSUnity
         [Tooltip("Gravity production. (For game that have gravity in it)")]
         public float GRAVITY_PRODUCT = 4.5f;
 
-        [Header("- Camera")]
+        [Header("Camera")]
 
         [Tooltip("Type of the camera.")]
         public JCS_CameraType CAMERA_TYPE = JCS_CameraType.NONE;
 
-        [Header("- Player")]
+        [Header("Player")]
 
         [Tooltip("Game only allows control one player.")]
         public bool ACTIVE_ONE_PLAYER = true;
 
-        [Header("- Collision")]
+        [Header("Collision")]
 
         [Tooltip("Do collusion happen with eacth other. (Player)")]
         public bool PLAYER_IGNORE_EACH_OTHER = true;
@@ -68,7 +68,7 @@ namespace JCSUnity
         [Tooltip("Can tribe damage each other?")]
         public bool TRIBE_DAMAGE_EACH_OTHER = false;
 
-        [Header("- Resources")]
+        [Header("Resources")]
 
         [Tooltip("Base URL for streaming assets, please point to a directory.")]
         public string STREAMING_BASE_URL = "https://wwww.example.com/";
@@ -76,7 +76,7 @@ namespace JCSUnity
         [Tooltip("Cache streaming assets' data path.")]
         public string STREAMING_CACHE_PATH = "/Data_jcs/Cache_StreamingAssets/";
 
-        [Header("- Screenshot")]
+        [Header("Screenshot")]
 
         [Tooltip("Screenshot folder path.")]
         public string SCREENSHOT_PATH = "/Data_jcs/Screenshot/";
@@ -87,7 +87,7 @@ namespace JCSUnity
         [Tooltip("Screenshot image extension.")]
         public string SCREENSHOT_EXTENSION = ".png";
 
-        [Header("- Webcam")]
+        [Header("Webcam")]
 
         [Tooltip("Webcam image save path.")]
         public string WEBCAM_PATH = "/Data_jcs/WebcamShot/";
@@ -98,7 +98,7 @@ namespace JCSUnity
         [Tooltip("Webcam image extension.")]
         public string WEBCAM_EXTENSION = ".png";
 
-        [Header("- Damage")]
+        [Header("Damage")]
 
         [Tooltip("Mininum damage can be in the game.")]
         public int MIN_DAMAGE = 1;

@@ -60,7 +60,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public string realText { get { return this.mRealText; } }
+        public string realText { get { return mRealText; } }
 
         /* Functions */
 
@@ -138,6 +138,7 @@ namespace JCSUnity
             int firstReplacePos = centerLetterPos - halfDotCount;
 
             int secondReplacePos = firstReplacePos;
+
             if (JCS_Mathf.IsOdd(mDotCount))
             {
                 if (mApproachSec)

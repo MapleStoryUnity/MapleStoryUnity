@@ -91,7 +91,7 @@ compare algorithm")]
         [Range(0.01f, 50.0f)]
         private float mRandomizeJumpForceForce = 0.0f;
 
-        [Header("- Rotate Effect ")]
+        [Header("Rotate Effect ")]
 
         [Tooltip("Does the item rotate while dropping?")]
         [SerializeField]
@@ -144,7 +144,7 @@ just stop there.")]
         [SerializeField]
         private bool mBounceBackfromWall = true;
 
-        [Header("- Audio")]
+        [Header("Audio")]
 
         [Tooltip("Drop Sound.")]
         [SerializeField]

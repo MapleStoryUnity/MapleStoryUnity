@@ -54,14 +54,14 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Text textContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
+        public Text textContainer { get { return mTextContainer; } set { this.mTextContainer = value; } }
 
         /* Functions */
 
         private void Awake()
         {
             if (mTextContainer == null)
-                mTextContainer = this.GetComponentInChildren<Text>();
+                mTextContainer = GetComponentInChildren<Text>();
 
             mDistanceTileAction = JCS_Util.ForceGetComponent<JCS_3DDistanceTileAction>(mTextContainer);
         }

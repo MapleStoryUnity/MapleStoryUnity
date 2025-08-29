@@ -81,7 +81,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Position")]
+        [Header("Position")]
 
         [Tooltip("Randomize the X position. (Default : 0)")]
         [SerializeField]
@@ -98,7 +98,7 @@ namespace JCSUnity
         [Range(0.0f, 1000.0f)]
         private float mRandPosZ = 0;
 
-        [Header("- Rotation")]
+        [Header("Rotation")]
 
         [Tooltip("Randomize the X rotation.")]
         [SerializeField]
@@ -115,7 +115,7 @@ namespace JCSUnity
         [Range(0.0f, 359.999f)]
         private float mRandAngleZ = 0.0f;
 
-        [Header("- Scale")]
+        [Header("Scale")]
 
         [Tooltip(@"Apply the scale always the same. This will only take the and 
 mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
@@ -140,7 +140,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         private float mSequenceTimer = 0.0f;
         private float mTimeAParticle = 0.5f;
 
-        [Header("- Freeze Effect")]
+        [Header("Freeze Effect")]
 
         [Tooltip("Freeze the x axis.")]
         [SerializeField]
@@ -156,7 +156,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
 
         private Vector3 mFreezePos = Vector3.zero;
 
-        [Header("- One shot")]
+        [Header("One shot")]
 
         [Tooltip("Do not process the particle by thread, by main thread.")]
         [SerializeField]
@@ -165,7 +165,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         // check if the particle spawned.
         private bool mParticleSpawned = false;
 
-        [Header("- Other")]
+        [Header("Other")]
 
         [Tooltip("Set the particles as child?")]
         [SerializeField]

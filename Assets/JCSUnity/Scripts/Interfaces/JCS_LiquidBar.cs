@@ -98,7 +98,7 @@ namespace JCSUnity
         [SerializeField]
         protected Image mInfoImage = null;
 
-        [Header("- Asmptotic Recover")]
+        [Header("Asmptotic Recover")]
 
         [Tooltip("Enable the recover effect?")]
         [SerializeField]
@@ -119,7 +119,7 @@ Careful that recover can be damage too.")]
         [Range(-300000.0f, 300000.0f)]
         protected float mRecoverValue = 1.0f;
 
-        [Header("- Additional Settings")]
+        [Header("Additional Settings")]
 
         [Tooltip("Will try to go back to the original value.")]
         [SerializeField]

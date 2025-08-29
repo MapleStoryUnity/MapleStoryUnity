@@ -71,7 +71,7 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Spawn")]
+        [Header("Spawn")]
 
         [Tooltip("Spawn the same position as this game object.")]
         [SerializeField]
@@ -85,7 +85,7 @@ namespace JCSUnity
         [SerializeField]
         protected bool mSameScale = true;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Optional sound player for 3D sounds calculation.")]
         [SerializeField]

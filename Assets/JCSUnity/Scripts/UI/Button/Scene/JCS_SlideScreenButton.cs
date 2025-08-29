@@ -44,7 +44,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
 #if !JCS_USE_GAMEPAD
         [Tooltip("Sound player for 3D sounds calculation.")]
@@ -56,7 +56,7 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mSlideScreenSound = null;
 
-        [Header("- Delay")]
+        [Header("Delay")]
 
         [Tooltip("Time delay when slide screen.")]
         [SerializeField]

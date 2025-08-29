@@ -55,7 +55,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mKeepShootAngle = true;
 
-        [Header("- Shoot Gap")]
+        [Header("Shoot Gap")]
 
         [Tooltip("Shoot with gap?")]
         [SerializeField]

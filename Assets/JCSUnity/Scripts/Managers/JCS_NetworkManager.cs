@@ -127,7 +127,6 @@ namespace JCSUnity
                 if (SERVER_CLOSE)
                 {
                     Debug.Log("Server End!");
-                    JCS_UtilFunctions.PopIsConnectDialogue();
                 }
                 else if (FIRST_LOGIN)
                 {

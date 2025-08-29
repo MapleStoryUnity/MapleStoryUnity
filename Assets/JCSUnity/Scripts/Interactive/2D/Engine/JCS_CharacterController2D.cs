@@ -124,7 +124,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Freeze")]
+        [Header("Freeze")]
 
         [Tooltip("Freeze the object in x axis.")]
         [SerializeField]
@@ -134,7 +134,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mFreezeY = false;
 
-        [Header("- Optional")]
+        [Header("Optional")]
 
         [Tooltip("Zero out the rotation when collider is trigger.")]
         [SerializeField]

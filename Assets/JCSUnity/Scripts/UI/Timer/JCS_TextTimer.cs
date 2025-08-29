@@ -89,7 +89,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Sound played when hours get reduced.")]
         [SerializeField]

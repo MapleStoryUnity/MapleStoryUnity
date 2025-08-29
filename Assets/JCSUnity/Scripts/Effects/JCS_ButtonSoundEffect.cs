@@ -70,7 +70,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         [SerializeField]
         private JCS_SoundMethod mOnMouseDoubleClickSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        [Header("- Optional")]
+        [Header("Optional")]
 
         [Tooltip("Use to detect to see if the button is interactable or not.")]
         [SerializeField]

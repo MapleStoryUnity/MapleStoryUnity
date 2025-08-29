@@ -28,13 +28,13 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
 
-        [Header("- Keyboard")]
+        [Header("Keyboard")]
 
         [Tooltip("Key to trigger this button.")]
         [SerializeField]
         protected KeyCode mKKeyToListen = KeyCode.None;
 
-        [Header("- Gamepad")]
+        [Header("Gamepad")]
 
         [Tooltip("Key to trigger this button.")]
         [SerializeField]
@@ -44,7 +44,7 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_JoystickId mJoystickLitener = JCS_JoystickId.ANY;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Sound player for 3D sounds calculation.")]
         [SerializeField]

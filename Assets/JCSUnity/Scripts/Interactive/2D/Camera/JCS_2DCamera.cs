@@ -40,7 +40,7 @@ namespace JCSUnity
         //[SerializeField] private bool mSmoothMoveX = true;
         //[SerializeField] private bool mSmoothMoveY = true;
 
-        [Header("- Speed / Friction")]
+        [Header("Speed / Friction")]
 
         [Tooltip("How fast this camera move toward the target. (x-axis)")]
         [SerializeField]
@@ -52,7 +52,7 @@ namespace JCSUnity
         [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mFrictionY = 0.6f;
 
-        [Header("- Freeze")]
+        [Header("Freeze")]
 
         [Tooltip("Do freeze in runtime?")]
         [SerializeField]
@@ -72,7 +72,7 @@ namespace JCSUnity
 
         private Vector3 mFreezeRecord = Vector3.zero;
 
-        [Header("- Scroll")]
+        [Header("Scroll")]
 
         [Tooltip("Do the zoom effect.")]
         [SerializeField]

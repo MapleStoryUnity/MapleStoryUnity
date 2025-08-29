@@ -48,7 +48,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mActiveWithDestroyTime = false;
 
-        [Header("- Transform")]
+        [Header("Transform")]
 
         [Tooltip("Play the animation as the same position as the destroyed game object.")]
         [SerializeField]
@@ -60,7 +60,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSameScale = true;
 
-        [Header("- Random Effect")]
+        [Header("Random Effect")]
 
         [Tooltip("Randomize the position when the animation is played.")]
         [SerializeField]

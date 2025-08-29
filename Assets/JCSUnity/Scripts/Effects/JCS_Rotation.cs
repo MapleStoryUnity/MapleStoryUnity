@@ -41,7 +41,7 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Random Effect")]
+        [Header("Random Effect")]
 
         [Tooltip("Randomize the rotation speed a bit at start.")]
         [SerializeField]

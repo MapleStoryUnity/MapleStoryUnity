@@ -24,8 +24,8 @@ namespace JCSUnity
         private void Awake()
         {
             // only the root object can do this.
-            if (this.transform.parent == null)
-                DontDestroyOnLoad(this.gameObject);
+            if (transform.parent == null)
+                DontDestroyOnLoad(gameObject);
             else
             {
                 Debug.LogWarning("Only the root object can be use DontDestoryOnLoad");

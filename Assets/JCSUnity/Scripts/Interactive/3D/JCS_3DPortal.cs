@@ -32,14 +32,14 @@ namespace JCSUnity
         [SerializeField]
         private JCS_3DPortalType mPortalType = JCS_3DPortalType.SCENE_PORTAL;
 
-        [Header("- Scene Portal")]
+        [Header("Scene Portal")]
 
         [Tooltip("Scene name when portal load this scene.")]
         [SerializeField]
         [Scene]
         private string mSceneName = "";
 
-        [Header("- Transfer Portal")]
+        [Header("Transfer Portal")]
 
         [Tooltip("Position when the portal moves the player's position.")]
         [SerializeField]

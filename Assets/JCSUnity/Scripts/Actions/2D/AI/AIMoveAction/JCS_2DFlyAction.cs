@@ -49,7 +49,7 @@ namespace JCSUnity
         [SerializeField]
         private float mFlyForceY = 10.0f;
 
-        [Header("- Activate")]
+        [Header("Activate")]
 
         [Tooltip("Possiblity of going UP.")]
         [SerializeField]
@@ -86,7 +86,7 @@ namespace JCSUnity
         [Range(0.0f, 100.0f)]
         private float mPossibility = 80.0f;
 
-        [Header("- Time")]
+        [Header("Time")]
 
         [Tooltip("Time to do one Fly.")]
         [SerializeField]
@@ -112,7 +112,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Space Limitation")]
+        [Header("Space Limitation")]
 
         [Tooltip("Lowest height the object can go.")]
         [SerializeField]
@@ -124,7 +124,7 @@ namespace JCSUnity
         [Range(-1000.0f, 1000.0f)]
         private float mMaxHeight = 500.0f;
 
-        [Header("- Track")]
+        [Header("Track")]
 
         [Tooltip("If get mad will start tracking the object that make this object mad.")]
         [SerializeField]
@@ -134,7 +134,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_AttackerRecorder mAttackRecorder = null;
 
-        [Header("- Optional")]
+        [Header("Optional")]
 
         [Tooltip("Live object animation.")]
         [SerializeField]
@@ -144,7 +144,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnorePlatform = true;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Sound while flying.")]
         [SerializeField]

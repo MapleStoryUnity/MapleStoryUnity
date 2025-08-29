@@ -46,13 +46,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Optional")]
+        [Header("Optional")]
 
         [Tooltip("Ability format to use.")]
         [SerializeField]
         private JCS_AbilityFormat mAbilityFormat = null;
 
-        [Header("- Action")]
+        [Header("Action")]
 
         [Tooltip("Time delay before shoot.")]
         [SerializeField]
@@ -68,7 +68,7 @@ namespace JCSUnity
 
         private float mActionTimer = 0.0f;
 
-        [Header("- Shoot Gap Effect")]
+        [Header("Shoot Gap Effect")]
 
         [Tooltip("Shoot with gap?")]
         [SerializeField]

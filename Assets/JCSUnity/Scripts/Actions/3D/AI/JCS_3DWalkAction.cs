@@ -108,14 +108,14 @@ namespace JCSUnity
         [Range(0.0f, 30.0f)]
         private float mMaxOffDistance = 0.0f;
 
-        [Header("- Self In Distance")]
+        [Header("Self In Distance")]
 
         [Tooltip("Self distance without target transform interact.")]
         [SerializeField]
         [Range(0.0f, 300.0f)]
         private float mSelfDistance = 5.0f;
 
-        [Header("- To Target")]
+        [Header("To Target")]
 
         [Tooltip("Range that enemy will try to get close to.")]
         [SerializeField]

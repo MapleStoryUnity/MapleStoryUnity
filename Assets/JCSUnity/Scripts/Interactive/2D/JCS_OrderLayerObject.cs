@@ -31,7 +31,7 @@ namespace JCSUnity
         [SerializeField]
         private List<SpriteRenderer> mSpriteRenderers = null;
 
-        [Header("- Absolute Layer")]
+        [Header("Absolute Layer")]
 
         [Tooltip("Enable the Absolute Layer Effect.")]
         [SerializeField]

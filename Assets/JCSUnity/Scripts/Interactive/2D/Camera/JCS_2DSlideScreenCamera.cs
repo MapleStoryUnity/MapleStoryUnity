@@ -65,7 +65,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SlideScreenPanelHolder mPanelHolder = null;
 
-        [Header("- Mobile")]
+        [Header("Mobile")]
 
         [Tooltip("If true, allow the mobile swipe action.")]
         [SerializeField]
@@ -93,13 +93,13 @@ namespace JCSUnity
         [SerializeField]
         private bool mFreezeY = false;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Sound when trigger switch scene.")]
         [SerializeField]
         private AudioClip mSwitchSceneSound = null;
 
-        [Header("- Boundary")]
+        [Header("Boundary")]
 
         [Tooltip("Minimum page on x-axis.")]
         [SerializeField]

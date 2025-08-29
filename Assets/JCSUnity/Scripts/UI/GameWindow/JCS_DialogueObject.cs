@@ -37,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_PanelType mPanelType = JCS_PanelType.RESET_PANEL;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Sound player for this component.")]
         [SerializeField]

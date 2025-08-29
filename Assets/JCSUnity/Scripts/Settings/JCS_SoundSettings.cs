@@ -38,7 +38,7 @@ namespace JCSUnity
         [Tooltip("Keep BGM current scene?")]
         public bool KEEP_BGM_SWITCH_SCENE = false;
 
-        [Header("- Scene Sound")]
+        [Header("Scene Sound")]
 
         [Tooltip("Smoothly switching the sound between the switching the scene.")]
         public bool SMOOTH_SWITCH_SOUND_BETWEEN_SCENE = true;
@@ -47,7 +47,7 @@ namespace JCSUnity
         public AudioClip BACKGROUND_MUSIC = null;
 
         // Window System
-        [Header("- Window System")]
+        [Header("Window System")]
 
         [Tooltip("Sound to play when open the window clip.")]
         public AudioClip DEFAULT_OPEN_WINDOW_CLIP = null;

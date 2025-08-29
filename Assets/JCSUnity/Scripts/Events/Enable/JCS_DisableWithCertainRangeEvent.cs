@@ -41,7 +41,7 @@ namespace JCSUnity
         [SerializeField]
         private float mRange = 0.0f;
 
-        [Header("- Optional")]
+        [Header("Optional")]
 
         [Tooltip("Fade before disable?")]
         [SerializeField]

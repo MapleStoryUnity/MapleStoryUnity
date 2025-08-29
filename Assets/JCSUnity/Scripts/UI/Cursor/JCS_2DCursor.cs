@@ -35,7 +35,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mCursorOffset = Vector3.zero;
 
-        [Header("- Cursor State")]
+        [Header("Cursor State")]
 
         [Tooltip("Cursor custom type.")]
         [SerializeField]

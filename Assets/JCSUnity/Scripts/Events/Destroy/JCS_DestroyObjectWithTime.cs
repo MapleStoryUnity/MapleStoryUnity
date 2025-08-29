@@ -34,7 +34,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Optional")]
+        [Header("Optional")]
 
         [Tooltip("While destroying, fade out the game object.")]
         [SerializeField]

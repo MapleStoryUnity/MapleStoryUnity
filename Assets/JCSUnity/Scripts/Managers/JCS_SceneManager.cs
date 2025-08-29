@@ -62,9 +62,20 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SwitchSceneType mSwitchSceneType = JCS_SwitchSceneType.BLACK_SCREEN;
 
+        [Header("Overlay")]
+
+        [Tooltip("Load additive overlay scenes asynchronously.")]
+        [SerializeField]
+        private bool mOverlayUseAsync = false;
+
+        [Tooltip("A list of addictive scene to load.")]
+        [SerializeField]
+        [Scene]
+        private List<string> mOverlaySceneNames = null;
+
         [Separator("Runtime Variables (JCS_SceneManager)")]
 
-        [Header("- Screen")]
+        [Header("Screen")]
 
         [Tooltip("Do this scene using the specific setting.")]
         [SerializeField]
@@ -90,24 +101,29 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_SwitchSceneType switchSceneType { get { return this.mSwitchSceneType; } set { this.mSwitchSceneType = value; } }
-        public JCS_DynamicScene GetDynamicScene() { return this.mDynamicScene; }
-        public void SetDynamicScene(JCS_DynamicScene ds) { this.mDynamicScene = ds; }
-        public void SetBlackScreen(JCS_BlackScreen bs) { this.mBlackScreen = bs; }
-        public void SetBlackSlideScreen(JCS_BlackSlideScreen bs) { this.mBlackSlideScreen = bs; }
-        public void SetWhiteScreen(JCS_WhiteScreen ws) { this.mWhiteScreen = ws; }
-        public JCS_WhiteScreen GetWhiteScreen() { return this.mWhiteScreen; }
-        public JCS_BlackScreen GetBlackScreen() { return this.mBlackScreen; }
+        public JCS_SwitchSceneType switchSceneType { get { return mSwitchSceneType; } set { mSwitchSceneType = value; } }
+        public List<string> overlaySceneNames { get { return mOverlaySceneNames; } set { mOverlaySceneNames = value; } }
+        public bool overlayUseAsync { get { return mOverlayUseAsync; } set { mOverlayUseAsync = value; } }
 
-        public bool overrideSetting { get { return this.mOverrideSetting; } }
-        public float sceneFadeInTime { get { return this.mSceneFadeInTime; } set { this.mSceneFadeInTime = value; } }
-        public float sceneFadeOutTime { get { return this.mSceneFadeOutTime; } set { this.mSceneFadeOutTime = value; } }
+        public JCS_DynamicScene GetDynamicScene() { return mDynamicScene; }
+        public void SetDynamicScene(JCS_DynamicScene ds) { mDynamicScene = ds; }
+        public void SetBlackScreen(JCS_BlackScreen bs) { mBlackScreen = bs; }
+        public void SetBlackSlideScreen(JCS_BlackSlideScreen bs) { mBlackSlideScreen = bs; }
+        public void SetWhiteScreen(JCS_WhiteScreen ws) { mWhiteScreen = ws; }
+        public JCS_WhiteScreen GetWhiteScreen() { return mWhiteScreen; }
+        public JCS_BlackScreen GetBlackScreen() { return mBlackScreen; }
+
+        public bool overrideSetting { get { return mOverrideSetting; } }
+        public float sceneFadeInTime { get { return mSceneFadeInTime; } set { mSceneFadeInTime = value; } }
+        public float sceneFadeOutTime { get { return mSceneFadeOutTime; } set { mSceneFadeOutTime = value; } }
 
         /* Functions */
 
         private void Awake()
         {
             RegisterInstance(this);
+
+            HandleAdditive();
 
             switch (mSwitchSceneType)
             {
@@ -130,7 +146,7 @@ namespace JCSUnity
 
 #if UNITY_EDITOR
             // add the tool in editor mode.
-            this.gameObject.AddComponent<ReadSceneNames>();
+            gameObject.AddComponent<ReadSceneNames>();
 #endif
         }
 
@@ -174,7 +190,7 @@ namespace JCSUnity
                 {
                     // get the component.
                     if (mFadeSound == null)
-                        mFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
+                        mFadeSound = gameObject.AddComponent<JCS_FadeSound>();
 
                     AudioSource bgmAS = JCS_BGMPlayer.instance.audioSource;
 
@@ -208,6 +224,20 @@ namespace JCSUnity
                 DoEnterSwitchScene();
             else
                 DoExitSwitchScene();
+        }
+
+        /// <summary>
+        /// Handle additive scene overlays.
+        /// </summary>
+        private void HandleAdditive()
+        {
+            foreach (string sceneName in mOverlaySceneNames)
+            {
+                if (mOverlayUseAsync)
+                    SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+                else
+                    SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+            }
         }
 
         #region Load Scene
@@ -315,7 +345,7 @@ namespace JCSUnity
                 {
                     // get the component.
                     if (mFadeSound == null)
-                        mFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
+                        mFadeSound = gameObject.AddComponent<JCS_FadeSound>();
 
                     AudioSource bgmAudioSource = JCS_BGMPlayer.instance.audioSource;
 

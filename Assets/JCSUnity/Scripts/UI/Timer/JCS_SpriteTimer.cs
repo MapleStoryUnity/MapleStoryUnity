@@ -64,7 +64,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Sprite Slots")]
+        [Header("Sprite Slots")]
 
         [Tooltip("Time text sprite 0.")]
         [SerializeField]
@@ -97,7 +97,7 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mTimeText9 = null;
 
-        [Header("- Sprite")]
+        [Header("Sprite")]
 
         [Tooltip("Each digit for hour.")]
         [SerializeField]
@@ -123,7 +123,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_UnityObject mDigitSecond2 = null;
 
-        [Header("- Spacing")]
+        [Header("Spacing")]
 
         [Tooltip("Interval between each digit.")]
         [SerializeField]
@@ -142,7 +142,7 @@ namespace JCSUnity
         private bool mMinusMinute = false;
         private bool mMinusHour = false;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Sound played when hours get reduced.")]
         [SerializeField]

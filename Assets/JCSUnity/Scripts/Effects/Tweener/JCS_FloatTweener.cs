@@ -110,13 +110,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Tweener Formula Type")]
+        [Header("Tweener Formula Type")]
 
         [Tooltip("Tweener formula on value.")]
         [SerializeField]
         private JCS_TweenType mEasing = JCS_TweenType.LINEAR;
 
-        [Header("- Callback")]
+        [Header("Callback")]
 
         [Tooltip("Callback after easing.")]
         [SerializeField]

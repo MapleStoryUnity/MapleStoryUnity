@@ -88,7 +88,7 @@ namespace JCSUnity
         [SerializeField]
         protected bool mSmoothTrack = true;
 
-        [Header("- Boundary")]
+        [Header("Boundary")]
 
         [Tooltip("The movement boundary.")]
         [SerializeField]
@@ -96,23 +96,23 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Vector3 positionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
-        public Vector3 camRectSize { get { return this.mCamRectSize; } set { this.mCamRectSize = value; } }
-        public Rect camRect { get { return this.mCamRect; } }
-        public Camera GetCamera() { return this.mCamera; }
-        public float fieldOfView { get { return this.mCamera.fieldOfView; } set { this.mCamera.fieldOfView = value; } }
-        public Vector3 velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
-        public bool following { get { return this.mFollowing; } set { this.mFollowing = value; } }
-        public bool smoothTrack { get { return this.mSmoothTrack; } set { this.mSmoothTrack = value; } }
+        public Vector3 positionOffset { get { return mPositionOffset; } set { mPositionOffset = value; } }
+        public Vector3 camRectSize { get { return mCamRectSize; } set { mCamRectSize = value; } }
+        public Rect camRect { get { return mCamRect; } }
+        public Camera GetCamera() { return mCamera; }
+        public float fieldOfView { get { return mCamera.fieldOfView; } set { mCamera.fieldOfView = value; } }
+        public Vector3 velocity { get { return mVelocity; } set { mVelocity = value; } }
+        public bool following { get { return mFollowing; } set { mFollowing = value; } }
+        public bool smoothTrack { get { return mSmoothTrack; } set { mSmoothTrack = value; } }
 
-        public virtual void SetFollowTarget(Transform trans) { this.mTargetTransform = trans; }
+        public virtual void SetFollowTarget(Transform trans) { mTargetTransform = trans; }
         public virtual Transform GetFollowTarget() { return mTargetTransform; }
 
         public float screenAspect { get { return (float)mCamera.pixelWidth / (float)mCamera.pixelHeight; } }
 
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public JCS_Boundary boundary { get { return this.mBoundary; } set { this.mBoundary = value; } }
+        public JCS_Boundary boundary { get { return mBoundary; } set { mBoundary = value; } }
 
         /* Functions */
 
@@ -120,7 +120,7 @@ namespace JCSUnity
         {
             main = this;
 
-            this.mCamera = this.GetComponent<Camera>();
+            mCamera = GetComponent<Camera>();
         }
 
         protected virtual void Start()
@@ -303,7 +303,7 @@ namespace JCSUnity
         /// <summary>
         /// Square inside the game editor screen. Display 
         /// the screen width and height in current game depth.
-        /// 2D Game probably need this. 3D Game is optional.
+        /// 2D Game probably need  3D Game is optional.
         /// </summary>
         private void DisplayGameDepthCamera()
         {
@@ -625,10 +625,10 @@ namespace JCSUnity
         /// <param name="yPos"> y position </param>
         public void SetPosition(float xPos, float yPos)
         {
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
             newPos.x = xPos + mPositionOffset.x;
             newPos.y = yPos + mPositionOffset.y;
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
 
         /// <summary>
@@ -650,11 +650,11 @@ namespace JCSUnity
         /// <param name="zPos"> z position </param>
         public void SetPosition(float xPos, float yPos, float zPos)
         {
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
             newPos.x = xPos + mPositionOffset.x;
             newPos.y = yPos + mPositionOffset.y;
             newPos.z = zPos + mPositionOffset.z;
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
 
         /// <summary>
@@ -694,9 +694,9 @@ namespace JCSUnity
 
             Bounds bounds = mBoundary.GetBounds();
 
-            Vector3 camPos = this.transform.position;
+            Vector3 camPos = transform.position;
 
-            this.transform.position = bounds.ClosestPoint(camPos);
+            transform.position = bounds.ClosestPoint(camPos);
         }
 
         /// <summary>

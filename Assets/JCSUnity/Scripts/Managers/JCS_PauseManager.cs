@@ -37,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mToggleGamePause = KeyCode.P;
 
-        [Header("- Increment/Decrement Time")]
+        [Header("Increment/Decrement Time")]
 
         [Tooltip("Key that increment the time.")]
         [SerializeField]
@@ -85,7 +85,7 @@ object you have in the list.")]
         // resize timer.
         private float mResizePauseActionListTimer = 0;
 
-        [Header("- Asymptotic")]
+        [Header("Asymptotic")]
 
         [Tooltip("Do this scene using the specific setting.")]
         [SerializeField]

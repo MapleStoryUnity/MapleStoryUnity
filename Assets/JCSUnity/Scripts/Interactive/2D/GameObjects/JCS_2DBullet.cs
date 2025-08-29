@@ -24,7 +24,7 @@ namespace JCSUnity
 
         private JCS_3DGoStraightAction mGoStraightAction = null;
 
-        [Header("- Absorb Effect")]
+        [Header("Absorb Effect")]
 
         [Tooltip("Enable/Disable absorb effect.")]
         [SerializeField] private bool mAbsorbEffect = false;
@@ -52,7 +52,7 @@ namespace JCSUnity
         private float mAbsorbEffectTimer = 0;
         private float mRecordMoveSpeed = 0;
 
-        [Header("- Degree Change")]
+        [Header("Degree Change")]
 
         [Tooltip("")]
         [SerializeField]
@@ -94,7 +94,7 @@ namespace JCSUnity
         [Range(0, 360)]
         private float mRandDegreeRangeZ = 45f;
 
-        [Header("- Init Look by Type Action")]
+        [Header("Init Look by Type Action")]
 
         [SerializeField]
         private bool mInitLookByTypeAction = false;

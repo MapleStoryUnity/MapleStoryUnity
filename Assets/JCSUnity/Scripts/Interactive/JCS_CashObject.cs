@@ -25,7 +25,7 @@ namespace JCSUnity
         [Range(1, 99999999)]
         protected int mCashValue = 1;
 
-        [Header("- Randomize")]
+        [Header("Randomize")]
 
         [Tooltip("Randomize the cash value at init time?")]
         [SerializeField]

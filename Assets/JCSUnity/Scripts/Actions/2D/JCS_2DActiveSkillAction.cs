@@ -37,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mStayWithActiveTarget = true;
 
-        [Header("- Spawn")]
+        [Header("Spawn")]
 
         [Tooltip("Spawns in the same position.")]
         [SerializeField]

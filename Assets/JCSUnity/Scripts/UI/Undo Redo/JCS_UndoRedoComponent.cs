@@ -70,7 +70,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mFocusAfterRedo = true;
 
-        [Header("- Input Field")]
+        [Header("Input Field")]
 
         [Tooltip("Record down the previous input field data.")]
         [SerializeField]
@@ -84,7 +84,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_InputFieldData> mIF_Redo = null;
 
-        [Header("- Dropdown")]
+        [Header("Dropdown")]
 
         [Tooltip("Record down the previous dropdown data.")]
         [SerializeField]
@@ -98,7 +98,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_DropdownData> mDD_Redo = null;
 
-        [Header("- Toggle")]
+        [Header("Toggle")]
 
         [Tooltip("Record down the previous toggle data.")]
         [SerializeField]
@@ -112,7 +112,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_ToggleData> mTog_Redo = null;
 
-        [Header("- Scroll Bar")]
+        [Header("Scroll Bar")]
 
         [Tooltip("Record down the previous scroll bar data.")]
         [SerializeField]
@@ -126,7 +126,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_ScrollbarData> mSB_Redo = null;
 
-        [Header("- Slider")]
+        [Header("Slider")]
 
         [Tooltip("Record down the previous slider data.")]
         [SerializeField]

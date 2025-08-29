@@ -57,7 +57,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Delay Playback")]
+        [Header("Delay Playback")]
 
         [Tooltip("How long it delay before to play the clip.")]
         [SerializeField]
@@ -266,7 +266,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Delay Playback")]
+        [Header("Delay Playback")]
 
         [Tooltip("How long it delay before to play the clip.")]
         [SerializeField]

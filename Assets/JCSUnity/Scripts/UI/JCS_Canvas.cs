@@ -137,22 +137,22 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public RectTransform appRect { get { return this.mAppRect; } }
-        public Canvas canvas { get { return this.mCanvas; } }
-        public CanvasGroup canvasGroup { get { return this.mCanvasGroup; } }
-        public JCS_ResizeUI resizeUI { get { return this.mResizeUI; } }
+        public RectTransform appRect { get { return mAppRect; } }
+        public Canvas canvas { get { return mCanvas; } }
+        public CanvasGroup canvasGroup { get { return mCanvasGroup; } }
+        public JCS_ResizeUI resizeUI { get { return mResizeUI; } }
 
-        public bool displayOnAwake { get { return this.mDisplayOnAwake; } }
-        public bool mainCanvas { get { return this.mMainCanvas; } }
-        public ShowMethod showMethod { get { return this.mShowMethod; } set { this.mShowMethod = value; } }
+        public bool displayOnAwake { get { return mDisplayOnAwake; } }
+        public bool mainCanvas { get { return mMainCanvas; } }
+        public ShowMethod showMethod { get { return mShowMethod; } set { mShowMethod = value; } }
 
-        public float fadeFriction { get { return this.mFadeFriction; } set { this.mFadeFriction = value; } }
-        public float fadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
-        public float fadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
+        public float fadeFriction { get { return mFadeFriction; } set { mFadeFriction = value; } }
+        public float fadeInAmount { get { return mFadeInAmount; } set { mFadeInAmount = value; } }
+        public float fadeOutAmount { get { return mFadeOutAmount; } set { mFadeOutAmount = value; } }
 
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public AudioClip soundOnShow { get { return this.mSoundOnShow; } set { this.mSoundOnShow = value; } }
-        public AudioClip soundOnHide { get { return this.mSoundOnHide; } set { this.mSoundOnHide = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public AudioClip soundOnShow { get { return mSoundOnShow; } set { mSoundOnShow = value; } }
+        public AudioClip soundOnHide { get { return mSoundOnHide; } set { mSoundOnHide = value; } }
 
         public static float SCALE_FACTOR
         {
@@ -171,9 +171,9 @@ namespace JCSUnity
         {
             CheckMainCanvas();
 
-            this.mAppRect = this.GetComponent<RectTransform>();
-            this.mCanvas = this.GetComponent<Canvas>();
-            this.mCanvasGroup = this.GetComponent<CanvasGroup>();
+            mAppRect = GetComponent<RectTransform>();
+            mCanvas = GetComponent<Canvas>();
+            mCanvasGroup = GetComponent<CanvasGroup>();
 
             var uis = JCS_UISettings.FirstInstance();
             var screens = JCS_ScreenSettings.FirstInstance();
@@ -186,7 +186,7 @@ namespace JCSUnity
                 // resizable UI in order to resize the UI correctly
                 mResizeUI = spawned.GetComponent<JCS_ResizeUI>();
 
-                mResizeUI.transform.SetParent(this.transform);
+                mResizeUI.transform.SetParent(transform);
             }
 
             uim.AddCanvas(this);
@@ -293,7 +293,7 @@ namespace JCSUnity
         /// <param name="com"> Component add to canvas. </param>
         public void AddComponentToResizeCanvas(Component com)
         {
-            Transform newParent = (mResizeUI != null) ? mResizeUI.transform : this.mCanvas.transform;
+            Transform newParent = (mResizeUI != null) ? mResizeUI.transform : mCanvas.transform;
 
             if (newParent == null)
                 Debug.LogError($"Attach resize canvas exception: {com}");
@@ -336,6 +336,9 @@ namespace JCSUnity
 
         private void ShowEnable()
         {
+            if (mCanvas == null)
+                return;
+
             mCanvas.enabled = true;
 
             if (mCanvasGroup != null)
@@ -344,6 +347,9 @@ namespace JCSUnity
 
         private void ShowFade()
         {
+            if (mCanvas == null)
+                return;
+
             // Remains enabled since we're going to do fading.
             mCanvas.enabled = true;
 
@@ -374,6 +380,9 @@ namespace JCSUnity
 
         private void HideEnable()
         {
+            if (mCanvas == null)
+                return;
+
             mCanvas.enabled = false;
 
             if (mCanvasGroup != null)
@@ -382,6 +391,9 @@ namespace JCSUnity
 
         private void HideFade()
         {
+            if (mCanvas == null)
+                return;
+
             // Remains enabled since we're going to do fading.
             mCanvas.enabled = true;
 
@@ -416,7 +428,7 @@ namespace JCSUnity
         /// </summary>
         private void CheckMainCanvas()
         {
-            if (!this.mMainCanvas)
+            if (!mMainCanvas)
                 return;
 
             if (main != null)

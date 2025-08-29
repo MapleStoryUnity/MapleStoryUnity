@@ -80,7 +80,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- UI")]
+        [Header("UI")]
 
         [Tooltip("Add event to event trigger system!")]
         [SerializeField]
@@ -94,7 +94,7 @@ namespace JCSUnity
         [SerializeField]
         private EventTriggerType mDeactiveEventTriggerType = EventTriggerType.PointerExit;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -118,7 +118,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreZ = false;
 
-        [Header("- Optional")]
+        [Header("Optional")]
 
         [Tooltip(@"If you want to active this effect by button, plz set the button here.")]
         [SerializeField]

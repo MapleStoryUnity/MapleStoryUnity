@@ -1147,8 +1147,7 @@ namespace JCSUnity
             // If the same scene, just execute and leave.
             if (oldScene == scene)
             {
-                if (action != null)
-                    action.Invoke();
+                action?.Invoke();
 
                 return;
             }
@@ -1156,8 +1155,7 @@ namespace JCSUnity
             // Switch to new scene.
             SceneManager.SetActiveScene(scene);
 
-            if (action != null)
-                action.Invoke();
+            action?.Invoke();
 
             // Revert back to old scene.
             SceneManager.SetActiveScene(oldScene);

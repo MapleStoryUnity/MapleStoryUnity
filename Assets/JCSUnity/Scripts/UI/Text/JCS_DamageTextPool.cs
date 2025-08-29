@@ -60,7 +60,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Sound player for this component.")]
         [SerializeField]
@@ -70,7 +70,7 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mHitSound = null;
 
-        [Header("- Zigge Right Left (In Sequence)")]
+        [Header("Zigge Right Left (In Sequence)")]
 
         [Tooltip("Do the zigge effect?")]
         [SerializeField]

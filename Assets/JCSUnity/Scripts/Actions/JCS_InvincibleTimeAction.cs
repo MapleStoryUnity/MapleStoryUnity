@@ -40,7 +40,7 @@ namespace JCSUnity
         // trigger the invincible time action?
         private bool mTriggerAction = false;
 
-        [Header("- Flash")]
+        [Header("Flash")]
 
         [Tooltip("Color when is invincible.")]
         [SerializeField]

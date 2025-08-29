@@ -123,7 +123,7 @@ namespace JCSUnity
 
 
             #region Stick
-            [Header("- Stick")]
+            [Header("Stick")]
 
             [Tooltip("Stick on the right")]
             public string stickRightX;
@@ -142,7 +142,7 @@ namespace JCSUnity
 
             #region Trigger
 
-            [Header("- Trigger")]
+            [Header("Trigger")]
 
             [Tooltip("Joystick button right trigger.")]
             public string joystickButtonRT;
@@ -155,7 +155,7 @@ namespace JCSUnity
 
             #region Bumper
 
-            [Header("- Bumper")]
+            [Header("Bumper")]
 
             [Tooltip("Joystick button left bumper.")]
             public string joystickButtonLB;

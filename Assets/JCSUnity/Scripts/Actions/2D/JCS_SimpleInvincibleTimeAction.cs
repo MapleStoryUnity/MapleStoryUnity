@@ -39,7 +39,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Flash Effect (JCS_SimpleInvincibleTimeAction) ")]
+        [Header("Flash Effect (JCS_SimpleInvincibleTimeAction) ")]
 
         [Tooltip("Color when is invincible.")]
         [SerializeField]
@@ -60,7 +60,7 @@ namespace JCSUnity
         // current color is.
         private bool mFlashToggle = false;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Play once while triggered.")]
         [SerializeField]

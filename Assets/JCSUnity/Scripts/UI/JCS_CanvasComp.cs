@@ -16,7 +16,7 @@ namespace JCSUnity
     /// actually inherit the class `JCS_Canvas`.
     /// </summary>
     [RequireComponent(typeof(JCS_Canvas))]
-    public class JCS_CanvasComp<T> : MonoBehaviour
+    public class JCS_CanvasComp : MonoBehaviour
     {
         /* Variables */
 
@@ -62,7 +62,7 @@ namespace JCSUnity
 
         protected virtual void Awake()
         {
-            this.mCanvas = this.GetComponent<JCS_Canvas>();
+            mCanvas = GetComponent<JCS_Canvas>();
         }
 
         public virtual bool IsShown() => mCanvas.IsShown();

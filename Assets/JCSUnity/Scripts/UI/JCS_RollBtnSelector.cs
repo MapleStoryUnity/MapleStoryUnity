@@ -51,7 +51,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.UNSCALED_DELTA_TIME;
 
-        [Header("- Asymptotic Order")]
+        [Header("Asymptotic Order")]
 
         [Tooltip("Enable the asymptotic order effect?")]
         [SerializeField]
@@ -61,7 +61,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mAsympDiffScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-        [Header("- Scroll")]
+        [Header("Scroll")]
 
         [Tooltip("How fast the buttons move?")]
         [SerializeField]

@@ -77,7 +77,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_2DAnimation> mAnimations = null;
 
-        [Header("- Optional")]
+        [Header("Optional")]
 
         [Tooltip("Hold animation displayed frame event.")]
         [SerializeField]

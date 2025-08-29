@@ -123,7 +123,7 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Min/Max")]
+        [Header("Min/Max")]
 
         [Tooltip("Maxinum number.")]
         [SerializeField]
@@ -133,7 +133,7 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private int mMinNumber = 0;
 
-        [Header("- Animation")]
+        [Header("Animation")]
 
         [Tooltip(@"This will make the number have the transition 
 between, setting to a new number. If you want the number set directly, you 

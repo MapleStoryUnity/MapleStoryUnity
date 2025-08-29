@@ -75,7 +75,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mHardOnZ = false;
 
-        [Header("- Order")]
+        [Header("Order")]
 
         [Tooltip("Set the track action order.")]
         [SerializeField]

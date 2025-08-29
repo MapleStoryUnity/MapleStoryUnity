@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using MyBox;
 
@@ -21,7 +22,7 @@ namespace JCSUnity
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_UIManager)")]
-        
+
         [Tooltip("Test this component with key?")]
         [SerializeField]
         private bool mTestWithKey = false;
@@ -57,7 +58,7 @@ namespace JCSUnity
         // List of all the window that are opened!
         private LinkedList<JCS_DialogueObject> mOpenWindow = null;
 
-        [Header("- UI Screen")]
+        [Header("Screen")]
 
         [Tooltip("Panel that could do the fade loose focus effect.")]
         [SerializeField]
@@ -89,7 +90,7 @@ namespace JCSUnity
                         //    return;
                         //}
 
-                        this.mFocusGameDialogue = jdo;
+                        mFocusGameDialogue = jdo;
                     }
                     break;
                 case JCS_DialogueType.SYSTEM_DIALOGUE:
@@ -105,7 +106,7 @@ namespace JCSUnity
                     break;
             }
         }
-        public JCS_DialogueObject GetJCSDialogue(JCS_DialogueType type)
+        public JCS_DialogueObject GetDialogue(JCS_DialogueType type)
         {
             switch (type)
             {
@@ -133,46 +134,27 @@ namespace JCSUnity
         {
             RegisterInstance(this);
 
-            this.mOpenWindow = new LinkedList<JCS_DialogueObject>();
+            mOpenWindow = new LinkedList<JCS_DialogueObject>();
 
-            this.mGlobalUndoRedoSystem = this.gameObject.AddComponent<JCS_UndoRedoSystem>();
+            mGlobalUndoRedoSystem = gameObject.AddComponent<JCS_UndoRedoSystem>();
         }
         private void Start()
         {
             // pop the fade screen.
             string path = JCS_UISettings.FADE_SCREEN_PATH;
-            this.mFadeScreen = JCS_Util.Instantiate(path).GetComponent<JCS_FadeScreen>();
+            mFadeScreen = JCS_Util.Instantiate(path).GetComponent<JCS_FadeScreen>();
         }
 
+#if UNITY_EDITOR
         private void Update()
         {
-#if UNITY_EDITOR
             Test();
-#endif
-
-#if (UNITY_EDITOR || UNITY_STANDALONE)
-
-            // Exit in game diagloue not in game UI!!
-            // (Admin input)
-            if (Input.GetKeyDown(KeyCode.Escape))
-                JCS_UtilFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
-#endif
         }
 
-#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
                 return;
-
-            //if (JCS_Input.GetKeyDown(KeyCode.A))
-            //    JCS_UtilFunctions.PopIsConnectDialogue();
-            //if (JCS_Input.GetKeyDown(KeyCode.S))
-            //    JCS_UtilFunctions.PopSettingDialogue();
-            //if (JCS_Input.GetKeyDown(KeyCode.D))
-            //    JCS_UtilFunctions.PopInGameUI();
-            //if (JCS_Input.GetKeyDown(KeyCode.F))
-            //    JCS_UtilFunctions.PopTalkDialogue();
 
             if (JCS_Input.GetKeyDown(KeyCode.A))
             {
@@ -184,7 +166,7 @@ namespace JCSUnity
 
             if (JCS_Input.GetKeyDown(KeyCode.S))
             {
-                UnFocus();
+                Unfocus();
             }
         }
 #endif
@@ -194,25 +176,25 @@ namespace JCSUnity
         /// </summary>
         public void AddCanvas(JCS_Canvas canvas)
         {
-            this.mCanvases.Add(canvas);
+            mCanvases.Add(canvas);
             mCanvases = JCS_Array.RemoveEmptyMissing(mCanvases);
-            mCanvases = SortCanvases_Insertion();
+            mCanvases = mCanvases.OrderBy(x => x.canvas.sortingOrder).ToList();
         }
-        private List<JCS_Canvas> SortCanvases_Insertion()
+
+        /// <summary>
+        /// Return the canvas by name.
+        /// </summary>
+        public JCS_Canvas CanvasByName(string name)
         {
-            for (int i = 0; i < mCanvases.Count; ++i)
+            mCanvases = JCS_Array.RemoveEmptyMissing(mCanvases);
+
+            foreach (JCS_Canvas canvas in mCanvases)
             {
-                for (int j = i; j > 0; --j)
-                {
-                    if (mCanvases[j].canvas.sortingOrder < mCanvases[j - 1].canvas.sortingOrder)
-                    {
-                        JCS_Canvas temp = mCanvases[j];
-                        mCanvases[j] = mCanvases[j - 1];
-                        mCanvases[j - 1] = temp;
-                    }
-                }
+                if (canvas.name == name)
+                    return canvas;
             }
-            return mCanvases;
+
+            return null;
         }
 
         /// <summary>
@@ -224,10 +206,10 @@ namespace JCSUnity
             if (GetOpenWindow().Count == 0)
                 return;
 
-            JCS_DialogueObject jdo = GetOpenWindow().Last.Value;
+            JCS_DialogueObject dialogue = GetOpenWindow().Last.Value;
 
             // once it hide it will remove from the list it self!
-            jdo.Hide();
+            dialogue.Hide();
         }
 
         /// <summary>
@@ -305,7 +287,7 @@ namespace JCSUnity
         /// <summary>
         /// Fade out the screen, back to original amount of value.
         /// </summary>
-        public void UnFocus()
+        public void Unfocus()
         {
             JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
             fadeObj.FadeOut();
@@ -314,7 +296,7 @@ namespace JCSUnity
         /// <summary>
         /// Fade out the screen, back to original amount of value.
         /// </summary>
-        public void UnFocus(float time)
+        public void Unfocus(float time)
         {
             JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
             fadeObj.FadeOut(time);

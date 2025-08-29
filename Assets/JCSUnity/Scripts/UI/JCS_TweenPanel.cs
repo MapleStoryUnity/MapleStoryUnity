@@ -60,7 +60,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mOverrideTween = false;
 
-        [Header("- Sound")]
+        [Header("Sound")]
 
         [Tooltip("Sound player for this component.")]
         [SerializeField]

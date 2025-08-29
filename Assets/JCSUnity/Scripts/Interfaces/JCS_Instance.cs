@@ -24,7 +24,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Dictionary<Scene, T> instances { get { return mInstances; } }
+        public static Dictionary<Scene, T> instances { get { return mInstances; } }
 
         /* Functions */
 
@@ -66,16 +66,16 @@ namespace JCSUnity
         /// <summary>
         /// Clean up unused instances.
         /// </summary>
-        public void CleanInstances()
+        public static void CleanInstances()
         {
             List<Scene> scenes = new();
 
             foreach (Scene scene in mInstances.Keys)
             {
-                if (!scene.isLoaded)
-                {
-                    scenes.Add(scene);
-                }
+                if (scene.isLoaded)
+                    continue;
+
+                scenes.Add(scene);
             }
 
             foreach (Scene scene in scenes)
@@ -101,24 +101,6 @@ namespace JCSUnity
         public static T GetInstance()
         {
             return GetInstance(SceneManager.GetActiveScene());
-        }
-        public static T GetInstance(uint id)
-        {
-            List<Scene> scenes = JCS_SceneManager.GetAllScenes();
-
-            Scene scene = scenes.Where((scene) =>
-            {
-                string name = scene.name;
-
-                if (!name.StartsWith("Arena"))
-                    return false;
-
-                string[] splits = name.Split(":");
-
-                return splits.Last() == id.ToString();
-            }).First();
-
-            return GetInstance(scene);
         }
         public static T GetInstance(Component comp)
         {

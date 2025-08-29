@@ -51,7 +51,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("- Randomize")]
+        [Header("Randomize")]
 
         [Tooltip("Randomize a bit the amplitude value at start.")]
         [SerializeField]

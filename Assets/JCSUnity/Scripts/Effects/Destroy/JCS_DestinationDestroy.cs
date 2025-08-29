@@ -41,7 +41,7 @@ namespace JCSUnity
         [SerializeField]
         private float mDestroyDistance = 0.3f;
 
-        [Header("- Fade Effect")]
+        [Header("Fade Effect")]
 
         [Tooltip("Fade when destroy.")]
         [SerializeField]

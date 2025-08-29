@@ -888,7 +888,23 @@ namespace JCSUnity
         /// </returns>
         public static bool IsOverGUI()
         {
+            return IsOverGUI(0);
+        }
+        public static bool IsOverGUI(int index)
+        {
+#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
             return EventSystem.current.IsPointerOverGameObject();
+#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+            if (Input.touchCount <= index)
+                return false;
+
+            Touch touch = Input.GetTouch(index);
+
+            return EventSystem.current.IsPointerOverGameObject(touch.fingerId);
+#else
+            // Fallback return.
+            return EventSystem.current.IsPointerOverGameObject();
+#endif
         }
     }
 }

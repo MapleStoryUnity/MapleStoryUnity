@@ -56,7 +56,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_UnityObject[] mEffects = null;
 
-        [Header("- Button")]
+        [Header("Button")]
 
         [Tooltip("Button for selection group to handle.")]
         [SerializeField]
@@ -66,7 +66,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSelfAsButton = true;
 
-        [Header("- Full Control")]
+        [Header("Full Control")]
 
         [Tooltip("What is the selection ontop of this selection? (Press Up)")]
         [SerializeField]
