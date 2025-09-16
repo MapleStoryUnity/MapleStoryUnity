@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
@@ -18,6 +19,9 @@ namespace JCSUnity
     public class JCS_DestroyObjectWithTime : MonoBehaviour
     {
         /* Variables */
+
+        // Execute when the time is up.
+        public Action onTimeIsUp = null;
 
         private float mTimer = 0;
 
@@ -38,7 +42,7 @@ namespace JCSUnity
 
         [Tooltip("While destroying, fade out the game object.")]
         [SerializeField]
-        private bool mDestroyWithAlphaEffect = true;
+        private bool mWithAlphaEffect = true;
 
         [Tooltip("Fade out objects that fade out after the time is up.")]
         [SerializeField]
@@ -64,7 +68,7 @@ namespace JCSUnity
         {
             mTimer += JCS_Time.ItTime(mTimeType);
 
-            if (mDestroyWithAlphaEffect)
+            if (mWithAlphaEffect)
             {
                 if (mDestroyTime - mTimer <= mFadeTime)
                     FadeOut();
@@ -73,15 +77,17 @@ namespace JCSUnity
             if (mDestroyTime < mTimer)
             {
                 mTimesUp = true;
+
+                onTimeIsUp?.Invoke();
+
                 Destroy(gameObject);
             }
         }
 
         /// <summary>
-        /// Return the first fade object in the array.
+        /// Retrieve the first fade object.
         /// </summary>
-        /// <returns></returns>
-        public JCS_FadeObject GetFadeObject()
+        public JCS_FadeObject FirstFadeObject()
         {
             foreach (JCS_FadeObject fo in mFadeObjects)
             {

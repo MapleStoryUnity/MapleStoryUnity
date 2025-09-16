@@ -56,6 +56,14 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_WhiteScreen mWhiteScreen = null;
 
+        [Tooltip("A list of loaded overlays.")]
+        [SerializeField]
+        [ReadOnly]
+        private List<string> mLoadedOverlaySceneNames = null;
+
+        // Executions after the overlay scene is loaded.
+        private Dictionary<string, Action> mOnOverlaySceneLoaded = new();
+
         [Separator("Initialize Variables (JCS_SceneManager)")]
 
         [Tooltip("Type/Method to switch the scene.")]
@@ -238,6 +246,54 @@ namespace JCSUnity
                 else
                     SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
             }
+        }
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnOverlaySceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnOverlaySceneLoaded;
+        }
+
+        private void OnOverlaySceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            // Overlay scene must be additive.
+            if (mode != LoadSceneMode.Additive)
+                return;
+
+            string sceneName = scene.name;
+
+            mLoadedOverlaySceneNames.Add(sceneName);
+
+            // Execute event.
+            if (mOnOverlaySceneLoaded.ContainsKey(sceneName))
+                RegisterOverlaySceneLoaded(sceneName, mOnOverlaySceneLoaded[sceneName]);
+        }
+
+        /// <summary>
+        /// Register an event call after the targeted overlay scene is loaded.
+        /// </summary>
+        /// <param name="sceneName"> The target overlay scene name. </param>
+        /// <param name="evt"> The execution to call after the overlay scene is loaded. </param>
+        public void RegisterOverlaySceneLoaded(string sceneName, Action evt)
+        {
+            // Already loaded, execute and return.
+            if (mLoadedOverlaySceneNames.Contains(sceneName))
+            {
+                evt?.Invoke();
+
+                return;
+            }
+
+            // Add one if not exists.
+            if (!mOnOverlaySceneLoaded.ContainsKey(sceneName))
+                mOnOverlaySceneLoaded.Add(sceneName, null);
+
+            // Register event.
+            mOnOverlaySceneLoaded[sceneName] += evt;
         }
 
         #region Load Scene
