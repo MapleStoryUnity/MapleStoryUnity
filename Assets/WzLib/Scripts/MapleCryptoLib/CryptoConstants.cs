@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,16 +19,16 @@
 
 namespace MapleLib.MapleCryptoLib
 {
-	/// <summary>
-	/// Contains all the constant values used for various functions
-	/// </summary>
-	public class CryptoConstants
-	{
+    /// <summary>
+    /// Contains all the constant values used for various functions
+    /// </summary>
+    public class CryptoConstants
+    {
 
-		/// <summary>
-		/// AES UserKey used by MapleStory
-		/// </summary>
-		public static byte[] UserKey = new byte[128] { //16 * 8
+        /// <summary>
+        /// AES UserKey used by MapleStory
+        /// </summary>
+        public static byte[] UserKey = new byte[128] { //16 * 8
             0x13, 0x00, 0x00, 0x00, 0x52, 0x00, 0x00, 0x00, 0x2A, 0x00, 0x00, 0x00, 0x5B, 0x00, 0x00, 0x00,
             0x08, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00,
             0x06, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x43, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00,
@@ -39,10 +39,10 @@ namespace MapleLib.MapleCryptoLib
             0x52, 0x00, 0x00, 0x00, 0xDE, 0x00, 0x00, 0x00, 0xC7, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x00, 0x00
             };
 
-		/// <summary>
-		/// ShuffleBytes used by MapleStory to generate a new IV
-		/// </summary>
-		public static byte[] bShuffle = new byte[256] {//16 * 16
+        /// <summary>
+        /// ShuffleBytes used by MapleStory to generate a new IV
+        /// </summary>
+        public static byte[] bShuffle = new byte[256] {//16 * 16
             0xEC, 0x3F, 0x77, 0xA4, 0x45, 0xD0, 0x71, 0xBF, 0xB7, 0x98, 0x20, 0xFC, 0x4B, 0xE9, 0xB3, 0xE1,
             0x5C, 0x22, 0xF7, 0x0C, 0x44, 0x1B, 0x81, 0xBD, 0x63, 0x8D, 0xD4, 0xC3, 0xF2, 0x10, 0x19, 0xE0,
             0xFB, 0xA1, 0x6E, 0x66, 0xEA, 0xAE, 0xD6, 0xCE, 0x06, 0x18, 0x4E, 0xEB, 0x78, 0x95, 0xDB, 0xBA,
@@ -61,39 +61,39 @@ namespace MapleLib.MapleCryptoLib
             0x84, 0x7F, 0x61, 0x1E, 0xCF, 0xC5, 0xD1, 0x56, 0x3D, 0xCA, 0xF4, 0x05, 0xC6, 0xE5, 0x08, 0x49
         };
 
-		/// <summary>
-		/// Default AES Key used to generate a new IV
-		/// </summary>
-		public static byte[] bDefaultAESKeyValue = new byte[16] {
+        /// <summary>
+        /// Default AES Key used to generate a new IV
+        /// </summary>
+        public static byte[] bDefaultAESKeyValue = new byte[16] {
             0xC6, 0x50, 0x53, 0xF2, 0xA8, 0x42, 0x9D, 0x7F, 0x77, 0x09, 0x1D, 0x26, 0x42, 0x53, 0x88, 0x7C,
         };
 
-		/// <summary>
-		/// IV used to create the WzKey for GMS
-		/// </summary>
-		public static byte[] WZ_GMSIV = new byte[4] { 0x4D, 0x23, 0xC7, 0x2B };
+        /// <summary>
+        /// IV used to create the WzKey for GMS
+        /// </summary>
+        public static byte[] WZ_GMSIV = new byte[4] { 0x4D, 0x23, 0xC7, 0x2B };
 
-		/// <summary>
-		/// IV used to create the WzKey for MSEA
-		/// </summary>
-		public static byte[] WZ_MSEAIV = new byte[4] { 0xB9, 0x7D, 0x63, 0xE9 };
+        /// <summary>
+        /// IV used to create the WzKey for MSEA
+        /// </summary>
+        public static byte[] WZ_MSEAIV = new byte[4] { 0xB9, 0x7D, 0x63, 0xE9 };
 
-		/// <summary>
-		/// Constant used in WZ offset encryption
-		/// </summary>
-		public static uint WZ_OffsetConstant = 0x581C3F6D;
+        /// <summary>
+        /// Constant used in WZ offset encryption
+        /// </summary>
+        public static uint WZ_OffsetConstant = 0x581C3F6D;
 
-		/// <summary>
-		/// Trims the AES UserKey for use an AES cryptor
-		/// </summary>
-		public static byte[] getTrimmedUserKey()
-		{
-			byte[] key = new byte[32];
-			for (int i = 0; i < 128; i += 16)
-			{
-				key[i / 4] = UserKey[i];
-			}
-			return key;
-		}
-	}
+        /// <summary>
+        /// Trims the AES UserKey for use an AES cryptor
+        /// </summary>
+        public static byte[] getTrimmedUserKey()
+        {
+            byte[] key = new byte[32];
+            for (int i = 0; i < 128; i += 16)
+            {
+                key[i / 4] = UserKey[i];
+            }
+            return key;
+        }
+    }
 }

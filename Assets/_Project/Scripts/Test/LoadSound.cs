@@ -1,7 +1,7 @@
 /*
  This file is part of the MapleStory Unity
 
- Copyright (C) 2021-2024 Shen, Jen-Chieh <jcs090218@gmail.com> 
+ Copyright (C) 2021-2025 Shen, Jen-Chieh <jcs090218@gmail.com> 
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License version 3
@@ -17,14 +17,9 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using JCSUnity;
 using MapleLib.WzLib;
 using MapleLib.WzLib.WzProperties;
-using System.IO;
-using NAudio.Wave;
 
 namespace MSU.Test
 {

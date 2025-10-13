@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace MapleLib.WzLib
 {

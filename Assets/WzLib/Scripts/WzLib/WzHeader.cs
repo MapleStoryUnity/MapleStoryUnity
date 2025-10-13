@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,15 +17,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace MapleLib.WzLib
 {
-	public class WzHeader
-	{
+    public class WzHeader
+    {
         private string ident;
         private string copyright;
         private ulong fsize;
@@ -49,7 +44,7 @@ namespace MapleLib.WzLib
             set { fsize = value; }
         }
 
-		public uint FStart 
+        public uint FStart
         {
             get { return fstart; }
             set { fstart = value; }
@@ -60,14 +55,14 @@ namespace MapleLib.WzLib
             fstart = (uint)(ident.Length + sizeof(ulong) + sizeof(uint) + copyright.Length + 1);
         }
 
-		public static WzHeader GetDefault()
-		{
-			WzHeader header = new WzHeader();
-			header.ident = "PKG1";
-			header.copyright = "Package file v1.0 Copyright 2002 Wizet, ZMS";
-			header.fstart = 60;
-			header.fsize = 0;
-			return header;
-		}
-	}
+        public static WzHeader GetDefault()
+        {
+            WzHeader header = new WzHeader();
+            header.ident = "PKG1";
+            header.copyright = "Package file v1.0 Copyright 2002 Wizet, ZMS";
+            header.fstart = 60;
+            header.fsize = 0;
+            return header;
+        }
+    }
 }

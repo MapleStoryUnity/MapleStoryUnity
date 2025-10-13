@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,33 +19,32 @@
 
 using System;
 using System.Drawing;
-using MapleLib.WzLib.WzProperties;
 
 namespace MapleLib.WzLib
 {
-	/// <summary>
-	/// An abstract class for wz objects
-	/// </summary>
-	public abstract class WzObject : IDisposable
-	{
+    /// <summary>
+    /// An abstract class for wz objects
+    /// </summary>
+    public abstract class WzObject : IDisposable
+    {
         private object tag = null;
         private object tag2 = null;
         private object tag3 = null;
 
-		public abstract void Dispose();
+        public abstract void Dispose();
 
-		/// <summary>
-		/// The name of the object
-		/// </summary>
-		public abstract string Name { get; set; }
-		/// <summary>
-		/// The WzObjectType of the object
-		/// </summary>
-		public abstract WzObjectType ObjectType { get; }
-		/// <summary>
-		/// Returns the parent object
-		/// </summary>
-		public abstract WzObject Parent { get; internal set; }
+        /// <summary>
+        /// The name of the object
+        /// </summary>
+        public abstract string Name { get; set; }
+        /// <summary>
+        /// The WzObjectType of the object
+        /// </summary>
+        public abstract WzObjectType ObjectType { get; }
+        /// <summary>
+        /// Returns the parent object
+        /// </summary>
+        public abstract WzObject Parent { get; internal set; }
         /// <summary>
         /// Returns the parent WZ File
         /// </summary>
@@ -58,7 +57,7 @@ namespace MapleLib.WzLib
                 if (this is WzFile)
                 {
                     return ((WzFile)this)[name];
-                } 
+                }
                 else if (this is WzDirectory)
                 {
                     return ((WzDirectory)this)[name];
@@ -174,5 +173,5 @@ namespace MapleLib.WzLib
         }
         #endregion
 
-	}
+    }
 }

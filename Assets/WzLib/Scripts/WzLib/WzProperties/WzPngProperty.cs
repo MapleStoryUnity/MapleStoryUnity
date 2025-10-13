@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,10 +23,11 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Compression;
 using System.Runtime.InteropServices;
-using MapleLib.WzLib.Util;
 
 namespace MapleLib.WzLib.WzProperties
 {
+    using Util;
+
     /// <summary>
     /// A property that contains the information for a bitmap
     /// </summary>
@@ -152,7 +153,7 @@ namespace MapleLib.WzLib.WzProperties
                     compressedBytes = wzReader.ReadBytes(len);
                     ParsePng();
                 }
-                else 
+                else
                     reader.BaseStream.Position += len;
             }
             wzReader = reader;
@@ -318,8 +319,8 @@ namespace MapleLib.WzLib.WzProperties
                         {
                             for (int j = 0; j < w; j++)
                             {
-                                index = (j + i * w) * 2; 
-                                index2 = j * 4 + i * width * 4; 
+                                index = (j + i * w) * 2;
+                                index2 = j * 4 + i * width * 4;
                                 p = (decBuf[index] & 0x0F) | ((decBuf[index] & 0x0F) << 4);
                                 p |= ((decBuf[index] & 0xF0) | ((decBuf[index] & 0xF0) >> 4)) << 8;
                                 p |= ((decBuf[index + 1] & 0x0F) | ((decBuf[index + 1] & 0x0F) << 4)) << 16;
@@ -355,7 +356,7 @@ namespace MapleLib.WzLib.WzProperties
                     Marshal.Copy(argb2, 0, bmpData.Scan0, argb2.Length);
                     bmp.UnlockBits(bmpData);
                     break;
-                    
+
                 case 513:
                     bmp = new Bitmap(width, height, PixelFormat.Format16bppRgb565);
                     bmpData = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format16bppRgb565);
@@ -397,7 +398,7 @@ namespace MapleLib.WzLib.WzProperties
                     Marshal.Copy(decBuf, 0, bmpData.Scan0, decBuf.Length);
                     bmp.UnlockBits(bmpData);
                     break;
-                    
+
                 case 2050: // thanks to Elem8100
                     bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
                     bmpData = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
@@ -497,7 +498,7 @@ namespace MapleLib.WzLib.WzProperties
 
             return pixel;
         }
-        
+
         public static byte[] GetPixelDataDXT5(byte[] rawData, int width, int height)
         {
             byte[] pixel = new byte[width * height * 4];

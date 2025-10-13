@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,100 +20,101 @@
 using System;
 using System.Collections;
 using System.IO;
-using MapleLib.MapleCryptoLib;
 
 namespace MapleLib.WzLib.Util
 {
-	public class WzTool
-	{
+    using MapleCryptoLib;
 
-		public static Hashtable StringCache = new Hashtable();
+    public class WzTool
+    {
 
-		public static UInt32 RotateLeft(UInt32 x, byte n)
-		{
-			return (UInt32)(((x) << (n)) | ((x) >> (32 - (n))));
-		}
+        public static Hashtable StringCache = new Hashtable();
 
-		public static UInt32 RotateRight(UInt32 x, byte n)
-		{
-			return (UInt32)(((x) >> (n)) | ((x) << (32 - (n))));
-		}
+        public static UInt32 RotateLeft(UInt32 x, byte n)
+        {
+            return (UInt32)(((x) << (n)) | ((x) >> (32 - (n))));
+        }
 
-		public static int GetCompressedIntLength(int i)
-		{
-			if (i > 127 || i < -127)
-				return 5;
-			return 1;
-		}
+        public static UInt32 RotateRight(UInt32 x, byte n)
+        {
+            return (UInt32)(((x) >> (n)) | ((x) << (32 - (n))));
+        }
 
-		public static int GetEncodedStringLength(string s)
-		{
-			int len = 0;
-			if (string.IsNullOrEmpty(s))
-				return 1;
-			bool unicode = false;
-			foreach (char c in s)
-				if (c > 255)
-					unicode = true;
-			if (unicode)
-			{
-				if (s.Length > 126)
-					len += 5;
-				else
-					len += 1;
-				len += s.Length * 2;
-			}
-			else
-			{
-				if (s.Length > 127)
-					len += 5;
-				else
-					len += 1;
-				len += s.Length;
-			}
-			return len;
-		}
+        public static int GetCompressedIntLength(int i)
+        {
+            if (i > 127 || i < -127)
+                return 5;
+            return 1;
+        }
 
-		public static int GetWzObjectValueLength(string s, byte type)
-		{
-			string storeName = type + "_" + s;
-			if (s.Length > 4 && StringCache.ContainsKey(storeName))
-			{
-				return 5;
-			}
-			else
-			{
-				StringCache[storeName] = 1;
-				return 1 + GetEncodedStringLength(s);
-			}
-		}
+        public static int GetEncodedStringLength(string s)
+        {
+            int len = 0;
+            if (string.IsNullOrEmpty(s))
+                return 1;
+            bool unicode = false;
+            foreach (char c in s)
+                if (c > 255)
+                    unicode = true;
+            if (unicode)
+            {
+                if (s.Length > 126)
+                    len += 5;
+                else
+                    len += 1;
+                len += s.Length * 2;
+            }
+            else
+            {
+                if (s.Length > 127)
+                    len += 5;
+                else
+                    len += 1;
+                len += s.Length;
+            }
+            return len;
+        }
 
-		public static T StringToEnum<T>(string name)
-		{
-			try
-			{
-				return (T)Enum.Parse(typeof(T), name);
-			}
-			catch
-			{
-				return default(T);
-			}
-		}
+        public static int GetWzObjectValueLength(string s, byte type)
+        {
+            string storeName = type + "_" + s;
+            if (s.Length > 4 && StringCache.ContainsKey(storeName))
+            {
+                return 5;
+            }
+            else
+            {
+                StringCache[storeName] = 1;
+                return 1 + GetEncodedStringLength(s);
+            }
+        }
 
-		public static byte[] GetIvByMapleVersion(WzMapleVersion ver)
-		{
-			switch (ver)
-			{
-				case WzMapleVersion.EMS:
-					return CryptoConstants.WZ_MSEAIV;//?
-				case WzMapleVersion.GMS:
-					return CryptoConstants.WZ_GMSIV;
+        public static T StringToEnum<T>(string name)
+        {
+            try
+            {
+                return (T)Enum.Parse(typeof(T), name);
+            }
+            catch
+            {
+                return default(T);
+            }
+        }
+
+        public static byte[] GetIvByMapleVersion(WzMapleVersion ver)
+        {
+            switch (ver)
+            {
+                case WzMapleVersion.EMS:
+                    return CryptoConstants.WZ_MSEAIV;//?
+                case WzMapleVersion.GMS:
+                    return CryptoConstants.WZ_GMSIV;
                 case WzMapleVersion.BMS:
-				case WzMapleVersion.CLASSIC:
-				default:
-					return new byte[4];
-			}
-		}
+                case WzMapleVersion.CLASSIC:
+                default:
+                    return new byte[4];
+            }
+        }
 
         private static int GetRecognizedCharacters(string source)
         {
@@ -187,5 +188,5 @@ namespace MapleLib.WzLib.Util
             Array.Copy(b, 0, result, a.Length, b.Length);
             return result;
         }
-	}
+    }
 }

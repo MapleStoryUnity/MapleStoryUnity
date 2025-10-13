@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,15 +17,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
 using System.Collections.Generic;
 
 namespace MapleLib.WzLib.WzStructure.Data
 {
-
     public static class Tables
     {
-        public static Dictionary<string, string> PortalTypeNames = new Dictionary<string, string>() { 
+        public static Dictionary<string, string> PortalTypeNames = new Dictionary<string, string>()
+        {
             { "sp", "Start Point"},
             { "pi", "Invisible" },
             { "pv", "Visible" },
@@ -40,9 +39,11 @@ namespace MapleLib.WzLib.WzStructure.Data
             { "psh", "Script Hidden" },
             { "pcj", "Vertical Spring" },
             { "pci", "Custom Impact Spring" },
-            { "pcig", "Unknown (PCIG)" }};
+            { "pcig", "Unknown (PCIG)" },
+        };
 
-        public static string[] BackgroundTypeNames = new string[] {
+        public static string[] BackgroundTypeNames = new string[]
+        {
             "Regular",
             "Horizontal Copies",
             "Vertical Copies",
@@ -50,7 +51,7 @@ namespace MapleLib.WzLib.WzStructure.Data
             "Horizontal Moving+Copies",
             "Vertical Moving+Copies",
             "H+V Copies, Horizontal Moving",
-            "H+V Copies, Vertical Moving"
+            "H+V Copies, Vertical Moving",
         };
     }
 
@@ -66,5 +67,4 @@ namespace MapleLib.WzLib.WzStructure.Data
         InProgress = 1,
         Completed = 2
     }
-    
 }

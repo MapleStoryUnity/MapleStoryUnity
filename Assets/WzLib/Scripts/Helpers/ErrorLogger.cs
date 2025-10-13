@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace MapleLib.Helpers
 {
@@ -48,7 +46,7 @@ namespace MapleLib.Helpers
             using (StreamWriter sw = new StreamWriter(File.Open(filename, FileMode.Append, FileAccess.Write, FileShare.Read)))
             {
                 sw.WriteLine("Starting error log on " + DateTime.Today.ToShortDateString());
-                foreach (Error e in errorList) 
+                foreach (Error e in errorList)
                 {
                     sw.WriteLine(e.level.ToString() + ":" + e.message);
                 }

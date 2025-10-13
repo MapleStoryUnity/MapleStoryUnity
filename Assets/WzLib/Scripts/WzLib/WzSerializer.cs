@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,19 +19,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MapleLib.WzLib.Util;
-using MapleLib.WzLib.WzProperties;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.Xml;
 using System.Drawing;
-using System.Threading;
 
 namespace MapleLib.WzLib.Serialization
 {
+    using Util;
+    using WzProperties;
+
     public abstract class ProgressingWzSerializer
     {
         protected int total = 0;
@@ -224,7 +222,8 @@ namespace MapleLib.WzLib.Serialization
         public NoBase64DataException(string message) : base(message) { }
         public NoBase64DataException(string message, System.Exception inner) : base(message, inner) { }
         protected NoBase64DataException(System.Runtime.Serialization.SerializationInfo info,
-            System.Runtime.Serialization.StreamingContext context) { }
+            System.Runtime.Serialization.StreamingContext context)
+        { }
     }
 
     public class WzImgSerializer : ProgressingWzSerializer, IWzImageSerializer
@@ -265,7 +264,7 @@ namespace MapleLib.WzLib.Serialization
             total = dir.CountImages();
             curr = 0;
             if (!Directory.Exists(outPath)) WzXmlSerializer.createDirSafe(ref outPath);
-            if (outPath.Substring(outPath.Length -1, 1) != @"\") outPath += @"\";
+            if (outPath.Substring(outPath.Length - 1, 1) != @"\") outPath += @"\";
             foreach (WzDirectory subdir in dir.WzDirectories) SerializeDirectory(subdir, outPath + subdir.Name + @"\");
             foreach (WzImage img in dir.WzImages) SerializeImage(img, outPath + img.Name);
         }
@@ -340,7 +339,7 @@ namespace MapleLib.WzLib.Serialization
             total = 0; curr = 0;
             this.outPath = outPath;
             if (!Directory.Exists(outPath)) WzXmlSerializer.createDirSafe(ref outPath);
-            if (outPath.Substring(outPath.Length - 1,1) != @"\") outPath += @"\";
+            if (outPath.Substring(outPath.Length - 1, 1) != @"\") outPath += @"\";
             total = CalculateTotal(obj);
             ExportRecursion(obj, outPath);
             /*foreach (WzImage img in imagesToUnparse)
@@ -624,7 +623,7 @@ namespace MapleLib.WzLib.Serialization
                     foreach (XmlElement subelement in element)
                         sub.AddProperty(ParsePropertyFromXMLElement(subelement));
                     return sub;
-                
+
                 case "canvas":
                     WzCanvasProperty canvas = new WzCanvasProperty(element.GetAttribute("name"));
                     if (!element.HasAttribute("basedata")) throw new NoBase64DataException("no base64 data in canvas element with name " + canvas.Name);
@@ -634,27 +633,27 @@ namespace MapleLib.WzLib.Serialization
                     foreach (XmlElement subelement in element)
                         canvas.AddProperty(ParsePropertyFromXMLElement(subelement));
                     return canvas;
-                
+
                 case "int":
                     WzIntProperty compressedInt = new WzIntProperty(element.GetAttribute("name"), int.Parse(element.GetAttribute("value"), formattingInfo));
                     return compressedInt;
-                
+
                 case "double":
                     WzDoubleProperty doubleProp = new WzDoubleProperty(element.GetAttribute("name"), double.Parse(element.GetAttribute("value"), formattingInfo));
                     return doubleProp;
-                
+
                 case "null":
                     WzNullProperty nullProp = new WzNullProperty(element.GetAttribute("name"));
                     return nullProp;
-                
+
                 case "sound":
                     if (!element.HasAttribute("basedata") || !element.HasAttribute("basehead") || !element.HasAttribute("length")) throw new NoBase64DataException("no base64 data in sound element with name " + element.GetAttribute("name"));
                     WzSoundProperty sound = new WzSoundProperty(element.GetAttribute("name"),
-                        int.Parse(element.GetAttribute("length")), 
-                        Convert.FromBase64String(element.GetAttribute("basehead")), 
+                        int.Parse(element.GetAttribute("length")),
+                        Convert.FromBase64String(element.GetAttribute("basehead")),
                         Convert.FromBase64String(element.GetAttribute("basedata")));
                     return sound;
-                
+
                 case "string":
                     WzStringProperty stringProp = new WzStringProperty(element.GetAttribute("name"), element.GetAttribute("value"));
                     return stringProp;

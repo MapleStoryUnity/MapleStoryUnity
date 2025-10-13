@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,16 +19,16 @@
 
 using System.Collections.Generic;
 using System.IO;
-using MapleLib.WzLib.Util;
-using MapleLib.WzLib.WzProperties;
 
 namespace MapleLib.WzLib
 {
-	/// <summary>
-	/// A class that parses and contains the data of a wz list file
-	/// </summary>
-	public static class ListFileParser
-	{
+    using Util;
+
+    /// <summary>
+    /// A class that parses and contains the data of a wz list file
+    /// </summary>
+    public static class ListFileParser
+    {
         /// <summary>
 		/// Parses a wz list file on the disk
 		/// </summary>
@@ -58,7 +58,7 @@ namespace MapleLib.WzLib
                 listEntries.Add(decryptedStr);
             }
             wzParser.Close();
-            int lastIndex= listEntries.Count - 1;
+            int lastIndex = listEntries.Count - 1;
             string lastEntry = listEntries[lastIndex];
             listEntries[lastIndex] = lastEntry.Substring(0, lastEntry.Length - 1) + "g";
             return listEntries;
@@ -69,8 +69,8 @@ namespace MapleLib.WzLib
             SaveToDisk(path, WzTool.GetIvByMapleVersion(version), listEntries);
         }
 
-		public static void SaveToDisk(string path, byte[] WzIv, List<string> listEntries)
-		{
+        public static void SaveToDisk(string path, byte[] WzIv, List<string> listEntries)
+        {
             int lastIndex = listEntries.Count - 1;
             string lastEntry = listEntries[lastIndex];
             listEntries[lastIndex] = lastEntry.Substring(0, lastEntry.Length - 1) + "/";
@@ -85,6 +85,6 @@ namespace MapleLib.WzLib
                     wzWriter.Write((short)encryptedChars[j]);
             }
             listEntries[lastIndex] = lastEntry.Substring(0, lastEntry.Length - 1) + "/";
-		}
+        }
     }
 }

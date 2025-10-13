@@ -1,7 +1,7 @@
 ﻿/*  MapleLib - A general-purpose MapleStory library
  *  
  * Copyright (C) 2009-2015 Snow and haha01haha01
- * Copyright (C) 2021-2024 Jen-Chieh Shen
+ * Copyright (C) 2021-2025 Jen-Chieh Shen
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,38 +17,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
 using System.IO;
-using System.Security.Cryptography;
-using MapleLib.MapleCryptoLib;
 
 namespace MapleLib.WzLib.Util
 {
-	public class WzKeyGenerator
-	{
-		#region Methods
+    using MapleCryptoLib;
 
-		public static byte[] GetIvFromZlz(FileStream zlzStream)
-		{
-			byte[] iv = new byte[4];
+    public class WzKeyGenerator
+    {
+        #region Methods
 
-			zlzStream.Seek(0x10040, SeekOrigin.Begin);
-			zlzStream.Read(iv, 0, 4);
-			return iv;
-		}
+        public static byte[] GetIvFromZlz(FileStream zlzStream)
+        {
+            byte[] iv = new byte[4];
 
-		private static byte[] GetAesKeyFromZlz(FileStream zlzStream)
-		{
-			byte[] aes = new byte[32];
+            zlzStream.Seek(0x10040, SeekOrigin.Begin);
+            zlzStream.Read(iv, 0, 4);
+            return iv;
+        }
 
-			zlzStream.Seek(0x10060, SeekOrigin.Begin);
-			for (int i = 0; i < 8; i++)
-			{
-				zlzStream.Read(aes, i * 4, 4);
-				zlzStream.Seek(12, SeekOrigin.Current);
-			}
-			return aes;
-		}
+        private static byte[] GetAesKeyFromZlz(FileStream zlzStream)
+        {
+            byte[] aes = new byte[32];
+
+            zlzStream.Seek(0x10060, SeekOrigin.Begin);
+            for (int i = 0; i < 8; i++)
+            {
+                zlzStream.Read(aes, i * 4, 4);
+                zlzStream.Seek(12, SeekOrigin.Current);
+            }
+            return aes;
+        }
 
         public static WzMutableKey GenerateWzKey(byte[] WzIv)
         {
