@@ -117,7 +117,7 @@ namespace JCSUnity
 
             var cam = JCS_Camera.main;
 
-            Vector3 newPos = this.transform.localPosition;
+            Vector3 newPos = transform.localPosition;
             Vector3 direction = Vector3.zero;
 
             if (JCS_Input.GetKey(mUpKey))

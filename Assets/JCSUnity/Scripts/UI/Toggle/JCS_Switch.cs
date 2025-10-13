@@ -95,12 +95,12 @@ namespace JCSUnity
 
         public bool IsOn
         {
-            get { return this.mIsOn; }
+            get { return mIsOn; }
             set
             {
-                if (this.mIsOn != value)
+                if (mIsOn != value)
                 {
-                    this.mIsOn = value;
+                    mIsOn = value;
 
                     if (onValueChanged != null)
                         onValueChanged.Invoke();
@@ -110,10 +110,10 @@ namespace JCSUnity
                 DoToggle();
             }
         }
-        public bool OnOffStartingPosition { get { return this.mOnOffStartingPosition; } set { this.mOnOffStartingPosition = value; } }
-        public bool ColorSameAsEditingStatus { get { return this.mColorSameAsEditingStatus; } set { this.mColorSameAsEditingStatus = value; } }
-        public Vector3 OnPos { get { return this.mOnPos; } set { this.mOnPos = value; } }
-        public Vector3 OffPos { get { return this.mOffPos; } set { this.mOffPos = value; } }
+        public bool OnOffStartingPosition { get { return mOnOffStartingPosition; } set { mOnOffStartingPosition = value; } }
+        public bool ColorSameAsEditingStatus { get { return mColorSameAsEditingStatus; } set { mColorSameAsEditingStatus = value; } }
+        public Vector3 OnPos { get { return mOnPos; } set { mOnPos = value; } }
+        public Vector3 OffPos { get { return mOffPos; } set { mOffPos = value; } }
 
 
         /* Functions */
@@ -123,12 +123,12 @@ namespace JCSUnity
             base.Awake();
 
             if (mSwitchSign == null)
-                this.mSwitchSign = this.GetComponentInChildren<JCS_SwitchSign>();
+                mSwitchSign = GetComponentInChildren<JCS_SwitchSign>();
 
-            this.mColorTweener = this.GetComponent<JCS_ColorTweener>();
+            mColorTweener = GetComponent<JCS_ColorTweener>();
 
             // Add interactable callback.
-            this.onInteractableStateChanged += OnInteractableStateChanged;
+            onInteractableStateChanged += OnInteractableStateChanged;
         }
 
         private void Start()
@@ -193,13 +193,13 @@ namespace JCSUnity
 
             if (mIsOn)
             {
-                this.mOnPos = mSwitchSign.transform.localPosition;
-                this.mOffPos = JCS_Mathf.ToNegative(mSwitchSign.transform.localPosition);
+                mOnPos = mSwitchSign.transform.localPosition;
+                mOffPos = JCS_Mathf.ToNegative(mSwitchSign.transform.localPosition);
             }
             else
             {
-                this.mOffPos = mSwitchSign.transform.localPosition;
-                this.mOnPos = JCS_Mathf.ToNegative(mSwitchSign.transform.localPosition);
+                mOffPos = mSwitchSign.transform.localPosition;
+                mOnPos = JCS_Mathf.ToNegative(mSwitchSign.transform.localPosition);
             }
         }
 
@@ -241,7 +241,7 @@ namespace JCSUnity
         /// </summary>
         private void DoToggle()
         {
-            DoToggle(this.mIsOn);
+            DoToggle(mIsOn);
         }
 
         /// <summary>

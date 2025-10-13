@@ -19,13 +19,13 @@ namespace JCSUnity
         private Sprite mSprite;  /* Image sprite data. */
         private int mIndex;      /* Image file index. */
 
-        public Sprite sprite { get { return this.mSprite; } }
-        public int index { get { return this.mIndex; } }
+        public Sprite sprite { get { return mSprite; } }
+        public int index { get { return mIndex; } }
 
         public JCS_LoadedSpriteData(Sprite sp, int index)
         {
-            this.mSprite = sp;
-            this.mIndex = index;
+            mSprite = sp;
+            mIndex = index;
         }
     };
 }

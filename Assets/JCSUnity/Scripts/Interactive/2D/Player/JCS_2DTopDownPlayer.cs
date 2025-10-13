@@ -29,7 +29,7 @@ namespace JCSUnity
         protected override void Awake()
         {
             base.Awake();
-            this.mTopDownAudioController = this.GetComponent<JCS_2DTopDownPlayerAudioController>();
+            mTopDownAudioController = GetComponent<JCS_2DTopDownPlayerAudioController>();
         }
 
         protected override void FixedUpdate()

@@ -72,33 +72,33 @@ namespace JCSUnity
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
                     {
-                        if (this.mRenderer)
-                            this.mRecordColor = this.mRenderer.material.color;
+                        if (mRenderer)
+                            mRecordColor = mRenderer.material.color;
                     }
                     break;
                 case JCS_UnityObjectType.UI:
                     {
-                        if (this.mImage)
-                            this.mRecordColor = this.mImage.color;
+                        if (mImage)
+                            mRecordColor = mImage.color;
                     }
                     break;
                 case JCS_UnityObjectType.SPRITE:
                     {
-                        if (this.mSpriteRenderer)
-                            this.mRecordColor = this.mSpriteRenderer.color;
+                        if (mSpriteRenderer)
+                            mRecordColor = mSpriteRenderer.color;
                     }
                     break;
                 case JCS_UnityObjectType.TEXT:
                     {
-                        if (this.mText)
-                            this.mRecordColor = this.mText.color;
+                        if (mText)
+                            mRecordColor = mText.color;
                     }
                     break;
 #if TMP_PRO
                 case JCS_UnityObjectType.TMP:
                     {
-                        if (this.mTextMesh)
-                            this.mRecordColor = this.mTextMesh.color;
+                        if (mTextMesh)
+                            mRecordColor = mTextMesh.color;
                     }
                     break;
 #endif
@@ -112,8 +112,8 @@ namespace JCSUnity
         /// <param name="friction"> how fast it fades? </param>
         public void FadeTo(float alpha, float friction)
         {
-            this.mTargetAlpha = alpha;
-            this.mFadeFriction = friction;
+            mTargetAlpha = alpha;
+            mFadeFriction = friction;
         }
     }
 }

@@ -147,7 +147,7 @@ namespace JCSUnity
             float dt = JCS_Time.ItTime(mTimeType);
 
             float prevPos = GetLocalPositionByAxis();
-            this.localPosition += mVelocity * dt;
+            localPosition += mVelocity * dt;
             float currPos = GetLocalPositionByAxis();
 
             float startingPos = GetStartingPositionByAxis();
@@ -196,7 +196,7 @@ namespace JCSUnity
 
         private void SetLocalPositionByAxis(float val)
         {
-            Vector3 newPos = this.localPosition;
+            Vector3 newPos = localPosition;
             switch (mAxis)
             {
                 case JCS_Axis.AXIS_X: newPos.x = val; break;

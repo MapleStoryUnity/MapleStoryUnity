@@ -127,7 +127,7 @@ namespace JCSUnity
                 }
 
                 Vector3 objectPos = mDetectedObjects.at(index).transform.position;
-                Vector3 areaPos = this.transform.position;
+                Vector3 areaPos = transform.position;
 
                 float distance = Vector3.Distance(objectPos, areaPos);
 
@@ -189,7 +189,7 @@ namespace JCSUnity
                 }
 
                 Vector3 objectPos = obj.transform.position;
-                Vector3 areaPos = this.transform.position;
+                Vector3 areaPos = transform.position;
 
                 float distance = Vector3.Distance(objectPos, areaPos);
 

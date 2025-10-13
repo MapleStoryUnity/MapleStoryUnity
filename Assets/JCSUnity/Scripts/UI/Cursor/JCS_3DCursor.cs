@@ -59,7 +59,7 @@ namespace JCSUnity
 
         [Header("Other")]
 
-        [Tooltip("If the art team do stuff correctly, no need to use this.")]
+        [Tooltip("If the art team do stuff correctly, no need to use ")]
         [SerializeField]
         private bool mDoOffset = false;
 
@@ -69,8 +69,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_CursorCustomizeType cursorCustomizeType { get { return this.mCursorCustomizeType; } }
-        public Vector3 cursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
+        public JCS_CursorCustomizeType cursorCustomizeType { get { return mCursorCustomizeType; } }
+        public Vector3 cursorOffset { get { return mCursorOffset; } set { mCursorOffset = value; } }
 
         /* Functions */
 
@@ -78,8 +78,8 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
-            this.mAnimator = this.GetComponent<Animator>();
+            mSpriteRenderer = GetComponent<SpriteRenderer>();
+            mAnimator = GetComponent<Animator>();
 
             Vector2 cursorRect = JCS_UIUtil.GetSpriteRendererRect(mSpriteRenderer);
             mOffset.x = cursorRect.x / 2.0f;
@@ -237,7 +237,7 @@ namespace JCSUnity
             // set animation
             mAnimator.runtimeAnimatorController = anim;
 
-            this.mCursorCustomizeType = type;
+            mCursorCustomizeType = type;
         }
 
         /// <summary>
@@ -261,9 +261,9 @@ namespace JCSUnity
             mousePos3d += mCursorOffset;
 
             if (mDepth < 0)
-                this.transform.position = -mousePos3d;
+                transform.position = -mousePos3d;
             else
-                this.transform.position = mousePos3d;
+                transform.position = mousePos3d;
         }
     }
 }

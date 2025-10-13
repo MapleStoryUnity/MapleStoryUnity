@@ -480,15 +480,15 @@ namespace JCSUnity
         /// </summary>
         private void SpaceLimitCheck()
         {
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
 
-            if (this.transform.position.y < mMinHeight)
+            if (transform.position.y < mMinHeight)
                 newPos.y = mMinHeight;
 
-            if (this.transform.position.y > mMaxHeight)
+            if (transform.position.y > mMaxHeight)
                 newPos.y = mMaxHeight;
 
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
 
         /// <summary>

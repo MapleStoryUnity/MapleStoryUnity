@@ -32,7 +32,7 @@ namespace JCSUnity
                 return;
 
             // get the parent.
-            Transform parentObj = this.transform.parent;
+            Transform parentObj = transform.parent;
 
             if (parentObj != null)
             {

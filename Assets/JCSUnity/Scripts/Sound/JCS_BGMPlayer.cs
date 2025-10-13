@@ -34,7 +34,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            // NOTE(jenchieh): Only the first time will call this.
+            // NOTE(jenchieh): Only the first time will call 
             // This game object is a unique game object. Meaning the
             // object itself uses 'DontDestroyOnLoad' function.
             if (instance == null)
@@ -49,7 +49,7 @@ namespace JCSUnity
             {
                 if (instance != this)
                 {
-                    Destroy(this.gameObject);
+                    Destroy(gameObject);
                 }
             }
         }

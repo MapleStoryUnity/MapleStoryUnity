@@ -26,7 +26,7 @@ namespace JCSUnity
         private JCS_FadeSound mFadeSound = null;
 
         // this only hold one audio clip on stack. I do not want
-        // to get to messy about this.
+        // to get to messy about 
         private AudioClip mOnStackAudioClip = null;
 
         private float mOnStackFadeInTime = 0;
@@ -346,9 +346,9 @@ namespace JCSUnity
 
             // switch bgm
             SwitchBGM(
-                this.mOnStackAudioClip,
-                this.mOnStackFadeInTime,
-                this.mOnStackFadeOutTime);
+                mOnStackAudioClip,
+                mOnStackFadeInTime,
+                mOnStackFadeOutTime);
 
             // clean stack
             mOnStackAudioClip = null;

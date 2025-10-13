@@ -49,7 +49,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 

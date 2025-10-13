@@ -76,19 +76,19 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool isActive { get { return this.mIsActive; } }
-        public JCS_TweenerHandler tweenerHandler { get { return this.mTweenerHandler; } }
-        public bool overrideTween { get { return this.mOverrideTween; } set { this.mOverrideTween = value; } }
+        public bool isActive { get { return mIsActive; } }
+        public JCS_TweenerHandler tweenerHandler { get { return mTweenerHandler; } }
+        public bool overrideTween { get { return mOverrideTween; } set { mOverrideTween = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mTweenerHandler = this.GetComponent<JCS_TweenerHandler>();
+            mTweenerHandler = GetComponent<JCS_TweenerHandler>();
             if (mSoundPlayer == null)
-                this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+                mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
-            this.mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
+            mPanelRoot = JCS_PanelRoot.GetFromParent(transform);
         }
 
 #if UNITY_EDITOR
@@ -120,7 +120,7 @@ namespace JCSUnity
                     return;
             }
 
-            if (this.mIsActive)
+            if (mIsActive)
                 return;
 
             mTweenerHandler.DoAllTweenToTargetValue();
@@ -131,7 +131,7 @@ namespace JCSUnity
 
             onActiveCallbackFunc?.Invoke();
 
-            this.mIsActive = true;
+            mIsActive = true;
         }
         /// <summary>
         /// Tween back to the starting position and play sound effect.
@@ -144,7 +144,7 @@ namespace JCSUnity
                     return;
             }
 
-            if (!this.mIsActive)
+            if (!mIsActive)
                 return;
 
             mTweenerHandler.DoAllTweenToStartValue();
@@ -152,7 +152,7 @@ namespace JCSUnity
 
             onDeactiveCallbackFunc?.Invoke();
 
-            this.mIsActive = false;
+            mIsActive = false;
         }
     }
 }

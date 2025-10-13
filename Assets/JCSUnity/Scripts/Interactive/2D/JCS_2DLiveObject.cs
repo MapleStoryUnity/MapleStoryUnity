@@ -24,7 +24,7 @@ namespace JCSUnity
 
         [Separator("Check Variables (JCS_2DLiveObject)")]
 
-        [Tooltip("This boolean to check what type of object is this.")]
+        [Tooltip("This boolean to check what type of object is ")]
         [SerializeField]
         [ReadOnly]
         private bool mIsPlayer = false;
@@ -68,19 +68,19 @@ to get the information from them.")]
         {
             base.Awake();
 
-            this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
-            this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
+            mSpriteRenderer = GetComponent<SpriteRenderer>();
+            m2DAnimator = GetComponent<JCS_2DAnimator>();
 
             // try to get this component in this transform.
             if (mVelocityInfo == null)
-                mVelocityInfo = this.GetComponent<JCS_VelocityInfo>();
+                mVelocityInfo = GetComponent<JCS_VelocityInfo>();
             if (mAbilityFormat == null)
-                mAbilityFormat = this.GetComponent<JCS_AbilityFormat>();
+                mAbilityFormat = GetComponent<JCS_AbilityFormat>();
             if (mAttackRecorder == null)
-                mAttackRecorder = this.GetComponent<JCS_AttackerRecorder>();
+                mAttackRecorder = GetComponent<JCS_AttackerRecorder>();
 
             // auto detect to see if this game object player or not.
-            var p = this.GetComponent<JCS_Player>();
+            var p = GetComponent<JCS_Player>();
 
             // if found it return true!
             if (p != null)
@@ -355,7 +355,7 @@ to get the information from them.")]
             if (attacker == null)
                 return;
 
-            if (attacker.position.x > this.transform.position.x)
+            if (attacker.position.x > transform.position.x)
                 mVelocityInfo.moveSpeedX = -force;
             else
                 mVelocityInfo.moveSpeedX = force;

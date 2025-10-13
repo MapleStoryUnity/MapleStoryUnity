@@ -272,20 +272,20 @@ namespace JCSUnity
         /// </summary>
         public void ResetTweener()
         {
-            this.mProgressionColor = this.mTargetColor;
+            mProgressionColor = mTargetColor;
 
-            this.mProgressPctColor.r = 1.0f;
-            this.mProgressPctColor.g = 1.0f;
-            this.mProgressPctColor.b = 1.0f;
-            this.mProgressPctColor.a = 1.0f;
+            mProgressPctColor.r = 1.0f;
+            mProgressPctColor.g = 1.0f;
+            mProgressPctColor.b = 1.0f;
+            mProgressPctColor.a = 1.0f;
 
-            this.mTimeElapsed = Vector4.zero;
+            mTimeElapsed = Vector4.zero;
 
             // reset trigger
-            this.mEasingR = false;
-            this.mEasingG = false;
-            this.mEasingB = false;
-            this.mEasingA = false;
+            mEasingR = false;
+            mEasingG = false;
+            mEasingB = false;
+            mEasingA = false;
         }
 
         /// <summary>
@@ -296,10 +296,10 @@ namespace JCSUnity
         {
             DoTween(
                 inToColor,
-                this.mEaseTypeR,
-                this.mEaseTypeG,
-                this.mEaseTypeB,
-                this.mEaseTypeR,
+                mEaseTypeR,
+                mEaseTypeG,
+                mEaseTypeB,
+                mEaseTypeR,
                 func);
         }
 
@@ -320,16 +320,16 @@ namespace JCSUnity
             Action func = null)
         {
             DoTween(
-                this.localColor,
+                localColor,
                 inToColor,
                 inTweenTypeR,
                 inTweenTypeG,
                 inTweenTypeB,
                 inTweenTypeA,
-                this.mDurationRed,
-                this.mDurationGreen,
-                this.mDurationBlue,
-                this.mDurationAlpha,
+                mDurationRed,
+                mDurationGreen,
+                mDurationBlue,
+                mDurationAlpha,
                 func);
         }
 
@@ -395,23 +395,23 @@ namespace JCSUnity
 
             if (mTimeElapsed.x < mRealDurationRed)
             {
-                this.mProgressionColor.r = mEasingRed.Invoke(
+                mProgressionColor.r = mEasingRed.Invoke(
                     mTimeElapsed.x,
                     mFromColor.r,
                     (mTargetColor.r - mFromColor.r),
                     mRealDurationRed);
 
-                this.mProgressPctColor.r = mTimeElapsed.x / mRealDurationRed;
+                mProgressPctColor.r = mTimeElapsed.x / mRealDurationRed;
 
-                this.mTimeElapsed.x += JCS_Time.ItTime(mTimeType);
+                mTimeElapsed.x += JCS_Time.ItTime(mTimeType);
             }
             else
             {
-                this.mProgressionColor.r = this.mTargetColor.r;
+                mProgressionColor.r = mTargetColor.r;
 
-                this.mEasingR = false;
-                this.mTimeElapsed.x = 0.0f;
-                this.mProgressPctColor.r = 1.0f;
+                mEasingR = false;
+                mTimeElapsed.x = 0.0f;
+                mProgressPctColor.r = 1.0f;
 
                 CheckDoneEasing();
             }
@@ -430,23 +430,23 @@ namespace JCSUnity
 
             if (mTimeElapsed.y < mRealDurationGreen)
             {
-                this.mProgressionColor.g = mEasingGreen.Invoke(
+                mProgressionColor.g = mEasingGreen.Invoke(
                     mTimeElapsed.y,
                     mFromColor.g,
                     (mTargetColor.g - mFromColor.g),
                     mRealDurationGreen);
 
-                this.mProgressPctColor.g = mTimeElapsed.y / mRealDurationGreen;
+                mProgressPctColor.g = mTimeElapsed.y / mRealDurationGreen;
 
-                this.mTimeElapsed.y += JCS_Time.ItTime(mTimeType);
+                mTimeElapsed.y += JCS_Time.ItTime(mTimeType);
             }
             else
             {
-                this.mProgressionColor.g = this.mTargetColor.g;
+                mProgressionColor.g = mTargetColor.g;
 
-                this.mEasingG = false;
-                this.mTimeElapsed.y = 0.0f;
-                this.mProgressPctColor.g = 1.0f;
+                mEasingG = false;
+                mTimeElapsed.y = 0.0f;
+                mProgressPctColor.g = 1.0f;
 
                 CheckDoneEasing();
             }
@@ -465,23 +465,23 @@ namespace JCSUnity
 
             if (mTimeElapsed.z < mRealDurationBlue)
             {
-                this.mProgressionColor.b = mEasingBlue.Invoke(
+                mProgressionColor.b = mEasingBlue.Invoke(
                     mTimeElapsed.z,
                     mFromColor.b,
                     (mTargetColor.b - mFromColor.b),
                     mRealDurationBlue);
 
-                this.mProgressPctColor.b = mTimeElapsed.z / mRealDurationBlue;
+                mProgressPctColor.b = mTimeElapsed.z / mRealDurationBlue;
 
-                this.mTimeElapsed.z += JCS_Time.ItTime(mTimeType);
+                mTimeElapsed.z += JCS_Time.ItTime(mTimeType);
             }
             else
             {
-                this.mProgressionColor.b = this.mTargetColor.b;
+                mProgressionColor.b = mTargetColor.b;
 
-                this.mEasingB = false;
-                this.mTimeElapsed.z = 0.0f;
-                this.mProgressPctColor.b = 1.0f;
+                mEasingB = false;
+                mTimeElapsed.z = 0.0f;
+                mProgressPctColor.b = 1.0f;
 
                 CheckDoneEasing();
             }
@@ -500,23 +500,23 @@ namespace JCSUnity
 
             if (mTimeElapsed.w < mRealDurationAlpha)
             {
-                this.mProgressionColor.a = mEasingAlpha.Invoke(
+                mProgressionColor.a = mEasingAlpha.Invoke(
                     mTimeElapsed.w,
                     mFromColor.a,
                     (mTargetColor.a - mFromColor.a),
                     mRealDurationAlpha);
 
-                this.mProgressPctColor.a = mTimeElapsed.w / mRealDurationAlpha;
+                mProgressPctColor.a = mTimeElapsed.w / mRealDurationAlpha;
 
-                this.mTimeElapsed.w += JCS_Time.ItTime(mTimeType);
+                mTimeElapsed.w += JCS_Time.ItTime(mTimeType);
             }
             else
             {
-                this.mProgressionColor.a = this.mTargetColor.a;
+                mProgressionColor.a = mTargetColor.a;
 
-                this.mEasingA = false;
-                this.mTimeElapsed.w = 0.0f;
-                this.mProgressPctColor.a = 1.0f;
+                mEasingA = false;
+                mTimeElapsed.w = 0.0f;
+                mProgressPctColor.a = 1.0f;
 
                 CheckDoneEasing();
             }

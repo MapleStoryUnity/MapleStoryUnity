@@ -40,9 +40,9 @@ true meaning the fly action object cannot go throught this platform.")]
 
         /* Setter & Getter */
 
-        public BoxCollider GetPlatformTrigger() { return this.mPlatformTrigger; }
-        public BoxCollider GetPlatformCollider() { return this.mPlatformCollider; }
-        public bool cannotBeGoThrough { get { return this.mCannotBeGoThrough; } }
+        public BoxCollider GetPlatformTrigger() { return mPlatformTrigger; }
+        public BoxCollider GetPlatformCollider() { return mPlatformCollider; }
+        public bool cannotBeGoThrough { get { return mCannotBeGoThrough; } }
 
         /* Functions */
 
@@ -95,7 +95,7 @@ true meaning the fly action object cannot go throught this platform.")]
                 // the trigger state of affected colliders, 
                 // so you might receive OnTriggerExit and 
                 // OnTriggerEnter messages in response to 
-                // calling this.
+                // calling 
                 Physics.IgnoreCollision(
                     mPlatformCollider,
                     p.GetCharacterController(),

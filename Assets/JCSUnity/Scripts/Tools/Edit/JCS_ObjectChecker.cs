@@ -26,7 +26,7 @@ namespace JCSUnity
 
         private void OnDrawGizmos()
         {
-            MeshFilter filter = this.GetComponent<MeshFilter>();
+            MeshFilter filter = GetComponent<MeshFilter>();
             if (filter != null)
             {
                 Gizmos.color = wireColor;

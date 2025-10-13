@@ -246,7 +246,7 @@ namespace JCSUnity
             {
                 if (gs.cameraType != JCS_CameraType.MULTI_TARGET)
                 {
-                    AudioListener al = this.mAudioController.GetAudioListener();
+                    AudioListener al = mAudioController.GetAudioListener();
                     if (al != null)
                         al.enabled = true;
                 }
@@ -257,7 +257,7 @@ namespace JCSUnity
             {
                 if (gs.cameraType != JCS_CameraType.MULTI_TARGET)
                 {
-                    AudioListener al = this.mAudioController.GetAudioListener();
+                    AudioListener al = mAudioController.GetAudioListener();
                     if (al != null)
                         al.enabled = false;
                 }
@@ -280,9 +280,9 @@ namespace JCSUnity
         /// <param name="type"></param>
         public void TurnFace(JCS_2DFaceType type)
         {
-            Vector3 originalScale = this.gameObject.transform.localScale;
+            Vector3 originalScale = gameObject.transform.localScale;
             float absoluteOriginalScale = JCS_Mathf.AbsoluteValue(originalScale.x);
-            this.gameObject.transform.localScale = new Vector3((int)type * absoluteOriginalScale, originalScale.y, originalScale.z);
+            gameObject.transform.localScale = new Vector3((int)type * absoluteOriginalScale, originalScale.y, originalScale.z);
 
             mFace = type;
         }
@@ -434,12 +434,12 @@ namespace JCSUnity
                 !mTripleJump &&
                 mDoubleJump)
             {
-                this.velY = thirdForce;
+                velY = thirdForce;
                 mTripleJump = true;
                 mAudioController.TripleJumpSound();
 
                 if (mForceXAfterJump[2])
-                    this.velX = (mJumpXForces[2] * -(int)mFace);
+                    velX = (mJumpXForces[2] * -(int)mFace);
 
                 DoJumpAnimEffect(2);
 
@@ -490,13 +490,13 @@ namespace JCSUnity
             if (isGrounded() || mExitingClimbing)
             {
                 if (!isAttacking)
-                    this.mVelocity.x = vel;
+                    mVelocity.x = vel;
                 mExitingClimbing = false;
             }
             // in air
             else
             {
-                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * JCS_Time.ItTime(mTimeType);
+                mVelocity.x += (0 - mVelocity.x) * mAirFriction * JCS_Time.ItTime(mTimeType);
             }
 
             if (isAttacking)
@@ -532,13 +532,13 @@ namespace JCSUnity
             if (isGrounded() || mExitingClimbing)
             {
                 if (!isAttacking)
-                    this.mVelocity.x = -vel;
+                    mVelocity.x = -vel;
                 mExitingClimbing = false;
             }
             // in air
             else
             {
-                this.mVelocity.x += (0 - this.mVelocity.x) * mAirFriction * JCS_Time.ItTime(mTimeType);
+                mVelocity.x += (0 - mVelocity.x) * mAirFriction * JCS_Time.ItTime(mTimeType);
             }
 
             if (isAttacking)
@@ -564,7 +564,7 @@ namespace JCSUnity
                 return;
 
             DoAnimation(JCS_LiveObjectState.STAND);
-            this.mVelocity.x = 0;
+            mVelocity.x = 0;
         }
 
         /// <summary>
@@ -580,9 +580,9 @@ namespace JCSUnity
                 return;
 
             if (isGrounded())
-                this.mVelocity.x = 0;
+                mVelocity.x = 0;
             else
-                this.mAttackedInAir = true;
+                mAttackedInAir = true;
 
             DoAnimation(JCS_LiveObjectState.RAND_ATTACK);
             mAudioController.AttackSound();
@@ -614,7 +614,7 @@ namespace JCSUnity
         {
             DoAnimation(JCS_LiveObjectState.LADDER);
 
-            this.mVelocity.x = 0;
+            mVelocity.x = 0;
         }
 
         /// <summary>
@@ -624,7 +624,7 @@ namespace JCSUnity
         {
             DoAnimation(JCS_LiveObjectState.ROPE);
 
-            this.mVelocity.x = 0;
+            mVelocity.x = 0;
         }
 
         /// <summary>
@@ -632,7 +632,7 @@ namespace JCSUnity
         /// </summary>
         public override void Die()
         {
-            this.mVelocity = Vector3.zero;
+            mVelocity = Vector3.zero;
 
             DoAnimation(JCS_LiveObjectState.DIE);
         }
@@ -688,10 +688,10 @@ namespace JCSUnity
             float pushVel = (randDirection == 0) ? mHitVelX : -mHitVelX;
 
             // apply force as velocity
-            this.mVelocity.x += pushVel;
+            mVelocity.x += pushVel;
 
             // hop a bit. (velcotiy y axis)
-            this.mVelocity.y += mHitVelY;
+            mVelocity.y += mHitVelY;
 
 
             DoAnimation(JCS_LiveObjectState.STAND);
@@ -753,7 +753,7 @@ namespace JCSUnity
 
             DoAnimation(JCS_LiveObjectState.PRONE);
 
-            this.mVelocity.x = 0;
+            mVelocity.x = 0;
         }
 
         /// <summary>
@@ -973,14 +973,14 @@ namespace JCSUnity
             switch (mClimbMoveType)
             {
                 case JCS_ClimbMoveType.IDLE:
-                    this.mVelocity.y = 0;
+                    mVelocity.y = 0;
                     break;
                 case JCS_ClimbMoveType.MOVE_UP:
-                    this.mVelocity.y = mMoveSpeed;
+                    mVelocity.y = mMoveSpeed;
                     climbing = true;
                     break;
                 case JCS_ClimbMoveType.MOVE_DOWN:
-                    this.mVelocity.y = -mMoveSpeed;
+                    mVelocity.y = -mMoveSpeed;
                     climbing = true;
                     break;
             }
@@ -994,20 +994,20 @@ namespace JCSUnity
                 }
 
                 // let x axis the same as ladder x axis.
-                Vector3 newPos = this.transform.position;
+                Vector3 newPos = transform.position;
                 newPos.x = m2DClimbingObject.transform.position.x;
-                this.transform.position = newPos;
+                transform.position = newPos;
 
                 // start the animation agian
                 GetCharacterAnimator().PlayAnimationInFrame();
             }
             else
             {
-                if (JCS_Input.GetKey(this.jumpKey))
+                if (JCS_Input.GetKey(jumpKey))
                 {
 
-                    if (JCS_Input.GetKey(this.leftKey) ||
-                        JCS_Input.GetKey(this.rightKey))
+                    if (JCS_Input.GetKey(leftKey) ||
+                        JCS_Input.GetKey(rightKey))
                     {
                         ExitClimbing();
                         mExitingClimbing = true;
@@ -1046,15 +1046,15 @@ namespace JCSUnity
             Vector3 tempOffset = mJumpAnimOffset[index];
 
             // change the position depends on the scale.
-            if (this.transform.localScale.x < 0)
+            if (transform.localScale.x < 0)
                 tempOffset.x = -tempOffset.x;
 
             // assign new position for the effect.
-            newPos = this.transform.localPosition + tempOffset;
+            newPos = transform.localPosition + tempOffset;
 
             // assign to effect's transform.
             gameObject.transform.localPosition = newPos;
-            gameObject.transform.localScale = this.transform.localScale;
+            gameObject.transform.localScale = transform.localScale;
         }
 
         /// <summary>
@@ -1114,7 +1114,7 @@ namespace JCSUnity
             // process input
             if (JCS_Input.GetKey(climbUpKey))
                 keyInput = JCS_ClimbMoveType.MOVE_UP;
-            else if (JCS_Input.GetKey(this.mClimbDownKey))
+            else if (JCS_Input.GetKey(mClimbDownKey))
                 keyInput = JCS_ClimbMoveType.MOVE_DOWN;
 
 

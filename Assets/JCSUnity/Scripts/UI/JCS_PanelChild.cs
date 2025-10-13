@@ -41,7 +41,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_PanelRoot panelRoot { get { return mPanelRoot; } set { this.mPanelRoot = value; } }
+        public JCS_PanelRoot panelRoot { get { return mPanelRoot; } set { mPanelRoot = value; } }
 
         /* Functions */
 
@@ -50,7 +50,7 @@ namespace JCSUnity
             mRectTransform = GetComponent<RectTransform>();
 
             if (mPanelRoot == null)
-                mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+                mPanelRoot = GetComponentInParent<JCS_PanelRoot>();
 
             if (IsResponsive())
             {
@@ -101,7 +101,7 @@ namespace JCSUnity
                     // 
                     // 這個有點暴力解法... 不知道為什麼Unity沒有辦法
                     // 在初始化階段一次清乾淨.
-                    childs = JCS_Util.ForceDetachChildren(this.mRectTransform);
+                    childs = JCS_Util.ForceDetachChildren(mRectTransform);
                 }
 
                 Vector3 newScale = mRectTransform.localScale;
@@ -123,7 +123,7 @@ namespace JCSUnity
                 if (mApplyToChildren)
                 {
                     // NOTE: Reattach all the previous child.
-                    JCS_Util.AttachChildren(this.mRectTransform, childs);
+                    JCS_Util.AttachChildren(mRectTransform, childs);
                 }
             }
 

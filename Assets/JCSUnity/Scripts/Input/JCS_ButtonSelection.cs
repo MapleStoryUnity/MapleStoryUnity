@@ -154,7 +154,7 @@ namespace JCSUnity
         /// </returns>
         public bool IsSelected()
         {
-            return this.mActive;
+            return mActive;
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace JCSUnity
             if (mButton == null)
                 return;
 
-            this.mSkip = act;
+            mSkip = act;
 
             if (!fromButton)
                 mButton.SetInteractable(!mSkip, true);
@@ -189,9 +189,9 @@ namespace JCSUnity
         /// </summary>
         private void DoActive()
         {
-            this.selectionActive.Invoke(this.mActive);
+            selectionActive.Invoke(mActive);
 
-            if (this.mActive)
+            if (mActive)
             {
                 // Do stuff when active..
                 selectionEnable.Invoke();
@@ -202,7 +202,7 @@ namespace JCSUnity
                 selectionDisable.Invoke();
             }
 
-            ActiveEffects(this.mActive);
+            ActiveEffects(mActive);
         }
 
         /// <summary>

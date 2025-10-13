@@ -81,7 +81,7 @@ namespace JCSUnity
                 case DragDrop.Drag:  /* Process Drag */
                     {
                         Vector3 delta = JCS_Input.MouseDeltaPosition();
-                        this.transform.localPosition += delta;
+                        transform.localPosition += delta;
                     }
                     break;
                 case DragDrop.Drop:  /* Process Drop */

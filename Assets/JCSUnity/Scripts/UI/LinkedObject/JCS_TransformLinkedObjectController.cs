@@ -75,9 +75,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<JCS_TransformLinkedObject> managedList { get { return this.mManagedList; } }
-        public JCS_TransformLinkedObject clone { get { return this.mClone; } }
-        public Vector3 indexOffset { get { return this.mIndexOffset; } set { this.mIndexOffset = value; } }
+        public List<JCS_TransformLinkedObject> managedList { get { return mManagedList; } }
+        public JCS_TransformLinkedObject clone { get { return mClone; } }
+        public Vector3 indexOffset { get { return mIndexOffset; } set { mIndexOffset = value; } }
 
         /* Functions */
 
@@ -129,7 +129,7 @@ namespace JCSUnity
 
                 // Set to it centers.
                 {
-                    newNode.transform.SetParent(this.transform);
+                    newNode.transform.SetParent(transform);
                     newNode.transform.localPosition = Vector3.zero;
                     newNode.transform.localScale = Vector3.one;
                 }

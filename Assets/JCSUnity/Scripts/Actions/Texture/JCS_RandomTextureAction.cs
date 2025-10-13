@@ -30,7 +30,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mRenderer = this.GetComponent<Renderer>();
+            mRenderer = GetComponent<Renderer>();
 
             UpdateTexture();
         }

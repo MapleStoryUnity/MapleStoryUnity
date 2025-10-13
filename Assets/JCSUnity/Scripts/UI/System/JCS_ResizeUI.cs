@@ -63,10 +63,10 @@ namespace JCSUnity
 #if UNITY_EDITOR
         public bool showResizePanel
         {
-            get { return this.mShowResizePanel; }
+            get { return mShowResizePanel; }
             set
             {
-                this.mShowResizePanel = value;
+                mShowResizePanel = value;
 
                 // Show or Hide?
                 if (mShowResizePanel)
@@ -75,12 +75,12 @@ namespace JCSUnity
                     HideResizePanel();
             }
         }
-        public Color resizePanelColor { get { return this.mResizePanelColor; } set { this.mResizePanelColor = value; } }
+        public Color resizePanelColor { get { return mResizePanelColor; } set { mResizePanelColor = value; } }
 #endif
-        public RectTransform GetResizeRect() { return this.mRect; }
-        public float wScale { get { return this.mWScale; } }
-        public float hScale { get { return this.mHScale; } }
-        public float targetScale { get { return this.mTargetScale; } }
+        public RectTransform GetResizeRect() { return mRect; }
+        public float wScale { get { return mWScale; } }
+        public float hScale { get { return mHScale; } }
+        public float targetScale { get { return mTargetScale; } }
 
         /* Functions */
 

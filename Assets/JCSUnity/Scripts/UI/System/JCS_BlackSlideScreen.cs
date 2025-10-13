@@ -33,7 +33,7 @@ namespace JCSUnity
         private void Start()
         {
             // everytime it reload the scene.
-            // move to the last child make sure everything get cover by this.
+            // move to the last child make sure everything get cover by 
             JCS_Util.MoveToTheLastChild(transform);
 
             mStartingPosition = transform.localPosition;
@@ -70,7 +70,7 @@ namespace JCSUnity
             mTweener.durationY = time;
             mTweener.durationZ = time;
 
-            Vector3 tweenTo = this.transform.localPosition;
+            Vector3 tweenTo = transform.localPosition;
 
             switch (align)
             {
@@ -123,23 +123,23 @@ namespace JCSUnity
         /// </summary>
         public void MoveToTheLastChild()
         {
-            Transform parent = this.transform.parent;
+            Transform parent = transform.parent;
 
-            Vector3 recordPos = this.transform.localPosition;
-            Vector3 recordScale = this.transform.localScale;
-            Quaternion recordRot = this.transform.localRotation;
+            Vector3 recordPos = transform.localPosition;
+            Vector3 recordScale = transform.localScale;
+            Quaternion recordRot = transform.localRotation;
 
             // this part will mess up the transform
             // so we record all we need and set it back
             {
-                this.transform.SetParent(null);
-                this.transform.SetParent(parent);
+                transform.SetParent(null);
+                transform.SetParent(parent);
             }
 
             // here we set it back!
-            this.transform.localPosition = recordPos;
-            this.transform.localScale = recordScale;
-            this.transform.localRotation = recordRot;
+            transform.localPosition = recordPos;
+            transform.localScale = recordScale;
+            transform.localRotation = recordRot;
         }
     }
 }

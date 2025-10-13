@@ -24,13 +24,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TransformTweener TransformTweener { get { return this.mTransformTweener; } }
+        public JCS_TransformTweener TransformTweener { get { return mTransformTweener; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
+            mTransformTweener = GetComponent<JCS_TransformTweener>();
         }
     }
 }

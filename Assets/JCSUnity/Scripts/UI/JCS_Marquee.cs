@@ -54,7 +54,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Text textContainer { get { return mTextContainer; } set { this.mTextContainer = value; } }
+        public Text textContainer { get { return mTextContainer; } set { mTextContainer = value; } }
 
         /* Functions */
 
@@ -98,7 +98,7 @@ namespace JCSUnity
                 return;
             }
 
-            this.mTextContainer.text = msg;
+            mTextContainer.text = msg;
 
             if (!loop)
             {

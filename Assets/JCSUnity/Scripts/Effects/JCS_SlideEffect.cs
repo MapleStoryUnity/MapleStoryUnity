@@ -190,16 +190,16 @@ namespace JCSUnity
             {
                 // Get panel root, in order to calculate the correct distance
                 // base on the resolution.
-                mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
+                mPanelRoot = JCS_PanelRoot.GetFromParent(transform);
 
                 if (mAutoAddEvent)
                 {
                     // Event trigger is the must if we need to add the 
                     // event to event trigger system.
                     {
-                        this.mEventTrigger = this.GetComponent<EventTrigger>();
-                        if (this.mEventTrigger == null)
-                            this.mEventTrigger = this.gameObject.AddComponent<EventTrigger>();
+                        mEventTrigger = GetComponent<EventTrigger>();
+                        if (mEventTrigger == null)
+                            mEventTrigger = gameObject.AddComponent<EventTrigger>();
                     }
 
                     JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, mActiveEventTriggerType, JCS_OnMouseOver);
@@ -207,10 +207,10 @@ namespace JCSUnity
                 }
             }
 
-            Vector3 newPos = this.transform.localPosition;
+            Vector3 newPos = transform.localPosition;
             // record the original position
-            this.mRecordPosition = newPos;
-            this.mTargetPosition = newPos;
+            mRecordPosition = newPos;
+            mTargetPosition = newPos;
 
             switch (mAxis)
             {
@@ -241,7 +241,7 @@ namespace JCSUnity
                     break;
             }
 
-            this.mTowardPosition = newPos;
+            mTowardPosition = newPos;
         }
 
         private void Update()
@@ -330,7 +330,7 @@ namespace JCSUnity
         /// </returns>
         public bool IsIdle(float accept = 0)
         {
-            int distance = (int)Vector3.Distance(mTargetPosition, this.transform.localPosition);
+            int distance = (int)Vector3.Distance(mTargetPosition, transform.localPosition);
 
             if (accept == 0)
                 return (distance == 0);
@@ -346,7 +346,7 @@ namespace JCSUnity
         {
             if (GetObjectType() == JCS_UnityObjectType.UI)
             {
-                if (JCS_UIUtil.MouseOverGUI(this.mRectTransform))
+                if (JCS_UIUtil.MouseOverGUI(mRectTransform))
                     return true;
             }
 
@@ -361,7 +361,7 @@ namespace JCSUnity
         {
             if (GetObjectType() == JCS_UnityObjectType.UI)
             {
-                if (JCS_UIUtil.MouseOverGUI(this.mRectTransform, rootPanel))
+                if (JCS_UIUtil.MouseOverGUI(mRectTransform, rootPanel))
                     return true;
             }
 
@@ -376,11 +376,11 @@ namespace JCSUnity
             Vector3 tempTargetPost = mTargetPosition;
 
             if (mIgnoreX)
-                tempTargetPost.x = this.localPosition.x;
+                tempTargetPost.x = localPosition.x;
             if (mIgnoreY)
-                tempTargetPost.y = this.localPosition.y;
+                tempTargetPost.y = localPosition.y;
             if (mIgnoreZ)
-                tempTargetPost.z = this.localPosition.z;
+                tempTargetPost.z = localPosition.z;
 
             localPosition += (tempTargetPost - localPosition) / mFriction * JCS_Time.ItTime(mTimeType);
         }

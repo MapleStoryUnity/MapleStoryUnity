@@ -74,7 +74,7 @@ namespace JCSUnity
         {
             float newRange = JCS_Random.Range(mMinRangeValue, mMaxRangeValue);
 
-            this.mFloatTweener.DoTween(newRange);
+            mFloatTweener.DoTween(newRange);
         }
     }
 }

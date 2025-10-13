@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 
 namespace JCSUnity
@@ -13,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Screen size definition. (Float)
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public class JCS_ScreenSizef
     {
         public static JCS_ScreenSizef zero { get { return new JCS_ScreenSizef(0.0f, 0.0f); } }
@@ -32,7 +33,7 @@ namespace JCSUnity
 
         public override string ToString()
         {
-            return "(w: " + width + ", h: " + height + ")";
+            return $"(w: {width}, h: {height})";
         }
     }
 }

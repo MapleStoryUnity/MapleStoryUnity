@@ -199,7 +199,7 @@ namespace JCSUnity
         /// </summary>
         public void AddLangText(JCS_LangText txt)
         {
-            this.mLangTexts.Add(txt);
+            mLangTexts.Add(txt);
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace JCSUnity
         /// </summary>
         public void RefreshLangTexts()
         {
-            this.mLangTexts = JCS_Array.RemoveEmptyMissing(this.mLangTexts);
+            mLangTexts = JCS_Array.RemoveEmptyMissing(mLangTexts);
 
             foreach (JCS_LangText txt in mLangTexts)
             {

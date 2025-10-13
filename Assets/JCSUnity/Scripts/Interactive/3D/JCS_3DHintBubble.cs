@@ -124,7 +124,7 @@ namespace JCSUnity
             mTweenerHandler.DoAllTweenToTargetValue();
             mFadeObject.FadeIn();
 
-            this.mActive = true;
+            mActive = true;
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace JCSUnity
             mTweenerHandler.DoAllTweenToStartValue();
             mFadeObject.FadeOut();
 
-            this.mActive = false;
+            mActive = false;
         }
     }
 }

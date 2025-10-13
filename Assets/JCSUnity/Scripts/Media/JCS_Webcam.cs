@@ -90,17 +90,17 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool manuallySetSize { get { return this.mManuallySetSize; } set { this.mManuallySetSize = value; } }
-        public bool mustBeFullScreen { get { return this.mMustBeFullScreen; } set { this.mMustBeFullScreen = value; } }
-        public int fps { get { return this.mFPS; } set { this.mFPS = value; } }
-        public float resumeTime { get { return this.mResumeTime; } set { this.mResumeTime = value; } }
-        public float delayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool manuallySetSize { get { return mManuallySetSize; } set { mManuallySetSize = value; } }
+        public bool mustBeFullScreen { get { return mMustBeFullScreen; } set { mMustBeFullScreen = value; } }
+        public int fps { get { return mFPS; } set { mFPS = value; } }
+        public float resumeTime { get { return mResumeTime; } set { mResumeTime = value; } }
+        public float delayTime { get { return mDelayTime; } set { mDelayTime = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 #if (UNITY_STANDALONE || UNITY_EDITOR)
-        public KeyCode takePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
+        public KeyCode takePicKey { get { return mTakePicKey; } set { mTakePicKey = value; } }
 #endif
-        public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
-        public AudioClip takePhotoSound { get { return this.mTakePhotoSound; } set { this.mTakePhotoSound = value; } }
+        public bool isPlaying { get { return mWebCamTexture.isPlaying; } }
+        public AudioClip takePhotoSound { get { return mTakePhotoSound; } set { mTakePhotoSound = value; } }
 
         /* Functions */
 
@@ -140,18 +140,18 @@ namespace JCSUnity
             if (mWebCamTexture == null)
                 return;
 
-            this.mWebCamTexture.Stop();
-            this.mWebCamTexture = null;
+            mWebCamTexture.Stop();
+            mWebCamTexture = null;
 
             SetWebcamTexture(null);
         }
         public void Play()
         {
-            this.mWebCamTexture.Play();
+            mWebCamTexture.Play();
         }
         public void Pause()
         {
-            this.mWebCamTexture.Pause();
+            mWebCamTexture.Pause();
         }
 
         /// <summary>
@@ -346,13 +346,13 @@ namespace JCSUnity
             switch (GetObjectType())
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
-                    this.mRenderer.material.mainTexture = tex;
+                    mRenderer.material.mainTexture = tex;
                     break;
                 case JCS_UnityObjectType.UI:
-                    this.mImage.material.mainTexture = tex;
+                    mImage.material.mainTexture = tex;
                     break;
                 case JCS_UnityObjectType.SPRITE:
-                    this.mSpriteRenderer.material.mainTexture = tex;
+                    mSpriteRenderer.material.mainTexture = tex;
                     break;
             }
         }
@@ -449,18 +449,18 @@ namespace JCSUnity
                     height = screenHeight;
                 }
 
-                this.GetRectTransform().sizeDelta = new Vector2(width, height);
+                GetRectTransform().sizeDelta = new Vector2(width, height);
             }
 
             float scaleY = mWebCamTexture.videoVerticallyMirrored ? -1f : 1f;
             {
-                Vector3 newScale = this.localScale;
+                Vector3 newScale = localScale;
                 newScale.y *= scaleY;
-                this.localScale = newScale;
+                localScale = newScale;
             }
 
-            int orient = -this.mWebCamTexture.videoRotationAngle;
-            this.localEulerAngles = new Vector3(0.0f, 0.0f, orient);
+            int orient = -mWebCamTexture.videoRotationAngle;
+            localEulerAngles = new Vector3(0.0f, 0.0f, orient);
         }
     }
 }

@@ -82,7 +82,7 @@ namespace JCSUnity
         {
             mTargetList = new JCS_Vec<JCS_Player>();
 
-            mAudioListener = this.GetComponent<AudioListener>();
+            mAudioListener = GetComponent<AudioListener>();
 
             // find the camera in the scene first
             mCamera = JCS_Util.FindObjectByType(typeof(JCS_2DCamera)) as JCS_2DCamera;
@@ -90,7 +90,7 @@ namespace JCSUnity
             if (mCamera == null)
                 return;
 
-            mCamera.SetFollowTarget(this.transform);
+            mCamera.SetFollowTarget(transform);
 
             // record down the fild of view
             mTargetFieldOfView = mCamera.fieldOfView;
@@ -106,7 +106,7 @@ namespace JCSUnity
             if (mCamera == null)
                 return;
 
-            this.transform.position = CalculateTheCameraPosition();
+            transform.position = CalculateTheCameraPosition();
 
             mCamera.fieldOfView += (mTargetFieldOfView - mCamera.fieldOfView) / mCameraFriction * JCS_Time.ItTime(mTimeType);
 

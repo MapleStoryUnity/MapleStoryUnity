@@ -183,8 +183,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool isActive() { return this.mActive; }
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool isActive() { return mActive; }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -245,7 +245,7 @@ namespace JCSUnity
                     var newSr = gm.AddComponent<SpriteRenderer>();
 
                     // set the parent
-                    gm.transform.SetParent(this.transform);
+                    gm.transform.SetParent(transform);
 
                     // add to manage
                     mSpriteRenderers.Add(newSr);
@@ -437,9 +437,9 @@ namespace JCSUnity
         /// </summary>
         private void MoveUp()
         {
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
             newPos.y += mMoveSpeed * JCS_Time.ItTime(mTimeType);
-            this.transform.position = newPos;
+            transform.position = newPos;
 
             Fade();
         }
@@ -468,7 +468,7 @@ namespace JCSUnity
             {
                 mActive = false;
 
-                /* No longer using this. */
+                /* No longer using  */
                 SetAllDigitToNull();
             }
         }

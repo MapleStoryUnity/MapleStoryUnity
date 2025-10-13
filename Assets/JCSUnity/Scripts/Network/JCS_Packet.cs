@@ -21,7 +21,7 @@ namespace JCSUnity
 
         public JCS_Packet(byte[] data)
         {
-            this.mData = data;
+            mData = data;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace JCSUnity
         /// <returns> byte array. </returns>
         public byte[] GetBytes()
         {
-            return this.mData;
+            return mData;
         }
     }
 }

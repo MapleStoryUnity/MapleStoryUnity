@@ -41,7 +41,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void SetRewardCallback(Action<ShowResult> func) { this.mRewardCallback = func; }
+        public void SetRewardCallback(Action<ShowResult> func) { mRewardCallback = func; }
 
         /* Functions */
 
@@ -68,7 +68,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
         /// <summary>
         /// Reward example function. Your function should be 
-        /// similar to this.
+        /// similar to 
         /// </summary>
         /// <param name="result"> result for the reward video? </param>
         private void OnRewardAdWatched(ShowResult result)

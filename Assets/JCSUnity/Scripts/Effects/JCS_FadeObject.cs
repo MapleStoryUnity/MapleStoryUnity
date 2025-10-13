@@ -135,7 +135,7 @@ namespace JCSUnity
         /// </summary>
         public bool IsFadeIn()
         {
-            return (this.mAlpha >= mFadeInAmount);
+            return (mAlpha >= mFadeInAmount);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace JCSUnity
         /// </summary>
         public bool IsFadeOut()
         {
-            return (this.mAlpha <= mFadeOutAmount);
+            return (mAlpha <= mFadeOutAmount);
         }
 
         /// <summary>
@@ -197,14 +197,14 @@ namespace JCSUnity
             }
 
             // enable the effect component
-            this.localEnabled = true;
+            localEnabled = true;
 
             switch (type)
             {
                 case JCS_FadeType.OUT:
                     {
                         mAlpha = mFadeInAmount;
-                        this.mVisible = false;
+                        mVisible = false;
 
                         onBeforeFadeOut?.Invoke();
                     }
@@ -212,16 +212,16 @@ namespace JCSUnity
                 case JCS_FadeType.IN:
                     {
                         mAlpha = mFadeOutAmount;
-                        this.mVisible = true;
+                        mVisible = true;
 
                         onBeforeFadeIn?.Invoke();
                     }
                     break;
             }
 
-            this.mFadeTime = time;
-            this.mFadeType = type;
-            this.mEffect = true;
+            mFadeTime = time;
+            mFadeType = type;
+            mEffect = true;
 
             onBeforeFade?.Invoke();
         }
@@ -245,7 +245,7 @@ namespace JCSUnity
                         // Fade out effect complete
                         if (mAlpha < mFadeOutAmount)
                         {
-                            this.localEnabled = false;
+                            localEnabled = false;
 
                             mEffect = false;
 
@@ -283,9 +283,9 @@ namespace JCSUnity
                     break;
             }
 
-            Color screenColor = this.localColor;
+            Color screenColor = localColor;
             screenColor.a = mAlpha;
-            this.localColor = screenColor;
+            localColor = screenColor;
 
             onFading?.Invoke(mAlpha);
         }

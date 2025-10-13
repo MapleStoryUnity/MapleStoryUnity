@@ -25,7 +25,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_Canvas canvas { get { return this.mCanvas; } }
+        public JCS_Canvas canvas { get { return mCanvas; } }
 
         public Action doShow
         {

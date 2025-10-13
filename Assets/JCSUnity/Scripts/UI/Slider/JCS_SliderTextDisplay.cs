@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright © 2022 by Shen, Jen-Chieh $
+ *                   Copyright ï¿½ 2022 by Shen, Jen-Chieh $
  */
 using System;
 using UnityEngine;
@@ -66,7 +66,7 @@ namespace JCSUnity
 
         private void OnValueChanged()
         {
-            this.text = string.Format(mFormat,
+            text = string.Format(mFormat,
                     Math.Round(mSlider.value, mRoundPlace),
                     Math.Round(mSlider.maxValue, mRoundPlace),
                     Math.Round(mSlider.minValue, mRoundPlace));

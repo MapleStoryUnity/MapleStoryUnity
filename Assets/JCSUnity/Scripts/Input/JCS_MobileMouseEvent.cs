@@ -44,7 +44,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float raycastDistance { get { return this.mRaycastDistance; } set { this.mRaycastDistance = value; } }
+        public float raycastDistance { get { return mRaycastDistance; } set { mRaycastDistance = value; } }
 
         /* Functions */
 
@@ -183,7 +183,7 @@ namespace JCSUnity
 
             if (!ti.touched)
             {
-                this.mTouchedLastFrame = false;
+                mTouchedLastFrame = false;
                 return;
             }
 
@@ -218,7 +218,7 @@ namespace JCSUnity
                 PrintName(hit.transform);
             }
 
-            this.mTouchedLastFrame = true;
+            mTouchedLastFrame = true;
         }
     }
 }

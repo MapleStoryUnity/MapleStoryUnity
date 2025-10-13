@@ -45,11 +45,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_DialogueObject GetPlayerDialogueAt(int index) { return this.mPlayerDialogue[index]; }
-        public JCS_DialogueObject npcDialogue { get { return this.mNPCDialogue; } set { this.mNPCDialogue = value; } }
-        public JCS_DialogueObject[] playerDialogue { get { return this.mPlayerDialogue; } set { this.mPlayerDialogue = value; } }
-        public JCS_DialogueObject gameUI { get { return this.mGameUI; } set { this.mGameUI = value; } }
-        public JCS_DialogueObject[] systemUI { get { return this.mSystemUI; } set { this.mSystemUI = value; } }
+        public JCS_DialogueObject GetPlayerDialogueAt(int index) { return mPlayerDialogue[index]; }
+        public JCS_DialogueObject npcDialogue { get { return mNPCDialogue; } set { mNPCDialogue = value; } }
+        public JCS_DialogueObject[] playerDialogue { get { return mPlayerDialogue; } set { mPlayerDialogue = value; } }
+        public JCS_DialogueObject gameUI { get { return mGameUI; } set { mGameUI = value; } }
+        public JCS_DialogueObject[] systemUI { get { return mSystemUI; } set { mSystemUI = value; } }
 
         /* Functions */
 

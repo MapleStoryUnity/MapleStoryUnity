@@ -40,7 +40,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            mSoundPlayer = GetComponent<JCS_SoundPlayer>();
         }
 
         private void Update()

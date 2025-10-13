@@ -31,17 +31,17 @@ namespace JCSUnity
         // init specific value
         public JCS_Bool3(bool ch1 = false, bool ch2 = false, bool ch3 = false)
         {
-            this.check1 = ch1;
-            this.check2 = ch2;
-            this.check3 = ch3;
+            check1 = ch1;
+            check2 = ch2;
+            check3 = ch3;
         }
 
         // init all the same value
         public JCS_Bool3(bool val)
         {
-            this.check1 = val;
-            this.check2 = val;
-            this.check3 = val;
+            check1 = val;
+            check2 = val;
+            check3 = val;
         }
     }
 }

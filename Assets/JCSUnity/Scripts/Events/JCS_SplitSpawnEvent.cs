@@ -253,7 +253,7 @@ built-in Unity Engine.")]
 
                 // spawn the object by transform.
                 // and get the object which we just spawned.
-                spawnTrans = (Transform)JCS_Util.Instantiate(spawnTrans, this.transform.position);
+                spawnTrans = (Transform)JCS_Util.Instantiate(spawnTrans, transform.position);
 
                 // apply random position
                 spawnTrans.transform.position = RandTransform(spawnTrans.position);
@@ -261,7 +261,7 @@ built-in Unity Engine.")]
                 // apply random rotation
                 spawnTrans.transform.eulerAngles = RandDegree(spawnTrans.eulerAngles);
 
-                var adtaThis = this.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
+                var adtaThis = GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
                 var adtaSpawned = spawnTrans.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
                 if (adtaThis != null && adtaSpawned != null)
                 {

@@ -243,26 +243,26 @@ namespace JCSUnity
 
             if (mTimeElapsed < mRealDuration)
             {
-                this.mProgression = mEasingFunc.Invoke(
+                mProgression = mEasingFunc.Invoke(
                     mTimeElapsed,
                     mStartingValue,
                     (mTargetValue - mStartingValue),
                     mRealDuration);
 
-                this.mProgressPct = mTimeElapsed / mRealDuration;
+                mProgressPct = mTimeElapsed / mRealDuration;
 
-                this.onValueChange.Invoke(this.mProgression);
+                onValueChange.Invoke(mProgression);
 
-                this.mTimeElapsed += JCS_Time.ItTime(mTimeType);
+                mTimeElapsed += JCS_Time.ItTime(mTimeType);
             }
             else
             {
-                this.mProgression = this.mTargetValue;
-                this.onValueChange.Invoke(this.mProgression);
+                mProgression = mTargetValue;
+                onValueChange.Invoke(mProgression);
 
-                this.mAnimating = false;
-                this.mTimeElapsed = 0.0f;
-                this.mProgressPct = 1.0f;
+                mAnimating = false;
+                mTimeElapsed = 0.0f;
+                mProgressPct = 1.0f;
 
                 DoDoneEasing();
             }

@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            // only the root object can do this.
+            // only the root object can do 
             if (transform.parent == null)
                 DontDestroyOnLoad(gameObject);
             else

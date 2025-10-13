@@ -23,8 +23,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public XmlNodeList GetNodeList() { return this.mNodeList; }
-        public XmlDocument GetXmlFile() { return this.mXmlFile; }
+        public XmlNodeList GetNodeList() { return mNodeList; }
+        public XmlDocument GetXmlFile() { return mXmlFile; }
 
         /* Functions */
 

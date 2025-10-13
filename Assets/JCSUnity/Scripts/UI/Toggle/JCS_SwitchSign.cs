@@ -25,15 +25,15 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TransformTweener transformTweener { get { return this.mTransformTweener; } }
-        public JCS_ColorTweener colorTweener { get { return this.mColorTweener; } }
+        public JCS_TransformTweener transformTweener { get { return mTransformTweener; } }
+        public JCS_ColorTweener colorTweener { get { return mColorTweener; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
-            this.mColorTweener = this.GetComponent<JCS_ColorTweener>();
+            mTransformTweener = GetComponent<JCS_TransformTweener>();
+            mColorTweener = GetComponent<JCS_ColorTweener>();
         }
     }
 }

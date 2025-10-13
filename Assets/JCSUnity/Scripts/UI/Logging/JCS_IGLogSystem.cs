@@ -55,7 +55,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float LogSpacing { get { return this.mLogSpacing; } set { this.mLogSpacing = value; } }
+        public float LogSpacing { get { return mLogSpacing; } set { mLogSpacing = value; } }
 
         /* Functions */
 
@@ -65,7 +65,7 @@ namespace JCSUnity
 
             instance = this;
 
-            this.mLogTextPool = this.GetComponent<JCS_GUITextPool>();
+            mLogTextPool = GetComponent<JCS_GUITextPool>();
 
             mRenderLogText = new JCS_Vec<JCS_LogText>();
         }

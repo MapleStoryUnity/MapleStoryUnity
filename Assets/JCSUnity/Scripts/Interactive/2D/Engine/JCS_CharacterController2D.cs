@@ -195,7 +195,7 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-            mLastFramePosition = this.transform.position;
+            mLastFramePosition = transform.position;
 
             if (mHitLeft && velX < 0)
                 velX = 0;
@@ -231,7 +231,7 @@ namespace JCSUnity
             ApplyGravity();
 
             // apply force base on the velocity.
-            this.transform.position += mVelocity * JCS_Time.ItTime(mTimeType);
+            transform.position += mVelocity * JCS_Time.ItTime(mTimeType);
 
             // lastly check the freezing.
             DoFreeze();
@@ -246,7 +246,7 @@ namespace JCSUnity
                 return;
 
             if (mZeroRotationWhenIsTrigger)
-                this.transform.eulerAngles = Vector3.zero;
+                transform.eulerAngles = Vector3.zero;
 
             // Detect Right
             {
@@ -267,7 +267,7 @@ namespace JCSUnity
                     // ignore the tag.
                     if (hit.transform.GetComponent<JCS_RayIgnore>() != null ||
                         bc2d == null ||
-                        hit.transform == this.transform ||
+                        hit.transform == transform ||
                         hit.transform != other.transform)
                         continue;
 
@@ -275,9 +275,9 @@ namespace JCSUnity
 
                     mVelocity.x = 0;
 
-                    Vector3 newPos = this.transform.position;
+                    Vector3 newPos = transform.position;
                     newPos.x = mCurrentFrame.x;
-                    this.transform.position = newPos;
+                    transform.position = newPos;
 
                     // fix collision.
                     JCS_Physics.SetOnLeftOfBox(mBoxCollider2d, bc2d);
@@ -317,7 +317,7 @@ namespace JCSUnity
                     // ignore the tag.
                     if (hit.transform.GetComponent<JCS_RayIgnore>() != null ||
                         bc2d == null ||
-                        hit.transform == this.transform ||
+                        hit.transform == transform ||
                         hit.transform != other.transform)
                         continue;
 
@@ -325,9 +325,9 @@ namespace JCSUnity
 
                     mVelocity.x = 0;
 
-                    Vector3 newPos = this.transform.position;
+                    Vector3 newPos = transform.position;
                     newPos.x = mCurrentFrame.x;
-                    this.transform.position = newPos;
+                    transform.position = newPos;
 
                     // fix collision.
                     JCS_Physics.SetOnRightOfBox(mBoxCollider2d, bc2d);
@@ -370,15 +370,15 @@ namespace JCSUnity
                     // ignore the tag.
                     if (hit.transform.GetComponent<JCS_RayIgnore>() != null ||
                         bc2d == null ||
-                        hit.transform == this.transform ||
+                        hit.transform == transform ||
                         hit.transform != other.transform)
                         continue;
 
                     mHitBottom = true;
 
-                    Vector3 newPos = this.transform.position;
+                    Vector3 newPos = transform.position;
                     newPos.y = mCurrentFrame.y;
-                    this.transform.position = newPos;
+                    transform.position = newPos;
 
                     // fixed collision
                     JCS_Physics.SetOnTopOfBox(mBoxCollider2d, bc2d);
@@ -420,14 +420,14 @@ namespace JCSUnity
                     // ignore the tag.
                     if (hit.transform.GetComponent<JCS_RayIgnore>() != null ||
                         bc2d == null ||
-                        hit.transform == this.transform)
+                        hit.transform == transform)
                         continue;
 
                     mHitTop = true;
 
-                    Vector3 newPos = this.transform.position;
+                    Vector3 newPos = transform.position;
                     newPos.y = mCurrentFrame.y;
-                    this.transform.position = newPos;
+                    transform.position = newPos;
 
                     // fixed collision
                     JCS_Physics.SetOnBottomOfBox(mBoxCollider2d, bc2d);
@@ -452,7 +452,7 @@ namespace JCSUnity
             if (!mHitLeft && !mHitRight)
             {
                 // record down the frame.
-                mCurrentFrame = this.transform.position;
+                mCurrentFrame = transform.position;
             }
         }
 
@@ -486,7 +486,7 @@ namespace JCSUnity
                     // ignore the tag.
                     if (hit.transform.GetComponent<JCS_RayIgnore>() != null ||
                         bc2d == null ||
-                        hit.transform == this.transform ||
+                        hit.transform == transform ||
                         hit.transform != other.transform)
                         continue;
 
@@ -527,7 +527,7 @@ namespace JCSUnity
                     // ignore the tag.
                     if (hit.transform.GetComponent<JCS_RayIgnore>() != null ||
                         bc2d == null ||
-                        hit.transform == this.transform)
+                        hit.transform == transform)
                         continue;
 
                     mHitTop = true;
@@ -566,7 +566,7 @@ namespace JCSUnity
                     // ignore the tag.
                     if (hit.transform.GetComponent<JCS_RayIgnore>() != null ||
                         bc2d == null ||
-                        hit.transform == this.transform ||
+                        hit.transform == transform ||
                         hit.transform != other.transform)
                         continue;
 
@@ -606,7 +606,7 @@ namespace JCSUnity
                     // ignore the tag.
                     if (hit.transform.GetComponent<JCS_RayIgnore>() != null ||
                         bc2d == null ||
-                        hit.transform == this.transform ||
+                        hit.transform == transform ||
                         hit.transform != other.transform)
                         continue;
 
@@ -681,7 +681,7 @@ namespace JCSUnity
         /// <returns></returns>
         public bool isGrounded()
         {
-            return this.mHitBottom;
+            return mHitBottom;
         }
 
         //----------------------
@@ -717,7 +717,7 @@ namespace JCSUnity
         /// </summary>
         private void DoFreeze()
         {
-            Vector2 newPos = this.transform.position;
+            Vector2 newPos = transform.position;
 
             if (mFreezeX)
             {
@@ -729,7 +729,7 @@ namespace JCSUnity
                 newPos.y = mLastFramePosition.y;
             }
 
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
     }
 

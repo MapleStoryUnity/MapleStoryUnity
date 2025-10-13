@@ -119,7 +119,7 @@ namespace JCSUnity
                 }
             }
 
-            // Check if we need to shortcut this.
+            // Check if we need to shortcut 
             string textData = text;
 
             // If shortcut text already, return it.
@@ -211,7 +211,7 @@ namespace JCSUnity
             if (!isFocused || mIsFocus)
                 return;
 
-            this.text = mRealText;
+            text = mRealText;
 
             // Make sure it only do once.
             mIsFocus = true;

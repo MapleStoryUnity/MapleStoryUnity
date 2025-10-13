@@ -28,7 +28,7 @@ namespace JCSUnity
         {
             mRectTransform = GetComponent<RectTransform>();
 
-            List<RectTransform> childs = JCS_Util.ForceDetachChildren(this.mRectTransform);
+            List<RectTransform> childs = JCS_Util.ForceDetachChildren(mRectTransform);
 
             JCS_Util.ReattachSelf(mRectTransform, (parent) =>
             {

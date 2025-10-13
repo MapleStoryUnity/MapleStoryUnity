@@ -42,15 +42,15 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public RectTransform rectTransform { get { return this.mRectTransform; } }
-        public float slideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
-        public float slideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
+        public RectTransform rectTransform { get { return mRectTransform; } }
+        public float slideFrictionX { get { return mSlideFrictionX; } set { mSlideFrictionX = value; } }
+        public float slideFrictionY { get { return mSlideFrictionY; } set { mSlideFrictionY = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mRectTransform = this.GetComponent<RectTransform>();
+            mRectTransform = GetComponent<RectTransform>();
 
             UpdateSlidePanels();
         }

@@ -134,10 +134,10 @@ namespace JCSUnity
             if (!ShouldSpawnResizablePanels())
                 return;
 
-            this.mTopASP.ShowPanel();
-            this.mBottomASP.ShowPanel();
-            this.mLeftASP.ShowPanel();
-            this.mRightASP.ShowPanel();
+            mTopASP.ShowPanel();
+            mBottomASP.ShowPanel();
+            mLeftASP.ShowPanel();
+            mRightASP.ShowPanel();
         }
 
         /// <summary>
@@ -148,10 +148,10 @@ namespace JCSUnity
             if (!ShouldSpawnResizablePanels())
                 return;
 
-            this.mTopASP.HidePanel();
-            this.mBottomASP.HidePanel();
-            this.mLeftASP.HidePanel();
-            this.mRightASP.HidePanel();
+            mTopASP.HidePanel();
+            mBottomASP.HidePanel();
+            mLeftASP.HidePanel();
+            mRightASP.HidePanel();
         }
 
         /// <summary>
@@ -163,10 +163,10 @@ namespace JCSUnity
             if (!ShouldSpawnResizablePanels())
                 return;
 
-            this.mTopASP.image.color = newColor;
-            this.mBottomASP.image.color = newColor;
-            this.mLeftASP.image.color = newColor;
-            this.mRightASP.image.color = newColor;
+            mTopASP.image.color = newColor;
+            mBottomASP.image.color = newColor;
+            mLeftASP.image.color = newColor;
+            mRightASP.image.color = newColor;
         }
 
         /// <summary>

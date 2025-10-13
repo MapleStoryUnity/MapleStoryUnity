@@ -17,8 +17,8 @@ namespace JCSUnity
         private JCS_BinaryReader mPacketData = null;
         private JCS_Client mClient = null;
 
-        public JCS_Client Client { get { return this.mClient; } set { this.mClient = value; } }
-        public JCS_BinaryReader PacketData { get { return this.mPacketData; } set { this.mPacketData = value; } }
+        public JCS_Client Client { get { return mClient; } set { mClient = value; } }
+        public JCS_BinaryReader PacketData { get { return mPacketData; } set { mPacketData = value; } }
 
         /// <summary>
         /// Handle packet.

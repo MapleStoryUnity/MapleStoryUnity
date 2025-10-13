@@ -113,10 +113,10 @@ namespace JCSUnity
             if (mFrameTimer < mSPF)
                 return;
 
-            ++this.mCurrentFrame;
+            ++mCurrentFrame;
 
-            if (this.mCurrentFrame >= textFrame.Count)
-                this.mCurrentFrame = 0;
+            if (mCurrentFrame >= textFrame.Count)
+                mCurrentFrame = 0;
 
             UpdateTextFrame();
 

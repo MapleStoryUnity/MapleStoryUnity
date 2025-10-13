@@ -89,9 +89,9 @@ namespace JCSUnity
             float time = JCS_Time.ItTime(mTimeType);
 
             if (mLocalSelf)
-                this.localPosition += (newPos - localPosition) / mFriction * time;
+                localPosition += (newPos - localPosition) / mFriction * time;
             else
-                this.position += (newPos - position) / mFriction * time;
+                position += (newPos - position) / mFriction * time;
         }
 
         /// <summary>

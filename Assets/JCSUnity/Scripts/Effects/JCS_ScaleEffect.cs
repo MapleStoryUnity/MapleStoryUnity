@@ -224,7 +224,7 @@ namespace JCSUnity
         /// </summary>
         private void ScaleEffect()
         {
-            Vector3 newScale = this.transform.localScale;
+            Vector3 newScale = transform.localScale;
 
             float dt = JCS_Time.ItTime(mTimeType);
 
@@ -232,7 +232,7 @@ namespace JCSUnity
             newScale.y += (mTargetScale.y - newScale.y) / mScaleFriction.y * dt;
             newScale.z += (mTargetScale.z - newScale.z) / mScaleFriction.y * dt;
 
-            this.transform.localScale = newScale;
+            transform.localScale = newScale;
         }
     }
 }

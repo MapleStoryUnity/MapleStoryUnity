@@ -103,8 +103,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_CursorCustomizeType cursorCustomizeType { get { return this.mCursorCustomizeType; } }
-        public Vector3 cursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
+        public JCS_CursorCustomizeType cursorCustomizeType { get { return mCursorCustomizeType; } }
+        public Vector3 cursorOffset { get { return mCursorOffset; } set { mCursorOffset = value; } }
 
         /* Functions */
 
@@ -185,9 +185,9 @@ namespace JCSUnity
         /// <param name="type"> type of the animation. </param>
         public void SwitchState(JCS_CursorCustomizeType type)
         {
-            this.m2DAnimator.DoAnimation((int)type);
+            m2DAnimator.DoAnimation((int)type);
 
-            this.mCursorCustomizeType = type;
+            mCursorCustomizeType = type;
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace JCSUnity
             // add on offset
             mousePos3d += mCursorOffset;
 
-            this.transform.position = mousePos3d;
+            transform.position = mousePos3d;
         }
     }
 }

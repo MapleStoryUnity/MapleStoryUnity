@@ -91,7 +91,7 @@ namespace JCSUnity
             gm.name = "JCS_DestroySoundEffect";
 #endif
 
-            AudioClip ac = this.mRandomSoundAction.GetRandomSound();
+            AudioClip ac = mRandomSoundAction.GetRandomSound();
             if (ac != null)
                 dse.SetAudioClipAndPlayOneShot(ac);
         }

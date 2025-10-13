@@ -152,8 +152,8 @@ just stop there.")]
 
         /* Setter & Getter */
 
-        public bool ConstWaveEffect { get { return this.mConstWaveEffect; } set { this.mConstWaveEffect = value; } }
-        public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
+        public bool ConstWaveEffect { get { return mConstWaveEffect; } set { mConstWaveEffect = value; } }
+        public bool BounceBackfromWall { get { return mBounceBackfromWall; } set { mBounceBackfromWall = value; } }
 
         /* Functions */
 
@@ -350,8 +350,8 @@ just stop there.")]
         {
             var newItem = JCS_Util.Instantiate(
                item,
-               this.transform.position,
-               this.transform.rotation) as JCS_Item;
+               transform.position,
+               transform.rotation) as JCS_Item;
 
             bool isEvenIndex = ((index % 2) == 0) ? true : false;
 

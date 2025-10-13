@@ -78,8 +78,8 @@ namespace JCSUnity
         {
             base.Awake();
 
-            mLiveObject = this.GetComponent<JCS_LiveObject>();
-            mOrderLayerObject = this.GetComponent<JCS_OrderLayerObject>();
+            mLiveObject = GetComponent<JCS_LiveObject>();
+            mOrderLayerObject = GetComponent<JCS_OrderLayerObject>();
         }
 
         private void Update()

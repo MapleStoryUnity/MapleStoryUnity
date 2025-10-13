@@ -119,7 +119,7 @@ namespace JCSUnity
 
                     // If reach the play times, destroy it.
                     if (mPlayTimes <= mPlayCount)
-                        Destroy(this.gameObject);
+                        Destroy(gameObject);
                 }
             }
         }

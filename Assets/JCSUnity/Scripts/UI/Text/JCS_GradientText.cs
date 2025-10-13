@@ -41,15 +41,15 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_GradientType gradientType { get { return this.mGradientType; } set { this.mGradientType = value; } }
-        public Color32 startColor { get { return this.mStartColor; } set { this.mStartColor = value; } }
-        public Color32 endColor { get { return this.mEndColor; } set { this.mEndColor = value; } }
+        public JCS_GradientType gradientType { get { return mGradientType; } set { mGradientType = value; } }
+        public Color32 startColor { get { return mStartColor; } set { mStartColor = value; } }
+        public Color32 endColor { get { return mEndColor; } set { mEndColor = value; } }
 
         /* Functions */
 
         public override void ModifyMesh(VertexHelper vh)
         {
-            if (!this.IsActive())
+            if (!IsActive())
                 return;
 
             List<UIVertex> vertexList = new List<UIVertex>();

@@ -55,7 +55,7 @@ namespace JCSUnity
         public void PushEffect(JCS_2DLiveObject liveObject)
         {
             // knock back the object.
-            liveObject.KnockBack(mPushForce, this.transform);
+            liveObject.KnockBack(mPushForce, transform);
         }
 
         /// <summary>

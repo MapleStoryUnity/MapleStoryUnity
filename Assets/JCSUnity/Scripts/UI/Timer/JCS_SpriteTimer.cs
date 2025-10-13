@@ -162,13 +162,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool active { get { return this.mActive; } set { this.mActive = value; } }
-        public bool roundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool active { get { return mActive; } set { mActive = value; } }
+        public bool roundUp { get { return mRoundUp; } set { mRoundUp = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public AudioClip hourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
-        public AudioClip minuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
-        public AudioClip secondSound { get { return this.mSecondSound; } set { this.mSecondSound = value; } }
+        public AudioClip hourSound { get { return mHourSound; } set { mHourSound = value; } }
+        public AudioClip minuteSound { get { return mMinuteSound; } set { mMinuteSound = value; } }
+        public AudioClip secondSound { get { return mSecondSound; } set { mSecondSound = value; } }
 
         /* Functions */
 
@@ -194,9 +194,9 @@ namespace JCSUnity
         /// <param name="second"> second value. </param>
         public void SetCurrentTime(float hour, float minute, float second)
         {
-            this.mCurrentHours = hour;
-            this.mCurrentMinutes = minute;
-            this.mCurrentSeconds = second;
+            mCurrentHours = hour;
+            mCurrentMinutes = minute;
+            mCurrentSeconds = second;
 
             /* Set the time in proper range. */
 
@@ -219,7 +219,7 @@ namespace JCSUnity
             UpdateTimeUI();
 
             // reset callback everytime we set to a new time.
-            this.mDoTimeUpCallback = false;
+            mDoTimeUpCallback = false;
         }
 
         /// <summary>

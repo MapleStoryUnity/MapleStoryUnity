@@ -54,7 +54,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mAO = this.GetComponent<JCS_FadeObject>();
+            mAO = GetComponent<JCS_FadeObject>();
 
             mAO.localAlpha = 0;
         }
@@ -86,12 +86,12 @@ namespace JCSUnity
         public void FadeIn(float time)
         {
             mAO.FadeIn(time);
-            JCS_Util.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(transform);
         }
         public void FadeOut(float time)
         {
             mAO.FadeOut(time);
-            JCS_Util.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(transform);
         }
         public bool IsFadeIn()
         {

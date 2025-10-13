@@ -132,7 +132,7 @@ namespace JCSUnity
             mLastScrollIndex = mFocusBtn.ScrollIndex;
 
             // assign new focus button!
-            this.mFocusBtn = rbs;
+            mFocusBtn = rbs;
 
             foreach (JCS_RollSelectorButton btn in mButtons)
             {
@@ -156,7 +156,7 @@ namespace JCSUnity
         /// <returns></returns>
         public bool IsFoucsed(JCS_RollSelectorButton btn)
         {
-            return (this.mFocusBtn == btn);
+            return (mFocusBtn == btn);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace JCSUnity
                 currentBtn.SetRollSelector(this);
 
 
-                Vector3 newPos = this.transform.localPosition;
+                Vector3 newPos = transform.localPosition;
 
                 bool isEven = JCS_Mathf.IsEven(index);
 

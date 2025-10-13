@@ -127,7 +127,7 @@ namespace JCSUnity
         /// </summary>
         private void AddPanelChild()
         {
-            Transform tempTrans = this.transform;
+            Transform tempTrans = transform;
 
             // loop through the child object and add on to it.
             for (int index = 0; index < transform.childCount; ++index)

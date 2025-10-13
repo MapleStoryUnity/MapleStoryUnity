@@ -46,7 +46,7 @@ namespace JCSUnity
 
         protected virtual void Awake()
         {
-            mAttackerInfo = this.GetComponent<JCS_AttackerInfo>();
+            mAttackerInfo = GetComponent<JCS_AttackerInfo>();
         }
     }
 }

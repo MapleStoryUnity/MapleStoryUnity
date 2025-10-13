@@ -63,10 +63,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int maxLetters { get { return this.mMaxLetters; } set { this.mMaxLetters = value; } }
-        public int dotCount { get { return this.mDotCount; } set { this.mDotCount = value; } }
-        public List<string> dropdownRealTexts { get { return this.mDropdownRealTexts; } }
-        public List<string> dropdownBackupTexts { get { return this.mDropdownBackupTexts; } }
+        public int maxLetters { get { return mMaxLetters; } set { mMaxLetters = value; } }
+        public int dotCount { get { return mDotCount; } set { mDotCount = value; } }
+        public List<string> dropdownRealTexts { get { return mDropdownRealTexts; } }
+        public List<string> dropdownBackupTexts { get { return mDropdownBackupTexts; } }
 
         /* Functions */
 
@@ -128,7 +128,7 @@ namespace JCSUnity
             {
                 ++index;
 
-                // Check if we need to shortcut this.
+                // Check if we need to shortcut 
                 string textData = od.text;
 
                 string newTextData = ReplacementString(centerLetterPos, halfDotCount, dot, index, textData);
@@ -149,7 +149,7 @@ namespace JCSUnity
             {
                 ++index;
 
-                // Check if we need to shortcut this.
+                // Check if we need to shortcut 
                 string textData = od.text;
 
                 string newTextData = ReplacementString(centerLetterPos, halfDotCount, dot, index, textData);

@@ -97,12 +97,12 @@ namespace JCSUnity
         {
             if (mCounterText != null && mCounterTextWorldTransform != null)
             {
-                mCounterText.rectTransform.anchoredPosition = JCS_Camera.main.WorldToCanvasSpace(this.mCounterTextWorldTransform.position);
+                mCounterText.rectTransform.anchoredPosition = JCS_Camera.main.WorldToCanvasSpace(mCounterTextWorldTransform.position);
             }
 
             if (mFullText != null && mFullTextWorldTransform != null)
             {
-                mFullText.rectTransform.anchoredPosition = JCS_Camera.main.WorldToCanvasSpace(this.mFullTextWorldTransform.position);
+                mFullText.rectTransform.anchoredPosition = JCS_Camera.main.WorldToCanvasSpace(mFullTextWorldTransform.position);
             }
         }
     }

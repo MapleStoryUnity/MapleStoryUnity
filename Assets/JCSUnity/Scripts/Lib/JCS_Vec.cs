@@ -143,7 +143,7 @@ namespace JCSUnity
         public void set(int index, T val)
         {
             if (index >= 0 && index <= m_array.Length - 1)
-                this.m_array[index] = val;
+                m_array[index] = val;
             else
                 Debug.Log("JCS_Vector::(139)::Out of Range!");
         }

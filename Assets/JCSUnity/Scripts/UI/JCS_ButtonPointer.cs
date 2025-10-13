@@ -44,19 +44,19 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool DontPointIfButtonNotActive { get { return this.mDontPointIfButtonNotActive; } set { this.mDontPointIfButtonNotActive = value; } }
-        public Vector3 PointerOffset { get { return this.mPointerOffset; } set { this.mPointerOffset = value; } }
+        public bool DontPointIfButtonNotActive { get { return mDontPointIfButtonNotActive; } set { mDontPointIfButtonNotActive = value; } }
+        public Vector3 PointerOffset { get { return mPointerOffset; } set { mPointerOffset = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mSimpleTrackAction = this.GetComponent<JCS_SimpleTrackAction>();
+            mSimpleTrackAction = GetComponent<JCS_SimpleTrackAction>();
 
             // start at the current position. 
             // so trick make the trackaction not moving at all at the 
             // beginning of the action.
-            this.mSimpleTrackAction.targetPosition = this.transform.localPosition;
+            mSimpleTrackAction.targetPosition = transform.localPosition;
 
             for (int index = 0; index < mButtons.Length; ++index)
             {

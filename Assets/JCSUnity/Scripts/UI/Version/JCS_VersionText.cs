@@ -40,7 +40,7 @@ namespace JCSUnity
         /// </summary>
         public void UpdateVersionNo()
         {
-            this.text  = string.Format(mFormat, Application.version);
+            text  = string.Format(mFormat, Application.version);
         }
     }
 }

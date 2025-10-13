@@ -45,31 +45,31 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public float slideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
-        public float slideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
-        public void SetTargetPosition(Vector3 pos) { this.mTargetPosition = pos; }
-        public Vector3 GetTargetPosition() { return this.mTargetPosition; }
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float slideFrictionX { get { return mSlideFrictionX; } set { mSlideFrictionX = value; } }
+        public float slideFrictionY { get { return mSlideFrictionY; } set { mSlideFrictionY = value; } }
+        public void SetTargetPosition(Vector3 pos) { mTargetPosition = pos; }
+        public Vector3 GetTargetPosition() { return mTargetPosition; }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
         private void Start()
         {
-            this.mRectTransform = this.GetComponent<RectTransform>();
+            mRectTransform = GetComponent<RectTransform>();
 
-            this.mTargetPosition = this.mRectTransform.localPosition;
+            mTargetPosition = mRectTransform.localPosition;
         }
 
         private void Update()
         {
-            Vector3 newPosition = this.mRectTransform.localPosition;
+            Vector3 newPosition = mRectTransform.localPosition;
 
             float dt = JCS_Time.ItTime(mTimeType);
 
             newPosition.x += (mTargetPosition.x - newPosition.x) / mSlideFrictionX * dt;
             newPosition.y += (mTargetPosition.y - newPosition.y) / mSlideFrictionY * dt;
 
-            this.mRectTransform.localPosition = newPosition;
+            mRectTransform.localPosition = newPosition;
         }
     }
 }

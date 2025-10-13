@@ -119,7 +119,7 @@ namespace JCSUnity
         /// <param name="obj"> Info for liquid bar to follow. </param>
         public override void AttachInfo(JCS_LiquidBarInfo info)
         {
-            this.mInfo = info;
+            mInfo = info;
 
             UpdateInfo();
         }
@@ -136,7 +136,7 @@ namespace JCSUnity
                 return;
             }
 
-            this.mMaxValue = val;
+            mMaxValue = val;
 
             if (mInfo != null)
                 mInfo.maxValue = (int)val;
@@ -156,7 +156,7 @@ namespace JCSUnity
                 return;
             }
 
-            this.mMinValue = val;
+            mMinValue = val;
 
             if (mInfo != null)
                 mInfo.minValue = (int)val;
@@ -184,7 +184,7 @@ namespace JCSUnity
                 }
             }
 
-            this.mCurrentValue = val;
+            mCurrentValue = val;
 
             // cannot lower than min container value
             if (mCurrentValue < mMinValue)
@@ -320,7 +320,7 @@ namespace JCSUnity
         /// <returns> value in liquid bar </returns>
         public override float GetCurrentValue()
         {
-            return this.mCurrentValue;
+            return mCurrentValue;
         }
 
         /// <summary>

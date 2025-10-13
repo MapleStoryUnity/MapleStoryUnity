@@ -27,7 +27,7 @@ namespace JCSUnity
         // The store-specific Purchasing subsystems.
         private static IExtensionProvider STORE_EXT_PROVIDER = null;
 
-        // TODO: Design framework interface for this...
+        // TODO: Design framework interface for ..
         public string mConsumableProductId = "product_id_01";
         public string mNonConsumableProductId = "product_id_02";
 

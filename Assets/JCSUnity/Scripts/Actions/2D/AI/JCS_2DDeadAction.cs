@@ -55,10 +55,10 @@ namespace JCSUnity
 
         private void Awake()
         {
-            mLiveObject = this.GetComponent<JCS_2DLiveObject>();
+            mLiveObject = GetComponent<JCS_2DLiveObject>();
 
             if (mLiveObjectAnimator == null)
-                mLiveObjectAnimator = this.GetComponent<JCS_2DLiveObjectAnimator>();
+                mLiveObjectAnimator = GetComponent<JCS_2DLiveObjectAnimator>();
         }
 
         private void Update()
@@ -108,7 +108,7 @@ namespace JCSUnity
                 if (mLiveObjectAnimator.animator.currentAnimation.isDonePlaying)
                 {
                     // if is end destroy the object itself.
-                    Destroy(this.gameObject);
+                    Destroy(gameObject);
                 }
             }
         }

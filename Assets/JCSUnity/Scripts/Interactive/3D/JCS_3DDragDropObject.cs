@@ -40,7 +40,7 @@ namespace JCSUnity
 
         private void OnMouseDown()
         {
-            mDistance = Camera.main.WorldToScreenPoint(this.transform.position);
+            mDistance = Camera.main.WorldToScreenPoint(transform.position);
             mPosX = Input.mousePosition.x - mDistance.x;
             mPosY = Input.mousePosition.y - mDistance.y;
         }
@@ -56,7 +56,7 @@ namespace JCSUnity
             if (mFlipY)
                 worldPos.y = -worldPos.y;
 
-            this.transform.position = worldPos;
+            transform.position = worldPos;
         }
     }
 }

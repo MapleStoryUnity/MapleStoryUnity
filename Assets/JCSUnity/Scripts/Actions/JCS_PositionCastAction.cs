@@ -61,10 +61,10 @@ namespace JCSUnity
         /* Setter & Getter */
 
 #if UNITY_EDITOR
-        public Vector3 castToScreenPosition { get { return this.mCastToScreenPosition; } }
-        public Vector3 castToWorldPosition { get { return this.mCastToWorldPosition; } }
+        public Vector3 castToScreenPosition { get { return mCastToScreenPosition; } }
+        public Vector3 castToWorldPosition { get { return mCastToWorldPosition; } }
 #endif
-        public Vector3 positionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
+        public Vector3 positionOffset { get { return mPositionOffset; } set { mPositionOffset = value; } }
 
         /* Functions */
 
@@ -76,7 +76,7 @@ namespace JCSUnity
             {
                 // Get panel root, in order to calculate the 
                 // correct distance base on the resolution.
-                mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
+                mPanelRoot = JCS_PanelRoot.GetFromParent(transform);
             }
         }
 
@@ -131,12 +131,12 @@ namespace JCSUnity
                             worldToCanvasSpace.y /= resizeUI.targetScale;
                         }
 
-                        this.localPosition = worldToCanvasSpace + (Vector2)positionOffset;
+                        localPosition = worldToCanvasSpace + (Vector2)positionOffset;
                     }
                     break;
             }
 
-            return this.localPosition;
+            return localPosition;
         }
 
         /// <summary>
@@ -156,12 +156,12 @@ namespace JCSUnity
                 case JCS_UnityObjectType.GAME_OBJECT:
                 case JCS_UnityObjectType.SPRITE:
                     {
-                        this.localPosition = camera.CanvasToWorldSpace(pos) + mPositionOffset;
+                        localPosition = camera.CanvasToWorldSpace(pos) + mPositionOffset;
                     }
                     break;
             }
 
-            return this.localPosition;
+            return localPosition;
         }
     }
 }

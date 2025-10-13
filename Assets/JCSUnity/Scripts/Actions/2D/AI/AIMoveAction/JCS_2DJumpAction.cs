@@ -109,12 +109,12 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
 
         private void Awake()
         {
-            mVelocityInfo = this.GetComponent<JCS_VelocityInfo>();
-            mCharacterControllerInfo = this.GetComponent<JCS_CharacterControllerInfo>();
+            mVelocityInfo = GetComponent<JCS_VelocityInfo>();
+            mCharacterControllerInfo = GetComponent<JCS_CharacterControllerInfo>();
 
             // try to get the component in the same transform
             if (mLiveObjectAnimator == null)
-                mLiveObjectAnimator = this.GetComponent<JCS_2DLiveObjectAnimator>();
+                mLiveObjectAnimator = GetComponent<JCS_2DLiveObjectAnimator>();
         }
 
         private void Start()

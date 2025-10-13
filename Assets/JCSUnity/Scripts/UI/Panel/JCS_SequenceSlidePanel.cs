@@ -164,7 +164,7 @@ namespace JCSUnity
                 }
 
                 // 
-                se.transform.SetParent(this.transform);
+                se.transform.SetParent(transform);
 
                 se.autoAddEvent = false;
             }
@@ -180,7 +180,7 @@ namespace JCSUnity
                 }
 
                 // 
-                se.transform.SetParent(this.transform);
+                se.transform.SetParent(transform);
             }
         }
 

@@ -72,8 +72,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public RectTransform GetRectTransform() { return this.mRectTransform; }
-        public Mask GetMask() { return this.mMask; }
+        public RectTransform GetRectTransform() { return mRectTransform; }
+        public Mask GetMask() { return mMask; }
 
         /* Functions */
 
@@ -82,11 +82,11 @@ namespace JCSUnity
             base.Awake();
 
             // record down the position
-            mRectTransform = this.GetComponent<RectTransform>();
+            mRectTransform = GetComponent<RectTransform>();
 
             // Get panel root, in order to calculate the correct distance base
             // on the resolution.
-            mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
+            mPanelRoot = JCS_PanelRoot.GetFromParent(transform);
 
             if (mMask == null)
             {
@@ -94,10 +94,10 @@ namespace JCSUnity
                 return;
             }
 
-            this.transform.SetParent(mMask.transform);
-            mMaskRectTransform = this.mMask.GetComponent<RectTransform>();
+            transform.SetParent(mMask.transform);
+            mMaskRectTransform = mMask.GetComponent<RectTransform>();
 
-            mMaskTargetPosition = this.mMaskRectTransform.localPosition;
+            mMaskTargetPosition = mMaskRectTransform.localPosition;
 
             // min value cannot be lower or equal to max value
             if (mMinValue >= mMaxValue)
@@ -155,7 +155,7 @@ namespace JCSUnity
         /// <param name="obj"> Info for liquid bar to follow. </param>
         public override void AttachInfo(JCS_LiquidBarInfo info)
         {
-            this.mInfo = info;
+            mInfo = info;
 
             UpdateInfo();
         }
@@ -172,7 +172,7 @@ namespace JCSUnity
                 return;
             }
 
-            this.mMaxValue = val;
+            mMaxValue = val;
 
             if (mInfo != null)
                 mInfo.maxValue = (int)val;
@@ -192,7 +192,7 @@ namespace JCSUnity
                 return;
             }
 
-            this.mMinValue = val;
+            mMinValue = val;
 
             if (mInfo != null)
                 mInfo.minValue = (int)val;
@@ -220,7 +220,7 @@ namespace JCSUnity
                 }
             }
 
-            this.mCurrentValue = val;
+            mCurrentValue = val;
 
             // cannot lower than min container value
             if (mCurrentValue < mMinValue)
@@ -356,7 +356,7 @@ namespace JCSUnity
         /// <returns> value in liquid bar </returns>
         public override float GetCurrentValue()
         {
-            return this.mCurrentValue;
+            return mCurrentValue;
         }
 
         /// <summary>
@@ -369,9 +369,9 @@ namespace JCSUnity
                 return;
 
             // NOTE(jenchieh): missing comment.
-            this.mRectTransform.SetParent(mMaskRectTransform.parent);
+            mRectTransform.SetParent(mMaskRectTransform.parent);
 
-            mMaskTargetPosition = this.mRectTransform.localPosition;
+            mMaskTargetPosition = mRectTransform.localPosition;
 
             // find min max position, base on the algin side.
             switch (GetAlign())
@@ -406,7 +406,7 @@ namespace JCSUnity
             }
 
             // NOTE(jenchieh): missing comment.
-            this.mRectTransform.SetParent(mMaskRectTransform);
+            mRectTransform.SetParent(mMaskRectTransform);
 
             // do starting percent
             FixPercentage();

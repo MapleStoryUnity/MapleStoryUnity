@@ -214,7 +214,7 @@ namespace JCSUnity
 
             UpDownMovement();
 
-            this.mRecordPosition = this.transform.position;
+            mRecordPosition = transform.position;
 
             {
 #if (UNITY_EDITOR || UNITY_STANDALONE)
@@ -239,14 +239,14 @@ namespace JCSUnity
             {
                 // record down the position before calling the
                 // translate function
-                Vector3 currentPos = this.transform.position;
+                Vector3 currentPos = transform.position;
 
                 // do translate base on the scrolling distance
                 // we get from the input buffer.
-                this.transform.Translate(newPos);
+                transform.Translate(newPos);
 
                 // get the updated position!
-                Vector3 afterTransPos = this.transform.position;
+                Vector3 afterTransPos = transform.position;
 
                 // update the track position
                 mTrackPosition += afterTransPos - currentPos;
@@ -266,7 +266,7 @@ namespace JCSUnity
 
                 mCurrentRevolution += revoDelta;
 
-                this.transform.RotateAround(mTargetTransform.position, Vector3.up, revoDelta);
+                transform.RotateAround(mTargetTransform.position, Vector3.up, revoDelta);
             }
         }
 
@@ -355,7 +355,7 @@ namespace JCSUnity
                 mLastFramePos = currentFramePos;
 
                 // update the transform position
-                this.transform.position += (this.mTrackPosition - this.transform.position) / mSmoothTrackFriction * JCS_Time.ItTime(mTimeType);
+                transform.position += (mTrackPosition - transform.position) / mSmoothTrackFriction * JCS_Time.ItTime(mTimeType);
             }
             // Hard track
             else
@@ -363,7 +363,7 @@ namespace JCSUnity
                 // follow the object with frame distance.
                 // distance = current frame position - last frame position
                 Vector3 currentFramePos = mTargetTransform.position + mPositionOffset;
-                this.transform.position += currentFramePos - mLastFramePos;
+                transform.position += currentFramePos - mLastFramePos;
                 mLastFramePos = currentFramePos;
             }
         }
@@ -400,7 +400,7 @@ namespace JCSUnity
                 return;
 
             // get current position.
-            Vector3 newPos = this.transform.position;
+            Vector3 newPos = transform.position;
 
             {
                 // do the delta position formula
@@ -415,7 +415,7 @@ namespace JCSUnity
             }
 
             // apply new position
-            this.transform.position = newPos;
+            transform.position = newPos;
         }
 
         /// <summary>
@@ -452,9 +452,9 @@ namespace JCSUnity
                 return;
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
-            this.mTargetScrollSpeed = this.mWheelDegree * this.mScrollRange_Mouse;
+            mTargetScrollSpeed = mWheelDegree * mScrollRange_Mouse;
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-            this.mTargetScrollSpeed = this.mWheelDegree * this.mScrollRange_Touch;
+            mTargetScrollSpeed = mWheelDegree * mScrollRange_Touch;
 #endif
         }
 
@@ -463,16 +463,16 @@ namespace JCSUnity
         /// </summary>
         private void FixedMinMaxDistance()
         {
-            float currentDistance = Vector3.Distance(this.transform.position, mTargetTransform.position);
+            float currentDistance = Vector3.Distance(transform.position, mTargetTransform.position);
             if (JCS_Mathf.IsPositive(mTargetScrollSpeed))
             {
                 if (currentDistance <= mMinDistance)
                 {
                     mTargetScrollSpeed = 0.0f;
 
-                    Vector3 newPos = this.transform.position;
+                    Vector3 newPos = transform.position;
                     newPos.z = mRecordPosition.z;
-                    this.transform.position = newPos;
+                    transform.position = newPos;
                 }
             }
             else
@@ -481,9 +481,9 @@ namespace JCSUnity
                 {
                     mTargetScrollSpeed = 0.0f;
 
-                    Vector3 newPos = this.transform.position;
+                    Vector3 newPos = transform.position;
                     newPos.z = mRecordPosition.z;
-                    this.transform.position = newPos;
+                    transform.position = newPos;
                 }
             }
         }

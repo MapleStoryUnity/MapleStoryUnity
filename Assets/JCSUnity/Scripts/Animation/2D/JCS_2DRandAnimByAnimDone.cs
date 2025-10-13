@@ -27,7 +27,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
+            m2DAnimator = GetComponent<JCS_2DAnimator>();
 
             foreach (JCS_2DAnimation anim in m2DAnimator.animations)
             {

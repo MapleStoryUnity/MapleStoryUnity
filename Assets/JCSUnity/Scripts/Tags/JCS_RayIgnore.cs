@@ -41,10 +41,10 @@ namespace JCSUnity
                 return;
 
             // add tag to all childs
-            for (int index = 0; index < this.transform.childCount; ++index)
+            for (int index = 0; index < transform.childCount; ++index)
             {
                 // apply all to child
-                this.transform.GetChild(index).gameObject.AddComponent<JCS_RayIgnore>();
+                transform.GetChild(index).gameObject.AddComponent<JCS_RayIgnore>();
             }
         }
     }

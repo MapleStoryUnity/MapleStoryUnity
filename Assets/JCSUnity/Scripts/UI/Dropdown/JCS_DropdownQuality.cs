@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright © 2025 by Shen, Jen-Chieh $
+ *                   Copyright ï¿½ 2025 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,8 +34,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool removeAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
-        public bool applyExpensiveChanges { get { return mApplyExpensiveChanges; } set { this.mApplyExpensiveChanges = value; } }
+        public bool removeAllOptions { get { return mRemoveAllOptions; } set { mRemoveAllOptions = value; } }
+        public bool applyExpensiveChanges { get { return mApplyExpensiveChanges; } set { mApplyExpensiveChanges = value; } }
 
         /* Functions */
 

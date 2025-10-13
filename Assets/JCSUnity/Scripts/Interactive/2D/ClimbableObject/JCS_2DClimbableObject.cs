@@ -36,8 +36,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_OrderLayerObject orderLayerObject { get { return this.mOrderLayerObject; } }
-        public JCS_2DPositionPlatform positionPlatform { get { return this.mPositionPlatform; } }
+        public JCS_OrderLayerObject orderLayerObject { get { return mOrderLayerObject; } }
+        public JCS_2DPositionPlatform positionPlatform { get { return mPositionPlatform; } }
 
         /* Functions */
 

@@ -187,7 +187,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool targetingRecord { get { return this.mTargetingRecord; } }
+        public bool targetingRecord { get { return mTargetingRecord; } }
 
         /* X axis */
         public Transform rightPoint { get { return mRightPoint; } set { mRightPoint = value; } }
@@ -317,7 +317,7 @@ namespace JCSUnity
         /// </summary>
         public void SetEffectCamera(JCS_Camera cam)
         {
-            this.mCamera = cam;
+            mCamera = cam;
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace JCSUnity
         public void TargetRecord()
         {
             // target original transform we were targeting.
-            this.mCamera.SetFollowTarget(this.mRecordFollowTarget);
+            mCamera.SetFollowTarget(mRecordFollowTarget);
 
             mTargetingRecord = true;
         }
@@ -352,7 +352,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mRightPoint);
+            mCamera.SetFollowTarget(mRightPoint);
 
             mTargetingRecord = false;
         }
@@ -374,7 +374,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mLeftPoint);
+            mCamera.SetFollowTarget(mLeftPoint);
 
             mTargetingRecord = false;
         }
@@ -396,7 +396,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mRightUpPoint);
+            mCamera.SetFollowTarget(mRightUpPoint);
 
             mTargetingRecord = false;
         }
@@ -418,7 +418,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mRightDownPoint);
+            mCamera.SetFollowTarget(mRightDownPoint);
 
             mTargetingRecord = false;
         }
@@ -440,7 +440,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mLefttUpPoint);
+            mCamera.SetFollowTarget(mLefttUpPoint);
 
             mTargetingRecord = false;
         }
@@ -462,7 +462,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mLeftDownPoint);
+            mCamera.SetFollowTarget(mLeftDownPoint);
 
             mTargetingRecord = false;
         }
@@ -488,7 +488,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mUpPoint);
+            mCamera.SetFollowTarget(mUpPoint);
 
             mTargetingRecord = false;
         }
@@ -510,7 +510,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mDownPoint);
+            mCamera.SetFollowTarget(mDownPoint);
 
             mTargetingRecord = false;
         }
@@ -532,7 +532,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mUpForwardPoint);
+            mCamera.SetFollowTarget(mUpForwardPoint);
 
             mTargetingRecord = false;
         }
@@ -554,7 +554,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mUpBackwardPoint);
+            mCamera.SetFollowTarget(mUpBackwardPoint);
 
             mTargetingRecord = false;
         }
@@ -576,7 +576,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mDownForwardPoint);
+            mCamera.SetFollowTarget(mDownForwardPoint);
 
             mTargetingRecord = false;
         }
@@ -598,7 +598,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mDownBackwardPoint);
+            mCamera.SetFollowTarget(mDownBackwardPoint);
 
             mTargetingRecord = false;
         }
@@ -624,7 +624,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mForwardPoint);
+            mCamera.SetFollowTarget(mForwardPoint);
 
             mTargetingRecord = false;
         }
@@ -646,7 +646,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mBackwardPoint);
+            mCamera.SetFollowTarget(mBackwardPoint);
 
             mTargetingRecord = false;
         }
@@ -668,7 +668,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mForwardRightPoint);
+            mCamera.SetFollowTarget(mForwardRightPoint);
 
             mTargetingRecord = false;
         }
@@ -690,7 +690,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mForwardLeftPoint);
+            mCamera.SetFollowTarget(mForwardLeftPoint);
 
             mTargetingRecord = false;
         }
@@ -712,7 +712,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mBackwardRightPoint);
+            mCamera.SetFollowTarget(mBackwardRightPoint);
 
             mTargetingRecord = false;
         }
@@ -734,7 +734,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mBackwardLeftPoint);
+            mCamera.SetFollowTarget(mBackwardLeftPoint);
 
             mTargetingRecord = false;
         }
@@ -760,7 +760,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mRightUpForwardPoint);
+            mCamera.SetFollowTarget(mRightUpForwardPoint);
 
             mTargetingRecord = false;
         }
@@ -782,7 +782,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mRightUpBackwardPoint);
+            mCamera.SetFollowTarget(mRightUpBackwardPoint);
 
             mTargetingRecord = false;
         }
@@ -804,7 +804,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mRightDownForwardPoint);
+            mCamera.SetFollowTarget(mRightDownForwardPoint);
 
             mTargetingRecord = false;
         }
@@ -826,7 +826,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mRightDownBackwardPoint);
+            mCamera.SetFollowTarget(mRightDownBackwardPoint);
 
             mTargetingRecord = false;
         }
@@ -848,7 +848,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mLeftUpForwardPoint);
+            mCamera.SetFollowTarget(mLeftUpForwardPoint);
 
             mTargetingRecord = false;
         }
@@ -870,7 +870,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mLeftUpBackwardPoint);
+            mCamera.SetFollowTarget(mLeftUpBackwardPoint);
 
             mTargetingRecord = false;
         }
@@ -892,7 +892,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mLeftDownForwardPoint);
+            mCamera.SetFollowTarget(mLeftDownForwardPoint);
 
             mTargetingRecord = false;
         }
@@ -914,7 +914,7 @@ namespace JCSUnity
             }
 
             // target the target point.
-            this.mCamera.SetFollowTarget(mLeftDownBackwardPoint);
+            mCamera.SetFollowTarget(mLeftDownBackwardPoint);
 
             mTargetingRecord = false;
         }
@@ -925,7 +925,7 @@ namespace JCSUnity
         /// <param name="trans"> follow target's transform to record. </param>
         private void RecordFollowTargetFromCamera()
         {
-            this.mRecordFollowTarget = this.mCamera.GetFollowTarget();
+            mRecordFollowTarget = mCamera.GetFollowTarget();
         }
     }
 }

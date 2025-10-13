@@ -53,22 +53,22 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int dialogueIndex { get { return this.mDialogueIndex; } }
-        public KeyCode openKey { get { return this.mOpenKey; } set { this.mOpenKey = value; } }
-        public JCS_DialogueType dialogueType { get { return this.mDialogueType; } }
-        public JCS_PanelType panelType { get { return this.mPanelType; } }
-        public bool IsWindowOpened() { return this.mIsVisible; }
+        public int dialogueIndex { get { return mDialogueIndex; } }
+        public KeyCode openKey { get { return mOpenKey; } set { mOpenKey = value; } }
+        public JCS_DialogueType dialogueType { get { return mDialogueType; } }
+        public JCS_PanelType panelType { get { return mPanelType; } }
+        public bool IsWindowOpened() { return mIsVisible; }
 
-        public JCS_SoundPlayer soundPlayer { get { return this.mSoundPlayer; } set { this.mSoundPlayer = value; } }
-        public AudioClip openWindowClip { get { return this.mOpenWindowClip; } set { this.mOpenWindowClip = value; } }
-        public AudioClip closeWindowClip { get { return this.mCloseWindowClip; } set { this.mCloseWindowClip = value; } }
+        public JCS_SoundPlayer soundPlayer { get { return mSoundPlayer; } set { mSoundPlayer = value; } }
+        public AudioClip openWindowClip { get { return mOpenWindowClip; } set { mOpenWindowClip = value; } }
+        public AudioClip closeWindowClip { get { return mCloseWindowClip; } set { mCloseWindowClip = value; } }
 
         /* Functions */
 
 #if !(UNITY_5_4_OR_NEWER)
         private void OnLevelWasLoaded()
         {
-            this.mRectTransform = this.GetComponent<RectTransform>();
+            mRectTransform = GetComponent<RectTransform>();
 
             var uim = JCS_UIManager.instance;
 
@@ -86,7 +86,7 @@ namespace JCSUnity
         protected override void Awake()
         {
 #if (UNITY_5_4_OR_NEWER)
-            this.mRectTransform = this.GetComponent<RectTransform>();
+            mRectTransform = GetComponent<RectTransform>();
             if (mRectTransform == null)
                 return;
 
@@ -220,7 +220,7 @@ namespace JCSUnity
         /// </summary>
         public void MoveToTheLastChild()
         {
-            JCS_Util.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(transform);
 
             // Once it move to the last child, meaning the window have been focus.
             SwapToTheLastOpenWindowList();

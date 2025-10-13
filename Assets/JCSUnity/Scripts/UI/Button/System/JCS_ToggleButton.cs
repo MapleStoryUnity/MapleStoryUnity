@@ -46,18 +46,18 @@ namespace JCSUnity
 
         public bool active
         {
-            get { return this.mActive; }
+            get { return mActive; }
             set
             {
-                if (this.mActive != value)
+                if (mActive != value)
                 {
                     Toggle();
-                    this.mActive = value;
+                    mActive = value;
                 }
             }
         }
-        public UnityEvent onAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
-        public UnityEvent offAction { get { return this.mOffAction; } set { this.mOffAction = value; } }
+        public UnityEvent onAction { get { return mOnAction; } set { mOnAction = value; } }
+        public UnityEvent offAction { get { return mOffAction; } set { mOffAction = value; } }
 
         /* Functions */
 

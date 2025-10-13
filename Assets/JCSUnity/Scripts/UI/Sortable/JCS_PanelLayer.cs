@@ -68,7 +68,7 @@ namespace JCSUnity
                 return;
 
             if (Input.GetKeyDown(mMoveLastKey))
-                JCS_Util.MoveToTheLastChild(this.transform);
+                JCS_Util.MoveToTheLastChild(transform);
         }
 #endif
 

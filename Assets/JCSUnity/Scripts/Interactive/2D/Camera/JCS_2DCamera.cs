@@ -112,7 +112,7 @@ namespace JCSUnity
         public bool GetFollowing() { return mFollowing; }
         public void SetFollowing(bool val) { mFollowing = val; }
         public Transform GetTargetTransform() { return mTargetTransform; }
-        public bool resetVelocityToZeroWhileNotActive { get { return mResetVelocityToZeroWhileNotActive; } set { this.mResetVelocityToZeroWhileNotActive = value; } }
+        public bool resetVelocityToZeroWhileNotActive { get { return mResetVelocityToZeroWhileNotActive; } set { mResetVelocityToZeroWhileNotActive = value; } }
         public bool zoomEffect { get { return mZoomEffect; } set { mZoomEffect = value; } }
         public bool zoomWithMouseOrTouch { get { return mZoomWithMouseOrTouch; } set { mZoomWithMouseOrTouch = value; } }
         public float scrollRange_Mouse { get { return mScrollRange_Mouse; } set { mScrollRange_Mouse = value; } }

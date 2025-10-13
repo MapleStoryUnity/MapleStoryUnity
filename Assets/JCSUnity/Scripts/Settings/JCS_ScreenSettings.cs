@@ -30,7 +30,7 @@ namespace JCSUnity
         public Action onResizableIdle = null;
 
         // Record
-        private Resolution mPrevResolution = default(Resolution);
+        private Resolution mPrevResolution = default;
 
         private float mSizeWidth = 0;
         private float mSizeHeight = 0;
@@ -101,12 +101,12 @@ namespace JCSUnity
 
         public Color RESIZABLE_PANELS_COLOR
         {
-            get { return this.mResizablePanelsColor; }
+            get { return mResizablePanelsColor; }
             set
             {
-                this.mResizablePanelsColor = value;
+                mResizablePanelsColor = value;
 
-                JCS_ScreenManager.FirstInstance().SetResizablePanelsColor(this.mResizablePanelsColor);
+                JCS_ScreenManager.FirstInstance().SetResizablePanelsColor(mResizablePanelsColor);
             }
         }
 

@@ -142,7 +142,7 @@ namespace JCSUnity
             {
                 for (int camIndex = 0; camIndex < mSlideCameras.Length; ++camIndex)
                 {
-                    slideCamera = this.mSlideCameras[camIndex];
+                    slideCamera = mSlideCameras[camIndex];
 
                     // do the slide screen effect.
                     if (slideCamera != null)

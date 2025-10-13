@@ -35,9 +35,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Image image { get { return this.mImage; } }
-        public RectTransform sRectTransform { get { return this.mRectTransform; } }
-        public JCS_2D4Direction placeDirection { get { return this.mPlaceDirection; } set { this.mPlaceDirection = value; } }
+        public Image image { get { return mImage; } }
+        public RectTransform sRectTransform { get { return mRectTransform; } }
+        public JCS_2D4Direction placeDirection { get { return mPlaceDirection; } set { mPlaceDirection = value; } }
 
         /* Functions */
 
@@ -74,7 +74,7 @@ namespace JCSUnity
         /// </summary>
         public void ShowPanel()
         {
-            this.mImage.enabled = true;
+            mImage.enabled = true;
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace JCSUnity
         /// </summary>
         public void HidePanel()
         {
-            this.mImage.enabled = false;
+            mImage.enabled = false;
         }
 
         /// <summary>
@@ -107,25 +107,25 @@ namespace JCSUnity
                 case JCS_2D4Direction.TOP:
                     {
                         newPos.y += halfScreenHeight;
-                        this.name += " (Top)";
+                        name += " (Top)";
                     }
                     break;
                 case JCS_2D4Direction.BOTTOM:
                     {
                         newPos.y -= halfScreenHeight;
-                        this.name += " (Bottom)";
+                        name += " (Bottom)";
                     }
                     break;
                 case JCS_2D4Direction.LEFT:
                     {
                         newPos.x -= halfScreenWidth;
-                        this.name += " (Left)";
+                        name += " (Left)";
                     }
                     break;
                 case JCS_2D4Direction.RIGHT:
                     {
                         newPos.x += halfScreenWidth;
-                        this.name += " (Right)";
+                        name += " (Right)";
                     }
                     break;
             }

@@ -29,11 +29,11 @@ namespace JCSUnity
 
         protected virtual void Awake()
         {
-            mAudioSource = this.GetComponent<AudioSource>();
+            mAudioSource = GetComponent<AudioSource>();
 
             if (mAudioSource.outputAudioMixerGroup == null)
             {
-                Debug.Log("The output audio mixer is empty: " + this.name);
+                Debug.Log("The output audio mixer is empty: " + name);
             }
         }
 

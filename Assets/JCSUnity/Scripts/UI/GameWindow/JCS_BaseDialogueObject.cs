@@ -51,17 +51,17 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public RectTransform rectTransform { get { return this.mRectTransform; } }
-        public bool IsVisible { get { return this.mIsVisible; } }
-        public bool AsOriginalSize { get { return this.mAsOriginalSize; } set { this.mAsOriginalSize = value; } }
-        public bool AsOriginalPosition { get { return this.mAsOriginalPosition; } set { this.mAsOriginalPosition = value; } }
-        public bool AsOriginalRotation { get { return this.mAsOriginalRotation; } set { this.mAsOriginalRotation = value; } }
+        public RectTransform rectTransform { get { return mRectTransform; } }
+        public bool IsVisible { get { return mIsVisible; } }
+        public bool AsOriginalSize { get { return mAsOriginalSize; } set { mAsOriginalSize = value; } }
+        public bool AsOriginalPosition { get { return mAsOriginalPosition; } set { mAsOriginalPosition = value; } }
+        public bool AsOriginalRotation { get { return mAsOriginalRotation; } set { mAsOriginalRotation = value; } }
 
         /* Functions */
 
         protected virtual void Awake()
         {
-            this.mRectTransform = this.GetComponent<RectTransform>();
+            mRectTransform = GetComponent<RectTransform>();
 
             mOriginalScale = mRectTransform.localScale;
             mOriginalPosition = mRectTransform.localPosition;
@@ -114,7 +114,7 @@ namespace JCSUnity
             JCS_AppManager.APP_PAUSE = false;
 
             // destroy this dialogue
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         /// <summary>
@@ -125,9 +125,9 @@ namespace JCSUnity
             mIsVisible = true;
 
             // active all the child object
-            JCS_Util.SetActiveChildren(this.transform, true);
+            JCS_Util.SetActiveChildren(transform, true);
 
-            JCS_Util.MoveToTheLastChild(this.transform);
+            JCS_Util.MoveToTheLastChild(transform);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace JCSUnity
             mIsVisible = false;
 
             // deactive all the child object
-            JCS_Util.SetActiveChildren(this.transform, false);
+            JCS_Util.SetActiveChildren(transform, false);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace JCSUnity
         /// </summary>
         protected void SetParentObjectByMode()
         {
-            var canvas = JCS_Canvas.GuessCanvas(this.transform);
+            var canvas = JCS_Canvas.GuessCanvas(transform);
             var resizeUI = canvas.resizeUI;
 
             if (canvas == null)
@@ -171,7 +171,7 @@ namespace JCSUnity
                 parentObject = canvas.canvas.transform;
 
             // set it to parent
-            this.gameObject.transform.SetParent(parentObject);
+            gameObject.transform.SetParent(parentObject);
         }
     }
 }

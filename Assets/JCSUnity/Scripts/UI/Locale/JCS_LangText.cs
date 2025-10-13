@@ -38,7 +38,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_LangDataList langData { get { return this.mLangData; } }
+        public JCS_LangDataList langData { get { return mLangData; } }
 
         /* Functions */
 
@@ -53,9 +53,9 @@ namespace JCSUnity
         /// </summary>
         public void Refresh()
         {
-            JCS_UIUtil.SetLangText(this.mLangData, this.mTextLegacy);
+            JCS_UIUtil.SetLangText(mLangData, mTextLegacy);
 #if TMP_PRO
-            JCS_UIUtil.SetLangText(this.mLangData, this.mTextTMP);
+            JCS_UIUtil.SetLangText(mLangData, mTextTMP);
 #endif
         }
     }

@@ -184,7 +184,7 @@ namespace JCSUnity
         /// </summary>
         public virtual void ButtonClick()
         {
-            this.mIsSelectedInGroup = IsSelected();
+            mIsSelectedInGroup = IsSelected();
 
             if (!mIsSelectedInGroup)
                 return;

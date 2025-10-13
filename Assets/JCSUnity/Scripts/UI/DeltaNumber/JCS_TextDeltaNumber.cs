@@ -118,27 +118,27 @@ should disable this effect for best purpose.")]
 
         /* Setter & Getter */
 
-        public float currentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
+        public float currentNumber { get { return mCurrentNumber; } set { mCurrentNumber = value; } }
         public float targetNumber
         {
-            get { return this.mTargetNumber; }
+            get { return mTargetNumber; }
             set
             {
-                this.mTargetNumber = value;
+                mTargetNumber = value;
 
                 // by setting the delta number will enable the delta to current
                 // number effect.
-                this.mDeltaToCurrentNumber = true;
+                mDeltaToCurrentNumber = true;
             }
         }
-        public bool deltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
-        public string fullString { get { return this.mFullString; } }
-        public int roundPlace { get { return this.mRoundPlace; } set { this.mRoundPlace = value; } }
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public string preString { get { return this.mPreString; } set { this.mPreString = value; } }
-        public string postString { get { return this.mPostString; } set { this.mPostString = value; } }
-        public float animNumberTime { get { return this.mAnimNumberTime; } set { this.mAnimNumberTime = value; } }
-        public float deltaProduct { get { return this.mDeltaProduct; } set { this.mDeltaProduct = value; } }
+        public bool deltaToCurrentNumber { get { return mDeltaToCurrentNumber; } set { mDeltaToCurrentNumber = value; } }
+        public string fullString { get { return mFullString; } }
+        public int roundPlace { get { return mRoundPlace; } set { mRoundPlace = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public string preString { get { return mPreString; } set { mPreString = value; } }
+        public string postString { get { return mPostString; } set { mPostString = value; } }
+        public float animNumberTime { get { return mAnimNumberTime; } set { mAnimNumberTime = value; } }
+        public float deltaProduct { get { return mDeltaProduct; } set { mDeltaProduct = value; } }
 
         /* Functions */
 
@@ -232,7 +232,7 @@ should disable this effect for best purpose.")]
             UpdateTextRender();
 
             // Reset timer.
-            this.mAnimNumberTimer = 0.0f;
+            mAnimNumberTimer = 0.0f;
         }
 
         /// <summary>

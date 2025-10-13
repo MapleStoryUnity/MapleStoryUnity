@@ -69,7 +69,7 @@ holding we could play the animation back in time.")]
         /// <param name="animIndex"> anim index. </param>
         public void HoldAnimation(int animIndex)
         {
-            HoldAnimation(animIndex, this.mHoldTime);
+            HoldAnimation(animIndex, mHoldTime);
         }
 
         /// <summary>
@@ -79,15 +79,15 @@ holding we could play the animation back in time.")]
         /// <param name="time"> time for animation to play. </param>
         public void HoldAnimation(int animIndex, float time)
         {
-            this.mHoldAnimIndex = animIndex;
+            mHoldAnimIndex = animIndex;
 
-            if (this.m2DAnimator.currentAnimId != mHoldAnimIndex)
-                this.mStoreAnimIndex = this.m2DAnimator.currentAnimId;
+            if (m2DAnimator.currentAnimId != mHoldAnimIndex)
+                mStoreAnimIndex = m2DAnimator.currentAnimId;
 
-            this.m2DAnimator.DoAnimation(this.mHoldAnimIndex);
+            m2DAnimator.DoAnimation(mHoldAnimIndex);
 
-            this.mHoldTime = time;
-            this.mHoldTimer = 0.0f;
+            mHoldTime = time;
+            mHoldTimer = 0.0f;
 
             mHolding = true;
         }
@@ -99,7 +99,7 @@ holding we could play the animation back in time.")]
         {
             mHolding = false;
 
-            this.mHoldTimer = 0.0f;
+            mHoldTimer = 0.0f;
         }
 
         /// <summary>

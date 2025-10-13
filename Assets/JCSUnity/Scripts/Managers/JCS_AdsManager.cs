@@ -57,7 +57,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool testMode { get { return this.mTestMode; } set { this.mTestMode = value; } }
+        public bool testMode { get { return mTestMode; } set { mTestMode = value; } }
 
         /* Functions */
 

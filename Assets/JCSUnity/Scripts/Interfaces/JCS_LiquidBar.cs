@@ -50,7 +50,7 @@ namespace JCSUnity
 
         [Separator("Initialize Variables (JCS_LiquidBar)")]
 
-        [Tooltip("Once it set to zero, but still override this.")]
+        [Tooltip("Once it set to zero, but still override ")]
         [SerializeField]
         protected bool mOverrideZero = false;
 
@@ -161,11 +161,11 @@ Careful that recover can be damage too.")]
         protected virtual void Awake()
         {
             // record down the recover value.
-            this.mRecordValue = this.mRecoverValue;
+            mRecordValue = mRecoverValue;
 
             // get the image 
             if (mInfoImage == null)
-                this.mInfoImage = this.GetComponent<Image>();
+                mInfoImage = GetComponent<Image>();
 
             if (mInfo != null)
                 mInfo.liquidBar = this;
@@ -181,7 +181,7 @@ Careful that recover can be damage too.")]
 
             // Try to get back the original value (which we record down in 
             // the Awake function).
-            this.mRecoverValue += (mRecordValue - mRecoverValue) / mGetBackFriction * JCS_Time.ItTime(mTimeType);
+            mRecoverValue += (mRecordValue - mRecoverValue) / mGetBackFriction * JCS_Time.ItTime(mTimeType);
         }
 
         /// <summary>

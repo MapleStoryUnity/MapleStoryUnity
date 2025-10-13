@@ -91,7 +91,7 @@ namespace JCSUnity
         public void Stop()
         {
             effect = false;
-            this.transform.localEulerAngles = Vector3.zero;
+            transform.localEulerAngles = Vector3.zero;
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace JCSUnity
             Vector3 rotateDirection;
 
             if (mBySelf)
-                rotateDirection = JCS_Vector.Direction(mRotateDirection, this.transform);
+                rotateDirection = JCS_Vector.Direction(mRotateDirection, transform);
             else
                 rotateDirection = JCS_Vector.Direction(mRotateDirection);
 

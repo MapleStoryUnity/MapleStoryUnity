@@ -29,8 +29,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public byte[] GetInputBuffer() { return this.mInputBuff; }
-        public byte[] GetOutPutBuffer() { return this.mOutputBuff; }
+        public byte[] GetInputBuffer() { return mInputBuff; }
+        public byte[] GetOutPutBuffer() { return mOutputBuff; }
 
         /// <summary>
         /// Set the client handler.
@@ -38,7 +38,7 @@ namespace JCSUnity
         /// <param name="handler"> handler. </param>
         public void SetHandler(JCS_ClientHandler handler)
         {
-            this.mClientHandler = handler;
+            mClientHandler = handler;
         }
 
         /* Functions */

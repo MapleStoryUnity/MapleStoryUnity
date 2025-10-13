@@ -102,9 +102,9 @@ namespace JCSUnity
             float dt = JCS_Time.ItTime(mTimeType);
 
             if (JCS_Input.GetKey(KeyCode.L))
-                this.transform.Rotate(Vector3.up * mRotateSpeed * dt);
+                transform.Rotate(Vector3.up * mRotateSpeed * dt);
             else if (JCS_Input.GetKey(KeyCode.J))
-                this.transform.Rotate(Vector3.up * -mRotateSpeed * dt);
+                transform.Rotate(Vector3.up * -mRotateSpeed * dt);
         }
 
         public override void Stand()

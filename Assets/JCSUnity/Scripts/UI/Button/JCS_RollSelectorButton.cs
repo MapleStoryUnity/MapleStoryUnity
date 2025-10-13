@@ -42,10 +42,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int ScrollIndex { get { return this.mScrollIndex; } set { this.mScrollIndex = value; } }
-        public void SetRollSelector(JCS_RollBtnSelector rbs) { this.mRollBtnSelector = rbs; }
-        public JCS_SimpleTrackAction SimpleTrackAction { get { return this.mTrackAction; } }
-        public JCS_ScaleEffect GetScaleEffect() { return this.mScaleEffect; }
+        public int ScrollIndex { get { return mScrollIndex; } set { mScrollIndex = value; } }
+        public void SetRollSelector(JCS_RollBtnSelector rbs) { mRollBtnSelector = rbs; }
+        public JCS_SimpleTrackAction SimpleTrackAction { get { return mTrackAction; } }
+        public JCS_ScaleEffect GetScaleEffect() { return mScaleEffect; }
 
         /* Functions */
 
@@ -53,8 +53,8 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mTrackAction = this.GetComponent<JCS_SimpleTrackAction>();
-            this.mScaleEffect = this.GetComponent<JCS_ScaleEffect>();
+            mTrackAction = GetComponent<JCS_SimpleTrackAction>();
+            mScaleEffect = GetComponent<JCS_ScaleEffect>();
 
             // set system call back.
             // so when the player click it will call the function.
@@ -120,7 +120,7 @@ namespace JCSUnity
         /// </summary>
         public void SetTrackPosition()
         {
-            mTrackAction.targetPosition = this.transform.localPosition;
+            mTrackAction.targetPosition = transform.localPosition;
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace JCSUnity
             mButton.onClick.AddListener(ButtonClick);
 
             // get all the buttons on this transform
-            btns = this.GetComponents<JCS_Button>();
+            btns = GetComponents<JCS_Button>();
 
             foreach (JCS_Button b in btns)
             {

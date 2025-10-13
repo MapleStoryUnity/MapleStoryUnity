@@ -36,9 +36,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<Image> indicators { get { return this.mIndicators; } set { this.mIndicators = value; } }
-        public Sprite activeSprite { get { return this.mActiveSprite; } set { this.mActiveSprite = value; } }
-        public Sprite inactiveSprite { get { return this.mInactiveSprite; } set { this.mInactiveSprite = value; } }
+        public List<Image> indicators { get { return mIndicators; } set { mIndicators = value; } }
+        public Sprite activeSprite { get { return mActiveSprite; } set { mActiveSprite = value; } }
+        public Sprite inactiveSprite { get { return mInactiveSprite; } set { mInactiveSprite = value; } }
 
         /* Functions */
 
@@ -70,7 +70,7 @@ namespace JCSUnity
         /// <param name="sprite"> The sprite to apply. </param>
         private void SetSprite(Sprite sprite)
         {
-            this.mIndicators = JCS_Array.RemoveEmptyMissing(this.mIndicators);
+            mIndicators = JCS_Array.RemoveEmptyMissing(mIndicators);
 
             foreach (Image ind in mIndicators)
             {

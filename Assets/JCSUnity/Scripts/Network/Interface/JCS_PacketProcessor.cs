@@ -24,7 +24,7 @@ namespace JCSUnity
 
         protected JCS_PacketProcessor(JCS_ClientMode mode)
         {
-            this.mMode = mode;
+            mMode = mode;
             Initialize();
         }
 
@@ -51,7 +51,7 @@ namespace JCSUnity
 
             mHandlers = new JCS_PacketHandler[maxRecvOp + 1];
 
-            Reset(this.mMode);
+            Reset(mMode);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace JCSUnity
         /// <returns> List of handlers </returns>
         public virtual JCS_PacketHandler[] GetHandlers()
         {
-            return this.mHandlers;
+            return mHandlers;
         }
     }
 }

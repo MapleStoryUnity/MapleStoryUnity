@@ -55,9 +55,9 @@ namespace JCSUnity
             //StartCoroutine(GetCurrentWeather());
         }
 
-        public JCS_TimeRange GetCurrentTimeRange() { return this.mCurrentTimeRange; }
-        public JCS_SeasonType GetCurrentSeasonType() { return this.mCurrentSeasonType; }
-        public JCS_WeatherType GetCurrentWeatherType() { return this.mCurrentWeatherType; }
+        public JCS_TimeRange GetCurrentTimeRange() { return mCurrentTimeRange; }
+        public JCS_SeasonType GetCurrentSeasonType() { return mCurrentSeasonType; }
+        public JCS_WeatherType GetCurrentWeatherType() { return mCurrentWeatherType; }
 
         /* Functions */
 

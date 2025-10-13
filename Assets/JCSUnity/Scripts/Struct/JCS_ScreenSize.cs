@@ -6,17 +6,21 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Screen size definition. (Integer)
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public class JCS_ScreenSize
     {
-        public static JCS_ScreenSize zero { get { return new JCS_ScreenSize(0, 0); } }
+        /* Variables */
+
+        [Separator("Runtime Variables (JCS_ScreenSize)")]
 
         [Tooltip("Width of the screen.")]
         [Range(1, 8192)]
@@ -25,6 +29,12 @@ namespace JCSUnity
         [Tooltip("Height of the screen.")]
         [Range(1, 8192)]
         public int height = 0;
+
+        /* Setter & Getter */
+
+        public static JCS_ScreenSize zero { get { return new JCS_ScreenSize(0, 0); } }
+
+        /* Functions */
 
         public JCS_ScreenSize(int width, int height)
         {

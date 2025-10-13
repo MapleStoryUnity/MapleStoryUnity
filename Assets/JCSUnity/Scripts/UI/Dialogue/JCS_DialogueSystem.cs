@@ -216,40 +216,40 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool Active { get { return this.mActive; } }
-        public bool Scrolling { get { return this.mScrolling; } }
-        public bool ScrollingSelectBtnText { get { return this.mScrollingSelectBtnText; } }
-        public bool Skip { get { return this.mSkip; } }
-        public bool ProgressOnHidden { get { return this.mProgressOnHidden; } set { this.mProgressOnHidden = value; } }
+        public bool Active { get { return mActive; } }
+        public bool Scrolling { get { return mScrolling; } }
+        public bool ScrollingSelectBtnText { get { return mScrollingSelectBtnText; } }
+        public bool Skip { get { return mSkip; } }
+        public bool ProgressOnHidden { get { return mProgressOnHidden; } set { mProgressOnHidden = value; } }
 
-        public Image CenterImage { get { return this.mCenterImage; } }
-        public Image LeftImage { get { return this.mLeftImage; } }
-        public Image RightImage { get { return this.mRightImage; } }
-        public JCS_TextObject NameTag { get { return this.mNameTag; } }
-        public JCS_TextObject TextBox { get { return this.mTextBox; } }
-        public RectTransform PanelTrans { get { return this.mPanelTrans; } }
-        public JCS_Button OkBtn { get { return this.mOkBtn; } }
-        public JCS_Button ExitBtn { get { return this.mExitBtn; } }
-        public JCS_Button YesBtn { get { return this.mYesBtn; } }
-        public JCS_Button NoBtn { get { return this.mNoBtn; } }
-        public JCS_Button PreviousBtn { get { return this.mPreviousBtn; } }
-        public JCS_Button NextBtn { get { return this.mNextBtn; } }
-        public JCS_Button AcceptBtn { get { return this.mAcceptBtn; } }
-        public JCS_Button DeclineBtn { get { return this.mDeclineBtn; } }
+        public Image CenterImage { get { return mCenterImage; } }
+        public Image LeftImage { get { return mLeftImage; } }
+        public Image RightImage { get { return mRightImage; } }
+        public JCS_TextObject NameTag { get { return mNameTag; } }
+        public JCS_TextObject TextBox { get { return mTextBox; } }
+        public RectTransform PanelTrans { get { return mPanelTrans; } }
+        public JCS_Button OkBtn { get { return mOkBtn; } }
+        public JCS_Button ExitBtn { get { return mExitBtn; } }
+        public JCS_Button YesBtn { get { return mYesBtn; } }
+        public JCS_Button NoBtn { get { return mNoBtn; } }
+        public JCS_Button PreviousBtn { get { return mPreviousBtn; } }
+        public JCS_Button NextBtn { get { return mNextBtn; } }
+        public JCS_Button AcceptBtn { get { return mAcceptBtn; } }
+        public JCS_Button DeclineBtn { get { return mDeclineBtn; } }
 
-        public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
-        public string SelectStringFront { get { return this.mSelectStringFront; } }
-        public string SelectStringBack { get { return this.mSelectStringBack; } }
+        public bool MakeHoverSelect { get { return mMakeHoverSelect; } set { mMakeHoverSelect = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public JCS_DialogueScript DialogueScript { get { return mDialogueScript; } set { mDialogueScript = value; } }
+        public string SelectStringFront { get { return mSelectStringFront; } }
+        public string SelectStringBack { get { return mSelectStringBack; } }
 
-        public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
-        public bool CompleteTextBeforeAction { get { return this.mCompleteTextBeforeAction; } set { this.mCompleteTextBeforeAction = value; } }
-        public bool CompleteTextBeforeActionOnButton { get { return this.mCompleteTextBeforeActionOnButton; } set { this.mCompleteTextBeforeActionOnButton = value; } }
-        public bool AutoProgress { get { return this.mAutoProgress; } set { this.mAutoProgress = value; } }
-        public float AutoDelay { get { return this.AutoDelay; } set { this.mAutoDelay = value; } }
-        public AudioClip AcitveSound { get { return this.mActiveSound; } set { this.mActiveSound = value; } }
-        public AudioClip DisposeSound { get { return this.mDisposeSound; } set { this.mDisposeSound = value; } }
+        public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return mButtonSelectionGroup; } set { mButtonSelectionGroup = value; } }
+        public bool CompleteTextBeforeAction { get { return mCompleteTextBeforeAction; } set { mCompleteTextBeforeAction = value; } }
+        public bool CompleteTextBeforeActionOnButton { get { return mCompleteTextBeforeActionOnButton; } set { mCompleteTextBeforeActionOnButton = value; } }
+        public bool AutoProgress { get { return mAutoProgress; } set { mAutoProgress = value; } }
+        public float AutoDelay { get { return AutoDelay; } set { mAutoDelay = value; } }
+        public AudioClip AcitveSound { get { return mActiveSound; } set { mActiveSound = value; } }
+        public AudioClip DisposeSound { get { return mDisposeSound; } set { mDisposeSound = value; } }
 
         /* Functions */
 
@@ -259,7 +259,7 @@ namespace JCSUnity
 
             // try to get transfrom by it own current transfrom.
             if (mPanelTrans == null)
-                mPanelTrans = this.GetComponent<RectTransform>();
+                mPanelTrans = GetComponent<RectTransform>();
         }
 
         private void Start()
@@ -380,7 +380,7 @@ namespace JCSUnity
                 mPreselectingScript = script;
 
                 // Activate it on the next frame!
-                this.gameObject.SetActive(true);
+                gameObject.SetActive(true);
 
                 return false;
             }
@@ -863,7 +863,7 @@ namespace JCSUnity
         /// </summary>
         public bool IsScrolling()
         {
-            return this.mScrolling || this.mScrollingSelectBtnText;
+            return mScrolling || mScrollingSelectBtnText;
         }
 
         /// <summary>

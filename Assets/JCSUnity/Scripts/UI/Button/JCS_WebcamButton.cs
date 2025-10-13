@@ -38,8 +38,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_Webcam webcam { get { return this.mWebcam; } set { this.mWebcam = value; } }
-        public string currentWebcamImagePath { get { return this.mCurrentWebcamImagePath; } }
+        public JCS_Webcam webcam { get { return mWebcam; } set { mWebcam = value; } }
+        public string currentWebcamImagePath { get { return mCurrentWebcamImagePath; } }
 
         /* Functions */
 

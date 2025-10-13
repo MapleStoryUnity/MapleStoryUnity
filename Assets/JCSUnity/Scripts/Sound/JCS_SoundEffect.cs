@@ -26,7 +26,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mAudioSource = this.GetComponent<AudioSource>();
+            mAudioSource = GetComponent<AudioSource>();
 
             // Check to see if there is audio attach in the game or not!
             if (mAudioSource.clip == null)

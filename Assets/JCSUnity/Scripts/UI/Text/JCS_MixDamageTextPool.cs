@@ -107,11 +107,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
-        public JCS_DamageTextPool criticalDamageTextPool { get { return this.mCritDamageTextPool; } }
-        public JCS_DamageTextPool normralDamageTextPool { get { return this.mNormalDamageTextPool; } }
-        public JCS_DamageTextPool getDamageDamageTextPool { get { return this.mGetDamageDamageTextPool; } }
-        public JCS_DamageTextPool healDamageTextPoll { get { return this.mHealDamageTextPool; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+        public JCS_DamageTextPool criticalDamageTextPool { get { return mCritDamageTextPool; } }
+        public JCS_DamageTextPool normralDamageTextPool { get { return mNormalDamageTextPool; } }
+        public JCS_DamageTextPool getDamageDamageTextPool { get { return mGetDamageDamageTextPool; } }
+        public JCS_DamageTextPool healDamageTextPoll { get { return mHealDamageTextPool; } }
 
         /* Functions */
 

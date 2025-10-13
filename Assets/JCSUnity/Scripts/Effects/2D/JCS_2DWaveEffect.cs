@@ -113,7 +113,7 @@ namespace JCSUnity
             mEffectTime = time;
             mFrequency = frequency;
 
-            mOrigin = this.transform.position;
+            mOrigin = transform.position;
 
             // cps = cycle per second = wave speed
 
@@ -129,8 +129,8 @@ namespace JCSUnity
             {
                 Transform trans = mJCS_2DCamera.GetTargetTransform();
 
-                this.mOrigin.x = trans.position.x;
-                this.mOrigin.y = trans.position.y;
+                mOrigin.x = trans.position.x;
+                mOrigin.y = trans.position.y;
             }
 
             mTime += JCS_Time.ItTime(mTimeType);
@@ -160,11 +160,11 @@ namespace JCSUnity
                         break;
                 }
 
-                this.transform.position = newPos;
+                transform.position = newPos;
             }
             else
             {
-                this.transform.position = mOrigin;
+                transform.position = mOrigin;
 
                 mEffect = false;
             }

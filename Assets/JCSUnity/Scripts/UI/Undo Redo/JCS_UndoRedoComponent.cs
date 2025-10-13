@@ -142,9 +142,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_UndoRedoSystem undoRedoSystem { get { return this.mUndoRedoSystem; } set { this.mUndoRedoSystem = value; } }
-        public bool focusAfterUndo { get { return this.mFocusAfterUndo; } set { this.mFocusAfterUndo = value; } }
-        public bool focusAfterRedo { get { return this.mFocusAfterRedo; } set { this.mFocusAfterRedo = value; } }
+        public JCS_UndoRedoSystem undoRedoSystem { get { return mUndoRedoSystem; } set { mUndoRedoSystem = value; } }
+        public bool focusAfterUndo { get { return mFocusAfterUndo; } set { mFocusAfterUndo = value; } }
+        public bool focusAfterRedo { get { return mFocusAfterRedo; } set { mFocusAfterRedo = value; } }
 
         /* Functions */
 
@@ -154,10 +154,10 @@ namespace JCSUnity
 
             // Use the universal one if not filled.
             if (mUndoRedoSystem == null)
-                this.mUndoRedoSystem = JCS_UIManager.FirstInstance().GetGlobalUndoRedoSystem();
+                mUndoRedoSystem = JCS_UIManager.FirstInstance().GetGlobalUndoRedoSystem();
 
             // Add to get manage by the system.
-            this.mUndoRedoSystem.AddUndoRedoComponentToSystem(this);
+            mUndoRedoSystem.AddUndoRedoComponentToSystem(this);
 
             // Register it, note we need to register as soon as possible 
             // so we don't miss any default setting record by the script.
@@ -464,7 +464,7 @@ namespace JCSUnity
         /// </summary>
         public void StopRecording()
         {
-            this.mIgnoreRecord = true;
+            mIgnoreRecord = true;
         }
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace JCSUnity
         /// </summary>
         public void StartRecording()
         {
-            this.mIgnoreRecord = false;
+            mIgnoreRecord = false;
         }
 
         /// <summary>
@@ -484,7 +484,7 @@ namespace JCSUnity
         /// </returns>
         public bool IsRecording()
         {
-            return (!this.mIgnoreRecord);
+            return (!mIgnoreRecord);
         }
 
         /// <summary>
@@ -908,7 +908,7 @@ namespace JCSUnity
                     break;
             }
 
-            this.mIsFocused = true;
+            mIsFocused = true;
         }
     }
 }

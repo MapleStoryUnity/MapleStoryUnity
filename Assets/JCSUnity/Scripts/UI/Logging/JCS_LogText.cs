@@ -27,7 +27,7 @@ namespace JCSUnity
 
         [Separator("Check Variables (JCS_LogText)")]
 
-        [Tooltip("Which exactly the IGL controls this.")]
+        [Tooltip("Which exactly the IGL controls ")]
         [SerializeField]
         private JCS_IGLogSystem mIGLogSystem = null;
 
@@ -37,18 +37,18 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool isActive { get { return this.mActive; } }
+        public bool isActive { get { return mActive; } }
 
-        public JCS_SimpleTrackAction simpleTrackAction { get { return this.mSimpleTrackAction; } }
-        public JCS_FadeObject fadeObject { get { return this.mFadeObject; } }
+        public JCS_SimpleTrackAction simpleTrackAction { get { return mSimpleTrackAction; } }
+        public JCS_FadeObject fadeObject { get { return mFadeObject; } }
 
         /* Functions */
 
         private void Awake()
         {
-            mFadeObject = this.GetComponent<JCS_FadeObject>();
-            mSimpleTrackAction = this.GetComponent<JCS_SimpleTrackAction>();
-            mSlideEffect = this.GetComponent<JCS_SlideEffect>();
+            mFadeObject = GetComponent<JCS_FadeObject>();
+            mSimpleTrackAction = GetComponent<JCS_SimpleTrackAction>();
+            mSlideEffect = GetComponent<JCS_SlideEffect>();
 
             // set the fade out call back,  so we active from pool, and check
             // to see if the object is fade out complete. if is complete set
@@ -62,7 +62,7 @@ namespace JCSUnity
         /// <param name="sys"> The parent log system. </param>
         public void Init(JCS_IGLogSystem sys)
         {
-            this.mIGLogSystem = sys;
+            mIGLogSystem = sys;
 
             ClearText();
         }

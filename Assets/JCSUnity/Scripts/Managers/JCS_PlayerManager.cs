@@ -33,9 +33,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_Player GetActivePlayer() { return this.mActivePlayer; }
-        public List<JCS_Player> GetPlayerList() { return this.mPlayers; }
-        public JCS_Player GetPlayerAt(int index) { return this.mPlayers[index]; }
+        public JCS_Player GetActivePlayer() { return mActivePlayer; }
+        public List<JCS_Player> GetPlayerList() { return mPlayers; }
+        public JCS_Player GetPlayerAt(int index) { return mPlayers[index]; }
 
         /* Functions */
 

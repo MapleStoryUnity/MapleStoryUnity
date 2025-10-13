@@ -44,11 +44,11 @@ namespace JCSUnity
         /// <param name="handlersLength"></param>
         public void ResetPacketNumbers(int handlersLength)
         {
-            this.mPacketNumbers = new long[handlersLength];
+            mPacketNumbers = new long[handlersLength];
             for (int count = 0; count < mPacketNumbers.Length; ++count)
             {
                 // all packet number start at -1.
-                this.mPacketNumbers[count] = -1;
+                mPacketNumbers[count] = -1;
             }
         }
 
@@ -64,29 +64,29 @@ namespace JCSUnity
 
         public void SetIsLoggedIn(bool loggedIn)
         {
-            if (this.IsLoggedIn() != loggedIn)
+            if (IsLoggedIn() != loggedIn)
             {
                 // if not the same val then, meaning the whole packet switch
                 // to the new packet processor.
-                this.mLoggedIn = loggedIn;
+                mLoggedIn = loggedIn;
                 ResetPacketNumbers(GetPacketProcessor().GetHandlers().Length);
             }
-            this.mLoggedIn = loggedIn;
+            mLoggedIn = loggedIn;
         }
 
         public bool IsLoggedIn()
         {
-            return this.mLoggedIn;
+            return mLoggedIn;
         }
 
         public long GetPacketNumber(short packetId)
         {
-            return this.mPacketNumbers[packetId];
+            return mPacketNumbers[packetId];
         }
 
         public void SetPacketNumber(short packetId, long packetNumber)
         {
-            this.mPacketNumbers[packetId] = packetNumber;
+            mPacketNumbers[packetId] = packetNumber;
 
             /*
              * Check if the packet numbers is overflow.
@@ -94,10 +94,10 @@ namespace JCSUnity
              * Limit the range of the generic data type, prevent 
              * overflow issue.
              */
-            if (this.mPacketNumbers[packetId] > JCS_NetworkConstant.MAX_PACKET_NUMBER)
-                this.mPacketNumbers[packetId] = -1;
+            if (mPacketNumbers[packetId] > JCS_NetworkConstant.MAX_PACKET_NUMBER)
+                mPacketNumbers[packetId] = -1;
         }
 
-        public int Channel { get { return this.mChannel; } set { this.mChannel = value; } }
+        public int Channel { get { return mChannel; } set { mChannel = value; } }
     }
 }

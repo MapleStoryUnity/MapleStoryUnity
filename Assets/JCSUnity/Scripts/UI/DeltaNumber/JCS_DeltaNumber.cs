@@ -160,25 +160,25 @@ should disable this effect for best purpose.")]
 
         /* Setter & Getter */
 
-        public bool isEnable { get { return this.mIsEnable; } }
-        public int currentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
+        public bool isEnable { get { return mIsEnable; } }
+        public int currentNumber { get { return mCurrentNumber; } set { mCurrentNumber = value; } }
         public int targetNumber
         {
-            get { return this.mTargetNumber; }
+            get { return mTargetNumber; }
             set
             {
-                this.mTargetNumber = value;
+                mTargetNumber = value;
 
                 // by setting the delta number will enable the delta to current
                 // number effect.
-                this.mDeltaToCurrentNumber = true;
+                mDeltaToCurrentNumber = true;
             }
         }
-        public bool clearEmptyLeftZero { get { return this.mClearEmptyLeftZero; } set { this.mClearEmptyLeftZero = value; } }
-        public bool deltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
-        public bool visibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
-        public JCS_TextAlign textAlign { get { return this.mTextAlign; } set { this.mTextAlign = value; } }
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool clearEmptyLeftZero { get { return mClearEmptyLeftZero; } set { mClearEmptyLeftZero = value; } }
+        public bool deltaToCurrentNumber { get { return mDeltaToCurrentNumber; } set { mDeltaToCurrentNumber = value; } }
+        public bool visibleOnZero { get { return mVisibleOnZero; } set { mVisibleOnZero = value; } }
+        public JCS_TextAlign textAlign { get { return mTextAlign; } set { mTextAlign = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -236,7 +236,7 @@ should disable this effect for best purpose.")]
                 mDigitsRendererSlot[index].localEnabled = act;
             }
 
-            this.mIsEnable = act;
+            mIsEnable = act;
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ should disable this effect for best purpose.")]
         public void UpdateIntervalForEachDigit(float interval)
         {
             // update interval
-            this.mDigitInterval = interval;
+            mDigitInterval = interval;
 
             for (int digit = 0; digit < mDigitsRendererSlot.Length; ++digit)
             {

@@ -28,13 +28,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void SetAction(JCS_DetectAreaAction da) { this.mDetectAreaAction = da; }
+        public void SetAction(JCS_DetectAreaAction da) { mDetectAreaAction = da; }
 
         /* Functions */
 
         private void Awake()
         {
-            mCollider = this.GetComponent<Collider>();
+            mCollider = GetComponent<Collider>();
 
             if (mCollider == null)
                 Debug.LogError("No collider attached to do the dectect action");

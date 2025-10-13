@@ -97,18 +97,18 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public int GetNumberOfHandle() { return this.mNumberOfHandle; }
+        public int GetNumberOfHandle() { return mNumberOfHandle; }
 
-        public float spacingPerText { get { return this.mSpacingPerText; } set { this.mSpacingPerText = value; } }
-        public float timePerSpawn { get { return this.mTimePerSpawn; } set { this.mTimePerSpawn = value; } }
-        public bool faceCamera { get { return this.mFaceCamera; } set { this.mFaceCamera = value; } }
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public float spacingPerText { get { return mSpacingPerText; } set { mSpacingPerText = value; } }
+        public float timePerSpawn { get { return mTimePerSpawn; } set { mTimePerSpawn = value; } }
+        public bool faceCamera { get { return mFaceCamera; } set { mFaceCamera = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
-        public bool ziggeEffect { get { return this.mZiggeEffect; } set { this.mZiggeEffect = value; } }
-        public float rightAlign { get { return this.mRightAlign; } set { this.mRightAlign = value; } }
-        public float leftAlign { get { return this.mLeftAlign; } set { this.mLeftAlign = value; } }
+        public bool ziggeEffect { get { return mZiggeEffect; } set { mZiggeEffect = value; } }
+        public float rightAlign { get { return mRightAlign; } set { mRightAlign = value; } }
+        public float leftAlign { get { return mLeftAlign; } set { mLeftAlign = value; } }
 
-        public void SetHitSound(AudioClip hitSound) { this.mHitSound = hitSound; }
+        public void SetHitSound(AudioClip hitSound) { mHitSound = hitSound; }
 
         /* Functions */
 
@@ -336,7 +336,7 @@ namespace JCSUnity
                 mDamageTexts.set(count, dt);
 
                 // set parent
-                dt.transform.SetParent(this.transform);
+                dt.transform.SetParent(transform);
             }
         }
 

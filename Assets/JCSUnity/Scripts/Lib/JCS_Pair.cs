@@ -18,8 +18,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public T pair1 = default(T);
-        public U pair2 = default(U);
+        public T pair1 = default;
+        public U pair2 = default;
 
         /* Setter & Getter */
 

@@ -192,7 +192,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
                 if (lastAttacker != null)
                 {
                     // if does exist, start following the attacker.
-                    if (lastAttacker.position.x < this.transform.position.x)
+                    if (lastAttacker.position.x < transform.position.x)
                         direction = Status.LEFT;
                     else
                         direction = Status.RIGHT;

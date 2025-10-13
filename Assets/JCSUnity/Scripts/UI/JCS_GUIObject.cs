@@ -59,13 +59,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_GUIType guiType { get { return this.mGUIType; } set { this.mGUIType = value; } }
-        public InputField inputField { get { return this.mInputField; } }
-        public Slider slider { get { return this.mSlider; } }
-        public Toggle toggle { get { return this.mToggle; } }
-        public JCS_Switch itSwitch { get { return this.mSwitch; } }
-        public Dropdown dropdown { get { return this.mDropdown; } }
-        public Scrollbar scrollbar { get { return this.mScrollBar; } }
+        public JCS_GUIType guiType { get { return mGUIType; } set { mGUIType = value; } }
+        public InputField inputField { get { return mInputField; } }
+        public Slider slider { get { return mSlider; } }
+        public Toggle toggle { get { return mToggle; } }
+        public JCS_Switch itSwitch { get { return mSwitch; } }
+        public Dropdown dropdown { get { return mDropdown; } }
+        public Scrollbar scrollbar { get { return mScrollBar; } }
 
         /* Functions */
 
@@ -84,32 +84,32 @@ namespace JCSUnity
             {
                 case JCS_GUIType.INPUT_FIELD:
                     {
-                        this.mInputField = this.GetComponent<InputField>();
+                        mInputField = GetComponent<InputField>();
                     }
                     break;
 
                 case JCS_GUIType.DROP_DOWN:
                     {
-                        this.mDropdown = this.GetComponent<Dropdown>();
+                        mDropdown = GetComponent<Dropdown>();
                     }
                     break;
 
                 case JCS_GUIType.SLIDER:
                     {
-                        this.mSlider = this.GetComponent<Slider>();
+                        mSlider = GetComponent<Slider>();
                     }
                     break;
 
                 case JCS_GUIType.SCROLL_BAR:
                     {
-                        this.mScrollBar = this.GetComponent<Scrollbar>();
+                        mScrollBar = GetComponent<Scrollbar>();
                     }
                     break;
 
                 case JCS_GUIType.TOGGLE:
                     {
-                        this.mToggle = this.GetComponent<Toggle>();
-                        this.mSwitch = this.GetComponent<JCS_Switch>();
+                        mToggle = GetComponent<Toggle>();
+                        mSwitch = GetComponent<JCS_Switch>();
                     }
                     break;
             }

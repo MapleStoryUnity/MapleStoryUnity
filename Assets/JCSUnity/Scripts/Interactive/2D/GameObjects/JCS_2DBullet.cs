@@ -143,7 +143,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            mGoStraightAction = this.GetComponent<JCS_3DGoStraightAction>();
+            mGoStraightAction = GetComponent<JCS_3DGoStraightAction>();
 
             if (mRandomAbsorbTime != 0)
                 mTimeToAbsorb += JCS_Random.Range(-mRandomAbsorbTime, mRandomAbsorbTime);

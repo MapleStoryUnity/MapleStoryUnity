@@ -110,7 +110,7 @@ namespace JCSUnity
 
             // NOTE(JenChieh): this might change in the future.
             // Get the log system from the same transfrom/node.
-            var logSystem = this.GetComponent<JCS_IGLogSystem>();
+            var logSystem = GetComponent<JCS_IGLogSystem>();
 
             mLogTexts = new JCS_Vec<JCS_LogText>(mNumberOfHandle);
 
@@ -123,7 +123,7 @@ namespace JCSUnity
                 mLogTexts.set(count, logText);
 
                 // set parent
-                JCS_Util.SetParentWithoutLosingInfo(logText.transform, this.transform);
+                JCS_Util.SetParentWithoutLosingInfo(logText.transform, transform);
 
                 // NOTE(JenChieh): this might change in the future.
                 // set the log system if there is one.

@@ -39,7 +39,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public string settingString { get { return this.mSettingString; } }
+        public string settingString { get { return mSettingString; } }
 
         /* Functions */
 
@@ -95,7 +95,7 @@ namespace JCSUnity
                     return;
                 case JCS_GUIType.TOGGLE:
                     {
-                        this.mToggle = this.GetComponent<Toggle>();
+                        mToggle = GetComponent<Toggle>();
                         if (mToggle == null)
                         {
                             Debug.LogError("Toggle with no corrosdoing component...");
@@ -105,19 +105,19 @@ namespace JCSUnity
                     break;
                 case JCS_GUIType.SLIDER:
                     {
-                        this.mSlider = this.GetComponent<Slider>();
+                        mSlider = GetComponent<Slider>();
                         if (mSlider == null)
                         {
                             Debug.LogError("Slider with no corrosdoing component...");
                             return;
                         }
                         // assign value;
-                        this.mSlider.value = mSettingValue;
+                        mSlider.value = mSettingValue;
                     }
                     break;
                 case JCS_GUIType.SCROLL_BAR:
                     {
-                        this.mScrollbar = this.GetComponent<Scrollbar>();
+                        mScrollbar = GetComponent<Scrollbar>();
                         if (mScrollbar == null)
                         {
                             Debug.LogError("Scrollbar with no corrosdoing component...");
@@ -127,7 +127,7 @@ namespace JCSUnity
                     break;
                 case JCS_GUIType.DROP_DOWN:
                     {
-                        this.mDropdown = this.GetComponent<Dropdown>();
+                        mDropdown = GetComponent<Dropdown>();
                         if (mDropdown == null)
                         {
                             Debug.LogError("Dropdown with no corrosdoing component...");
@@ -137,7 +137,7 @@ namespace JCSUnity
                     break;
                 case JCS_GUIType.INPUT_FIELD:
                     {
-                        this.mInputField = this.GetComponent<InputField>();
+                        mInputField = GetComponent<InputField>();
                         if (mInputField == null)
                         {
                             Debug.LogError("InputField with no corrosdoing component...");

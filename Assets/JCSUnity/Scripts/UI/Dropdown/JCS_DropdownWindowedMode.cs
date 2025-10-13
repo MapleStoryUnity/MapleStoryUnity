@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright © 2025 by Shen, Jen-Chieh $
+ *                   Copyright ï¿½ 2025 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,8 +36,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<string> options { get { return mOptions; } set { this.mOptions = value; } }
-        public bool removeAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
+        public List<string> options { get { return mOptions; } set { mOptions = value; } }
+        public bool removeAllOptions { get { return mRemoveAllOptions; } set { mRemoveAllOptions = value; } }
 
         /* Functions */
 

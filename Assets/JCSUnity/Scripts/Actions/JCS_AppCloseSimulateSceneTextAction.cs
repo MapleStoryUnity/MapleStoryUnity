@@ -35,7 +35,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            mText = this.GetComponent<Text>();
+            mText = GetComponent<Text>();
 
 #if UNITY_EDITOR
             mText.text = mTextShowInEditMode;

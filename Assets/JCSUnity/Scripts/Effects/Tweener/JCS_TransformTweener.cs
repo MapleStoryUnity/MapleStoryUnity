@@ -290,9 +290,9 @@ namespace JCSUnity
         /// </summary>
         public void ResetTweener()
         {
-            this.mDoneTweenX = false;
-            this.mDoneTweenY = false;
-            this.mDoneTweenZ = false;
+            mDoneTweenX = false;
+            mDoneTweenY = false;
+            mDoneTweenZ = false;
 
             mTweenerX.ResetTweener();
             mTweenerY.ResetTweener();
@@ -604,7 +604,7 @@ namespace JCSUnity
             --mDestroyDoneTweeningCount;
 
             if (mDestroyDoneTweeningCount <= 0)
-                Destroy(this.gameObject);
+                Destroy(gameObject);
         }
 
         /// <summary>
@@ -621,7 +621,7 @@ namespace JCSUnity
 
         private void SafeDoCallback()
         {
-            if (!this.mDoneTweenX || !this.mDoneTweenY || !this.mDoneTweenZ)
+            if (!mDoneTweenX || !mDoneTweenY || !mDoneTweenZ)
                 return;
 
             mOnDone?.Invoke();
@@ -633,17 +633,17 @@ namespace JCSUnity
         /// </summary>
         private void DoneTweeningX()
         {
-            this.mDoneTweenX = true;
+            mDoneTweenX = true;
             SafeDoCallback();
         }
         private void DoneTweeningY()
         {
-            this.mDoneTweenY = true;
+            mDoneTweenY = true;
             SafeDoCallback();
         }
         private void DoneTweeningZ()
         {
-            this.mDoneTweenZ = true;
+            mDoneTweenZ = true;
             SafeDoCallback();
         }
 
@@ -674,12 +674,12 @@ namespace JCSUnity
             onStart?.Invoke();
             mOnDone = callback;
 
-            this.mIsDoneTweening = false;
-            this.mDoneTweenX = false;
-            this.mDoneTweenY = false;
-            this.mDoneTweenZ = false;
+            mIsDoneTweening = false;
+            mDoneTweenX = false;
+            mDoneTweenY = false;
+            mDoneTweenZ = false;
 
-            this.mContinueTween = false;
+            mContinueTween = false;
 
             // Sets The Position From -> To
             mTweenerX.easeFromTo(
@@ -775,9 +775,9 @@ namespace JCSUnity
             {
                 float randomizeDuration = JCS_Random.Range(-mRandomizeDuration, mRandomizeDuration);
 
-                this.mDurationX += randomizeDuration;
-                this.mDurationY += randomizeDuration;
-                this.mDurationZ += randomizeDuration;
+                mDurationX += randomizeDuration;
+                mDurationY += randomizeDuration;
+                mDurationZ += randomizeDuration;
             }
         }
     }

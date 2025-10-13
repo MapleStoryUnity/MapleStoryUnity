@@ -57,7 +57,7 @@ namespace JCSUnity
         {
             if (mHitCount <= 0)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
             else
             {

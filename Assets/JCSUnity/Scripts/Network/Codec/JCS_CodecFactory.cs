@@ -28,8 +28,8 @@ namespace JCSUnity
         private JCS_CodecFactory()
         {
             // Create Decoder and Encoder
-            this.mDecoder = new JCS_DefaultPacketDecoder();
-            this.mEncoder = new JCS_DefaultPacketEncoder();
+            mDecoder = new JCS_DefaultPacketDecoder();
+            mEncoder = new JCS_DefaultPacketEncoder();
         }
 
         public static JCS_CodecFactory GetInstance()
@@ -40,8 +40,8 @@ namespace JCSUnity
             return instance;
         }
 
-        public JCS_PacketEncoder GetEncoder() { return this.mEncoder; }
-        public JCS_PacketDecoder GetDecoder() { return this.mDecoder; }
+        public JCS_PacketEncoder GetEncoder() { return mEncoder; }
+        public JCS_PacketDecoder GetDecoder() { return mDecoder; }
 
     }
 }

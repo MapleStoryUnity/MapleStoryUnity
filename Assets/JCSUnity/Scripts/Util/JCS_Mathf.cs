@@ -338,7 +338,7 @@ namespace JCSUnity
             // 都是相對應的. 
             // 角A對邊就是邊a.
 
-            // TODO(jenchieh): implement this..
+            // TODO(jenchieh): implement .
 
             return 0;
         }
@@ -359,7 +359,7 @@ namespace JCSUnity
             // 都是相對應的. 
             // 角A對邊就是邊a.
 
-            // TODO(jenchieh): implement this..
+            // TODO(jenchieh): implement .
 
             return 0;
         }

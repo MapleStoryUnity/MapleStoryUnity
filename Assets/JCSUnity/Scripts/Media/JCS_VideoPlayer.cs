@@ -97,7 +97,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mAudioSource = this.GetComponent<AudioSource>();
+            mAudioSource = GetComponent<AudioSource>();
 
             LocalMainTexture = mMovieTexture;
 
@@ -317,7 +317,7 @@ namespace JCSUnity
                 Debug.LogError("Loop does not work in Andriod Platform...");
             }
         }
-        public AudioSource audioSource { get { return this.mAudioSource; } }
+        public AudioSource audioSource { get { return mAudioSource; } }
 
         /* Functions */
 
@@ -325,7 +325,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mAudioSource = this.GetComponent<AudioSource>();
+            mAudioSource = GetComponent<AudioSource>();
 
             // load the next scene.
             mLoadNextSceneTime =
@@ -426,7 +426,7 @@ namespace JCSUnity
     [RequireComponent(typeof(AudioSource))]
     public class JCS_VideoPlayer : JCS_UnityObject
     {
-        // TODO(jenchieh): complete this..
+        // TODO(jenchieh): complete .
     }
 #endif
 }
