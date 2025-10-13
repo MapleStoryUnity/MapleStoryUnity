@@ -25,35 +25,38 @@ namespace JCSUnity
         [Separator("Runtime Variables (JCS_SoundSettings)")]
 
         [Tooltip("The current audio mixer.")]
-        public AudioMixer MIXER = null;
+        public AudioMixer mixer = null;
 
         [Tooltip("General Sound fadout time.")]
+        [SerializeField]
+
         [Range(MIN_FADEOUT_TIME, MAX_FADEOUT_TIME)]
-        public float SOUND_FADEOUT_TIME = 1.5f;
+        private float mTimeOut = 1.5f;
 
         [Tooltip("General Sound fadein time.")]
+        [SerializeField]
         [Range(MIN_FADEOUT_TIME, MAX_FADEOUT_TIME)]
-        public float SOUND_FADEIN_TIME = 1.5f;
+        private float mTimeIn = 1.5f;
 
         [Tooltip("Keep BGM current scene?")]
-        public bool KEEP_BGM_SWITCH_SCENE = false;
+        public bool keepBGMSwitchScene = false;
 
         [Header("Scene Sound")]
 
         [Tooltip("Smoothly switching the sound between the switching the scene.")]
-        public bool SMOOTH_SWITCH_SOUND_BETWEEN_SCENE = true;
+        public bool smoothSwithBetweenScene = true;
 
         [Tooltip("Clip that will play as background music for this scene.")]
-        public AudioClip BACKGROUND_MUSIC = null;
+        public AudioClip clipBGM = null;
 
         // Window System
         [Header("Window System")]
 
         [Tooltip("Sound to play when open the window clip.")]
-        public AudioClip DEFAULT_OPEN_WINDOW_CLIP = null;
+        public AudioClip clipWindowOpen = null;
 
         [Tooltip("Sound to play when close the window clip.")]
-        public AudioClip DEFAULT_CLOSE_WINDOW_CLIP = null;
+        public AudioClip clipWindowClose = null;
 
         /* Setter & Getter */
 
@@ -69,7 +72,7 @@ namespace JCSUnity
         /// the sound manager override setting.
         /// </summary>
         /// <returns> timeto fade out the music. </returns>
-        public float GetSoundFadeOutTimeBaseOnSetting()
+        public float TimeOut()
         {
             var sm = JCS_SoundManager.FirstInstance();
 
@@ -77,20 +80,20 @@ namespace JCSUnity
             if (sm.overrideSetting)
             {
                 // return the override value.
-                return sm.soundFadeOutTime;
+                return sm.timeOut;
             }
 
             // if not override, 
             // return the basic value.
-            return SOUND_FADEOUT_TIME;
+            return mTimeOut;
         }
 
         /// <summary>
         /// Get the real sound fade in time base on
-        /// the sound manager override setting?
+        /// the sound manager override setting.
         /// </summary>
         /// <returns> time to fade in the sound </returns>
-        public float GetSoundFadeInTimeBaseOnSetting()
+        public float TimeIn()
         {
             var sm = JCS_SoundManager.FirstInstance();
 
@@ -98,12 +101,12 @@ namespace JCSUnity
             if (sm.overrideSetting)
             {
                 // return the override value.
-                return sm.soundFadeInTime;
+                return sm.timeIn;
             }
 
             // if not override, 
             // return the basic value.
-            return SOUND_FADEIN_TIME;
+            return mTimeIn;
         }
 
         /// <summary>
@@ -113,9 +116,11 @@ namespace JCSUnity
         /// <param name="_new"> new data we copy to </param>
         protected override void TransferData(JCS_SoundSettings _old, JCS_SoundSettings _new)
         {
-            _new.MIXER = _old.MIXER;
+            _new.mixer = _old.mixer;
 
-            _new.KEEP_BGM_SWITCH_SCENE = _old.KEEP_BGM_SWITCH_SCENE;
+            _new.mTimeIn = _old.mTimeIn;
+            _new.mTimeOut = _old.mTimeOut;
+            _new.keepBGMSwitchScene = _old.keepBGMSwitchScene;
         }
     }
 }

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using MyBox;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,8 +19,11 @@ namespace JCSUnity
     {
         /* Variables */
 
-        // a list of item object will ignore their collision detection.
-        private List<JCS_2DPositionPlatform> mPlatformList = null;
+        [Separator("Check Variables (JCS_2DGameManager)")]
+
+        [Tooltip("A list of item object will ignore their collision detection.")]
+        [SerializeField]
+        private List<JCS_2DPositionPlatform> mPlatforms = null;
 
         /* Setter & Getter */
 
@@ -28,8 +32,6 @@ namespace JCSUnity
         private void Awake()
         {
             RegisterInstance(this);
-
-            mPlatformList = new List<JCS_2DPositionPlatform>();
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace JCSUnity
         /// <param name="pp"></param>
         public void AddPlatformList(JCS_2DPositionPlatform pp)
         {
-            mPlatformList.Add(pp);
+            mPlatforms.Add(pp);
         }
 
         /// <summary>
@@ -47,9 +49,9 @@ namespace JCSUnity
         /// <param name="c"> collder to set to ignore trigger. </param>
         public void IgnoreAllPlatformTrigger(Collider c)
         {
-            for (int index = 0; index < mPlatformList.Count; ++index)
+            for (int index = 0; index < mPlatforms.Count; ++index)
             {
-                Physics.IgnoreCollision(mPlatformList[index].GetPlatformTrigger(), 
+                Physics.IgnoreCollision(mPlatforms[index].GetPlatformTrigger(),
                     c, true);
             }
         }
@@ -60,9 +62,9 @@ namespace JCSUnity
         /// <param name="c"> collider to set to ignore collider. </param>
         public void IgnoreAllPlatformCollider(Collider c)
         {
-            for (int index = 0; index < mPlatformList.Count; ++index)
+            for (int index = 0; index < mPlatforms.Count; ++index)
             {
-                Physics.IgnoreCollision(mPlatformList[index].GetPlatformCollider(),
+                Physics.IgnoreCollision(mPlatforms[index].GetPlatformCollider(),
                     c, true);
             }
         }

@@ -60,9 +60,9 @@ namespace JCSUnity
         /// <summary>
         /// Returns f rounded to the nearest integer.
         /// </summary>
-        public static float Round(float f) 
+        public static float Round(float f)
         {
-            return Mathf.Round(f); 
+            return Mathf.Round(f);
         }
         public static Vector2 Round(Vector2 vec)
         {
@@ -97,7 +97,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="val"> value to positive </param>
         /// <returns> positive value </returns>
-        public static float ToPositive(int val) { return AbsoluteValue(val); }
+        public static int ToPositive(int val) { return AbsoluteValue(val); }
         public static float ToPositive(float val) { return AbsoluteValue(val); }
         public static double ToPositive(double val) { return AbsoluteValue(val); }
         public static Vector3 ToPositive(Vector3 vec3)
@@ -115,7 +115,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="val"> value to negative </param>
         /// <returns> negative value </returns>
-        public static float ToNegative(int val) { return -(AbsoluteValue(val)); }
+        public static int ToNegative(int val) { return -(AbsoluteValue(val)); }
         public static float ToNegative(float val) { return -(AbsoluteValue(val)); }
         public static double ToNegative(double val) { return -(AbsoluteValue(val)); }
         public static Vector3 ToNegative(Vector3 vec3)

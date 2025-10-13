@@ -57,9 +57,9 @@ namespace JCSUnity
                 return;
 
             // handler depends on the client/server mode.
-            JCS_PacketHandler packetHandler = 
+            JCS_PacketHandler packetHandler =
                 JCS_DefaultPacketProcessor.GetProcessor(
-                    JCS_NetworkSettings.FirstInstance().CLIENT_MODE
+                    JCS_NetworkSettings.FirstInstance().clientMode
                     ).GetHandler(packetId);
 
             if (packetHandler != null && packetHandler.ValidateState(client))
@@ -117,7 +117,7 @@ namespace JCSUnity
         private void PrintSendPacket(System.Object message)
         {
 #if UNITY_EDITOR
-            if (!JCS_GameSettings.FirstInstance().DEBUG_MODE)
+            if (!JCS_GameSettings.FirstInstance().debugMode)
                 return;
 
             byte[] encryptedBuffer = (byte[])message;
@@ -134,7 +134,7 @@ namespace JCSUnity
         private void PrintRecievedPacket(System.Object message)
         {
 #if UNITY_EDITOR
-            if (!JCS_GameSettings.FirstInstance().DEBUG_MODE)
+            if (!JCS_GameSettings.FirstInstance().debugMode)
                 return;
 
             byte[] decryptedBuffer = (byte[])message;

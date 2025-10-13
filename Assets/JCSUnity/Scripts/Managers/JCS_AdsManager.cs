@@ -44,10 +44,10 @@ namespace JCSUnity
 
 #if (UNITY_ANDROID)
         [Tooltip("Andriod game id provided by Unity Server window.")]
-        public string ANDRIOD_GAME_ID = "";
+        public string idAndroid = "";
 #elif (UNITY_IOS)
         [Tooltip("iOS game id provided by Unity Server window.")]
-        public string IOS_GAME_ID = "";
+        public string idiOS = "";
 #endif
 
         private string mPlacementId = "rewardedVideo";
@@ -66,9 +66,9 @@ namespace JCSUnity
             instance = this;
 
 #if UNITY_ANDROID
-            Advertisement.Initialize(ANDRIOD_GAME_ID, mTestMode);
+            Advertisement.Initialize(idAndroid, mTestMode);
 #elif UNITY_IOS
-            Advertisement.Initialize(IOS_GAME_ID, mTestMode);
+            Advertisement.Initialize(idiOS, mTestMode);
 #endif
         }
 

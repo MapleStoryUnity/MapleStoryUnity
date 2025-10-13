@@ -244,7 +244,7 @@ namespace JCSUnity
             // enable all the component here
             if (act)
             {
-                if (gs.CAMERA_TYPE != JCS_CameraType.MULTI_TARGET)
+                if (gs.cameraType != JCS_CameraType.MULTI_TARGET)
                 {
                     AudioListener al = this.mAudioController.GetAudioListener();
                     if (al != null)
@@ -255,7 +255,7 @@ namespace JCSUnity
             // diable all the component here
             else
             {
-                if (gs.CAMERA_TYPE != JCS_CameraType.MULTI_TARGET)
+                if (gs.cameraType != JCS_CameraType.MULTI_TARGET)
                 {
                     AudioListener al = this.mAudioController.GetAudioListener();
                     if (al != null)
@@ -874,7 +874,7 @@ namespace JCSUnity
                 // apply gravity
                 mVelocity.y += (JCS_Physics.GRAVITY *
                     JCS_Time.ItTime(mTimeType) *
-                    gs.GRAVITY_PRODUCT);
+                    gs.gravityProduct);
 
                 /* TODO!! */
                 if (!mJustClimbOnTopOfBox)
@@ -1037,9 +1037,9 @@ namespace JCSUnity
             if (mJumpAnim[index] == null)
                 return;
 
-            GameObject gameObject = 
+            GameObject gameObject =
                 JCS_Util.SpawnAnimateObjectDeathEvent(
-                    mJumpAnim[index], 
+                    mJumpAnim[index],
                     mOrderLayerObject.sortingOrder - 1);
 
             Vector3 newPos = Vector3.zero;

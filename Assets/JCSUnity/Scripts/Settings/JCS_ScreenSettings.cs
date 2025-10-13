@@ -41,49 +41,49 @@ namespace JCSUnity
         [Separator("Helper Variables (JCS_ScreenManager)")]
 
         [Tooltip("Show the resizable screen panel in game?")]
-        public bool SHOW_RESIZABLE_PANELS = true;
+        public bool showResizablePanels = true;
 #endif
 
         [Separator("Check Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Screen size when the application starts.")]
         [ReadOnly]
-        public JCS_ScreenSizef STARTING_SCREEN_SIZE = JCS_ScreenSizef.zero;
+        public JCS_ScreenSizef startingSize = JCS_ScreenSizef.zero;
 
         [Tooltip("Store the camera orthographic size value over scene.")]
         [ReadOnly]
-        public float ORTHOGRAPHIC_SIZE = 0.0f;
+        public float orthographicSize = 0.0f;
 
         [Tooltip("Store the camera filed of view value over scene.")]
         [ReadOnly]
-        public float FIELD_OF_VIEW = 0.0f;
+        public float fieldOfView = 0.0f;
 
         [Tooltip("Previous screen size.")]
         [ReadOnly]
-        public JCS_ScreenSizef PREV_SCREEN_SIZE = JCS_ScreenSizef.zero;
+        public JCS_ScreenSizef prevSize = JCS_ScreenSizef.zero;
 
         [Tooltip("Current screen size.")]
         [ReadOnly]
-        public JCS_ScreenSizef CURRENT_SCREEN_SIZE = JCS_ScreenSizef.zero;
+        public JCS_ScreenSizef currentSize = JCS_ScreenSizef.zero;
 
         [Tooltip("Target aspect ratio screen size.")]
         [ReadOnly]
-        public JCS_ScreenSize ASPECT_RATIO_SCREEN_SIZE = JCS_ScreenSize.zero;
+        public JCS_ScreenSize aspectRatioSize = JCS_ScreenSize.zero;
 
         [Separator("Initialize Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Resize the screen/window to certain aspect when " +
             "the application starts. Aspect ratio can be set at 'JCS_ScreenManager'.")]
-        public bool RESIZE_TO_ASPECT_WHEN_APP_STARTS = true;
+        public bool resizeToAspectWhenAppStarts = true;
 
         [Tooltip("Resize the screen/window to standard resoltuion when application starts.")]
-        public bool RESIZE_TO_STANDARD_WHEN_APP_STARTS = false;
+        public bool resizeToStandardWhenAppStarts = false;
 
         [Tooltip("Resize the screen/window everytime a scene are loaded.")]
-        public bool RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED = false;
+        public bool resizeToAspectEverytimeSceneLoaded = false;
 
         [Tooltip("When resize, resize to the smaller edge, if not true will resize to larger edge.")]
-        public bool RESIZE_TO_SMALLER_EDGE = true;
+        public bool resizeToSmallerEdge = true;
 
         [Tooltip("Defualt color to aspect panels.")]
         [SerializeField]
@@ -92,10 +92,10 @@ namespace JCSUnity
         [Separator("Runtime Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Standard screen size to calculate the worldspace obejct's camera view.")]
-        public JCS_ScreenSize STANDARD_SCREEN_SIZE = new JCS_ScreenSize(1920, 1080);
+        public JCS_ScreenSize standardSize = new JCS_ScreenSize(1920, 1080);
 
         [Tooltip("Type of the screen handle.")]
-        public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
+        public JCS_ScreenType screenType = JCS_ScreenType.RESIZABLE;
 
         /* Setter & Getter */
 
@@ -118,24 +118,24 @@ namespace JCSUnity
 
             // This will only run once at the time when 
             // the application is starts.
-            if (!JCS_AppSettings.FirstInstance().APPLICATION_STARTS)
+            if (!JCS_AppSettings.FirstInstance().appStarts)
             {
                 // Calculate standard screen width and screen height.
                 {
-                    float gcd = JCS_Mathf.GCD(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height);
+                    float gcd = JCS_Mathf.GCD(standardSize.width, standardSize.height);
 
-                    ASPECT_RATIO_SCREEN_SIZE.width = (int)((float)STANDARD_SCREEN_SIZE.width / gcd);
-                    ASPECT_RATIO_SCREEN_SIZE.height = (int)((float)STANDARD_SCREEN_SIZE.height / gcd);
+                    aspectRatioSize.width = (int)((float)standardSize.width / gcd);
+                    aspectRatioSize.height = (int)((float)standardSize.height / gcd);
                 }
 
-                if (RESIZE_TO_ASPECT_WHEN_APP_STARTS)
+                if (resizeToAspectWhenAppStarts)
                 {
                     // Force resize screen/window to certain aspect
                     // ratio once.
                     ForceAspectScreenOnce(true);
                 }
 
-                if (RESIZE_TO_STANDARD_WHEN_APP_STARTS)
+                if (resizeToStandardWhenAppStarts)
                 {
                     // Force resize screen/window to standard 
                     // resolution once.
@@ -161,7 +161,7 @@ namespace JCSUnity
             {
                 // Othereise, check if new scene loaded resize the 
                 // screen once?
-                if (RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED)
+                if (resizeToAspectEverytimeSceneLoaded)
                     ForceAspectScreenOnce();
             }
 
@@ -183,13 +183,13 @@ namespace JCSUnity
         private void Start()
         {
             // When first run in the application...
-            if (!JCS_AppSettings.FirstInstance().APPLICATION_STARTS)
+            if (!JCS_AppSettings.FirstInstance().appStarts)
             {
                 Camera cam = JCS_Camera.main.GetCamera();
 
                 // Update the data just to see better.
-                ORTHOGRAPHIC_SIZE = cam.orthographicSize;
-                FIELD_OF_VIEW = cam.fieldOfView;
+                orthographicSize = cam.orthographicSize;
+                fieldOfView = cam.fieldOfView;
             }
         }
 
@@ -248,7 +248,7 @@ namespace JCSUnity
         /// </summary>
         public bool ShouldSpawnResizablePanels()
         {
-            switch (SCREEN_TYPE)
+            switch (screenType)
             {
                 case JCS_ScreenType.NONE:
                 case JCS_ScreenType.FIT_ALL:
@@ -263,7 +263,7 @@ namespace JCSUnity
         /// </summary>
         public bool IsResponsive()
         {
-            switch (SCREEN_TYPE)
+            switch (screenType)
             {
                 case JCS_ScreenType.MIXED:
                     return true;
@@ -276,21 +276,21 @@ namespace JCSUnity
         /// </summary>
         public bool IsNone()
         {
-            return SCREEN_TYPE == JCS_ScreenType.NONE;
+            return screenType == JCS_ScreenType.NONE;
         }
 
         /// <summary>
         /// Return the starting screen size by the current screen type.
         /// </summary>
-        public JCS_ScreenSizef StartingScreenSize()
+        public JCS_ScreenSizef StartingSize()
         {
             float newWidth;
             float newHeight;
 
             if (ShouldSpawnResizablePanels())
             {
-                newWidth = STARTING_SCREEN_SIZE.width;
-                newHeight = STARTING_SCREEN_SIZE.height;
+                newWidth = startingSize.width;
+                newHeight = startingSize.height;
             }
             else
             {
@@ -307,8 +307,8 @@ namespace JCSUnity
         public JCS_ScreenSizef ScreenRatio()
         {
             return new JCS_ScreenSizef(
-                STANDARD_SCREEN_SIZE.width / STARTING_SCREEN_SIZE.width,
-                STANDARD_SCREEN_SIZE.height / STARTING_SCREEN_SIZE.height);
+                standardSize.width / startingSize.width,
+                standardSize.height / startingSize.height);
         }
 
         /// <summary>
@@ -321,8 +321,8 @@ namespace JCSUnity
         public JCS_ScreenSizef BlackspaceSize()
         {
             return new JCS_ScreenSizef(
-                JCS_Screen.width - STARTING_SCREEN_SIZE.width,
-                JCS_Screen.height - STARTING_SCREEN_SIZE.height);
+                JCS_Screen.width - startingSize.width,
+                JCS_Screen.height - startingSize.height);
         }
 
         /// <summary>
@@ -348,34 +348,34 @@ namespace JCSUnity
             float width = JCS_Screen.width;
             float height = JCS_Screen.height;
 
-            bool smaller = ASPECT_RATIO_SCREEN_SIZE.width > ASPECT_RATIO_SCREEN_SIZE.height;
+            bool smaller = aspectRatioSize.width > aspectRatioSize.height;
 
             // Reverse it if resize to larger edge.
-            if (!RESIZE_TO_SMALLER_EDGE)
+            if (!resizeToSmallerEdge)
                 smaller = !smaller;
 
             if (smaller)
             {
                 // update the height
-                float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_SIZE.width * ASPECT_RATIO_SCREEN_SIZE.height;
+                float heightAccordingToWidth = width / aspectRatioSize.width * aspectRatioSize.height;
                 JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false);
 
                 if (starting)
                 {
-                    STARTING_SCREEN_SIZE.width = width;
-                    STARTING_SCREEN_SIZE.height = (int)heightAccordingToWidth;
+                    startingSize.width = width;
+                    startingSize.height = (int)heightAccordingToWidth;
                 }
             }
             else
             {
                 // update the width
-                float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_SIZE.height * ASPECT_RATIO_SCREEN_SIZE.width;
+                float widthAccordingToHeight = height / aspectRatioSize.height * aspectRatioSize.width;
                 JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false);
 
                 if (starting)
                 {
-                    STARTING_SCREEN_SIZE.width = (int)widthAccordingToHeight;
-                    STARTING_SCREEN_SIZE.height = height;
+                    startingSize.width = (int)widthAccordingToHeight;
+                    startingSize.height = height;
                 }
             }
         }
@@ -386,12 +386,12 @@ namespace JCSUnity
         /// <param name="starting"> Change the starting screen as well? </param>
         public void ForceStandardScreenOnce(bool starting = false)
         {
-            JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false);
+            JCS_Screen.SetResolution(standardSize.width, standardSize.height, false);
 
             if (starting)
             {
-                STARTING_SCREEN_SIZE.width = STANDARD_SCREEN_SIZE.width;
-                STARTING_SCREEN_SIZE.height = STANDARD_SCREEN_SIZE.height;
+                startingSize.width = standardSize.width;
+                startingSize.height = standardSize.height;
             }
         }
 
@@ -408,20 +408,20 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_ScreenSettings _old, JCS_ScreenSettings _new)
         {
-            _new.RESIZE_TO_ASPECT_WHEN_APP_STARTS = _old.RESIZE_TO_ASPECT_WHEN_APP_STARTS;
-            _new.RESIZE_TO_STANDARD_WHEN_APP_STARTS = _old.RESIZE_TO_STANDARD_WHEN_APP_STARTS;
-            _new.RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED = _old.RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED;
+            _new.resizeToAspectWhenAppStarts = _old.resizeToAspectWhenAppStarts;
+            _new.resizeToStandardWhenAppStarts = _old.resizeToStandardWhenAppStarts;
+            _new.resizeToAspectEverytimeSceneLoaded = _old.resizeToAspectEverytimeSceneLoaded;
 
-            _new.ORTHOGRAPHIC_SIZE = _old.ORTHOGRAPHIC_SIZE;
-            _new.FIELD_OF_VIEW = _old.FIELD_OF_VIEW;
+            _new.orthographicSize = _old.orthographicSize;
+            _new.fieldOfView = _old.fieldOfView;
 
-            _new.STARTING_SCREEN_SIZE = _old.STARTING_SCREEN_SIZE;
-            _new.ASPECT_RATIO_SCREEN_SIZE = _old.ASPECT_RATIO_SCREEN_SIZE;
-            _new.STANDARD_SCREEN_SIZE = _old.STANDARD_SCREEN_SIZE;
+            _new.startingSize = _old.startingSize;
+            _new.aspectRatioSize = _old.aspectRatioSize;
+            _new.standardSize = _old.standardSize;
 
             _new.RESIZABLE_PANELS_COLOR = _old.RESIZABLE_PANELS_COLOR;
 
-            _new.SCREEN_TYPE = _old.SCREEN_TYPE;
+            _new.screenType = _old.screenType;
         }
 
         /// <summary>
@@ -435,16 +435,16 @@ namespace JCSUnity
                 return;
             }
 
-            switch (SCREEN_TYPE)
+            switch (screenType)
             {
                 case JCS_ScreenType.ALWAYS_STANDARD:
                     DoAlwaysStandard();
                     break;
                 case JCS_ScreenType.FORCE_ASPECT:
-                    DoFoceAspectScreen();
+                    DoFoceAspect();
                     break;
                 case JCS_ScreenType.RESIZABLE:
-                    DoResizableScreen();
+                    DoResizable();
                     break;
             }
         }
@@ -458,13 +458,13 @@ namespace JCSUnity
             float width = JCS_Screen.width;
             float height = JCS_Screen.height;
 
-            if (width != STANDARD_SCREEN_SIZE.width || height != STANDARD_SCREEN_SIZE.height)
+            if (width != standardSize.width || height != standardSize.height)
             {
-                JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false);
+                JCS_Screen.SetResolution(standardSize.width, standardSize.height, false);
             }
 
-            this.PREV_SCREEN_SIZE.width = width;
-            this.PREV_SCREEN_SIZE.height = height;
+            prevSize.width = width;
+            prevSize.height = height;
         }
 
         /// <summary>
@@ -474,7 +474,7 @@ namespace JCSUnity
         /// AUTHOR: Entity in JavaScript.
         /// Modefied: Jen-Chieh Shen to C#.
         /// </summary>
-        private void DoFoceAspectScreen()
+        private void DoFoceAspect()
         {
             if (Screen.fullScreen)
                 return;
@@ -483,55 +483,55 @@ namespace JCSUnity
             float height = JCS_Screen.height;
 
             // if the user is changing the width
-            if (PREV_SCREEN_SIZE.width != width)
+            if (prevSize.width != width)
             {
                 // update the height
-                float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_SIZE.width * ASPECT_RATIO_SCREEN_SIZE.height;
+                float heightAccordingToWidth = width / aspectRatioSize.width * aspectRatioSize.height;
                 JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false);
             }
 
             // if the user is changing the height
-            if (PREV_SCREEN_SIZE.height != height)
+            if (prevSize.height != height)
             {
                 // update the width
-                float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_SIZE.height * ASPECT_RATIO_SCREEN_SIZE.width;
+                float widthAccordingToHeight = height / aspectRatioSize.height * aspectRatioSize.width;
                 JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false);
             }
 
-            this.PREV_SCREEN_SIZE.width = width;
-            this.PREV_SCREEN_SIZE.height = height;
+            prevSize.width = width;
+            prevSize.height = height;
         }
 
         /// <summary>
         /// Do the resizable window.
         /// </summary>
-        private void DoResizableScreen()
+        private void DoResizable()
         {
             float width = JCS_Screen.width;
             float height = JCS_Screen.height;
 
-            if (CURRENT_SCREEN_SIZE.width == width && CURRENT_SCREEN_SIZE.height == height)
+            if (currentSize.width == width && currentSize.height == height)
             {
                 onResizableIdle?.Invoke();
                 return;
             }
 
-            if (PREV_SCREEN_SIZE.width == 0.0f || PREV_SCREEN_SIZE.height == 0.0f)
+            if (prevSize.width == 0.0f || prevSize.height == 0.0f)
             {
                 // If zero, set to the same value.
-                PREV_SCREEN_SIZE.width = width;
-                PREV_SCREEN_SIZE.height = height;
+                prevSize.width = width;
+                prevSize.height = height;
             }
             else
             {
                 // Record previous screen info.
-                PREV_SCREEN_SIZE.width = CURRENT_SCREEN_SIZE.width;
-                PREV_SCREEN_SIZE.height = CURRENT_SCREEN_SIZE.height;
+                prevSize.width = currentSize.width;
+                prevSize.height = currentSize.height;
             }
 
             // Update current screen info.
-            CURRENT_SCREEN_SIZE.width = width;
-            CURRENT_SCREEN_SIZE.height = height;
+            currentSize.width = width;
+            currentSize.height = height;
 
             // Do callback.
             onResizableResize?.Invoke();

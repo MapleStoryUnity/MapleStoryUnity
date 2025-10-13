@@ -67,7 +67,7 @@ namespace JCSUnity
         private void Awake()
         {
             if (mPortalType == JCS_2DPortalType.TRANSFER_PORTAL && mTargetPortal == null)
-                Debug.LogError( "Transform portal does not exists.");
+                Debug.LogError("Transform portal does not exists.");
         }
 
         private void OnTriggerStay(Collider other)
@@ -138,7 +138,7 @@ namespace JCSUnity
             // set the portal label, in order to let the next scene load.
             if (ps != null)
             {
-                ps.SCENE_PORTAL_LABEL = mPortalLabel;
+                ps.sceneLabel = mPortalLabel;
             }
 
             // auto do the action

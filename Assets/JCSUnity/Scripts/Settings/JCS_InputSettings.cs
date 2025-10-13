@@ -184,7 +184,6 @@ namespace JCSUnity
         // How many joystick in the game? Do the mapping for these joysticks.
         private JoystickMap[] mJoysticks = new JoystickMap[MAX_JOYSTICK_COUNT];
 
-
         [Separator("Runtime Varaibles (JCS_InputSettings)")]
 
         [Tooltip("Total maxinum game pad will live in game.")]
@@ -622,7 +621,7 @@ namespace JCSUnity
                     break;
             }
 
-            
+
 
             /* Returns default. */
             return JCS_AxisType.KeyOrMouseButton;

@@ -54,7 +54,7 @@ namespace JCSUnity
                 else
                     Idle();
             }
-            
+
             if (mIndex == 1)
             {
                 if (JCS_Input.GetKey(KeyCode.W))
@@ -86,7 +86,7 @@ namespace JCSUnity
             // enable all the component here
             if (act)
             {
-                if (JCS_GameSettings.FirstInstance().CAMERA_TYPE != JCS_CameraType.MULTI_TARGET)
+                if (JCS_GameSettings.FirstInstance().cameraType != JCS_CameraType.MULTI_TARGET)
                     mTopDownAudioController.GetAudioListener().enabled = true;
                 mIsControllable = true;
             }

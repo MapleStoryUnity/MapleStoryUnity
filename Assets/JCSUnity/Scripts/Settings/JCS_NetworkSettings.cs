@@ -8,7 +8,6 @@
  */
 using UnityEngine;
 using MyBox;
-using NUnit.Framework.Internal.Execution;
 
 namespace JCSUnity
 {
@@ -21,39 +20,39 @@ namespace JCSUnity
     {
         /* Variables */
 
+        private static JCS_Socket SOCKET = null;
+        private static JCS_ClientHandler PRESET_CLIENT_HANDLER = null;
+
         [Separator("Check Variables (JCS_NetworkSettings)")]
 
         [Tooltip(@"Current mode this client in, should be update by the server!")]
         [ReadOnly]
-        public JCS_ClientMode CLIENT_MODE = JCS_ClientMode.LOGIN_SERVER;
+        public JCS_ClientMode clientMode = JCS_ClientMode.LOGIN_SERVER;
 
         [Tooltip("On switching the server?")]
         [ReadOnly]
-        public bool ON_SWITCH_SERVER = false;
+        public bool switchingServer = false;
 
         [Tooltip("Flag to check if is force switching the server.")]
         [ReadOnly]
-        public bool FORCE_SWITCH_SERVER = false;
+        public bool forceSwitchServer = false;
 
         [Separator("Runtime Variables (JCS_NetworkSettings)")]
 
         [Tooltip("Is the current game with online mode active?")]
-        public bool ONLINE_MODE = false;
+        public bool onlineMode = false;
 
         [Tooltip("Type of the client protocal.")]
-        public JCS_ProtocalType PROTOCAL_TYPE = JCS_ProtocalType.TCP;
+        public JCS_ProtocalType protocolType = JCS_ProtocalType.TCP;
 
         [Tooltip("Client hostname.")]
-        public string HOST_NAME = "127.0.0.1";
+        public string host = "127.0.0.1";
 
         [Tooltip("Client port.")]
-        public int PORT = 5454;
+        public int port = 5454;
 
         [Tooltip("Channel count in this game.")]
-        public int CHANNEL_COUNT = 1;
-
-        private static JCS_Socket SOCKET = null;
-        private static JCS_ClientHandler PRESET_CLIENT_HANDLER = null;
+        public int channelCount = 1;
 
         private JCS_ServerRequestProcessor mServerRequestProcessor = null;
         private JCS_PacketLostPreventer mPacketLostPreventer = null;
@@ -62,8 +61,8 @@ namespace JCSUnity
 
         public static void PresetClientHandler(JCS_ClientHandler handler) { PRESET_CLIENT_HANDLER = handler; }
         public static JCS_ClientHandler GetPresetClientHandler() { return PRESET_CLIENT_HANDLER; }
-        public JCS_ServerRequestProcessor GetServerRequestProcessor() { return this.mServerRequestProcessor; }
-        public JCS_PacketLostPreventer GetPacketLostPreventer() { return this.mPacketLostPreventer; }
+        public JCS_ServerRequestProcessor GetServerRequestProcessor() { return mServerRequestProcessor; }
+        public JCS_PacketLostPreventer GetPacketLostPreventer() { return mPacketLostPreventer; }
 
         /* Functions */
 
@@ -71,13 +70,13 @@ namespace JCSUnity
         {
             CheckInstance(this);
 
-            this.mServerRequestProcessor = this.GetComponent<JCS_ServerRequestProcessor>();
-            this.mPacketLostPreventer = this.GetComponent<JCS_PacketLostPreventer>();
+            mServerRequestProcessor = GetComponent<JCS_ServerRequestProcessor>();
+            mPacketLostPreventer = GetComponent<JCS_PacketLostPreventer>();
         }
 
         private void OnApplicationQuit()
         {
-            if (ONLINE_MODE)
+            if (onlineMode)
                 CloseSocket();
         }
 
@@ -111,7 +110,7 @@ namespace JCSUnity
             if (SOCKET != null)
                 return false;
 
-            switch (FirstInstance().PROTOCAL_TYPE)
+            switch (FirstInstance().protocolType)
             {
                 case JCS_ProtocalType.TCP:
                     {
@@ -159,7 +158,7 @@ namespace JCSUnity
         /// </summary>
         public void SwitchServer()
         {
-            SwitchServer(HOST_NAME, PORT);
+            SwitchServer(host, port);
         }
 
         /// <summary>
@@ -218,8 +217,8 @@ namespace JCSUnity
             bool force,
             JCS_ClientHandler handler)
         {
-            if (HOST_NAME == hostname &&
-                PORT == port &&
+            if (host == hostname &&
+                this.port == port &&
                 handler == null)
             {
                 Debug.LogError(
@@ -228,16 +227,16 @@ namespace JCSUnity
             }
 
             // update hostname, port, and handler.
-            HOST_NAME = hostname;
-            PORT = port;
+            host = hostname;
+            this.port = port;
 
             if (handler != null)
                 PresetClientHandler(handler);
 
             // start switching server.
-            ON_SWITCH_SERVER = true;
+            switchingServer = true;
 
-            FORCE_SWITCH_SERVER = force;
+            forceSwitchServer = force;
         }
 
         /// <summary>
@@ -253,16 +252,16 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_NetworkSettings _old, JCS_NetworkSettings _new)
         {
-            _new.ONLINE_MODE = _old.ONLINE_MODE;
-            _new.HOST_NAME = _old.HOST_NAME;
-            _new.PORT = _old.PORT;
-            _new.PROTOCAL_TYPE = _old.PROTOCAL_TYPE;
-            _new.CHANNEL_COUNT = _old.CHANNEL_COUNT;
+            _new.onlineMode = _old.onlineMode;
+            _new.host = _old.host;
+            _new.port = _old.port;
+            _new.protocolType = _old.protocolType;
+            _new.channelCount = _old.channelCount;
 
-            _new.ON_SWITCH_SERVER = _old.ON_SWITCH_SERVER;
-            _new.FORCE_SWITCH_SERVER = _old.FORCE_SWITCH_SERVER;
+            _new.switchingServer = _old.switchingServer;
+            _new.forceSwitchServer = _old.forceSwitchServer;
 
-            _new.CLIENT_MODE = _old.CLIENT_MODE;
+            _new.clientMode = _old.clientMode;
         }
 
         /// <summary>
@@ -270,14 +269,14 @@ namespace JCSUnity
         /// </summary>
         private void OnSwitchServer()
         {
-            if (!ON_SWITCH_SERVER)
+            if (!switchingServer)
                 return;
 
             var plp = JCS_PacketLostPreventer.FirstInstance();
 
             // If not force, then we do need to check if we meet the 
             // requirement to swtich server.
-            if (!FORCE_SWITCH_SERVER)
+            if (!forceSwitchServer)
             {
                 // Cannot switch server if we are still waiting for packet 
                 // to process.
@@ -297,10 +296,10 @@ namespace JCSUnity
             CloseSocket();
 
             // open the new one for next server.
-            CreateNetwork(FirstInstance().HOST_NAME, FirstInstance().PORT);
+            CreateNetwork(FirstInstance().host, FirstInstance().port);
 
-            ON_SWITCH_SERVER = false;
-            FORCE_SWITCH_SERVER = false;
+            switchingServer = false;
+            forceSwitchServer = false;
         }
     }
 }

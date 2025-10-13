@@ -47,7 +47,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            if (!JCS_NetworkSettings.FirstInstance().ONLINE_MODE)
+            if (!JCS_NetworkSettings.FirstInstance().onlineMode)
             {
                 if (JCS_NetworkManager.FIRST_LOGIN)
                 {

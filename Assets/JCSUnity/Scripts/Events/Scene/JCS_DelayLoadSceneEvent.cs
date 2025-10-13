@@ -54,7 +54,7 @@ namespace JCSUnity
             JCS_UIManager.FirstInstance().HideAllOpenDialogue();
 
             // Plus the fade out time
-            mDelayTime += JCS_SceneManager.FirstInstance().sceneFadeOutTime;
+            mDelayTime += JCS_SceneManager.FirstInstance().timeOut;
         }
 
         private void Update()

@@ -22,89 +22,83 @@ namespace JCSUnity
 
         [SerializeField]
         [ReadOnly]
-        private string REAL_DATA_PATH = "";
+        private string fullDataPath = "";
 
         [SerializeField]
         [ReadOnly]
-        private string REAL_SCREENSHOT_PATH = "";
+        private string fullScreenshotPath = "";
 
         [SerializeField]
         [ReadOnly]
-        private string REAL_WEBCAM_PATH = "";
+        private string fullWebcamPath = "";
 
         [SerializeField]
         [ReadOnly]
-        private string REAL_STREAMING_CACHE_PATH = "";
+        private string fullStreamingCachePath = "";
 
         [Separator("Runtime Variables (JCS_GameSettings)")]
 
         [Tooltip("Debug mode flag.")]
-        public bool DEBUG_MODE = true;
-
-        [Tooltip("Game scene flag.<")]
-        public bool THIS_IS_GAME_SCENE = false;
-
-        [Tooltip("Level design mode flag.")]
-        public bool LEVEL_DESIGN_MODE = true;
+        public bool debugMode = false;
 
         [Tooltip("Gravity production. (For game that have gravity in it)")]
-        public float GRAVITY_PRODUCT = 4.5f;
+        public float gravityProduct = 4.5f;
 
         [Header("Camera")]
 
         [Tooltip("Type of the camera.")]
-        public JCS_CameraType CAMERA_TYPE = JCS_CameraType.NONE;
+        public JCS_CameraType cameraType = JCS_CameraType.NONE;
 
         [Header("Player")]
 
         [Tooltip("Game only allows control one player.")]
-        public bool ACTIVE_ONE_PLAYER = true;
+        public bool activeOnePlayer = true;
 
         [Header("Collision")]
 
         [Tooltip("Do collusion happen with eacth other. (Player)")]
-        public bool PLAYER_IGNORE_EACH_OTHER = true;
+        public bool playerIgnoreEachOther = true;
 
         [Tooltip("Can tribe damage each other?")]
-        public bool TRIBE_DAMAGE_EACH_OTHER = false;
+        public bool tribeDamageEachOther = false;
 
         [Header("Resources")]
 
         [Tooltip("Base URL for streaming assets, please point to a directory.")]
-        public string STREAMING_BASE_URL = "https://wwww.example.com/";
+        public string streamingBaseUrl = "https://wwww.example.com/";
 
         [Tooltip("Cache streaming assets' data path.")]
-        public string STREAMING_CACHE_PATH = "/Data_jcs/Cache_StreamingAssets/";
+        public string streamingCachePath = "/Data_jcs/Cache_StreamingAssets/";
 
         [Header("Screenshot")]
 
         [Tooltip("Screenshot folder path.")]
-        public string SCREENSHOT_PATH = "/Data_jcs/Screenshot/";
+        public string screenshotPath = "/Data_jcs/Screenshot/";
 
         [Tooltip("Screenshot file name.")]
-        public string SCREENSHOT_FILENAME = "Screenshot_";
+        public string screenshotFilename = "Screenshot_";
 
         [Tooltip("Screenshot image extension.")]
-        public string SCREENSHOT_EXTENSION = ".png";
+        public string screenshotExt = ".png";
 
         [Header("Webcam")]
 
         [Tooltip("Webcam image save path.")]
-        public string WEBCAM_PATH = "/Data_jcs/WebcamShot/";
+        public string webcamPath = "/Data_jcs/WebcamShot/";
 
         [Tooltip("Webcam file name.")]
-        public string WEBCAM_FILENAME = "";
+        public string webcamFilename = "";
 
         [Tooltip("Webcam image extension.")]
-        public string WEBCAM_EXTENSION = ".png";
+        public string webcamExt = ".png";
 
         [Header("Damage")]
 
         [Tooltip("Mininum damage can be in the game.")]
-        public int MIN_DAMAGE = 1;
+        public int minDamage = 1;
 
         [Tooltip("Maxinum damage can be in the game.")]
-        public int MAX_DAMAGE = 999999;
+        public int maxDamage = 999999;
 
         /* Setter & Getter */
 
@@ -114,33 +108,15 @@ namespace JCSUnity
         {
             CheckInstance(this);
 
-            REAL_DATA_PATH = JCS_AppData.SavePath();
-            REAL_SCREENSHOT_PATH = JCS_Camera.SavePath();
-            REAL_WEBCAM_PATH = JCS_Webcam.SavePath();
-            REAL_STREAMING_CACHE_PATH = JCS_StreamingAssets.CachePath();
+            fullDataPath = JCS_AppData.SavePath();
+            fullScreenshotPath = JCS_Camera.SavePath();
+            fullWebcamPath = JCS_Webcam.SavePath();
+            fullStreamingCachePath = JCS_StreamingAssets.CachePath();
 
-            JCS_IO.CreateDirectory(REAL_DATA_PATH);
-            JCS_IO.CreateDirectory(REAL_SCREENSHOT_PATH);
-            JCS_IO.CreateDirectory(REAL_WEBCAM_PATH);
-            JCS_IO.CreateDirectory(REAL_STREAMING_CACHE_PATH);
-        }
-
-        private void Start()
-        {
-            var gwh = JCS_GameWindowHandler.FirstInstance();
-
-            // if this is the game scene, enable the game ui.
-            if (THIS_IS_GAME_SCENE)
-            {
-                if (gwh != null)
-                    gwh.ShowGameUI();
-            }
-            // if this is NOT the game scene, disable the game ui.
-            else
-            {
-                if (gwh != null)
-                    gwh.HideGameUI();
-            }
+            JCS_IO.CreateDirectory(fullDataPath);
+            JCS_IO.CreateDirectory(fullScreenshotPath);
+            JCS_IO.CreateDirectory(fullWebcamPath);
+            JCS_IO.CreateDirectory(fullStreamingCachePath);
         }
 
         private void Update()
@@ -156,18 +132,18 @@ namespace JCSUnity
         protected override void TransferData(JCS_GameSettings _old, JCS_GameSettings _new)
         {
             // Debug check
-            _new.DEBUG_MODE = _old.DEBUG_MODE;
+            _new.debugMode = _old.debugMode;
 
-            _new.STREAMING_BASE_URL = _old.STREAMING_BASE_URL;
-            _new.STREAMING_CACHE_PATH = _old.STREAMING_CACHE_PATH;
+            _new.streamingBaseUrl = _old.streamingBaseUrl;
+            _new.streamingCachePath = _old.streamingCachePath;
 
-            _new.SCREENSHOT_PATH = _old.SCREENSHOT_PATH;
-            _new.SCREENSHOT_FILENAME = _old.SCREENSHOT_FILENAME;
-            _new.SCREENSHOT_EXTENSION = _old.SCREENSHOT_EXTENSION;
+            _new.screenshotPath = _old.screenshotPath;
+            _new.screenshotFilename = _old.screenshotFilename;
+            _new.screenshotExt = _old.screenshotExt;
 
-            _new.WEBCAM_PATH = _old.WEBCAM_PATH;
-            _new.WEBCAM_FILENAME = _old.WEBCAM_FILENAME;
-            _new.WEBCAM_EXTENSION = _old.WEBCAM_EXTENSION;
+            _new.webcamPath = _old.webcamPath;
+            _new.webcamFilename = _old.webcamFilename;
+            _new.webcamExt = _old.webcamExt;
         }
     }
 }

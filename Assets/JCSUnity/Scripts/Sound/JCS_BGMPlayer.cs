@@ -70,10 +70,10 @@ namespace JCSUnity
 
             var ss = JCS_SoundSettings.FirstInstance();
 
-            if (!ss.KEEP_BGM_SWITCH_SCENE)
+            if (!ss.keepBGMSwitchScene)
             {
                 // Assign BGM from Sound Manager!
-                mAudioSource.clip = ss.BACKGROUND_MUSIC;
+                mAudioSource.clip = ss.clipBGM;
 
                 mAudioSource.Play();
             }

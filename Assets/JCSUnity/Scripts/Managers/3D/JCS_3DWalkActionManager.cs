@@ -70,6 +70,7 @@ namespace JCSUnity
                 if (distance <= overlapDistance)
                     return wa;
             }
+
             return null;
         }
     }

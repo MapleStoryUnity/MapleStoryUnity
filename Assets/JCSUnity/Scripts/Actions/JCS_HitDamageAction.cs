@@ -90,7 +90,7 @@ namespace JCSUnity
             if (!liveObject.canDamage)
                 return;
 
-            if (!JCS_GameSettings.FirstInstance().TRIBE_DAMAGE_EACH_OTHER)
+            if (!JCS_GameSettings.FirstInstance().tribeDamageEachOther)
             {
                 // if both player does not need to add in to list.
                 // or if both enemy does not need to add in to list.
@@ -109,7 +109,7 @@ namespace JCSUnity
                 mAbilityFormat.GetMaxDamage(),
                 transform.position,
                 1,      // hit
-                0, 
+                0,
                 mHitSound);     // critical chance
 
 

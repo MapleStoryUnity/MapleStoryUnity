@@ -189,7 +189,7 @@ object you have in the list.")]
         /// </summary>
         public void Pause()
         {
-            bool asymp = JCS_PauseSettings.FirstInstance().AsymptoticBaseOnSetting();
+            bool asymp = JCS_PauseSettings.FirstInstance().Asymptotic();
 
             if (asymp)
                 mTargetTimeScale = 0.0f;
@@ -204,7 +204,7 @@ object you have in the list.")]
         /// </summary>
         public void Unpause()
         {
-            bool asymp = JCS_PauseSettings.FirstInstance().AsymptoticBaseOnSetting();
+            bool asymp = JCS_PauseSettings.FirstInstance().Asymptotic();
 
             if (asymp)
                 mTargetTimeScale = mDefaultTimeScale;
@@ -279,7 +279,7 @@ object you have in the list.")]
         /// </summary>
         private void DoAsymp()
         {
-            bool asymp = JCS_PauseSettings.FirstInstance().AsymptoticBaseOnSetting();
+            bool asymp = JCS_PauseSettings.FirstInstance().Asymptotic();
 
             if (!asymp)
                 return;

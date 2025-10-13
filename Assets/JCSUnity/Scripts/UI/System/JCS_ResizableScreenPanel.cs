@@ -92,7 +92,7 @@ namespace JCSUnity
         {
             var ss = JCS_ScreenSettings.FirstInstance();
 
-            Vector2 appRect = new Vector2(ss.STARTING_SCREEN_SIZE.width, ss.STARTING_SCREEN_SIZE.height);
+            Vector2 appRect = new Vector2(ss.startingSize.width, ss.startingSize.height);
             Vector2 halfAppRect = appRect / 2.0f;
 
             Vector2 panelSize = mRectTransform.sizeDelta;

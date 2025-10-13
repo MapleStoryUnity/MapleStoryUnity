@@ -70,7 +70,7 @@ namespace JCSUnity
         {
             var screenS = JCS_ScreenSettings.FirstInstance();
 
-            JCS_ScreenSizef size = screenS.StartingScreenSize();
+            JCS_ScreenSizef size = screenS.StartingSize();
 
             float currentWidth = mRectTransform.sizeDelta.x;
             float currentHeight = mRectTransform.sizeDelta.y;

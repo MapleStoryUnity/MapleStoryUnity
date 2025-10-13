@@ -83,7 +83,7 @@ namespace JCSUnity
         private void PrintName(Transform trans)
         {
 #if UNITY_EDITOR
-            if (!JCS_GameSettings.FirstInstance().DEBUG_MODE)
+            if (!JCS_GameSettings.FirstInstance().debugMode)
                 return;
 
             // print the name of the detected transform.

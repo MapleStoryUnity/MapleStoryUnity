@@ -171,7 +171,7 @@ namespace JCSUnity
             float width = (float)JCS_Screen.width;
             float height = (float)JCS_Screen.height;
 
-            JCS_ScreenSizef starting = screenS.StartingScreenSize();
+            JCS_ScreenSizef starting = screenS.StartingSize();
 
             mWScale = width / starting.width;
             mHScale = height / starting.height;

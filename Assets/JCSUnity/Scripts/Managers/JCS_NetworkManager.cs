@@ -39,7 +39,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            if (!JCS_NetworkSettings.FirstInstance().ONLINE_MODE)
+            if (!JCS_NetworkSettings.FirstInstance().onlineMode)
                 return;
 
 #if UNITY_EDITOR
@@ -115,7 +115,7 @@ namespace JCSUnity
         public void CheckConnectionWithTime()
         {
             // do the following script only when is online mode
-            if (!JCS_NetworkSettings.FirstInstance().ONLINE_MODE)
+            if (!JCS_NetworkSettings.FirstInstance().onlineMode)
                 return;
 
             mConnectionCounter += Time.unscaledDeltaTime;

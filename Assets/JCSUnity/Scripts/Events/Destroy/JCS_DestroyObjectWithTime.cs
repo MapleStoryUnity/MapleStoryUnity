@@ -100,6 +100,21 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Destroy game object by using fade out.
+        /// </summary>
+        public void DestroyFade()
+        {
+            float fadeTime = mDestroyTime - mFadeTime;
+
+            // 防止重新撥放.
+            if (mTimer < fadeTime)
+            {
+                // 立馬開始 fade 消失.
+                mTimer = fadeTime;
+            }
+        }
+
+        /// <summary>
         /// Fade out for all the fade objects in list.
         /// </summary>
         private void FadeOut()

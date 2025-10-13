@@ -108,7 +108,7 @@ namespace JCSUnity
 #endif
 
             if (mSoundPlayer == null)
-                this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+                mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
             base.Awake();
 
@@ -117,10 +117,10 @@ namespace JCSUnity
             // Assign Default Audio
             {
                 if (mOpenWindowClip == null)
-                    this.mOpenWindowClip = ss.DEFAULT_OPEN_WINDOW_CLIP;
+                    mOpenWindowClip = ss.clipWindowOpen;
 
                 if (mCloseWindowClip == null)
-                    this.mCloseWindowClip = ss.DEFAULT_CLOSE_WINDOW_CLIP;
+                    mCloseWindowClip = ss.clipWindowClose;
             }
         }
 

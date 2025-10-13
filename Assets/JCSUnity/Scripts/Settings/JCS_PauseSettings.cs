@@ -21,11 +21,11 @@ namespace JCSUnity
         [Separator("Runtime Variables (JCS_PauseSettings)")]
 
         [Tooltip("Pause and unpause with asymptotic transition.")]
-        public bool ASYMPTOTIC = false;
+        public bool asymptotic = false;
 
         [Tooltip("How fast the asymptotic transition?")]
         [Range(JCS_Constants.FRICTION_MIN, 30.0f)]
-        public float FRICTION = 0.2f;
+        public float friction = 0.2f;
 
         /* Setter & Getter */
 
@@ -39,7 +39,7 @@ namespace JCSUnity
         /// <summary>
         /// Return weather to asymptotic on pause/unpause.
         /// </summary>
-        public bool AsymptoticBaseOnSetting()
+        public bool Asymptotic()
         {
             var pm = JCS_PauseManager.FirstInstance();
 
@@ -52,13 +52,13 @@ namespace JCSUnity
 
             // if not override, 
             // return the basic value.
-            return ASYMPTOTIC;
+            return asymptotic;
         }
 
         /// <summary>
         /// Return the friction to asymptotic on pause/unpause.
         /// </summary>
-        public float FrictionBaseOnSetting()
+        public float Friction()
         {
             var pm = JCS_PauseManager.FirstInstance();
 
@@ -71,7 +71,7 @@ namespace JCSUnity
 
             // if not override, 
             // return the basic value.
-            return FRICTION;
+            return friction;
         }
 
         /// <summary>
@@ -87,8 +87,8 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_PauseSettings _old, JCS_PauseSettings _new)
         {
-            _new.ASYMPTOTIC = _old.ASYMPTOTIC;
-            _new.FRICTION = _old.FRICTION;
+            _new.asymptotic = _old.asymptotic;
+            _new.friction = _old.friction;
         }
     }
 }

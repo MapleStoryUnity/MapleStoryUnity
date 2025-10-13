@@ -1,12 +1,24 @@
-﻿using UnityEngine;
+﻿#if !ODIN_INSPECTOR
+using UnityEngine;
 
 namespace MyBox
 {
+    public enum ReadOnly
+    {
+        Always, 
+        PlayMode,
+        EditTime
+    }
+    
     public class ReadOnlyAttribute : ConditionalFieldAttribute
     {
+        public readonly ReadOnly ReadOnlyMode;
+        
+        public ReadOnlyAttribute(ReadOnly readOnly = ReadOnly.Always) => ReadOnlyMode = readOnly;
+        
         /// <param name="fieldToCheck">String name of field to check value</param>
         /// <param name="inverse">Inverse check result</param>
-        /// <param name="compareValues">On which values field will be shown in inspector</param>
+        /// <param name="compareValues">On which values' field will be shown in inspector</param>
         public ReadOnlyAttribute(string fieldToCheck, bool inverse = false, params object[] compareValues) : base(fieldToCheck, inverse, compareValues)
         { }
 
@@ -39,12 +51,26 @@ namespace MyBox.Internal
         {
             if (!(attribute is ReadOnlyAttribute conditional)) return;
 
-            bool enabled = !ConditionalUtility.IsPropertyConditionMatch(property, conditional.Data);
+            bool enabled = 
+                conditional.ReadOnlyMode != ReadOnly.Always ? ReadOnlyModeEditable() : 
+                    !ConditionalUtility.IsPropertyConditionMatch(property, conditional.Data);
 
             GUI.enabled = enabled;
             EditorGUI.PropertyField(position, property, label, true);
             GUI.enabled = true;
+
+            bool ReadOnlyModeEditable()
+            {
+                return conditional.ReadOnlyMode switch
+                {
+                    ReadOnly.Always => false,
+                    ReadOnly.PlayMode => !Application.isPlaying,
+                    ReadOnly.EditTime => Application.isPlaying,
+                    _ => false
+                };
+            }
         }
     }
 }
+#endif
 #endif

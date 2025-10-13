@@ -725,7 +725,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
                 // log string to console cost alost of performance.
                 // so do it only when is debug mode.
-                if (JCS_GameSettings.FirstInstance().DEBUG_MODE)
+                if (JCS_GameSettings.FirstInstance().debugMode)
                 {
                     Debug.LogError("Start the tween but the target is null");
                 }

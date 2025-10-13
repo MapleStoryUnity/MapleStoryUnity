@@ -170,8 +170,8 @@ namespace JCSUnity
             }
 
             var scs = JCS_ScreenSettings.FirstInstance();
-            int screenWidth = scs.STANDARD_SCREEN_SIZE.width;
-            int screenHeight = scs.STANDARD_SCREEN_SIZE.height;
+            int screenWidth = scs.standardSize.width;
+            int screenHeight = scs.standardSize.height;
 
             mDeviceName = devices[0].name;
             mWebCamTexture = new WebCamTexture(mDeviceName, screenWidth, screenHeight, mFPS);
@@ -194,8 +194,8 @@ namespace JCSUnity
             }
 
             var gs = JCS_GameSettings.FirstInstance();
-            var prefix = gs.WEBCAM_FILENAME;
-            var ext = gs.WEBCAM_EXTENSION;
+            var prefix = gs.webcamFilename;
+            var ext = gs.webcamExt;
 
             string savePath = SavePath();
 
@@ -218,7 +218,7 @@ namespace JCSUnity
                 var sm = JCS_SceneManager.FirstInstance();
 
                 if (sm.GetWhiteScreen() == null)
-                    JCS_UtilFunctions.PopWhiteScreen();
+                    JCS_UISettings.PopWhiteScreen();
 
                 sm.GetWhiteScreen().FadeIn();
 
@@ -248,7 +248,7 @@ namespace JCSUnity
         public static string SavePath()
         {
             var gs = JCS_GameSettings.FirstInstance();
-            string path = JCS_Path.Combine(Application.persistentDataPath, gs.WEBCAM_PATH);
+            string path = JCS_Path.Combine(Application.persistentDataPath, gs.webcamPath);
             return path;
         }
 
@@ -258,8 +258,8 @@ namespace JCSUnity
         public static int LastImageFileIndex()
         {
             var gs = JCS_GameSettings.FirstInstance();
-            var prefix = gs.WEBCAM_FILENAME;
-            var ext = gs.WEBCAM_EXTENSION;
+            var prefix = gs.webcamFilename;
+            var ext = gs.webcamExt;
             return JCS_IO.LastFileIndex(SavePath(), prefix, ext);
         }
 
@@ -271,7 +271,7 @@ namespace JCSUnity
         public static string ImagePathByIndex(int index)
         {
             var gs = JCS_GameSettings.FirstInstance();
-            string path = SavePath() + gs.WEBCAM_FILENAME + index + gs.WEBCAM_EXTENSION;
+            string path = SavePath() + gs.webcamFilename + index + gs.webcamExt;
             return path;
         }
 
@@ -427,8 +427,8 @@ namespace JCSUnity
             {
                 var scs = JCS_ScreenSettings.FirstInstance();
 
-                float screenWidth = scs.STANDARD_SCREEN_SIZE.width;
-                float screenHeight = scs.STANDARD_SCREEN_SIZE.height;
+                float screenWidth = scs.standardSize.width;
+                float screenHeight = scs.standardSize.height;
 
                 float xRatio = screenWidth / (float)mWebCamTexture.width;
                 float yRatio = screenHeight / (float)mWebCamTexture.height;

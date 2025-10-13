@@ -1,4 +1,4 @@
-/**
+﻿/**
  * $File: JCS_SceneSettings.cs $
  * $Date: 2016-10-28 13:59:35 $
  * $Revision: $
@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 using MyBox;
 
 namespace JCSUnity
@@ -15,86 +16,120 @@ namespace JCSUnity
     /// <summary>
     /// Handle the scene the better way.
     /// </summary>
+    [RequireComponent(typeof(VideoPlayer))]
     public class JCS_SceneSettings : JCS_Settings<JCS_SceneSettings>
     {
         /* Variables */
+
+        private VideoPlayer mVideoPlayer = null;
 
         [Separator("Check Variables (JCS_SceneSettings)")]
 
         [Tooltip("True when is switching scene.")]
         [ReadOnly]
-        public bool SWITCHING_SCENE = false;
+        public bool switchingScene = false;
 
         [Tooltip("Next scene name to load.")]
         [ReadOnly]
-        public string NEXT_SCENE_NAME = "";
+        public string nextSceneName = "";
 
         [Tooltip("Previous scene mode.")]
         [ReadOnly]
-        public Scene PREVIOUS_SCENE = default(Scene);
+        public Scene previousScene = default;
 
         [Tooltip("Load scene mode.")]
         [ReadOnly]
-        public LoadSceneMode MODE = LoadSceneMode.Single;
+        public LoadSceneMode mode = LoadSceneMode.Single;
 
         [Separator("Runtime Variables (JCS_SceneSettings)")]
 
-        [Tooltip("General Scene fadout time. (For all scene)")]
+        [Tooltip("General Scene fade in time. (For all scene)")]
         [Range(0.0f, 5.0f)]
-        public float SCENE_FADEOUT_TIME = 1.5f;
+        [SerializeField]
+        private float mTimeIn = 1.5f;
 
-        [Tooltip("General Scene fadein time. (For all scene)")]
+        [Tooltip("General Scene fade out time. (For all scene)")]
         [Range(0.0f, 5.0f)]
-        public float SCENE_FADEIN_TIME = 1.5f;
+        [SerializeField]
+        private float mTimeOut = 1.5f;
 
         [Tooltip("Screen color to fade in/out the scene.")]
-        public Color SCREEN_COLOR = Color.black;
+        public Color screenColor = Color.black;
+
+        [Tooltip("The video clip to play for fade in.")]
+        [SerializeField]
+        private VideoClip mClipIn = null;
+
+        [Tooltip("The video clip to play for fade out.")]
+        [SerializeField]
+        private VideoClip mClipOut = null;
 
         /* Setter & Getter */
+
+        public VideoPlayer videoPlayer { get { return mVideoPlayer; } }
 
         /* Functions */
 
         private void Awake()
         {
             CheckInstance(this);
+
+            mVideoPlayer = GetComponent<VideoPlayer>();
+
+            // 預設關閉的, Unity 不能同時撥放兩個以上的影片.
+            mVideoPlayer.enabled = false;
         }
 
         /// <summary>
         /// Return the time for fade out the scene base on the settings.
         /// </summary>
-        public float SceneFadeOutTimeBaseOnSetting()
+        public float TimeOut()
         {
             var sm = JCS_SceneManager.FirstInstance();
 
-            // check if override the setting.
             if (sm.overrideSetting)
-            {
-                // return the override value.
-                return sm.sceneFadeOutTime;
-            }
+                return sm.timeOut;
 
-            // if not override, 
-            // return the basic value.
-            return SCENE_FADEOUT_TIME;
+            return mTimeOut;
         }
 
         /// <summary>
         /// Return the time for fade in the scene base on the settings.
         /// </summary>
-        public float SceneFadeInTimeBaseOnSetting()
+        public float TimeIn()
         {
             var sm = JCS_SceneManager.FirstInstance();
 
-            // check if override the setting.
             if (sm.overrideSetting)
-            {
-                // return the override value.
-                return sm.sceneFadeInTime;
-            }
+                return sm.timeIn;
 
-            // if not override, 
-            // return the basic value.
-            return SCENE_FADEIN_TIME;
+            return mTimeIn;
+        }
+
+        /// <summary>
+        /// Return the video clip for fading in.
+        /// </summary>
+        public VideoClip ClipIn()
+        {
+            var sm = JCS_SceneManager.FirstInstance();
+
+            if (sm.overrideSetting)
+                return sm.clipIn;
+
+            return mClipIn;
+        }
+
+        /// <summary>
+        /// Return the video clip for fading out.
+        /// </summary>
+        public VideoClip ClipOut()
+        {
+            var sm = JCS_SceneManager.FirstInstance();
+
+            if (sm.overrideSetting)
+                return sm.clipOut;
+
+            return mClipOut;
         }
 
         /// <summary>
@@ -110,14 +145,18 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_SceneSettings _old, JCS_SceneSettings _new)
         {
-            _new.SWITCHING_SCENE = _old.SWITCHING_SCENE;
-            _new.NEXT_SCENE_NAME = _old.NEXT_SCENE_NAME;
-            _new.PREVIOUS_SCENE = _old.PREVIOUS_SCENE;
-            _new.MODE = _old.MODE;
+            _new.switchingScene = _old.switchingScene;
+            _new.nextSceneName = _old.nextSceneName;
+            _new.previousScene = _old.previousScene;
+            _new.mode = _old.mode;
 
-            _new.SCENE_FADEIN_TIME = _old.SCENE_FADEIN_TIME;
-            _new.SCENE_FADEOUT_TIME = _old.SCENE_FADEOUT_TIME;
-            _new.SCREEN_COLOR = _old.SCREEN_COLOR;
+            _new.mTimeIn = _old.mTimeIn;
+            _new.mTimeOut = _old.mTimeOut;
+            _new.screenColor = _old.screenColor;
+
+            _new.mVideoPlayer = _old.mVideoPlayer;
+            _new.mClipIn = _old.mClipIn;
+            _new.mClipOut = _old.mClipOut;
         }
     }
 }

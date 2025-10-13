@@ -19,8 +19,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public Action SAVE_APP_DATA_FUNC = null;
-        public Action LOAD_APP_DATA_FUNC = null;  // NOT USED
+        public Action onSaveAppData = null;
+        public Action onLoadAppData = null;  // NOT USED
 
         // Callback when application starts. This should only run once
         // per application is starts.
@@ -30,32 +30,32 @@ namespace JCSUnity
 
         [Tooltip("Is the application start?")]
         [ReadOnly]
-        public bool APPLICATION_STARTS = false;
+        public bool appStarts = false;
 
         [Separator("Initialize Variables (JCS_AppSettings)")]
 
         [Tooltip("Enable to overwrite the default frame rate.")]
-        public bool SET_FRAME_RATE = false;
+        public bool setFrameRate = false;
 
         [Tooltip("Target frame rate.")]
         [Range(-1, 120)]
-        public int FRAME_RATE = 120;
+        public int frameRate = 120;
 
         [Separator("Runtime Variables (JCS_AppSettings)")]
 
         [Header("Save Load")]
 
         [Tooltip("Data folder path.")]
-        public string DATA_PATH = "/Data_jcs/";
+        public string dataPath = "/Data_jcs/";
 
         [Tooltip("Data file extension.")]
-        public string DATA_EXTENSION = ".jcs";
+        public string dataExt = ".jcs";
 
         [Tooltip("Save when switching the scene.")]
-        public bool SAVE_ON_SWITCH_SCENE = true;
+        public bool saveOnSwitchScene = true;
 
         [Tooltip("Save when app exit.")]
-        public bool SAVE_ON_EXIT_APP = true;
+        public bool saveOnExitApp = true;
 
         /* Setter & Getter */
 
@@ -65,14 +65,14 @@ namespace JCSUnity
         {
             CheckInstance(this);
 
-            if (SET_FRAME_RATE)
-                Application.targetFrameRate = FRAME_RATE;
+            if (setFrameRate)
+                Application.targetFrameRate = frameRate;
         }
 
         private void Start()
         {
             // If already starts we don't need to enable the flag.
-            if (!APPLICATION_STARTS)
+            if (!appStarts)
                 JCS_GameManager.FirstInstance().RegisterOnAfterInit(DoApplicationStart);
         }
 
@@ -89,14 +89,14 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_AppSettings _old, JCS_AppSettings _new)
         {
-            _new.SET_FRAME_RATE = _old.SET_FRAME_RATE;
-            _new.FRAME_RATE = _old.FRAME_RATE;
-            _new.APPLICATION_STARTS = _old.APPLICATION_STARTS;
+            _new.setFrameRate = _old.setFrameRate;
+            _new.frameRate = _old.frameRate;
+            _new.appStarts = _old.appStarts;
 
-            _new.DATA_PATH = _old.DATA_PATH;
-            _new.DATA_EXTENSION = _old.DATA_EXTENSION;
-            _new.SAVE_ON_EXIT_APP = _old.SAVE_ON_EXIT_APP;
-            _new.SAVE_ON_SWITCH_SCENE = _old.SAVE_ON_SWITCH_SCENE;
+            _new.dataPath = _old.dataPath;
+            _new.dataExt = _old.dataExt;
+            _new.saveOnSwitchScene = _old.saveOnSwitchScene;
+            _new.saveOnExitApp = _old.saveOnExitApp;
         }
 
         /// <summary>
@@ -106,12 +106,12 @@ namespace JCSUnity
         /// </summary>
         private void DoApplicationStart()
         {
-            if (APPLICATION_STARTS)
+            if (appStarts)
                 return;
 
             onApplicationStarts?.Invoke();
 
-            APPLICATION_STARTS = true;
+            appStarts = true;
         }
     }
 }

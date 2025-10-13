@@ -205,14 +205,13 @@ namespace MyBox.EditorTools
 		/// <summary>
 		/// Draw Line within GUILayout
 		/// </summary>
-		public static void DrawLine(Color color, bool withSpace = false)
+		public static void DrawLine(Color? color = null, bool withSpace = false)
 		{
 			if (withSpace) EditorGUILayout.Space();
 
-			var defaultBackgroundColor = GUI.backgroundColor;
-			GUI.backgroundColor = color;
-			GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(1));
-			GUI.backgroundColor = defaultBackgroundColor;
+			var rect = EditorGUILayout.GetControlRect(false, 1);
+			var lineColor = color ?? EditorStyles.label.normal.textColor.WithAlphaSetTo(0.3f);
+			EditorGUI.DrawRect(rect, lineColor);
 
 			if (withSpace) EditorGUILayout.Space();
 		}
@@ -239,11 +238,18 @@ namespace MyBox.EditorTools
 		/// </summary>
 		public static void DrawColouredRect(Rect rect, Color color)
 		{
-			var defaultBackgroundColor = GUI.backgroundColor;
-			GUI.backgroundColor = color;
-			GUI.Box(rect, "");
-			GUI.backgroundColor = defaultBackgroundColor;
+			if (_colouredRectStyle == null)
+			{
+				_colouredRectStyle = new GUIStyle(GUI.skin.box);
+				_colouredRectStyle.normal.background = Texture2D.whiteTexture;
+			}
+			
+			var prevColor = GUI.color;
+			GUI.color = color;
+			GUI.Box(rect, GUIContent.none, _colouredRectStyle);
+			GUI.color = prevColor;
 		}
+		private static GUIStyle _colouredRectStyle;
 
 		/// <summary>
 		/// Draw background Line within GUILayout
@@ -383,22 +389,37 @@ namespace MyBox.EditorTools
 		#region Drop Area
 
 		/// <summary>
-		/// Drag-and-Drop Area to catch objects of specific type
+		/// Drag-and-Drop Area to catch assets of specific type
 		/// </summary>
 		/// <typeparam name="T">Asset type to catch</typeparam>
-		/// <param name="areaText">Label to display</param>
+		/// <param name="areaLabel">Label to display</param>
 		/// <param name="height">Height of the Drop Area</param>
 		/// <param name="allowExternal">Allow to drag external files and import as unity assets</param>
 		/// <param name="externalImportFolder">Path relative to Assets folder</param>
-		/// <returns>Received objects. Null if none received</returns>
-		public static T[] DropArea<T>(string areaText, float height, bool allowExternal = false,
+		/// <returns>Received assets. Null if none received</returns>
+		public static T[] DropArea<T>(string areaLabel, float height, bool allowExternal = false,
+			string externalImportFolder = null) where T : Object
+		{
+			Rect dropArea = GUILayoutUtility.GetRect(0.0f, height, GUILayout.ExpandWidth(true));
+			return DropArea<T>(dropArea, areaLabel, allowExternal, externalImportFolder);
+		}
+
+		/// <summary>
+		/// Drag-and-Drop Area to catch assets of specific type
+		/// </summary>
+		/// <typeparam name="T">Asset type to catch</typeparam>
+		/// <param name="dropArea"></param>
+		/// <param name="areaLabel">Label to display</param>
+		/// <param name="allowExternal">Allow to drag external files and import as unity assets</param>
+		/// <param name="externalImportFolder">Path relative to Assets folder</param>
+		/// <returns>Received assets. Null if none received</returns>
+		public static T[] DropArea<T>(Rect dropArea, string areaLabel, bool allowExternal = false,
 			string externalImportFolder = null) where T : Object
 		{
 			Event currentEvent = Event.current;
-			Rect dropArea = GUILayoutUtility.GetRect(0.0f, height, GUILayout.ExpandWidth(true));
 			var style = new GUIStyle(GUI.skin.box);
 			style.alignment = TextAnchor.MiddleCenter;
-			GUI.Box(dropArea, areaText, style);
+			GUI.Box(dropArea, areaLabel, style);
 
 			bool dragEvent = currentEvent.type == EventType.DragUpdated || currentEvent.type == EventType.DragPerform;
 			if (!dragEvent) return null;
@@ -604,6 +625,37 @@ namespace MyBox.EditorTools
 
 		#region SearchablePopup
 
+		/// <summary>
+		/// A popup that shows a window that displays a list of options and may use a search string to filter the displayed content
+		/// </summary>
+		/// <code>
+		///	// You need to use callback to receive the selected index. Example:
+		///	MyGUI.SearchablePopupField(
+		///		new GUIContent("Icon Type"), _selectedIconIndex, _iconsNames,
+		///		newIndex => _selectedIconIndex = newIndex);
+		/// </code>
+		/// <param name="options">List of strings to choose from</param>
+		/// <param name="label"></param>
+		/// <param name="selectedIndex">Index of the currently selected string</param>
+		/// <param name="onSelectionMade">Callback to trigger when a choice is made</param>
+		public static void SearchablePopupField(GUIContent label, int selectedIndex, string[] options, Action<int> onSelectionMade)
+		{
+			EditorGUI.BeginDisabledGroup(options.Length == 0);
+			EditorGUILayout.BeginHorizontal();
+
+			EditorGUILayout.LabelField(label, GUILayout.Width(EditorGUIUtility.labelWidth));
+
+			if (GUILayout.Button(new GUIContent(options.Length > 0 ? options[selectedIndex] : "None"), EditorStyles.popup))
+			{
+				SearchablePopup(options, selectedIndex, onSelectionMade);
+			}
+
+			EditorGUILayout.EndHorizontal();
+			EditorGUI.EndDisabledGroup();
+		}
+
+
+		
 		/// <summary>
 		/// A popup window that displays a list of options and may use a search string to filter the displayed content
 		/// </summary>

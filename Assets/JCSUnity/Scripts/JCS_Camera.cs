@@ -183,7 +183,7 @@ namespace JCSUnity
         public static string SavePath()
         {
             var gs = JCS_GameSettings.FirstInstance();
-            string path = JCS_Path.Combine(Application.persistentDataPath, gs.SCREENSHOT_PATH);
+            string path = JCS_Path.Combine(Application.persistentDataPath, gs.screenshotPath);
             return path;
         }
 
@@ -193,8 +193,8 @@ namespace JCSUnity
         public static int LastImageFileIndex()
         {
             var gs = JCS_GameSettings.FirstInstance();
-            var prefix = gs.SCREENSHOT_FILENAME;
-            var ext = gs.SCREENSHOT_EXTENSION;
+            var prefix = gs.screenshotFilename;
+            var ext = gs.screenshotExt;
             return JCS_IO.LastFileIndex(SavePath(), prefix, ext);
         }
 
@@ -206,7 +206,7 @@ namespace JCSUnity
         public static string ImagePathByIndex(int index)
         {
             var gs = JCS_GameSettings.FirstInstance();
-            string path = SavePath() + gs.SCREENSHOT_FILENAME + index + gs.SCREENSHOT_EXTENSION;
+            string path = SavePath() + gs.screenshotFilename + index + gs.screenshotExt;
             return path;
         }
 
@@ -723,7 +723,7 @@ namespace JCSUnity
 
             /* Store it to screen settings. */
             {
-                ss.FIELD_OF_VIEW = mCamera.fieldOfView;
+                ss.fieldOfView = mCamera.fieldOfView;
             }
         }
 
@@ -734,8 +734,8 @@ namespace JCSUnity
         {
             var ss = JCS_ScreenSettings.FirstInstance();
 
-            JCS_ScreenSizef starting = ss.StartingScreenSize();
-            JCS_ScreenSizef current = ss.CURRENT_SCREEN_SIZE;
+            JCS_ScreenSizef starting = ss.StartingSize();
+            JCS_ScreenSizef current = ss.currentSize;
 
             float currentScreenRatio = current.width / current.height;
             float startingScreenRatio = starting.width / starting.height;
@@ -747,7 +747,7 @@ namespace JCSUnity
                 current.height = starting.height;
             }
 
-            float prevRatio = ss.PREV_SCREEN_SIZE.width / ss.PREV_SCREEN_SIZE.height;
+            float prevRatio = ss.prevSize.width / ss.prevSize.height;
             float newRatio = current.width / current.height;
 
             float divRatio = prevRatio / newRatio;
@@ -786,7 +786,7 @@ namespace JCSUnity
 
             /* Store it to screen settings. */
             {
-                ss.ORTHOGRAPHIC_SIZE = mCamera.orthographicSize;
+                ss.orthographicSize = mCamera.orthographicSize;
             }
         }
 
@@ -796,7 +796,7 @@ namespace JCSUnity
         private float GetAspectRatio()
         {
             var ss = JCS_ScreenSettings.FirstInstance();
-            JCS_ScreenSize standard = ss.STANDARD_SCREEN_SIZE;
+            JCS_ScreenSize standard = ss.standardSize;
             float mainAreaAspectRatio = (float)standard.width / (float)standard.height;
             float aspectDifference = Mathf.Min(1f, screenAspect / mainAreaAspectRatio);
             return 1 / aspectDifference;

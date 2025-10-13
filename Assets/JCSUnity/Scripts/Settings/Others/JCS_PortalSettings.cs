@@ -22,12 +22,12 @@ namespace JCSUnity
 
         [Tooltip("Current Portal Lable are.")]
         [ReadOnly]
-        public JCS_PortalLabel SCENE_PORTAL_LABEL = JCS_PortalLabel.NONE;
+        public JCS_PortalLabel sceneLabel = JCS_PortalLabel.NONE;
 
         [Separator("Initialize Variables (JCS_PortalSettings)")]
 
         [Tooltip("Reset the player position to portal?")]
-        public bool RESET_POSITION_AT_START = true;
+        public bool resetPositionAtStart = true;
 
         /* Setter & Getter */
 
@@ -45,7 +45,7 @@ namespace JCSUnity
         /// <param name="_new"> new data we copy to </param>
         protected override void TransferData(JCS_PortalSettings _old, JCS_PortalSettings _new)
         {
-            _new.SCENE_PORTAL_LABEL = _old.SCENE_PORTAL_LABEL;
+            _new.resetPositionAtStart = _old.resetPositionAtStart;
         }
     }
 }

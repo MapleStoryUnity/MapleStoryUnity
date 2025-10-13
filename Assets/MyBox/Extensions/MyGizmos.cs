@@ -15,5 +15,24 @@ namespace MyBox
 			Gizmos.DrawRay(from + direction, left * headLength);
 #endif
 		}
+
+		public static void DrawSegment(Vector3 from, Vector3 to, float capSize = 0.1f)
+		{
+			Gizmos.DrawLine(from, to);
+			Gizmos.DrawLine(from.OffsetY(-capSize), from.OffsetY(capSize));
+			Gizmos.DrawLine(to.OffsetY(-capSize), to.OffsetY(capSize));
+		}
+
+#if UNITY_PHYSICS2D_ENABLED
+		public static void DrawBoxCollider2D(BoxCollider2D collider, bool fill = true)
+		{
+			var target = collider.transform;
+			
+			Gizmos.matrix = Matrix4x4.TRS(target.position, target.rotation, target.lossyScale);
+			if (fill) Gizmos.DrawCube(collider.offset, collider.size);
+			else Gizmos.DrawWireCube(collider.offset, collider.size);
+			Gizmos.matrix = Matrix4x4.identity;
+		}
+#endif
 	}
 }

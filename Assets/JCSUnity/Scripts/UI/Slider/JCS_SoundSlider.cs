@@ -52,7 +52,7 @@ namespace JCSUnity
         {
             // Assign default mixer.
             if (mMixer == null)
-                mMixer = JCS_SoundSettings.FirstInstance().MIXER;
+                mMixer = JCS_SoundSettings.FirstInstance().mixer;
 
             JCS_GameManager.FirstInstance().RegisterOnAfterInit(AddListener);
         }

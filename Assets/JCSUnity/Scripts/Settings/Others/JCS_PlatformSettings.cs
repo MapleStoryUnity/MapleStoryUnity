@@ -22,7 +22,7 @@ namespace JCSUnity
 
         [Tooltip("How much push down ward if down jump triggered.")]
         [Range(0, 1)]
-        public float POSITION_PLATFORM_DOWN_JUMP_FORCE = 0.01f;
+        public float positionDownJumpForce = 0.01f;
 
         /* Setter & Getter */
 
@@ -46,7 +46,7 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_PlatformSettings _old, JCS_PlatformSettings _new)
         {
-            _new.POSITION_PLATFORM_DOWN_JUMP_FORCE = _old.POSITION_PLATFORM_DOWN_JUMP_FORCE;
+            _new.positionDownJumpForce = _old.positionDownJumpForce;
         }
     }
 }

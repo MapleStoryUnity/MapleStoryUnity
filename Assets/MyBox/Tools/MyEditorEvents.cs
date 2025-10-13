@@ -1,5 +1,7 @@
 #if UNITY_EDITOR
 using System;
+using JetBrains.Annotations;
+using MyBox.Internal;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEngine;
@@ -7,8 +9,8 @@ using UnityEditor.Build.Reporting;
 
 namespace MyBox.EditorTools
 {
-	[InitializeOnLoad]
-	public class MyEditorEvents : UnityEditor.AssetModificationProcessor, IPreprocessBuildWithReport
+	[InitializeOnLoad, PublicAPI]
+	public class MyEditorEvents : AssetModificationProcessor, IPreprocessBuildWithReport
 	{
 		/// <summary>
 		/// Occurs on Scenes/Assets Save
@@ -20,7 +22,15 @@ namespace MyBox.EditorTools
 		/// </summary>
 		public static event Action OnFirstFrame;
 
+		/// <summary>
+		/// On Before Playmode (PlayModeStateChange is ExitingEditMode)
+		/// </summary>
 		public static event Action BeforePlaymode;
+
+		/// <summary>
+		/// On After Playmode (PlayModeStateChange is EnteredEditMode)
+		/// </summary>
+		public static event Action AfterPlaymode;
 
 		public static event Action BeforeBuild;
 
@@ -30,13 +40,48 @@ namespace MyBox.EditorTools
 		/// </summary>
 		public static event Action OnEditorStarts;
 
+		/// <summary>
+		/// Called with a KeyCode of the input during edit-time
+		/// </summary>
 		public static event Action<Event> OnEditorInput;
+
+		/// <summary>
+		/// The same as the OnGUI call from MonoBehavior in playmode
+		/// </summary>
+		public static event Action OnPlaymodeGUI;
+		
+		/// <summary>
+		/// The same as the OnGUI call from MonoBehavior with ExecuteInEditMode
+		/// </summary>
+		public static event Action OnGUI;
+
+		/// <summary>
+		/// The same as Update cal from MonoBehavior in playmode
+		/// </summary>
+		public static event Action OnBehaviourUpdate;
 
 
 		static MyEditorEvents()
 		{
-			EditorApplication.update += CheckOnceOnEditorStart;
+			// DelayCall is used to ensure that all [InitializeOnLoad] subscribers are initialized before the events are called 
+			EditorApplication.delayCall += () => EditorApplication.update += CheckOnceOnEditorStart;
 			EditorApplication.update += CheckOnceOnPlaymode;
+			EditorApplication.update += () =>
+			{
+				if (OnPlaymodeGUI != null || OnGUI != null || OnBehaviourUpdate != null) 
+					MyEditorEventsBehaviorHandler.InitializeInstance();
+			};
+
+			MyEditorEventsBehaviorHandler.OnGUIEvent += () =>
+			{
+				OnGUI?.Invoke();
+				if (Application.isPlaying) OnPlaymodeGUI?.Invoke();
+			};
+			MyEditorEventsBehaviorHandler.OnUpdate += () =>
+			{
+				if (Application.isPlaying) OnBehaviourUpdate?.Invoke();
+			};
+			
 			EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 			RegisterRawInputHandler();
 
@@ -51,7 +96,7 @@ namespace MyBox.EditorTools
 				globalEventHandler.SetValue(null, callback);
 			}
 		}
-
+		
 		/// <summary>
 		/// On Editor Save
 		/// </summary>
@@ -67,20 +112,16 @@ namespace MyBox.EditorTools
 
 		private static void CheckOnceOnEditorStart()
 		{
-			if (!_skipFrameOnEditorStart)
-			{
-				_skipFrameOnEditorStart = true;
-				return;
-			}
+			const string flag = "EditorInitiated";
 			
-			if (!SessionState.GetBool("EditorInitiated", false))
+			if (!SessionState.GetBool(flag, false))
 			{
-				SessionState.SetBool("EditorInitiated", true);
+				SessionState.SetBool(flag, true);
 				OnEditorStarts?.Invoke();
 			}
+			
+			EditorApplication.update -= CheckOnceOnEditorStart;
 		}
-
-		private static bool _skipFrameOnEditorStart;
 
 
 		/// <summary>
@@ -95,12 +136,10 @@ namespace MyBox.EditorTools
 			}
 		}
 
-		/// <summary>
-		/// On Before Playmode
-		/// </summary>
 		private static void OnPlayModeStateChanged(PlayModeStateChange state)
 		{
-			if (state == PlayModeStateChange.ExitingEditMode && BeforePlaymode != null) BeforePlaymode();
+			if (state == PlayModeStateChange.ExitingEditMode) BeforePlaymode?.Invoke();
+			if (state == PlayModeStateChange.EnteredEditMode) AfterPlaymode?.Invoke();
 		}
 
 		private static void RawInputHandler()
@@ -110,6 +149,7 @@ namespace MyBox.EditorTools
 
 			OnEditorInput?.Invoke(e);
 		}
+		
 
 		/// <summary>
 		/// Before Build

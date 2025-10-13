@@ -28,7 +28,7 @@ namespace JCSUnity
         [SerializeField]
         [ReadOnly]
         private int mHit = 1;
-        
+
         [SerializeField]
         [ReadOnly]
         private int mMinDamage = 1;
@@ -78,9 +78,10 @@ namespace JCSUnity
         [Tooltip("Random position effect.")]
         [SerializeField]
         private bool mRandPos = false;
-        
+
         [Tooltip("Random position limit to within this range.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandPosRange = 0.0f;
 
         [Header("Destroy")]
@@ -96,7 +97,8 @@ namespace JCSUnity
         private bool mIsAOE = false;
 
         [Tooltip("Once the object hit a object count one down.")]
-        [SerializeField] [Range(1, 15)]
+        [SerializeField]
+        [Range(1, 15)]
         private int mAOECount = 7;
 
         // record down the aoe cound!
@@ -171,7 +173,8 @@ namespace JCSUnity
                 // if the target isn't what we want ignore than.
                 if (mTargetTransform != other.transform)
                     return;
-                else {
+                else
+                {
 
                     if (liveObject != null)
                     {
@@ -217,7 +220,7 @@ namespace JCSUnity
 
                 if (owenerLiveObject != null)
                 {
-                    if (!JCS_GameSettings.FirstInstance().TRIBE_DAMAGE_EACH_OTHER)
+                    if (!JCS_GameSettings.FirstInstance().tribeDamageEachOther)
                     {
                         // if both player does not need to add in to list.
                         // or if both enemy does not need to add in to list.
@@ -233,7 +236,8 @@ namespace JCSUnity
                 mMaxDamage = mAbilityFormat.GetMaxDamage();
                 mCriticalChance = mAbilityFormat.GetCriticalChance();
             }
-            else {
+            else
+            {
                 Debug.Log("You sure to not using any `JCS_AbilityFormat`?");
             }
 
@@ -261,7 +265,7 @@ namespace JCSUnity
                     mMaxDamage,
                     currentPos,
                     mHit,
-                    mCriticalChance, 
+                    mCriticalChance,
                     mHitSound);
             }
 

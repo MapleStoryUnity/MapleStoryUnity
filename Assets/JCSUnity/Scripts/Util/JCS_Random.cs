@@ -29,6 +29,14 @@ namespace JCSUnity
         /// <param name="min"> mininum value </param>
         /// <param name="max"> maxinum value </param>
         /// <returns> random number </returns>
+        public static int Range(Vector2Int range)
+        {
+            return Random.Range(range.x, range.y);
+        }
+        public static float Range(Vector2 range)
+        {
+            return Random.Range(range.x, range.y);
+        }
         public static int Range(int min, int max)
         {
             return Random.Range(min, max);
@@ -48,6 +56,14 @@ namespace JCSUnity
         /// <param name="min"> mininum value </param>
         /// <param name="max"> maxinum value </param>
         /// <returns> random number </returns>
+        public static int RangeInclude(Vector2Int range)
+        {
+            return RangeInclude(range.x, range.y);
+        }
+        public static float RangeInclude(Vector2 range)
+        {
+            return RangeInclude(range.x, range.y);
+        }
         public static int RangeInclude(int min, int max)
         {
             return Range(min, max + 1);
@@ -65,6 +81,14 @@ namespace JCSUnity
         /// <summary>
         /// Return a random vector 2 int.
         /// </summary>
+        public static Vector2Int Vector2Int(Vector2Int range)
+        {
+            return Vector2Int(range.x, range.y);
+        }
+        public static Vector2Int Vector2Int(Vector2 range)
+        {
+            return Vector2Int((int)range.x, (int)range.y);
+        }
         public static Vector2Int Vector2Int(int min, int max)
         {
             int x = Range(min, max);
@@ -75,6 +99,14 @@ namespace JCSUnity
         /// <summary>
         /// Return a random vector 2.
         /// </summary>
+        public static Vector2 Vector2(Vector2Int range)
+        {
+            return Vector2(range.x, range.y);
+        }
+        public static Vector2 Vector2(Vector2 range)
+        {
+            return Vector2(range.x, range.y);
+        }
         public static Vector2 Vector2(float min, float max)
         {
             float x = Range(min, max);
@@ -85,6 +117,14 @@ namespace JCSUnity
         /// <summary>
         /// Return a random vector 3 int.
         /// </summary>
+        public static Vector3Int Vector3Int(Vector2Int range)
+        {
+            return Vector3Int(range.x, range.y);
+        }
+        public static Vector3Int Vector3Int(Vector2 range)
+        {
+            return Vector3Int((int)range.x, (int)range.y);
+        }
         public static Vector3Int Vector3Int(int min, int max)
         {
             int x = Range(min, max);
@@ -96,6 +136,14 @@ namespace JCSUnity
         /// <summary>
         /// Return a random vector 3.
         /// </summary>
+        public static Vector3 Vector3(Vector2Int range)
+        {
+            return Vector3(range.x, range.y);
+        }
+        public static Vector3 Vector3(Vector2 range)
+        {
+            return Vector3(range.x, range.y);
+        }
         public static Vector3 Vector3(float min, float max)
         {
             float x = Range(min, max);
@@ -107,6 +155,14 @@ namespace JCSUnity
         /// <summary>
         /// Return a random Quaternion.
         /// </summary>
+        public static Quaternion Quaternion(Vector2Int range)
+        {
+            return Quaternion(range.x, range.y);
+        }
+        public static Quaternion Quaternion(Vector2 range)
+        {
+            return Quaternion(range.x, range.y);
+        }
         public static Quaternion Quaternion(float min, float max)
         {
             float x = Range(min, max);
@@ -121,16 +177,34 @@ namespace JCSUnity
         /// <returns> random color object. </returns>
         public static Color Color()
         {
-            float a = Range(0.0f, 1.0f);
+            float a = RangeInclude(0.0f, 1.0f);
             return Color(a);
         }
         public static Color Color(float a = 1.0f)
         {
-            float x = Range(0.0f, 1.0f);
-            float y = Range(0.0f, 1.0f);
-            float z = Range(0.0f, 1.0f);
+            float x = RangeInclude(0.0f, 1.0f);
+            float y = RangeInclude(0.0f, 1.0f);
+            float z = RangeInclude(0.0f, 1.0f);
 
             return new Color(x, y, z, a);
+        }
+
+        /// <summary>
+        /// Return a random color in 32-bit format.
+        /// </summary>
+        /// <returns> random color object. </returns>
+        public static Color32 Color32()
+        {
+            byte a = (byte)RangeInclude(0, 255);
+            return Color32(a);
+        }
+        public static Color32 Color32(byte a = 1)
+        {
+            byte x = (byte)RangeInclude(0, 255);
+            byte y = (byte)RangeInclude(0, 255);
+            byte z = (byte)RangeInclude(0, 255);
+
+            return new Color32(x, y, z, a);
         }
 
         /// <summary>

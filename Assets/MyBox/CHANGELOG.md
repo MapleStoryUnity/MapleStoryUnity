@@ -2,14 +2,36 @@
 All notable changes to this package will be documented in this file.
 
 ## [Unreleased]
-- Ability to disable custom UnityObject inspector for better compatibility with other libraries, in MyBox Window settings
+- Ability to disable custom UnityObject inspector for better compatibility with other libraries, in MyBox Window settings.
+- Now MyBox detects Odin Inspector and disables some of the features to prioritize Odin.
+- Added: MyEditorEvents.AfterPlaymode/OnGUI/OnPlaymodeGUI/OnBehaviourUpdate events
+- Added: ColliderGizmo now allows to assign custom presets from serializable ColliderGizmoPreset
+- Added: MyEditor.SetEditorIcon with a better way to set color
 - Added: SceneClickHandler support of Physics2d and Plane
+- Added: MyGizmos.DrawBoxCollider2D
+- Added: MyLayer now have several handy functions and extensions to operate with LayerMasks
+- Added: A bunch of new Optional types (OptionalBool/Vector2(Int)/Vector3(Int)/Color) and now with optionalValue parameters
+- Added: MyDebug.VisualizeNavMeshPath() to dynamically draw path segments with Debug.DrawLine
+- Added: MustBeAssignedAttribute now allows disabling checks in Prefab mode
+- Extensions: object.GetPrivateProperty/GetPrivateField and SetPrivateField methods to access private fields via reflection
+- Extensions: SerializedProperty.ApplyModifiedProperties()
+- Extensions: Array.InsertAt(index, item)
+- Extensions: float.RemapTo01 and float.Remap to scale the value from one range to another
+- Extensions: float.Clamp01() and int.Clamp01()
+- Extensions: Quaternion.SetEulerX/Y/Z/XY/XZ/YZ methods
+- Breaking Change: ActiveStateOnStart component is removed
+- Fixed: camera.IsWorldPointInViewport() extension method bugfix
+- Fixed: MyGUI.DrawColouredRect now properly works in dark mode (skin tint not mixed with the color)
+- Fixed: DefinedValuesAttribute now properly works within serialized types
+- Fixed: string.Colored() extension method now properly works in newer Unity versions
+- Fixed: ButtonMethod failed condition will prevent the other ButtonMethods from drawing
+- Fixed: ConstantsSelectionAttribute not working within serialized types
 - [TODO DOCS] Added: MyDefinesUtility simplifies handling of PlayerSettings.Set(Get)ScriptingDefineSymbols
 - [TODO DOCS] Added: MyEditorAudio tool to play AudioClip in Editor
 - [TODO DOCS] Added: MyComponentUtility.MoveComponentInspectorToTop/ToBottom(Component component) utility methods
 - [TODO DOCS] Added: Contextual Menu Items to "Move Component To Top/To Bottom" in inspector
 - [TODO DOCS] Added: TopmostComponentAttribute to move on top in inspector automatically when it added
-- Fixed: DefinedValuesAttribute now properly works within serialized types
+- [TODO DOCS] Added: DisplayPreviewAttribute to display the property image of the specified size in the inspector
 
 ## [1.8.0] - 2023-10-09
 - Now it is possible to toggle some features that may lead to performance issues in editor in MyBox Window

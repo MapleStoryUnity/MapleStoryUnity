@@ -4,14 +4,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using UnityEditor;
 using Object = UnityEngine.Object;
 
 namespace MyBox.EditorTools
 {
+	[PublicAPI]
 	public static class MySerializedProperty
 	{
 		#region Collections Handling
+
+		/// <summary>
+		/// Is this property an array element, not just a member of hierarchy with a collection
+		/// </summary>
+		public static bool IsArrayElement(this SerializedProperty property)
+		{
+			var pathParts = property.propertyPath.Split('.');
+			return pathParts.Length > 1 && pathParts[pathParts.Length - 2] == "Array";
+		}
 
 		/// <summary>
 		/// Get array of property childs, if parent property is array
@@ -240,6 +251,7 @@ namespace MyBox.EditorTools
 			}
 		}
 		
+		public static void ApplyModifiedProperties(this SerializedProperty property) => property.serializedObject.ApplyModifiedProperties();
 
 		#region SerializedProperty Get Parent
 
@@ -276,6 +288,7 @@ namespace MyBox.EditorTools
 				if (enumerable == null) return null;
 
 				var enm = enumerable.GetEnumerator();
+				
 				while (index-- >= 0)
 					enm.MoveNext();
 				return enm.Current;

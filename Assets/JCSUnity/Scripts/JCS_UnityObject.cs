@@ -63,20 +63,20 @@ namespace JCSUnity
 
         public void SetObjectType(JCS_UnityObjectType ob)
         {
-            this.mObjectType = ob;
+            mObjectType = ob;
             UpdateUnityData();
         }
-        public JCS_UnityObjectType GetObjectType() { return this.mObjectType; }
-        public Image GetImage() { return this.mImage; }
-        public Renderer GetRenderer() { return this.mRenderer; }
-        public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
-        public RectTransform GetRectTransform() { return this.mRectTransform; }
-        public Text GetText() { return this.mText; }
+        public JCS_UnityObjectType GetObjectType() { return mObjectType; }
+        public Image GetImage() { return mImage; }
+        public Renderer GetRenderer() { return mRenderer; }
+        public SpriteRenderer GetSpriteRenderer() { return mSpriteRenderer; }
+        public RectTransform GetRectTransform() { return mRectTransform; }
+        public Text GetText() { return mText; }
 #if TMP_PRO
-        public TMP_Text GetTextMesh() { return this.mTextMesh; }
+        public TMP_Text GetTextMesh() { return mTextMesh; }
 #endif
-        public bool makeUnique { get { return this.mMakeUnique; } set { this.mMakeUnique = value; } }
-        public List<string> colorProps { get { return this.mColorProps; } set { this.mColorProps = value; } }
+        public bool makeUnique { get { return mMakeUnique; } set { mMakeUnique = value; } }
+        public List<string> colorProps { get { return mColorProps; } set { mColorProps = value; } }
 
         /* Functions */
 
@@ -93,22 +93,22 @@ namespace JCSUnity
             switch (GetObjectType())
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
-                    this.mRenderer = this.GetComponent<Renderer>();
+                    mRenderer = GetComponent<Renderer>();
                     break;
                 case JCS_UnityObjectType.UI:
-                    this.mImage = this.GetComponent<Image>();
-                    this.mRectTransform = this.GetComponent<RectTransform>();
+                    mImage = GetComponent<Image>();
+                    mRectTransform = GetComponent<RectTransform>();
                     break;
                 case JCS_UnityObjectType.SPRITE:
-                    this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+                    mSpriteRenderer = GetComponent<SpriteRenderer>();
                     break;
                 case JCS_UnityObjectType.TEXT:
-                    this.mText = this.GetComponent<Text>();
-                    this.mRectTransform = this.GetComponent<RectTransform>();
+                    mText = GetComponent<Text>();
+                    mRectTransform = GetComponent<RectTransform>();
                     break;
 #if TMP_PRO
                 case JCS_UnityObjectType.TMP:
-                    this.mTextMesh = this.GetComponent<TMP_Text>();
+                    mTextMesh = GetComponent<TMP_Text>();
                     break;
 #endif
             }
@@ -128,7 +128,10 @@ namespace JCSUnity
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
                     {
-                        mRenderer.material = Instantiate(mRenderer.material);
+                        JCS_Loop.ForEach(mRenderer.materials, (index, mat) =>
+                        {
+                            mRenderer.materials[index] = Instantiate(mat);
+                        });
                     }
                     break;
                 case JCS_UnityObjectType.UI:
@@ -141,7 +144,10 @@ namespace JCSUnity
                     break;
                 case JCS_UnityObjectType.SPRITE:
                     {
-                        mSpriteRenderer.material = Instantiate(mSpriteRenderer.material);
+                        JCS_Loop.ForEach(mSpriteRenderer.materials, (index, mat) =>
+                        {
+                            mSpriteRenderer.materials[index] = Instantiate(mat);
+                        });
                     }
                     break;
                 case JCS_UnityObjectType.TEXT:
@@ -169,7 +175,7 @@ namespace JCSUnity
         /// </returns>
         public bool IsObjectType(JCS_UnityObjectType type)
         {
-            return this.GetObjectType() == type;
+            return GetObjectType() == type;
         }
 
         /// <summary>
@@ -187,16 +193,16 @@ namespace JCSUnity
                 switch (GetObjectType())
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer;
+                        return mRenderer;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer;
+                        return mSpriteRenderer;
                     case JCS_UnityObjectType.UI:
-                        return this.mImage;
+                        return mImage;
                     case JCS_UnityObjectType.TEXT:
-                        return this.mText;
+                        return mText;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh;
+                        return mTextMesh;
 #endif
                 }
 
@@ -208,20 +214,20 @@ namespace JCSUnity
                 switch (GetObjectType())
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.mRenderer = (Renderer)value;
+                        mRenderer = (Renderer)value;
                         break;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer = (SpriteRenderer)value;
+                        mSpriteRenderer = (SpriteRenderer)value;
                         break;
                     case JCS_UnityObjectType.UI:
-                        this.mImage = (Image)value;
+                        mImage = (Image)value;
                         break;
                     case JCS_UnityObjectType.TEXT:
-                        this.mText = (Text)value;
+                        mText = (Text)value;
                         break;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh = (TMP_Text)value;
+                        mTextMesh = (TMP_Text)value;
                         break;
 #endif
                 }
@@ -238,20 +244,20 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.transform;
+                        return transform;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        return this.mRectTransform;
+                        return mRectTransform;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.transform;
+                        return mSpriteRenderer.transform;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.transform;
+                        return mTextMesh.transform;
 #endif
                 }
 
                 Debug.LogError("Return default local position (This should not happens)");
-                return this.transform;
+                return transform;
             }
         }
 
@@ -265,16 +271,16 @@ namespace JCSUnity
                 switch (GetObjectType())
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer.material;
+                        return mRenderer.material;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.material;
+                        return mSpriteRenderer.material;
                     case JCS_UnityObjectType.UI:
-                        return this.mImage.material;
+                        return mImage.material;
                     case JCS_UnityObjectType.TEXT:
-                        return this.mText.material;
+                        return mText.material;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.material;
+                        return mTextMesh.material;
 #endif
                 }
 
@@ -286,20 +292,20 @@ namespace JCSUnity
                 switch (GetObjectType())
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.mRenderer.material = value;
+                        mRenderer.material = value;
                         break;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.material = value;
+                        mSpriteRenderer.material = value;
                         break;
                     case JCS_UnityObjectType.UI:
-                        this.mImage.material = value;
+                        mImage.material = value;
                         break;
                     case JCS_UnityObjectType.TEXT:
-                        this.mText.material = value;
+                        mText.material = value;
                         break;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh.material = value;
+                        mTextMesh.material = value;
                         break;
 #endif
                 }
@@ -316,20 +322,20 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.transform.position;
+                        return transform.position;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        return this.mRectTransform.position;
+                        return mRectTransform.position;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.transform.position;
+                        return mSpriteRenderer.transform.position;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.transform.position;
+                        return mTextMesh.transform.position;
 #endif
                 }
 
                 Debug.LogError("Return default local position (This should not happens)");
-                return this.transform.position;
+                return transform.position;
             }
 
             set
@@ -337,18 +343,18 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.transform.position = value;
+                        transform.position = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        this.mRectTransform.position = value;
+                        mRectTransform.position = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.transform.position = value;
+                        mSpriteRenderer.transform.position = value;
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh.transform.position = value;
+                        mTextMesh.transform.position = value;
                         return;
 #endif
                 }
@@ -367,19 +373,19 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.transform.localPosition;
+                        return transform.localPosition;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        return this.mRectTransform.localPosition;
+                        return mRectTransform.localPosition;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.transform.localPosition;
+                        return mSpriteRenderer.transform.localPosition;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.transform.localPosition;
+                        return mTextMesh.transform.localPosition;
 #endif
                 }
                 Debug.LogError("Return default local position (This should not happens)");
-                return this.transform.localPosition;
+                return transform.localPosition;
             }
 
             set
@@ -387,18 +393,18 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.transform.localPosition = value;
+                        transform.localPosition = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        this.mRectTransform.localPosition = value;
+                        mRectTransform.localPosition = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.transform.localPosition = value;
+                        mSpriteRenderer.transform.localPosition = value;
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh.transform.localPosition = value;
+                        mTextMesh.transform.localPosition = value;
                         return;
 #endif
                 }
@@ -417,20 +423,20 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.transform.eulerAngles;
+                        return transform.eulerAngles;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        return this.mRectTransform.eulerAngles;
+                        return mRectTransform.eulerAngles;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.transform.eulerAngles;
+                        return mSpriteRenderer.transform.eulerAngles;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.transform.eulerAngles;
+                        return mTextMesh.transform.eulerAngles;
 #endif
                 }
 
                 Debug.LogError("Return default local rotation (This should not happens)");
-                return this.transform.eulerAngles;
+                return transform.eulerAngles;
             }
 
             set
@@ -438,18 +444,18 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.transform.eulerAngles = value;
+                        transform.eulerAngles = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        this.mRectTransform.eulerAngles = value;
+                        mRectTransform.eulerAngles = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.transform.eulerAngles = value;
+                        mSpriteRenderer.transform.eulerAngles = value;
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh.transform.eulerAngles = value;
+                        mTextMesh.transform.eulerAngles = value;
                         return;
 #endif
                 }
@@ -468,20 +474,20 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.transform.localEulerAngles;
+                        return transform.localEulerAngles;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        return this.mRectTransform.localEulerAngles;
+                        return mRectTransform.localEulerAngles;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.transform.localEulerAngles;
+                        return mSpriteRenderer.transform.localEulerAngles;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.transform.localEulerAngles;
+                        return mTextMesh.transform.localEulerAngles;
 #endif
                 }
 
                 Debug.LogError("Return default local rotation (This should not happens)");
-                return this.transform.localEulerAngles;
+                return transform.localEulerAngles;
             }
 
             set
@@ -489,18 +495,18 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.transform.localEulerAngles = value;
+                        transform.localEulerAngles = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        this.mRectTransform.localEulerAngles = value;
+                        mRectTransform.localEulerAngles = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.transform.localEulerAngles = value;
+                        mSpriteRenderer.transform.localEulerAngles = value;
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh.transform.localEulerAngles = value;
+                        mTextMesh.transform.localEulerAngles = value;
                         return;
 #endif
                 }
@@ -519,19 +525,19 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.transform.localScale;
+                        return transform.localScale;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        return this.mRectTransform.localScale;
+                        return mRectTransform.localScale;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.transform.localScale;
+                        return mSpriteRenderer.transform.localScale;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.transform.localScale;
+                        return mTextMesh.transform.localScale;
 #endif
                 }
                 Debug.LogError("Return default local scale (This should not happens)");
-                return this.transform.localScale;
+                return transform.localScale;
             }
 
             set
@@ -539,18 +545,18 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.transform.localScale = value;
+                        transform.localScale = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
-                        this.mRectTransform.localScale = value;
+                        mRectTransform.localScale = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.transform.localScale = value;
+                        mSpriteRenderer.transform.localScale = value;
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh.transform.localScale = value;
+                        mTextMesh.transform.localScale = value;
                         return;
 #endif
                 }
@@ -568,16 +574,16 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer.enabled;
+                        return mRenderer.enabled;
                     case JCS_UnityObjectType.UI:
-                        return this.mImage.enabled;
+                        return mImage.enabled;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.enabled;
+                        return mSpriteRenderer.enabled;
                     case JCS_UnityObjectType.TEXT:
-                        return this.mText.enabled;
+                        return mText.enabled;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.enabled;
+                        return mTextMesh.enabled;
 #endif
                 }
                 Debug.LogError("Return default visible (This should not happens)");
@@ -589,20 +595,20 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.mRenderer.enabled = value;
+                        mRenderer.enabled = value;
                         return;
                     case JCS_UnityObjectType.UI:
-                        this.mImage.enabled = value;
+                        mImage.enabled = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.enabled = value;
+                        mSpriteRenderer.enabled = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
-                        this.mText.enabled = value;
+                        mText.enabled = value;
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh.enabled = value;
+                        mTextMesh.enabled = value;
                         return;
 #endif
                 }
@@ -616,12 +622,12 @@ namespace JCSUnity
         {
             foreach (string prop in mColorProps)
             {
-                return this.mRenderer.material.GetColor(prop);
+                return mRenderer.material.GetColor(prop);
             }
 
             try
             {
-                return this.mRenderer.material.color;
+                return mRenderer.material.color;
             }
             catch
             {
@@ -638,12 +644,12 @@ namespace JCSUnity
         {
             foreach (string prop in mColorProps)
             {
-                this.mRenderer.material.SetColor(prop, val);
+                mRenderer.material.SetColor(prop, val);
             }
 
             try
             {
-                this.mRenderer.material.color = val;
+                mRenderer.material.color = val;
             }
             catch
             {
@@ -661,16 +667,16 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.GetColor();
+                        return GetColor();
                     case JCS_UnityObjectType.UI:
-                        return this.mImage.color;
+                        return mImage.color;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.color;
+                        return mSpriteRenderer.color;
                     case JCS_UnityObjectType.TEXT:
-                        return this.mText.color;
+                        return mText.color;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.color;
+                        return mTextMesh.color;
 #endif
                 }
 
@@ -683,20 +689,20 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.SetColor(value);
+                        SetColor(value);
                         return;
                     case JCS_UnityObjectType.UI:
-                        this.mImage.color = value;
+                        mImage.color = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.color = value;
+                        mSpriteRenderer.color = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
-                        this.mText.color = value;
+                        mText.color = value;
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh.color = value;
+                        mTextMesh.color = value;
                         return;
 #endif
 
@@ -715,16 +721,16 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.GetColor().a;
+                        return GetColor().a;
                     case JCS_UnityObjectType.UI:
-                        return this.mImage.color.a;
+                        return mImage.color.a;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.color.a;
+                        return mSpriteRenderer.color.a;
                     case JCS_UnityObjectType.TEXT:
-                        return this.mText.color.a;
+                        return mText.color.a;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.color.a;
+                        return mTextMesh.color.a;
 #endif
                 }
                 Debug.LogError("Return default Local Alpha (This should not happens)");
@@ -739,38 +745,38 @@ namespace JCSUnity
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
                         {
-                            newColor = this.mRenderer.material.color;
+                            newColor = mRenderer.material.color;
                             newColor.a = value;
                             SetColor(newColor);
                         }
                         return;
                     case JCS_UnityObjectType.UI:
                         {
-                            newColor = this.mImage.color;
+                            newColor = mImage.color;
                             newColor.a = value;
-                            this.mImage.color = newColor;
+                            mImage.color = newColor;
                         }
                         return;
                     case JCS_UnityObjectType.SPRITE:
                         {
-                            newColor = this.mSpriteRenderer.color;
+                            newColor = mSpriteRenderer.color;
                             newColor.a = value;
-                            this.mSpriteRenderer.color = newColor;
+                            mSpriteRenderer.color = newColor;
                         }
                         return;
                     case JCS_UnityObjectType.TEXT:
                         {
-                            newColor = this.mText.color;
+                            newColor = mText.color;
                             newColor.a = value;
-                            this.mText.color = newColor;
+                            mText.color = newColor;
                         }
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
                         {
-                            newColor = this.mTextMesh.color;
+                            newColor = mTextMesh.color;
                             newColor.a = value;
-                            this.mTextMesh.color = newColor;
+                            mTextMesh.color = newColor;
                         }
                         return;
 #endif
@@ -789,16 +795,16 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.GetColor().r;
+                        return GetColor().r;
                     case JCS_UnityObjectType.UI:
-                        return this.mImage.color.r;
+                        return mImage.color.r;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.color.r;
+                        return mSpriteRenderer.color.r;
                     case JCS_UnityObjectType.TEXT:
-                        return this.mText.color.r;
+                        return mText.color.r;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.color.r;
+                        return mTextMesh.color.r;
 #endif
                 }
                 Debug.LogError("Return default Local Red (This should not happens)");
@@ -813,38 +819,38 @@ namespace JCSUnity
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
                         {
-                            newColor = this.mRenderer.material.color;
+                            newColor = mRenderer.material.color;
                             newColor.r = value;
                             SetColor(newColor);
                         }
                         return;
                     case JCS_UnityObjectType.UI:
                         {
-                            newColor = this.mImage.color;
+                            newColor = mImage.color;
                             newColor.r = value;
-                            this.mImage.color = newColor;
+                            mImage.color = newColor;
                         }
                         return;
                     case JCS_UnityObjectType.SPRITE:
                         {
-                            newColor = this.mSpriteRenderer.color;
+                            newColor = mSpriteRenderer.color;
                             newColor.r = value;
-                            this.mSpriteRenderer.color = newColor;
+                            mSpriteRenderer.color = newColor;
                         }
                         return;
                     case JCS_UnityObjectType.TEXT:
                         {
-                            newColor = this.mText.color;
+                            newColor = mText.color;
                             newColor.r = value;
-                            this.mText.color = newColor;
+                            mText.color = newColor;
                         }
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
                         {
-                            newColor = this.mTextMesh.color;
+                            newColor = mTextMesh.color;
                             newColor.r = value;
-                            this.mTextMesh.color = newColor;
+                            mTextMesh.color = newColor;
                         }
                         return;
 #endif
@@ -863,16 +869,16 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.GetColor().g;
+                        return GetColor().g;
                     case JCS_UnityObjectType.UI:
-                        return this.mImage.color.g;
+                        return mImage.color.g;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.color.g;
+                        return mSpriteRenderer.color.g;
                     case JCS_UnityObjectType.TEXT:
-                        return this.mText.color.g;
+                        return mText.color.g;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.color.g;
+                        return mTextMesh.color.g;
 #endif
                 }
                 Debug.LogError("Return default Local Green (This should not happens)");
@@ -887,38 +893,38 @@ namespace JCSUnity
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
                         {
-                            newColor = this.mRenderer.material.color;
+                            newColor = mRenderer.material.color;
                             newColor.g = value;
                             SetColor(newColor);
                         }
                         return;
                     case JCS_UnityObjectType.UI:
                         {
-                            newColor = this.mImage.color;
+                            newColor = mImage.color;
                             newColor.g = value;
-                            this.mImage.color = newColor;
+                            mImage.color = newColor;
                         }
                         return;
                     case JCS_UnityObjectType.SPRITE:
                         {
-                            newColor = this.mSpriteRenderer.color;
+                            newColor = mSpriteRenderer.color;
                             newColor.g = value;
-                            this.mSpriteRenderer.color = newColor;
+                            mSpriteRenderer.color = newColor;
                         }
                         return;
                     case JCS_UnityObjectType.TEXT:
                         {
-                            newColor = this.mText.color;
+                            newColor = mText.color;
                             newColor.g = value;
-                            this.mText.color = newColor;
+                            mText.color = newColor;
                         }
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
                         {
-                            newColor = this.mTextMesh.color;
+                            newColor = mTextMesh.color;
                             newColor.g = value;
-                            this.mTextMesh.color = newColor;
+                            mTextMesh.color = newColor;
                         }
                         return;
 #endif
@@ -937,16 +943,16 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.GetColor().b;
+                        return GetColor().b;
                     case JCS_UnityObjectType.UI:
-                        return this.mImage.color.b;
+                        return mImage.color.b;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.color.b;
+                        return mSpriteRenderer.color.b;
                     case JCS_UnityObjectType.TEXT:
-                        return this.mText.color.b;
+                        return mText.color.b;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.color.b;
+                        return mTextMesh.color.b;
 #endif
                 }
                 Debug.LogError("Return default Local Blue (This should not happens)");
@@ -961,38 +967,38 @@ namespace JCSUnity
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
                         {
-                            newColor = this.mRenderer.material.color;
+                            newColor = mRenderer.material.color;
                             newColor.b = value;
                             SetColor(newColor);
                         }
                         return;
                     case JCS_UnityObjectType.UI:
                         {
-                            newColor = this.mImage.color;
+                            newColor = mImage.color;
                             newColor.b = value;
-                            this.mImage.color = newColor;
+                            mImage.color = newColor;
                         }
                         return;
                     case JCS_UnityObjectType.SPRITE:
                         {
-                            newColor = this.mSpriteRenderer.color;
+                            newColor = mSpriteRenderer.color;
                             newColor.b = value;
-                            this.mSpriteRenderer.color = newColor;
+                            mSpriteRenderer.color = newColor;
                         }
                         return;
                     case JCS_UnityObjectType.TEXT:
                         {
-                            newColor = this.mText.color;
+                            newColor = mText.color;
                             newColor.b = value;
-                            this.mText.color = newColor;
+                            mText.color = newColor;
                         }
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
                         {
-                            newColor = this.mTextMesh.color;
+                            newColor = mTextMesh.color;
                             newColor.b = value;
-                            this.mTextMesh.color = newColor;
+                            mTextMesh.color = newColor;
                         }
                         return;
 #endif
@@ -1011,16 +1017,16 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer.material.mainTexture;
+                        return mRenderer.material.mainTexture;
                     case JCS_UnityObjectType.UI:
-                        return this.mImage.material.mainTexture;
+                        return mImage.material.mainTexture;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.material.mainTexture;
+                        return mSpriteRenderer.material.mainTexture;
                     case JCS_UnityObjectType.TEXT:
-                        return this.mText.material.mainTexture;
+                        return mText.material.mainTexture;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        return this.mTextMesh.material.mainTexture;
+                        return mTextMesh.material.mainTexture;
 #endif
                 }
                 Debug.LogError("Return default Local Blue (This should not happens)");
@@ -1032,20 +1038,20 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        this.mRenderer.material.mainTexture = value;
+                        mRenderer.material.mainTexture = value;
                         return;
                     case JCS_UnityObjectType.UI:
-                        this.mImage.material.mainTexture = value;
+                        mImage.material.mainTexture = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.material.mainTexture = value;
+                        mSpriteRenderer.material.mainTexture = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
-                        this.mText.material.mainTexture = value;
+                        mText.material.mainTexture = value;
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh.material.mainTexture = value;
+                        mTextMesh.material.mainTexture = value;
                         return;
 #endif
                 }
@@ -1063,9 +1069,9 @@ namespace JCSUnity
                 switch (GetObjectType())
                 {
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.sprite;
+                        return mSpriteRenderer.sprite;
                     case JCS_UnityObjectType.UI:
-                        return this.mImage.sprite;
+                        return mImage.sprite;
                 }
                 Debug.LogError("Failed to get sprite composite cuz current unity object setting does not have it.");
                 return null;
@@ -1076,10 +1082,10 @@ namespace JCSUnity
                 switch (GetObjectType())
                 {
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.sprite = value;
+                        mSpriteRenderer.sprite = value;
                         return;
                     case JCS_UnityObjectType.UI:
-                        this.mImage.sprite = value;
+                        mImage.sprite = value;
                         return;
                 }
                 Debug.LogError("Failed to set the sprite cuz the current unity object setting does not have sprite coposite.");
@@ -1101,9 +1107,9 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return this.mRenderer.isVisible;
+                        return mRenderer.isVisible;
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.isVisible;
+                        return mSpriteRenderer.isVisible;
                 }
                 Debug.LogError("Return default Local isVisible (This should not happens)");
                 return false;
@@ -1122,15 +1128,15 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return JCS_Mathf.IsPositive(this.transform.localScale.x);
+                        return JCS_Mathf.IsPositive(transform.localScale.x);
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.flipX;
+                        return mSpriteRenderer.flipX;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
 #endif
-                        return JCS_Mathf.IsPositive(this.mRectTransform.localScale.x);
+                        return JCS_Mathf.IsPositive(mRectTransform.localScale.x);
                 }
                 Debug.LogError("Return default Local FlipX (This should not happens)");
                 return false;
@@ -1144,18 +1150,18 @@ namespace JCSUnity
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
                         {
-                            newScale = this.transform.localScale;
+                            newScale = transform.localScale;
 
                             if (value)
                                 newScale.x = JCS_Mathf.ToPositive(newScale.x);
                             else
                                 newScale.x = JCS_Mathf.ToNegative(newScale.x);
 
-                            this.transform.localScale = newScale;
+                            transform.localScale = newScale;
                         }
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.flipX = value;
+                        mSpriteRenderer.flipX = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
@@ -1163,14 +1169,14 @@ namespace JCSUnity
                     case JCS_UnityObjectType.TMP:
 #endif
                         {
-                            newScale = this.mRectTransform.localScale;
+                            newScale = mRectTransform.localScale;
 
                             if (value)
                                 newScale.x = JCS_Mathf.ToPositive(newScale.x);
                             else
                                 newScale.x = JCS_Mathf.ToNegative(newScale.x);
 
-                            this.mRectTransform.localScale = newScale;
+                            mRectTransform.localScale = newScale;
                         }
                         return;
                 }
@@ -1189,15 +1195,15 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return JCS_Mathf.IsPositive(this.transform.localScale.y);
+                        return JCS_Mathf.IsPositive(transform.localScale.y);
                     case JCS_UnityObjectType.SPRITE:
-                        return this.mSpriteRenderer.flipY;
+                        return mSpriteRenderer.flipY;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
 #endif
-                        return JCS_Mathf.IsPositive(this.mRectTransform.localScale.y);
+                        return JCS_Mathf.IsPositive(mRectTransform.localScale.y);
                 }
                 Debug.LogError("Return default Local FlipY (This should not happens)");
                 return false;
@@ -1211,18 +1217,18 @@ namespace JCSUnity
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
                         {
-                            newScale = this.transform.localScale;
+                            newScale = transform.localScale;
 
                             if (value)
                                 newScale.y = JCS_Mathf.ToPositive(newScale.y);
                             else
                                 newScale.y = JCS_Mathf.ToNegative(newScale.y);
 
-                            this.transform.localScale = newScale;
+                            transform.localScale = newScale;
                         }
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        this.mSpriteRenderer.flipY = value;
+                        mSpriteRenderer.flipY = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
@@ -1230,14 +1236,14 @@ namespace JCSUnity
                     case JCS_UnityObjectType.TMP:
 #endif
                         {
-                            newScale = this.mRectTransform.localScale;
+                            newScale = mRectTransform.localScale;
 
                             if (value)
                                 newScale.y = JCS_Mathf.ToPositive(newScale.y);
                             else
                                 newScale.y = JCS_Mathf.ToNegative(newScale.y);
 
-                            this.mRectTransform.localScale = newScale;
+                            mRectTransform.localScale = newScale;
                         }
                         return;
                 }

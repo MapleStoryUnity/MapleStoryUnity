@@ -190,10 +190,10 @@ to get the information from them.")]
         /// function is under this function with the same name.
         /// </summary>
         public void ApplyDamageText(
-            int minDamage, int maxDamage, 
-            Vector2 pos, 
-            int hit = 1, 
-            int criticalChance = 0, 
+            int minDamage, int maxDamage,
+            Vector2 pos,
+            int hit = 1,
+            int criticalChance = 0,
             AudioClip hitSound = null)
         {
             ApplyDamageText(null, minDamage, maxDamage, pos, hit, criticalChance, hitSound);
@@ -209,10 +209,10 @@ to get the information from them.")]
         /// <param name="hit"> how many hit in this sequence, could be one. </param>
         /// <param name="criticalChance"> critical chance could be? </param>
         public void ApplyDamageText(
-            Transform attacker, 
-            int minDamage, int maxDamage, 
-            Vector2 pos, 
-            int hit = 1, 
+            Transform attacker,
+            int minDamage, int maxDamage,
+            Vector2 pos,
+            int hit = 1,
             int criticalChance = 0,
             AudioClip hitSound = null)
         {
@@ -240,7 +240,7 @@ to get the information from them.")]
                 if (mixTP == null)
                 {
 #if UNITY_EDITOR
-                    if (JCS_GameSettings.FirstInstance().DEBUG_MODE)
+                    if (JCS_GameSettings.FirstInstance().debugMode)
                     {
                         Debug.LogError("There is no Mix Damage Text Pool in the scene. Consider to grab one?");
                     }
@@ -251,16 +251,17 @@ to get the information from them.")]
 
                 // spawn the damage text
                 damages = mixTP.DamageTextSpawnerSimple(
-                    minDamage, maxDamage, 
-                    pos, 
-                    hit, 
+                    minDamage, maxDamage,
+                    pos,
+                    hit,
                     criticalChance,
                     defenseValue,        // defense value
-                    isPlayer, 
+                    isPlayer,
                     hitSound);
             }
             // Do damage without damage text.
-            else {
+            else
+            {
 
                 // since is not pre-calculate.
                 // we have to calculate the damage before
@@ -286,10 +287,10 @@ to get the information from them.")]
         /// <param name="pos"> damage text position </param>
         /// <param name="criticalChance"> chance of spawning red text </param>
         public void ApplyDamageText(
-            Transform attacker, 
-            int[] damages, 
-            Vector2 pos, 
-            int criticalChance, 
+            Transform attacker,
+            int[] damages,
+            Vector2 pos,
+            int criticalChance,
             AudioClip hitSound = null)
         {
             // set the last attack in the safe way.
@@ -309,14 +310,15 @@ to get the information from them.")]
 
                 // spawn the damage text
                 mixTP.DamageTextSpawnerSimple(
-                    damages, 
-                    pos, 
-                    criticalChance, 
+                    damages,
+                    pos,
+                    criticalChance,
                     isPlayer,
                     hitSound);
             }
             // Do damage without damage text.
-            else {
+            else
+            {
                 // no need to do anything cuz is 
                 // pre-calculate already.
             }
@@ -357,7 +359,7 @@ to get the information from them.")]
                 mVelocityInfo.moveSpeedX = -force;
             else
                 mVelocityInfo.moveSpeedX = force;
-                
+
         }
 
         /// <summary>

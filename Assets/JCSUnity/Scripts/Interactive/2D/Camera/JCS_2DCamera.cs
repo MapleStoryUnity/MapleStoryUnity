@@ -134,7 +134,7 @@ namespace JCSUnity
             // Use player from "JCS_GameManager" as default
             if (mTargetTransform == null)
             {
-                JCS_Player player = JCS_GameManager.FirstInstance().Player;
+                JCS_Player player = JCS_GameManager.FirstInstance().player;
                 if (player != null)
                     SetFollowTarget(player.transform);
             }

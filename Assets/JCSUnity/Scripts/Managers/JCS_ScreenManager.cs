@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private const string mResizableScreenPanelPath = "UI/JCS_ResizableScreenPanel";
+        private const string RESIZEABLE_SCREEN_PANEL_PATH = "UI/JCS_ResizableScreenPanel";
 
         [Separator("Check Variables (JCS_ScreenManager)")]
 
@@ -45,13 +45,13 @@ namespace JCSUnity
         [Separator("Initialize Variables (JCS_ScreenManager)")]
 
         [Tooltip("Resize screen once on this scene?")]
-        public bool RESIZE_SCREEN_THIS_SCENE = false;
+        public bool resizeScreen = false;
 
         [Tooltip("Aspect ratio screen width for this scene you want to resize.")]
-        public int ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE = 16;
+        public int aspectRatioWidth = 16;
 
         [Tooltip("Aspect ratio screen height for this scene you want to resize.")]
-        public int ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE = 9;
+        public int aspectRatioHeight = 9;
 
         /* Setter & Getter */
 
@@ -69,10 +69,10 @@ namespace JCSUnity
             if (ShouldSpawnResizablePanels())
             {
                 // Spawn the four aspect screen panels.
-                mTopASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                mBottomASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                mLeftASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
-                mRightASP = JCS_Util.Instantiate(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+                mTopASP = JCS_Util.Instantiate(RESIZEABLE_SCREEN_PANEL_PATH).GetComponent<JCS_ResizableScreenPanel>();
+                mBottomASP = JCS_Util.Instantiate(RESIZEABLE_SCREEN_PANEL_PATH).GetComponent<JCS_ResizableScreenPanel>();
+                mLeftASP = JCS_Util.Instantiate(RESIZEABLE_SCREEN_PANEL_PATH).GetComponent<JCS_ResizableScreenPanel>();
+                mRightASP = JCS_Util.Instantiate(RESIZEABLE_SCREEN_PANEL_PATH).GetComponent<JCS_ResizableScreenPanel>();
 
                 // Set the ASP direction.
                 mTopASP.placeDirection = JCS_2D4Direction.TOP;
@@ -86,11 +86,11 @@ namespace JCSUnity
         {
             var ss = JCS_ScreenSettings.FirstInstance();
 
-            if (RESIZE_SCREEN_THIS_SCENE)
+            if (resizeScreen)
             {
                 // Apply new screen aspect ratio.
-                ss.ASPECT_RATIO_SCREEN_SIZE.width = ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE;
-                ss.ASPECT_RATIO_SCREEN_SIZE.height = ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE;
+                ss.aspectRatioSize.width = aspectRatioWidth;
+                ss.aspectRatioSize.height = aspectRatioHeight;
 
                 // Resize the screen base on the new screen aspect ratio.
                 ss.ForceAspectScreenOnce();
@@ -118,7 +118,7 @@ namespace JCSUnity
 
             /* Show hide the panels. */
             {
-                if (ss.SHOW_RESIZABLE_PANELS)
+                if (ss.showResizablePanels)
                     ShowResizablePanels();
                 else
                     HideResizablePanels();

@@ -120,10 +120,6 @@ namespace JCSUnity
         // timer in order to know when to do the effect.
         private float mLookTimer = 0;
 
-        [Tooltip("If this effect is active plz attach.")]
-        [SerializeField]
-        private JCS_2DInitLookByTypeAction mInitLookAction = null;
-
         /* Setter & Getter */
 
         public override float moveSpeed
@@ -151,9 +147,6 @@ namespace JCSUnity
 
             if (mRandomAbsorbTime != 0)
                 mTimeToAbsorb += JCS_Random.Range(-mRandomAbsorbTime, mRandomAbsorbTime);
-
-            if (mInitLookAction == null)
-                mInitLookAction = this.GetComponent<JCS_2DInitLookByTypeAction>();
 
             if (mRandomTimeToLook != 0)
                 mTimeToLook += JCS_Random.Range(-mRandomTimeToLook, mRandomTimeToLook);
@@ -252,9 +245,6 @@ namespace JCSUnity
             if (!mInitLookByTypeAction)
                 return;
 
-            if (mInitLookAction == null)
-                return;
-
             mLookTimer += JCS_Time.ItTime(mTimeType);
 
             if (mLookTimer < mTimeToLook)
@@ -262,8 +252,6 @@ namespace JCSUnity
 
             // count once
             ++mContinousLookCounter;
-
-            mInitLookAction.LockOnInit();
 
             // reset timer.
             mLookTimer = 0;

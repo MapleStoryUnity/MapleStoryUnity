@@ -13,7 +13,6 @@ using UnityEngine;
 using MyBox;
 
 #if UNITY_ANDROID
-using UnityEngine.Android;
 #endif
 
 namespace JCSUnity
@@ -84,7 +83,7 @@ namespace JCSUnity
             get { return mPlatformType; }
             set
             {
-                if (mSimulatePlatformType) 
+                if (mSimulatePlatformType)
                     return;
                 mPlatformType = value;
             }
@@ -124,10 +123,10 @@ namespace JCSUnity
 
             var apps = JCS_AppSettings.FirstInstance();
 
-            if (apps.SAVE_ON_EXIT_APP && apps.SAVE_APP_DATA_FUNC != null)
+            if (apps.saveOnExitApp)
             {
                 // save when exit app
-                apps.SAVE_APP_DATA_FUNC.Invoke();
+                apps.onSaveAppData?.Invoke();
             }
         }
 

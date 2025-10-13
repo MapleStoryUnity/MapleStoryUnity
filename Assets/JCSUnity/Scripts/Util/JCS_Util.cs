@@ -662,7 +662,6 @@ namespace JCSUnity
         /// <param name="objectPath"> path of the game object </param>
         /// <param name="position"> position of the game object spawn </param>
         /// <param name="rotation"> rotation of the game object spawn </param>
-        /// <returns></returns>
         public static GameObject Instantiate(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
             var original = Resources.Load<GameObject>(objectPath);
@@ -675,7 +674,6 @@ namespace JCSUnity
         /// <param name="trans"></param>
         /// <param name="position"></param>
         /// <param name="rotation"></param>
-        /// <returns></returns>
         public static Object Instantiate(Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
             if (trans == null) return null;
@@ -791,7 +789,11 @@ namespace JCSUnity
         /// </summary>
         public static bool IsClone(Object obj)
         {
-            return obj.name.Contains("(Clone)");
+            return IsClone(obj.name);
+        }
+        public static bool IsClone(string name)
+        {
+            return name.Contains("(Clone)");
         }
 
         /// <summary>
@@ -800,9 +802,12 @@ namespace JCSUnity
         /// </summary>
         public static string RemoveCloneString(Object obj)
         {
-            obj.name = obj.name.Replace("(Clone)", "");
-
+            obj.name = RemoveCloneString(obj.name);
             return obj.name;
+        }
+        public static string RemoveCloneString(string name)
+        {
+            return name.Replace("(Clone)", "");
         }
 
         #endregion

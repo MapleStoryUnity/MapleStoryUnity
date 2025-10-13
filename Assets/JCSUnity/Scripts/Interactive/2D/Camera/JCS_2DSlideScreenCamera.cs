@@ -44,7 +44,7 @@ namespace JCSUnity
 #endif
 
         // Path that points to the panel.
-        private string mPanelHolderPath = "UI/System/JCS_SlideScreenPanelHolder";
+        private const string PANEL_HOLDER_PATH = "UI/System/JCS_SlideScreenPanelHolder";
 
         [Separator("Check Variables (JCS_2DSlideScreenCamera)")]
 
@@ -123,20 +123,20 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_SlideScreenPanelHolder panelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
-        public JCS_UnityGUIType unityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
-        public bool interactableSwipe { get { return this.mInteractableSwipe; } set { this.mInteractableSwipe = value; } }
-        public Vector2 swipeArea { get { return this.mSwipeArea; } set { this.mSwipeArea = value; } }
-        public float swipeSpeedX { get { return this.mSwipeSpeedX; } set { this.mSwipeSpeedX = value; } }
-        public float swipeSpeedY { get { return this.mSwipeSpeedY; } set { this.mSwipeSpeedY = value; } }
-        public bool freezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
-        public bool freezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
-        public AudioClip switchSceneSound { get { return this.mSwitchSceneSound; } set { this.mSwitchSceneSound = value; } }
-        public Vector2 currentPage { get { return this.mCurrentPage; } }
-        public int minPageX { get { return this.mMinPageX; } set { this.mMinPageX = value; } }
-        public int maxPageX { get { return this.mMaxPageX; } set { this.mMaxPageX = value; } }
-        public int minPageY { get { return this.mMinPageY; } set { this.mMinPageY = value; } }
-        public int maxPageY { get { return this.mMaxPageY; } set { this.mMaxPageY = value; } }
+        public JCS_SlideScreenPanelHolder panelHolder { get { return mPanelHolder; } set { mPanelHolder = value; } }
+        public JCS_UnityGUIType unityGUIType { get { return mUnityGUIType; } set { mUnityGUIType = value; } }
+        public bool interactableSwipe { get { return mInteractableSwipe; } set { mInteractableSwipe = value; } }
+        public Vector2 swipeArea { get { return mSwipeArea; } set { mSwipeArea = value; } }
+        public float swipeSpeedX { get { return mSwipeSpeedX; } set { mSwipeSpeedX = value; } }
+        public float swipeSpeedY { get { return mSwipeSpeedY; } set { mSwipeSpeedY = value; } }
+        public bool freezeX { get { return mFreezeX; } set { mFreezeX = value; } }
+        public bool freezeY { get { return mFreezeY; } set { mFreezeY = value; } }
+        public AudioClip switchSceneSound { get { return mSwitchSceneSound; } set { mSwitchSceneSound = value; } }
+        public Vector2 currentPage { get { return mCurrentPage; } }
+        public int minPageX { get { return mMinPageX; } set { mMinPageX = value; } }
+        public int maxPageX { get { return mMaxPageX; } set { mMaxPageX = value; } }
+        public int minPageY { get { return mMinPageY; } set { mMinPageY = value; } }
+        public int maxPageY { get { return mMaxPageY; } set { mMaxPageY = value; } }
 
         /* Functions */
 
@@ -145,8 +145,8 @@ namespace JCSUnity
             if (mPanelHolder == null)
             {
                 // spawn a default one!
-                this.mPanelHolder = JCS_Util.Instantiate(
-                    mPanelHolderPath,
+                mPanelHolder = JCS_Util.Instantiate(
+                    PANEL_HOLDER_PATH,
                     transform.position,
                     transform.rotation).GetComponent<JCS_SlideScreenPanelHolder>();
             }
@@ -202,7 +202,7 @@ namespace JCSUnity
         /// <param name="page"> Index of the page. </param>
         public void SetPageX(int page)
         {
-            int delta = page - (int)this.mCurrentPage.x;
+            int delta = page - (int)mCurrentPage.x;
 
             if (delta == 0)
                 return;
@@ -224,7 +224,7 @@ namespace JCSUnity
         /// <param name="page"> Index of the page. </param>
         public void SetPageY(int page)
         {
-            int delta = page - (int)this.mCurrentPage.y;
+            int delta = page - (int)mCurrentPage.y;
 
             if (delta == 0)
                 return;
@@ -443,7 +443,7 @@ namespace JCSUnity
         private void PlaySwitchSceneSound()
         {
             JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
-            sp.PlayOneShot(this.mSwitchSceneSound);
+            sp.PlayOneShot(mSwitchSceneSound);
         }
 
         /// <summary>
@@ -472,15 +472,15 @@ namespace JCSUnity
                     {
                         if (panelRoot != null)
                         {
-                            JCS_ScreenSizef size = screenS.StartingScreenSize();
+                            JCS_ScreenSizef size = screenS.StartingSize();
 
                             screenWidth = size.width;
                             screenHeight = size.height;
                         }
                         else
                         {
-                            screenWidth = screenS.STANDARD_SCREEN_SIZE.width;
-                            screenHeight = screenS.STANDARD_SCREEN_SIZE.height;
+                            screenWidth = screenS.standardSize.width;
+                            screenHeight = screenS.standardSize.height;
                         }
                     }
                     break;
@@ -562,7 +562,7 @@ namespace JCSUnity
             float screenHeight = screenSize.y;
 
             // make a copy of old position
-            Vector3 newScenePosition = this.transform.position;
+            Vector3 newScenePosition = transform.position;
 
             // Apply new position and set to its position according to the
             // direction programmer pass in.
@@ -607,7 +607,7 @@ namespace JCSUnity
 
             // Set this position to new position, so the camera will follow
             // this object!
-            this.transform.position = newScenePosition;
+            transform.position = newScenePosition;
         }
     }
 }

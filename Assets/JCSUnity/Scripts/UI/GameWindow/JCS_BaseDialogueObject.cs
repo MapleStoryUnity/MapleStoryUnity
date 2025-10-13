@@ -164,7 +164,7 @@ namespace JCSUnity
             var screens = JCS_ScreenSettings.FirstInstance();
 
             // if is Resize UI is enable than add Dialogue under resize ui transform
-            if (uis.RESIZE_UI && !screens.IsNone())
+            if (uis.resizeUI && !screens.IsNone())
                 parentObject = resizeUI.transform;
             // Else we add it directly under the Canvas
             else

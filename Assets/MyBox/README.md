@@ -1,13 +1,8 @@
-# MyBox
+# MyBox – set of tools, features and extensions for Unity
 
-[![openupm](https://img.shields.io/npm/v/com.domybest.mybox?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.domybest.mybox/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/Deadcows/MyBox/blob/master/LICENSE.md)
-<a href="https://www.buymeacoffee.com/andrewrumak" target="_blank"><img src="https://user-images.githubusercontent.com/969858/114297171-ca615080-9ab7-11eb-8010-0ae8762ff1f1.png" /></a>
-<br>
+### [![openupm](https://img.shields.io/npm/v/com.domybest.mybox?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.domybest.mybox/) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/Deadcows/MyBox/blob/master/LICENSE.md) <a href="https://ko-fi.com/mybox" target="_blank"><img src="https://storage.ko-fi.com/cdn/logomarkLogo.png" height=20 /><sup><sub> Support my work ❤️</sub></sup></a>
 
-
-MyBox is a set of tools, features and extensions for Unity.<br />
-It is MyBox. Now it's yours too :raised_hands:<br />
+It is MyBox of helpful things. Now it's yours too :raised_hands:<br />
 
 
 ## [Installation](https://github.com/Deadcows/MyBox/wiki/Installation)
@@ -25,6 +20,7 @@ Tons of images in docs below :point_down:
 **[DisplayInspector](https://github.com/Deadcows/MyBox/wiki/Attributes#displayinspector)** — Display one inspector inside of another<br />
 **[Foldout](https://github.com/Deadcows/MyBox/wiki/Attributes#foldout)** — Group your fields in inspector<br />
 **[InitializationField](https://github.com/Deadcows/MyBox/wiki/Attributes#initializationfield)** — Field that is not editable in playmode<br />
+**[RealtimeField](https://github.com/Deadcows/MyBox/wiki/Attributes#realtimefield)** — Field that is not editable in edit mode<br />
 **[Tag, Layer, SpriteLayer](https://github.com/Deadcows/MyBox/wiki/Attributes#tag-layer-spritelayer)** — Dropdown with Tags, Layers or SpriteLayers<br />
 **[MinMaxRange, RangedFloat and RangedInt](https://github.com/Deadcows/MyBox/wiki/Attributes#minmaxrange-rangedfloat-and-rangedint)** — Ranged sliders<br />
 **[MaxValue, MinValue and PositiveValueOnly](https://github.com/Deadcows/MyBox/wiki/Attributes#maxvalue-minvalue-and-positivevalueonly)** — Validation for numbers and vectors<br />

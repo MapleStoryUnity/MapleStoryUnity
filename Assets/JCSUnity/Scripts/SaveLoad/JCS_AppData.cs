@@ -23,10 +23,10 @@ namespace JCSUnity
         [Separator("Runtime Variables (JCS_AppData)")]
 
         [Tooltip("The copyright information.")]
-        public string Copyright = "";
+        public string copyright = "";
 
         [Tooltip("The resource version.")]
-        public string Version = "";
+        public string version = "";
 
         [Tooltip("Set to true when the data is initialized.")]
         [SerializeField]
@@ -49,8 +49,8 @@ namespace JCSUnity
             if (pds == null)
                 return;
 
-            Copyright = pds.CopyrightString;
-            Version = pds.VersionString;
+            copyright = pds.copyright;
+            version = pds.version;
 
             // Set init flag.
             mInitialized = true;
@@ -61,7 +61,7 @@ namespace JCSUnity
         /// </summary>
         public bool Initialized()
         {
-            return this.mInitialized;
+            return mInitialized;
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace JCSUnity
         public static string SavePath()
         {
             var apps = JCS_AppSettings.FirstInstance();
-            string path = JCS_Path.Combine(Application.persistentDataPath, apps.DATA_PATH);
+            string path = JCS_Path.Combine(Application.persistentDataPath, apps.dataPath);
             return path;
         }
     }

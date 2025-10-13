@@ -50,8 +50,8 @@ namespace JCSUnity
 
             // if the game only allow one play do the function
             // in order to take the effect.
-            if (JCS_GameSettings.FirstInstance().ACTIVE_ONE_PLAYER)
-                ActiveOnePlayer(JCS_GameManager.FirstInstance().Player);
+            if (JCS_GameSettings.FirstInstance().activeOnePlayer)
+                ActiveOnePlayer(JCS_GameManager.FirstInstance().player);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace JCSUnity
         /// </summary>
         public void DoIgnorePlayersToEachOthers()
         {
-            if (!JCS_GameSettings.FirstInstance().PLAYER_IGNORE_EACH_OTHER)
+            if (!JCS_GameSettings.FirstInstance().playerIgnoreEachOther)
                 return;
 
             // Make all the player ignore each other
@@ -127,7 +127,7 @@ namespace JCSUnity
             for (int index = 0; index < mPlayers.Count; ++index)
             {
                 Physics.IgnoreCollision(
-                    mPlayers[index].GetCharacterController(), 
+                    mPlayers[index].GetCharacterController(),
                     cc, act);
             }
         }

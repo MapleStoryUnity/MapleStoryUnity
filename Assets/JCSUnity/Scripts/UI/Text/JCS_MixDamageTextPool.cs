@@ -264,12 +264,12 @@ namespace JCSUnity
                 // Check min max
                 {
                     // 如果小於最下限得值, 就設定為最下限的值
-                    if (damages[index] < gs.MIN_DAMAGE)
-                        damages[index] = gs.MIN_DAMAGE;
+                    if (damages[index] < gs.minDamage)
+                        damages[index] = gs.minDamage;
 
                     // 如果大於最上限得值, 就設定為最上限的值
-                    if (damages[index] > gs.MAX_DAMAGE)
-                        damages[index] = gs.MAX_DAMAGE;
+                    if (damages[index] > gs.maxDamage)
+                        damages[index] = gs.maxDamage;
                 }
 
                 // see if this damage text a critical damage text?

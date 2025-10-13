@@ -179,7 +179,7 @@ namespace JCSUnity
             var screens = JCS_ScreenSettings.FirstInstance();
             var uim = JCS_UIManager.FirstInstance();
 
-            if (uis.RESIZE_UI && !screens.IsNone())
+            if (uis.resizeUI && !screens.IsNone())
             {
                 GameObject spawned = JCS_Util.Instantiate(RESIZE_UI_PATH);
 
@@ -204,7 +204,7 @@ namespace JCSUnity
             var uis = JCS_UISettings.FirstInstance();
             var screens = JCS_ScreenSettings.FirstInstance();
 
-            if (uis.RESIZE_UI && !screens.IsNone())
+            if (uis.resizeUI && !screens.IsNone())
             {
                 if (mResizeUI == null)
                     return;

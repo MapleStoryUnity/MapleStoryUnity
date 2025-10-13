@@ -114,7 +114,7 @@ true meaning the fly action object cannot go throught this platform.")]
                      * the other collision detection. In order not to let the 
                      * render frame goes off. set the value as small as possible.
                      */
-                    p.velY = -ps.POSITION_PLATFORM_DOWN_JUMP_FORCE;
+                    p.velY = -ps.positionDownJumpForce;
                 }
                 else
                 {

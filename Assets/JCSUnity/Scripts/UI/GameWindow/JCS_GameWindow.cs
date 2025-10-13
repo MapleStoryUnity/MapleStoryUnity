@@ -44,7 +44,7 @@ namespace JCSUnity
 
         public void Awake()
         {
-            mDialogueObject = this.GetComponent<JCS_DialogueObject>();
+            mDialogueObject = GetComponent<JCS_DialogueObject>();
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace JCSUnity
                 // Process Drag
                 case DragDrop.Drag:
                     Vector3 delta = JCS_Input.MouseDeltaPosition();
-                    this.transform.localPosition += delta;
+                    transform.localPosition += delta;
                     break;
 
                 // Process Drop

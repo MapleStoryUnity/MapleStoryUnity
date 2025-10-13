@@ -29,14 +29,14 @@ namespace JCSUnity
         {
             var ns = JCS_NetworkSettings.FirstInstance();
 
-            if (!ns.ONLINE_MODE)
+            if (!ns.onlineMode)
                 return false;
 
             Debug.Log("Online Mode is enabled");
 
             // Create Connection
             if (!JCS_NetworkSettings.CreateNetwork(
-                ns.HOST_NAME, ns.PORT,
+                ns.host, ns.port,
                 JCS_NetworkSettings.GetPresetClientHandler()))
             {
                 // Faild handle

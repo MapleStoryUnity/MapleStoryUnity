@@ -56,7 +56,7 @@ namespace JCSUnity
                 }
             }
         }
-        public JCS_Player Player { get { return mPlayer; } set { mPlayer = value; } }
+        public JCS_Player player { get { return mPlayer; } set { mPlayer = value; } }
 
         /* Functions */
 
@@ -110,10 +110,10 @@ namespace JCSUnity
         /// </summary>
         private void SetDoneInitializeFlag()
         {
-            if (this.mDoneInitialize)
+            if (mDoneInitialize)
                 return;
 
-            this.mDoneInitialize = true;
+            mDoneInitialize = true;
 
             mOnSystemAfterInitialize?.Invoke();
 

@@ -21,10 +21,10 @@ namespace JCSUnity
         [Separator("Initialize Variables (JCS_PackageDataSettings)")]
 
         [Tooltip("Package Data copyright information.")]
-        public string CopyrightString = "Copyright 2017 JCSUnity, Taiwan";
+        public string copyright = "Copyright 2017 JCSUnity, Taiwan";
 
         [Tooltip("Package Data version information.")]
-        public string VersionString = "Package file v1.0";
+        public string version = "Package file v1.0";
 
         /* Setter & Getter */
 
@@ -48,8 +48,8 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_PackageDataSettings _old, JCS_PackageDataSettings _new)
         {
-            _new.CopyrightString = _old.CopyrightString;
-            _new.VersionString = _old.VersionString;
+            _new.copyright = _old.copyright;
+            _new.version = _old.version;
         }
     }
 }

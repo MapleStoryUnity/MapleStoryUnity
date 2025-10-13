@@ -52,14 +52,14 @@ namespace JCSUnity
                 return;
 
             // check effect enable?
-            if (!ps.RESET_POSITION_AT_START)
+            if (!ps.resetPositionAtStart)
                 return;
 
             mPortals = JCS_Array.RemoveEmptyMissing(mPortals).ToArray();
 
             foreach (JCS_2DPortal portal in mPortals)
             {
-                if (portal.portalLabel == ps.SCENE_PORTAL_LABEL)
+                if (portal.portalLabel == ps.sceneLabel)
                 {
                     // get the player
                     JCS_Player player = JCS_PlayerManager.FirstInstance().GetActivePlayer();
@@ -70,7 +70,7 @@ namespace JCSUnity
 
                     // set the camera position
                     JCS_Camera.main.SetPosition(
-                        portal.transform.position.x, 
+                        portal.transform.position.x,
                         portal.transform.position.y);
 
                     break;

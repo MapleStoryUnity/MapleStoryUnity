@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System;
-// ReSharper disable MemberCanBePrivate.Global
+using JetBrains.Annotations;
 
 namespace MyBox
 {
+	[PublicAPI]
 	public static class MyMath
 	{
 		/// <summary>
@@ -12,20 +13,26 @@ namespace MyBox
 		public static void Swap<T>(ref T a, ref T b) => (a, b) = (b, a);
 		
 		public static float Clamp(this float value, float min, float max) => Mathf.Clamp(value, min, max);
+		public static float Clamp01(this float value) => Mathf.Clamp01(value);
+		
 		public static int Clamp(this int value, int min, int max) => Mathf.Clamp(value, min, max);
+		public static int Clamp01(this int value) => Mathf.Clamp(value, 0, 1);
+		
+		public static float Abs(this float value) => Mathf.Abs(value);
+		public static int Abs(this int value) => Mathf.Abs(value);
 		
 		/// <summary>
-		/// Snap to grid of "round" size
+		/// Snap to a grid of "round" size
 		/// </summary>
 		public static float Snap(this float val, float round) => round * Mathf.Round(val / round);
 		
 		/// <summary>
-		/// Round float value to nearest whole number
+		/// Round float value to the nearest whole number
 		/// </summary>
 		public static float Round(this float val) => Mathf.Round(val);
 		
 		/// <summary>
-		/// Round float value to nearest integer
+		/// Round float value to the nearest integer
 		/// </summary>
 		public static int RoundToInt(this float val) => Mathf.RoundToInt(val);
 		
@@ -39,9 +46,25 @@ namespace MyBox
 		/// </summary>
 		public static bool Approximately(this float value, float compare) => Mathf.Approximately(value, compare);
 		
+		/// <summary>
+		/// Maps a value from some range to the 0 to 1 range
+		/// </summary>
+		public static float RemapTo01(this float value, float min, float max) => (value - min) * 1f / (max - min);
+        
+		/// <summary>
+		/// Maps a value from some range to the 0 to 1 range
+		/// </summary>
+		public static float RemapTo01(this float value, MinMaxFloat minMax) => RemapTo01(value, minMax.Min, minMax.Max);
+
+		/// <summary>
+		/// Maps a value from one range to another
+		/// </summary>
+		public static float Remap(this float value, float leftMin, float leftMax, float rightMin, float rightMax) =>
+			rightMin + (value - leftMin) * (rightMax - rightMin) / (leftMax - leftMin);
+		
 		
 		/// <summary>
-		/// Value is in [0, 1) range.
+		/// Value is in [0, 1) ranges.
 		/// </summary>
 		public static bool InRange01(this float value) => InRange(value, 0, 1);
 
@@ -62,7 +85,7 @@ namespace MyBox
 		public static bool InRange(this int value, RangedInt range) => value.InRange(range.Min, range.Max);
 
 		/// <summary>
-		/// Value is in [closedLeft, closedRight] range, max-inclusive.
+		/// Value is in the [closedLeft, closedRight] range, max-inclusive.
 		/// </summary>
 		public static bool InRangeInclusive<T>(this T value, T closedLeft, T closedRight) where T : IComparable =>
 			value.CompareTo(closedLeft) >= 0 && value.CompareTo(closedRight) <= 0;

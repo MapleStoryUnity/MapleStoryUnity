@@ -74,7 +74,7 @@ namespace JCSUnity
 
             string sceneName = JCS_SceneManager.GetSceneNameByOption(mSceneName, mReloadScene);
 
-            float fadeInTime = JCS_SceneSettings.FirstInstance().SceneFadeInTimeBaseOnSetting();
+            float fadeInTime = JCS_SceneSettings.FirstInstance().TimeIn();
 
             JCS_SceneManager.FirstInstance().LoadScene(sceneName, mMode,
                 fadeInTime, mScreenColor, mKeppBGM);
