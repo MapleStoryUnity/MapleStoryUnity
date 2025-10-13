@@ -91,7 +91,7 @@ jobs:
             Library-${{ matrix.projectPath }}-
             Library-
 
-      - uses: game-ci/unity-builder@v4.5.0
+      - uses: game-ci/unity-builder@v4.7.0
         with:
           projectPath: ${{ env.PROJECT_PATH }}
           unityVersion: ${{ env.UNITY_VERSION }}
