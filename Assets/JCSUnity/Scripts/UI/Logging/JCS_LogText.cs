@@ -17,6 +17,7 @@ namespace JCSUnity
     [RequireComponent(typeof(JCS_FadeObject))]
     [RequireComponent(typeof(JCS_SimpleTrackAction))]
     [RequireComponent(typeof(JCS_SlideEffect))]
+    [DisallowMultipleComponent]
     public class JCS_LogText : JCS_TextObject
     {
         /* Variables */
@@ -31,7 +32,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_IGLogSystem mIGLogSystem = null;
 
-        [Tooltip("Is the log text active?")]
+        [Tooltip("True when the log text is active.")]
         [SerializeField]
         private bool mActive = false;
 

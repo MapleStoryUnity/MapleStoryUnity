@@ -7,13 +7,13 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Video;
 using MyBox;
-using UnityEngine.UI;
 
 namespace JCSUnity
 {
@@ -29,8 +29,7 @@ namespace JCSUnity
         public Func<bool> onSwitchSceneIn = null;
         public Func<bool> onSwitchSceneOut = null;
 
-        // Async loading scene operation. (thread)
-        private AsyncOperation mAsyncOperation = null;
+        private bool mIsEnteringSwitchScene = false;
 
         [Separator("Check Variables (JCS_SceneManager)")]
 
@@ -261,7 +260,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            if (IsEnteringSwitchScene())
+            if (mIsEnteringSwitchScene)
                 DoEnterSwitchScene();
             else
                 DoExitSwitchScene();
@@ -381,9 +380,8 @@ namespace JCSUnity
                 apps.onSaveAppData?.Invoke();
             }
 
-            // preload the scene
-            mAsyncOperation = SceneManager.LoadSceneAsync(scs.nextSceneName, mode);
-            mAsyncOperation.allowSceneActivation = false;
+            // Mark loading scene.
+            mIsEnteringSwitchScene = true;
 
             switch (mSwitchSceneType)
             {
@@ -600,7 +598,7 @@ namespace JCSUnity
                         if (onSwitchSceneIn != null)
                         {
                             if (onSwitchSceneIn.Invoke())
-                                AllowSceneActivation();
+                                EnterNextScene();
                         }
                     }
                     break;
@@ -608,14 +606,14 @@ namespace JCSUnity
                 case JCS_SwitchSceneType.FADE:
                     {
                         if (mBlackScreen.IsFadeIn())
-                            AllowSceneActivation();
+                            EnterNextScene();
                     }
                     break;
 
                 case JCS_SwitchSceneType.SLIDE:
                     {
                         if (mBlackSlideScreen.IsDoneSliding())
-                            AllowSceneActivation();
+                            EnterNextScene();
                     }
                     break;
 
@@ -623,7 +621,7 @@ namespace JCSUnity
                     {
                         if (!ss.videoPlayer.isPlaying)
                         {
-                            AllowSceneActivation();
+                            EnterNextScene();
 
                             ss.videoPlayer.enabled = false;
                         }
@@ -678,18 +676,17 @@ namespace JCSUnity
         /// <summary>
         /// Activate the next scene when it's ready.
         /// </summary>
-        private void AllowSceneActivation()
+        private void EnterNextScene()
         {
-            // load the scene if is ready
-            mAsyncOperation.allowSceneActivation = true;
+            // Delay a bit of time to make sure it's completely
+            // fade out.
+            Invoke(nameof(InvokeEnterNextScene), 0.01f);
         }
-
-        /// <summary>
-        /// Return true if we are still in the entering switch scene state.
-        /// </summary>
-        private bool IsEnteringSwitchScene()
+        private void InvokeEnterNextScene()
         {
-            return mAsyncOperation != null && !mAsyncOperation.allowSceneActivation;
+            var scs = JCS_SceneSettings.FirstInstance();
+
+            SceneManager.LoadScene(scs.nextSceneName, scs.mode);
         }
     }
 }

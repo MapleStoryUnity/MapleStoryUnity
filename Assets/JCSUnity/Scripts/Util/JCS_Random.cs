@@ -223,23 +223,39 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Choose one object from the list.
+        /// Choose object(s) from the collections.
         /// </summary>
-        /// <typeparam name="T"> Type of the object. </typeparam>
-        /// <param name="inArray"> The list or array to choose from. </param>
-        /// <returns> The chosen object from the list or array. </returns>
         public static T ChooseOneE<T>(params T[] args)  // Ellipsis
         {
             return ChooseOne(args);
         }
         public static T ChooseOne<T>(ICollection<T> lst)
         {
-            if (lst.Count == 0)
-                return default(T);
+            if (lst == null || lst.Count == 0)
+                return default;
 
             int index = Range(0, lst.Count);
 
             return lst.ElementAt(index);
+        }
+        public static List<T> Choose<T>(int size, ICollection<T> lst)
+        {
+            List<T> chosen = new();
+
+            JCS_Loop.Times(size, () =>
+            {
+                chosen.Add(ChooseOne(lst));
+            });
+
+            return chosen;
+        }
+
+        /// <summary>
+        /// Choose object(s) from the collection.
+        /// </summary>
+        public static KeyValuePair<T, K> ChooseOneE<T, K>(params KeyValuePair<T, K>[] args)  // Ellipsis
+        {
+            return ChooseOne(args);
         }
         public static KeyValuePair<T, K> ChooseOne<T, K>(ICollection<KeyValuePair<T, K>> dict)
         {
@@ -249,6 +265,17 @@ namespace JCSUnity
             int index = Range(0, dict.Count);
 
             return dict.ElementAt(index);
+        }
+        public static List<KeyValuePair<T, K>> Choose<T, K>(int size, ICollection<KeyValuePair<T, K>> dict)
+        {
+            List<KeyValuePair<T, K>> chosen = new();
+
+            JCS_Loop.Times(size, () =>
+            {
+                chosen.Add(ChooseOne(dict));
+            });
+
+            return chosen;
         }
 
         /// <summary>

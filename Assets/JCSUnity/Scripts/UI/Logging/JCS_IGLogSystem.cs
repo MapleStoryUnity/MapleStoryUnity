@@ -16,6 +16,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(JCS_GUITextPool))]
+    [DisallowMultipleComponent]
     public class JCS_IGLogSystem : JCS_UnityObject
     {
         /* Variables */
@@ -82,33 +83,27 @@ namespace JCSUnity
                 return;
 
             if (JCS_Input.GetKeyDown(sendTextAKey))
-                SendLogMessage(textA);
+                Send(textA);
             if (JCS_Input.GetKeyDown(sendTextBKey))
-                SendLogMessage(textB);
+                Send(textB);
             if (JCS_Input.GetKeyDown(sendRandomTextArrayKey))
             {
-                SendLogMessages(textArray);
+                Send(textArray);
             }
         }
 #endif
 
         /// <summary>
-        /// Make multiple log messages on the screen.
+        /// Make log message(s) on the screen.
         /// </summary>
-        /// <param name="messages"></param>
-        public void SendLogMessages(string[] messages)
+        public void Send(params string[] msgs)
         {
-            foreach (string msg in messages)
+            foreach (string msg in msgs)
             {
-                SendLogMessage(msg);
+                Send(msg);
             }
         }
-
-        /// <summary>
-        /// Make single log message on the screen.
-        /// </summary>
-        /// <param name="message"></param>
-        public void SendLogMessage(string message)
+        public void Send(string msg)
         {
             // get one log text from the pool
             JCS_LogText logText = mLogTextPool.ExecuteOneFromPool();
@@ -132,7 +127,7 @@ namespace JCSUnity
 
             // this will set the log text active, 
             // so it wont be reuse until is fade out.
-            logText.Execute(message);
+            logText.Execute(msg);
         }
 
         /// <summary>

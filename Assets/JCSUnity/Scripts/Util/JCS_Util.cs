@@ -1195,16 +1195,18 @@ namespace JCSUnity
         /// <summary>
         /// Destroy the particle by its duration.
         /// </summary>
-        public static void DestroyParticle(ParticleSystem ps)
+        public static bool DestroyParticle(ParticleSystem ps)
         {
-            DestroyParticle(ps, ps.main.duration);
+            return DestroyParticle(ps, ps.main.duration);
         }
-        public static void DestroyParticle(ParticleSystem ps, float duration)
+        public static bool DestroyParticle(ParticleSystem ps, float duration)
         {
             if (ps.main.loop)
-                return;
+                return false;
 
             Object.Destroy(ps.gameObject, duration);
+
+            return true;
         }
 
         #endregion

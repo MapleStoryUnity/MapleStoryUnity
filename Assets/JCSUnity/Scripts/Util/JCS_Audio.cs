@@ -97,16 +97,24 @@ namespace JCSUnity
         /// <summary>
         /// Destroy the clip by its clip length.
         /// </summary>
-        public static void DestroyClip(AudioSource source)
+        public static bool DestroyClip(AudioSource source)
         {
-            DestroyClip(source, source.clip);
+            return DestroyClip(source, source.clip);
         }
-        public static void DestroyClip(AudioSource source, AudioClip clip)
+        public static bool DestroyClip(AudioSource source, AudioClip clip)
+        {
+            float duration = clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale);
+
+            return DestroyClip(source, duration);
+        }
+        public static bool DestroyClip(AudioSource source, float duration)
         {
             if (source.loop)
-                return;
+                return false;
 
-            Object.Destroy(source.gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
+            Object.Destroy(source.gameObject, duration);
+
+            return true;
         }
     }
 }
