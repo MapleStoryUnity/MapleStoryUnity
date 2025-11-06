@@ -55,6 +55,15 @@ namespace JCSUnity
         /// Like `Animator.HasState` but make second paramter 
         /// accepts the string.
         /// </summary>
+        public static bool HasState(Animator animator, int layer, int name)
+        {
+            // First check if the layer exists.
+            if (!HasLayer(animator, layer))
+                return false;
+
+            // Then do the check.
+            return animator.HasState(layer, name);
+        }
         public static bool HasState(Animator animator, int layer, string name)
         {
             // First check if the layer exists.

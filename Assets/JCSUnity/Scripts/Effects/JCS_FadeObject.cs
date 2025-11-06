@@ -231,10 +231,6 @@ namespace JCSUnity
         /// </summary>
         private void DoFade()
         {
-            if (GetObjectType() == JCS_UnityObjectType.GAME_OBJECT &&
-                JCS_GameManager.FirstInstance().gamePaused)
-                return;
-
             if (!mEffect)
                 return;
 

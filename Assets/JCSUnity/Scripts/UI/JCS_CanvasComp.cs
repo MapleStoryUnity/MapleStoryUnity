@@ -37,22 +37,22 @@ namespace JCSUnity
             get => mCanvas.doHide;
             set => mCanvas.doHide = value;
         }
-        public Action<JCS_Canvas> onShow
+        public Action<bool> onShow
         {
             get => mCanvas.onShow;
             set => mCanvas.onShow = value;
         }
-        public Action<JCS_Canvas> onHide
+        public Action<bool> onHide
         {
             get => mCanvas.onHide;
             set => mCanvas.onHide = value;
         }
-        public Action<JCS_Canvas> onShowFade
+        public Action onShowFade
         {
             get => mCanvas.onShowFade;
             set => mCanvas.onShowFade = value;
         }
-        public Action<JCS_Canvas> onHideFade
+        public Action onHideFade
         {
             get => mCanvas.onHideFade;
             set => mCanvas.onHideFade = value;

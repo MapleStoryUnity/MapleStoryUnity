@@ -38,14 +38,14 @@ namespace JCSUnity
         public Action doHide = null;
 
         // Execution when canvas is shown.
-        public Action<JCS_Canvas> onShow = null;
+        public Action<bool> onShow = null;
         // Execution when canvas is hidden.
-        public Action<JCS_Canvas> onHide = null;
+        public Action<bool> onHide = null;
 
         // Execution when canvas is shown by fading.
-        public Action<JCS_Canvas> onShowFade = null;
+        public Action onShowFade = null;
         // Execution when canvas is hidden by fading.
-        public Action<JCS_Canvas> onHideFade = null;
+        public Action onHideFade = null;
 
         private RectTransform mAppRect = null;  // Application Rect (Window)
 
@@ -329,7 +329,7 @@ namespace JCSUnity
 
             doShow?.Invoke();
 
-            onShow?.Invoke(this);
+            onShow?.Invoke(mute);
         }
 
         #region Show
@@ -373,7 +373,7 @@ namespace JCSUnity
 
             doHide?.Invoke();
 
-            onHide?.Invoke(this);
+            onHide?.Invoke(mute);
         }
 
         #region Hide
@@ -496,7 +496,7 @@ namespace JCSUnity
                         {
                             mCanvasGroup.alpha = mFadeInAmount;
 
-                            onShowFade?.Invoke(this);
+                            onShowFade?.Invoke();
                         }
                         break;
                     case JCS_FadeType.OUT:
@@ -505,7 +505,7 @@ namespace JCSUnity
 
                             mCanvas.enabled = false;
 
-                            onHideFade?.Invoke(this);
+                            onHideFade?.Invoke();
                         }
                         break;
                 }
