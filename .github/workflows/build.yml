@@ -34,7 +34,7 @@ jobs:
     name: Test all modes ✨
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           lfs: true
       - uses: actions/cache@v4.2.4
@@ -79,7 +79,7 @@ jobs:
           #- Stadia
           #- CloudRendering
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           lfs: true
 
