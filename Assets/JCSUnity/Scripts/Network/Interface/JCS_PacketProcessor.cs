@@ -41,7 +41,7 @@ namespace JCSUnity
             }
 
             int maxRecvOp = 0;
-            foreach (K op in JCS_Util.GetValues<K>())
+            foreach (K op in JCS_Enum.GetValues<K>())
             {
                 int opId = Convert.ToInt32(op);
 

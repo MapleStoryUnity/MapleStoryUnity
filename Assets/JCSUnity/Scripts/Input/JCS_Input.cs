@@ -762,7 +762,7 @@ namespace JCSUnity
         public static KeyCode GetAnyKeyByAction(JCS_KeyActionType type)
         {
             // loop through the key code list
-            foreach (KeyCode val in JCS_Util.GetValues<KeyCode>())
+            foreach (KeyCode val in JCS_Enum.GetValues<KeyCode>())
             {
                 // if the key is pressed, return it.
                 if (GetKeyByAction(type, val))

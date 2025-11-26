@@ -70,10 +70,6 @@ namespace JCSUnity
             {
                 OnValueChanged_TMP(mDropdownTMP);
             });
-
-            // Run once.
-            OnValueChanged_Legacy(mDropdownLegacy);
-            OnValueChanged_TMP(mDropdownTMP);
         }
 
         /// <summary>

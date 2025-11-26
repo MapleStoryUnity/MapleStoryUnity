@@ -169,9 +169,9 @@ namespace JCSUnity
         }
         public void DoShake(bool force)
         {
-            DoShake(mTime, mMargin, force);
+            DoShake(mTime, mMargin, mSteps, force);
         }
-        public void DoShake(float time, float margin, bool force)
+        public void DoShake(float time, float margin, float steps, bool force)
         {
             if (!force)
             {
@@ -186,6 +186,7 @@ namespace JCSUnity
             mTime = time;
             mTimer = 0.0f;
             mMargin = margin;
+            mSteps = steps;
 
             RevertShakeByTransformType(mDelta);
 

@@ -21,7 +21,7 @@ namespace JCSUnity
     {
         public static int GAMEPAD_COUNT = 0;  // How many gamepad in this game?
 
-        public static int SELECT_GAMEPAD_TYPE= 0;
+        public static int SELECT_GAMEPAD_TYPE = 0;
 
         public static string[] GAMEPAD_PLATFORM = {
             "Select Platform",
@@ -185,7 +185,7 @@ namespace JCSUnity
 
                 /* Microsoft XBox */
                 case 5:  /* ==> XBox <== */
-                    
+
                     break;
                 case 6:  /* ==> XBox 360 <== */
                     SetupXBox360Joystick();
@@ -561,7 +561,7 @@ namespace JCSUnity
 
             for (int joystickNum = 0; joystickNum < GAMEPAD_COUNT; ++joystickNum)
             {
-                foreach (JCS_JoystickButton val in JCS_Util.GetValues<JCS_JoystickButton>())
+                foreach (JCS_JoystickButton val in JCS_Enum.GetValues<JCS_JoystickButton>())
                 {
                     if (val == JCS_JoystickButton.NONE)
                         continue;
@@ -594,7 +594,7 @@ namespace JCSUnity
 
             for (int joystickNum = 0; joystickNum < GAMEPAD_COUNT; ++joystickNum)
             {
-                foreach (JCS_JoystickButton val in JCS_Util.GetValues<JCS_JoystickButton>())
+                foreach (JCS_JoystickButton val in JCS_Enum.GetValues<JCS_JoystickButton>())
                 {
                     if (val == JCS_JoystickButton.NONE)
                         continue;

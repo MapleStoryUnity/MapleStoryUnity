@@ -41,16 +41,20 @@ namespace JCSUnity
 
         [Tooltip("Key that increment the time.")]
         [SerializeField]
-        private KeyCode mIncTime = KeyCode.N;
+        private KeyCode mKeyInc = KeyCode.M;
 
         [Tooltip("Key that decrement the time.")]
         [SerializeField]
-        private KeyCode mDecTime = KeyCode.M;
+        private KeyCode mKeyDec = KeyCode.N;
+
+        [Tooltip("Key that decrement the time.")]
+        [SerializeField]
+        private KeyCode mKeyReset = KeyCode.B;
 
         [Tooltip("Delta value to add to the time.")]
         [SerializeField]
-        [Range(0.0f, 100.0f)]
-        private float mTimeDelta = 5.0f;
+        [Range(0.001f, 100.0f)]
+        private float mTimeDelta = 0.1f;
 #endif
 
         [Separator("Check Variables (JCS_PauseManager)")]
@@ -129,7 +133,7 @@ object you have in the list.")]
 #if UNITY_EDITOR
             mTimeScale = Time.timeScale;
 
-            TestPauseGame();
+            Test();
 #endif
 
             ResizePauseActionListPeriodically();
@@ -137,25 +141,29 @@ object you have in the list.")]
         }
 
 #if UNITY_EDITOR
-        private void TestPauseGame()
+        private void Test()
         {
             if (!mTest)
                 return;
 
-            if (Input.GetKeyDown(mToggleGamePause))
+            if (Input.GetKeyUp(mToggleGamePause))
             {
                 var gm = JCS_GameManager.FirstInstance();
 
                 gm.gamePaused = !gm.gamePaused;
             }
 
-            if (Input.GetKeyDown(mIncTime))
+            if (Input.GetKeyUp(mKeyReset))
+            {
+                mTargetTimeScale = mDefaultTimeScale;
+            }
+            else if (Input.GetKeyUp(mKeyInc))
             {
                 Time.timeScale += mTimeDelta;
 
                 mTargetTimeScale = Time.timeScale;
             }
-            else if (Input.GetKeyDown(mDecTime))
+            else if (Input.GetKeyUp(mKeyDec))
             {
                 Time.timeScale -= mTimeDelta;
 

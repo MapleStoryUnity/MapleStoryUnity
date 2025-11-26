@@ -22,7 +22,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private List<string> mOptions = new ()
+        private List<string> mOptions = new()
         {
             "Full Screen",
             "Windowed",
@@ -66,10 +66,6 @@ namespace JCSUnity
             {
                 OnValueChanged_TMP(mDropdownTMP);
             });
-
-            // Run once.
-            OnValueChanged_Legacy(DropdownLegacy);
-            OnValueChanged_TMP(mDropdownTMP);
         }
 
         /// <summary>

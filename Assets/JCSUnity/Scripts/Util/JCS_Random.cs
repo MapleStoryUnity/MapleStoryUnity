@@ -223,7 +223,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Choose object(s) from the collections.
+        /// Choose object(s) from the collection.
         /// </summary>
         public static T ChooseOneE<T>(params T[] args)  // Ellipsis
         {
@@ -249,10 +249,6 @@ namespace JCSUnity
 
             return chosen;
         }
-
-        /// <summary>
-        /// Choose object(s) from the collection.
-        /// </summary>
         public static KeyValuePair<T, K> ChooseOneE<T, K>(params KeyValuePair<T, K>[] args)  // Ellipsis
         {
             return ChooseOne(args);
@@ -288,6 +284,26 @@ namespace JCSUnity
             var r = new System.Random();
             var v = System.Enum.GetValues(typeof(T));
             return (T)v.GetValue(r.Next(v.Length));
+        }
+
+        /// <summary>
+        /// Return a shuffled collection.
+        /// </summary>
+        public static ICollection<T> ShuffleE<T>(params T[] col)
+        {
+            return Shuffle(col);
+        }
+        public static ICollection<T> Shuffle<T>(ICollection<T> col)
+        {
+            return col.OrderBy(x => Random.value).ToArray();
+        }
+        public static ICollection<KeyValuePair<T, K>> ShuffleE<T, K>(params KeyValuePair<T, K>[] dict)
+        {
+            return Shuffle(dict);
+        }
+        public static ICollection<KeyValuePair<T, K>> Shuffle<T, K>(ICollection<KeyValuePair<T, K>> dict)
+        {
+            return dict.OrderBy(x => Random.value).ToArray();
         }
 
         /// <summary>

@@ -160,29 +160,6 @@ namespace JCSUnity
 
         #endregion
 
-        #region Enum
-
-        /// <summary>
-        /// Enum typed version casting.
-        /// Source: http://stackoverflow.com/questions/972307/can-you-loop-through-all-enum-values
-        /// </summary>
-        public static IEnumerable<T> GetValues<T>()
-        {
-            return System.Enum.GetValues(typeof(T)).Cast<T>();
-        }
-
-        /// <summary>
-        /// Return the length of an enumerator.
-        /// </summary>
-        /// <typeparam name="T"> Enum type. </typeparam>
-        /// <returns> Size of the enum listed. </returns>
-        public static int EnumSize<T>()
-        {
-            return System.Enum.GetNames(typeof(T)).Length;
-        }
-
-        #endregion
-
         #region Range
 
         /// <summary>

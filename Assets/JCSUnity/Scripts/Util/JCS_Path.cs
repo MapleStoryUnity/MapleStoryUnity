@@ -58,9 +58,22 @@ namespace JCSUnity
         /// 
         /// The returned string should start with `Assets/`.
         /// </summary>
-        public static string ToAsset(string path)
+        public static string ToAssetPath(string path)
         {
             return path.Replace(Application.dataPath, "Assets");
+        }
+
+        /// <summary>
+        /// Convert an asset path to data path.
+        /// 
+        /// This returns an absolute full path.
+        /// </summary>
+        public static string ToDataPath(string path)
+        {
+            if (path.StartsWith(Application.dataPath))
+                return path;
+
+            return Combine(Application.dataPath, path);
         }
     }
 }

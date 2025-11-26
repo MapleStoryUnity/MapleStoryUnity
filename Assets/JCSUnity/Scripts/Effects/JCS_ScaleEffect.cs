@@ -76,11 +76,11 @@ namespace JCSUnity
 
         [Tooltip("Event trigger type to active the the slide effect.")]
         [SerializeField]
-        private EventTriggerType mActiveEventTriggerType = EventTriggerType.PointerEnter;
+        private EventTriggerType[] mActiveEventTriggerType = null;
 
         [Tooltip("Event trigger type to deactive the the slide effect.")]
         [SerializeField]
-        private EventTriggerType mDeactiveEventTriggerType = EventTriggerType.PointerExit;
+        private EventTriggerType[] mDeactiveEventTriggerType = null;
 
         /* Setter & Getter */
 
@@ -105,14 +105,17 @@ namespace JCSUnity
                 {
                     // Event trigger is the must if we need to add the 
                     // event to event trigger system.
+                    mEventTrigger = gameObject.GetOrAddComponent<EventTrigger>();
+
+                    foreach (EventTriggerType evt in mActiveEventTriggerType)
                     {
-                        mEventTrigger = GetComponent<EventTrigger>();
-                        if (mEventTrigger == null)
-                            mEventTrigger = gameObject.AddComponent<EventTrigger>();
+                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, JCS_OnMouseOver);
                     }
 
-                    JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, mActiveEventTriggerType, JCS_OnMouseOver);
-                    JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, mDeactiveEventTriggerType, JCS_OnMouseExit);
+                    foreach (EventTriggerType evt in mDeactiveEventTriggerType)
+                    {
+                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, JCS_OnMouseExit);
+                    }
                 }
             }
 

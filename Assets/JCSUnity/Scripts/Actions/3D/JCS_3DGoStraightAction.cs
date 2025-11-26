@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Move forward base on their own direction.
     /// </summary>
-    public class JCS_3DGoStraightAction : MonoBehaviour , JCS_IAction
+    public class JCS_3DGoStraightAction : MonoBehaviour, JCS_IAction
     {
         /* Variables */
 
