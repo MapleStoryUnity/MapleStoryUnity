@@ -16,7 +16,7 @@ namespace Mx
 
         public const string NAME = "Mx";
 
-        public static readonly Version VERSION = new Version("0.1.2");
+        public static readonly Version VERSION = new Version("0.1.5");
 
         /* Setter & Getter */
 
@@ -74,8 +74,8 @@ namespace Mx
         }
 
         public static void CompletingRead(
-            string prompt, 
-            List<string> candidates, 
+            string prompt,
+            List<string> candidates,
             CompletingReadCallback callback,
             CompletingReadCallback hover = null,
             bool requiredMatch = true)
@@ -130,7 +130,7 @@ namespace Mx
 
         public static void YesOrNo(string prompt, CompletingReadCallback callback)
         {
-            CompletingRead(prompt, new List<string>() { "Yes", "No"}, callback);
+            CompletingRead(prompt, new List<string>() { "Yes", "No" }, callback);
         }
     }
 }

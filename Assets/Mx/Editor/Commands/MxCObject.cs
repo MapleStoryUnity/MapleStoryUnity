@@ -42,7 +42,7 @@ namespace Mx
                             expandedSceneIDs.Add(scene.GetHashCode()); // GetHashCode returns m_Handle which in turn is used as the Scene's instanceID by SceneHierarchyWindow
                     }
 
-                    MxEditorUtil.CollapseTreeViewController(hierarchyWindow, hierarchyTree, (TreeViewState)hierarchyTreeOwner.GetType().GetField("m_TreeViewState", MxEditorUtil.INSTANCE_FLAGS).GetValue(hierarchyTreeOwner), expandedSceneIDs);
+                    MxEditorUtil.CollapseTreeViewController(hierarchyWindow, hierarchyTree, (TreeViewState<int>)hierarchyTreeOwner.GetType().GetField("m_TreeViewState", MxEditorUtil.INSTANCE_FLAGS).GetValue(hierarchyTreeOwner), expandedSceneIDs);
                 }
             }
         }

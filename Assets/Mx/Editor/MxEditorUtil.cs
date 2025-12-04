@@ -234,7 +234,7 @@ namespace Mx
         /// <summary>
         /// Collapse TreeView controller.
         /// </summary>
-        public static void CollapseTreeViewController(EditorWindow editorWindow, object treeViewController, TreeViewState treeViewState, IList<int> additionalInstanceIDsToExpand = null)
+        public static void CollapseTreeViewController(EditorWindow editorWindow, object treeViewController, TreeViewState<int> treeViewState, IList<int> additionalInstanceIDsToExpand = null)
         {
             object treeViewDataSource = treeViewController.GetType().GetProperty("data", INSTANCE_FLAGS).GetValue(treeViewController, null);
             List<int> treeViewSelectedIDs = new List<int>(treeViewState.selectedIDs);

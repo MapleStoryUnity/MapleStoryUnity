@@ -504,7 +504,10 @@ namespace Mx
 
             if (mSelected >= Mathf.Min(iBase + iButtonCountFloor, mCommandsFilteredCount))
             {
-                mScrollBar = mButtonHeight * (mSelected - iButtonCountFloor + 1);
+                // The bottom line offset.
+                const int offset = 0;
+
+                mScrollBar = mButtonHeight * (mSelected - iButtonCountFloor + offset);
             }
             else if (mSelected < iBase)
             {
