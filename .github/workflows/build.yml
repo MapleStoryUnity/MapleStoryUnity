@@ -12,7 +12,7 @@ env:
   # License
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   # Project
-  UNITY_VERSION: 6000.2.6f2
+  UNITY_VERSION: 6000.3.0f1
   PROJECT_PATH: .
 
 jobs:
