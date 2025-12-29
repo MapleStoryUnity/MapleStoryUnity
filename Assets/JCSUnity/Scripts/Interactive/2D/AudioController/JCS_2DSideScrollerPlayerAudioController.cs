@@ -21,7 +21,7 @@ namespace JCSUnity
 
         [SerializeField] private bool mOverrideSound = true;
 
-        [Separator("Sound Settings (JCS_2DSideScrollerPlayerAudioController)")]
+        [Header("🔍 SFX")]
 
         [SerializeField] private AudioClip mStandSound = null;
         [SerializeField] private AudioClip mWalkSound = null;

@@ -18,26 +18,26 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("System Dialogue")]
+        [Header("🔍 System Dialogue")]
 
         [Tooltip("System UI instances.")]
         [SerializeField]
         private JCS_DialogueObject[] mSystemUI = null;
 
-        [Separator("Game User Interface")]
+        [Header("🔍 Game UI")]
 
         [Tooltip("Game UI instance.")]
         [SerializeField]
         private JCS_DialogueObject mGameUI = null;
 
-        [Separator("NPC Dialogue")]
+        [Header("🔍 NPC Dialogue")]
 
         [Tooltip("NPC dialogue instance.")]
         [SerializeField]
         private JCS_DialogueObject mNPCDialogue = null;
 
         // List of all the Game Window we are going to use in the game
-        [Separator("Player Dialogue")]
+        [Header("🔍 Player Dialogue")]
 
         [Tooltip("Player dialgoue instances.")]
         [SerializeField]
