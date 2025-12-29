@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_Skill)")]
+        [Separator("⚡️ Runtime Variables (JCS_Skill)")]
 
         [Tooltip("Sound when the skill active.")]
         [SerializeField]

@@ -29,20 +29,20 @@ namespace JCSUnity
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-        [Separator("Check Variables (JCS_ButtonSelection)")]
+        [Separator("📋 Check Variabless (JCS_ButtonSelection)")]
 
         [Tooltip("Is this selection got active?")]
         [SerializeField]
         [ReadOnly]
         private bool mActive = false;
 
-        [Separator("Initialize Variables (JCS_ButtonSelection)")]
+        [Separator("🌱 Initialize Variables (JCS_ButtonSelection)")]
 
         [Tooltip("Deactive this button on Awake time?")]
         [SerializeField]
         private bool mDeactiveAtAwake = true;
 
-        [Separator("Runtime Variables (JCS_ButtonSelection)")]
+        [Separator("⚡️ Runtime Variables (JCS_ButtonSelection)")]
 
         [Tooltip("Skip this selection?")]
         [SerializeField]
@@ -56,7 +56,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_UnityObject[] mEffects = null;
 
-        [Header("Button")]
+        [Header("🔍 Button")]
 
         [Tooltip("Button for selection group to handle.")]
         [SerializeField]
@@ -66,7 +66,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSelfAsButton = true;
 
-        [Header("Full Control")]
+        [Header("🔍 Full Control")]
 
         [Tooltip("What is the selection ontop of this selection? (Press Up)")]
         [SerializeField]
@@ -138,11 +138,9 @@ namespace JCSUnity
         /// </summary>
         public void DoSelection()
         {
-            if (mButton != null)
-                mButton.ButtonClick();
+            mButton?.InterBtnClick();
 
-            if (mSelectedEvent != null)
-                mSelectedEvent.Invoke();
+            mSelectedEvent?.Invoke();
         }
 
         /// <summary>

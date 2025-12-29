@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_3DDistanceTileAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DDistanceTileAction)")]
 
         [Tooltip("Is the action active?")]
         [SerializeField]
@@ -35,7 +35,7 @@ be set to this position in each axis.")]
         [SerializeField]
         private bool mUseLocalPosition = false;
 
-        [Header("Max")]
+        [Header("🔍 Max")]
 
         [Tooltip("If axis x is over this will get reset.")]
         [SerializeField]
@@ -47,7 +47,7 @@ be set to this position in each axis.")]
         [SerializeField]
         private float mMaxZ = float.PositiveInfinity;
 
-        [Header("Min")]
+        [Header("🔍 Min")]
 
         [Tooltip("If axis x is over this will get reset.")]
         [SerializeField]

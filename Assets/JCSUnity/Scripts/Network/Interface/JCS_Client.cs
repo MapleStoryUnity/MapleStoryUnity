@@ -18,7 +18,7 @@ namespace JCSUnity
     [Serializable]
     public abstract class JCS_Client
     {
-        [Separator("Runtime Variables (JCS_Client)")]
+        [Separator("⚡️ Runtime Variables (JCS_Client)")]
 
         [Tooltip("Current Channel this player in.")]
         [SerializeField]

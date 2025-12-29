@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_RevolutioAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_RevolutioAction)")]
 
         [Tooltip("Current angle.")]
         [SerializeField]

@@ -26,7 +26,7 @@ namespace JCSUnity
         protected JCS_OrderLayerObject mOrderLayerObject = null;
 
         //-- Action (Ladder, Rope)
-        [Separator("Check Variables (JCS_2DSideScrollerPlayer)")]
+        [Separator("📋 Check Variabless (JCS_2DSideScrollerPlayer)")]
 
         //-- Facing
         [SerializeField]
@@ -61,14 +61,14 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_ClimbMoveType mClimbMoveType = JCS_ClimbMoveType.IDLE;
 
-        [Separator("Runtime Variables (JCS_2DSideScrollerPlayer)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DSideScrollerPlayer)")]
 
         [Tooltip("Character's status.")]
         [SerializeField]
         private JCS_2DCharacterState mCharacterState = JCS_2DCharacterState.NORMAL;
 
         //-- Jumping
-        [Header("Jump")]
+        [Header("🔍 Jump")]
 
         [Tooltip("Type that this character can do.")]
         [SerializeField]
@@ -94,7 +94,7 @@ namespace JCSUnity
         private bool[] mForceXAfterJump = null;
 
         //-- Animator Control
-        [Header("Animation Settings")]
+        [Header("🔍 Animation Settings")]
 
         [Tooltip("Animation display when it jump event occurs.")]
         [SerializeField]
@@ -113,7 +113,7 @@ namespace JCSUnity
         private bool mResetingCollision = false;
 
         //-- GENERAL
-        [Header("Others")]
+        [Header("🔍 Others")]
 
         [Tooltip("")]
         [SerializeField]
@@ -126,7 +126,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mCanDownJump = false;
 
-        [Header("Control Key")]
+        [Header("🔍 Control Key")]
 
         [Tooltip("Key press up.")]
         [SerializeField]
@@ -151,7 +151,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mClimbDownKey = KeyCode.DownArrow;
 
-        [Header("Climb")]
+        [Header("🔍 Climb")]
 
         [SerializeField]
         private bool mAutoClimb = false;
@@ -163,7 +163,7 @@ namespace JCSUnity
         [SerializeField]
         private float mExitClimbForceY = 10;
 
-        [Header("Hit")]
+        [Header("🔍 Hit")]
 
         [Tooltip("Trigger to enable hit effect.")]
         [SerializeField]

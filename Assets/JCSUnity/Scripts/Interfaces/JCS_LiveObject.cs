@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_LiveObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_LiveObject)")]
 
         [Tooltip(@"Health, Auto add, for better design plz add JCS_LiquidBarInfo manually.")]
         [SerializeField]

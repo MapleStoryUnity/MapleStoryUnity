@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_ObjectPool)")]
+        [Separator("⚡️ Runtime Variables (JCS_ObjectPool)")]
 
         [Tooltip("Pool to randomly choose a transform.")]
         [SerializeField]

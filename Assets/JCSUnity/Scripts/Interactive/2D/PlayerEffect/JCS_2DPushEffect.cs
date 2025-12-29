@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DPushEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DPushEffect)")]
 
         [Tooltip("Direction this effect pushes the player.")]
         [SerializeField]

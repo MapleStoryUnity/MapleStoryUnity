@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_LiquidBarHandler)")]
+        [Separator("🌱 Initialize Variables (JCS_LiquidBarHandler)")]
 
         [Tooltip("General Liquid bar u want to handle.")]
         [SerializeField]

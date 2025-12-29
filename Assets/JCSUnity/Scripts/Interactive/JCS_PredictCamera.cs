@@ -20,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_PredictCamera)")]
+        [Separator("🧪 Helper Variables (JCS_PredictCamera)")]
 
         public bool testWithKey = false;
 
@@ -57,7 +57,7 @@ namespace JCSUnity
         public KeyCode targetRecordKey = KeyCode.None;
 #endif
 
-        [Separator("Check Variables (JCS_PredictCamera)")]
+        [Separator("📋 Check Variabless (JCS_PredictCamera)")]
 
         [SerializeField]
         [ReadOnly]
@@ -67,13 +67,13 @@ namespace JCSUnity
         [ReadOnly]
         private bool mTargetingRecord = true;
 
-        [Separator("Runtime Variables (JCS_PredictCamera)")]
+        [Separator("⚡️ Runtime Variables (JCS_PredictCamera)")]
 
         [Tooltip("Camera to apply the effect.")]
         [SerializeField]
         private JCS_Camera mCamera = null;
 
-        [Header("X Axis")]
+        [Header("🔍 X Axis")]
 
         [Tooltip("Point to move toward right.")]
         [SerializeField]
@@ -99,7 +99,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mLeftDownPoint = null;
 
-        [Header("Y Axis")]
+        [Header("🔍 Y Axis")]
 
         [Tooltip("Point to move toward up.")]
         [SerializeField]
@@ -125,7 +125,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mDownBackwardPoint = null;
 
-        [Header("Z Axis")]
+        [Header("🔍 Z Axis")]
 
         [Tooltip("Point to move toward foward.")]
         [SerializeField]
@@ -151,7 +151,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mBackwardLeftPoint = null;
 
-        [Header("8 Corners")]
+        [Header("🔍 8 Corners")]
 
         [Tooltip("Point to move toward right, up and forward.")]
         [SerializeField]

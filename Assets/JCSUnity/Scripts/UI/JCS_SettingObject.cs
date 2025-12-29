@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_SettingObject)")]
+        [Separator("🌱 Initialize Variables (JCS_SettingObject)")]
 
         [Tooltip("Type of the GUI.")]
         [SerializeField]

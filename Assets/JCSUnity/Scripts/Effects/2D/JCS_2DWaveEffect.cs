@@ -19,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_2DWaveEffect)")]
+        [Separator("🧪 Helper Variables (JCS_2DWaveEffect)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -30,7 +30,7 @@ namespace JCSUnity
         private KeyCode mDoWaveEffectKey = KeyCode.T;
 #endif
 
-        [Separator("Runtime Variables (JCS_2DWaveEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DWaveEffect)")]
 
         [Tooltip("Height offset.")]
         [SerializeField]
@@ -61,7 +61,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
+        [Header("🔍 NOTE: If the effect object is camera, plz fill the camera in here.")]
 
         [SerializeField]
         private JCS_2DCamera mJCS_2DCamera = null;

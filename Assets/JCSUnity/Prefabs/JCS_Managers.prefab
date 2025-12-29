@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 442828}
+  - component: {fileID: 2684837184778148956}
   - component: {fileID: 11496914}
   - component: {fileID: 114116482234633012}
   - component: {fileID: 11474736}
@@ -50,6 +51,23 @@ Transform:
   - {fileID: 4161427194650725801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2684837184778148956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee85920dbe024568b894f71d5bb75c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MyBox::MyBox.Internal.CommentaryComponent
+  Entries:
+  - EditorCommentary: 'The `JCS_Managers` exists only in the current scene and does
+      not carry data over to the next scene. Its variables should contain information
+      specific to the current scene only. '
+    Type: 1
 --- !u!114 &11496914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,8 +395,9 @@ MonoBehaviour:
   mTimeScale: 1
   mTest: 0
   mToggleGamePause: 112
-  mIncTime: 110
-  mDecTime: 109
+  mKeyInc: 109
+  mKeyDec: 110
+  mKeyReset: 98
   mTimeDelta: 5
   mPaused: 0
   mTargetTimeScale: 1

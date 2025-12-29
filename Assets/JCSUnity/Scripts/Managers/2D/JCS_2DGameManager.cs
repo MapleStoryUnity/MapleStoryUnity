@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_2DGameManager)")]
+        [Separator("📋 Check Variabless (JCS_2DGameManager)")]
 
         [Tooltip("A list of item object will ignore their collision detection.")]
         [SerializeField]

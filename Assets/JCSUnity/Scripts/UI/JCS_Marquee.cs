@@ -22,7 +22,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_Marquee)")]
+        [Separator("🧪 Helper Variables (JCS_Marquee)")]
 
         [Tooltip("Test this component with key event.")]
         public bool testWithKey = false;
@@ -40,13 +40,13 @@ namespace JCSUnity
         public string msgB = "又是一個廣播~";
 #endif
 
-        [Separator("Check Variables (JCS_Marquee)")]
+        [Separator("📋 Check Variabless (JCS_Marquee)")]
 
         [SerializeField]
         [ReadOnly]
         private JCS_3DDistanceTileAction mDistanceTileAction = null;
 
-        [Separator("Initialize Variables (JCS_Marquee)")]
+        [Separator("🌱 Initialize Variables (JCS_Marquee)")]
 
         [Tooltip("Text object that is hiddent under mask.")]
         [SerializeField]
@@ -63,7 +63,7 @@ namespace JCSUnity
             if (mTextContainer == null)
                 mTextContainer = GetComponentInChildren<Text>();
 
-            mDistanceTileAction = JCS_Util.ForceGetComponent<JCS_3DDistanceTileAction>(mTextContainer);
+            mDistanceTileAction = this.GetOrAddComponent<JCS_3DDistanceTileAction>();
         }
 
 #if UNITY_EDITOR

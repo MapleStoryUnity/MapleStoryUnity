@@ -22,7 +22,7 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
         private JCS_2DAnimator m2DAnimator = null;
 
-        [Separator("Check Variables (JCS_2DLiveObject)")]
+        [Separator("📋 Check Variabless (JCS_2DLiveObject)")]
 
         [Tooltip("This boolean to check what type of object is ")]
         [SerializeField]

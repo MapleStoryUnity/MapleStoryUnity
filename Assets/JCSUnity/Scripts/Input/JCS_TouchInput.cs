@@ -20,7 +20,7 @@ namespace JCSUnity
 
         private Vector2 mDragStartPosition = Vector2.zero;
 
-        [Separator("Check Variables (JCS_TouchInput)")]
+        [Separator("📋 Check Variabless (JCS_TouchInput)")]
 
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
         [Tooltip("Previous position.")]
@@ -82,7 +82,7 @@ namespace JCSUnity
 #endif
 
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
-        [Separator("Runtime Variables (JCS_TouchInput)")]
+        [Separator("⚡️ Runtime Variables (JCS_TouchInput)")]
 
         [Tooltip("Mouse event type of identify the touch event.")]
         [SerializeField]
@@ -90,7 +90,7 @@ namespace JCSUnity
 #endif
 
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-        [Separator("Runtime Variables (JCS_TouchInput)")]
+        [Separator("⚡️ Runtime Variables (JCS_TouchInput)")]
 
         [Tooltip("Touch count that will detect as touched.")]
         [SerializeField]

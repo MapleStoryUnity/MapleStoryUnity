@@ -35,7 +35,7 @@ namespace JCSUnity
             public Sprite gamePadSprite;
         };
 
-        [Separator("Runtime Variables (JCS_GamepadSpriteHandler)")]
+        [Separator("⚡️ Runtime Variables (JCS_GamepadSpriteHandler)")]
 
         [Tooltip("Any sprite element you want to change depends on controller connection.")]
         public List<SpriteSet> spriteSets = null;

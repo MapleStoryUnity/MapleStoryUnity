@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_DelayLoadSceneEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_DelayLoadSceneEvent)")]
 
         [Tooltip("Next scene to load; if empy, load the next scene instead.")]
         [SerializeField]

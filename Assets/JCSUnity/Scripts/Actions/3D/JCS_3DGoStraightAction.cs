@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_3DGoStraightAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DGoStraightAction)")]
 
         [Tooltip("How fast it moves.")]
         [SerializeField]
@@ -33,7 +33,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Randomize")]
+        [Header("🔍 Randomize")]
 
         [Tooltip(@"Randomize the speed depends on positive
 move speed to negative move speed.")]

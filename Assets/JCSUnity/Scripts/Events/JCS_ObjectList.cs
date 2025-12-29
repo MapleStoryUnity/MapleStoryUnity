@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_ObjectList)")]
+        [Separator("⚡️ Runtime Variables (JCS_ObjectList)")]
 
         [Tooltip("List of objects.")]
         [SerializeField]

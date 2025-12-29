@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_AnimPool)")]
+        [Separator("⚡️ Runtime Variables (JCS_AnimPool)")]
 
         [Tooltip("Animation pool.")]
         [SerializeField]

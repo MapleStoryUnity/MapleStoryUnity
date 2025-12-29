@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_PageIndicators)")]
+        [Separator("🌱 Initialize Variables (JCS_PageIndicators)")]
 
         [Tooltip("List of image containers to display indicators.")]
         [SerializeField]

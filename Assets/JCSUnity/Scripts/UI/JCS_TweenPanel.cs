@@ -29,7 +29,7 @@ namespace JCSUnity
         private JCS_TweenerHandler mTweenerHandler = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_TweenPanel)")]
+        [Separator("🧪 Helper Variables (JCS_TweenPanel)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -42,7 +42,7 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.L;
 #endif
 
-        [Separator("Check Variables (JCS_TweenPanel)")]
+        [Separator("📋 Check Variabless (JCS_TweenPanel)")]
 
         [Tooltip("Is panel active/tweened?")]
         [SerializeField]
@@ -54,13 +54,13 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Separator("Runtime Variables (JCS_TweenPanel)")]
+        [Separator("⚡️ Runtime Variables (JCS_TweenPanel)")]
 
         [Tooltip("Override the tween animation while is still playing.")]
         [SerializeField]
         private bool mOverrideTween = false;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Sound player for this component.")]
         [SerializeField]

@@ -26,14 +26,14 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_DropdownScreenResolution)")]
+        [Separator("🧪 Helper Variables (JCS_DropdownScreenResolution)")]
 
         [Tooltip("Change the game view editor's window.")]
         [SerializeField]
         private bool mChangeEditorWindow = false;
 #endif
 
-        [Separator("Initialize Variables (JCS_DropdownScreenResolution)")]
+        [Separator("🌱 Initialize Variables (JCS_DropdownScreenResolution)")]
 
         [Tooltip("If true, remove all other options at the beginning.")]
         [SerializeField]

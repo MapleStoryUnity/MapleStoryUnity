@@ -24,7 +24,7 @@ namespace JCSUnity
         private JCS_FadeObject mAO = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_WhiteScreen)")]
+        [Separator("🧪 Helper Variables (JCS_WhiteScreen)")]
 
         [Tooltip("Test with the key?")]
         [SerializeField]
@@ -35,7 +35,7 @@ namespace JCSUnity
         private KeyCode mTestKey = KeyCode.U;
 #endif
 
-        [Separator("Runtime Variables (JCS_WhiteScreen)")]
+        [Separator("⚡️ Runtime Variables (JCS_WhiteScreen)")]
 
         [Tooltip("How long it fade out?")]
         [SerializeField]

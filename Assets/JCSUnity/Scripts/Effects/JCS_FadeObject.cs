@@ -39,7 +39,7 @@ namespace JCSUnity
         private float mAlpha = 1.0f;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_FadeObject)")]
+        [Separator("🧪 Helper Variables (JCS_FadeObject)")]
 
         [Tooltip("Test Fade in/out with key.")]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace JCSUnity
         private KeyCode mFadeOutKey = KeyCode.N;
 #endif
 
-        [Separator("Check Variables (JCS_FadeObject)")]
+        [Separator("📋 Check Variabless (JCS_FadeObject)")]
 
         [Tooltip("Is current fade object doing the effect? (fade in/out)")]
         [SerializeField]
@@ -63,7 +63,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mVisible = true;
 
-        [Separator("Runtime Variables (JCS_FadeObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_FadeObject)")]
 
         [Tooltip("How long it fades.")]
         [SerializeField]
@@ -92,6 +92,7 @@ namespace JCSUnity
 
         public bool effect { get { return mEffect; } set { mEffect = value; } }
         public bool visible { get { return mVisible; } set { mVisible = value; } }
+        public JCS_FadeType fadeType { get { return mFadeType; } }
         public float fadeTime { get { return mFadeTime; } set { mFadeTime = value; } }
         public bool overrideFade { get { return mOverrideFade; } set { mOverrideFade = value; } }
         public float alpha { get { return mAlpha; } set { mAlpha = value; } }
@@ -144,6 +145,22 @@ namespace JCSUnity
         public bool IsFadeOut()
         {
             return (mAlpha <= mFadeOutAmount);
+        }
+
+        /// <summary>
+        /// Return true if we are fading in.
+        /// </summary>
+        public bool IsFadingIn()
+        {
+            return mEffect && mFadeType == JCS_FadeType.IN;
+        }
+
+        /// <summary>
+        /// Return true if we are fading out.
+        /// </summary>
+        public bool IsFadingOut()
+        {
+            return mEffect && mFadeType == JCS_FadeType.OUT;
         }
 
         /// <summary>
@@ -244,6 +261,7 @@ namespace JCSUnity
                             localEnabled = false;
 
                             mEffect = false;
+                            mFadeType = JCS_FadeType.NONE;
 
                             // do callback
                             {
@@ -264,6 +282,7 @@ namespace JCSUnity
                         if (mAlpha > mFadeInAmount)
                         {
                             mEffect = false;
+                            mFadeType = JCS_FadeType.NONE;
 
                             // do callback
                             {

@@ -23,14 +23,14 @@ namespace JCSUnity
     {
         /* Variables*/
 
-        [Separator("Check Variables (JCS_WebcamButton)")]
+        [Separator("📋 Check Variabless (JCS_WebcamButton)")]
 
         [Tooltip("Current webcam image path.")]
         [SerializeField]
         [ReadOnly]
         private string mCurrentWebcamImagePath = "";
 
-        [Separator("Initialize Variables (JCS_WebcamButton)")]
+        [Separator("🌱 Initialize Variables (JCS_WebcamButton)")]
 
         [Tooltip("Webcam to use.")]
         [SerializeField]

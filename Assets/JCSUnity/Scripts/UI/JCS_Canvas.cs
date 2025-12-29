@@ -50,7 +50,7 @@ namespace JCSUnity
         private RectTransform mAppRect = null;  // Application Rect (Window)
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_Canvas)")]
+        [Separator("🧪 Helper Variables (JCS_Canvas)")]
 
         [Tooltip("Turn on this to test this behaviour.")]
         [SerializeField]
@@ -65,7 +65,7 @@ namespace JCSUnity
         private KeyCode mKeyHide = KeyCode.S;
 #endif
 
-        [Separator("Check Variables (JCS_Canvas)")]
+        [Separator("📋 Check Variabless (JCS_Canvas)")]
 
         [Tooltip("Canvas.")]
         [SerializeField]
@@ -92,7 +92,7 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_ResizeUI mResizeUI = null;
 
-        [Separator("Initialize Variables (JCS_Canvas)")]
+        [Separator("🌱 Initialize Variables (JCS_Canvas)")]
 
         [Tooltip("If true, show on awake time; otherwise, hide it.")]
         [SerializeField]
@@ -106,7 +106,7 @@ namespace JCSUnity
         [SerializeField]
         private ShowMethod mShowMethod = ShowMethod.ENABLE;
 
-        [Separator("Runtime Variables (JCS_Canvas)")]
+        [Separator("⚡️ Runtime Variables (JCS_Canvas)")]
 
         [Tooltip("How fast the canvas fades.")]
         [SerializeField]

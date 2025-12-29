@@ -20,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_DeltaNumber)")]
+        [Separator("🧪 Helper Variables (JCS_DeltaNumber)")]
 
         [Tooltip("Test component with key.")]
         [SerializeField]
@@ -43,7 +43,7 @@ namespace JCSUnity
         private int mDeltaValueB = 64;
 #endif
 
-        [Separator("Check Variables (JCS_DeltaNumber)")]
+        [Separator("📋 Check Variabless (JCS_DeltaNumber)")]
 
         [Tooltip("Is current effect enabled?")]
         [SerializeField]
@@ -55,7 +55,7 @@ namespace JCSUnity
         [ReadOnly]
         private int mCurrentDigitCount = 1;
 
-        [Separator("Initialize Variables (JCS_DeltaNumber)")]
+        [Separator("🌱 Initialize Variables (JCS_DeltaNumber)")]
 
         [Tooltip("Default null slot. [Default: transparent_256.png]")]
         [SerializeField]
@@ -100,7 +100,7 @@ namespace JCSUnity
         [Range(0.1f, 4000.0f)]
         private float mDigitInterval = 0.5f;
 
-        [Separator("Runtime Variables (JCS_DeltaNumber)")]
+        [Separator("⚡️ Runtime Variables (JCS_DeltaNumber)")]
 
         [Tooltip(@"Current number rendering..., do not use this to 
 check value. Because this will always be animate.")]
@@ -123,7 +123,7 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Min/Max")]
+        [Header("🔍 Min/Max")]
 
         [Tooltip("Maxinum number.")]
         [SerializeField]
@@ -133,7 +133,7 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private int mMinNumber = 0;
 
-        [Header("Animation")]
+        [Header("🔍 Animation")]
 
         [Tooltip(@"This will make the number have the transition 
 between, setting to a new number. If you want the number set directly, you 

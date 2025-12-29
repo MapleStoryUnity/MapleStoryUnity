@@ -23,7 +23,7 @@ namespace JCSUnity
         private JCS_HitListEvent mHitList = null;
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-        [Separator("Runtime Variables (JCS_TransformPool)")]
+        [Separator("⚡️ Runtime Variables (JCS_TransformPool)")]
 
         [Tooltip("How many transform spawn?")]
         [SerializeField]
@@ -43,7 +43,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mActiveWithDestroyTime = false;
 
-        [Header("Transform")]
+        [Header("🔍 Transform")]
 
         [Tooltip("Play the animation as the same position as the destroyed game object.")]
         [SerializeField]
@@ -55,7 +55,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSameScale = true;
 
-        [Header("Random Effect")]
+        [Header("🔍 Random Effect")]
 
         [Tooltip("Randomize the position when spawn the game object.")]
         [SerializeField]

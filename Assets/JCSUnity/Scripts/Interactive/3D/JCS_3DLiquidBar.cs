@@ -20,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_3DLiquidBar)")]
+        [Separator("🧪 Helper Variables (JCS_3DLiquidBar)")]
 
         [Tooltip("Test functionalities works?")]
         [SerializeField]
@@ -43,13 +43,13 @@ namespace JCSUnity
         private KeyCode mFixedKey = KeyCode.X;
 #endif
 
-        [Separator("Check Variables (JCS_3DLiquidBar)")]
+        [Separator("📋 Check Variabless (JCS_3DLiquidBar)")]
 
         [SerializeField]
         [ReadOnly]
         private Vector3 mMaskTargetPosition = Vector3.zero;
 
-        [Separator("Initilaize Variables (JCS_3DLiquidBar)")]
+        [Separator("🌱 Initilaize Variables (JCS_3DLiquidBar)")]
 
         [Tooltip("Sprite mask that mask out the inner bar sprite.")]
         [SerializeField]

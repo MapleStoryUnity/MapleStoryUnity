@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_ClimbableManager)")]
+        [Separator("⚡️ Runtime Variables (JCS_ClimbableManager)")]
 
         [Tooltip("Sorting order add up when climable interactable object is infront.")]
         [Range(0, 20)]

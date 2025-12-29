@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_2DTrackAction)")]
+        [Separator("📋 Check Variabless (JCS_2DTrackAction)")]
 
         [SerializeField]
         [ReadOnly]
@@ -32,7 +32,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mFollowing = true;
 
-        [Separator("Runtime Variables (JCS_2DTrackAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DTrackAction)")]
 
         [Tooltip("Transform we want to target.")]
         [SerializeField]
@@ -75,7 +75,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mHardOnZ = false;
 
-        [Header("Order")]
+        [Header("🔍 Order")]
 
         [Tooltip("Set the track action order.")]
         [SerializeField]

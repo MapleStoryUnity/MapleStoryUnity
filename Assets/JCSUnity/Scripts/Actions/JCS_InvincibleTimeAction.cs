@@ -24,7 +24,7 @@ namespace JCSUnity
 
         private JCS_OrderLayerObject mOrderLayerObject = null;
 
-        [Separator("Runtime Variables (JCS_InvincibleTimeAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_InvincibleTimeAction)")]
 
         [Tooltip("How long the invincible time are?")]
         [SerializeField]
@@ -40,7 +40,7 @@ namespace JCSUnity
         // trigger the invincible time action?
         private bool mTriggerAction = false;
 
-        [Header("Flash")]
+        [Header("🔍 Flash")]
 
         [Tooltip("Color when is invincible.")]
         [SerializeField]

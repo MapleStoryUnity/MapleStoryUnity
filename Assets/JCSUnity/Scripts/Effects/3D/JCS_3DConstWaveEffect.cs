@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Varialbes (JCS_3DConstWaveEffect)")]
+        [Separator("⚡️ Runtime Varialbes (JCS_3DConstWaveEffect)")]
 
         [Tooltip("Transform type to apply effect with.")]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Randomize")]
+        [Header("🔍 Randomize")]
 
         [Tooltip("Randomize a bit the amplitude value at start.")]
         [SerializeField]

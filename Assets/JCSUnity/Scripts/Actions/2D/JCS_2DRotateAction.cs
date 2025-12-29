@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DRotateAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DRotateAction)")]
 
         [Tooltip("Do the action?")]
         [SerializeField]

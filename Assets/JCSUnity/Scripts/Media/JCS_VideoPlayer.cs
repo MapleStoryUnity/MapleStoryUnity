@@ -33,7 +33,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_VideoPlayer)")]
+        [Separator("⚡️ Runtime Variables (JCS_VideoPlayer)")]
 
         [Tooltip("Moive playback.")]
         [SerializeField]
@@ -57,7 +57,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Delay Playback")]
+        [Header("🔍 Delay Playback")]
 
         [Tooltip("How long it delay before to play the clip.")]
         [SerializeField]
@@ -227,7 +227,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_VideoPlayer)")]
+        [Separator("📋 Check Variabless (JCS_VideoPlayer)")]
 
         [Tooltip("Full path of the clip")]
         [SerializeField]
@@ -239,7 +239,7 @@ namespace JCSUnity
         [ReadOnly]
         private AudioSource mAudioSource = null;
 
-        [Separator("Runtime Variables (JCS_VideoPlayer)")]
+        [Separator("⚡️ Runtime Variables (JCS_VideoPlayer)")]
 
         [Tooltip("Moive playback.")]
         [SerializeField]
@@ -266,7 +266,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Delay Playback")]
+        [Header("🔍 Delay Playback")]
 
         [Tooltip("How long it delay before to play the clip.")]
         [SerializeField]
@@ -279,7 +279,7 @@ namespace JCSUnity
         // check if the clip played?
         private bool mClipPlayed = false;
 
-        [Header("*Usage: plz fill the clip time until next scene.")]
+        [Header("🔍 *Usage: plz fill the clip time until next scene.")]
 
         [Tooltip("Time to load next scene, in seconds.")]
         [SerializeField]

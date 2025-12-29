@@ -21,7 +21,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_DropdownLanguage)")]
+        [Separator("🌱 Initialize Variables (JCS_DropdownLanguage)")]
 
         [Tooltip("List of supported languages.")]
         [SerializeField]

@@ -26,7 +26,7 @@ namespace JCSUnity
         private bool mSoundPlayed = false;
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Separator("Runtime Variables (JCS_WaitDestroySoundEndEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_WaitDestroySoundEndEvent)")]
 
         [Tooltip("Audio clip to plays.")]
         [SerializeField]

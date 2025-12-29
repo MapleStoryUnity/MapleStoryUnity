@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_ShootAction mShootAction = null;
 
-        [Separator("Runtime Variables (JCS_2DShootInAngle)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DShootInAngle)")]
 
         [Tooltip("Degree per bullet shoot.")]
         [SerializeField]

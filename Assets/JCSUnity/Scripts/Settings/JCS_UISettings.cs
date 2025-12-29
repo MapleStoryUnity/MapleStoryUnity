@@ -28,7 +28,7 @@ namespace JCSUnity
 
         private const string FADE_SCREEN_PATH = "UI/System/JCS_FadeScreen";
 
-        [Separator("Initialize Variables (JCS_UISettings)")]
+        [Separator("🌱 Initialize Variables (JCS_UISettings)")]
 
         [Tooltip("Resize the UI in runtime.")]
         public bool resizeUI = true;

@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_StaticLightning)")]
+        [Separator("⚡️ Runtime Variables (JCS_StaticLightning)")]
 
         [Tooltip("Lightning effect.")]
         [SerializeField]

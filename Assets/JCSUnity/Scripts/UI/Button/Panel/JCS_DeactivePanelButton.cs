@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_DeactivePanelButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_DeactivePanelButton)")]
 
         [Tooltip("Transforms to be deactive.")]
         [SerializeField]

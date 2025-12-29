@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private JCS_FadeObject mJCSFadeObject = null;
 
-        [Separator("Runtime Variables (JCS_DisableWithCertainRangeEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_DisableWithCertainRangeEvent)")]
 
         [Tooltip("Use local position instead of global position.")]
         [SerializeField]
@@ -41,7 +41,7 @@ namespace JCSUnity
         [SerializeField]
         private float mRange = 0.0f;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip("Fade before disable?")]
         [SerializeField]

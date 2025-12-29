@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variable (JCS_2DRope)")]
+        [Separator("📋 Check Variables (JCS_2DRope)")]
 
         [SerializeField]
         protected List<JCS_2DSideScrollerPlayer> mSSPlayers = null;

@@ -29,7 +29,7 @@ namespace JCSUnity
         // Execution after action is being executed.
         public Action onAfterAction = null;
 
-        [Separator("Check Variables (JCS_AdjustTimeTrigger)")]
+        [Separator("📋 Check Variabless (JCS_AdjustTimeTrigger)")]
 
         [Tooltip(@"Time to record down the real time to do one action after 
 we calculate the real time.")]
@@ -47,13 +47,13 @@ we calculate the real time.")]
         [ReadOnly]
         private bool mDidAction = false;
 
-        [Separator("Initialize Variables (JCS_AdjustTimeTrigger)")]
+        [Separator("🌱 Initialize Variables (JCS_AdjustTimeTrigger)")]
 
         [Tooltip("Run immediately on the first frame.")]
         [SerializeField]
         private bool mInvokeOnStart = true;
 
-        [Separator("Runtime Variables (JCS_AdjustTimeTrigger)")]
+        [Separator("⚡️ Runtime Variables (JCS_AdjustTimeTrigger)")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]

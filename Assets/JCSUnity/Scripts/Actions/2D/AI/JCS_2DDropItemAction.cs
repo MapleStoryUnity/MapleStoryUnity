@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_ItemDroppable mItemDroppable = null;
 
-        [Separator("Runtime Variables (JCS_2DDropItemAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DDropItemAction)")]
 
         [Tooltip("Drop once when the object is dead.")]
         [SerializeField]

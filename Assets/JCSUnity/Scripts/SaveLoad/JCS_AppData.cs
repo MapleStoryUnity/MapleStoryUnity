@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_AppData)")]
+        [Separator("⚡️ Runtime Variables (JCS_AppData)")]
 
         [Tooltip("The copyright information.")]
         public string copyright = "";

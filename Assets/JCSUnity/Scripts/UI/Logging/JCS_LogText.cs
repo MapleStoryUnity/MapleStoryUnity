@@ -26,7 +26,7 @@ namespace JCSUnity
         private JCS_SimpleTrackAction mSimpleTrackAction = null;
         private JCS_SlideEffect mSlideEffect = null;
 
-        [Separator("Check Variables (JCS_LogText)")]
+        [Separator("📋 Check Variabless (JCS_LogText)")]
 
         [Tooltip("Which exactly the IGL controls ")]
         [SerializeField]

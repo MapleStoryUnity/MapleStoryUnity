@@ -31,7 +31,7 @@ namespace JCSUnity
         // Is current dialgoue visible?
         protected bool mIsVisible = false;
 
-        [Separator("Runtime Variables (JCS_BaseDialogueObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_BaseDialogueObject)")]
 
         [Tooltip(@"Set the rect transfrom size the same as before playing it.")]
         [SerializeField]

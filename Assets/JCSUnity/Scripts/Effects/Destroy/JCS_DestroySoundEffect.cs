@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_DestroySoundEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_DestroySoundEffect)")]
 
         [Tooltip("Sound to play when this occurs.")]
         [SerializeField]

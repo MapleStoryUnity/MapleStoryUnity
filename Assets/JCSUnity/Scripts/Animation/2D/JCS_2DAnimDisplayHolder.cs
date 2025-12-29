@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-        [Separator("Check Variables (JCS_2DAnimDisplayHolder)")]
+        [Separator("📋 Check Variabless (JCS_2DAnimDisplayHolder)")]
 
         [Tooltip(@"Record down what is the current animation playing, so after 
 holding we could play the animation back in time.")]
@@ -34,7 +34,7 @@ holding we could play the animation back in time.")]
         // trigger holding?
         private bool mHolding = false;
 
-        [Separator("Runtime Variables (JCS_2DAnimDisplayHolder)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DAnimDisplayHolder)")]
 
         [Tooltip("How long to hold this animation.")]
         [SerializeField]

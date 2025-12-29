@@ -28,7 +28,7 @@ namespace JCSUnity
 
         protected BoxCollider mBoxCollider = null;
 
-        [Separator("Check Variables (JCS_Item)")]
+        [Separator("📋 Check Variabless (JCS_Item)")]
 
         [Tooltip(@"Collider detect can be picked.
 You can set this directly in order to get the pick effect too. Once you set this, 
@@ -36,7 +36,7 @@ the object will do tween effect to this transform.")]
         [SerializeField]
         protected Collider mPickCollider = null;
 
-        [Separator("Runtime Settings (JCS_Item)")]
+        [Separator("⚡️ Runtime Settings (JCS_Item)")]
 
         [Tooltip("Is the auto pick collider must be player?")]
         [SerializeField]
@@ -46,7 +46,7 @@ the object will do tween effect to this transform.")]
         [SerializeField]
         protected KeyCode mPickKey = KeyCode.Z;
 
-        [Header("System")]
+        [Header("🔍 System")]
 
         [Tooltip("Pick item by click/mouse?")]
         [SerializeField]
@@ -61,7 +61,7 @@ object that we target.")]
         [SerializeField]
         protected bool mAutoPickWhileCan = false;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip(@"Play one shot while not playing any other sound. (Pick Sound)")]
         [SerializeField]
@@ -79,7 +79,7 @@ object that we target.")]
         [SerializeField]
         protected AudioClip mEffectSound = null;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip("Make item tween to the destination.")]
         [SerializeField]

@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_PacketLostPreventer)")]
+        [Separator("⚡️ Runtime Variables (JCS_PacketLostPreventer)")]
 
         [Tooltip("How fast the packet resend?")]
         [SerializeField] 

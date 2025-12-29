@@ -19,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_InputField)")]
+        [Separator("🧪 Helper Variables (JCS_InputField)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -30,7 +30,7 @@ namespace JCSUnity
         private KeyCode mUpdateInputField = KeyCode.U;
 #endif
 
-        [Separator("Check Variables (JCS_InputField)")]
+        [Separator("📋 Check Variabless (JCS_InputField)")]
 
         [Tooltip("Real text data this input field hold.")]
         [SerializeField]
@@ -42,7 +42,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mIsFocus = false;
 
-        [Separator("Runtime Variables (JCS_InputField)")]
+        [Separator("⚡️ Runtime Variables (JCS_InputField)")]
 
         [Tooltip("Max letters shown in the options. Default is 14.")]
         [SerializeField]

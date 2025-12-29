@@ -21,14 +21,14 @@ namespace JCSUnity
 
         private JCS_ShootAction mShootAction = null;
 
-        [Separator("Check Variables (JCS_ShootAllAngle)")]
+        [Separator("📋 Check Variabless (JCS_ShootAllAngle)")]
 
         [Tooltip("Check if the enemy can shoot or not depends on the delay time!")]
         [SerializeField]
         [ReadOnly]
         private bool mCanShoot = true;
 
-        [Separator("Runtime Variables (JCS_ShootAllAngle)")]
+        [Separator("⚡️ Runtime Variables (JCS_ShootAllAngle)")]
 
         [Tooltip("Automatically shoot bullets itself in frame.")]
         [SerializeField]

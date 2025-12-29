@@ -18,14 +18,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_UtilManager)")]
+        [Separator("📋 Check Variabless (JCS_UtilManager)")]
 
         [Tooltip("Damage text util.")]
         [SerializeField]
         [ReadOnly]
         private JCS_MixDamageTextPool mMixDamageTextPool = null;
 
-        [Separator("Initialize Variables (JCS_UtilManager)")]
+        [Separator("🌱 Initialize Variables (JCS_UtilManager)")]
 
         [Tooltip("Trasnparent sprite.")]
         [SerializeField]

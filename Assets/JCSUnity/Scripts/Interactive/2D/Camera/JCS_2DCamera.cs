@@ -18,19 +18,19 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Varialbes (JCS_2DCamera)")]
+        [Separator("📋 Check Varialbes (JCS_2DCamera)")]
 
         [SerializeField]
         [ReadOnly]
         private Vector3 mTargetPosition = Vector3.zero;
 
-        [Separator("Initialize Variables (JCS_2DCamera)")]
+        [Separator("🌱 Initialize Variables (JCS_2DCamera)")]
 
         [Tooltip("Set the camera's position to the player when the game starts?")]
         [SerializeField]
         private bool mSetToPlayerPositionAtStart = true;
 
-        [Separator("Runtime Variables (JCS_2DCamera)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DCamera)")]
 
         [Tooltip("Set velocity to zero while the follow not active.")]
         [SerializeField]
@@ -40,7 +40,7 @@ namespace JCSUnity
         //[SerializeField] private bool mSmoothMoveX = true;
         //[SerializeField] private bool mSmoothMoveY = true;
 
-        [Header("Speed / Friction")]
+        [Header("🔍 Speed / Friction")]
 
         [Tooltip("How fast this camera move toward the target. (x-axis)")]
         [SerializeField]
@@ -52,7 +52,7 @@ namespace JCSUnity
         [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mFrictionY = 0.6f;
 
-        [Header("Freeze")]
+        [Header("🔍 Freeze")]
 
         [Tooltip("Do freeze in runtime?")]
         [SerializeField]
@@ -72,7 +72,7 @@ namespace JCSUnity
 
         private Vector3 mFreezeRecord = Vector3.zero;
 
-        [Header("Scroll")]
+        [Header("🔍 Scroll")]
 
         [Tooltip("Do the zoom effect.")]
         [SerializeField]

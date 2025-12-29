@@ -20,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables Variables (JCS_2DAnimator)")]
+        [Separator("🧪 Helper Variables Variables (JCS_2DAnimator)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -43,7 +43,7 @@ namespace JCSUnity
         private KeyCode mPlayOneShotAnimKey = KeyCode.F;
 #endif
 
-        [Separator("Check Variables Variables (JCS_2DAnimator)")]
+        [Separator("📋 Check Variabless Variables (JCS_2DAnimator)")]
 
         [Tooltip("Current animation id.")]
         [SerializeField]
@@ -66,7 +66,7 @@ namespace JCSUnity
 
         private JCS_2DAnimation mOneShotAnim = null;
 
-        [Separator("Runtime Variables (JCS_2DAnimator)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DAnimator)")]
 
         [Tooltip(@"How fast the animation plays.")]
         [SerializeField]
@@ -77,7 +77,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_2DAnimation> mAnimations = null;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip("Hold animation displayed frame event.")]
         [SerializeField]

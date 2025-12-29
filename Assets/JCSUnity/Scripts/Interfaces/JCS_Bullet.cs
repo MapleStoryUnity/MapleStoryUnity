@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_Bullet)")]
+        [Separator("⚡️ Runtime Variables (JCS_Bullet)")]
 
         [Tooltip("How Fast the bullet moves.")]
         [SerializeField] 

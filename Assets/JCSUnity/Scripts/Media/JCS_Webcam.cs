@@ -30,7 +30,7 @@ namespace JCSUnity
 
         private bool mResumeTrigger = false;
 
-        [Separator("Runtime Variables (JCS_Webcam)")]
+        [Separator("⚡️ Runtime Variables (JCS_Webcam)")]
 
         [Tooltip("Manually preserve the size in scene.")]
         [SerializeField]
@@ -54,7 +54,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Effect")]
+        [Header("🔍 Effect")]
 
         [Tooltip("Do the splash effect?")]
         [SerializeField]
@@ -71,14 +71,14 @@ namespace JCSUnity
         private float mDelayTimer = 0.0f;
 
 #if (UNITY_STANDALONE || UNITY_EDITOR)
-        [Header("Keys")]
+        [Header("🔍 Keys")]
 
         [Tooltip("Key to take webcam image.")]
         [SerializeField]
         private KeyCode mTakePicKey = KeyCode.None;
 #endif
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Sound player for this component.")]
         [SerializeField]

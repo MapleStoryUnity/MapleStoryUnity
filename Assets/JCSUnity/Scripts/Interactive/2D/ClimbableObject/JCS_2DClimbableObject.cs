@@ -28,7 +28,7 @@ namespace JCSUnity
          */
         private JCS_OrderLayerObject mOrderLayerObject = null;
 
-        [Separator("Initilaize Variable (JCS_2DClimbableObject)")]
+        [Separator("🌱 Initilaize Variable (JCS_2DClimbableObject)")]
 
         [Tooltip("Ground/Platform the ladder lean on.")]
         [SerializeField]

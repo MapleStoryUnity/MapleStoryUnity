@@ -21,7 +21,7 @@ namespace JCSUnity
 
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_DamageTextPool)")]
+        [Separator("🌱 Initialize Variables (JCS_DamageTextPool)")]
 
         [Tooltip("Number to handle and spawn at the initialize time.")]
         [SerializeField]
@@ -32,7 +32,7 @@ namespace JCSUnity
         private int mLastSpawnPos = 0;
 
         // type of the damage text the object going to handle!
-        [Header("NOTE: Plz put the whole set of Damage Text here!")]
+        [Header("🔍 NOTE: Plz put the whole set of Damage Text here!")]
 
         [Tooltip("Damage text clone.")]
         [SerializeField]
@@ -40,7 +40,7 @@ namespace JCSUnity
 
         private JCS_Vec<JCS_DamageText> mDamageTexts = null;
 
-        [Separator("Runtime Variables (JCS_DamageTextPool)")]
+        [Separator("⚡️ Runtime Variables (JCS_DamageTextPool)")]
 
         [Tooltip("Spacing per damage text.")]
         [SerializeField]
@@ -60,7 +60,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Sound player for this component.")]
         [SerializeField]
@@ -70,7 +70,7 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mHitSound = null;
 
-        [Header("Zigge Right Left (In Sequence)")]
+        [Header("🔍 Zigge Right Left (In Sequence)")]
 
         [Tooltip("Do the zigge effect?")]
         [SerializeField]

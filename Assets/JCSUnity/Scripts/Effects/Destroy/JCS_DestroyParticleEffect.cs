@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private JCS_ParticleSystem mParticleSystem = null;
 
-        [Separator("Initialize Variables (JCS_DestroyParticleEffect)")]
+        [Separator("🌱 Initialize Variables (JCS_DestroyParticleEffect)")]
 
         //-- Hit List
         [Tooltip("Active this effect by what ever this object is destoryed.")]
@@ -42,7 +42,7 @@ namespace JCSUnity
 
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-        [Header("Transform")]
+        [Header("🔍 Transform")]
 
         [Tooltip("Play the animation as the same position as the destroyed game object.")]
         [SerializeField]
@@ -54,7 +54,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSameScale = true;
 
-        [Header("Random")]
+        [Header("🔍 Random")]
 
         [Tooltip("Randomize the position when spawn the particle system.")]
         [SerializeField]
@@ -83,7 +83,7 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandScaleRange = 0.0f;
 
-        [Header("Peformance")]
+        [Header("🔍 Peformance")]
 
         [Tooltip(@"Destroy the particle object by time, the 
 default is be 'JCS_DestroyParticleEndEvent'.")]

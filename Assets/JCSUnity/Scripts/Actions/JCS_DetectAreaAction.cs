@@ -20,12 +20,12 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_DetectAreaAction)")]
+        [Separator("📋 Check Variabless (JCS_DetectAreaAction)")]
 
         [SerializeField]
         private JCS_2DLiveObject mLiveObject = null;
 
-        [Separator("Initialize Variables (JCS_DetectAreaAction)")]
+        [Separator("🌱 Initialize Variables (JCS_DetectAreaAction)")]
 
         [Tooltip("Colliders detected.")]
         [SerializeField]

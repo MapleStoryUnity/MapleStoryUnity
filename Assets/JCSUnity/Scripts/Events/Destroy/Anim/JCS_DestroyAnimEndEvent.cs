@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private float mAnimationTimer = 0.0f;
 
-        [Separator("Runtime Variables (JCS_DestroyAnimEndEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_DestroyAnimEndEvent)")]
 
         [Tooltip("How many times the animation plays before destorying.")]
         [SerializeField]

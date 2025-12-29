@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_OrderLayer) ")]
+        [Separator("⚡️ Runtime Variables (JCS_OrderLayer) ")]
 
         [Tooltip("Rendering order.")]
         [SerializeField]

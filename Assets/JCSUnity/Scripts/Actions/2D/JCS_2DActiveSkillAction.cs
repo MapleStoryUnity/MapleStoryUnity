@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DActiveSkillAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DActiveSkillAction)")]
 
         [Tooltip("Key to active this skill.")]
         [SerializeField]
@@ -37,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mStayWithActiveTarget = true;
 
-        [Header("Spawn")]
+        [Header("🔍 Spawn")]
 
         [Tooltip("Spawns in the same position.")]
         [SerializeField]

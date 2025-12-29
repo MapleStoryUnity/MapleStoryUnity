@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_2DAnimation m2DAnimation = null;
 
-        [Separator("Runtime Variables (JCS_2DDestroyAnimEndEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DDestroyAnimEndEvent)")]
 
         [Tooltip("How many times the animation plays before destorying.")]
         [SerializeField]

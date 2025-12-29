@@ -25,7 +25,7 @@ namespace JCSUnity
         private RectTransform mMaskRectTransform = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_GUILiquidBar)")]
+        [Separator("🧪 Helper Variables (JCS_GUILiquidBar)")]
 
         [Tooltip("Test functionalities works?")]
         [SerializeField]
@@ -48,7 +48,7 @@ namespace JCSUnity
         private KeyCode mFixedKey = KeyCode.X;
 #endif
 
-        [Separator("Check Variables (JCS_GUILiquidBar)")]
+        [Separator("📋 Check Variabless (JCS_GUILiquidBar)")]
 
         [Tooltip("The panel root object.")]
         [SerializeField]
@@ -59,7 +59,7 @@ namespace JCSUnity
         [ReadOnly]
         private Vector3 mMaskTargetPosition = Vector3.zero;
 
-        [Separator("Initialize Variables (JCS_GUILiquidBar)")]
+        [Separator("🌱 Initialize Variables (JCS_GUILiquidBar)")]
 
         [Tooltip("please set this ")]
         [SerializeField]

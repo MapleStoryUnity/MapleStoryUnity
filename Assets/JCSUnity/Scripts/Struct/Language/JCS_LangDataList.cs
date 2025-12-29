@@ -22,7 +22,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize (JCS_LangDataList)")]
+        [Separator("🌱 Initialize (JCS_LangDataList)")]
 
         [Tooltip("List of language data.")]
         [SerializeField]

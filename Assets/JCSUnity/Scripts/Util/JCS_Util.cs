@@ -295,51 +295,17 @@ namespace JCSUnity
         /// </summary>
         /// <param name="comp"> Component reference you want to act. </param>
         /// <param name="act"> Boolean to assign to enabled variable. </param>
-        public static void EnableComponent(Component comp, bool act)
+        public static void EnableComponent(this Component comp, bool act)
         {
-            /* Behaviour */
+            switch (comp)
             {
-                var behaviour = comp as Behaviour;
-                if (behaviour != null)
-                {
-                    behaviour.enabled = act;
-                    return;
-                }
+                case Behaviour result:
+                    result.enabled = act;
+                    break;
+                case Collider result:
+                    result.enabled = act;
+                    break;
             }
-
-            /* Collider */
-            {
-                var collider = comp as Collider;
-                if (collider != null)
-                {
-                    collider.enabled = act;
-                    return;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Force to get a component, if not found we will add one then.
-        /// </summary>
-        /// <typeparam name="T"> Got or Added component. </typeparam>
-        /// <param name="mb"> Any MonoBehaviour. </param>
-        /// <returns>
-        /// Got or new added component.
-        /// </returns>
-        public static T ForceGetComponent<T>(Component component)
-            where T : Component
-        {
-            T target = component.GetComponent<T>();
-
-            // Did found! great just returns it.
-            if (target != null)
-                return target;
-
-            // Sadly, we have to add it ourselves.
-            target = component.gameObject.AddComponent<T>();
-
-            // Returns the new added component.
-            return target;
         }
 
         /// <summary>
@@ -347,11 +313,11 @@ namespace JCSUnity
         /// </summary>
         /// <param name="trans"> transform to apply the effect. </param>
         /// <param name="act"> enable or disable? </param>
-        public static void SetEnableAllComponents(Transform trans, bool act)
+        public static void EnableComponents(Transform trans, bool act)
         {
-            foreach (var component in trans.GetComponents<MonoBehaviour>())
+            foreach (var comp in trans.GetComponents<Component>())
             {
-                component.enabled = act;
+                comp.EnableComponent(act);
             }
         }
 
@@ -722,6 +688,17 @@ namespace JCSUnity
         #region Destroy
 
         /// <summary>
+        /// Destroy all children under the transform.
+        /// </summary>
+        public static void DestroyChildren(Transform transform)
+        {
+            foreach (Transform child in transform)
+            {
+                MonoBehaviour.Destroy(child.gameObject);
+            }
+        }
+
+        /// <summary>
         /// Destroy all the 'TYPE' object in the scene.
         /// </summary>
         public static void DestroyAllTypeObjectInScene<T>()
@@ -794,13 +771,15 @@ namespace JCSUnity
         /// <summary>
         /// Retrieves the first active loaded object of Type type.
         /// </summary>
-        public static Object FindObjectByType(System.Type type)
+        public static T FindObjectByType<T>()
+            where T : Object
         {
-            return Object.FindFirstObjectByType(type);
+            return Object.FindFirstObjectByType<T>();
         }
-        public static Object FindObjectByType(System.Type type, Scene scene)
+        public static T FindObjectByType<T>(Scene scene)
+            where T : Object
         {
-            Object[] objects = FindObjectsByType(type, scene);
+            T[] objects = FindObjectsByType<T>(scene);
 
             if (objects.Length == 0)
                 return null;
@@ -811,13 +790,17 @@ namespace JCSUnity
         /// <summary>
         /// Retrieves a list of all loaded objects of Type type.
         /// </summary>
-        public static Object[] FindObjectsByType(System.Type type)
+        public static T[] FindObjectsByType<T>()
+            where T : Object
         {
-            return Object.FindObjectsByType(type, FindObjectsSortMode.None);
+            return Object.FindObjectsByType<T>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
         }
-        public static Object[] FindObjectsByType(System.Type type, Scene scene)
+        public static T[] FindObjectsByType<T>(Scene scene)
+            where T : Object
         {
-            Object[] objects = FindObjectsByType(type);
+            T[] objects = FindObjectsByType<T>();
 
             return objects.Where((obj) =>
             {

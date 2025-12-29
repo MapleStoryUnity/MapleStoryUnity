@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_ShowCanvasButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_ShowCanvasButton)")]
 
         [Tooltip("Array of canvas to show.")]
         public JCS_Canvas[] canvas = null;

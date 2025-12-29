@@ -22,14 +22,14 @@ namespace JCSUnity
 
         private CharacterController mCharacterController = null;
 
-        [Separator("Check Variables (JCS_VelocityInfo)")]
+        [Separator("📋 Check Variabless (JCS_VelocityInfo)")]
 
         [Tooltip("Velocity for this character controller.")]
         [SerializeField]
         [ReadOnly]
         private Vector3 mVelocity = Vector3.zero;
 
-        [Separator("Runtime Variables (JCS_VelocityInfo)")]
+        [Separator("⚡️ Runtime Variables (JCS_VelocityInfo)")]
 
         [Tooltip("Do this character controll applies gravity.")]
         [SerializeField]

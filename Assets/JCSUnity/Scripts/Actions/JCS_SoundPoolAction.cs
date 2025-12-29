@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Separator("Runtime Variables (JCS_SoundPoolAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_SoundPoolAction)")]
 
         [Tooltip("Pool of audio clips.")]
         [SerializeField]

@@ -25,13 +25,13 @@ namespace JCSUnity
 
         private JCS_AdjustTimeTrigger mAdjustTimerTrigger = null;
 
-        [Separator("Check Variables (JCS_TweenPathAction)")]
+        [Separator("📋 Check Variabless (JCS_TweenPathAction)")]
 
         [Tooltip("Current target point index that this object to going approach.")]
         [SerializeField]
         private int mTargetPointIndex = -1;
 
-        [Separator("Runtime Variables (JCS_TweenPathAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_TweenPathAction)")]
 
         [Tooltip("List of points for setting up the path.")]
         [SerializeField]

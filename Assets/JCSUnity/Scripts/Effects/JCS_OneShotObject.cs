@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_OneShotObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_OneShotObject)")]
 
         [Tooltip("Effect on which axis?")]
         [SerializeField]

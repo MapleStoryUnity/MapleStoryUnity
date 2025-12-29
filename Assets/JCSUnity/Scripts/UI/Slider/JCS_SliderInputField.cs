@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright � 2022 by Shen, Jen-Chieh $
+ *                   Copyright � 2022 by Shen, Jen-Chieh $
  */
 using System;
 using System.Collections.Generic;
@@ -24,13 +24,13 @@ namespace JCSUnity
 
         private InputField mInputField = null;
 
-        [Separator("Initialize Variables (JCS_SliderInputField)")]
+        [Separator("🌱 Initialize Variables (JCS_SliderInputField)")]
 
         [Tooltip("Update the content type once on start.")]
         [SerializeField]
         private bool mAutoContentType = true;
 
-        [Separator("Runtime Variables (JCS_SliderInputField)")]
+        [Separator("⚡️ Runtime Variables (JCS_SliderInputField)")]
 
         [Tooltip("List of sliders you want this input field to control.")]
         public List<Slider> sliders = null;

@@ -25,7 +25,7 @@ namespace JCSUnity
 
         private JCS_VelocityInfo mVelocityInfo = null;
 
-        [Separator("Runtime Varaibles (JCS_2DJumpAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DJumpAction)")]
 
         [Tooltip("How much force to do one jump.")]
         [SerializeField]
@@ -60,7 +60,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Action")]
+        [Header("🔍 Action")]
 
         [Tooltip("Generate a random walk speed at the initilaize time.")]
         [SerializeField]
@@ -72,7 +72,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         [Range(1.0f, 10.0f)]
         private float mRandomJumpForceRange = 5.0f;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip("Live object animation.")]
         // Animator in order to set the animation.

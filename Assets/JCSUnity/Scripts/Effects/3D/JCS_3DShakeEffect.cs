@@ -29,7 +29,7 @@ namespace JCSUnity
         public Action onAfterShake = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_3DShakeEffect)")]
+        [Separator("🧪 Helper Variables (JCS_3DShakeEffect)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -44,7 +44,7 @@ namespace JCSUnity
         private KeyCode mKeyShakeForce = KeyCode.U;
 #endif
 
-        [Separator("Check Variables (JCS_3DShakeEffect)")]
+        [Separator("📋 Check Variabless (JCS_3DShakeEffect)")]
 
         [Tooltip("Flag to check if currently the effect active.")]
         [SerializeField]
@@ -56,7 +56,7 @@ namespace JCSUnity
         [ReadOnly]
         private Vector3 mDelta = Vector3.zero;
 
-        [Separator("Runtime Variables (JCS_3DShakeEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DShakeEffect)")]
 
         [Tooltip("Shake on this transform properties.")]
         [SerializeField]
@@ -86,7 +86,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Axis")]
+        [Header("🔍 Axis")]
 
         [Tooltip("Do shake on z axis.")]
         [SerializeField]
@@ -100,7 +100,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mOnZ = true;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Sound player for 3D sounds calculation.")]
         [SerializeField]

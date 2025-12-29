@@ -26,14 +26,14 @@ namespace JCSUnity
         private JCS_2DTrackAction mTrackAction = null;
         private JCS_3DGoStraightAction mGoStraightAction = null;
 
-        [Separator("Initialize Varialbes (JCS_2DTrackBullet)")]
+        [Separator("🌱 Initialize Varialbes (JCS_2DTrackBullet)")]
 
         [SerializeField]
         private float mDelayTimeToFollow = 0;
 
         private float mDelayTimeToFollowTimer = 0;
 
-        [Separator("Runtime Variables (JCS_2DTrackBullet)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DTrackBullet)")]
 
         [Tooltip("Do the action?")]
         [SerializeField]

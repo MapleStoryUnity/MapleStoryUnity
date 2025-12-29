@@ -27,7 +27,7 @@ namespace JCSUnity
 
         protected Action onAction = null;
 
-        [Separator("Runtime Variables (JCS_ActionButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_ActionButton)")]
 
         [Tooltip("Execute this when it's triggered.")]
         [SerializeField]

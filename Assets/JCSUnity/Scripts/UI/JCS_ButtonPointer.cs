@@ -26,13 +26,13 @@ namespace JCSUnity
 
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Separator("Initialize Variables (JCS_ButtonPointer)")]
+        [Separator("🌱 Initialize Variables (JCS_ButtonPointer)")]
 
         [Tooltip("Button that this pointer could point to.")]
         [SerializeField]
         private JCS_Button[] mButtons = null;
 
-        [Separator("Runtime Variables (JCS_ButtonPointer)")]
+        [Separator("⚡️ Runtime Variables (JCS_ButtonPointer)")]
 
         [Tooltip("Do we point to the button that are not active?")]
         [SerializeField]

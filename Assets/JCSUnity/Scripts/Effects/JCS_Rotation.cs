@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_Rotation)")]
+        [Separator("⚡️ Runtime Variables (JCS_Rotation)")]
 
         [Tooltip("Do the effect?")]
         [SerializeField]
@@ -41,7 +41,7 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Random Effect")]
+        [Header("🔍 Random Effect")]
 
         [Tooltip("Randomize the rotation speed a bit at start.")]
         [SerializeField]

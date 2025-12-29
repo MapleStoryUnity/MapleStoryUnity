@@ -29,7 +29,7 @@ namespace JCSUnity
         private JCS_ColorTweener mColorTweener = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_Switch)")]
+        [Separator("🧪 Helper Variables (JCS_Switch)")]
 
         [Tooltip("Test module with the key?")]
         [SerializeField]
@@ -44,7 +44,7 @@ namespace JCSUnity
         private KeyCode mToggleInteractable = KeyCode.S;
 #endif
 
-        [Separator("Initialize Variables (JCS_Switch)")]
+        [Separator("🌱 Initialize Variables (JCS_Switch)")]
 
         [Tooltip("Set the on/off position the same as the current " +
         "sign's position.")]
@@ -55,7 +55,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mColorSameAsEditingStatus = true;
 
-        [Separator("Runtime Variables (JCS_Switch)")]
+        [Separator("⚡️ Runtime Variables (JCS_Switch)")]
 
         [Tooltip("Sign of this switch.")]
         [SerializeField]
@@ -73,7 +73,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mOffPos = new Vector3(-20.0f, 0.0f, 0.0f);
 
-        [Header("Color")]
+        [Header("🔍 Color")]
 
         [Tooltip("Button color when is on.")]
         [SerializeField]

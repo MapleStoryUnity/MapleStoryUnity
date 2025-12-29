@@ -23,19 +23,19 @@ namespace JCSUnity
         private JCS_2DAnimator m2DAnimator = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_2DCursor)")]
+        [Separator("🧪 Helper Variables (JCS_2DCursor)")]
 
         [SerializeField]
         private bool mTestWithKey = false;
 #endif
 
-        [Separator("Runtime Variables (JCS_2DCursor)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DCursor)")]
 
         [Tooltip("Add on offset to the cursor.")]
         [SerializeField]
         private Vector3 mCursorOffset = Vector3.zero;
 
-        [Header("Cursor State")]
+        [Header("🔍 Cursor State")]
 
         [Tooltip("Cursor custom type.")]
         [SerializeField]

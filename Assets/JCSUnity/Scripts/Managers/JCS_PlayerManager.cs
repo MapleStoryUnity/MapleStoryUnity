@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_PlayerManager)")]
+        [Separator("📋 Check Variabless (JCS_PlayerManager)")]
 
         [Tooltip("current player that are active")]
         [SerializeField]
@@ -382,7 +382,7 @@ namespace JCSUnity
         public void AddAllPlayerToMultiTrack()
         {
             // find the object in the scene.
-            var mtc = JCS_Util.FindObjectByType(typeof(JCS_2DMultiTrackCamera)) as JCS_2DMultiTrackCamera;
+            var mtc = JCS_Util.FindObjectByType<JCS_2DMultiTrackCamera>();
 
             foreach (JCS_Player p in mPlayers)
             {
@@ -396,7 +396,7 @@ namespace JCSUnity
         public void RemoveAllPlayerFromMultiTrack()
         {
             // find the object in the scene.
-            var mtc = JCS_Util.FindObjectByType(typeof(JCS_2DMultiTrackCamera)) as JCS_2DMultiTrackCamera;
+            var mtc = JCS_Util.FindObjectByType<JCS_2DMultiTrackCamera>();
 
             foreach (JCS_Player p in mPlayers)
             {

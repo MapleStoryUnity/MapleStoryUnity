@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
- *	                 Copyright � 2024 by Shen, Jen-Chieh $
+ *	                 Copyright � 2024 by Shen, Jen-Chieh $
  */
 using MyBox;
 using UnityEngine;
@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_Cursor)")]
+        [Separator("⚡️ Runtime Variables (JCS_Cursor)")]
 
         [Tooltip("Show the cursor or not.")]
         [SerializeField]

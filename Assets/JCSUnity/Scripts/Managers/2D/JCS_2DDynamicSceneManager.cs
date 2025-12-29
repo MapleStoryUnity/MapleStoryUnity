@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_2DDynamicSceneManager)")]
+        [Separator("📋 Check Variabless (JCS_2DDynamicSceneManager)")]
 
         [Tooltip("")]
         [SerializeField]

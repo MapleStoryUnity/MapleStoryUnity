@@ -25,13 +25,13 @@ namespace JCSUnity
         // whats on-top of this 'order layer object'.
         private JCS_OrderLayer mOrderLayer = null;
 
-        [Separator("Initialize Variables (JCS_OrderLayerObject)")]
+        [Separator("🌱 Initialize Variables (JCS_OrderLayerObject)")]
 
         [Tooltip("Extra sprite renederer you can set.")]
         [SerializeField]
         private List<SpriteRenderer> mSpriteRenderers = null;
 
-        [Header("Absolute Layer")]
+        [Header("🔍 Absolute Layer")]
 
         [Tooltip("Enable the Absolute Layer Effect.")]
         [SerializeField]

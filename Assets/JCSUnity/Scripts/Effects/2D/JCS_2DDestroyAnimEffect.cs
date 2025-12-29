@@ -26,7 +26,7 @@ namespace JCSUnity
         // pool to grab animation to play.
         private JCS_2DAnimPool m2DAnimPool = null;
 
-        [Separator("Runtime Variables (JCS_2DDestroyAnimEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DDestroyAnimEffect)")]
 
         [Tooltip("Sorting layer this effect going to render.")]
         [SerializeField]
@@ -54,7 +54,7 @@ namespace JCSUnity
 
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-        [Header("Transform")]
+        [Header("🔍 Transform")]
 
         [Tooltip("Play the animation as the same position as the destroyed game object.")]
         [SerializeField]
@@ -68,7 +68,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSameScale = true;
 
-        [Header("Random Effect")]
+        [Header("🔍 Random Effect")]
 
         [Tooltip("Randomize the position when the animation is played.")]
         [SerializeField]

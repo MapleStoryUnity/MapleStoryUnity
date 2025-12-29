@@ -32,7 +32,7 @@ namespace JCSUnity
         };
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_ItemDroppable)")]
+        [Separator("🧪 Helper Variables (JCS_ItemDroppable)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -43,7 +43,7 @@ namespace JCSUnity
         private KeyCode mDropItemKey = KeyCode.B;
 #endif
 
-        [Separator("Runtime Variables (JCS_ItemDroppable)")]
+        [Separator("⚡️ Runtime Variables (JCS_ItemDroppable)")]
 
         [Tooltip(@"Weather or drop will depends on 
 this variables first, before to do the actually 
@@ -71,7 +71,7 @@ compare algorithm")]
         [SerializeField]
         private ItemSet[] mItemSet = null;
 
-        [Header("Gravity Effect (JCS_ItemDroppable)")]
+        [Header("🔍 Gravity Effect (JCS_ItemDroppable)")]
 
         [Tooltip("Make item effect by gravity.")]
         [SerializeField]
@@ -91,7 +91,7 @@ compare algorithm")]
         [Range(0.01f, 50.0f)]
         private float mRandomizeJumpForceForce = 0.0f;
 
-        [Header("Rotate Effect ")]
+        [Header("🔍 Rotate Effect ")]
 
         [Tooltip("Does the item rotate while dropping?")]
         [SerializeField]
@@ -102,7 +102,7 @@ compare algorithm")]
         [Range(-5000.0f, 5000.0f)]
         private float mRotateSpeed = 1000.0f;
 
-        [Header("Spread Effect (JCS_ItemDroppable)")]
+        [Header("🔍 Spread Effect (JCS_ItemDroppable)")]
 
         [Tooltip("Spread the item while dropping.")]
         [SerializeField]
@@ -117,7 +117,7 @@ compare algorithm")]
         [SerializeField]
         private bool mIncludeDepth = false;
 
-        [Header("Destroy Effect (JCS_ItemDroppable)")]
+        [Header("🔍 Destroy Effect (JCS_ItemDroppable)")]
 
         [Tooltip("Does the item fade out when is destroyed.")]
         [SerializeField]
@@ -133,7 +133,7 @@ compare algorithm")]
         [Range(0.0f, 30.0f)]
         private float mFadeTime = 1.0f;
 
-        [Header("Others (JCS_ItemDroppable)")]
+        [Header("🔍 Others (JCS_ItemDroppable)")]
 
         [Tooltip("Do constant wave effect to all the items dropped.")]
         [SerializeField]
@@ -144,7 +144,7 @@ just stop there.")]
         [SerializeField]
         private bool mBounceBackfromWall = true;
 
-        [Header("Audio")]
+        [Header("🔍 Audio")]
 
         [Tooltip("Drop Sound.")]
         [SerializeField]

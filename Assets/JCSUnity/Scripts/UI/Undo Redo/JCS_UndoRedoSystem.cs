@@ -20,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_UndoRedoSystem)")]
+        [Separator("🧪 Helper Variables (JCS_UndoRedoSystem)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -47,7 +47,7 @@ namespace JCSUnity
         private KeyCode mClearAllUndoRedoHistoryKey = KeyCode.J;
 #endif
 
-        [Separator("Check Variables (JCS_UndoRedoSystem)")]
+        [Separator("📋 Check Variabless (JCS_UndoRedoSystem)")]
 
         [Tooltip("All of the undo redo component this system handles.")]
         [SerializeField]

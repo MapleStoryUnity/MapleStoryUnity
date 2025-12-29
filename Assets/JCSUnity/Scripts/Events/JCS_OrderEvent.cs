@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private Action mExecution = null;
 
-        [Separator("Check Variables (JCS_OrderEvent)")]
+        [Separator("📋 Check Variabless (JCS_OrderEvent)")]
 
         [Tooltip("Flag represent the activation of the event.")]
         [SerializeField]
@@ -34,7 +34,7 @@ namespace JCSUnity
         [ReadOnly]
         private float mTimer = 0.0f;
 
-        [Separator("Runtime Variables (JCS_OrderEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_OrderEvent)")]
 
         [Tooltip("Time for each execution.")]
         [SerializeField]

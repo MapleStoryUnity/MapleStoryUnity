@@ -18,14 +18,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_HitListEvent)")]
+        [Separator("📋 Check Variabless (JCS_HitListEvent)")]
 
         [Tooltip("trigger if this even occurs")]
         [SerializeField]
         [ReadOnly]
         private bool mIsHit = false;
 
-        [Separator("Runtime Variables (JCS_HitListEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_HitListEvent)")]
 
         [Tooltip("List of object will lower 1 hit count.")]
         [SerializeField]

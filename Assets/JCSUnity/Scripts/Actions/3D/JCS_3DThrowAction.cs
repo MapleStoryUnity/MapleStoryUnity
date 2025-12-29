@@ -20,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_3DThrowAction)")]
+        [Separator("🧪 Helper Variables (JCS_3DThrowAction)")]
 
         [Tooltip("Target to test to throw to.")]
         [SerializeField]
@@ -35,14 +35,14 @@ namespace JCSUnity
         private KeyCode mTestWithTimeKey = KeyCode.None;
 #endif
 
-        [Separator("Check Variables (JCS_3DThrowAction)")]
+        [Separator("📋 Check Variabless (JCS_3DThrowAction)")]
 
         [Tooltip("Velocity of the object.")]
         [SerializeField]
         [ReadOnly]
         private Vector3 mVelocity = Vector3.zero;
 
-        [Separator("Runtime Variables (JCS_3DThrowAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DThrowAction)")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]

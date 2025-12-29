@@ -22,7 +22,7 @@ namespace JCSUnity
         protected CharacterController mCharacterController = null;
         protected JCS_CharacterControllerInfo mCharacterControllerInfo = null;
 
-        [Separator("Runtime Variables (JCS_Player)")]
+        [Separator("⚡️ Runtime Variables (JCS_Player)")]
 
         [Tooltip("How fast this player moves.")]
         [SerializeField]

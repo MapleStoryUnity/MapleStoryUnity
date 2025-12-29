@@ -25,12 +25,12 @@ namespace JCSUnity
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_RandomTweenerAction)")]
+        [Separator("🧪 Helper Variables (JCS_RandomTweenerAction)")]
 
         public Vector3 targetValue = Vector3.zero;
 #endif
 
-        [Separator("Runtime Variables (JCS_RandomTweenerAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_RandomTweenerAction)")]
 
         [Tooltip("Mininum vector value.")]
         [SerializeField]

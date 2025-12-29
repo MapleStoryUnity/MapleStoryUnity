@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_DialogueObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_DialogueObject)")]
 
         [Tooltip("Unique index to open the dialogue.")]
         [SerializeField]
@@ -37,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_PanelType mPanelType = JCS_PanelType.RESET_PANEL;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Sound player for this component.")]
         [SerializeField]

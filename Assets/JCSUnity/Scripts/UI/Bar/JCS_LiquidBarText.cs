@@ -23,7 +23,7 @@ namespace JCSUnity
         // Counter with the liquid bar?
         private JCS_GUILiquidBar mLiquidBar = null;
 
-        [Separator("Runtime Variables (JCS_LiquidBarText)")]
+        [Separator("⚡️ Runtime Variables (JCS_LiquidBarText)")]
 
         [Tooltip("Text to do the effect.")]
         [SerializeField]

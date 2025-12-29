@@ -24,7 +24,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_SwtichServerButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_SwtichServerButton)")]
 
         [Tooltip("Target host name to switch.")]
         [SerializeField]

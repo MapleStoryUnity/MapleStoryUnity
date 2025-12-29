@@ -258,15 +258,17 @@ namespace JCSUnity
             // Check first click
             if (!CLICK)
             {
-                if (GetMouseButtonDown(button))
+                if (GetMouseButtonUp(button))
                     CLICK = true;
             }
             // Check double click
             else
             {
-                if (GetMouseButtonDown(button))
+                if (GetMouseButtonUp(button))
                 {
                     CLICK = false;
+                    CLICK_TIMER = 0.0f;
+
                     return true;
                 }
             }

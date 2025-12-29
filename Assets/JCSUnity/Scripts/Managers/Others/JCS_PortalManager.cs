@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_PortalManager)")]
+        [Separator("🌱 Initialize Variables (JCS_PortalManager)")]
 
         [Tooltip("All the portal in the scene. Plz setup mannually.")]
         [SerializeField]

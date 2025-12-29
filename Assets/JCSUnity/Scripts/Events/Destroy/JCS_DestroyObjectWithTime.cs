@@ -27,7 +27,7 @@ namespace JCSUnity
 
         private bool mTimesUp = false;
 
-        [Separator("Runtime Variables (JCS_DestroyObjectWithTime)")]
+        [Separator("⚡️ Runtime Variables (JCS_DestroyObjectWithTime)")]
 
         [Tooltip("Target time to destroy.")]
         [SerializeField]
@@ -38,7 +38,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip("While destroying, fade out the game object.")]
         [SerializeField]

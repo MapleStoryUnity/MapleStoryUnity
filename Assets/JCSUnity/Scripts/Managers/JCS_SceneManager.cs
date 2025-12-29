@@ -33,7 +33,7 @@ namespace JCSUnity
 
         private bool mIsEnteringNextScene = false;
 
-        [Separator("Check Variables (JCS_SceneManager)")]
+        [Separator("📋 Check Variabless (JCS_SceneManager)")]
 
         [Tooltip("Black screen object to be assigned by the system.")]
         [SerializeField]
@@ -72,13 +72,13 @@ namespace JCSUnity
         // Executions after the overlay scene is loaded.
         private Dictionary<string, Action> mOnOverlaySceneLoaded = new();
 
-        [Separator("Initialize Variables (JCS_SceneManager)")]
+        [Separator("🌱 Initialize Variables (JCS_SceneManager)")]
 
         [Tooltip("Type/Method to switch the scene.")]
         [SerializeField]
         private JCS_SwitchSceneType mSwitchSceneType = JCS_SwitchSceneType.FADE;
 
-        [Header("Overlay")]
+        [Header("🔍 Overlay")]
 
         [Tooltip("Load additive overlay scenes asynchronously.")]
         [SerializeField]
@@ -89,9 +89,9 @@ namespace JCSUnity
         [Scene]
         private List<string> mOverlaySceneNames = null;
 
-        [Separator("Runtime Variables (JCS_SceneManager)")]
+        [Separator("⚡️ Runtime Variables (JCS_SceneManager)")]
 
-        [Header("Transition")]
+        [Header("🔍 Transition")]
 
         [Tooltip("Do this scene using the specific setting.")]
         [SerializeField]

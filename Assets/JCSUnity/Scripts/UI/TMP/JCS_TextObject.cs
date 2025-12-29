@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright © 2022 by Shen, Jen-Chieh $
+ *                   Copyright ï¿½ 2022 by Shen, Jen-Chieh $
  */
 
 /* NOTE: If you are using `TextMesh Pro` uncomment this line.
@@ -28,7 +28,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_TextObject)")]
+        [Separator("ðŸŒ± Initialize Variables (JCS_TextObject)")]
 
         [Tooltip("Target text renderer.")]
         [SerializeField]

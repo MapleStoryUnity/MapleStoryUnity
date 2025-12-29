@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
- *	                 Copyright � 2024 by Shen, Jen-Chieh $
+ *	                 Copyright � 2024 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private JCS_FloatTweener mFloatTweener = null;
 
-        [Separator("Runtime Variables (JCS_ShaderTweener)")]
+        [Separator("⚡️ Runtime Variables (JCS_ShaderTweener)")]
 
         [Tooltip("Target shader's properties.")]
         [SerializeField]

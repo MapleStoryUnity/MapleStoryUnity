@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_ActivePanelButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_ActivePanelButton)")]
 
         [Tooltip("Transform to be active.")]
         [SerializeField]

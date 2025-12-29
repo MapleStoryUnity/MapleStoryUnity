@@ -27,7 +27,7 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-        [Separator("Check Variables (JCS_PanelChild)")]
+        [Separator("📋 Check Variabless (JCS_PanelChild)")]
 
         [Tooltip("Panel root object cache.")]
         [SerializeField]

@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_Bubble)")]
+        [Separator("⚡️ Runtime Variables (JCS_Bubble)")]
 
         [Tooltip("Do the effect?")]
         [SerializeField]

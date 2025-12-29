@@ -28,7 +28,7 @@ namespace JCSUnity
 
         private JCS_Button mBtn = null;
 
-        [Separator("Runtime Variables (JCS_TextButtonEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_TextButtonEffect)")]
 
         [Tooltip("Text object to change color.")]
         [SerializeField]

@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_HideCanvasButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_HideCanvasButton)")]
 
         [Tooltip("Array of canvas to hide.")]
         public JCS_Canvas[] canvas = null;

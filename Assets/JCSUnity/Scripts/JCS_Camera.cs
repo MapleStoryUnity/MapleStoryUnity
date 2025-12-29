@@ -30,14 +30,14 @@ namespace JCSUnity
         // to add the difference between the two frame.
         protected Vector3 mLastFramePos = Vector3.zero;
 
-        [Separator("Check Variables (JCS_Camera)")]
+        [Separator("📋 Check Variabless (JCS_Camera)")]
 
         [Tooltip("Current camera's velocity.")]
         [SerializeField]
         [ReadOnly]
         protected Vector3 mVelocity = Vector3.zero;
 
-        [Separator("Initialize Variables (JCS_Camera)")]
+        [Separator("🌱 Initialize Variables (JCS_Camera)")]
 
         [Tooltip("Display the camera depth.")]
         [SerializeField]
@@ -47,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         protected Color mGameCamColor = Color.white;
 
-        [Separator("Runtime Variables (JCS_Camera)")]
+        [Separator("⚡️ Runtime Variables (JCS_Camera)")]
 
         [Tooltip("Target transform information.")]
         [SerializeField]
@@ -88,7 +88,7 @@ namespace JCSUnity
         [SerializeField]
         protected bool mSmoothTrack = true;
 
-        [Header("Boundary")]
+        [Header("🔍 Boundary")]
 
         [Tooltip("The movement boundary.")]
         [SerializeField]

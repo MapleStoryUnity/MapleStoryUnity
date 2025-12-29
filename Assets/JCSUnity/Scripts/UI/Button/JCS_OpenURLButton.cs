@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_OpenURLButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_OpenURLButton)")]
 
         [Tooltip("URL to open in the default browser.")]
         [SerializeField]

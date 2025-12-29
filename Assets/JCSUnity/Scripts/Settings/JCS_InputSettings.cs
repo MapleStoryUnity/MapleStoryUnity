@@ -68,7 +68,7 @@ namespace JCSUnity
         [Serializable]
         public struct JoystickMap
         {
-            [Separator("Check Varaibles (JoystickMap)")]
+            [Separator("📋 Check Variables (JoystickMap)")]
 
             [Tooltip("Right stick x value.")]
             public float stickRightXVal;
@@ -82,7 +82,7 @@ namespace JCSUnity
             [Tooltip("Left stick y value.")]
             public float stickLeftYVal;
 
-            [Separator("Initialize Varaibles (JoystickMap)")]
+            [Separator("🌱 Initialize Variables (JoystickMap)")]
 
             #region Button
 
@@ -123,7 +123,7 @@ namespace JCSUnity
 
 
             #region Stick
-            [Header("Stick")]
+            [Header("🔍 Stick")]
 
             [Tooltip("Stick on the right")]
             public string stickRightX;
@@ -142,7 +142,7 @@ namespace JCSUnity
 
             #region Trigger
 
-            [Header("Trigger")]
+            [Header("🔍 Trigger")]
 
             [Tooltip("Joystick button right trigger.")]
             public string joystickButtonRT;
@@ -155,7 +155,7 @@ namespace JCSUnity
 
             #region Bumper
 
-            [Header("Bumper")]
+            [Header("🔍 Bumper")]
 
             [Tooltip("Joystick button left bumper.")]
             public string joystickButtonLB;
@@ -169,13 +169,13 @@ namespace JCSUnity
 
 
 #if UNITY_EDITOR
-        [Separator("Helper Varaibles (JCS_InputSettings)")]
+        [Separator("🧪 Helper Variables (JCS_InputSettings)")]
 
         [Tooltip("All joystick's name.")]
         public string[] joystickNames = null;
 #endif
 
-        [Separator("Initialize Varaibles (JCS_InputSettings)")]
+        [Separator("🌱 Initialize Variables (JCS_InputSettings)")]
 
         [Tooltip("Targeting game pad going to use in the game.")]
         [SerializeField]
@@ -184,7 +184,7 @@ namespace JCSUnity
         // How many joystick in the game? Do the mapping for these joysticks.
         private JoystickMap[] mJoysticks = new JoystickMap[MAX_JOYSTICK_COUNT];
 
-        [Separator("Runtime Varaibles (JCS_InputSettings)")]
+        [Separator("⚡️ Runtime Variables (JCS_InputSettings)")]
 
         [Tooltip("Total maxinum game pad will live in game.")]
         [SerializeField]

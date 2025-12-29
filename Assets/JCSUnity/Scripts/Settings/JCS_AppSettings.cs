@@ -26,13 +26,13 @@ namespace JCSUnity
         // per application is starts.
         public Action onApplicationStarts = null;
 
-        [Separator("Check Variables (JCS_AppSettings)")]
+        [Separator("📋 Check Variabless (JCS_AppSettings)")]
 
         [Tooltip("Is the application start?")]
         [ReadOnly]
         public bool appStarts = false;
 
-        [Separator("Initialize Variables (JCS_AppSettings)")]
+        [Separator("🌱 Initialize Variables (JCS_AppSettings)")]
 
         [Tooltip("Enable to overwrite the default frame rate.")]
         public bool setFrameRate = false;
@@ -41,9 +41,9 @@ namespace JCSUnity
         [Range(-1, 120)]
         public int frameRate = 120;
 
-        [Separator("Runtime Variables (JCS_AppSettings)")]
+        [Separator("⚡️ Runtime Variables (JCS_AppSettings)")]
 
-        [Header("Save Load")]
+        [Header("🔍 Save Load")]
 
         [Tooltip("Data folder path.")]
         public string dataPath = "/Data_jcs/";

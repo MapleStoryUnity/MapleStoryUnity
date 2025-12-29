@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private VideoPlayer mVideoPlayer = null;
 
-        [Separator("Check Variables (JCS_SceneSettings)")]
+        [Separator("📋 Check Variabless (JCS_SceneSettings)")]
 
         [Tooltip("True when is switching scene.")]
         [ReadOnly]
@@ -41,7 +41,7 @@ namespace JCSUnity
         [ReadOnly]
         public LoadSceneMode mode = LoadSceneMode.Single;
 
-        [Separator("Runtime Variables (JCS_SceneSettings)")]
+        [Separator("⚡️ Runtime Variables (JCS_SceneSettings)")]
 
         [Tooltip("General Scene fade in time. (For all scene)")]
         [Range(0.0f, 5.0f)]

@@ -22,7 +22,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_PauseManager)")]
+        [Separator("🧪 Helper Variables (JCS_PauseManager)")]
 
         [Tooltip("See curren time scale.")]
         [SerializeField]
@@ -37,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mToggleGamePause = KeyCode.P;
 
-        [Header("Increment/Decrement Time")]
+        [Header("🔍 Increment/Decrement Time")]
 
         [Tooltip("Key that increment the time.")]
         [SerializeField]
@@ -57,7 +57,7 @@ namespace JCSUnity
         private float mTimeDelta = 0.1f;
 #endif
 
-        [Separator("Check Variables (JCS_PauseManager)")]
+        [Separator("📋 Check Variabless (JCS_PauseManager)")]
 
         [Tooltip("Set to true if game is paused.")]
         [SerializeField]
@@ -73,7 +73,7 @@ namespace JCSUnity
         [ReadOnly]
         private List<JCS_PauseAction> mPauseActions = null;
 
-        [Separator("Runtime Variables (JCS_PauseManager)")]
+        [Separator("⚡️ Runtime Variables (JCS_PauseManager)")]
 
         [Tooltip("The default time scale.")]
         [SerializeField]
@@ -89,7 +89,7 @@ object you have in the list.")]
         // resize timer.
         private float mResizePauseActionListTimer = 0;
 
-        [Header("Asymptotic")]
+        [Header("🔍 Asymptotic")]
 
         [Tooltip("Do this scene using the specific setting.")]
         [SerializeField]

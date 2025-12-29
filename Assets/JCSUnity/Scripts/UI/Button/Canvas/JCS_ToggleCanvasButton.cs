@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_ToggleCanvasButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_ToggleCanvasButton)")]
 
         [Tooltip("Array of canvas to toggle its visibility.")]
         public JCS_Canvas[] canvas = null;

@@ -34,7 +34,7 @@ namespace JCSUnity
             public Transform spriteTransform;
         };
 
-        [Separator("Check Variables (JCS_RouteGuageSystem)")]
+        [Separator("📋 Check Variabless (JCS_RouteGuageSystem)")]
 
         [Tooltip("Distance between the starting line and goal.")]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace JCSUnity
         [ReadOnly]
         private float mDistanceRatio = 0;
 
-        [Separator("Initialize Variables (JCS_RouteGuageSystem)")]
+        [Separator("🌱 Initialize Variables (JCS_RouteGuageSystem)")]
 
         [Tooltip("Starting line position.")]
         [SerializeField]
@@ -69,7 +69,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mSpriteGoalTransform = null;
 
-        [Separator("Runtime Variables (JCS_RouteGuageSystem)")]
+        [Separator("⚡️ Runtime Variables (JCS_RouteGuageSystem)")]
 
         [Tooltip("All the player forms.")]
         [SerializeField]

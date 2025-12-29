@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_PatchManager)")]
+        [Separator("⚡️ Runtime Variables (JCS_PatchManager)")]
 
         [Tooltip("Next level load after the patch checked.")]
         [SerializeField]

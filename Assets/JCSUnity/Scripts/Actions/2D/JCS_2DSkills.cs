@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DSkills)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DSkills)")]
 
         [Tooltip("While by pressing this key active skill.")]
         [SerializeField]
@@ -71,7 +71,7 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Spawn")]
+        [Header("🔍 Spawn")]
 
         [Tooltip("Spawn the same position as this game object.")]
         [SerializeField]
@@ -85,7 +85,7 @@ namespace JCSUnity
         [SerializeField]
         protected bool mSameScale = true;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Optional sound player for 3D sounds calculation.")]
         [SerializeField]

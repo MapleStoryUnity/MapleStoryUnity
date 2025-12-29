@@ -32,7 +32,7 @@ namespace JCSUnity
         private float mOnStackFadeInTime = 0;
         private float mOnStackFadeOutTime = 0;
 
-        [Separator("Check Variables (JCS_SoundManager)")]
+        [Separator("📋 Check Variabless (JCS_SoundManager)")]
 
         [Tooltip("Current background music is playing.")]
         [SerializeField]
@@ -44,7 +44,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mSwitchingBGM = false;
 
-        [Separator("Runtime Variables (JCS_SoundManager)")]
+        [Separator("⚡️ Runtime Variables (JCS_SoundManager)")]
 
         [Tooltip("Do this scene using the specific setting?")]
         [SerializeField]

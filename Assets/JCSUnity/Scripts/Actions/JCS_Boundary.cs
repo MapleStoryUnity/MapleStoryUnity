@@ -19,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_Boundary)")]
+        [Separator("🧪 Helper Variables (JCS_Boundary)")]
 
         [Tooltip("The wire color for gizmos draw.")]
         [SerializeField]

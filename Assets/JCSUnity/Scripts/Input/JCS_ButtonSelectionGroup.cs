@@ -37,13 +37,13 @@ namespace JCSUnity
             LEFT,
         };
 
-        [Separator("Check Variables (JCS_ButtonSelectionGroup)")]
+        [Separator("📋 Check Variabless (JCS_ButtonSelectionGroup)")]
 
         [Tooltip("Current selecting index.")]
         [SerializeField]
         private int mCurrentSelectIndex = 0;
 
-        [Separator("Runtime Variables (JCS_ButtonSelectionGroup)")]
+        [Separator("⚡️ Runtime Variables (JCS_ButtonSelectionGroup)")]
 
         [Tooltip("Every time 'OnEnable' function occurs, reset selections.")]
         [SerializeField]

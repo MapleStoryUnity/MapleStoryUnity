@@ -25,7 +25,7 @@ namespace JCSUnity
         // Callback after the game is done initialize.
         private Action mOnAfterInitialize = null;
 
-        [Separator("Check Variable (JCS_GameManager)")]
+        [Separator("📋 Check Variables (JCS_GameManager)")]
 
         [Tooltip("Is game done initialize?")]
         [SerializeField]

@@ -21,7 +21,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_AttackerInfo)")]
+        [Separator("🌱 Initialize Variables (JCS_AttackerInfo)")]
 
         [Tooltip("Who is the attacker of this object(weapon)?")]
         [SerializeField]

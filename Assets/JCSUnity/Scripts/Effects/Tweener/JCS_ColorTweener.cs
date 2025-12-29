@@ -57,7 +57,7 @@ namespace JCSUnity
         private float mRealDurationAlpha = 0.0f;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_ColorTweener)")]
+        [Separator("🧪 Helper Variables (JCS_ColorTweener)")]
 
         [Tooltip("Test component with key?")]
         [SerializeField]
@@ -80,7 +80,7 @@ namespace JCSUnity
         private Color mTweenColorB = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 #endif
 
-        [Separator("Check Variables (JCS_ColorTweener)")]
+        [Separator("📋 Check Variabless (JCS_ColorTweener)")]
 
         // progress color
         [SerializeField]
@@ -108,7 +108,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mEasingA = false;
 
-        [Separator("Runtime Variables (JCS_ColorTweener)")]
+        [Separator("⚡️ Runtime Variables (JCS_ColorTweener)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
@@ -166,7 +166,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreA = false;
 
-        [Header("Callback")]
+        [Header("🔍 Callback")]
 
         [Tooltip("Callback after easing.")]
         [SerializeField]

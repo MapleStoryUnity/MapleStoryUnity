@@ -20,13 +20,13 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_DropdownQuality)")]
+        [Separator("🌱 Initialize Variables (JCS_DropdownQuality)")]
 
         [Tooltip("If true, remove all other options at the beginning.")]
         [SerializeField]
         private bool mRemoveAllOptions = true;
 
-        [Separator("Runtime Variables (JCS_DropdownQuality)")]
+        [Separator("⚡️ Runtime Variables (JCS_DropdownQuality)")]
 
         [Tooltip("Should expensive changes be applied.")]
         [SerializeField]

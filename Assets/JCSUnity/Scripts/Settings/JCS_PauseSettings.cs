@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_PauseSettings)")]
+        [Separator("⚡️ Runtime Variables (JCS_PauseSettings)")]
 
         [Tooltip("Pause and unpause with asymptotic transition.")]
         public bool asymptotic = false;

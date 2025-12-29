@@ -27,7 +27,7 @@ namespace JCSUnity
 
         private JCS_AlphaObject mAlphaObject = null;
 
-        [Separator("Runtime Variables *(JCS_DestinationDestroy)")]
+        [Separator("⚡️ Runtime Variables *(JCS_DestinationDestroy)")]
 
         [Tooltip("Do the action?")]
         [SerializeField]
@@ -41,7 +41,7 @@ namespace JCSUnity
         [SerializeField]
         private float mDestroyDistance = 0.3f;
 
-        [Header("Fade Effect")]
+        [Header("🔍 Fade Effect")]
 
         [Tooltip("Fade when destroy.")]
         [SerializeField]

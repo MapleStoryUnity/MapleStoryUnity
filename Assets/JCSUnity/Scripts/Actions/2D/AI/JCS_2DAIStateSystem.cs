@@ -32,7 +32,7 @@ namespace JCSUnity
             SWIM
         };
 
-        [Separator("Check Variables (JCS_AIStateSystem)")]
+        [Separator("📋 Check Variabless (JCS_AIStateSystem)")]
 
         [Tooltip("State of the AI move action.")]
         [SerializeField]

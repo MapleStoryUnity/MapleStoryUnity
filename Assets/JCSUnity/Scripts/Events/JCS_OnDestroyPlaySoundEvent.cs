@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_OnDestroyPlaySoundEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_OnDestroyPlaySoundEvent)")]
 
         [Tooltip("Audio clip to plays.")]
         [SerializeField]

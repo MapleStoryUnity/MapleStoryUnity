@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_PackageDataSettings)")]
+        [Separator("🌱 Initialize Variables (JCS_PackageDataSettings)")]
 
         [Tooltip("Package Data copyright information.")]
         public string copyright = "Copyright 2017 JCSUnity, Taiwan";

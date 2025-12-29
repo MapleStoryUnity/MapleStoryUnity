@@ -22,7 +22,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_TimeManager)")]
+        [Separator("📋 Check Variabless (JCS_TimeManager)")]
 
         [Tooltip("Time range at the current region.")]
         [SerializeField]

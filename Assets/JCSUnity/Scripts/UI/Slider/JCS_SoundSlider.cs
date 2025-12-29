@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright © 2022 by Shen, Jen-Chieh $
+ *                   Copyright ï¿½ 2022 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using UnityEngine.Audio;
@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private Slider mSlider = null;
 
-        [Separator("Initialize Variables (JCS_SoundSlider)")]
+        [Separator("ðŸŒ± Initialize Variables (JCS_SoundSlider)")]
 
         [Tooltip("The mixer to control; if null assign the default mixer.")]
         [SerializeField]

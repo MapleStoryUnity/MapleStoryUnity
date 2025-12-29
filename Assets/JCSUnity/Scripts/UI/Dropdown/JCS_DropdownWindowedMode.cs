@@ -28,7 +28,7 @@ namespace JCSUnity
             "Windowed",
         };
 
-        [Separator("Initialize Variables (JCS_DropdownWindowedMode)")]
+        [Separator("🌱 Initialize Variables (JCS_DropdownWindowedMode)")]
 
         [Tooltip("If true, remove all other options at the beginning.")]
         [SerializeField]

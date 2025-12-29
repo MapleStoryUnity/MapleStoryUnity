@@ -22,7 +22,7 @@ namespace JCSUnity
         public const float MAX_FADEOUT_TIME = 5.0f;
         public const float MIN_FADEOUT_TIME = 0.0f;
 
-        [Separator("Runtime Variables (JCS_SoundSettings)")]
+        [Separator("⚡️ Runtime Variables (JCS_SoundSettings)")]
 
         [Tooltip("The current audio mixer.")]
         public AudioMixer mixer = null;
@@ -41,7 +41,7 @@ namespace JCSUnity
         [Tooltip("Keep BGM current scene?")]
         public bool keepBGMSwitchScene = false;
 
-        [Header("Scene Sound")]
+        [Header("🔍 Scene Sound")]
 
         [Tooltip("Smoothly switching the sound between the switching the scene.")]
         public bool smoothSwithBetweenScene = true;
@@ -50,7 +50,7 @@ namespace JCSUnity
         public AudioClip clipBGM = null;
 
         // Window System
-        [Header("Window System")]
+        [Header("🔍 Window System")]
 
         [Tooltip("Sound to play when open the window clip.")]
         public AudioClip clipWindowOpen = null;

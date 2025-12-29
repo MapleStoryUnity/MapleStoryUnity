@@ -30,7 +30,7 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_CharacterController2D)")]
+        [Separator("🧪 Helper Variables (JCS_CharacterController2D)")]
 
         [Tooltip("")]
         [SerializeField]
@@ -44,7 +44,7 @@ namespace JCSUnity
         private KeyCode mRightKey = KeyCode.RightArrow;
 #endif
 
-        [Separator("Check Variables (JCS_CharacterController2D)")]
+        [Separator("📋 Check Variabless (JCS_CharacterController2D)")]
 
         // STUDY(jenchieh): use this as the composition info?
         [SerializeField]
@@ -95,7 +95,7 @@ namespace JCSUnity
 
         private Vector3 mCurrentFrame = Vector3.zero;
 
-        [Separator("Runtime Variables Variables (JCS_CharacterController2D)")]
+        [Separator("⚡️ Runtime Variables Variables (JCS_CharacterController2D)")]
 
         [Tooltip("Apply gravity?")]
         [SerializeField]
@@ -124,7 +124,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Freeze")]
+        [Header("🔍 Freeze")]
 
         [Tooltip("Freeze the object in x axis.")]
         [SerializeField]
@@ -134,7 +134,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mFreezeY = false;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip("Zero out the rotation when collider is trigger.")]
         [SerializeField]

@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-        [Separator("Runtime Variables (JCS_ButtonSelectionGroupController)")]
+        [Separator("⚡️ Runtime Variables (JCS_ButtonSelectionGroupController)")]
 
         [Tooltip("Active key listener?")]
         [SerializeField]
@@ -32,7 +32,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
 
-        [Header("Keyboard")]
+        [Header("🔍 Keyboard")]
 
         [Tooltip("Key for next selection. (Keyboard)")]
         [SerializeField]
@@ -46,7 +46,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mMOkay = KeyCode.None;
 
-        [Header("Full Control (Keyboard)")]
+        [Header("🔍 Full Control (Keyboard)")]
 
         [Tooltip("Up select key. (Keyboard)")]
         [SerializeField]
@@ -64,7 +64,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mMLeft = KeyCode.None;
 
-        [Header("Gamepad")]
+        [Header("🔍 Gamepad")]
 
         [Tooltip("Which device we are listening to?")]
         [SerializeField]
@@ -82,7 +82,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_JoystickButton mJOkay = JCS_JoystickButton.NONE;
 
-        [Header("Full Control (Gamepad)")]
+        [Header("🔍 Full Control (Gamepad)")]
 
         [Tooltip("Up select key. (Gamepad)")]
         [SerializeField]
@@ -100,7 +100,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_JoystickButton mJLeft = JCS_JoystickButton.NONE;
 
-        [Header("Audio")]
+        [Header("🔍 Audio")]
 
         [Tooltip("Sound when next button is pressed.")]
         [SerializeField]

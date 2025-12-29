@@ -21,13 +21,13 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-        [Separator("Check Variables (JCS_SlidePanel)")]
+        [Separator("📋 Check Variabless (JCS_SlidePanel)")]
 
         [SerializeField]
         [ReadOnly]
         private Vector3 mTargetPosition = Vector3.zero;
 
-        [Separator("Runtime Variables (JCS_SlidePanel) ")]
+        [Separator("⚡️ Runtime Variables (JCS_SlidePanel) ")]
 
         [Tooltip("How fast the this slide panel slide in x axis.")]
         [SerializeField]

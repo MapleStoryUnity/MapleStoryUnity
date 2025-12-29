@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DPushLiveObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DPushLiveObject)")]
 
         [Tooltip("Continuing push the effected object.")]
         [SerializeField]

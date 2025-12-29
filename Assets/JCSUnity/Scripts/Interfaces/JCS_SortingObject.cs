@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_SortingObject)")]
+        [Separator("🌱 Initialize Variables (JCS_SortingObject)")]
 
         [Tooltip(@"With this higher the panel have higher sorthing order. 
 (Higher will be in the front.)")]

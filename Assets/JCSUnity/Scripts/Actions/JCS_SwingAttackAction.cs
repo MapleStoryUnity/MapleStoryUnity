@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Separator("Runtime Variables (JCS_SwingAttackAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_SwingAttackAction)")]
 
         [Tooltip("Collider to detect weather the enemy get hit or not.")]
         [SerializeField]
@@ -79,13 +79,13 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mAudioClip = null;
 
-        [Header("Damage Text")]
+        [Header("🔍 Damage Text")]
 
         [Tooltip("If you want the action apply damage text add apply ")]
         [SerializeField]
         private JCS_ApplyDamageTextToLiveObjectAction mApplyDamageTextAction = null;
 
-        [Header("Other")]
+        [Header("🔍 Other")]
 
         [Tooltip("Key to active attack.")]
         [SerializeField]

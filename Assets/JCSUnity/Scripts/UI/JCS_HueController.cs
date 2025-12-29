@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_HueController)")]
+        [Separator("📋 Check Variabless (JCS_HueController)")]
 
         // record down the highest r/g/b color.
         [SerializeField]
@@ -35,7 +35,7 @@ namespace JCSUnity
         [ReadOnly]
         private Color[] mListColor = null;
 
-        [Separator("Runtime Variables (JCS_HueController)")]
+        [Separator("⚡️ Runtime Variables (JCS_HueController)")]
 
         [Tooltip("Any Graphic with color component.")]
         [SerializeField]

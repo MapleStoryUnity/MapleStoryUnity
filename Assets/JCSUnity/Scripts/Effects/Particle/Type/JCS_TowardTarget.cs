@@ -26,7 +26,7 @@ namespace JCSUnity
         // when reach the certain range disable it.
         private JCS_DisableWithCertainRangeEvent mDisableWidthCertainRangeEvent = null;
 
-        [Separator("Runtime Variables (JCS_TowardTarget)")]
+        [Separator("âš¡ï¸ Runtime Variables (JCS_TowardTarget)")]
 
         [Tooltip("Reverse the particle direction?")]
         [SerializeField]
@@ -156,7 +156,7 @@ namespace JCSUnity
             Vector3 newPos = mTarget.transform.position;
 
             // set up the unknown angle
-            // ÀH¾÷"¤º¨¤"
+            // ï¿½Hï¿½ï¿½"ï¿½ï¿½ï¿½ï¿½"
             float angle = JCS_Random.Range(0, 360);
 
             // define offset

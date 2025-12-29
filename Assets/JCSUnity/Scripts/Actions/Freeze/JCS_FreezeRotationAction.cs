@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_FreezeTransformAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_FreezeTransformAction)")]
 
         [Tooltip("Is this action active?")]
         [SerializeField]

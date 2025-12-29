@@ -24,7 +24,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_Dropdown)")]
+        [Separator("🧪 Helper Variables (JCS_Dropdown)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -35,7 +35,7 @@ namespace JCSUnity
         private KeyCode mUpdateDropdown = KeyCode.U;
 #endif
 
-        [Separator("Check Variables (JCS_Dropdown)")]
+        [Separator("📋 Check Variabless (JCS_Dropdown)")]
 
         [Tooltip("Store all the real dropdown texts, not the shortcut version.")]
         [SerializeField]
@@ -47,7 +47,7 @@ namespace JCSUnity
         [ReadOnly]
         private List<string> mDropdownBackupTexts = null;
 
-        [Separator("Runtime Variables (JCS_Dropdown)")]
+        [Separator("⚡️ Runtime Variables (JCS_Dropdown)")]
 
         [Tooltip("Max letters shown in the options. Default is 14.")]
         [SerializeField] [Range(7, 200)]

@@ -23,14 +23,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_SlideScreenButton)")]
+        [Separator("📋 Check Variabless (JCS_SlideScreenButton)")]
 
         [Tooltip("This action are using `JCS_2DSlideScreenCamera`.")]
         [SerializeField]
         [ReadOnly]
         private JCS_2DSlideScreenCamera[] mSlideCameras = null;
 
-        [Separator("Runtime Variables (JCS_SlideScreenButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_SlideScreenButton)")]
 
         [Tooltip("Direction you want to move.")]
         [SerializeField] private JCS_2D8Direction mDirection = JCS_2D8Direction.TOP;
@@ -44,7 +44,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
 #if !JCS_USE_GAMEPAD
         [Tooltip("Sound player for 3D sounds calculation.")]
@@ -56,7 +56,7 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mSlideScreenSound = null;
 
-        [Header("Delay")]
+        [Header("🔍 Delay")]
 
         [Tooltip("Time delay when slide screen.")]
         [SerializeField]
@@ -84,7 +84,7 @@ namespace JCSUnity
                 mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
             // try to get it from the scene by type.
-            mSlideCameras = JCS_Util.FindObjectsByType(typeof(JCS_2DSlideScreenCamera)) as JCS_2DSlideScreenCamera[];
+            mSlideCameras = JCS_Util.FindObjectsByType<JCS_2DSlideScreenCamera>();
         }
 
 #if JCS_USE_GAMEPAD

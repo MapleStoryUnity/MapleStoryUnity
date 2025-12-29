@@ -24,7 +24,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_LoadSceneButton)")]
+        [Separator("🌱 Initialize Variables (JCS_LoadSceneButton)")]
 
         [Tooltip("Platform you want to target. NONE means all platform, so it will just load the scene")]
         [SerializeField]

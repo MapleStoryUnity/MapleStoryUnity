@@ -19,13 +19,13 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_3DCursorShootAction)")]
+        [Separator("📋 Check Variabless (JCS_3DCursorShootAction)")]
 
         [SerializeField]
         [ReadOnly]
         private JCS_ShootAction mShootAction = null;
 
-        [Separator("Runtime Variables (JCS_3DCursorShootAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DCursorShootAction)")]
 
         [Tooltip("Key code to active this action.")]
         [SerializeField]

@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DPortal)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DPortal)")]
 
         [Tooltip("Is this portal enable to use?")]
         [SerializeField]
@@ -36,7 +36,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DPortalType mPortalType = JCS_2DPortalType.SCENE_PORTAL;
 
-        [Header("Scene Portal")]
+        [Header("🔍 Scene Portal")]
 
         [Tooltip("Name of the scene.")]
         [SerializeField]
@@ -47,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_PortalLabel mPortalLabel = JCS_PortalLabel.NONE;
 
-        [Header("Transfer Portal")]
+        [Header("🔍 Transfer Portal")]
 
         [Tooltip("Pair portal, target portal the player will transfer to.")]
         [SerializeField]

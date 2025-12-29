@@ -21,7 +21,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_2DCursorShootAction)")]
+        [Separator("📋 Check Variabless (JCS_2DCursorShootAction)")]
 
         [SerializeField]
         [ReadOnly]
@@ -31,7 +31,7 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_2DCursorShootAction mCursorShootAction = null;
 
-        [Separator("Runtime Variables (JCS_2DCursorShootAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DCursorShootAction)")]
 
         [Tooltip("How many shots in sequence?")]
         [SerializeField]
@@ -55,7 +55,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mKeepShootAngle = true;
 
-        [Header("Shoot Gap")]
+        [Header("🔍 Shoot Gap")]
 
         [Tooltip("Shoot with gap?")]
         [SerializeField]

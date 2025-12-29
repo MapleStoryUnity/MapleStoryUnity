@@ -18,14 +18,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_TimePanel)")]
+        [Separator("📋 Check Variabless (JCS_TimePanel)")]
 
         [Tooltip("Panels going to do the action.")]
         [SerializeField]
         [ReadOnly]
         private JCS_DialogueObject[] mDialogueObjects = null;
 
-        [Separator("Runtime Variables (JCS_TimePanel)")]
+        [Separator("⚡️ Runtime Variables (JCS_TimePanel)")]
 
         [Tooltip("Active on awake.")]
         [SerializeField]

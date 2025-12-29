@@ -40,7 +40,7 @@ namespace JCSUnity
 
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_AdsManager)")]
+        [Separator("🌱 Initialize Variables (JCS_AdsManager)")]
 
 #if (UNITY_ANDROID)
         [Tooltip("Andriod game id provided by Unity Server window.")]

@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DAnimMirrorAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DAnimMirrorAction)")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]

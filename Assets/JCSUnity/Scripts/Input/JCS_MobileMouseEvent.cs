@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_MobileMouseEvent)")]
+        [Separator("📋 Check Variabless (JCS_MobileMouseEvent)")]
 
         [Tooltip("")]
         [SerializeField]
@@ -35,7 +35,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mTouchedLastFrame = false;
 
-        [Separator("Runtime Variables (JCS_MobileMouseEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_MobileMouseEvent)")]
 
         [Tooltip("Distance Raycast shoot.")]
         [SerializeField]

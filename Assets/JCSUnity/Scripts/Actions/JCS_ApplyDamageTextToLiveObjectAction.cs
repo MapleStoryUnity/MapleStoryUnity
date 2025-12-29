@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_ApplyDamageTextToLiveObjectAction)")]
+        [Separator("📋 Check Variabless (JCS_ApplyDamageTextToLiveObjectAction)")]
 
         [SerializeField]
         [ReadOnly]
@@ -41,7 +41,7 @@ namespace JCSUnity
         [ReadOnly]
         private int mCriticalChance = 10;
 
-        [Separator("Runtime Variables (JCS_ApplyDamageTextToLiveObjectAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_ApplyDamageTextToLiveObjectAction)")]
 
         // Ability Format
         [Tooltip("Ability format for calculation.")]
@@ -53,7 +53,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mDamageTextPositionOffset = Vector3.zero;
 
-        [Header("Pre Calculate")]
+        [Header("🔍 Pre Calculate")]
 
         [Tooltip("Attack will be calculate before hit the object.")]
         [SerializeField]
@@ -63,7 +63,7 @@ namespace JCSUnity
         [SerializeField]
         private int[] mDamageApplying = null;
 
-        [Header("Lock Effect")]
+        [Header("🔍 Lock Effect")]
 
         [Tooltip("Lock on the target?")]
         [SerializeField]
@@ -73,7 +73,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetTransform = null;
 
-        [Header("Random Effect")]
+        [Header("🔍 Random Effect")]
 
         [Tooltip("Random position effect.")]
         [SerializeField]
@@ -84,13 +84,13 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandPosRange = 0.0f;
 
-        [Header("Destroy")]
+        [Header("🔍 Destroy")]
 
         [Tooltip("Destroy live object by this object.")]
         [SerializeField]
         private bool mDestroyByThisAction = true;
 
-        [Header("AOE")]
+        [Header("🔍 AOE")]
 
         [Tooltip("Make object un-destroyable, count down by AOECount below.")]
         [SerializeField]
@@ -111,7 +111,7 @@ namespace JCSUnity
         // a boolean handler the detection.
         private bool mIsDestroyed = false;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Play this hit sound, while is action happens.")]
         [SerializeField]

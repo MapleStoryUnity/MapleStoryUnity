@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_GUITextPool)")]
+        [Separator("🌱 Initialize Variables (JCS_GUITextPool)")]
 
         [Tooltip("Log text decoration.")]
         [SerializeField]

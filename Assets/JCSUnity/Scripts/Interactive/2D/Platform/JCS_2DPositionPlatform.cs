@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DPositionPlatform)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DPositionPlatform)")]
 
         [Tooltip("Collider will detect to see if the player could stand ontop of the platform collider.")]
         [SerializeField]

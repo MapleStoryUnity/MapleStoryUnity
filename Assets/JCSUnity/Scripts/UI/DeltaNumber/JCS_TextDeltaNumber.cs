@@ -26,7 +26,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_TextDeltaNumber)")]
+        [Separator("🧪 Helper Variables (JCS_TextDeltaNumber)")]
 
         [Tooltip("Test component with key.")]
         [SerializeField]
@@ -49,13 +49,13 @@ namespace JCSUnity
         private float mValueB = 10.0f;
 #endif
 
-        [Separator("Check Variables (JCS_TextDeltaNumber)")]
+        [Separator("📋 Check Variabless (JCS_TextDeltaNumber)")]
 
         [Tooltip("Full string to display.")]
         [SerializeField]
         private string mFullString = "";
 
-        [Separator("Runtime Variables (JCS_TextDeltaNumber)")]
+        [Separator("⚡️ Runtime Variables (JCS_TextDeltaNumber)")]
 
         [Tooltip("Current number that will turn into string.")]
         [SerializeField]
@@ -82,7 +82,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Min/Max")]
+        [Header("🔍 Min/Max")]
 
         [Tooltip("Maxinum number.")]
         [SerializeField]
@@ -92,7 +92,7 @@ namespace JCSUnity
         [SerializeField]
         private int mMinNumber = 0;
 
-        [Header("Animation")]
+        [Header("🔍 Animation")]
 
         [Tooltip(@"This will make the number have the transition 
 between, setting to a new number. If you want the number set directly, you 

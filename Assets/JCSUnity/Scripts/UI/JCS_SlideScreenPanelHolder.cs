@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-        [Separator("Initialize Variables (JCS_SlideScreenPanelHolder)")]
+        [Separator("🌱 Initialize Variables (JCS_SlideScreenPanelHolder)")]
 
         [Tooltip("How fast the this slide panel slide in x axis.")]
         [SerializeField]

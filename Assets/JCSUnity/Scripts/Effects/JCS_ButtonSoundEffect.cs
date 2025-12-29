@@ -24,8 +24,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private RectTransform mRectTransform = null;
         private EventTrigger mEventTrigger = null;
+
+        [Separator("📋 Check Variabless (JCS_ButtonSoundEffect)")]
+
+        [Tooltip("Is true when mouse is over this button.")]
+        [SerializeField]
+        [ReadOnly]
+        private bool mIsEntered = false;
 
         [Separator("Optional Variables (JCS_ButtonSoundEffect)")]
 
@@ -34,13 +40,13 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Header("Auto add to Unity's \"Event Trigger(Script)\" or not?")]
+        [Header("🔍 Auto add to Unity's \"Event Trigger(Script)\" or not?")]
 
         [Tooltip("is true u dont have to add manully!")]
         [SerializeField]
         private bool mAutoAddEvent = true;
 
-        [Header("*USAGE: Please use this component with Unity's \"Event Trigger(Script)\"!!!")]
+        [Header("🔍 *USAGE: Please use this component with Unity's \"Event Trigger(Script)\"!!!")]
 
         [SerializeField]
         private AudioClip mOnMouseOverSound = null;
@@ -55,7 +61,6 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         [SerializeField]
         private AudioClip mOnMouseDoubleClickSound = null;
 
-        private bool mIsOver = false;
 
         [SerializeField]
         private JCS_SoundMethod mOnMouseOverSoundMethod = JCS_SoundMethod.PLAY_SOUND;
@@ -70,7 +75,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         [SerializeField]
         private JCS_SoundMethod mOnMouseDoubleClickSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip("Use to detect to see if the button is interactable or not.")]
         [SerializeField]
@@ -141,7 +146,6 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         {
             if (mSoundPlayer == null)
                 mSoundPlayer = GetComponent<JCS_SoundPlayer>();
-            mRectTransform = GetComponent<RectTransform>();
             mEventTrigger = GetComponent<EventTrigger>();
 
             if (mBtn == null)
@@ -156,62 +160,60 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
              * player. 
              */
             if (mSoundPlayer == null)
-                mSoundPlayer = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
+            {
+                var sm = JCS_SoundManager.FirstInstance();
+
+                mSoundPlayer = sm.GlobalSoundPlayer();
+            }
 
             if (mAutoAddEvent)
             {
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerEnter, JCS_OnMouseOver);
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerEnter, JCS_OnMouseDoubleClick);
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerExit, JCS_OnMouseExit);
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerDown, JCS_OnMouseDown);
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerUp, JCS_OnMouseUp);
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerClick, JCS_OnMouseClick);
+                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerEnter, ItOnMouseEnter);
+                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerExit, ItOnMouseExit);
+                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerDown, ItOnMouseDown);
+                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerUp, ItOnMouseUp);
+                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerClick, ItOnMouseClick);
             }
         }
 
         private void Update()
         {
+            HandleDoubleClick();
+        }
+
+        private void HandleDoubleClick()
+        {
             // IMPORTANT(JenChieh): only double click need update
-            if (mIsOver)
+            if (mBtn == null || !mIsEntered)
+                return;
+
+            if (JCS_Input.OnMouseDoubleClick(0))
             {
-                if (JCS_Input.OnMouseDoubleClick(0))
+                if (!mBtn.interactable)
                 {
-                    // either time is out or double click, 
-                    // both are all over the "double click event".
-                    mIsOver = false;
-
-                    if (mBtn != null)
-                    {
-                        if (!mBtn.interactable)
-                        {
-                            // play not ineractable sound
-                            mSoundPlayer.PlayOneShotByMethod(
-                                mOnMouseDoubleClickRefuseSound,
-                                mOnMouseDoubleClickRefuseSoundMethod);
-                            return;
-                        }
-                        else
-                        {
-                            // play normal double click sound
-                            mSoundPlayer.PlayOneShotByMethod(
-                                mOnMouseDoubleClickSound,
-                                mOnMouseDoubleClickSoundMethod);
-                        }
-                    }
+                    // play not ineractable sound
+                    mSoundPlayer.PlayOneShotByMethod(
+                        mOnMouseDoubleClickRefuseSound,
+                        mOnMouseDoubleClickRefuseSoundMethod);
                 }
-
-                // check if the mouse still over or not
-                if (!JCS_UIUtil.MouseOverGUI(mRectTransform))
-                    mIsOver = false;
+                else
+                {
+                    // play normal double click sound
+                    mSoundPlayer.PlayOneShotByMethod(
+                        mOnMouseDoubleClickSound,
+                        mOnMouseDoubleClickSoundMethod);
+                }
             }
         }
 
-        public void JCS_OnMouseOver(PointerEventData data)
+        public void ItOnMouseEnter()
         {
-            JCS_OnMouseOver();
+            ItOnMouseEnter(null);
         }
-        public void JCS_OnMouseOver()
+        public void ItOnMouseEnter(PointerEventData data)
         {
+            mIsEntered = true;
+
             if (mBtn != null)
             {
                 if (!mBtn.interactable)
@@ -229,12 +231,14 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
                 mOnMouseOverSoundMethod);
         }
 
-        public void JCS_OnMouseExit(PointerEventData data)
+        public void ItOnMouseExit()
         {
-            JCS_OnMouseExit();
+            ItOnMouseExit(null);
         }
-        public void JCS_OnMouseExit()
+        public void ItOnMouseExit(PointerEventData data)
         {
+            mIsEntered = false;
+
             if (mBtn == null)
                 return;
 
@@ -253,13 +257,13 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
             }
         }
 
-        public void JCS_OnMouseDown(PointerEventData data)
+        public void ItOnMouseDown()
         {
-            JCS_OnMouseDown();
+            ItOnMouseDown(null);
         }
-        public void JCS_OnMouseDown()
+        public void ItOnMouseDown(PointerEventData data)
         {
-            if (mBtn == null)
+            if (mBtn == null || !mIsEntered)
                 return;
 
             if (!mBtn.interactable)
@@ -278,13 +282,13 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
             }
         }
 
-        public void JCS_OnMouseUp(PointerEventData data)
+        public void ItOnMouseUp()
         {
-            JCS_OnMouseUp();
+            ItOnMouseUp(null);
         }
-        public void JCS_OnMouseUp()
+        public void ItOnMouseUp(PointerEventData data)
         {
-            if (mBtn == null)
+            if (mBtn == null || !mIsEntered)
                 return;
 
             if (!mBtn.interactable)
@@ -302,11 +306,11 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
             }
         }
 
-        public void JCS_OnMouseClick(PointerEventData data)
+        public void ItOnMouseClick()
         {
-            JCS_OnMouseClick();
+            ItOnMouseClick(null);
         }
-        public void JCS_OnMouseClick()
+        public void ItOnMouseClick(PointerEventData data)
         {
             if (mBtn == null)
                 return;
@@ -324,16 +328,6 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
                     mOnMouseClickSound,
                     mOnMouseClickSoundMethod);
             }
-        }
-
-        // plz put this in Pointer Enter event
-        public void JCS_OnMouseDoubleClick(PointerEventData data)
-        {
-            JCS_OnMouseDoubleClick();
-        }
-        public void JCS_OnMouseDoubleClick()
-        {
-            mIsOver = true;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_TweenerHandler)")]
+        [Separator("🧪 Helper Variables (JCS_TweenerHandler)")]
 
         [Tooltip("Test component with key?")]
         [SerializeField]
@@ -35,14 +35,14 @@ namespace JCSUnity
         private KeyCode mTweenToTarget = KeyCode.K;
 #endif
 
-        [Separator("Check Variables (JCS_TweenerHandler)")]
+        [Separator("📋 Check Variabless (JCS_TweenerHandler)")]
 
         [Tooltip("Optional panel root.")]
         [SerializeField]
         [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Separator("Runtime Variables (JCS_TweenerHandler)")]
+        [Separator("⚡️ Runtime Variables (JCS_TweenerHandler)")]
 
         [Tooltip("List of tweener informations.")]
         [SerializeField]

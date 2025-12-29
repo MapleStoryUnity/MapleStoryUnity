@@ -18,14 +18,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_CashObject)")]
+        [Separator("🌱 Initialize Variables (JCS_CashObject)")]
 
         [Tooltip("Value represent to this cash object.")]
         [SerializeField]
         [Range(1, 99999999)]
         protected int mCashValue = 1;
 
-        [Header("Randomize")]
+        [Header("🔍 Randomize")]
 
         [Tooltip("Randomize the cash value at init time?")]
         [SerializeField]

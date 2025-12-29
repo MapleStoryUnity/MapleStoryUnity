@@ -26,7 +26,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
         private Image mImage = null;
 
-        [Separator("Helper Variables (JCS_ResizeUI)")]
+        [Separator("🧪 Helper Variables (JCS_ResizeUI)")]
 
         [Tooltip("Show the resize panel during debug?")]
         [SerializeField]
@@ -41,7 +41,7 @@ namespace JCSUnity
         private Sprite mImageSprite = null;
 #endif
 
-        [Separator("Check Variables (JCS_ResizeUI)")]
+        [Separator("📋 Check Variabless (JCS_ResizeUI)")]
 
         [Tooltip("Width scale.")]
         [SerializeField]
@@ -128,7 +128,7 @@ namespace JCSUnity
         public void ShowResizePanel()
         {
             if (mImage == null)
-                mImage = JCS_Util.ForceGetComponent<Image>(this);
+                mImage = this.GetOrAddComponent<Image>();
             else
             {
                 if (mShowResizePanel && mImage.enabled)

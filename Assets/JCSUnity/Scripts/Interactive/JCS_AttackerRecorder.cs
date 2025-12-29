@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_AttackerRecorder)")]
+        [Separator("📋 Check Variabless (JCS_AttackerRecorder)")]
 
         // Every time this object get damage will 
         // record down the last attacker.

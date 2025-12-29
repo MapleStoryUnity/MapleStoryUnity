@@ -19,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_HopEffect)")]
+        [Separator("🧪 Helper Variables (JCS_HopEffect)")]
 
         [Tooltip("Test the module with key.")]
         [SerializeField]
@@ -34,7 +34,7 @@ namespace JCSUnity
         private KeyCode mHopKey = KeyCode.A;
 #endif
 
-        [Separator("Check Variables (JCS_HopEffect)")]
+        [Separator("📋 Check Variabless (JCS_HopEffect)")]
 
         [Tooltip("Flag for the effect activation.")]
         [SerializeField]
@@ -48,7 +48,7 @@ namespace JCSUnity
 
         private float mRealGravity = 0.0f;
 
-        [Separator("Runtime Variables (JCS_HopEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_HopEffect)")]
 
         [Tooltip("How much force to jump away from current position.")]
         [SerializeField]

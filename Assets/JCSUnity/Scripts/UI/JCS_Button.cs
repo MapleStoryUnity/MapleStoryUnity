@@ -43,7 +43,7 @@ namespace JCSUnity
 
         public Action onInteractableStateChanged = null;
 
-        [Separator("Check Variables (JCS_Button)")]
+        [Separator("📋 Check Variabless (JCS_Button)")]
 
         [Tooltip("Record down the selection choice for dialogue system.")]
         [SerializeField]
@@ -66,7 +66,7 @@ namespace JCSUnity
         // 'JCS_ButtonSelectionGroup' and 'JCS_ButtonSelection'.
         protected bool mIsSelectedInGroup = false;
 
-        [Separator("Initialize Variables (JCS_Button)")]
+        [Separator("🌱 Initialize Variables (JCS_Button)")]
 
         [Tooltip("Auto add listner to button click event?")]
         [SerializeField]
@@ -76,7 +76,7 @@ namespace JCSUnity
         [SerializeField]
         protected int mDialogueIndex = -1;
 
-        [Separator("Runtime Variables (JCS_Button)")]
+        [Separator("⚡️ Runtime Variables (JCS_Button)")]
 
         [Tooltip("Is the button interactable or not. (Default: true)")]
         [SerializeField]
@@ -137,9 +137,9 @@ namespace JCSUnity
         /// <summary>
         /// Intialize the button once.
         /// </summary>
-        public void Init(bool forceInit = false)
+        public void Init(bool force = false)
         {
-            if (!forceInit)
+            if (!force)
             {
                 if (mInitialized)
                     return;
@@ -163,14 +163,14 @@ namespace JCSUnity
 
             if (mAutoListener)
             {
-                // add listener itself, but it won't show in the inspector
-                mButton.onClick.AddListener(ButtonClick);
+                // Add listener itself, but it won't show in the inspector.
+                mButton.onClick.AddListener(InterBtnClick);
             }
 
-            // set the stating interactable.
+            // Set the stating interactable.
             SetInteractable();
 
-            // part of the on click callback
+            // Part of the on click callback.
             SetSystemCallback(OnClick);
 
             mInitialized = true;
@@ -182,7 +182,7 @@ namespace JCSUnity
         /// 
         /// * Good for organize code and game data file in Unity.
         /// </summary>
-        public virtual void ButtonClick()
+        public virtual void InterBtnClick()
         {
             mIsSelectedInGroup = IsSelected();
 

@@ -23,7 +23,7 @@ namespace JCSUnity
         private static JCS_Socket SOCKET = null;
         private static JCS_ClientHandler PRESET_CLIENT_HANDLER = null;
 
-        [Separator("Check Variables (JCS_NetworkSettings)")]
+        [Separator("📋 Check Variabless (JCS_NetworkSettings)")]
 
         [Tooltip(@"Current mode this client in, should be update by the server!")]
         [ReadOnly]
@@ -37,7 +37,7 @@ namespace JCSUnity
         [ReadOnly]
         public bool forceSwitchServer = false;
 
-        [Separator("Runtime Variables (JCS_NetworkSettings)")]
+        [Separator("⚡️ Runtime Variables (JCS_NetworkSettings)")]
 
         [Tooltip("Is the current game with online mode active?")]
         public bool onlineMode = false;

@@ -25,7 +25,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_GradientText)")]
+        [Separator("⚡️ Runtime Variables (JCS_GradientText)")]
 
         [Tooltip("Type of the gradient action.")]
         [SerializeField]

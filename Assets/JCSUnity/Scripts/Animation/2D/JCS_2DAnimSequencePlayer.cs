@@ -19,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_2DAnimSequencePlayer)")]
+        [Separator("🧪 Helper Variables (JCS_2DAnimSequencePlayer)")]
 
         public bool testWithKey = false;
 
@@ -30,7 +30,7 @@ namespace JCSUnity
         public KeyCode stopKey = KeyCode.J;
 #endif
 
-        [Separator("Check Variables (JCS_2DAnimSequencePlayer)")]
+        [Separator("📋 Check Variabless (JCS_2DAnimSequencePlayer)")]
 
         [Tooltip("")]
         [SerializeField]
@@ -42,7 +42,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mDonePlayingSequence = false;
 
-        [Separator("Runtime Variables (JCS_2DAnimSequencePlayer)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DAnimSequencePlayer)")]
 
         [Tooltip("Active this component?")]
         [SerializeField]

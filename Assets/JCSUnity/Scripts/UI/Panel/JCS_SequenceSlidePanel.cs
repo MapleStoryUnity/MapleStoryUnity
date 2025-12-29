@@ -26,14 +26,14 @@ namespace JCSUnity
         private JCS_SoundPlayer mSoundPlayer = null;
         private RectTransform mRectTransform = null;
 
-        [Separator("Initialize Variables (JCS_SequenceSlidePanel)")]
+        [Separator("🌱 Initialize Variables (JCS_SequenceSlidePanel)")]
 
         [Tooltip(@"Optional choice, instead of using the auto detection. 
 (JCS_EmptyButton are the recommaned default class to use.)")]
         [SerializeField]
         private JCS_Button mToggleOrExitButton = null;
 
-        [Separator("Runtime Variables (JCS_SequenceSlidePanel)")]
+        [Separator("⚡️ Runtime Variables (JCS_SequenceSlidePanel)")]
 
         [Tooltip("Sequence of buttons with slide effect component with in the tranform.")]
         [SerializeField]
@@ -47,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Spacing")]
+        [Header("🔍 Spacing")]
 
         [Tooltip("Time to active one button animation.")]
         [SerializeField]
@@ -61,7 +61,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mExitByNoOverGUI = true;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Audio when active the animation the outer panel.")]
         [SerializeField]

@@ -20,14 +20,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_ShootAction)")]
+        [Separator("📋 Check Variabless (JCS_ShootAction)")]
 
         [Tooltip("Check if the enemy can shoot or not depends on the delay time!")]
         [SerializeField]
         [ReadOnly]
         private bool mCanShoot = true;
 
-        [Separator("Runtime Variables (JCS_ShootAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_ShootAction)")]
 
         [Tooltip("Bullet to use.")]
         [SerializeField]
@@ -58,7 +58,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Key")]
+        [Header("🔍 Key")]
 
         [Tooltip("Shoot keycode.")]
         [SerializeField]
@@ -78,7 +78,7 @@ namespace JCSUnity
         // Check we able to shoot or not
         private Func<bool> mCheckAbleToShoot = DefualtCheckFunction;
 
-        [Header("Action")]
+        [Header("🔍 Action")]
 
         [Tooltip("Delay time before shooting a bullet.")]
         [SerializeField]
@@ -94,7 +94,7 @@ namespace JCSUnity
 
         private float mActionTimer = 0.0f;
 
-        [Header("Auto Shoot")]
+        [Header("🔍 Auto Shoot")]
 
         [Tooltip("Shoot the bullet depend on the delay time.")]
         [SerializeField]
@@ -110,7 +110,7 @@ namespace JCSUnity
 
         private float mDelayTimer = 0.0f;
 
-        [Header("Deviation Effect")]
+        [Header("🔍 Deviation Effect")]
 
         [Tooltip("Deviate the angle on x-axis.")]
         [SerializeField]
@@ -139,7 +139,7 @@ namespace JCSUnity
         [Range(0.0f, 359.0f)]
         private float mDeviationRangeZ = 1.0f;
 
-        [Header("Random Spawn Effect")]
+        [Header("🔍 Random Spawn Effect")]
 
         [Tooltip("Spawn bullet at random position on x-axis.")]
         [SerializeField]
@@ -168,19 +168,19 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandPosRangeZ = 1.0f;
 
-        [Header("Audio (plz use \"JCS_SoundPoolAction\")")]
+        [Header("🔍 Audio (plz use \"JCS_SoundPoolAction\")")]
 
         [Tooltip("Sound when shoot action occurs.")]
         [SerializeField]
         private JCS_SoundPoolAction mRandomMultiSoundAction = null;
 
-        [Header("Ability Format")]
+        [Header("🔍 Ability Format")]
 
         [Tooltip("How much damage apply to other objects.")]
         [SerializeField]
         private JCS_AbilityFormat mAbilityFormat = null;
 
-        [Header("Tracking and Detect Area")]
+        [Header("🔍 Tracking and Detect Area")]
 
         [Tooltip("Will shoot to the target depends on Detect Area Action.")]
         [SerializeField]
@@ -200,7 +200,7 @@ namespace JCSUnity
         [SerializeField]
         private TrackType mTrackType = TrackType.CLOSEST;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip("Player uses the shoot action.")]
         [SerializeField]

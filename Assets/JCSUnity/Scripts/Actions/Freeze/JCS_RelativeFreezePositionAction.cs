@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_RelativeFreezePositionAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_RelativeFreezePositionAction)")]
 
         [Tooltip("Target transform to set the position relatively by distance.")]
         [SerializeField]

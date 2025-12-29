@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_ColliderObject)")]
+        [Separator("📋 Check Variabless (JCS_ColliderObject)")]
 
         [Tooltip("Type of the current collider.")]
         [SerializeField]

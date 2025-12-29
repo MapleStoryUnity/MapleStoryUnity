@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_ScreenSize)")]
+        [Separator("⚡️ Runtime Variables (JCS_ScreenSize)")]
 
         [Tooltip("Width of the screen.")]
         [Range(1, 8192)]

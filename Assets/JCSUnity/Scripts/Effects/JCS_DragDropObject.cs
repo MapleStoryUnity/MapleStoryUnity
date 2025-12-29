@@ -24,7 +24,7 @@ namespace JCSUnity
             Drop,
         };
 
-        [Separator("Runtime Variables (JCS_DragDropObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_DragDropObject)")]
 
         [Tooltip("Type of the drag and drop target.")]
         [SerializeField]
@@ -39,7 +39,7 @@ namespace JCSUnity
         /// <summary>
         /// Call when on drag.
         /// </summary>
-        public void JCS_OnDrag()
+        public void OnDrag()
         {
             switch (mDragDropType)
             {
@@ -50,7 +50,7 @@ namespace JCSUnity
                 case JCS_DragDropType.Inventory:
                     break;
 
-                    // TODO(JenChieh): 
+                // TODO(JenChieh): 
                 case JCS_DragDropType.GameObject_2D:
                     break;
 
@@ -65,7 +65,7 @@ namespace JCSUnity
         /// <summary>
         /// Call when on drop.
         /// </summary>
-        public void JCS_OnDrop()
+        public void OnDrop()
         {
             // empty..
         }

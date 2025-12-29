@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variable (JCS_TalkObject)")]
+        [Separator("🌱 Initialize Variable (JCS_TalkObject)")]
 
         [Tooltip("Current dialogue script this talk object holds.")]
         [SerializeField]

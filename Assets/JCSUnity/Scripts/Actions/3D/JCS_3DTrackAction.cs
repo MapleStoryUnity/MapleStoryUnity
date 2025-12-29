@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_3DTrackAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DTrackAction)")]
 
         [Tooltip("Transform we want to target.")]
         [SerializeField]

@@ -27,14 +27,14 @@ namespace JCSUnity
 
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-        [Separator("Runtime Variables (JCS_SplitSpawnEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_SplitSpawnEvent)")]
 
         [Tooltip("How many object to spawn?")]
         [SerializeField]
         [Range(1, 50)]
         private int mObjectsToSpawn = 1;
 
-        [Header("Trigger Conditions")]
+        [Header("🔍 Trigger Conditions")]
 
         [Tooltip(@"Do the event while on destroy function 
 built-in Unity Engine.")]
@@ -64,7 +64,7 @@ built-in Unity Engine.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Random Spawn Offset")]
+        [Header("🔍 Random Spawn Offset")]
 
         [Tooltip("Enable random spawn position offset effect on x axis?")]
         [SerializeField]
@@ -93,7 +93,7 @@ built-in Unity Engine.")]
         [Range(0, 10)]
         private float mRandPosRangeZ = 1f;
 
-        [Header("Random Degree Effects")]
+        [Header("🔍 Random Degree Effects")]
 
         [Tooltip("Enable random degree effect on x axis?")]
         [SerializeField]

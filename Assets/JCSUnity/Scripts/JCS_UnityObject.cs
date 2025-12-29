@@ -29,7 +29,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_Unityobject)")]
+        [Separator("🌱 Initialize Variables (JCS_Unityobject)")]
 
         [Tooltip("Type of the Unity game object.")]
         [SerializeField]
@@ -49,7 +49,7 @@ namespace JCSUnity
         protected TMP_Text mTextMesh = null;
 #endif
 
-        [Header("Material")]
+        [Header("🔍 Material")]
 
         [Tooltip("Make material clone.")]
         [SerializeField]

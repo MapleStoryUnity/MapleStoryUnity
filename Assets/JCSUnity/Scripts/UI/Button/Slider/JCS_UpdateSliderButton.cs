@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright � 2022 by Shen, Jen-Chieh $
+ *                   Copyright � 2022 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +25,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_UpdateSliderButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_UpdateSliderButton)")]
 
         [Tooltip("Target value to assign to slider list.")]
         [SerializeField]

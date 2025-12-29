@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 22358788}
   - component: {fileID: 11464624}
   - component: {fileID: 11491926}
+  - component: {fileID: 4647888912926877426}
   - component: {fileID: 11475162}
   m_Layer: 5
   m_Name: JCS_Canvas
@@ -102,6 +103,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4647888912926877426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee85920dbe024568b894f71d5bb75c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MyBox::MyBox.Internal.CommentaryComponent
+  Entries:
+  - EditorCommentary: 'The `JCS_Canvas` is the system-level canvas.
+
+
+      Please
+      create a separate canvas and do not use this one for other purposes.'
+    Type: 1
 --- !u!114 &11475162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,8 +134,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTest: 0
+  mKeyShow: 97
+  mKeyHide: 115
+  mCanvas: {fileID: 0}
+  mCanvasGroup: {fileID: 0}
+  mFadeAlpa: 0
+  mFading: 0
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
-  mActiveSound: {fileID: 0}
-  mDeactiveSound: {fileID: 0}
+  mShowMethod: 1
+  mFadeFriction: 0.15
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
+  mTimeType: 7
+  mSoundOnShow: {fileID: 0}
+  mSoundOnHide: {fileID: 0}

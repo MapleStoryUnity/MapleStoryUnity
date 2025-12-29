@@ -27,13 +27,13 @@ namespace JCSUnity
 
         private JCS_FloatTweener mFloatTweener = null;
 
-        [Separator("Runtime Variables (JCS_3DLight)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DLight)")]
 
         [Tooltip("Flag for active this component.")]
         [SerializeField]
         private bool mActive = true;
 
-        [Header("Min/Max")]
+        [Header("🔍 Min/Max")]
 
         [Tooltip("Mininum value of the light's range.")]
         [SerializeField]

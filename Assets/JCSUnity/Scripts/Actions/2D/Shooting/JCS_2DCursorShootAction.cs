@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_2DCursorShootAction)")]
+        [Separator("📋 Check Variabless (JCS_2DCursorShootAction)")]
 
         [SerializeField]
         private JCS_ShootAction mShootAction = null;

@@ -23,7 +23,7 @@ namespace JCSUnity
         private Vector3 mRecordScale = Vector3.zero;
         private Vector3 mTargetScale = Vector3.zero;
 
-        [Separator("Check Variables (JCS_ScaleEffect)")]
+        [Separator("📋 Check Variabless (JCS_ScaleEffect)")]
 
         [Tooltip("Is the current component doing the effect now?")]
         [SerializeField]
@@ -40,7 +40,7 @@ namespace JCSUnity
         [ReadOnly]
         private EventTrigger mEventTrigger = null;
 
-        [Separator("Initialize Variables (JCS_ScaleEffect)")]
+        [Separator("🌱 Initialize Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Do scale in x axis.")]
         [SerializeField]
@@ -62,13 +62,13 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mScaleFriction = new Vector3(0.2f, 0.2f, 0.2f);
 
-        [Separator("Runtime Variables (JCS_ScaleEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("UI")]
+        [Header("🔍 UI")]
 
         [Tooltip("Add event to event trigger system.")]
         [SerializeField]
@@ -109,12 +109,12 @@ namespace JCSUnity
 
                     foreach (EventTriggerType evt in mActiveEventTriggerType)
                     {
-                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, JCS_OnMouseOver);
+                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, ItOnMouseOver);
                     }
 
                     foreach (EventTriggerType evt in mDeactiveEventTriggerType)
                     {
-                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, JCS_OnMouseExit);
+                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, ItOnMouseExit);
                     }
                 }
             }
@@ -138,11 +138,11 @@ namespace JCSUnity
         /// 
         /// Use in inspector for Event Trigger System. (Active)
         /// </summary>
-        public void JCS_OnMouseOver(PointerEventData data)
+        public void ItOnMouseOver()
         {
-            JCS_OnMouseOver();
+            ItOnMouseOver(null);
         }
-        public void JCS_OnMouseOver()
+        public void ItOnMouseOver(PointerEventData data)
         {
             Active();
         }
@@ -153,11 +153,11 @@ namespace JCSUnity
         /// Use in inspector for Event Trigger System. (Deactive)
         /// </summary>
         /// <returns></returns>
-        public void JCS_OnMouseExit(PointerEventData data)
+        public void ItOnMouseExit()
         {
-            JCS_OnMouseExit();
+            ItOnMouseExit(null);
         }
-        public void JCS_OnMouseExit()
+        public void ItOnMouseExit(PointerEventData data)
         {
             Deactive();
         }

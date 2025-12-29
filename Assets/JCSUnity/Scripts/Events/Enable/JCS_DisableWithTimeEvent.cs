@@ -21,14 +21,14 @@ namespace JCSUnity
 
         private float mTimer = 0.0f;
 
-        [Separator("Check Variables (JCS_DisableWithTimeEvent)")]
+        [Separator("📋 Check Variabless (JCS_DisableWithTimeEvent)")]
 
         [Tooltip("Turn it to true when the task is completed.")]
         [SerializeField]
         [ReadOnly]
         private bool mDone = false;
 
-        [Separator("Runtime Variables (JCS_DisableWithTimeEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_DisableWithTimeEvent)")]
 
         [Tooltip("Components that take effect.")]
         [SerializeField]

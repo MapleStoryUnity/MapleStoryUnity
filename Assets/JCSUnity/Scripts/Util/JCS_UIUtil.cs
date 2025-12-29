@@ -52,6 +52,36 @@ namespace JCSUnity
                 comp.GetComponent<TMP_InputField>());
         }
 
+        /// <summary>
+        /// Return the bounds of the UI element.
+        /// </summary>
+        public static Bounds GetBounds(Transform transform)
+        {
+            var min = Vector3.positiveInfinity;
+            var max = Vector3.negativeInfinity;
+
+            RectTransform[] rts = transform.GetComponentsInChildren<RectTransform>();
+
+            foreach (RectTransform rt in rts)
+            {
+                // Get the 4 corners in world coordinates
+                var v = new Vector3[4];
+                rt.GetWorldCorners(v);
+
+                // update min and max
+                foreach (var vector3 in v)
+                {
+                    min = Vector3.Min(min, vector3);
+                    max = Vector3.Max(max, vector3);
+                }
+            }
+
+            var bounds = new Bounds();
+            bounds.SetMinMax(min, max);
+
+            return bounds;
+        }
+
         #region EVENT
 
         /// <summary>
@@ -60,11 +90,13 @@ namespace JCSUnity
         /// <param name="te"></param>
         /// <param name="type"></param>
         /// <param name="func"></param>
-        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, Action<PointerEventData> func)
+        public static void AddEventTriggerEvent(
+            EventTrigger te, EventTriggerType type,
+            Action<PointerEventData> func)
         {
-            EventTrigger.Entry entry = new EventTrigger.Entry();
+            var entry = new EventTrigger.Entry();
             entry.eventID = type;
-            entry.callback.AddListener((data) => { func((PointerEventData)data); });
+            entry.callback.AddListener((data) => { func?.Invoke((PointerEventData)data); });
             te.triggers.Add(entry);
         }
 
@@ -74,11 +106,14 @@ namespace JCSUnity
         /// <param name="te"></param>
         /// <param name="type"></param>
         /// <param name="func"></param>
-        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, Action<PointerEventData, JCS_ButtonSelection> func, JCS_ButtonSelection selection)
+        public static void AddEventTriggerEvent(
+            EventTrigger te, EventTriggerType type,
+            Action<PointerEventData, JCS_ButtonSelection> func,
+            JCS_ButtonSelection selection)
         {
-            EventTrigger.Entry entry = new EventTrigger.Entry();
+            var entry = new EventTrigger.Entry();
             entry.eventID = type;
-            entry.callback.AddListener((data) => { func((PointerEventData)data, selection); });
+            entry.callback.AddListener((data) => { func?.Invoke((PointerEventData)data, selection); });
             te.triggers.Add(entry);
         }
 

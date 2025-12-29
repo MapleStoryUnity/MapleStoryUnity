@@ -34,7 +34,7 @@ namespace JCSUnity
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_3DWalkAction)")]
+        [Separator("🧪 Helper Variables (JCS_3DWalkAction)")]
 
         [Tooltip("Found the path now.")]
         [SerializeField]
@@ -45,7 +45,7 @@ namespace JCSUnity
         private float mRemainingDistance = 0.0f;
 #endif
 
-        [Separator("Check Variables (JCS_3DWalkAction)")]
+        [Separator("📋 Check Variabless (JCS_3DWalkAction)")]
 
         [Tooltip("Current target destination.")]
         [SerializeField]
@@ -68,7 +68,7 @@ namespace JCSUnity
         [ReadOnly]
         private int mSearchCounter = 0;
 
-        [Separator("Runtime Variables (JCS_3DWalkAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DWalkAction)")]
 
         [Tooltip("Check weather you want do this action.")]
         [SerializeField]
@@ -108,14 +108,14 @@ namespace JCSUnity
         [Range(0.0f, 30.0f)]
         private float mMaxOffDistance = 0.0f;
 
-        [Header("Self In Distance")]
+        [Header("🔍 Self In Distance")]
 
         [Tooltip("Self distance without target transform interact.")]
         [SerializeField]
         [Range(0.0f, 300.0f)]
         private float mSelfDistance = 5.0f;
 
-        [Header("To Target")]
+        [Header("🔍 To Target")]
 
         [Tooltip("Range that enemy will try to get close to.")]
         [SerializeField]

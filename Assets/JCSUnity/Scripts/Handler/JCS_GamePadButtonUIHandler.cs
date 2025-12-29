@@ -24,13 +24,13 @@ namespace JCSUnity
         private Image mNormalImage = null;
         private Button mButton = null;
 
-        [Separator("Initialize Variables (JCS_GamepadButtonUIHandler)")]
+        [Separator("🌱 Initialize Variables (JCS_GamepadButtonUIHandler)")]
 
         [Tooltip("Change the selection to sprite swap at awake?")]
         [SerializeField]
         private bool mActiveSpriteSwapAtAwake = true;
 
-        [Header("Keyboard")]
+        [Header("🔍 Keyboard")]
 
         [Tooltip("Sprite when button is normal. (Keyboard)")]
         [SerializeField]
@@ -48,7 +48,7 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mKDisabledSprite = null;
 
-        [Header("Gamepad")]
+        [Header("🔍 Gamepad")]
 
         [Tooltip("Sprite when button is normal. (Joystick)")]
         [SerializeField]

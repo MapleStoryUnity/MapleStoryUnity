@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_TogglePanelButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_TogglePanelButton)")]
 
         [Tooltip("Panel (dialogue) you want to toggle.")]
         [SerializeField]

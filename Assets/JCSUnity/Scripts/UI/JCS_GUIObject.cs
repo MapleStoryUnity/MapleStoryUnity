@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_UndoRedoComponent)")]
+        [Separator("📋 Check Variabless (JCS_UndoRedoComponent)")]
 
         [Tooltip("Input Field component.")]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace JCSUnity
         [ReadOnly]
         protected Scrollbar mScrollBar = null;
 
-        [Separator("Runtime Variables (JCS_UndoRedoComponent)")]
+        [Separator("⚡️ Runtime Variables (JCS_UndoRedoComponent)")]
 
         [Tooltip("Select GUI type.")]
         [SerializeField]

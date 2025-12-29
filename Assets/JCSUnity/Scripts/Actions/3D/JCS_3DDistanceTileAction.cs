@@ -26,7 +26,7 @@ namespace JCSUnity
 
         private Vector3 mOriginPos = Vector3.zero;
 
-        [Separator("Runtime Variables (JCS_3DDistanceTileAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DDistanceTileAction)")]
 
         [Tooltip(@"Reset to this position. If this is null, we use original position instead.")]
         [SerializeField]

@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_SoundPool)")]
+        [Separator("⚡️ Runtime Variables (JCS_SoundPool)")]
 
         [Tooltip("Pool of the audio clips.")]
         [SerializeField]

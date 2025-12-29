@@ -18,13 +18,13 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_PortalSettings)")]
+        [Separator("📋 Check Variabless (JCS_PortalSettings)")]
 
         [Tooltip("Current Portal Lable are.")]
         [ReadOnly]
         public JCS_PortalLabel sceneLabel = JCS_PortalLabel.NONE;
 
-        [Separator("Initialize Variables (JCS_PortalSettings)")]
+        [Separator("🌱 Initialize Variables (JCS_PortalSettings)")]
 
         [Tooltip("Reset the player position to portal?")]
         public bool resetPositionAtStart = true;

@@ -38,13 +38,13 @@ namespace JCSUnity
         private FullScreenMode mPrevScreenMode = FullScreenMode.FullScreenWindow;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_ScreenManager)")]
+        [Separator("🧪 Helper Variables (JCS_ScreenManager)")]
 
         [Tooltip("Show the resizable screen panel in game?")]
         public bool showResizablePanels = true;
 #endif
 
-        [Separator("Check Variables (JCS_ScreenSettings)")]
+        [Separator("📋 Check Variabless (JCS_ScreenSettings)")]
 
         [Tooltip("Screen size when the application starts.")]
         [ReadOnly]
@@ -70,7 +70,7 @@ namespace JCSUnity
         [ReadOnly]
         public JCS_ScreenSize aspectRatioSize = JCS_ScreenSize.zero;
 
-        [Separator("Initialize Variables (JCS_ScreenSettings)")]
+        [Separator("🌱 Initialize Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Resize the screen/window to certain aspect when " +
             "the application starts. Aspect ratio can be set at 'JCS_ScreenManager'.")]
@@ -89,7 +89,7 @@ namespace JCSUnity
         [SerializeField]
         private Color mResizablePanelsColor = Color.black;
 
-        [Separator("Runtime Variables (JCS_ScreenSettings)")]
+        [Separator("⚡️ Runtime Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Standard screen size to calculate the worldspace obejct's camera view.")]
         public JCS_ScreenSize standardSize = new JCS_ScreenSize(1920, 1080);

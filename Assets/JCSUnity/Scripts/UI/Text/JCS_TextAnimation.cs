@@ -19,14 +19,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_TextAnimation)")]
+        [Separator("📋 Check Variabless (JCS_TextAnimation)")]
 
         [Tooltip("Frame this animation is currently displayed.")]
         [SerializeField]
         [ReadOnly]
         private int mCurrentFrame = 0;
 
-        [Separator("Runtime Variables (JCS_TextAnimation)")]
+        [Separator("⚡️ Runtime Variables (JCS_TextAnimation)")]
 
         [Tooltip("Animation active or not active.")]
         [SerializeField]

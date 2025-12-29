@@ -16,7 +16,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        //[Separator("Initialize Varialbes (JCS_CounterEvent)")]
+        //[Separator("🌱 Initialize Varialbes (JCS_CounterEvent)")]
 
         //[SerializeField]
         //private float mDelayTime = 0;

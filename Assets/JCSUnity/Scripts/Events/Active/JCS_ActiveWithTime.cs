@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private float mTimer = 0.0f;
 
-        [Separator("Runtime Variables (JCS_ActiveWithTime)")]
+        [Separator("⚡️ Runtime Variables (JCS_ActiveWithTime)")]
 
         [Tooltip("GameObjects that take effect.")]
         [SerializeField]

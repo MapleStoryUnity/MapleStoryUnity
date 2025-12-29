@@ -33,7 +33,7 @@ namespace JCSUnity
         };
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_MixDamageTextPool)")]
+        [Separator("🧪 Helper Variables (JCS_MixDamageTextPool)")]
 
         [Tooltip("Test this component with key event.")]
         [SerializeField]
@@ -44,7 +44,7 @@ namespace JCSUnity
         private KeyCode mTestKey = KeyCode.N;
 #endif
 
-        [Separator("Initialize Variables (JCS_MixDamageTextPool)")]
+        [Separator("🌱 Initialize Variables (JCS_MixDamageTextPool)")]
 
         [Tooltip("Critical damage text pool.")]
         [SerializeField]
@@ -62,7 +62,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DamageTextPool mHealDamageTextPool = null;
 
-        [Separator("Runtime Variables (JCS_MixDamageTextPool)")]
+        [Separator("⚡️ Runtime Variables (JCS_MixDamageTextPool)")]
 
         [Tooltip("Spacing per damage text.")]
         [SerializeField]
@@ -77,7 +77,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Zigge Right Left")]
+        [Header("🔍 Zigge Right Left")]
 
         [Tooltip("Do the zigge effect?")]
         [SerializeField]

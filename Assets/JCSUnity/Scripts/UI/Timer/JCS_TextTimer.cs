@@ -34,7 +34,7 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-        [Separator("Check Variables (JCS_TextTimer)")]
+        [Separator("📋 Check Variabless (JCS_TextTimer)")]
 
         [SerializeField]
         private bool mDoTimeUpCallback = false;
@@ -48,7 +48,7 @@ namespace JCSUnity
         [SerializeField]
         private string mSecondsText = "";
 
-        [Separator("Runtime Variables (JCS_TextTimer)")]
+        [Separator("⚡️ Runtime Variables (JCS_TextTimer)")]
 
         [Tooltip("Timer active or not active.")]
         [SerializeField]
@@ -89,7 +89,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Sound played when hours get reduced.")]
         [SerializeField]

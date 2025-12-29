@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_GameSettings)")]
+        [Separator("📋 Check Variabless (JCS_GameSettings)")]
 
         [SerializeField]
         [ReadOnly]
@@ -36,7 +36,7 @@ namespace JCSUnity
         [ReadOnly]
         private string fullStreamingCachePath = "";
 
-        [Separator("Runtime Variables (JCS_GameSettings)")]
+        [Separator("⚡️ Runtime Variables (JCS_GameSettings)")]
 
         [Tooltip("Debug mode flag.")]
         public bool debugMode = false;
@@ -44,17 +44,17 @@ namespace JCSUnity
         [Tooltip("Gravity production. (For game that have gravity in it)")]
         public float gravityProduct = 4.5f;
 
-        [Header("Camera")]
+        [Header("🔍 Camera")]
 
         [Tooltip("Type of the camera.")]
         public JCS_CameraType cameraType = JCS_CameraType.NONE;
 
-        [Header("Player")]
+        [Header("🔍 Player")]
 
         [Tooltip("Game only allows control one player.")]
         public bool activeOnePlayer = true;
 
-        [Header("Collision")]
+        [Header("🔍 Collision")]
 
         [Tooltip("Do collusion happen with eacth other. (Player)")]
         public bool playerIgnoreEachOther = true;
@@ -62,7 +62,7 @@ namespace JCSUnity
         [Tooltip("Can tribe damage each other?")]
         public bool tribeDamageEachOther = false;
 
-        [Header("Resources")]
+        [Header("🔍 Resources")]
 
         [Tooltip("Base URL for streaming assets, please point to a directory.")]
         public string streamingBaseUrl = "https://wwww.example.com/";
@@ -70,7 +70,7 @@ namespace JCSUnity
         [Tooltip("Cache streaming assets' data path.")]
         public string streamingCachePath = "/Data_jcs/Cache_StreamingAssets/";
 
-        [Header("Screenshot")]
+        [Header("🔍 Screenshot")]
 
         [Tooltip("Screenshot folder path.")]
         public string screenshotPath = "/Data_jcs/Screenshot/";
@@ -81,7 +81,7 @@ namespace JCSUnity
         [Tooltip("Screenshot image extension.")]
         public string screenshotExt = ".png";
 
-        [Header("Webcam")]
+        [Header("🔍 Webcam")]
 
         [Tooltip("Webcam image save path.")]
         public string webcamPath = "/Data_jcs/WebcamShot/";
@@ -92,7 +92,7 @@ namespace JCSUnity
         [Tooltip("Webcam image extension.")]
         public string webcamExt = ".png";
 
-        [Header("Damage")]
+        [Header("🔍 Damage")]
 
         [Tooltip("Mininum damage can be in the game.")]
         public int minDamage = 1;

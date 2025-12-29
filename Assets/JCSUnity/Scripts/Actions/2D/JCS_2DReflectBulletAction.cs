@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DReflectBulletAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DReflectBulletAction)")]
 
         // TODO(jenchieh): not done yet.
         [Tooltip("Force add on after reflect.")]
@@ -31,7 +31,7 @@ namespace JCSUnity
         // Sound
         private JCS_SoundPoolAction mSoundPoolAction = null;
 
-        [Header("Reflect")]
+        [Header("🔍 Reflect")]
 
         [Tooltip(@"After reflecting the bullet, add the random
 degree in to it. In order to get this effect work, better set
@@ -40,7 +40,7 @@ degree lower than 90.")]
         [Range(0, 180)]
         private float mRandomReflectDegree = 0;
 
-        [Header("Random Teleport Effect")]
+        [Header("🔍 Random Teleport Effect")]
 
         [Tooltip("Position offset.")]
         [SerializeField] private Vector3 mPosOffset = Vector3.zero;

@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Varaibles (JCS_InputManager)")]
+        [Separator("⚡️ Runtime Variables (JCS_InputManager)")]
 
         [Tooltip("Support OnMouseEnter event from mobile.")]
         [SerializeField]

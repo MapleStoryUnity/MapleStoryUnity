@@ -26,7 +26,7 @@ namespace JCSUnity
         private Vector3 mTowardPosition = Vector3.zero;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_SlideEffect)")]
+        [Separator("🧪 Helper Variables (JCS_SlideEffect)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -41,7 +41,7 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.S;
 #endif
 
-        [Separator("Check Variables (JCS_SlideEffect)")]
+        [Separator("📋 Check Variabless (JCS_SlideEffect)")]
 
         [Tooltip("Is this effect active?")]
         [SerializeField]
@@ -58,7 +58,7 @@ namespace JCSUnity
         [ReadOnly]
         private EventTrigger mEventTrigger = null;
 
-        [Separator("Initialize Variables (JCS_SlideEffect)")]
+        [Separator("🌱 Initialize Variables (JCS_SlideEffect)")]
 
         [Tooltip("Direction object slides.")]
         [SerializeField]
@@ -74,13 +74,13 @@ namespace JCSUnity
         [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
         private float mFriction = 0.2f;
 
-        [Separator("Runtime Variables (JCS_SlideEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_SlideEffect)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("UI")]
+        [Header("🔍 UI")]
 
         [Tooltip("Add event to event trigger system!")]
         [SerializeField]
@@ -94,7 +94,7 @@ namespace JCSUnity
         [SerializeField]
         private EventTriggerType[] mDeactiveEventTriggerType = null;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -118,7 +118,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreZ = false;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip(@"If you want to active this effect by button, plz set the button here.")]
         [SerializeField]
@@ -179,7 +179,7 @@ namespace JCSUnity
 
             // set the call back function if there is button assigned.
             if (mActiveButton != null)
-                mActiveButton.SetSystemCallback(JCS_OnMouseOver);
+                mActiveButton.SetSystemCallback(ItOnMouseOver);
         }
 
         private void Start()
@@ -200,12 +200,12 @@ namespace JCSUnity
 
                     foreach (EventTriggerType evt in mActiveEventTriggerType)
                     {
-                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, JCS_OnMouseOver);
+                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, ItOnMouseOver);
                     }
 
                     foreach (EventTriggerType evt in mDeactiveEventTriggerType)
                     {
-                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, JCS_OnMouseExit);
+                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, ItOnMouseExit);
                     }
                 }
             }
@@ -275,11 +275,11 @@ namespace JCSUnity
         /// 
         /// Use in inspector for Event Trigger System. (Active)
         /// </summary>
-        public void JCS_OnMouseOver(PointerEventData data)
+        public void ItOnMouseOver()
         {
-            JCS_OnMouseOver();
+            ItOnMouseOver(null);
         }
-        public void JCS_OnMouseOver()
+        public void ItOnMouseOver(PointerEventData data)
         {
             Active();
         }
@@ -291,11 +291,11 @@ namespace JCSUnity
         /// Use in inspector for Event Trigger System. (Deactive)
         /// </summary>
         /// <returns></returns>
-        public void JCS_OnMouseExit(PointerEventData data)
+        public void ItOnMouseExit()
         {
-            JCS_OnMouseExit();
+            ItOnMouseExit();
         }
-        public void JCS_OnMouseExit()
+        public void ItOnMouseExit(PointerEventData data)
         {
             Deactive();
         }

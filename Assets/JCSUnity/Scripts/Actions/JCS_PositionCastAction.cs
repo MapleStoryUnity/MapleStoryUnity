@@ -23,7 +23,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_PositionCastAction)")]
+        [Separator("🧪 Helper Variables (JCS_PositionCastAction)")]
 
         [Tooltip("Test this component with key.")]
         public bool testWithKey = false;
@@ -45,14 +45,14 @@ namespace JCSUnity
         private Vector3 mCastToWorldPosition = Vector3.zero;
 #endif
 
-        [Separator("Check Variables (JCS_PositionCastAction)")]
+        [Separator("📋 Check Variabless (JCS_PositionCastAction)")]
 
         [Tooltip("")]
         [SerializeField]
         [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Separator("Runtime Variables (JCS_PositionCastAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_PositionCastAction)")]
 
         [Tooltip("Corresponding position offset.")]
         [SerializeField]

@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_DialogueScript)")]
+        [Separator("⚡️ Runtime Variables (JCS_DialogueScript)")]
 
         [Tooltip("use to design the pages.")]
         public int Status = -1;

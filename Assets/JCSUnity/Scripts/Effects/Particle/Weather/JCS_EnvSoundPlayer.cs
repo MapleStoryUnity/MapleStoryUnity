@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_EnvSoundPlayer)")]
+        [Separator("🌱 Initialize Variables (JCS_EnvSoundPlayer)")]
 
         [Tooltip("Sound to play for environment sound.")]
         [SerializeField]

@@ -31,7 +31,7 @@ namespace JCSUnity
         public Action callback_min_vis = null;
         public Action callback_max_vis = null;
 
-        [Separator("Check Variables (JCS_LiquidBar)")]
+        [Separator("📋 Check Variabless (JCS_LiquidBar)")]
 
         [SerializeField]
         protected float mMinPos = 0.0f;
@@ -48,7 +48,7 @@ namespace JCSUnity
         [SerializeField]
         protected bool mReachMaxVis = false;
 
-        [Separator("Initialize Variables (JCS_LiquidBar)")]
+        [Separator("🌱 Initialize Variables (JCS_LiquidBar)")]
 
         [Tooltip("Once it set to zero, but still override ")]
         [SerializeField]
@@ -58,7 +58,7 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
 
-        [Separator("Runtime Variables (JCS_LiquidBar)")]
+        [Separator("⚡️ Runtime Variables (JCS_LiquidBar)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
@@ -98,7 +98,7 @@ namespace JCSUnity
         [SerializeField]
         protected Image mInfoImage = null;
 
-        [Header("Asmptotic Recover")]
+        [Header("🔍 Asmptotic Recover")]
 
         [Tooltip("Enable the recover effect?")]
         [SerializeField]
@@ -119,7 +119,7 @@ Careful that recover can be damage too.")]
         [Range(-300000.0f, 300000.0f)]
         protected float mRecoverValue = 1.0f;
 
-        [Header("Additional Settings")]
+        [Header("🔍 Additional Settings")]
 
         [Tooltip("Will try to go back to the original value.")]
         [SerializeField]

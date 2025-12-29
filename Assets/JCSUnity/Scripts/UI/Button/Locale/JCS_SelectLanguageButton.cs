@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright � 2025 by Shen, Jen-Chieh $
+ *                   Copyright � 2025 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using MyBox;
@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_SelectLanguageButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_SelectLanguageButton)")]
 
         [Tooltip("The newly selected system language.")]
         [SerializeField]

@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_2DMoveTile)")]
+        [Separator("📋 Check Variabless (JCS_2DMoveTile)")]
 
         [SerializeField]
         [ReadOnly]
@@ -28,7 +28,7 @@ namespace JCSUnity
         [ReadOnly]
         private float mHeight = 0.0f;
 
-        [Separator("Runtime Variables (JCS_2DMoveTile)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DMoveTile)")]
 
         [Tooltip("How fast this tile moves?")]
         [SerializeField]

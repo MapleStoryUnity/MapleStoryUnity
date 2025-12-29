@@ -13,6 +13,7 @@ using UnityEngine;
 using MyBox;
 
 #if UNITY_ANDROID
+using UnityEngine.Android;
 #endif
 
 namespace JCSUnity
@@ -31,7 +32,7 @@ namespace JCSUnity
         // Execute after the system language has changed.
         public Action<SystemLanguage> onSystemLanguageChanged = null;
 
-        [Separator("Check Variables (JCS_AppManager)")]
+        [Separator("📋 Check Variabless (JCS_AppManager)")]
 
         [Tooltip("Current systme language.")]
         [SerializeField]
@@ -43,7 +44,7 @@ namespace JCSUnity
         [ReadOnly]
         private List<JCS_LangText> mLangTexts = null;
 
-        [Separator("Initialize Variables (JCS_AppManager)")]
+        [Separator("🌱 Initialize Variables (JCS_AppManager)")]
 
         [Tooltip("Request permission for camera/webcam.")]
         [SerializeField]
@@ -57,7 +58,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mRequestLocation = false;
 
-        [Separator("Runtime Variables (JCS_AppManager)")]
+        [Separator("⚡️ Runtime Variables (JCS_AppManager)")]
 
         [Tooltip("This will override platform Type.")]
         [SerializeField]
@@ -221,9 +222,7 @@ namespace JCSUnity
 
         private IEnumerator DoRequestCamera()
         {
-#if UNITY_EDITOR
-            // Does nothing..
-#elif UNITY_ANDROID
+#if UNITY_ANDROID
             yield return DoRequestUserPermission(Permission.Camera);
 #elif UNITY_IOS
             yield return DoRequestUserAuthorization(UserAuthorization.WebCam);
@@ -233,9 +232,7 @@ namespace JCSUnity
 
         private IEnumerator DoRequestMicrophone()
         {
-#if UNITY_EDITOR
-            // Does nothing..
-#elif UNITY_ANDROID
+#if UNITY_ANDROID
             yield return DoRequestUserPermission(Permission.Microphone);
 #elif UNITY_IOS
             yield return DoRequestUserAuthorization(UserAuthorization.Microphone);
@@ -245,9 +242,7 @@ namespace JCSUnity
 
         private IEnumerator DoRequestLocation()
         {
-#if UNITY_EDITOR
-            // Does nothing..
-#elif UNITY_ANDROID
+#if UNITY_ANDROID
             yield return DoRequestUserPermission(Permission.FineLocation);
 #elif UNITY_IOS
             Input.location.Start();
@@ -255,9 +250,7 @@ namespace JCSUnity
             yield break;
         }
 
-#if UNITY_EDITOR
-        // Does nothing..
-#elif UNITY_ANDROID
+#if UNITY_ANDROID
         private IEnumerator DoRequestUserPermission(string permission, PermissionCallbacks callback = null)
         {
             if (Permission.HasUserAuthorizedPermission(permission))

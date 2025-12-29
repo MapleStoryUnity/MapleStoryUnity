@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_3DDragDropObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DDragDropObject)")]
 
         [Tooltip("Draw the other direction. (Horizontal)")]
         [SerializeField]

@@ -22,13 +22,13 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
         private Vector3 mLastPosition = Vector3.zero;
 
-        [Separator("Runtime Variables (JCS_SpriteRendererAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_SpriteRendererAction)")]
 
         [Tooltip("List of all the sprite renderer components.")]
         [SerializeField]
         private SpriteRenderer[] mSpriteRenderers = null;
 
-        [Header("-- X Facing --")]
+        [Header("🔍 -- X Facing --")]
 
         [Tooltip("Enable/Disabel the effect on X axis.")]
         [SerializeField]
@@ -38,7 +38,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsFacingRight = true;
 
-        [Header("-- Y Facing --")]
+        [Header("🔍 -- Y Facing --")]
 
         [Tooltip("Enable/Disabel the effect on Y axis.")]
         [SerializeField]

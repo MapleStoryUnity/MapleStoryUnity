@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_LookAtMouseAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_LookAtMouseAction)")]
 
         [Tooltip("How fast to look at the mouse.")]
         [SerializeField]

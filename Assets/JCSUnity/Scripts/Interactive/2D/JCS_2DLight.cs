@@ -24,13 +24,13 @@ namespace JCSUnity
 
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
-        [Separator("Runtime Variables (JCS_2DLight)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DLight)")]
 
         [Tooltip("Flag for active this component.")]
         [SerializeField]
         private bool mActive = true;
 
-        [Header("Min / Max")]
+        [Header("🔍 Min / Max")]
 
         [Tooltip("Mininum value of the light can fade.")]
         [SerializeField] [Range(0, 1.0f)]

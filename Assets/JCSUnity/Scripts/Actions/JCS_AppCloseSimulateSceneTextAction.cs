@@ -23,7 +23,7 @@ namespace JCSUnity
         private Text mText = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_AppCloseSimulateSceneTextAction)")]
+        [Separator("🧪 Helper Variables (JCS_AppCloseSimulateSceneTextAction)")]
 
         [SerializeField]
         private string mTextShowInEditMode = "";

@@ -20,7 +20,7 @@ namespace JCSUnity
 
         private const string RESIZEABLE_SCREEN_PANEL_PATH = "UI/JCS_ResizableScreenPanel";
 
-        [Separator("Check Variables (JCS_ScreenManager)")]
+        [Separator("📋 Check Variabless (JCS_ScreenManager)")]
 
         [Tooltip("Top resizable screen panel.")]
         [SerializeField]
@@ -42,7 +42,7 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_ResizableScreenPanel mRightASP = null;
 
-        [Separator("Initialize Variables (JCS_ScreenManager)")]
+        [Separator("🌱 Initialize Variables (JCS_ScreenManager)")]
 
         [Tooltip("Resize screen once on this scene?")]
         public bool resizeScreen = false;

@@ -33,7 +33,7 @@ namespace JCSUnity
         private TextMeshPro mTextMesh = null;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_3DHintBubble)")]
+        [Separator("🧪 Helper Variables (JCS_3DHintBubble)")]
 
         [Tooltip("Test this component with these keys.")]
         [SerializeField]
@@ -49,7 +49,7 @@ namespace JCSUnity
 
 #endif
 
-        [Separator("Check Variables (JCS_3DHintBubble)")]
+        [Separator("📋 Check Variabless (JCS_3DHintBubble)")]
 
         [Tooltip("Flag to check if the hint bubble active.")]
         [SerializeField]

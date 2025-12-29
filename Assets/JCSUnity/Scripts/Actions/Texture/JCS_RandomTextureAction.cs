@@ -18,7 +18,7 @@ namespace JCSUnity
 
         private Renderer mRenderer = null;
 
-        [Separator("Initialize Variables (JCS_RandomTextureAction)")]
+        [Separator("🌱 Initialize Variables (JCS_RandomTextureAction)")]
 
         [Tooltip("List of textures to use.")]
         [SerializeField]

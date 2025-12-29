@@ -21,7 +21,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        [Separator("Runtime Variables (JCS_SkipAppEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_SkipAppEvent)")]
 
         [Tooltip("The next starting scene to load.")]
         [SerializeField]

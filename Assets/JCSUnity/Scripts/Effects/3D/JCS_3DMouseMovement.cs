@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private Vector3 mVelocity = Vector3.zero;
 
-        [Separator("Runtime Variables (JCS_3DMouseMovement)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DMouseMovement)")]
 
         [Tooltip("Is this effect active?")]
         [SerializeField]

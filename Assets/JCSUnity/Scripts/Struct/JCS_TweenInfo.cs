@@ -22,12 +22,12 @@ namespace JCSUnity
     [System.Serializable]
     public class JCS_TweenInfo
     {
-        [Separator("Check Variables (JCS_TweenInfo)")]
+        [Separator("📋 Check Variabless (JCS_TweenInfo)")]
 
         [Tooltip("Record down the starting value, in order to go back.")]
         public Vector3 startingValue = Vector3.zero;
 
-        [Separator("Runtime Variables (JCS_TweenInfo)")]
+        [Separator("⚡️ Runtime Variables (JCS_TweenInfo)")]
 
         [Tooltip("Transform tweener we want to use.")]
         public JCS_TransformTweener transformTweener = null;

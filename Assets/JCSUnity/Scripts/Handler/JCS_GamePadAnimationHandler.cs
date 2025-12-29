@@ -38,7 +38,7 @@ namespace JCSUnity
             public int gamePadAnimationId;
         };
 
-        [Separator("Runtime Variables (JCS_GamePadSpriteHandler)")]
+        [Separator("⚡️ Runtime Variables (JCS_GamePadSpriteHandler)")]
 
         [Tooltip("Any animation element you want to change depends on controller connection.")]
         public List<AnimationSet> animationSets = null;

@@ -49,7 +49,7 @@ namespace JCSUnity
         private float mRealDuration = 1.0f;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_FloatTweener)")]
+        [Separator("🧪 Helper Variables (JCS_FloatTweener)")]
 
         [Tooltip("Test component with key?")]
         [SerializeField]
@@ -76,7 +76,7 @@ namespace JCSUnity
         private float mTweenToB = 5.0f;
 #endif
 
-        [Separator("Check Variables (JCS_FloatTweener)")]
+        [Separator("📋 Check Variabless (JCS_FloatTweener)")]
 
         [SerializeField]
         [ReadOnly]
@@ -91,7 +91,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mAnimating = false;
 
-        [Separator("Runtime Variables (JCS_FloatTweener)")]
+        [Separator("⚡️ Runtime Variables (JCS_FloatTweener)")]
 
         [Tooltip("Do the tween effect?")]
         [SerializeField]
@@ -110,13 +110,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Tweener Formula Type")]
+        [Header("🔍 Tweener Formula Type")]
 
         [Tooltip("Tweener formula on value.")]
         [SerializeField]
         private JCS_TweenType mEasing = JCS_TweenType.LINEAR;
 
-        [Header("Callback")]
+        [Header("🔍 Callback")]
 
         [Tooltip("Callback after easing.")]
         [SerializeField]

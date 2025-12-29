@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private JCS_HitListEvent mHitList = null;
 
-        [Separator("Runtime Variables (JCS_HitCountEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_HitCountEvent)")]
 
         [Tooltip(@"How many hits needed to destroy this game object. 
 (If this is 0 than wont active hit animation event.)")]

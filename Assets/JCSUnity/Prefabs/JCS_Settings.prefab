@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5090550959267644780}
+  - component: {fileID: 3207032365369469932}
   - component: {fileID: 5090550957556680166}
   - component: {fileID: 5090550957556680167}
   - component: {fileID: 5090550957556680164}
@@ -49,6 +50,22 @@ Transform:
   - {fileID: 5090550958246646782}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3207032365369469932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5090550957556680186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee85920dbe024568b894f71d5bb75c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MyBox::MyBox.Internal.CommentaryComponent
+  Entries:
+  - EditorCommentary: The `JCS_Settings` is specifically designed to carry data across
+      multiple scenes to ensure data persistence and consistent logic behavior.
+    Type: 1
 --- !u!114 &5090550957556680166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,8 +210,6 @@ MonoBehaviour:
   fullWebcamPath: 
   fullStreamingCachePath: 
   debugMode: 0
-  thisIsGameScene: 0
-  levelDesignMode: 1
   gravityProduct: 4.5
   cameraType: 0
   activeOnePlayer: 1
@@ -260,8 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchingScene: 0
   nextSceneName: 
-  previousScene:
-    m_Handle: 0
+  previousScene: {}
   mode: 0
   mTimeIn: 1.5
   mTimeOut: 1.5

@@ -24,7 +24,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_EchoButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_EchoButton)")]
 
         [Tooltip("String to echo out on the console window.")]
         public string echoString = "echo Hello World!~";

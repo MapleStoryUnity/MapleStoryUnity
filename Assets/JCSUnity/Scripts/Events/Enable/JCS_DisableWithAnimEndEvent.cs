@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private float mAnimationTimer = 0.0f;
 
-        [Separator("Runtime Variables (JCS_DisableWithAnimEndEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_DisableWithAnimEndEvent)")]
 
         [Tooltip("Times the animation need to loops to trigger this event.")]
         [SerializeField]

@@ -21,14 +21,14 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_UIManager)")]
+        [Separator("🧪 Helper Variables (JCS_UIManager)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
         private bool mTestWithKey = false;
 #endif
 
-        [Separator("Check Variables (JCS_UIManager)")]
+        [Separator("📋 Check Variabless (JCS_UIManager)")]
 
         [Tooltip("List of canvas.")]
         [SerializeField]
@@ -40,7 +40,7 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_UndoRedoSystem mGlobalUndoRedoSystem = null;
 
-        [Separator("Initialize Variables (JCS_UIManager)")]
+        [Separator("🌱 Initialize Variables (JCS_UIManager)")]
 
         [Tooltip("Game Play UI (Game Layer - Only One)")]
         [SerializeField]
@@ -58,7 +58,7 @@ namespace JCSUnity
         // List of all the window that are opened!
         private LinkedList<JCS_DialogueObject> mOpenWindow = null;
 
-        [Header("Screen")]
+        [Header("🔍 Screen")]
 
         [Tooltip("Panel that could do the fade loose focus effect.")]
         [SerializeField]

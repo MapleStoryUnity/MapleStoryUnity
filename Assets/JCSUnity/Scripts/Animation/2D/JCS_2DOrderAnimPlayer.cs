@@ -22,14 +22,14 @@ namespace JCSUnity
 
         private JCS_2DAnimator mAnimator = null;
 
-        [Separator("Check Variables (JCS_2DOrderAnimPlayer)")]
+        [Separator("📋 Check Variabless (JCS_2DOrderAnimPlayer)")]
 
         [Tooltip("Current playing animation's id.")]
         [SerializeField]
         [ReadOnly]
         private int mCurrentAnimationId = 0;
 
-        [Separator("Runtime Variables (JCS_2DOrderAnimPlayer)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DOrderAnimPlayer)")]
 
         [Tooltip("Is the animation working?")]
         [SerializeField]

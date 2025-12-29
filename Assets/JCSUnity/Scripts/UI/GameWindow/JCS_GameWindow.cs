@@ -32,7 +32,7 @@ namespace JCSUnity
 
         private JCS_DialogueObject mDialogueObject = null;
 
-        [Separator("Initialize Variables (JCS_GameWindow)")]
+        [Separator("🌱 Initialize Variables (JCS_GameWindow)")]
 
         [Tooltip("Drag drop type.")]
         [SerializeField]
@@ -50,7 +50,7 @@ namespace JCSUnity
         /// <summary>
         /// On pointer down event.
         /// </summary>
-        public void JCS_PointerDown()
+        public void ItPointerDown()
         {
             var uim = JCS_UIManager.FirstInstance();
 
@@ -62,7 +62,7 @@ namespace JCSUnity
         /// <summary>
         /// On click event.
         /// </summary>
-        public void JCS_Click()
+        public void ItClick()
         {
             // default.
         }
@@ -70,7 +70,7 @@ namespace JCSUnity
         /// <summary>
         /// On drag event.
         /// </summary>
-        public void JCS_OnDrag()
+        public void ItOnDrag()
         {
             switch (mType)
             {
@@ -86,7 +86,7 @@ namespace JCSUnity
         /// <summary>
         /// On drop event.
         /// </summary>
-        public void JCS_OnDrop()
+        public void ItOnDrop()
         {
             // empty..
         }

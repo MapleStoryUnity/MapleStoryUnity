@@ -28,7 +28,7 @@ namespace JCSUnity
         public Action onActive = null;
         public Action onDeactive = null;
 
-        [Separator("Runtime Variables (JCS_ToggleButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_ToggleButton)")]
 
         [Tooltip("Return true if toggle button currently active.")]
         [SerializeField]

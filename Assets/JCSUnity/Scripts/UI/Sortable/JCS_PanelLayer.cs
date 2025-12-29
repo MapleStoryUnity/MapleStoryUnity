@@ -23,7 +23,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_PanelLayer)")]
+        [Separator("🧪 Helper Variables (JCS_PanelLayer)")]
 
         [Tooltip("Test this component.")]
         [SerializeField]

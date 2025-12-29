@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_3DPlayer)")]
+        [Separator("⚡️ Runtime Variables (JCS_3DPlayer)")]
 
         [Tooltip("How fast it rotates.")]
         [SerializeField]

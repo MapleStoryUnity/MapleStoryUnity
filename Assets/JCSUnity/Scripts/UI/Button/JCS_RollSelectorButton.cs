@@ -26,7 +26,7 @@ namespace JCSUnity
 
         private JCS_RollBtnSelector mRollBtnSelector = null;
 
-        [Separator("Check Variables (JCS_RollSelectorButton)")]
+        [Separator("📋 Check Variabless (JCS_RollSelectorButton)")]
 
         [SerializeField]
         [ReadOnly]
@@ -69,7 +69,7 @@ namespace JCSUnity
         /// <summary>
         /// Override
         /// </summary>
-        public override void ButtonClick()
+        public override void InterBtnClick()
         {
             if (mRollBtnSelector == null)
             {
@@ -84,7 +84,7 @@ namespace JCSUnity
             }
             else
             {
-                base.ButtonClick();
+                base.InterBtnClick();
             }
         }
 
@@ -146,7 +146,7 @@ namespace JCSUnity
             mButton.onClick.RemoveAllListeners();
 
             // only add this listener
-            mButton.onClick.AddListener(ButtonClick);
+            mButton.onClick.AddListener(InterBtnClick);
 
             // get all the buttons on this transform
             btns = GetComponents<JCS_Button>();
@@ -171,8 +171,8 @@ namespace JCSUnity
                 // don't call if is itself
                 if (b == this)
                     continue;
-                
-                b.ButtonClick();
+
+                b.InterBtnClick();
             }
         }
     }

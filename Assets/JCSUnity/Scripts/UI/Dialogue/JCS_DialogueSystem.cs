@@ -30,7 +30,7 @@ namespace JCSUnity
 
         private JCS_DialogueScript mPreselectingScript = null;
 
-        [Separator("Check Variables (JCS_DialogueSystem)")]
+        [Separator("📋 Check Variabless (JCS_DialogueSystem)")]
 
         [Tooltip("True if initialized.")]
         [SerializeField]
@@ -87,13 +87,13 @@ namespace JCSUnity
 
         private bool mActiveThisFrame = false;
 
-        [Separator("Initialize Variables (JCS_DialogueSystem)")]
+        [Separator("🌱 Initialize Variables (JCS_DialogueSystem)")]
 
         [Tooltip("If the mouse hover then select the selection.")]
         [SerializeField]
         private bool mMakeHoverSelect = true;
 
-        [Separator("Runtime Variables (JCS_DialogueSystem)")]
+        [Separator("⚡️ Runtime Variables (JCS_DialogueSystem)")]
 
         [Tooltip("Image displayed at the center.")]
         [SerializeField]
@@ -175,13 +175,13 @@ namespace JCSUnity
         [SerializeField]
         private bool mProgressOnHidden = false;
 
-        [Header("Controller")]
+        [Header("🔍 Controller")]
 
         [Tooltip("Button selection group for this dialogue system.")]
         [SerializeField]
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-        [Header("Completing")]
+        [Header("🔍 Completing")]
 
         [Tooltip("Complete text before run action.")]
         [SerializeField]
@@ -191,7 +191,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mCompleteTextBeforeActionOnButton = false;
 
-        [Header("Auto")]
+        [Header("🔍 Auto")]
 
         [Tooltip("If true, auto progress the dialgoue.")]
         [SerializeField]
@@ -204,7 +204,7 @@ namespace JCSUnity
 
         private float mAutoTimer = 0.0f;
 
-        [Header("Sound")]
+        [Header("🔍 Sound")]
 
         [Tooltip("Sound plays when active dialogue.")]
         [SerializeField]

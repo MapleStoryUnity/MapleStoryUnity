@@ -30,7 +30,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_RewardAdsButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_RewardAdsButton)")]
 
         [Tooltip("Time to delay the ads shows.")]
         [SerializeField]

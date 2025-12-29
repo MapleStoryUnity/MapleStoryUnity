@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_TriggerSwitchBGMEvent)")]
+        [Separator("⚡️ Runtime Variables (JCS_TriggerSwitchBGMEvent)")]
 
         [Tooltip("Sound you want to load.")]
         [SerializeField]

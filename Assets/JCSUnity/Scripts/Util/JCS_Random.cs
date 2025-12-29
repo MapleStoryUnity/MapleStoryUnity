@@ -229,46 +229,74 @@ namespace JCSUnity
         {
             return ChooseOne(args);
         }
-        public static T ChooseOne<T>(ICollection<T> lst)
+        public static T ChooseOne<T>(IEnumerable<T> args)
         {
-            if (lst == null || lst.Count == 0)
+            return ChooseOne(args.ToList());
+        }
+        public static T ChooseOne<T>(ICollection<T> args)
+        {
+            if (args == null || args.Count == 0)
                 return default;
 
-            int index = Range(0, lst.Count);
+            int index = Range(0, args.Count);
 
-            return lst.ElementAt(index);
-        }
-        public static List<T> Choose<T>(int size, ICollection<T> lst)
-        {
-            List<T> chosen = new();
-
-            JCS_Loop.Times(size, () =>
-            {
-                chosen.Add(ChooseOne(lst));
-            });
-
-            return chosen;
+            return args.ElementAt(index);
         }
         public static KeyValuePair<T, K> ChooseOneE<T, K>(params KeyValuePair<T, K>[] args)  // Ellipsis
         {
             return ChooseOne(args);
         }
-        public static KeyValuePair<T, K> ChooseOne<T, K>(ICollection<KeyValuePair<T, K>> dict)
+        public static KeyValuePair<T, K> ChooseOne<T, K>(IEnumerable<KeyValuePair<T, K>> args)  // Ellipsis
         {
-            if (dict == null || dict.Count == 0)
+            return ChooseOne(args.ToList());
+        }
+        public static KeyValuePair<T, K> ChooseOne<T, K>(ICollection<KeyValuePair<T, K>> args)
+        {
+            if (args == null || args.Count == 0)
                 return default;
 
-            int index = Range(0, dict.Count);
+            int index = Range(0, args.Count);
 
-            return dict.ElementAt(index);
+            return args.ElementAt(index);
         }
-        public static List<KeyValuePair<T, K>> Choose<T, K>(int size, ICollection<KeyValuePair<T, K>> dict)
+
+        /// <summary>
+        /// Choose multiple.
+        /// </summary>
+        public static List<T> ChooseE<T>(int size, params T[] args)  // Ellipsis
+        {
+            return Choose(size, args);
+        }
+        public static List<T> Choose<T>(int size, IEnumerable<T> args)
+        {
+            return Choose(size, args.ToList());
+        }
+        public static List<T> Choose<T>(int size, ICollection<T> args)
+        {
+            List<T> chosen = new();
+
+            JCS_Loop.Times(size, () =>
+            {
+                chosen.Add(ChooseOne(args));
+            });
+
+            return chosen;
+        }
+        public static List<KeyValuePair<T, K>> ChooseE<T, K>(int size, params KeyValuePair<T, K>[] args)
+        {
+            return Choose(size, args);
+        }
+        public static List<KeyValuePair<T, K>> Choose<T, K>(int size, IEnumerable<KeyValuePair<T, K>> args)
+        {
+            return Choose(size, args.ToList());
+        }
+        public static List<KeyValuePair<T, K>> Choose<T, K>(int size, ICollection<KeyValuePair<T, K>> args)
         {
             List<KeyValuePair<T, K>> chosen = new();
 
             JCS_Loop.Times(size, () =>
             {
-                chosen.Add(ChooseOne(dict));
+                chosen.Add(ChooseOne(args));
             });
 
             return chosen;

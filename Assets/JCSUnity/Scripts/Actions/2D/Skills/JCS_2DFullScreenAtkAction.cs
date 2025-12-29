@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DFullScreenAtkAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DFullScreenAtkAction)")]
 
         [Tooltip("Supporting animation pool.")]
         [SerializeField]

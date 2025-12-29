@@ -29,7 +29,19 @@ namespace JCSUnity
         /// </summary>
         public static IEnumerable<T> GetValues<T>()
         {
-            return Enum.GetValues(typeof(T)).Cast<T>();
+            return GetValues<T, T>();
+        }
+        public static IEnumerable<U> GetValues<T, U>()
+        {
+            return Enum.GetValues(typeof(T)).Cast<U>();
+        }
+
+        /// <summary>
+        /// Get the value for each enum, in the type of `Enum`.
+        /// </summary>
+        public static IEnumerable<Enum> GetValuesE<T>()
+        {
+            return GetValues<T, Enum>();
         }
 
         /// <summary>

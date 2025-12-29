@@ -24,14 +24,14 @@ namespace JCSUnity
         // the button has been focusing on.
         private JCS_RollSelectorButton mFocusBtn = null;
 
-        [Separator("Check Variables (JCS_RollBtnSelector)")]
+        [Separator("📋 Check Variabless (JCS_RollBtnSelector)")]
 
         [Tooltip("")]
         [SerializeField]
         [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Separator("Initialize Variables (JCS_RollBtnSelector)")]
+        [Separator("🌱 Initialize Variables (JCS_RollBtnSelector)")]
 
         [Tooltip("Array of buttons you want to do in sequence.")]
         [SerializeField]
@@ -45,13 +45,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DDimensions mDimension = JCS_2DDimensions.VERTICAL;
 
-        [Separator("Runtime Variables (JCS_RollBtnSelector)")]
+        [Separator("⚡️ Runtime Variables (JCS_RollBtnSelector)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.UNSCALED_DELTA_TIME;
 
-        [Header("Asymptotic Order")]
+        [Header("🔍 Asymptotic Order")]
 
         [Tooltip("Enable the asymptotic order effect?")]
         [SerializeField]
@@ -61,7 +61,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mAsympDiffScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-        [Header("Scroll")]
+        [Header("🔍 Scroll")]
 
         [Tooltip("How fast the buttons move?")]
         [SerializeField]

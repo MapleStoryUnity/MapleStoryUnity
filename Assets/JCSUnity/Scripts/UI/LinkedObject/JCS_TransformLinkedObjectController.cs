@@ -20,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_TransformLinkedObjectController)")]
+        [Separator("🧪 Helper Variables (JCS_TransformLinkedObjectController)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -54,20 +54,20 @@ namespace JCSUnity
         private int mRemoveCount = 1;
 #endif
 
-        [Separator("Check Variables (JCS_TransformLinkedObjectController)")]
+        [Separator("📋 Check Variabless (JCS_TransformLinkedObjectController)")]
 
         [Tooltip("List of all managed transform linked object.")]
         [SerializeField]
         [ReadOnly]
         private List<JCS_TransformLinkedObject> mManagedList = null;
 
-        [Separator("Initialize Variables (JCS_TransformLinkedObjectController)")]
+        [Separator("🌱 Initialize Variables (JCS_TransformLinkedObjectController)")]
 
         [Tooltip("Main clone linked object.")]
         [SerializeField]
         private JCS_TransformLinkedObject mClone = null;
 
-        [Separator("Runtime Variables (JCS_TransformLinkedObjectController)")]
+        [Separator("⚡️ Runtime Variables (JCS_TransformLinkedObjectController)")]
 
         [Tooltip("Transform vector offset for each linked object.")]
         [SerializeField]

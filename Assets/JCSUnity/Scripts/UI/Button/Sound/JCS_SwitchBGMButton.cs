@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_SwitchBGMButton)")]
+        [Separator("⚡️ Runtime Variables (JCS_SwitchBGMButton)")]
 
         [Tooltip("Sound you want to load.")]
         [SerializeField]

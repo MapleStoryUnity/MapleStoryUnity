@@ -31,7 +31,7 @@ namespace JCSUnity
 
         private RequestCallback requestCallback = null;
 
-        [Separator("Check Variables (JCS_StreamingAssets)")]
+        [Separator("📋 Check Variabless (JCS_StreamingAssets)")]
 
         [Tooltip("List of file that we are going to download as target.")]
         [ReadOnly]
@@ -49,7 +49,7 @@ namespace JCSUnity
         [ReadOnly]
         public string requestPath = "";
 
-        [Separator("Initialize Variables (JCS_StreamingAssets)")]
+        [Separator("🌱 Initialize Variables (JCS_StreamingAssets)")]
 
         [Tooltip("Preload streaming assets path.")]
         public List<string> preloadPath = null;

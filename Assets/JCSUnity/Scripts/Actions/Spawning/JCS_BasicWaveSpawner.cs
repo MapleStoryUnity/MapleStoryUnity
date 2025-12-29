@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_BasicWaveSpawner)")]
+        [Separator("⚡️ Runtime Variables (JCS_BasicWaveSpawner)")]
 
         [Tooltip("Active this component?")]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("Randomize Position")]
+        [Header("🔍 Randomize Position")]
 
         [Tooltip("Spawn the item random position, in x-axis.")]
         [SerializeField]
@@ -80,7 +80,7 @@ namespace JCSUnity
         [Range(0.0f, 300.0f)]
         private float mRandPosRangeZ = 1.0f;
 
-        [Header("Randomize Rotation")]
+        [Header("🔍 Randomize Rotation")]
 
         [Tooltip("Randomize the rotation in x-axis?")]
         [SerializeField]
@@ -109,7 +109,7 @@ namespace JCSUnity
         [Range(0.0f, 360.0f)]
         private float mRandRotRangeZ = 0.0f;
 
-        [Header("Randomize Scale")]
+        [Header("🔍 Randomize Scale")]
 
         [Tooltip("Randomize the scale in x-axis?")]
         [SerializeField]

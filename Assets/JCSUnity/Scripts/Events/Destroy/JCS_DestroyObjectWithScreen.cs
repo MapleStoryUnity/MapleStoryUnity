@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_DestroyObjectWithScreen)")]
+        [Separator("⚡️ Runtime Variables (JCS_DestroyObjectWithScreen)")]
 
         [Tooltip("Trigger event flag.")]
         [SerializeField]

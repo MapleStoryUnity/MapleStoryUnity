@@ -17,7 +17,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_2DSideScrollerPlayerAudioController)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DSideScrollerPlayerAudioController)")]
 
         [SerializeField] private bool mOverrideSound = true;
 

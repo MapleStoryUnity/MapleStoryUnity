@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_SoundProxyAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_SoundProxyAction)")]
 
         [Tooltip("Sound to plays.")]
         [SerializeField]

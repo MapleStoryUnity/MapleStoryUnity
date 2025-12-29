@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_DetectAction)")]
+        [Separator("⚡️ Runtime Variables (JCS_DetectAction)")]
 
         [Tooltip("Do this action?")]
         [SerializeField]

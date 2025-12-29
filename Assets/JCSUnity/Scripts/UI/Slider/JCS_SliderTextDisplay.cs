@@ -20,7 +20,16 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_TextSliderDisplay)")]
+        // The execution when the text data is refreshed.
+        public Action onRefresh = null;
+
+        // Record for last min value.
+        private float mMinVal = 0;
+
+        // Record for last max value.
+        private float mMaxVal = 0;
+
+        [Separator("⚡️ Runtime Variables (JCS_TextSliderDisplay)")]
 
         [Tooltip("To update the text along with this slider's value.")]
         [SerializeField]
@@ -43,33 +52,79 @@ namespace JCSUnity
 
         /* Functions */
 
-        private void Awake()
+        private void OnEnable()
         {
             AddListener();
         }
 
-        private void OnValidate()
+        private void OnDisable()
         {
-            AddListener();
+            RemoveListener();
         }
 
-        private void AddListener()
+        private void Update()
         {
             if (mSlider == null)
                 return;
 
-            mSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
-
-            // Call once.
-            OnValueChanged();
+            HandleMinMaxValueChanged();
         }
 
-        private void OnValueChanged()
+#if UNITY_EDITOR
+        private void OnValidate()
         {
+            Refresh();
+        }
+#endif
+
+        private void AddListener()
+        {
+            mSlider?.onValueChanged.AddListener(OnValueChanged);
+
+            // Call once.
+            Refresh();
+        }
+
+        private void RemoveListener()
+        {
+            mSlider?.onValueChanged.RemoveListener(OnValueChanged);
+        }
+
+        private void OnValueChanged(float val)
+        {
+            Refresh();
+        }
+
+        /// <summary>
+        /// Refresh the text once.
+        /// </summary>
+        public void Refresh()
+        {
+            if (mSlider == null)
+                return;
+
             text = string.Format(mFormat,
                     Math.Round(mSlider.value, mRoundPlace),
                     Math.Round(mSlider.maxValue, mRoundPlace),
                     Math.Round(mSlider.minValue, mRoundPlace));
+
+            onRefresh?.Invoke();
+        }
+
+        /// <summary>
+        /// Handle min/max value changed.
+        /// </summary>
+        private void HandleMinMaxValueChanged()
+        {
+            if (mMinVal != mSlider.minValue ||
+                mMaxVal != mSlider.maxValue)
+            {
+                mMinVal = mSlider.minValue;
+                mMaxVal = mSlider.maxValue;
+
+                // Handle min/max value change.
+                Refresh();
+            }
         }
     }
 }
