@@ -288,6 +288,20 @@ namespace JCSUnity
 
         #endregion
 
+        #region Object
+
+        /// <summary>
+        /// Return true if the object is destroyed and remain missing.
+        /// 
+        /// Source in https://discussions.unity.com/t/how-can-i-check-if-an-object-is-null/23224/4
+        /// </summary>
+        public static bool IsMissing(Object obj)
+        {
+            return !(obj ?? false);
+        }
+
+        #endregion
+
         #region Component
 
         /// <summary>
@@ -326,7 +340,7 @@ namespace JCSUnity
         #region Transform & Children
 
         /// <summary>
-        /// Set active according to it's type.
+        /// Set active according to its type.
         /// </summary>
         public static void SetActive(List<Transform> transforms, bool act)
         {

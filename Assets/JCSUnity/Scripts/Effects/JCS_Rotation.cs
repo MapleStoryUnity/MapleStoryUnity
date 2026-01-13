@@ -26,7 +26,6 @@ namespace JCSUnity
 
         [Tooltip("How fast it rotates?")]
         [SerializeField]
-        [Range(-1000, 1000)]
         protected float mRotateSpeed = 10;
 
         [Tooltip("Direction it rotates.")]

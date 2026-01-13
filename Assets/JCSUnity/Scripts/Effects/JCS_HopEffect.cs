@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -17,6 +18,12 @@ namespace JCSUnity
     public class JCS_HopEffect : JCS_UnityObject
     {
         /* Variables */
+
+        // Exection after we just start hopping.
+        public Action onStart = null;
+
+        // Exection after we are done hopping.
+        public Action onDone = null;
 
 #if UNITY_EDITOR
         [Separator("🧪 Helper Variables (JCS_HopEffect)")]
@@ -52,12 +59,11 @@ namespace JCSUnity
 
         [Tooltip("How much force to jump away from current position.")]
         [SerializeField]
-        [Range(-300.01f, 300.0f)]
         private float mForce = 10.0f;
 
         [Tooltip("How fast the object goes back to original position.")]
         [SerializeField]
-        [Range(0.01f, 1000.0f)]
+        [MinValue(0)]
         private float mGravity = 10.0f;
 
         [Tooltip("Hop axis.")]
@@ -134,6 +140,8 @@ namespace JCSUnity
                     mVelocity.z = mForce;
                     break;
             }
+
+            onStart?.Invoke();
         }
 
         /// <summary>
@@ -156,6 +164,9 @@ namespace JCSUnity
                 (prevPos > startingPos && currPos < startingPos))
             {
                 SetLocalPositionByAxis(startingPos);
+
+                onDone?.Invoke();
+
                 mActive = false;
             }
 

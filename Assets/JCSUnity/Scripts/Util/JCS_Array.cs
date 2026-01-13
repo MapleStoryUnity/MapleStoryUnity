@@ -168,9 +168,11 @@ namespace JCSUnity
 
             for (int index = 0; index < coll.Count; ++index)
             {
+                T key = coll.ElementAt(index);
+
                 // Add itself if exists.
-                if (coll.ElementAt(index) != null)
-                    newArray.Add(coll.ElementAt(index));
+                if (key != null)
+                    newArray.Add(key);
             }
 
             return newArray;
@@ -182,9 +184,11 @@ namespace JCSUnity
 
             JCS_Loop.ForEach(dict, (entry) =>
             {
+                T key = entry.Key;
+
                 // Add if exists.
-                if (entry.Key != null)
-                    result.Add(entry.Key, entry.Value);
+                if (key != null)
+                    result.Add(key, entry.Value);
             });
 
             return result;
@@ -210,12 +214,11 @@ namespace JCSUnity
 
             for (int index = 0; index < coll.Count; ++index)
             {
+                T key = coll.ElementAt(index);
+
                 // Add if exists.
-                // 
-                // SOURCE(jenchieh): https://answers.unity.com/questions/131158/how-can-i-check-if-an-object-is-null.html
-                // INFORMATION(jenchieh): https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/
-                if (coll.ElementAt(index) ?? false)
-                    result.Add(coll.ElementAt(index));
+                if (!JCS_Util.IsMissing(key))
+                    result.Add(key);
             }
 
             return result;
@@ -227,9 +230,11 @@ namespace JCSUnity
 
             JCS_Loop.ForEach(dict, (entry) =>
             {
+                T key = entry.Key;
+
                 // Add if exists.
-                if (entry.Key ?? false)
-                    result.Add(entry.Key, entry.Value);
+                if (!JCS_Util.IsMissing(key))
+                    result.Add(key, entry.Value);
             });
 
             return result;
