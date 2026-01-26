@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  UNITY_VERSION: 6000.3.0f1
+  UNITY_VERSION: 6000.3.5f2
   ULF_FILE: Unity_v6000.x.ulf
 
 jobs:
