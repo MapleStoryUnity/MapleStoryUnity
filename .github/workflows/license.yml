@@ -28,7 +28,7 @@ jobs:
 
       # Upload artifact (Unity_v20XX.X.XXXX.alf)
       - name: Expose as artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.alfFile.outputs.filePath }}
           path: ${{ steps.alfFile.outputs.filePath }}
