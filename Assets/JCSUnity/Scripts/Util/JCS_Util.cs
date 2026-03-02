@@ -52,6 +52,19 @@ namespace JCSUnity
             return data + val;
         }
 
+        public static long Delta(this long data, long val, long max)
+        {
+            return data.Delta(val, 0, max);
+        }
+        public static long Delta(this long data, long val, long min, long max)
+        {
+            return System.Math.Clamp(data.Delta(val), min, max);
+        }
+        public static long Delta(this long data, long val)
+        {
+            return data + val;
+        }
+
         public static float Delta(this float data, float val, float max)
         {
             return data.Delta(val, 0.0f, max);
@@ -61,6 +74,19 @@ namespace JCSUnity
             return Mathf.Clamp(data.Delta(val), min, max);
         }
         public static float Delta(this float data, float val)
+        {
+            return data + val;
+        }
+
+        public static double Delta(this double data, double val, double max)
+        {
+            return data.Delta(val, 0.0f, max);
+        }
+        public static double Delta(this double data, double val, double min, double max)
+        {
+            return System.Math.Clamp(data.Delta(val), min, max);
+        }
+        public static double Delta(this double data, double val)
         {
             return data + val;
         }
@@ -84,6 +110,21 @@ namespace JCSUnity
             return data + val;
         }
 
+        public static long DeltaP(this long data, long p, long max)
+        {
+            return data.DeltaP(p, 0, max);
+        }
+        public static long DeltaP(this long data, long p, long min, long max)
+        {
+            return System.Math.Clamp(data.DeltaP(p), min, max);
+        }
+        public static long DeltaP(this long data, long p)
+        {
+            int val = (int)(data * p / 100.0);
+
+            return data + val;
+        }
+
         public static float DeltaP(this float data, float p, float max)
         {
             return data.DeltaP(p, 0.0f, max);
@@ -95,6 +136,21 @@ namespace JCSUnity
         public static float DeltaP(this float data, float p)
         {
             float val = (data * p / 100.0f);
+
+            return data + val;
+        }
+
+        public static double DeltaP(this double data, double p, double max)
+        {
+            return data.DeltaP(p, 0.0, max);
+        }
+        public static double DeltaP(this double data, double p, double min, double max)
+        {
+            return System.Math.Clamp(data.DeltaP(p), min, max);
+        }
+        public static double DeltaP(this double data, double p)
+        {
+            double val = (data * p / 100.0);
 
             return data + val;
         }

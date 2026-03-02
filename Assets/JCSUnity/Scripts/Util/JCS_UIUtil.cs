@@ -15,6 +15,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using MyBox;
 
 #if TMP_PRO
 using TMPro;
@@ -306,6 +307,9 @@ namespace JCSUnity
         /// <returns> Current selected text value. </returns>
         public static string Dropdown_GetItemValue(Dropdown dd, int index)
         {
+            if (dd == null || dd.options.IsNullOrEmpty())
+                return string.Empty;
+
             return dd.options[index].text;
         }
 
@@ -418,6 +422,9 @@ namespace JCSUnity
         /// <returns> Current selected text value. </returns>
         public static string Dropdown_GetItemValue(TMP_Dropdown dd, int index)
         {
+            if (dd == null || dd.options.IsNullOrEmpty())
+                return string.Empty;
+
             return dd.options[index].text;
         }
 

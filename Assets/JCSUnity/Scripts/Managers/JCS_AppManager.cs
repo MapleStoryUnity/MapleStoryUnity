@@ -160,10 +160,12 @@ namespace JCSUnity
             JCS_GameManager.FirstInstance().RegisterOnSystemAfterInit(RefreshSimulateLanguage);
         }
 
+#if UNITY_EDITOR
         private void OnValidate()
         {
             RefreshSimulateLanguage();
         }
+#endif
 
         public bool IsPC() { return (mPlatformType == JCS_PlatformType.PC); }
         public bool IsMobile() { return (mPlatformType == JCS_PlatformType.MOBILE); }
