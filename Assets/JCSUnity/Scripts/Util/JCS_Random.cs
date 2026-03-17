@@ -19,6 +19,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        private static System.Random SYS_RAND = new System.Random();
+
         /* Setter & Getter */
 
         /* Functions */
@@ -48,6 +50,22 @@ namespace JCSUnity
         public static float Range(float min, float max)
         {
             return Random.Range(min, max);
+        }
+        public static long Range(long min, long max)
+        {
+            long r = max - min;
+
+            var buf = new byte[8];
+            SYS_RAND.NextBytes(buf);
+            long v = System.BitConverter.ToInt64(buf, 0);
+
+            return min + System.Math.Abs(v % (r + 1));
+        }
+        public static double Range(double min, double max)
+        {
+            double v = SYS_RAND.NextDouble();
+
+            return min + (v * (max - min));
         }
 
         /// <summary>
