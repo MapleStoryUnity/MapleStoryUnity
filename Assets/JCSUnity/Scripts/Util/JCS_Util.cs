@@ -720,7 +720,7 @@ namespace JCSUnity
         public static T FindObjectByType<T>()
             where T : Object
         {
-            return Object.FindFirstObjectByType<T>();
+            return Object.FindAnyObjectByType<T>();
         }
         public static T FindObjectByType<T>(Scene scene)
             where T : Object
@@ -739,9 +739,7 @@ namespace JCSUnity
         public static T[] FindObjectsByType<T>()
             where T : Object
         {
-            return Object.FindObjectsByType<T>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None);
+            return Object.FindObjectsByType<T>(FindObjectsInactive.Include);
         }
         public static T[] FindObjectsByType<T>(Scene scene)
             where T : Object
