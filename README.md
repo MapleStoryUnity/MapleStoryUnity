@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="MapleStory Unity Logo" src="./etc/2.png" width="70%" />
+  <img alt="MapleStory Unity Logo" src="./etc/2.png" width="40%" />
   <p align="center">
     <a href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License" src="https://img.shields.io/badge/License-GPL%20v3-green.svg"/></a>
     <a href="https://trello.com/b/yWASibmn/maplestory-unity"><img alt="Trello" src="https://img.shields.io/badge/Trello-view%20progress-026AA7.svg?logo=trello"></a>
