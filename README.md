@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="MapleStory Unity Logo" src="./etc/logo.png" width="250" height="250" />
+  <img alt="MapleStory Unity Logo" src="./etc/1.png" width="250" height="250" />
   <h1 align="center">MapleStory Unity</h1>
   <p align="center">
     <a href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License" src="https://img.shields.io/badge/License-GPL%20v3-green.svg"/></a>
