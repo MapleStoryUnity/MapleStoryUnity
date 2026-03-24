@@ -15,6 +15,12 @@
 
 > A framework to build MapleStory MMO RPG games.
 
+## 🚧 State of the project
+
+We are currently in a *early development* phase.  API, functionalities and game mechanics are not stable.
+
+Things might still break at any point.
+
 ## 📌 Dependencies
 
 - [UnityWzLib](https://github.com/MapleStoryUnity/UnityWzLib)
