@@ -40,7 +40,7 @@ namespace JCSUnity
         public string msgB = "又是一個廣播~";
 #endif
 
-        [Separator("📋 Check Variabless (JCS_Marquee)")]
+        [Separator("📋 Check Variables (JCS_Marquee)")]
 
         [SerializeField]
         [ReadOnly]

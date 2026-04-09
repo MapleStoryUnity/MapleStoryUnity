@@ -42,7 +42,7 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.L;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_TweenPanel)")]
+        [Separator("📋 Check Variables (JCS_TweenPanel)")]
 
         [Tooltip("Is panel active/tweened?")]
         [SerializeField]

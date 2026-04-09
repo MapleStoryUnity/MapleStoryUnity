@@ -43,7 +43,7 @@ namespace JCSUnity
         private KeyCode mFixedKey = KeyCode.X;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_3DLiquidBar)")]
+        [Separator("📋 Check Variables (JCS_3DLiquidBar)")]
 
         [SerializeField]
         [ReadOnly]

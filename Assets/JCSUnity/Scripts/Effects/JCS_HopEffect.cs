@@ -41,7 +41,7 @@ namespace JCSUnity
         private KeyCode mHopKey = KeyCode.A;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_HopEffect)")]
+        [Separator("📋 Check Variables (JCS_HopEffect)")]
 
         [Tooltip("Flag for the effect activation.")]
         [SerializeField]

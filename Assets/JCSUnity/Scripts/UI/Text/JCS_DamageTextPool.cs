@@ -32,7 +32,7 @@ namespace JCSUnity
         private int mLastSpawnPos = 0;
 
         // type of the damage text the object going to handle!
-        [Header("🔍 NOTE: Plz put the whole set of Damage Text here!")]
+        [Header("🔍 NOTE: Please put the whole set of Damage Text here!")]
 
         [Tooltip("Damage text clone.")]
         [SerializeField]

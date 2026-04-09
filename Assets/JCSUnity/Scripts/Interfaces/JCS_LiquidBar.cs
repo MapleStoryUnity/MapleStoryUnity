@@ -31,7 +31,7 @@ namespace JCSUnity
         public Action callback_min_vis = null;
         public Action callback_max_vis = null;
 
-        [Separator("📋 Check Variabless (JCS_LiquidBar)")]
+        [Separator("📋 Check Variables (JCS_LiquidBar)")]
 
         [SerializeField]
         protected float mMinPos = 0.0f;

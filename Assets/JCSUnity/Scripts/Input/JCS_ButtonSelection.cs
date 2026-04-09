@@ -29,7 +29,7 @@ namespace JCSUnity
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-        [Separator("📋 Check Variabless (JCS_ButtonSelection)")]
+        [Separator("📋 Check Variables (JCS_ButtonSelection)")]
 
         [Tooltip("Is this selection got active?")]
         [SerializeField]

@@ -30,7 +30,7 @@ namespace JCSUnity
         public KeyCode stopKey = KeyCode.J;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_2DAnimSequencePlayer)")]
+        [Separator("📋 Check Variables (JCS_2DAnimSequencePlayer)")]
 
         [Tooltip("")]
         [SerializeField]

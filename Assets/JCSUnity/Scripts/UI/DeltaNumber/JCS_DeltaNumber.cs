@@ -43,7 +43,7 @@ namespace JCSUnity
         private int mDeltaValueB = 64;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_DeltaNumber)")]
+        [Separator("📋 Check Variables (JCS_DeltaNumber)")]
 
         [Tooltip("Is current effect enabled?")]
         [SerializeField]

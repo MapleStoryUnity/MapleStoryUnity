@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-        [Separator("📋 Check Variabless (JCS_SlidePanel)")]
+        [Separator("📋 Check Variables (JCS_SlidePanel)")]
 
         [SerializeField]
         [ReadOnly]

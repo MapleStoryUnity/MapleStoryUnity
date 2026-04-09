@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_2DMoveTile)")]
+        [Separator("📋 Check Variables (JCS_2DMoveTile)")]
 
         [SerializeField]
         [ReadOnly]

@@ -28,7 +28,7 @@ namespace JCSUnity
 
         private JCS_AdjustTimeTrigger mAdjustTimerTrigger = null;
 
-        [Separator("📋 Check Variabless (JCS_SimplePathAction)")]
+        [Separator("📋 Check Variables (JCS_SimplePathAction)")]
 
         [Tooltip("Current target point index that this object to going approach.")]
         [SerializeField]

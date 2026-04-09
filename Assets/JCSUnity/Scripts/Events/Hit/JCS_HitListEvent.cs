@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_HitListEvent)")]
+        [Separator("📋 Check Variables (JCS_HitListEvent)")]
 
         [Tooltip("trigger if this even occurs")]
         [SerializeField]

@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-        [Separator("📋 Check Variabless (JCS_2DLiveObjectAnimator)")]
+        [Separator("📋 Check Variables (JCS_2DLiveObjectAnimator)")]
 
         [SerializeField]
         [ReadOnly]

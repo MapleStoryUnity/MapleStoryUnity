@@ -48,7 +48,7 @@ namespace JCSUnity
         private KeyCode mFixedKey = KeyCode.X;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_GUILiquidBar)")]
+        [Separator("📋 Check Variables (JCS_GUILiquidBar)")]
 
         [Tooltip("The panel root object.")]
         [SerializeField]

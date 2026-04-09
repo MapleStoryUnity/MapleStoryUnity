@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_LiquidBarInfo)")]
+        [Separator("📋 Check Variables (JCS_LiquidBarInfo)")]
 
         [Tooltip("Liquid bar this info object holds.")]
         [SerializeField]

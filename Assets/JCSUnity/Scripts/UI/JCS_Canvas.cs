@@ -65,7 +65,7 @@ namespace JCSUnity
         private KeyCode mKeyHide = KeyCode.S;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_Canvas)")]
+        [Separator("📋 Check Variables (JCS_Canvas)")]
 
         [Tooltip("Canvas.")]
         [SerializeField]
@@ -127,6 +127,14 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.UNSCALED_DELTA_TIME;
 
+        [Header("🔍 Pause")]
+
+        [Tooltip("Pause when this canvas is shown.")]
+        [SerializeField]
+        private bool mPauseOnShow = false;
+
+        [Header("🔍 Audio")]
+
         [Tooltip("Play sound when active the canvas.")]
         [SerializeField]
         private AudioClip mSoundOnShow = null;
@@ -149,8 +157,9 @@ namespace JCSUnity
         public float fadeFriction { get { return mFadeFriction; } set { mFadeFriction = value; } }
         public float fadeInAmount { get { return mFadeInAmount; } set { mFadeInAmount = value; } }
         public float fadeOutAmount { get { return mFadeOutAmount; } set { mFadeOutAmount = value; } }
-
         public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
+
+        public bool pauseOnShow { get { return mPauseOnShow; } set { mPauseOnShow = value; } }
         public AudioClip soundOnShow { get { return mSoundOnShow; } set { mSoundOnShow = value; } }
         public AudioClip soundOnHide { get { return mSoundOnHide; } set { mSoundOnHide = value; } }
 
@@ -307,6 +316,8 @@ namespace JCSUnity
             FitScreenSize(rect);
         }
 
+        #region Show
+
         /// <summary>
         /// Return true if the canvas is currently visible.
         /// </summary>
@@ -327,12 +338,13 @@ namespace JCSUnity
                     JCS_SoundMethod.PLAY_SOUND);
             }
 
+            if (mPauseOnShow)
+                JCS_UIManager.FirstInstance().RegisterPause(this);
+
             doShow?.Invoke();
 
             onShow?.Invoke(mute);
         }
-
-        #region Show
 
         private void ShowEnable()
         {
@@ -359,6 +371,8 @@ namespace JCSUnity
 
         #endregion
 
+        #region Hide
+
         /// <summary>
         /// Hide the canvas so it's invisible.
         /// </summary>
@@ -371,12 +385,13 @@ namespace JCSUnity
                     JCS_SoundMethod.PLAY_SOUND);
             }
 
+            if (mPauseOnShow)
+                JCS_UIManager.FirstInstance().DeregisterPause(this);
+
             doHide?.Invoke();
 
             onHide?.Invoke(mute);
         }
-
-        #region Hide
 
         private void HideEnable()
         {

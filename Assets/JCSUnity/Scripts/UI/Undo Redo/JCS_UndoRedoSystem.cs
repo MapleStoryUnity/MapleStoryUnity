@@ -47,7 +47,7 @@ namespace JCSUnity
         private KeyCode mClearAllUndoRedoHistoryKey = KeyCode.J;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_UndoRedoSystem)")]
+        [Separator("📋 Check Variables (JCS_UndoRedoSystem)")]
 
         [Tooltip("All of the undo redo component this system handles.")]
         [SerializeField]

@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_ShootAction)")]
+        [Separator("📋 Check Variables (JCS_ShootAction)")]
 
         [Tooltip("Check if the enemy can shoot or not depends on the delay time!")]
         [SerializeField]
@@ -168,7 +168,7 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandPosRangeZ = 1.0f;
 
-        [Header("🔍 Audio (plz use \"JCS_SoundPoolAction\")")]
+        [Header("🔍 Audio (please use \"JCS_SoundPoolAction\")")]
 
         [Tooltip("Sound when shoot action occurs.")]
         [SerializeField]

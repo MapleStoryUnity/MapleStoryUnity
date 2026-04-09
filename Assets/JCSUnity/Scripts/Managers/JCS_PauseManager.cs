@@ -15,7 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// If you are working some kind of game that need the pause 
     /// screen, you definitly need the pause manager to add it onto 
-    /// "JCS_Manager" transform in the Hierarchy.
+    /// `JCS_Manager` transform in the Hierarchy.
     /// </summary>
     public class JCS_PauseManager : JCS_Manager<JCS_PauseManager>
     {
@@ -24,7 +24,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
         [Separator("🧪 Helper Variables (JCS_PauseManager)")]
 
-        [Tooltip("See curren time scale.")]
+        [Tooltip("Inspect the curren time scale.")]
         [SerializeField]
         [ReadOnly]
         private float mTimeScale = 1.0f;
@@ -57,7 +57,7 @@ namespace JCSUnity
         private float mTimeDelta = 0.1f;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_PauseManager)")]
+        [Separator("📋 Check Variables (JCS_PauseManager)")]
 
         [Tooltip("Set to true if game is paused.")]
         [SerializeField]

@@ -20,7 +20,7 @@ namespace JCSUnity
 
         private const string RESIZEABLE_SCREEN_PANEL_PATH = "UI/JCS_ResizableScreenPanel";
 
-        [Separator("📋 Check Variabless (JCS_ScreenManager)")]
+        [Separator("📋 Check Variables (JCS_ScreenManager)")]
 
         [Tooltip("Top resizable screen panel.")]
         [SerializeField]

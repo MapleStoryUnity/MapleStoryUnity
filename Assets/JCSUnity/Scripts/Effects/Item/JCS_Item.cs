@@ -28,7 +28,7 @@ namespace JCSUnity
 
         protected BoxCollider mBoxCollider = null;
 
-        [Separator("📋 Check Variabless (JCS_Item)")]
+        [Separator("📋 Check Variables (JCS_Item)")]
 
         [Tooltip(@"Collider detect can be picked.
 You can set this directly in order to get the pick effect too. Once you set this, 

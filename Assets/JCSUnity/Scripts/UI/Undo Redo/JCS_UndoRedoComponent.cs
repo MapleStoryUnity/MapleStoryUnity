@@ -43,7 +43,7 @@ namespace JCSUnity
         };
 #endif
 
-        [Separator("📋 Check Variabless (JCS_UndoRedoComponent)")]
+        [Separator("📋 Check Variables (JCS_UndoRedoComponent)")]
 
         [Tooltip("Ignore record now.")]
         [SerializeField]
@@ -154,7 +154,7 @@ namespace JCSUnity
 
             // Use the universal one if not filled.
             if (mUndoRedoSystem == null)
-                mUndoRedoSystem = JCS_UIManager.FirstInstance().GetGlobalUndoRedoSystem();
+                mUndoRedoSystem = JCS_UIManager.FirstInstance().urSystem;
 
             // Add to get manage by the system.
             mUndoRedoSystem.AddUndoRedoComponentToSystem(this);

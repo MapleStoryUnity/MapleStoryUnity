@@ -57,7 +57,7 @@ namespace JCSUnity
         public KeyCode targetRecordKey = KeyCode.None;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_PredictCamera)")]
+        [Separator("📋 Check Variables (JCS_PredictCamera)")]
 
         [SerializeField]
         [ReadOnly]

@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_PortalSettings)")]
+        [Separator("📋 Check Variables (JCS_PortalSettings)")]
 
         [Tooltip("Current Portal Lable are.")]
         [ReadOnly]

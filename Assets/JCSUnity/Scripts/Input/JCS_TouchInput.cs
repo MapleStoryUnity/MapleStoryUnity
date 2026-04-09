@@ -20,7 +20,7 @@ namespace JCSUnity
 
         private Vector2 mDragStartPosition = Vector2.zero;
 
-        [Separator("📋 Check Variabless (JCS_TouchInput)")]
+        [Separator("📋 Check Variables (JCS_TouchInput)")]
 
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
         [Tooltip("Previous position.")]

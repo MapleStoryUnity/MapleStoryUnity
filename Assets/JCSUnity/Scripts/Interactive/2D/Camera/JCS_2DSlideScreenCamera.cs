@@ -46,7 +46,7 @@ namespace JCSUnity
         // Path that points to the panel.
         private const string PANEL_HOLDER_PATH = "UI/System/JCS_SlideScreenPanelHolder";
 
-        [Separator("📋 Check Variabless (JCS_2DSlideScreenCamera)")]
+        [Separator("📋 Check Variables (JCS_2DSlideScreenCamera)")]
 
         [Tooltip("Page start from center.")]
         [SerializeField]

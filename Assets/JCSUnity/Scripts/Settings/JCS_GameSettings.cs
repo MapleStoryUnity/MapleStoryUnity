@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_GameSettings)")]
+        [Separator("📋 Check Variables (JCS_GameSettings)")]
 
         [SerializeField]
         [ReadOnly]

@@ -54,7 +54,7 @@ namespace JCSUnity
         private int mRemoveCount = 1;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_TransformLinkedObjectController)")]
+        [Separator("📋 Check Variables (JCS_TransformLinkedObjectController)")]
 
         [Tooltip("List of all managed transform linked object.")]
         [SerializeField]

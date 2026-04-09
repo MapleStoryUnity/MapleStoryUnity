@@ -23,7 +23,7 @@ namespace JCSUnity
         private Vector3 mRecordScale = Vector3.zero;
         private Vector3 mTargetScale = Vector3.zero;
 
-        [Separator("📋 Check Variabless (JCS_ScaleEffect)")]
+        [Separator("📋 Check Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Is the current component doing the effect now?")]
         [SerializeField]

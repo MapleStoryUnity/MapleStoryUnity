@@ -43,7 +43,7 @@ namespace JCSUnity
         private KeyCode mPlayOneShotAnimKey = KeyCode.F;
 #endif
 
-        [Separator("📋 Check Variabless Variables (JCS_2DAnimator)")]
+        [Separator("📋 Check Variables Variables (JCS_2DAnimator)")]
 
         [Tooltip("Current animation id.")]
         [SerializeField]

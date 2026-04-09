@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_PanelRoot)")]
+        [Separator("📋 Check Variables (JCS_PanelRoot)")]
 
         [Tooltip("Delta ratio change of the screen width.")]
         [SerializeField]

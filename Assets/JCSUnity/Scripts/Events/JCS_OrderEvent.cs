@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private Action mExecution = null;
 
-        [Separator("📋 Check Variabless (JCS_OrderEvent)")]
+        [Separator("📋 Check Variables (JCS_OrderEvent)")]
 
         [Tooltip("Flag represent the activation of the event.")]
         [SerializeField]

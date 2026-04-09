@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_ApplyDamageTextToLiveObjectAction)")]
+        [Separator("📋 Check Variables (JCS_ApplyDamageTextToLiveObjectAction)")]
 
         [SerializeField]
         [ReadOnly]

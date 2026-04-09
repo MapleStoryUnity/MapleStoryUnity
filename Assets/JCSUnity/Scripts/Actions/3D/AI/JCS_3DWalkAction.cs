@@ -45,7 +45,7 @@ namespace JCSUnity
         private float mRemainingDistance = 0.0f;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_3DWalkAction)")]
+        [Separator("📋 Check Variables (JCS_3DWalkAction)")]
 
         [Tooltip("Current target destination.")]
         [SerializeField]

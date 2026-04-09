@@ -47,7 +47,7 @@ namespace JCSUnity
         private KeyCode mPauseKey = KeyCode.E;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_Animation)")]
+        [Separator("📋 Check Variables (JCS_Animation)")]
 
         [Tooltip("Frame this animation current playing.")]
         [SerializeField]

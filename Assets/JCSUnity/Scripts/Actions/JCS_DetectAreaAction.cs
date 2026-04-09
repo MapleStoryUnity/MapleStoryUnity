@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_DetectAreaAction)")]
+        [Separator("📋 Check Variables (JCS_DetectAreaAction)")]
 
         [SerializeField]
         private JCS_2DLiveObject mLiveObject = null;

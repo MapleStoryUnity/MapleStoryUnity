@@ -29,7 +29,7 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-        [Separator("📋 Check Variabless (JCS_SpriteTimer)")]
+        [Separator("📋 Check Variables (JCS_SpriteTimer)")]
 
         [SerializeField]
         [ReadOnly]

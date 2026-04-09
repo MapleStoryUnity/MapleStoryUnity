@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_TimePanel)")]
+        [Separator("📋 Check Variables (JCS_TimePanel)")]
 
         [Tooltip("Panels going to do the action.")]
         [SerializeField]

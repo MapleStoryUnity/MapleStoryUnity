@@ -23,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_SlideScreenButton)")]
+        [Separator("📋 Check Variables (JCS_SlideScreenButton)")]
 
         [Tooltip("This action are using `JCS_2DSlideScreenCamera`.")]
         [SerializeField]

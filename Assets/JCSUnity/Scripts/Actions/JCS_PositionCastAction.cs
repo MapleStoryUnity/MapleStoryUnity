@@ -45,7 +45,7 @@ namespace JCSUnity
         private Vector3 mCastToWorldPosition = Vector3.zero;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_PositionCastAction)")]
+        [Separator("📋 Check Variables (JCS_PositionCastAction)")]
 
         [Tooltip("")]
         [SerializeField]

@@ -28,17 +28,22 @@ namespace JCSUnity
         private bool mTestWithKey = false;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_UIManager)")]
+        [Separator("📋 Check Variables (JCS_UIManager)")]
 
-        [Tooltip("List of canvas.")]
+        [Tooltip("A list of canvas.")]
         [SerializeField]
         [ReadOnly]
         private List<JCS_Canvas> mCanvases = null;
 
-        [Tooltip("Global undo redo system.")]
+        [Tooltip("A list of paused canvas.")]
         [SerializeField]
         [ReadOnly]
-        private JCS_UndoRedoSystem mGlobalUndoRedoSystem = null;
+        private List<JCS_Canvas> mCanvasesPause = null;
+
+        [Tooltip("The global undo redo system.")]
+        [SerializeField]
+        [ReadOnly]
+        private JCS_UndoRedoSystem mURSystem = null;
 
         [Separator("🌱 Initialize Variables (JCS_UIManager)")]
 
@@ -126,7 +131,7 @@ namespace JCSUnity
         }
         public LinkedList<JCS_DialogueObject> GetOpenWindow() { return mOpenWindow; }
         public JCS_FadeScreen fadeScreen { get { return mFadeScreen; } set { mFadeScreen = value; } }
-        public JCS_UndoRedoSystem GetGlobalUndoRedoSystem() { return mGlobalUndoRedoSystem; }
+        public JCS_UndoRedoSystem urSystem { get { return mURSystem; } }
 
         /* Functions */
 
@@ -136,7 +141,7 @@ namespace JCSUnity
 
             mOpenWindow = new LinkedList<JCS_DialogueObject>();
 
-            mGlobalUndoRedoSystem = gameObject.AddComponent<JCS_UndoRedoSystem>();
+            mURSystem = gameObject.AddComponent<JCS_UndoRedoSystem>();
         }
         private void Start()
         {
@@ -299,6 +304,33 @@ namespace JCSUnity
         {
             JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
             fadeObj.FadeOut(time);
+        }
+
+        /// <summary>
+        /// Register a canvas to the pause list.
+        /// </summary>
+        public void RegisterPause(JCS_Canvas canvas)
+        {
+            if (canvas == null || mCanvasesPause.Contains(canvas))
+                return;
+
+            mCanvasesPause.Add(canvas);
+
+            JCS_PauseManager.FirstInstance().Pause();
+        }
+
+        /// <summary>
+        /// Deregister a canvas from the pause list.
+        /// </summary>
+        public void DeregisterPause(JCS_Canvas canvas)
+        {
+            mCanvasesPause.Remove(canvas);
+
+            mCanvasesPause = JCS_Array.RemoveEmptyMissing(mCanvasesPause);
+
+            // Unpause it when no more blocking UI.
+            if (mCanvasesPause.Count <= 0)
+                JCS_PauseManager.FirstInstance().Unpause();
         }
     }
 }

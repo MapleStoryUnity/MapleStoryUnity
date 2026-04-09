@@ -33,7 +33,7 @@ namespace JCSUnity
 
         private bool mIsEnteringNextScene = false;
 
-        [Separator("📋 Check Variabless (JCS_SceneManager)")]
+        [Separator("📋 Check Variables (JCS_SceneManager)")]
 
         [Tooltip("Black screen object to be assigned by the system.")]
         [SerializeField]

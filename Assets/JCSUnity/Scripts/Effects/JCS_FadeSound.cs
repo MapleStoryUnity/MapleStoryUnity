@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private JCS_FadeType mType = JCS_FadeType.NONE;
 
-        [Separator("📋 Check Variabless (JCS_FadeSound)")]
+        [Separator("📋 Check Variables (JCS_FadeSound)")]
 
         [Tooltip("Do the effect?")]
         [SerializeField]

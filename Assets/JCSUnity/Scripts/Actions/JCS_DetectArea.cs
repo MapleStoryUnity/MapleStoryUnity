@@ -20,7 +20,7 @@ namespace JCSUnity
 
         private JCS_DetectAreaAction mDetectAreaAction = null;
 
-        [Separator("📋 Check Variabless (JCS_DetectArea)")]
+        [Separator("📋 Check Variables (JCS_DetectArea)")]
 
         [SerializeField]
         [ReadOnly]

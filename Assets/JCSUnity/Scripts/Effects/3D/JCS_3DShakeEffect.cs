@@ -44,7 +44,7 @@ namespace JCSUnity
         private KeyCode mKeyShakeForce = KeyCode.U;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_3DShakeEffect)")]
+        [Separator("📋 Check Variables (JCS_3DShakeEffect)")]
 
         [Tooltip("Flag to check if currently the effect active.")]
         [SerializeField]

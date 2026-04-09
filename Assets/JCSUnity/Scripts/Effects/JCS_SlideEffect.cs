@@ -41,7 +41,7 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.S;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_SlideEffect)")]
+        [Separator("📋 Check Variables (JCS_SlideEffect)")]
 
         [Tooltip("Is this effect active?")]
         [SerializeField]

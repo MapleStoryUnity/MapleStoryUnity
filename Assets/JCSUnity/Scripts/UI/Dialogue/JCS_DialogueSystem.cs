@@ -30,7 +30,7 @@ namespace JCSUnity
 
         private JCS_DialogueScript mPreselectingScript = null;
 
-        [Separator("📋 Check Variabless (JCS_DialogueSystem)")]
+        [Separator("📋 Check Variables (JCS_DialogueSystem)")]
 
         [Tooltip("True if initialized.")]
         [SerializeField]

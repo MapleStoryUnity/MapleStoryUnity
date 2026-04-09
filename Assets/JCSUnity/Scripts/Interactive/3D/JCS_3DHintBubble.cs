@@ -49,7 +49,7 @@ namespace JCSUnity
 
 #endif
 
-        [Separator("📋 Check Variabless (JCS_3DHintBubble)")]
+        [Separator("📋 Check Variables (JCS_3DHintBubble)")]
 
         [Tooltip("Flag to check if the hint bubble active.")]
         [SerializeField]

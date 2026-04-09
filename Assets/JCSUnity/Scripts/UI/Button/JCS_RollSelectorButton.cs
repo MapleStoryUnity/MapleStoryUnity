@@ -26,7 +26,7 @@ namespace JCSUnity
 
         private JCS_RollBtnSelector mRollBtnSelector = null;
 
-        [Separator("📋 Check Variabless (JCS_RollSelectorButton)")]
+        [Separator("📋 Check Variables (JCS_RollSelectorButton)")]
 
         [SerializeField]
         [ReadOnly]

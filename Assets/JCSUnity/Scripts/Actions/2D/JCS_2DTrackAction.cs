@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_2DTrackAction)")]
+        [Separator("📋 Check Variables (JCS_2DTrackAction)")]
 
         [SerializeField]
         [ReadOnly]

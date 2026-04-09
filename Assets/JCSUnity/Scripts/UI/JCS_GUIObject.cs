@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_UndoRedoComponent)")]
+        [Separator("📋 Check Variables (JCS_UndoRedoComponent)")]
 
         [Tooltip("Input Field component.")]
         [SerializeField]

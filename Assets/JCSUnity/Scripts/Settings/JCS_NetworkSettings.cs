@@ -23,7 +23,7 @@ namespace JCSUnity
         private static JCS_Socket SOCKET = null;
         private static JCS_ClientHandler PRESET_CLIENT_HANDLER = null;
 
-        [Separator("📋 Check Variabless (JCS_NetworkSettings)")]
+        [Separator("📋 Check Variables (JCS_NetworkSettings)")]
 
         [Tooltip(@"Current mode this client in, should be update by the server!")]
         [ReadOnly]

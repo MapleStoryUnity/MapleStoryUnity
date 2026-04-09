@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private VideoPlayer mVideoPlayer = null;
 
-        [Separator("📋 Check Variabless (JCS_SceneSettings)")]
+        [Separator("📋 Check Variables (JCS_SceneSettings)")]
 
         [Tooltip("True when is switching scene.")]
         [ReadOnly]

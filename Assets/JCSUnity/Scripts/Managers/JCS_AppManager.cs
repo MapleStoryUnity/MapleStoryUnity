@@ -32,7 +32,7 @@ namespace JCSUnity
         // Execute after the system language has changed.
         public Action<SystemLanguage> onSystemLanguageChanged = null;
 
-        [Separator("📋 Check Variabless (JCS_AppManager)")]
+        [Separator("📋 Check Variables (JCS_AppManager)")]
 
         [Tooltip("Current systme language.")]
         [SerializeField]

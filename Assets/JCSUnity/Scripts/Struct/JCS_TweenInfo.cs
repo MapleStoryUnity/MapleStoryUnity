@@ -22,7 +22,7 @@ namespace JCSUnity
     [System.Serializable]
     public class JCS_TweenInfo
     {
-        [Separator("📋 Check Variabless (JCS_TweenInfo)")]
+        [Separator("📋 Check Variables (JCS_TweenInfo)")]
 
         [Tooltip("Record down the starting value, in order to go back.")]
         public Vector3 startingValue = Vector3.zero;

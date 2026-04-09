@@ -62,7 +62,7 @@ namespace JCSUnity
         private Tweener mTweenerY = new();
         private Tweener mTweenerZ = new();
 
-        [Separator("📋 Check Variabless (JCS_TransformTweener)")]
+        [Separator("📋 Check Variables (JCS_TransformTweener)")]
 
         [SerializeField]
         [ReadOnly]

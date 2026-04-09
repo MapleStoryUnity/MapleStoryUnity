@@ -26,7 +26,7 @@ namespace JCSUnity
 
         private EventTrigger mEventTrigger = null;
 
-        [Separator("📋 Check Variabless (JCS_ButtonSoundEffect)")]
+        [Separator("📋 Check Variables (JCS_ButtonSoundEffect)")]
 
         [Tooltip("Is true when mouse is over this button.")]
         [SerializeField]

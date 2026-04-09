@@ -24,7 +24,7 @@ namespace JCSUnity
         // the button has been focusing on.
         private JCS_RollSelectorButton mFocusBtn = null;
 
-        [Separator("📋 Check Variabless (JCS_RollBtnSelector)")]
+        [Separator("📋 Check Variables (JCS_RollBtnSelector)")]
 
         [Tooltip("")]
         [SerializeField]

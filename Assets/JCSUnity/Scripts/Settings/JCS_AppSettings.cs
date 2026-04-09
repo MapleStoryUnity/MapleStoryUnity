@@ -26,7 +26,7 @@ namespace JCSUnity
         // per application is starts.
         public Action onApplicationStarts = null;
 
-        [Separator("📋 Check Variabless (JCS_AppSettings)")]
+        [Separator("📋 Check Variables (JCS_AppSettings)")]
 
         [Tooltip("Is the application start?")]
         [ReadOnly]

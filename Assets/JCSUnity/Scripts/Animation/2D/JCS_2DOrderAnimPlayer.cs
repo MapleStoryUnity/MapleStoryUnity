@@ -22,7 +22,7 @@ namespace JCSUnity
 
         private JCS_2DAnimator mAnimator = null;
 
-        [Separator("📋 Check Variabless (JCS_2DOrderAnimPlayer)")]
+        [Separator("📋 Check Variables (JCS_2DOrderAnimPlayer)")]
 
         [Tooltip("Current playing animation's id.")]
         [SerializeField]

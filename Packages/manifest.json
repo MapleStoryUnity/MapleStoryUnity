@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.domybest.mybox": "https://github.com/Deadcows/MyBox.git",
     "com.unity.ai.navigation": "2.0.11",
     "com.unity.collab-proxy": "2.11.4",
     "com.unity.ide.rider": "3.0.39",

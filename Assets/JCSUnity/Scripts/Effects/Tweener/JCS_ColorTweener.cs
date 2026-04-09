@@ -80,7 +80,7 @@ namespace JCSUnity
         private Color mTweenColorB = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 #endif
 
-        [Separator("📋 Check Variabless (JCS_ColorTweener)")]
+        [Separator("📋 Check Variables (JCS_ColorTweener)")]
 
         // progress color
         [SerializeField]

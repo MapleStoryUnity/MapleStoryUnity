@@ -35,7 +35,7 @@ namespace JCSUnity
         private KeyCode mUpdateDropdown = KeyCode.U;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_Dropdown)")]
+        [Separator("📋 Check Variables (JCS_Dropdown)")]
 
         [Tooltip("Store all the real dropdown texts, not the shortcut version.")]
         [SerializeField]

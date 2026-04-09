@@ -30,7 +30,7 @@ namespace JCSUnity
         private KeyCode mUpdateInputField = KeyCode.U;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_InputField)")]
+        [Separator("📋 Check Variables (JCS_InputField)")]
 
         [Tooltip("Real text data this input field hold.")]
         [SerializeField]

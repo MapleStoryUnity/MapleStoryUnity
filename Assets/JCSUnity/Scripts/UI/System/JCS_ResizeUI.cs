@@ -41,7 +41,7 @@ namespace JCSUnity
         private Sprite mImageSprite = null;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_ResizeUI)")]
+        [Separator("📋 Check Variables (JCS_ResizeUI)")]
 
         [Tooltip("Width scale.")]
         [SerializeField]

@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-        [Separator("📋 Check Variabless (JCS_2DAnimDisplayHolder)")]
+        [Separator("📋 Check Variables (JCS_2DAnimDisplayHolder)")]
 
         [Tooltip(@"Record down what is the current animation playing, so after 
 holding we could play the animation back in time.")]

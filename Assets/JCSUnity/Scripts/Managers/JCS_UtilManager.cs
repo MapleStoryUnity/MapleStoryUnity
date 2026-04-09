@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_UtilManager)")]
+        [Separator("📋 Check Variables (JCS_UtilManager)")]
 
         [Tooltip("Damage text util.")]
         [SerializeField]

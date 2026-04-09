@@ -43,7 +43,7 @@ namespace JCSUnity
 
         public Action onInteractableStateChanged = null;
 
-        [Separator("📋 Check Variabless (JCS_Button)")]
+        [Separator("📋 Check Variables (JCS_Button)")]
 
         [Tooltip("Record down the selection choice for dialogue system.")]
         [SerializeField]

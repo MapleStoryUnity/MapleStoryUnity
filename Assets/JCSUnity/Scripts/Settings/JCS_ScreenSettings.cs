@@ -44,7 +44,7 @@ namespace JCSUnity
         public bool showResizablePanels = true;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_ScreenSettings)")]
+        [Separator("📋 Check Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Screen size when the application starts.")]
         [ReadOnly]

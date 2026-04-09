@@ -76,7 +76,7 @@ namespace JCSUnity
         private float mTweenToB = 5.0f;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_FloatTweener)")]
+        [Separator("📋 Check Variables (JCS_FloatTweener)")]
 
         [SerializeField]
         [ReadOnly]

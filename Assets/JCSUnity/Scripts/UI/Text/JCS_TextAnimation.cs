@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_TextAnimation)")]
+        [Separator("📋 Check Variables (JCS_TextAnimation)")]
 
         [Tooltip("Frame this animation is currently displayed.")]
         [SerializeField]

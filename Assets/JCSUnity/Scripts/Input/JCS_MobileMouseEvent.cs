@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_MobileMouseEvent)")]
+        [Separator("📋 Check Variables (JCS_MobileMouseEvent)")]
 
         [Tooltip("")]
         [SerializeField]

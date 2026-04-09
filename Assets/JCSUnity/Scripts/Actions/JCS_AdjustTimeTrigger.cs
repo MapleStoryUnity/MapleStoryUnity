@@ -29,7 +29,7 @@ namespace JCSUnity
         // Execution after action is being executed.
         public Action onAfterAction = null;
 
-        [Separator("📋 Check Variabless (JCS_AdjustTimeTrigger)")]
+        [Separator("📋 Check Variables (JCS_AdjustTimeTrigger)")]
 
         [Tooltip(@"Time to record down the real time to do one action after 
 we calculate the real time.")]

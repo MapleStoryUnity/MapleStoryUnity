@@ -34,7 +34,7 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-        [Separator("📋 Check Variabless (JCS_TextTimer)")]
+        [Separator("📋 Check Variables (JCS_TextTimer)")]
 
         [SerializeField]
         private bool mDoTimeUpCallback = false;

@@ -44,7 +44,7 @@ namespace JCSUnity
         private KeyCode mRightKey = KeyCode.RightArrow;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_CharacterController2D)")]
+        [Separator("📋 Check Variables (JCS_CharacterController2D)")]
 
         // STUDY(jenchieh): use this as the composition info?
         [SerializeField]

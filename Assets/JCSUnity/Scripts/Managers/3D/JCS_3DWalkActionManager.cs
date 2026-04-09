@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_3DWalkActionManager)")]
+        [Separator("📋 Check Variables (JCS_3DWalkActionManager)")]
 
         [Tooltip("All walk action that get manages.")]
         [SerializeField]

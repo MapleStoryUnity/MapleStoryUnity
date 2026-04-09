@@ -49,7 +49,7 @@ namespace JCSUnity
         private float mValueB = 10.0f;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_TextDeltaNumber)")]
+        [Separator("📋 Check Variables (JCS_TextDeltaNumber)")]
 
         [Tooltip("Full string to display.")]
         [SerializeField]

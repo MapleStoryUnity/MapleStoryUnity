@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private CharacterController mCharacterController = null;
 
-        [Separator("📋 Check Variabless (JCS_CharacterControllerInfo)")]
+        [Separator("📋 Check Variables (JCS_CharacterControllerInfo)")]
 
         [Tooltip("Width of the character controller.")]
         [SerializeField]

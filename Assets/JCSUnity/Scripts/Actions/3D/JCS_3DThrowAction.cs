@@ -35,7 +35,7 @@ namespace JCSUnity
         private KeyCode mTestWithTimeKey = KeyCode.None;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_3DThrowAction)")]
+        [Separator("📋 Check Variables (JCS_3DThrowAction)")]
 
         [Tooltip("Velocity of the object.")]
         [SerializeField]

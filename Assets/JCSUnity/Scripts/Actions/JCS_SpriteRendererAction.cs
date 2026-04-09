@@ -28,7 +28,7 @@ namespace JCSUnity
         [SerializeField]
         private SpriteRenderer[] mSpriteRenderers = null;
 
-        [Header("🔍 -- X Facing --")]
+        [Header("🔍 X Facing")]
 
         [Tooltip("Enable/Disabel the effect on X axis.")]
         [SerializeField]
@@ -38,7 +38,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsFacingRight = true;
 
-        [Header("🔍 -- Y Facing --")]
+        [Header("🔍 Y Facing")]
 
         [Tooltip("Enable/Disabel the effect on Y axis.")]
         [SerializeField]

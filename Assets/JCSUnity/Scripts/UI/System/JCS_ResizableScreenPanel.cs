@@ -26,7 +26,7 @@ namespace JCSUnity
 
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Separator("📋 Check Variabless (JCS_AspectScreenPanel)")]
+        [Separator("📋 Check Variables (JCS_AspectScreenPanel)")]
 
         [Tooltip("Type of the Aspect screen panel direction.")]
         [SerializeField]

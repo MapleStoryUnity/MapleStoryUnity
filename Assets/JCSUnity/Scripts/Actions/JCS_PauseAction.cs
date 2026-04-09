@@ -24,7 +24,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_PauseAction)")]
+        [Separator("📋 Check Variables (JCS_PauseAction)")]
 
         [Tooltip("Record enabled state; make disabled behaviours reamin disabled.")]
         [SerializeField]

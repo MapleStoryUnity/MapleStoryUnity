@@ -27,7 +27,7 @@ namespace JCSUnity
         private bool mTestWithKey = false;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_3DCamera)")]
+        [Separator("📋 Check Variables (JCS_3DCamera)")]
 
         [Tooltip("Current tracking position.")]
         [SerializeField]

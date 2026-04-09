@@ -31,7 +31,7 @@ namespace JCSUnity
 
         private RequestCallback requestCallback = null;
 
-        [Separator("📋 Check Variabless (JCS_StreamingAssets)")]
+        [Separator("📋 Check Variables (JCS_StreamingAssets)")]
 
         [Tooltip("List of file that we are going to download as target.")]
         [ReadOnly]

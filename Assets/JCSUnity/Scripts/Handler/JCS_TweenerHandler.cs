@@ -35,7 +35,7 @@ namespace JCSUnity
         private KeyCode mTweenToTarget = KeyCode.K;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_TweenerHandler)")]
+        [Separator("📋 Check Variables (JCS_TweenerHandler)")]
 
         [Tooltip("Optional panel root.")]
         [SerializeField]

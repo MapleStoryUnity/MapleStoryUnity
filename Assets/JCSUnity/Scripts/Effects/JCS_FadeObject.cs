@@ -51,7 +51,7 @@ namespace JCSUnity
         private KeyCode mFadeOutKey = KeyCode.N;
 #endif
 
-        [Separator("📋 Check Variabless (JCS_FadeObject)")]
+        [Separator("📋 Check Variables (JCS_FadeObject)")]
 
         [Tooltip("Is current fade object doing the effect? (fade in/out)")]
         [SerializeField]

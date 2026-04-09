@@ -26,7 +26,7 @@ namespace JCSUnity
         protected JCS_OrderLayerObject mOrderLayerObject = null;
 
         //-- Action (Ladder, Rope)
-        [Separator("📋 Check Variabless (JCS_2DSideScrollerPlayer)")]
+        [Separator("📋 Check Variables (JCS_2DSideScrollerPlayer)")]
 
         //-- Facing
         [SerializeField]

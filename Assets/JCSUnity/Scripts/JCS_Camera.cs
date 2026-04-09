@@ -30,7 +30,7 @@ namespace JCSUnity
         // to add the difference between the two frame.
         protected Vector3 mLastFramePos = Vector3.zero;
 
-        [Separator("📋 Check Variabless (JCS_Camera)")]
+        [Separator("📋 Check Variables (JCS_Camera)")]
 
         [Tooltip("Current camera's velocity.")]
         [SerializeField]

@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_2DEffect)")]
+        [Separator("📋 Check Variables (JCS_2DEffect)")]
 
         [Tooltip("Flag to check if currently the effect active.")]
         [SerializeField]

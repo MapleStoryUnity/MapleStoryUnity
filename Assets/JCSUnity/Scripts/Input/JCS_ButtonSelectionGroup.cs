@@ -37,7 +37,7 @@ namespace JCSUnity
             LEFT,
         };
 
-        [Separator("📋 Check Variabless (JCS_ButtonSelectionGroup)")]
+        [Separator("📋 Check Variables (JCS_ButtonSelectionGroup)")]
 
         [Tooltip("Current selecting index.")]
         [SerializeField]

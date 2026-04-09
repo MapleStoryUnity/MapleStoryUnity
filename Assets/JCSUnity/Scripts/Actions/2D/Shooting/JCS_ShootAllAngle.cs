@@ -21,7 +21,7 @@ namespace JCSUnity
 
         private JCS_ShootAction mShootAction = null;
 
-        [Separator("📋 Check Variabless (JCS_ShootAllAngle)")]
+        [Separator("📋 Check Variables (JCS_ShootAllAngle)")]
 
         [Tooltip("Check if the enemy can shoot or not depends on the delay time!")]
         [SerializeField]
