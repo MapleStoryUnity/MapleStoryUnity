@@ -117,7 +117,7 @@ namespace JCSUnity
 
         [Tooltip("")]
         [SerializeField]
-        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
+        [Range(JCS_Consts.FRICTION_MIN, 10.0f)]
         private float mAirFriction = 0.5f;
 
         private bool mAttackedInAir = false;
@@ -239,12 +239,10 @@ namespace JCSUnity
         /// <param name="act"></param>
         public override void ControlEnable(bool act)
         {
-            var gs = JCS_GameSettings.FirstInstance();
-
             // enable all the component here
             if (act)
             {
-                if (gs.cameraType != JCS_CameraType.MULTI_TARGET)
+                if (JCS_Glob.games.cameraType != JCS_CameraType.MULTI_TARGET)
                 {
                     AudioListener al = mAudioController.GetAudioListener();
                     if (al != null)
@@ -255,7 +253,7 @@ namespace JCSUnity
             // diable all the component here
             else
             {
-                if (gs.cameraType != JCS_CameraType.MULTI_TARGET)
+                if (JCS_Glob.games.cameraType != JCS_CameraType.MULTI_TARGET)
                 {
                     AudioListener al = mAudioController.GetAudioListener();
                     if (al != null)
@@ -869,12 +867,10 @@ namespace JCSUnity
             // if is in the AIR
             if (!isGrounded())
             {
-                var gs = JCS_GameSettings.FirstInstance();
-
                 // apply gravity
                 mVelocity.y += (JCS_Physics.GRAVITY *
                     JCS_Time.ItTime(mTimeType) *
-                    gs.gravityProduct);
+                    JCS_Glob.games.gravityProduct);
 
                 /* TODO!! */
                 if (!mJustClimbOnTopOfBox)

@@ -130,7 +130,7 @@ namespace JCSUnity
         private void Start()
         {
             // set to global!
-            JCS_UtilManager.FirstInstance().SetMixDamageTextPool(this);
+            JCS_Glob.utilm.SetMixDamageTextPool(this);
         }
 
         private void Update()
@@ -249,10 +249,7 @@ namespace JCSUnity
             }
 
             int[] damages = new int[hit];
-            DamageTextType[] types = new DamageTextType[hit];
-
-            // get the game setting first
-            var gs = JCS_GameSettings.FirstInstance();
+            var types = new DamageTextType[hit];
 
             for (int index = 0; index < hit; ++index)
             {
@@ -264,12 +261,12 @@ namespace JCSUnity
                 // Check min max
                 {
                     // 如果小於最下限得值, 就設定為最下限的值
-                    if (damages[index] < gs.minDamage)
-                        damages[index] = gs.minDamage;
+                    if (damages[index] < JCS_Glob.games.minDamage)
+                        damages[index] = JCS_Glob.games.minDamage;
 
                     // 如果大於最上限得值, 就設定為最上限的值
-                    if (damages[index] > gs.maxDamage)
-                        damages[index] = gs.maxDamage;
+                    if (damages[index] > JCS_Glob.games.maxDamage)
+                        damages[index] = JCS_Glob.games.maxDamage;
                 }
 
                 // see if this damage text a critical damage text?

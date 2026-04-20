@@ -236,11 +236,11 @@ to get the information from them.")]
             if (mDamageTextEffect)
             {
 
-                JCS_MixDamageTextPool mixTP = JCS_UtilManager.FirstInstance().GetMixDamageTextPool();
+                JCS_MixDamageTextPool mixTP = JCS_Glob.utilm.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
 #if UNITY_EDITOR
-                    if (JCS_GameSettings.FirstInstance().debugMode)
+                    if (JCS_Glob.games.debugMode)
                     {
                         Debug.LogError("There is no Mix Damage Text Pool in the scene. Consider to grab one?");
                     }
@@ -300,7 +300,8 @@ to get the information from them.")]
             if (mDamageTextEffect)
             {
 
-                JCS_MixDamageTextPool mixTP = JCS_UtilManager.FirstInstance().GetMixDamageTextPool();
+                JCS_MixDamageTextPool mixTP = JCS_Glob.utilm.GetMixDamageTextPool();
+                
                 if (mixTP == null)
                 {
                     Debug.LogError(

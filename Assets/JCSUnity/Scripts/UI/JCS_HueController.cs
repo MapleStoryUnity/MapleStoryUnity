@@ -43,7 +43,7 @@ namespace JCSUnity
 
         [Tooltip("How fast the hue changes?")]
         [SerializeField]
-        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
+        [Range(JCS_Consts.FRICTION_MIN, 10.0f)]
         private float mFriction = 1.0f;
 
         [Tooltip("Type of the delta time.")]

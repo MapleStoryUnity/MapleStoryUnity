@@ -36,7 +36,7 @@ namespace JCSUnity
         public void PauseGame()
         {
             // turn on the game pause button.
-            JCS_GameManager.FirstInstance().gamePaused = true;
+            JCS_Glob.gamem.gamePaused = true;
         }
     }
 }

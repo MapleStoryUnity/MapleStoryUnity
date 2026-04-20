@@ -131,8 +131,6 @@ namespace JCSUnity
         {
             CreateDirectory(path);
 
-            var gs = JCS_GameSettings.FirstInstance();
-
             string fileName = "";
             string curExt = "";
             int last_saved_screenshot = -1;

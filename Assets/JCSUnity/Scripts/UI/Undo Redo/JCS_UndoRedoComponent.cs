@@ -154,7 +154,7 @@ namespace JCSUnity
 
             // Use the universal one if not filled.
             if (mUndoRedoSystem == null)
-                mUndoRedoSystem = JCS_UIManager.FirstInstance().urSystem;
+                mUndoRedoSystem = JCS_Glob.uim.urSystem;
 
             // Add to get manage by the system.
             mUndoRedoSystem.AddUndoRedoComponentToSystem(this);
@@ -170,9 +170,7 @@ namespace JCSUnity
             // to be as late as possible. Cuz any script change 
             // the UI value after this will not be record...
             {
-                var gm = JCS_GameManager.FirstInstance();
-
-                gm.RegisterOnAfterInit(RecordPrevData);
+                JCS_Glob.gamem.RegisterOnAfterInit(RecordPrevData);
             }
         }
 

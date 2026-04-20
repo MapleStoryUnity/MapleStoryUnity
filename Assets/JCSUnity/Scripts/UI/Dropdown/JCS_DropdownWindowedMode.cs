@@ -50,9 +50,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            var screens = JCS_ScreenSettings.FirstInstance();
-
-            screens.onChangedMode += Refresh;
+            JCS_Glob.screens.onChangedMode += Refresh;
         }
 
         private void AddListener()

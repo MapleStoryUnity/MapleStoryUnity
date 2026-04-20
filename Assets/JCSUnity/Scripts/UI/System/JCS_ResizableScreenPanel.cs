@@ -90,9 +90,7 @@ namespace JCSUnity
         /// </summary>
         private void SetToScreenEdge()
         {
-            var ss = JCS_ScreenSettings.FirstInstance();
-
-            Vector2 appRect = new Vector2(ss.startingSize.width, ss.startingSize.height);
+            Vector2 appRect = new Vector2(JCS_Glob.screens.startingSize.width, JCS_Glob.screens.startingSize.height);
             Vector2 halfAppRect = appRect / 2.0f;
 
             Vector2 panelSize = mRectTransform.sizeDelta;

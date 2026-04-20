@@ -45,24 +45,22 @@ namespace JCSUnity
         /// </summary>
         private void SetPlayerToPortalByLabel()
         {
-            var ps = JCS_PortalSettings.FirstInstance();
-
             // check manager exists?
-            if (ps == null)
+            if (JCS_Glob.portals == null)
                 return;
 
             // check effect enable?
-            if (!ps.resetPositionAtStart)
+            if (!JCS_Glob.portals.resetPositionAtStart)
                 return;
 
             mPortals = JCS_Array.RemoveEmptyMissing(mPortals).ToArray();
 
             foreach (JCS_2DPortal portal in mPortals)
             {
-                if (portal.portalLabel == ps.sceneLabel)
+                if (portal.portalLabel == JCS_Glob.portals.sceneLabel)
                 {
                     // get the player
-                    JCS_Player player = JCS_PlayerManager.FirstInstance().GetActivePlayer();
+                    JCS_Player player = JCS_Glob.playerm.GetActivePlayer();
 
                     // NOTE(jenchieh): this uses execution order in Unity Engine.
                     // move the player to portal position.

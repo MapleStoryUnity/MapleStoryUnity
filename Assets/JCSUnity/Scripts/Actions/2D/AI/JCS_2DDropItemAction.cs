@@ -82,9 +82,8 @@ namespace JCSUnity
                 return;
 
             // if switching the scene, don't spawn new gameObject.
-            if (JCS_SceneManager.FirstInstance().IsSwitchingScene())
+            if (JCS_Glob.scenem.IsSwitchingScene())
                 return;
-
 
             // check the event is true
             if (!mDropWhenDies)

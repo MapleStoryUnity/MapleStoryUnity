@@ -50,8 +50,8 @@ namespace JCSUnity
 
             // if the game only allow one play do the function
             // in order to take the effect.
-            if (JCS_GameSettings.FirstInstance().activeOnePlayer)
-                ActiveOnePlayer(JCS_GameManager.FirstInstance().player);
+            if (JCS_Glob.games.activeOnePlayer)
+                ActiveOnePlayer(JCS_Glob.gamem.player);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace JCSUnity
         /// </summary>
         public void DoIgnorePlayersToEachOthers()
         {
-            if (!JCS_GameSettings.FirstInstance().playerIgnoreEachOther)
+            if (!JCS_Glob.games.playerIgnoreEachOther)
                 return;
 
             // Make all the player ignore each other

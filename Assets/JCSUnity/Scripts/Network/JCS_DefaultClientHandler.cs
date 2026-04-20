@@ -49,7 +49,7 @@ namespace JCSUnity
              * packet handler check under.
              */
             // packet responded!
-            JCS_PacketLostPreventer.FirstInstance().AddRespondPacketId(packetId);
+            JCS_Glob.plp.AddRespondPacketId(packetId);
 
             JCS_Client client = JCS_ClientManager.LOCAL_CLIENT;
 
@@ -59,7 +59,7 @@ namespace JCSUnity
             // handler depends on the client/server mode.
             JCS_PacketHandler packetHandler =
                 JCS_DefaultPacketProcessor.GetProcessor(
-                    JCS_NetworkSettings.FirstInstance().clientMode
+                    JCS_Glob.networks.clientMode
                     ).GetHandler(packetId);
 
             if (packetHandler != null && packetHandler.ValidateState(client))
@@ -69,7 +69,7 @@ namespace JCSUnity
                 packetHandler.PacketData = jbr;
 
                 // register request.
-                JCS_ServerRequestProcessor.FirstInstance().RegisterRequest(packetHandler.HandlePacket, jbr, client);
+                JCS_Glob.srp.RegisterRequest(packetHandler.HandlePacket, jbr, client);
             }
             else
             {
@@ -117,7 +117,7 @@ namespace JCSUnity
         private void PrintSendPacket(System.Object message)
         {
 #if UNITY_EDITOR
-            if (!JCS_GameSettings.FirstInstance().debugMode)
+            if (!JCS_Glob.games.debugMode)
                 return;
 
             byte[] encryptedBuffer = (byte[])message;
@@ -134,7 +134,7 @@ namespace JCSUnity
         private void PrintRecievedPacket(System.Object message)
         {
 #if UNITY_EDITOR
-            if (!JCS_GameSettings.FirstInstance().debugMode)
+            if (!JCS_Glob.games.debugMode)
                 return;
 
             byte[] decryptedBuffer = (byte[])message;

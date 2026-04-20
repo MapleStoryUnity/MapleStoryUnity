@@ -220,7 +220,7 @@ namespace JCSUnity
 
                 if (owenerLiveObject != null)
                 {
-                    if (!JCS_GameSettings.FirstInstance().tribeDamageEachOther)
+                    if (!JCS_Glob.games.tribeDamageEachOther)
                     {
                         // if both player does not need to add in to list.
                         // or if both enemy does not need to add in to list.

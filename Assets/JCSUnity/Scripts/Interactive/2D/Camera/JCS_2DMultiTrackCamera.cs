@@ -44,7 +44,7 @@ namespace JCSUnity
 
         [Tooltip("How fast the caemra zoom in/out.")]
         [SerializeField]
-        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
+        [Range(JCS_Consts.FRICTION_MIN, 10.0f)]
         private float mCameraFriction = 0.7f;
 
         [Tooltip("Type of the delta time.")]
@@ -98,7 +98,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_SoundManager.FirstInstance().SetAudioListener(audioListener);
+            JCS_Glob.soundm.SetAudioListener(audioListener);
         }
 
         private void Update()

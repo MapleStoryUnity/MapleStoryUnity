@@ -47,7 +47,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            if (!JCS_NetworkSettings.FirstInstance().onlineMode)
+            if (!JCS_Glob.networks.onlineMode)
             {
                 if (JCS_NetworkManager.FIRST_LOGIN)
                 {
@@ -77,7 +77,7 @@ namespace JCSUnity
         /// </summary>
         public void LoadNextLevel()
         {
-            JCS_SceneManager.FirstInstance().LoadScene(mNextScene);
+            JCS_Glob.scenem.LoadScene(mNextScene);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace JCSUnity
             Debug.Log("Server Connection Time Out, Quit Application.");
 
             // quit the application smoothly.
-            JCS_AppManager.FirstInstance().Quit(true);
+            JCS_Glob.appm.Quit(true);
         }
     }
 }

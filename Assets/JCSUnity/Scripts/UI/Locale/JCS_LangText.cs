@@ -44,7 +44,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_AppManager.FirstInstance().AddLangText(this);
+            JCS_Glob.appm.AddLangText(this);
             Refresh();
         }
 

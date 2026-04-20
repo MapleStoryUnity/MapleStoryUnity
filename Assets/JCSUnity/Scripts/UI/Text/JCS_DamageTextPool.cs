@@ -299,7 +299,7 @@ namespace JCSUnity
             if (secondSearch)
             {
 #if UNITY_EDITOR
-                if (JCS_GameSettings.FirstInstance().debugMode)
+                if (JCS_Glob.games.debugMode)
                 {
                     Debug.LogWarning("Prevent, stack overflow function call.");
                 }
@@ -419,10 +419,7 @@ namespace JCSUnity
         /// </summary>
         private void PlayHitSound(AudioClip hitSound)
         {
-            var ss = JCS_SoundSettings.FirstInstance();
-            var sm = JCS_SoundManager.FirstInstance();
-
-            JCS_SoundPlayer sp = (mSoundPlayer) ? mSoundPlayer : sm.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = (mSoundPlayer) ? mSoundPlayer : JCS_Glob.soundPlayer;
 
             if (hitSound != null)
             {

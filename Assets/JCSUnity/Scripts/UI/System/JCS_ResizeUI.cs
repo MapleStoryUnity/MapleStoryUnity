@@ -166,12 +166,10 @@ namespace JCSUnity
         /// </summary>
         private void DoResizeUI()
         {
-            var screenS = JCS_ScreenSettings.FirstInstance();
-
             float width = (float)JCS_Screen.width;
             float height = (float)JCS_Screen.height;
 
-            JCS_ScreenSizef starting = screenS.StartingSize();
+            JCS_ScreenSizef starting = JCS_Glob.screens.StartingSize();
 
             mWScale = width / starting.width;
             mHScale = height / starting.height;

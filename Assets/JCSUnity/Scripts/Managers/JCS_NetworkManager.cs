@@ -39,7 +39,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            if (!JCS_NetworkSettings.FirstInstance().onlineMode)
+            if (!JCS_Glob.networks.onlineMode)
                 return;
 
 #if UNITY_EDITOR
@@ -115,7 +115,7 @@ namespace JCSUnity
         public void CheckConnectionWithTime()
         {
             // do the following script only when is online mode
-            if (!JCS_NetworkSettings.FirstInstance().onlineMode)
+            if (!JCS_Glob.networks.onlineMode)
                 return;
 
             mConnectionCounter += Time.unscaledDeltaTime;
@@ -131,7 +131,7 @@ namespace JCSUnity
                 else if (FIRST_LOGIN)
                 {
                     FIRST_LOGIN = false;
-                    JCS_PatchManager.FirstInstance().LoadNextLevel();
+                    JCS_Glob.patchm.LoadNextLevel();
                 }
                 mConnectionCounter = 0;
             }

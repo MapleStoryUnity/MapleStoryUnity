@@ -44,7 +44,8 @@ namespace JCSUnity
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            JCS_Player player = JCS_GameManager.FirstInstance().player;
+            JCS_Player player = JCS_Glob.gamem.player;
+
             if (player == null)
                 return;
 
@@ -52,13 +53,13 @@ namespace JCSUnity
             {
                 Physics.IgnoreCollision(mPlatformCollider,
                     player.GetCharacterController(), true);
-
             }
         }
 
         protected virtual void OnTriggerExit(Collider other)
         {
-            JCS_Player player = JCS_GameManager.FirstInstance().player;
+            JCS_Player player = JCS_Glob.gamem.player;
+
             if (player == null)
                 return;
 
@@ -66,7 +67,6 @@ namespace JCSUnity
             {
                 Physics.IgnoreCollision(mPlatformCollider,
                     player.GetCharacterController(), false);
-
             }
         }
     }

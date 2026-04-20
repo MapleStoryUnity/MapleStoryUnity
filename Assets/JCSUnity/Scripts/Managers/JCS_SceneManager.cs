@@ -182,11 +182,9 @@ namespace JCSUnity
 
         private void Start()
         {
-            var ss = JCS_SceneSettings.FirstInstance();
-
             // NOTE(jenchieh): get the fade out time base on  the scene setting
             // and scene manager specific.
-            float fadeoutTime = ss.TimeIn();
+            float fadeoutTime = JCS_Glob.scenes.TimeIn();
 
             switch (mSwitchSceneType)
             {
@@ -199,7 +197,7 @@ namespace JCSUnity
                 case JCS_SwitchSceneType.FADE:
                     {
                         // get the current screen color.
-                        mBlackScreen.localColor = ss.screenColor;
+                        mBlackScreen.localColor = JCS_Glob.scenes.screenColor;
 
                         mBlackScreen.FadeOut(fadeoutTime);
                     }
@@ -213,23 +211,18 @@ namespace JCSUnity
 
                 case JCS_SwitchSceneType.VIDEO:
                     {
-                        ss.videoPlayer.enabled = true;
-
-                        ss.videoPlayer.clip = ss.ClipOut();
-
-                        ss.videoPlayer.StepForward();
-
-                        ss.videoPlayer.Play();
+                        JCS_Glob.scenes.videoPlayer.enabled = true;
+                        JCS_Glob.scenes.videoPlayer.clip = JCS_Glob.scenes.ClipOut();
+                        JCS_Glob.scenes.videoPlayer.StepForward();
+                        JCS_Glob.scenes.videoPlayer.Play();
                     }
                     break;
             }
 
             // Only need to fade BGM when BGM is not switch between scene.
-            var soundS = JCS_SoundSettings.FirstInstance();
-
-            if (!soundS.keepBGMSwitchScene)
+            if (!JCS_Glob.sounds.keepBGMSwitchScene)
             {
-                if (soundS.smoothSwithBetweenScene)
+                if (JCS_Glob.sounds.smoothSwithBetweenScene)
                 {
                     // get the component.
                     if (mFadeSound == null)
@@ -244,7 +237,7 @@ namespace JCSUnity
                     mFadeSound.FadeIn(
                         1.0f,
                         /* Fade in the sound base on the setting. */
-                        soundS.TimeIn());
+                        JCS_Glob.sounds.TimeIn());
                 }
             }
             else
@@ -254,11 +247,11 @@ namespace JCSUnity
                 // 
                 // ATTENTION(jenchieh): This should be place for the last use
                 // of the variable 'KEEP_BGM_SWITCH_SCENE'.
-                soundS.keepBGMSwitchScene = false;
+                JCS_Glob.sounds.keepBGMSwitchScene = false;
             }
 
             // the game is loaded start the game agian
-            JCS_GameManager.FirstInstance().gamePaused = false;
+            JCS_Glob.gamem.gamePaused = false;
         }
 
         private void Update()
@@ -343,10 +336,8 @@ namespace JCSUnity
         }
         public void LoadScene(string sceneName, LoadSceneMode mode)
         {
-            var ss = JCS_SceneSettings.FirstInstance();
-
-            float fadeInTime = ss.TimeIn();
-            Color screenColor = ss.screenColor;
+            float fadeInTime = JCS_Glob.scenes.TimeIn();
+            Color screenColor = JCS_Glob.scenes.screenColor;
             bool keepBGM = false;
 
             LoadScene(sceneName, mode, fadeInTime, screenColor, keepBGM);
@@ -364,24 +355,20 @@ namespace JCSUnity
             }
 #endif
 
-            var scs = JCS_SceneSettings.FirstInstance();
-
             // if is loading already, dont load it agian
-            if (scs.switchingScene)
+            if (JCS_Glob.scenes.switchingScene)
                 return;
 
             // set the next scene name
-            scs.nextSceneName = sceneName;
+            JCS_Glob.scenes.nextSceneName = sceneName;
 
-            scs.previousScene = SceneManager.GetActiveScene();
-            scs.mode = mode;
+            JCS_Glob.scenes.previousScene = SceneManager.GetActiveScene();
+            JCS_Glob.scenes.mode = mode;
 
-            var apps = JCS_AppSettings.FirstInstance();
-
-            if (apps.saveOnSwitchScene)
+            if (JCS_Glob.apps.saveOnSwitchScene)
             {
                 // do the saving.
-                apps.onSaveAppData?.Invoke();
+                JCS_Glob.apps.onSaveAppData?.Invoke();
             }
 
             // Mark loading scene.
@@ -409,7 +396,7 @@ namespace JCSUnity
                         mBlackScreen.localColor = screenColor;
 
                         // record down the screen color.
-                        scs.screenColor = screenColor;
+                        JCS_Glob.scenes.screenColor = screenColor;
 
                         // start fading in (black screen)
                         mBlackScreen.FadeIn(fadeInTime);
@@ -426,25 +413,20 @@ namespace JCSUnity
 
                 case JCS_SwitchSceneType.VIDEO:
                     {
-                        scs.videoPlayer.enabled = true;
-
-                        scs.videoPlayer.clip = scs.ClipIn();
-
-                        scs.videoPlayer.StepForward();
-
-                        scs.videoPlayer.Play();
+                        JCS_Glob.scenes.videoPlayer.enabled = true;
+                        JCS_Glob.scenes.videoPlayer.clip = JCS_Glob.scenes.ClipIn();
+                        JCS_Glob.scenes.videoPlayer.StepForward();
+                        JCS_Glob.scenes.videoPlayer.Play();
                     }
                     break;
             }
 
-            var sos = JCS_SoundSettings.FirstInstance();
-
-            sos.keepBGMSwitchScene = keepBGM;
+            JCS_Glob.sounds.keepBGMSwitchScene = keepBGM;
 
             if (!keepBGM)
             {
                 // start fading sound
-                if (sos.smoothSwithBetweenScene)
+                if (JCS_Glob.sounds.smoothSwithBetweenScene)
                 {
                     // get the component.
                     if (mFadeSound == null)
@@ -460,7 +442,7 @@ namespace JCSUnity
             }
 
             // start check to switch scene or not
-            scs.switchingScene = true;
+            JCS_Glob.scenes.switchingScene = true;
         }
 
         #endregion
@@ -476,10 +458,8 @@ namespace JCSUnity
         }
         public void ReloadScene(LoadSceneMode mode)
         {
-            var ss = JCS_SceneSettings.FirstInstance();
-
-            float fadeInTime = ss.TimeIn();
-            Color screenColor = ss.screenColor;
+            float fadeInTime = JCS_Glob.scenes.TimeIn();
+            Color screenColor = JCS_Glob.scenes.screenColor;
             bool keepBGM = false;
 
             // load scene and pass the value in.
@@ -519,10 +499,8 @@ namespace JCSUnity
         }
         public void LoadNextScene(LoadSceneMode mode)
         {
-            var ss = JCS_SceneSettings.FirstInstance();
-
-            float fadeInTime = ss.TimeIn();
-            Color screenColor = ss.screenColor;
+            float fadeInTime = JCS_Glob.scenes.TimeIn();
+            Color screenColor = JCS_Glob.scenes.screenColor;
             bool keepBGM = false;
 
             LoadNextScene(mode, fadeInTime, screenColor, keepBGM);
@@ -581,7 +559,7 @@ namespace JCSUnity
         /// <returns> return result. </returns>
         public bool IsSwitchingScene()
         {
-            return JCS_SceneSettings.FirstInstance().switchingScene;
+            return JCS_Glob.scenes.switchingScene;
         }
 
         /// <summary>
@@ -589,10 +567,8 @@ namespace JCSUnity
         /// </summary>
         private void DoEnterSwitchScene()
         {
-            var ss = JCS_SceneSettings.FirstInstance();
-
             // check if during the switch scene?
-            if (!ss.switchingScene)
+            if (!JCS_Glob.scenes.switchingScene)
                 return;
 
             switch (mSwitchSceneType)
@@ -623,11 +599,11 @@ namespace JCSUnity
 
                 case JCS_SwitchSceneType.VIDEO:
                     {
-                        if (!ss.videoPlayer.isPlaying)
+                        if (!JCS_Glob.scenes.videoPlayer.isPlaying)
                         {
                             EnterNextScene();
 
-                            ss.videoPlayer.enabled = false;
+                            JCS_Glob.scenes.videoPlayer.enabled = false;
                         }
                     }
                     break;
@@ -636,10 +612,8 @@ namespace JCSUnity
 
         private void DoExitSwitchScene()
         {
-            var ss = JCS_SceneSettings.FirstInstance();
-
             // check if during the switch scene?
-            if (!ss.switchingScene)
+            if (!JCS_Glob.scenes.switchingScene)
                 return;
 
             switch (mSwitchSceneType)
@@ -649,7 +623,7 @@ namespace JCSUnity
                         if (onSwitchSceneOut != null)
                         {
                             if (onSwitchSceneOut.Invoke())
-                                ss.switchingScene = false;
+                                JCS_Glob.scenes.switchingScene = false;
                         }
                     }
                     break;
@@ -657,21 +631,21 @@ namespace JCSUnity
                 case JCS_SwitchSceneType.FADE:
                     {
                         if (mBlackScreen.IsFadeOut())
-                            ss.switchingScene = false;
+                            JCS_Glob.scenes.switchingScene = false;
                     }
                     break;
 
                 case JCS_SwitchSceneType.SLIDE:
                     {
                         if (mBlackSlideScreen.IsDoneSliding())
-                            ss.switchingScene = false;
+                            JCS_Glob.scenes.switchingScene = false;
                     }
                     break;
 
                 case JCS_SwitchSceneType.VIDEO:
                     {
-                        if (!ss.videoPlayer.isPlaying)
-                            ss.switchingScene = false;
+                        if (!JCS_Glob.scenes.videoPlayer.isPlaying)
+                            JCS_Glob.scenes.switchingScene = false;
                     }
                     break;
             }
@@ -697,9 +671,7 @@ namespace JCSUnity
         }
         private void InvokeEnterNextScene()
         {
-            var scs = JCS_SceneSettings.FirstInstance();
-
-            SceneManager.LoadScene(scs.nextSceneName, scs.mode);
+            SceneManager.LoadScene(JCS_Glob.scenes.nextSceneName, JCS_Glob.scenes.mode);
         }
     }
 }

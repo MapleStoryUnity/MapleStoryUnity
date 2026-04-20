@@ -44,12 +44,12 @@ namespace JCSUnity
 
         [Tooltip("How fast this camera move toward the target. (x-axis)")]
         [SerializeField]
-        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
+        [Range(JCS_Consts.FRICTION_MIN, 10.0f)]
         private float mFrictionX = 0.6f;
 
         [Tooltip("How fast this camera move toward the target. (y-axis)")]
         [SerializeField]
-        [Range(JCS_Constants.FRICTION_MIN, 10.0f)]
+        [Range(JCS_Consts.FRICTION_MIN, 10.0f)]
         private float mFrictionY = 0.6f;
 
         [Header("🔍 Freeze")]
@@ -134,7 +134,8 @@ namespace JCSUnity
             // Use player from "JCS_GameManager" as default
             if (mTargetTransform == null)
             {
-                JCS_Player player = JCS_GameManager.FirstInstance().player;
+                JCS_Player player = JCS_Glob.gamem.player;
+
                 if (player != null)
                     SetFollowTarget(player.transform);
             }
@@ -150,7 +151,7 @@ namespace JCSUnity
 
             if (mSetToPlayerPositionAtStart)
             {
-                JCS_Player player = JCS_PlayerManager.FirstInstance().GetActivePlayer();
+                JCS_Player player = JCS_Glob.playerm.GetActivePlayer();
 
                 if (player != null)
                 {
@@ -189,8 +190,7 @@ namespace JCSUnity
                 // to here...
                 mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-                var input = JCS_TouchInput.FirstInstance();
-                mWheelDegree = input.touchDistanceDelta;
+                mWheelDegree = JCS_Glob.touch.touchDistanceDelta;
 #endif
                 ZoomCamera(mWheelDegree);
             }

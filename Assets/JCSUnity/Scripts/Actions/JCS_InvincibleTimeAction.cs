@@ -162,7 +162,7 @@ namespace JCSUnity
             mTriggerAction = true;
 
             // play the sound once.
-            JCS_SoundManager.FirstInstance().GlobalSoundPlayer().PlayOneShot(mTriggerSound);
+            JCS_Glob.soundPlayer.PlayOneShot(mTriggerSound);
         }
 
         /// <summary>

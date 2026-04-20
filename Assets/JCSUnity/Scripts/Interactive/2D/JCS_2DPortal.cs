@@ -133,16 +133,14 @@ namespace JCSUnity
 
         private void LoadScene()
         {
-            var ps = JCS_PortalSettings.FirstInstance();
-
             // set the portal label, in order to let the next scene load.
-            if (ps != null)
+            if (JCS_Glob.portals != null)
             {
-                ps.sceneLabel = mPortalLabel;
+                JCS_Glob.portals.sceneLabel = mPortalLabel;
             }
 
             // auto do the action
-            JCS_SceneManager.FirstInstance().LoadScene(mSceneName);
+            JCS_Glob.scenem.LoadScene(mSceneName);
         }
     }
 }

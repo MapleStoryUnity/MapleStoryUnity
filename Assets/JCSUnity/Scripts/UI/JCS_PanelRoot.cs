@@ -42,7 +42,7 @@ namespace JCSUnity
         {
             base.Awake();
 
-            if (!JCS_ScreenSettings.FirstInstance().IsNone())
+            if (!JCS_Glob.screens.IsNone())
             {
                 // NOTE: not sure is this the correct position for the code or not.
                 DoResize();
@@ -68,9 +68,7 @@ namespace JCSUnity
 
         private void DoResize()
         {
-            var screenS = JCS_ScreenSettings.FirstInstance();
-
-            JCS_ScreenSizef size = screenS.StartingSize();
+            JCS_ScreenSizef size = JCS_Glob.screens.StartingSize();
 
             float currentWidth = mRectTransform.sizeDelta.x;
             float currentHeight = mRectTransform.sizeDelta.y;

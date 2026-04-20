@@ -49,7 +49,7 @@ namespace JCSUnity
         public override void OnClick()
         {
             // Switch the server.
-            JCS_NetworkSettings.FirstInstance().SwitchServer(mHost, mPort, mForce);
+            JCS_Glob.networks.SwitchServer(mHost, mPort, mForce);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace JCSUnity
         public bool asymptotic = false;
 
         [Tooltip("How fast the asymptotic transition?")]
-        [Range(JCS_Constants.FRICTION_MIN, 30.0f)]
+        [Range(JCS_Consts.FRICTION_MIN, 30.0f)]
         public float friction = 0.2f;
 
         /* Setter & Getter */
@@ -41,13 +41,11 @@ namespace JCSUnity
         /// </summary>
         public bool Asymptotic()
         {
-            var pm = JCS_PauseManager.FirstInstance();
-
             // check if override the setting.
-            if (pm.overrideSetting)
+            if (JCS_Glob.pausem.overrideSetting)
             {
                 // return the override value.
-                return pm.asymptotic;
+                return JCS_Glob.pausem.asymptotic;
             }
 
             // if not override, 
@@ -60,13 +58,11 @@ namespace JCSUnity
         /// </summary>
         public float Friction()
         {
-            var pm = JCS_PauseManager.FirstInstance();
-
             // check if override the setting.
-            if (pm.overrideSetting)
+            if (JCS_Glob.pausem.overrideSetting)
             {
                 // return the override value.
-                return pm.friction;
+                return JCS_Glob.pausem.friction;
             }
 
             // if not override, 

@@ -184,11 +184,7 @@ namespace JCSUnity
             mCanvas = GetComponent<Canvas>();
             mCanvasGroup = GetComponent<CanvasGroup>();
 
-            var uis = JCS_UISettings.FirstInstance();
-            var screens = JCS_ScreenSettings.FirstInstance();
-            var uim = JCS_UIManager.FirstInstance();
-
-            if (uis.resizeUI && !screens.IsNone())
+            if (JCS_Glob.uis.resizeUI && !JCS_Glob.screens.IsNone())
             {
                 GameObject spawned = JCS_Util.Instantiate(RESIZE_UI_PATH);
 
@@ -198,7 +194,7 @@ namespace JCSUnity
                 mResizeUI.transform.SetParent(transform);
             }
 
-            uim.AddCanvas(this);
+            JCS_Glob.uim.AddCanvas(this);
 
             AssignDefaultShowHide();
 
@@ -210,10 +206,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            var uis = JCS_UISettings.FirstInstance();
-            var screens = JCS_ScreenSettings.FirstInstance();
-
-            if (uis.resizeUI && !screens.IsNone())
+            if (JCS_Glob.uis.resizeUI && !JCS_Glob.screens.IsNone())
             {
                 if (mResizeUI == null)
                     return;
@@ -339,7 +332,7 @@ namespace JCSUnity
             }
 
             if (mPauseOnShow)
-                JCS_UIManager.FirstInstance().RegisterPause(this);
+                JCS_Glob.uim.RegisterPause(this);
 
             doShow?.Invoke();
 
@@ -386,7 +379,7 @@ namespace JCSUnity
             }
 
             if (mPauseOnShow)
-                JCS_UIManager.FirstInstance().DeregisterPause(this);
+                JCS_Glob.uim.DeregisterPause(this);
 
             doHide?.Invoke();
 
@@ -473,8 +466,7 @@ namespace JCSUnity
             if (rect == null)
                 return;
 
-            var ss = JCS_ScreenSettings.FirstInstance();
-            JCS_ScreenSizef screenRaio = ss.ScreenRatio();
+            JCS_ScreenSizef screenRaio = JCS_Glob.screens.ScreenRatio();
 
             Vector3 newScale = rect.localScale;
             newScale.x /= screenRaio.width;
@@ -503,7 +495,7 @@ namespace JCSUnity
             float diff = Mathf.Abs(direction);
 
             // When close enough.
-            if (diff < JCS_Constants.NEAR_THRESHOLD)
+            if (diff < JCS_Consts.NEAR_THRESHOLD)
             {
                 switch (mFading)
                 {

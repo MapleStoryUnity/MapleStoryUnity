@@ -101,7 +101,7 @@ object you have in the list.")]
 
         [Tooltip("How fast the asymptotic transition?")]
         [SerializeField]
-        [Range(JCS_Constants.FRICTION_MIN, 30.0f)]
+        [Range(JCS_Consts.FRICTION_MIN, 30.0f)]
         private float mFriction = 0.2f;
 
         /* Setter & Getter */
@@ -148,9 +148,7 @@ object you have in the list.")]
 
             if (Input.GetKeyUp(mToggleGamePause))
             {
-                var gm = JCS_GameManager.FirstInstance();
-
-                gm.gamePaused = !gm.gamePaused;
+                JCS_Glob.gamem.gamePaused = !JCS_Glob.gamem.gamePaused;
             }
 
             if (Input.GetKeyUp(mKeyReset))
@@ -197,7 +195,7 @@ object you have in the list.")]
         /// </summary>
         public void Pause()
         {
-            bool asymp = JCS_PauseSettings.FirstInstance().Asymptotic();
+            bool asymp = JCS_Glob.pauses.Asymptotic();
 
             if (asymp)
                 mTargetTimeScale = 0.0f;
@@ -212,7 +210,7 @@ object you have in the list.")]
         /// </summary>
         public void Unpause()
         {
-            bool asymp = JCS_PauseSettings.FirstInstance().Asymptotic();
+            bool asymp = JCS_Glob.pauses.Asymptotic();
 
             if (asymp)
                 mTargetTimeScale = mDefaultTimeScale;
@@ -287,7 +285,7 @@ object you have in the list.")]
         /// </summary>
         private void DoAsymp()
         {
-            bool asymp = JCS_PauseSettings.FirstInstance().Asymptotic();
+            bool asymp = JCS_Glob.pauses.Asymptotic();
 
             if (!asymp)
                 return;

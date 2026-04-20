@@ -172,8 +172,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            var wam = JCS_3DWalkActionManager.FirstInstance();
-            wam.AddWalkAction(this);
+            JCS_Glob.wam3d.AddWalkAction(this);
         }
 
         private void Update()
@@ -246,8 +245,6 @@ namespace JCSUnity
             if (target == null)
                 return;
 
-            var wam = JCS_3DWalkActionManager.FirstInstance();
-
             if (mSearchCounter == mSearchCount)
             {
                 // reset search count.
@@ -273,7 +270,7 @@ namespace JCSUnity
             if (validPos)
             {
                 if (!mAllowOverlapDestination)
-                    overlapped = wam.OverlapWithOthers(this, targetPos, mOverlapDistance);
+                    overlapped = JCS_Glob.wam3d.OverlapWithOthers(this, targetPos, mOverlapDistance);
 
                 // set to the destination.
                 if (!overlapped)

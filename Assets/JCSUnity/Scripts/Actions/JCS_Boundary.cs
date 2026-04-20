@@ -48,7 +48,7 @@ namespace JCSUnity
             Vector3 min = Vector3.positiveInfinity;
             Vector3 max = Vector3.negativeInfinity;
 
-            foreach (Vector3 corner in JCS_Constants.CORNERS_CUBE)
+            foreach (Vector3 corner in JCS_Consts.CORNERS_CUBE)
             {
                 // Scale, then rotate and translate
                 Vector3 worldCorner = transform.TransformPoint(corner);

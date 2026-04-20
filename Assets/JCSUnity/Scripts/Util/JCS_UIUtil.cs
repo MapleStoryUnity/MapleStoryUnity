@@ -129,7 +129,7 @@ namespace JCSUnity
         /// <param name="txt"> Text container to display language data. </param>
         public static void SetLangText(JCS_LangDataList data, Text txt)
         {
-            SystemLanguage lang = JCS_AppManager.FirstInstance().systemLanguage;
+            SystemLanguage lang = JCS_Glob.appm.systemLanguage;
 
             foreach (JCS_LangData langData in data.langData)
             {
@@ -149,7 +149,7 @@ namespace JCSUnity
         /// <param name="txt"> Text container to display language data. </param>
         public static void SetLangText(JCS_LangDataList data, TMP_Text txt)
         {
-            SystemLanguage lang = JCS_AppManager.FirstInstance().systemLanguage;
+            SystemLanguage lang = JCS_Glob.appm.systemLanguage;
 
             foreach (JCS_LangData langData in data.langData)
             {
@@ -851,7 +851,7 @@ namespace JCSUnity
         /// </summary>
         public static Sprite SpriteTransparent()
         {
-            return JCS_UtilManager.FirstInstance().spriteTransparent;
+            return JCS_Glob.utilm.spriteTransparent;
         }
 
         /// <summary>

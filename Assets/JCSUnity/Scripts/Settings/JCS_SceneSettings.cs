@@ -85,10 +85,8 @@ namespace JCSUnity
         /// </summary>
         public float TimeOut()
         {
-            var sm = JCS_SceneManager.FirstInstance();
-
-            if (sm.overrideSetting)
-                return sm.timeOut;
+            if (JCS_Glob.scenem.overrideSetting)
+                return JCS_Glob.scenem.timeOut;
 
             return mTimeOut;
         }
@@ -98,10 +96,8 @@ namespace JCSUnity
         /// </summary>
         public float TimeIn()
         {
-            var sm = JCS_SceneManager.FirstInstance();
-
-            if (sm.overrideSetting)
-                return sm.timeIn;
+            if (JCS_Glob.scenem.overrideSetting)
+                return JCS_Glob.scenem.timeIn;
 
             return mTimeIn;
         }
@@ -111,10 +107,8 @@ namespace JCSUnity
         /// </summary>
         public VideoClip ClipIn()
         {
-            var sm = JCS_SceneManager.FirstInstance();
-
-            if (sm.overrideSetting)
-                return sm.clipIn;
+            if (JCS_Glob.scenem.overrideSetting)
+                return JCS_Glob.scenem.clipIn;
 
             return mClipIn;
         }
@@ -124,10 +118,8 @@ namespace JCSUnity
         /// </summary>
         public VideoClip ClipOut()
         {
-            var sm = JCS_SceneManager.FirstInstance();
-
-            if (sm.overrideSetting)
-                return sm.clipOut;
+            if (JCS_Glob.scenem.overrideSetting)
+                return JCS_Glob.scenem.clipOut;
 
             return mClipOut;
         }

@@ -32,7 +32,7 @@ namespace JCSUnity
         /// </summary>
         public bool IsOrderCheckServer()
         {
-            return (JCS_NetworkSettings.FirstInstance().protocolType == JCS_ProtocalType.UDP);
+            return (JCS_Glob.networks.protocolType == JCS_ProtocalType.UDP);
         }
 
         /// <summary>

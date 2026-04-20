@@ -68,15 +68,15 @@ namespace JCSUnity
             {
                 // if the button and the platform are not the same, 
                 // dont load the scene and do nothing.
-                if (mPlatformType != JCS_AppManager.FirstInstance().platformType)
+                if (mPlatformType != JCS_Glob.appm.platformType)
                     return;
             }
 
             string sceneName = JCS_SceneManager.GetSceneNameByOption(mSceneName, mReloadScene);
 
-            float fadeInTime = JCS_SceneSettings.FirstInstance().TimeIn();
+            float fadeInTime = JCS_Glob.scenes.TimeIn();
 
-            JCS_SceneManager.FirstInstance().LoadScene(sceneName, mMode,
+            JCS_Glob.scenem.LoadScene(sceneName, mMode,
                 fadeInTime, mScreenColor, mKeppBGM);
         }
     }

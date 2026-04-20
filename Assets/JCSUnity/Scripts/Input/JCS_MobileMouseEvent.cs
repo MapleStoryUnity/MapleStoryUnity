@@ -83,7 +83,7 @@ namespace JCSUnity
         private void PrintName(Transform trans)
         {
 #if UNITY_EDITOR
-            if (!JCS_GameSettings.FirstInstance().debugMode)
+            if (!JCS_Glob.games.debugMode)
                 return;
 
             // print the name of the detected transform.
@@ -98,8 +98,6 @@ namespace JCSUnity
         /// </summary>
         private void Handle_EnterExit()
         {
-            var im = JCS_InputManager.FirstInstance();
-
             // A ray is an infinite line starting at an origin and going into a direction
             // For this we will use our mouse position
             Ray ray = mCamera.ScreenPointToRay(Input.mousePosition);
@@ -115,7 +113,7 @@ namespace JCSUnity
                 if (mHits.Contains(hit))
                     continue;
 
-                if (im.support_OnMouseEnter)
+                if (JCS_Glob.inputm.support_OnMouseEnter)
                     _SendMessage(obj, "OnMouseEnter");
             }
 
@@ -129,7 +127,7 @@ namespace JCSUnity
                 if (hits.Contains(hit))
                     continue;
 
-                if (im.support_OnMouseExit)
+                if (JCS_Glob.inputm.support_OnMouseExit)
                     _SendMessage(obj, "OnMouseExit");
 
                 PrintName(hit.transform);
@@ -145,10 +143,7 @@ namespace JCSUnity
         /// </summary>
         private void Handle_UpOver()
         {
-            var im = JCS_InputManager.FirstInstance();
-            var ti = JCS_TouchInput.FirstInstance();
-
-            if (ti == null)
+            if (JCS_Glob.ti == null)
                 return;
 
             foreach (RaycastHit hit in mHits)
@@ -158,12 +153,12 @@ namespace JCSUnity
 
                 GameObject obj = hit.transform.gameObject;
 
-                if (im.support_OnMouseOver)
+                if (JCS_Glob.inputm.support_OnMouseOver)
                     _SendMessage(obj, "OnMouseOver");
 
-                if (im.support_OnMouseUp)
+                if (JCS_Glob.inputm.support_OnMouseUp)
                 {
-                    if (mTouchedLastFrame && !ti.touched)
+                    if (mTouchedLastFrame && !JCS_Glob.ti.touched)
                         _SendMessage(obj, "OnMouseUp");
                 }
 
@@ -178,10 +173,7 @@ namespace JCSUnity
         /// </summary>
         private void Handle_DownDrag()
         {
-            var im = JCS_InputManager.FirstInstance();
-            var ti = JCS_TouchInput.FirstInstance();
-
-            if (!ti.touched)
+            if (!JCS_Glob.ti.touched)
             {
                 mTouchedLastFrame = false;
                 return;
@@ -200,17 +192,17 @@ namespace JCSUnity
 
                 GameObject obj = hit.transform.gameObject;
 
-                if (ti.touched)
+                if (JCS_Glob.ti.touched)
                 {
-                    if (im.support_OnMouseDown)
+                    if (JCS_Glob.inputm.support_OnMouseDown)
                     {
                         if (!mTouchedLastFrame)
                             _SendMessage(obj, "OnMouseDown");
                     }
 
-                    if (im.support_OnMouseDrag)
+                    if (JCS_Glob.inputm.support_OnMouseDrag)
                     {
-                        if (ti.deltaPos != Vector2.zero)
+                        if (JCS_Glob.ti.deltaPos != Vector2.zero)
                             _SendMessage(obj, "OnMouseDrag");
                     }
                 }

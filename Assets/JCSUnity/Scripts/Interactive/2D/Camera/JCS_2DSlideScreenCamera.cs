@@ -355,15 +355,14 @@ namespace JCSUnity
         /// </summary>
         private void DoMobileSwipe()
         {
-            var ti = JCS_TouchInput.FirstInstance();
-            if (ti == null)
+            if (JCS_Glob.ti == null)
                 return;
 
             bool enableSlidePanel = true;
 
-            if (mInteractableSwipe && ti.touched)
+            if (mInteractableSwipe && JCS_Glob.ti.touched)
             {
-                Vector3 deltaPos = ti.deltaPos;
+                Vector3 deltaPos = JCS_Glob.ti.deltaPos;
 
                 bool cancelX = false;
                 bool cancelY = false;
@@ -400,19 +399,19 @@ namespace JCSUnity
 
             if (mInteractableSwipe && JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
             {
-                Vector3 posDiff = ti.dragDistance;
-                JCS_ScreenSizef vs = JCS_ScreenSettings.FirstInstance().VisibleScreenSize();
+                Vector3 posDiff = JCS_Glob.ti.dragDistance;
+                JCS_ScreenSizef vs = JCS_Glob.screens.VisibleScreenSize();
                 var target_vs = new JCS_ScreenSizef(vs.width * mSwipeArea.x, vs.height * mSwipeArea.y);
 
-                var speedX = ti.dragDistance.x / ti.touchTime;
-                var speedY = ti.dragDistance.y / ti.touchTime;
+                var speedX = JCS_Glob.ti.dragDistance.x / JCS_Glob.ti.touchTime;
+                var speedY = JCS_Glob.ti.dragDistance.y / JCS_Glob.ti.touchTime;
 
                 bool reachedX = posDiff.x > target_vs.width;  // distance
                 bool speedExceedX = speedX > mSwipeSpeedX;    // speed
 
                 if (!mFreezeX && (reachedX || speedExceedX))
                 {
-                    if (JCS_Mathf.IsPositive(ti.dragDisplacement.x))
+                    if (JCS_Mathf.IsPositive(JCS_Glob.ti.dragDisplacement.x))
                         SwitchScene(JCS_2D4Direction.LEFT);
                     else
                         SwitchScene(JCS_2D4Direction.RIGHT);
@@ -426,7 +425,7 @@ namespace JCSUnity
 
                 if (!mFreezeY && (reachedY || speedExceedY))
                 {
-                    if (JCS_Mathf.IsPositive(ti.dragDisplacement.y))
+                    if (JCS_Mathf.IsPositive(JCS_Glob.ti.dragDisplacement.y))
                         SwitchScene(JCS_2D4Direction.BOTTOM);
                     else
                         SwitchScene(JCS_2D4Direction.TOP);
@@ -442,7 +441,7 @@ namespace JCSUnity
         /// </summary>
         private void PlaySwitchSceneSound()
         {
-            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_Glob.soundPlayer;
             sp.PlayOneShot(mSwitchSceneSound);
         }
 
@@ -457,7 +456,6 @@ namespace JCSUnity
             float screenWidth = 0.0f;
             float screenHeight = 0.0f;
 
-            var screenS = JCS_ScreenSettings.FirstInstance();
             var cam = JCS_Camera.main;
 
             RectTransform slidePanel = mPanelHolder.slidePanels[0];
@@ -472,15 +470,15 @@ namespace JCSUnity
                     {
                         if (panelRoot != null)
                         {
-                            JCS_ScreenSizef size = screenS.StartingSize();
+                            JCS_ScreenSizef size = JCS_Glob.screens.StartingSize();
 
                             screenWidth = size.width;
                             screenHeight = size.height;
                         }
                         else
                         {
-                            screenWidth = screenS.standardSize.width;
-                            screenHeight = screenS.standardSize.height;
+                            screenWidth = JCS_Glob.screens.standardSize.width;
+                            screenHeight = JCS_Glob.screens.standardSize.height;
                         }
                     }
                     break;

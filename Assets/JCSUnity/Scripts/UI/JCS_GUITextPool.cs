@@ -83,7 +83,7 @@ namespace JCSUnity
             if (secondSearch)
             {
 #if UNITY_EDITOR
-                if (JCS_GameSettings.FirstInstance().debugMode)
+                if (JCS_Glob.games.debugMode)
                 {
                     Debug.LogWarning("Prevent stack overflow function call");
                 }

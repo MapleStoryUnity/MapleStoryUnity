@@ -92,7 +92,7 @@ we calculate the real time.")]
         {
             // Run immediately on the first frame.
             if (mInvokeOnStart)
-                Invoke(nameof(ExecuteAction), JCS_Constants.FIRST_FRAME_INVOKE_TIME);
+                Invoke(nameof(ExecuteAction), JCS_Consts.FIRST_FRAME_INVOKE_TIME);
         }
 
         private void Update()

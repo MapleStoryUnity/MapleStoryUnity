@@ -57,7 +57,7 @@ namespace JCSUnity
                 Debug.LogError("Play sound with null references is not allowed");
                 return;
             }
-            var ss = JCS_SoundSettings.FirstInstance();
+
             mSoundPlayer.PlayOneShot(mJumpSound[0]);
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace JCSUnity
                 Debug.LogError("Play sound with null references is not allowed");
                 return;
             }
-            var ss = JCS_SoundSettings.FirstInstance();
+
             mSoundPlayer.PlayOneShot(mJumpSound[1]);
         }
         /// <summary>
@@ -89,7 +89,7 @@ namespace JCSUnity
                 Debug.LogError("Play sound with null references");
                 return;
             }
-            var ss = JCS_SoundSettings.FirstInstance();
+
             mSoundPlayer.PlayOneShot(mJumpSound[2]);
         }
         /// <summary>
@@ -111,7 +111,7 @@ namespace JCSUnity
                 Debug.LogError("Play sound with null references");
                 return;
             }
-            var ss = JCS_SoundSettings.FirstInstance();
+
             mSoundPlayer.PlayOneShot(mAttackSounds[rand]);
         }
         /// <summary>
@@ -124,7 +124,7 @@ namespace JCSUnity
                 Debug.LogError("Play sound with null references");
                 return;
             }
-            var ss = JCS_SoundSettings.FirstInstance();
+            
             mSoundPlayer.PlayOneShot(mWalkSound);
         }
         /// <summary>

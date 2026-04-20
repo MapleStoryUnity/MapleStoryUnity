@@ -84,20 +84,18 @@ namespace JCSUnity
 
         private void Start()
         {
-            var ss = JCS_ScreenSettings.FirstInstance();
-
             if (resizeScreen)
             {
                 // Apply new screen aspect ratio.
-                ss.aspectRatioSize.width = aspectRatioWidth;
-                ss.aspectRatioSize.height = aspectRatioHeight;
+                JCS_Glob.screens.aspectRatioSize.width = aspectRatioWidth;
+                JCS_Glob.screens.aspectRatioSize.height = aspectRatioHeight;
 
                 // Resize the screen base on the new screen aspect ratio.
-                ss.ForceAspectScreenOnce();
+                JCS_Glob.screens.ForceAspectScreenOnce();
             }
 
             // Set the panels' color
-            SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
+            SetResizablePanelsColor(JCS_Glob.screens.RESIZABLE_PANELS_COLOR);
         }
 
 #if UNITY_EDITOR
@@ -108,17 +106,15 @@ namespace JCSUnity
 
         private void ControlResizablePanels()
         {
-            var ss = JCS_ScreenSettings.FirstInstance();
-
             /* Handle color. */
             {
                 // Make color editable in runtime.
-                SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
+                SetResizablePanelsColor(JCS_Glob.screens.RESIZABLE_PANELS_COLOR);
             }
 
             /* Show hide the panels. */
             {
-                if (ss.showResizablePanels)
+                if (JCS_Glob.screens.showResizablePanels)
                     ShowResizablePanels();
                 else
                     HideResizablePanels();
@@ -174,8 +170,7 @@ namespace JCSUnity
         /// </summary>
         private bool ShouldSpawnResizablePanels()
         {
-            var screenS = JCS_ScreenSettings.FirstInstance();
-            return screenS.ShouldSpawnResizablePanels();
+            return JCS_Glob.screens.ShouldSpawnResizablePanels();
         }
     }
 }

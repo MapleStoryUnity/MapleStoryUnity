@@ -426,9 +426,6 @@ namespace JCSUnity
                 return null;
             }
 
-            // get the game setting first
-            var gm = JCS_GameSettings.FirstInstance();
-
             int[] damages = new int[hit];
 
             for (int index = 0; index < hit; ++index)
@@ -441,12 +438,12 @@ namespace JCSUnity
                 // Check min max
                 {
                     // 如果小於最下限得值, 就設定為最下限的值
-                    if (damages[index] < gm.minDamage)
-                        damages[index] = gm.minDamage;
+                    if (damages[index] < JCS_Glob.games.minDamage)
+                        damages[index] = JCS_Glob.games.minDamage;
 
                     // 如果大於最上限得值, 就設定為最上限的值
-                    if (damages[index] > gm.maxDamage)
-                        damages[index] = gm.maxDamage;
+                    if (damages[index] > JCS_Glob.games.maxDamage)
+                        damages[index] = JCS_Glob.games.maxDamage;
                 }
             }
 

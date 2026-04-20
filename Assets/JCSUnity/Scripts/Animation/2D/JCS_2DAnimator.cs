@@ -183,7 +183,7 @@ namespace JCSUnity
             if (mCurrentAnimation == null)
             {
 #if UNITY_EDITOR
-                if (JCS_GameSettings.FirstInstance().debugMode)
+                if (JCS_Glob.games.debugMode)
                     Debug.LogError("Swtich animation failed cuz of null reference animation assigned...");
 #endif
                 return;

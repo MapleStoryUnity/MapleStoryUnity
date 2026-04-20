@@ -52,11 +52,10 @@ namespace JCSUnity
         /// </summary>
         public void ItPointerDown()
         {
-            var uim = JCS_UIManager.FirstInstance();
-
             mDialogueObject.MoveToTheLastChild();
+
             if (mDialogueObject.dialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
-                uim.SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, mDialogueObject);
+                JCS_Glob.uim.SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, mDialogueObject);
         }
 
         /// <summary>

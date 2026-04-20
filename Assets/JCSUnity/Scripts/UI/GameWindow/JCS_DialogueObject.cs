@@ -94,11 +94,9 @@ namespace JCSUnity
             // function call after version 5.4
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
             {
-                var uim = JCS_UIManager.FirstInstance();
-
                 // Once we load the scene we need to let new object 
                 // in the scene know about us!
-                uim.SetDialogue(mDialogueType, this);
+                JCS_Glob.uim.SetDialogue(mDialogueType, this);
 
                 // add to open window list if the window is open!
                 AddToOpenWindowList();
@@ -112,23 +110,19 @@ namespace JCSUnity
 
             base.Awake();
 
-            var ss = JCS_SoundSettings.FirstInstance();
-
             // Assign Default Audio
             {
                 if (mOpenWindowClip == null)
-                    mOpenWindowClip = ss.clipWindowOpen;
+                    mOpenWindowClip = JCS_Glob.sounds.clipWindowOpen;
 
                 if (mCloseWindowClip == null)
-                    mCloseWindowClip = ss.clipWindowClose;
+                    mCloseWindowClip = JCS_Glob.sounds.clipWindowClose;
             }
         }
 
         protected override void Start()
         {
-            var uim = JCS_UIManager.FirstInstance();
-
-            uim.SetDialogue(mDialogueType, this);
+            JCS_Glob.uim.SetDialogue(mDialogueType, this);
 
             base.Start();
 
@@ -179,7 +173,7 @@ namespace JCSUnity
 
             // set focus dialogue
             if (dialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
-                JCS_UIManager.FirstInstance().SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
+                JCS_Glob.uim.SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
 
             // let UIManager know the window is opened
             SwapToTheLastOpenWindowList();
@@ -244,7 +238,7 @@ namespace JCSUnity
                 return;
 
             // add to the list so the manager know what window is opened
-            JCS_UIManager.FirstInstance().GetOpenWindow().AddLast(this);
+            JCS_Glob.uim.GetOpenWindow().AddLast(this);
         }
 
         /// <summary>
@@ -253,7 +247,7 @@ namespace JCSUnity
         /// </summary>
         private void RemoveFromOpenWindowList()
         {
-            JCS_UIManager.FirstInstance().GetOpenWindow().Remove(this);
+            JCS_Glob.uim.GetOpenWindow().Remove(this);
         }
 
         /// <summary>

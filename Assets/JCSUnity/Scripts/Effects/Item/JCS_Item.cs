@@ -178,7 +178,7 @@ object that we target.")]
             if (mMustBeActivePlayer)
             {
                 // Check the colliding object are is active player.
-                if (JCS_PlayerManager.FirstInstance().IsActivePlayerTransform(other.transform))
+                if (JCS_Glob.playerm.IsActivePlayerTransform(other.transform))
                 {
                     DoPick(other);
                 }
@@ -197,7 +197,7 @@ object that we target.")]
         {
             DropEffect(other);
 
-            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_Glob.soundPlayer;
 
             /* Play Pick Sound */
             if (mPlayOneShotWhileNotPlayingForPickSound)

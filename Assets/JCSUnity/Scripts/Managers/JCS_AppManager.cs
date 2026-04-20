@@ -122,12 +122,10 @@ namespace JCSUnity
         {
             APP_QUITTING = true;
 
-            var apps = JCS_AppSettings.FirstInstance();
-
-            if (apps.saveOnExitApp)
+            if (JCS_Glob.apps.saveOnExitApp)
             {
                 // save when exit app
-                apps.onSaveAppData?.Invoke();
+                JCS_Glob.apps.onSaveAppData?.Invoke();
             }
         }
 
@@ -157,7 +155,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_GameManager.FirstInstance().RegisterOnSystemAfterInit(RefreshSimulateLanguage);
+            JCS_Glob.gamem.RegisterOnSystemAfterInit(RefreshSimulateLanguage);
         }
 
 #if UNITY_EDITOR
@@ -178,8 +176,7 @@ namespace JCSUnity
             if (fade)
             {
                 // load the quit scene.
-                var scenem = JCS_SceneManager.FirstInstance();
-                scenem.LoadScene("JCS_AppCloseSimulate");
+                JCS_Glob.scenem.LoadScene("JCS_AppCloseSimulate");
             }
             else
             {

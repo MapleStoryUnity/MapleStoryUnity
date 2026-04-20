@@ -134,12 +134,10 @@ namespace JCSUnity
         /// <param name="loop"> loop music? </param>
         public void SwitchBGM(AudioClip clip, bool loop = true)
         {
-            var ss = JCS_SoundSettings.FirstInstance();
-
             SwitchBGM(
                 clip,
-                ss.TimeOut(),
-                ss.TimeIn());
+                JCS_Glob.sounds.TimeOut(),
+                JCS_Glob.sounds.TimeIn());
         }
 
         /// /// <summary>
@@ -208,13 +206,11 @@ namespace JCSUnity
             AudioClip oneShotClip,
             AudioClip onStackClip)
         {
-            var ss = JCS_SoundSettings.FirstInstance();
-
             return PlayOneShotBGM(
                 oneShotClip,
                 onStackClip,
-                ss.TimeOut(),
-                ss.TimeIn());
+                JCS_Glob.sounds.TimeOut(),
+                JCS_Glob.sounds.TimeIn());
         }
 
         /// <summary>

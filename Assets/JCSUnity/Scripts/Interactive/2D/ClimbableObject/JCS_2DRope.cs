@@ -49,11 +49,10 @@ namespace JCSUnity
         protected virtual void OnTriggerEnter(Collider other)
         {
             var player = other.GetComponent<JCS_2DSideScrollerPlayer>();
+
             if (player == null)
                 return;
-
-            var cm = JCS_ClimbableManager.FirstInstance();
-
+                
             AddSafe(player);
 
             bool isTopOfBox = JCS_Physics.TopOfBox(
@@ -63,13 +62,13 @@ namespace JCSUnity
             if (isTopOfBox)
             {
                 // show character behind the ladder
-                int backOrderLayer = orderLayerObject.sortingOrder - cm.SORTING_ORDER_BEHIND_OFFSET;
+                int backOrderLayer = orderLayerObject.sortingOrder - JCS_Glob.climbm.SORTING_ORDER_BEHIND_OFFSET;
                 SetPlayerSortingOrder(player, backOrderLayer);
             }
             else
             {
                 // show character infront
-                int frontOrderLayer = orderLayerObject.sortingOrder + cm.SORTING_ORDER_INFRONT_OFFSET;
+                int frontOrderLayer = orderLayerObject.sortingOrder + JCS_Glob.climbm.SORTING_ORDER_INFRONT_OFFSET;
                 SetPlayerSortingOrder(player, frontOrderLayer);
             }
 
@@ -97,8 +96,6 @@ namespace JCSUnity
         /// </summary>
         public override void ClimbableUpdate()
         {
-            var cm = JCS_ClimbableManager.FirstInstance();
-
             foreach (JCS_2DSideScrollerPlayer player in mSSPlayers)
             {
                 if (player.isGrounded())
@@ -114,7 +111,7 @@ namespace JCSUnity
                     player.climbMoveType == JCS_ClimbMoveType.MOVE_UP)
                 {
                     // show character infront
-                    int frontOrderLayer = orderLayerObject.sortingOrder + cm.SORTING_ORDER_INFRONT_OFFSET;
+                    int frontOrderLayer = orderLayerObject.sortingOrder + JCS_Glob.climbm.SORTING_ORDER_INFRONT_OFFSET;
                     SetPlayerSortingOrder(player, frontOrderLayer);
 
 
@@ -132,7 +129,7 @@ namespace JCSUnity
                         player.justClimbOnTopOfBox = true;
 
                         // show character behind the ladder
-                        int backOrderLayer = orderLayerObject.sortingOrder - cm.SORTING_ORDER_BEHIND_OFFSET;
+                        int backOrderLayer = orderLayerObject.sortingOrder - JCS_Glob.climbm.SORTING_ORDER_BEHIND_OFFSET;
                         SetPlayerSortingOrder(player, backOrderLayer);
                     }
                 }

@@ -23,7 +23,7 @@ namespace JCSUnity
         public override void OnClick()
         {
             // load exit button scene.
-            JCS_SceneManager.FirstInstance().LoadScene("JCS_AppCloseSimulateOnline");
+            JCS_Glob.scenem.LoadScene("JCS_AppCloseSimulateOnline");
         }
     }
 }

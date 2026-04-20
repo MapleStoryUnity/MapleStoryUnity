@@ -52,7 +52,7 @@ namespace JCSUnity
         {
             JCS_SoundPlayer useSp = player;
             if (useSp == null)
-                useSp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
+                useSp = JCS_Glob.soundPlayer;
             useSp.PlayOneShotByMethod(clip, method, volume);
         }
 

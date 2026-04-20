@@ -68,12 +68,10 @@ namespace JCSUnity
             // Let's force BGM to run loop!
             mAudioSource.loop = true;
 
-            var ss = JCS_SoundSettings.FirstInstance();
-
-            if (!ss.keepBGMSwitchScene)
+            if (!JCS_Glob.sounds.keepBGMSwitchScene)
             {
                 // Assign BGM from Sound Manager!
-                mAudioSource.clip = ss.clipBGM;
+                mAudioSource.clip = JCS_Glob.sounds.clipBGM;
 
                 mAudioSource.Play();
             }

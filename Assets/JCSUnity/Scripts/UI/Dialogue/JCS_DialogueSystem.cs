@@ -415,7 +415,7 @@ namespace JCSUnity
             RunAction();
 
             // Play the active dialogue sound.
-            JCS_SoundManager.FirstInstance().GlobalSoundPlayer().PlayOneShot(mActiveSound);
+            JCS_Glob.soundPlayer.PlayOneShot(mActiveSound);
 
             return true;
         }
@@ -642,15 +642,12 @@ namespace JCSUnity
             mActive = false;
             mActiveThisFrame = false;
 
-            var gs = JCS_GameManager.FirstInstance();
-            var sm = JCS_SoundManager.FirstInstance();
-
             // Check initialize to ignore dispose called at the very beginning!
-            if (gs.doneInitialized && onDispose != null)
+            if (JCS_Glob.gamem.doneInitialized && onDispose != null)
                 onDispose.Invoke();
 
             // Play the dispose dialogue sound.
-            sm.GlobalSoundPlayer().PlayOneShot(mDisposeSound);
+            JCS_Glob.soundPlayer.PlayOneShot(mDisposeSound);
         }
 
         /// <summary>

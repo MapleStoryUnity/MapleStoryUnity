@@ -52,9 +52,9 @@ namespace JCSUnity
         {
             // Assign default mixer.
             if (mMixer == null)
-                mMixer = JCS_SoundSettings.FirstInstance().mixer;
+                mMixer = JCS_Glob.sounds.mixer;
 
-            JCS_GameManager.FirstInstance().RegisterOnAfterInit(AddListener);
+            JCS_Glob.gamem.RegisterOnAfterInit(AddListener);
         }
 
         private void OnValidate()
@@ -78,9 +78,7 @@ namespace JCSUnity
 
         private void OnValueChanged()
         {
-            var sm = JCS_SceneManager.FirstInstance();
-
-            if (sm.IsSwitchingScene())
+            if (JCS_Glob.scenem.IsSwitchingScene())
                 return;
 
             float total = mSlider.maxValue - mSlider.minValue;  // Find total.

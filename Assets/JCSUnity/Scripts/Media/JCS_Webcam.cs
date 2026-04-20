@@ -169,9 +169,8 @@ namespace JCSUnity
                 return;
             }
 
-            var scs = JCS_ScreenSettings.FirstInstance();
-            int screenWidth = scs.standardSize.width;
-            int screenHeight = scs.standardSize.height;
+            int screenWidth = JCS_Glob.screens.standardSize.width;
+            int screenHeight = JCS_Glob.screens.standardSize.height;
 
             mDeviceName = devices[0].name;
             mWebCamTexture = new WebCamTexture(mDeviceName, screenWidth, screenHeight, mFPS);
@@ -193,9 +192,8 @@ namespace JCSUnity
                 return null;
             }
 
-            var gs = JCS_GameSettings.FirstInstance();
-            var prefix = gs.webcamFilename;
-            var ext = gs.webcamExt;
+            var prefix = JCS_Glob.games.webcamFilename;
+            var ext = JCS_Glob.games.webcamExt;
 
             string savePath = SavePath();
 
@@ -212,15 +210,12 @@ namespace JCSUnity
 
             File.WriteAllBytes(fullPath, snap.EncodeToPNG());
 
-
             if (mSplash)
             {
-                var sm = JCS_SceneManager.FirstInstance();
-
-                if (sm.GetWhiteScreen() == null)
+                if (JCS_Glob.scenem.GetWhiteScreen() == null)
                     JCS_UISettings.PopWhiteScreen();
 
-                sm.GetWhiteScreen().FadeIn();
+                JCS_Glob.scenem.GetWhiteScreen().FadeIn();
 
                 // do the snap shot effect
                 mSplashEffectTrigger = true;
@@ -234,8 +229,7 @@ namespace JCSUnity
 
             // play sound.
             {
-                var soundm = JCS_SoundManager.FirstInstance();
-                JCS_SoundPlayer sp = (mSoundPlayer) ? mSoundPlayer : soundm.GlobalSoundPlayer();
+                JCS_SoundPlayer sp = (mSoundPlayer) ? mSoundPlayer : JCS_Glob.soundPlayer;
                 sp.PlayOneShot(mTakePhotoSound);
             }
 
@@ -247,8 +241,7 @@ namespace JCSUnity
         /// </summary>
         public static string SavePath()
         {
-            var gs = JCS_GameSettings.FirstInstance();
-            string path = JCS_Path.Combine(Application.persistentDataPath, gs.webcamPath);
+            string path = JCS_Path.Combine(Application.persistentDataPath, JCS_Glob.games.webcamPath);
             return path;
         }
 
@@ -257,9 +250,8 @@ namespace JCSUnity
         /// </summary>
         public static int LastImageFileIndex()
         {
-            var gs = JCS_GameSettings.FirstInstance();
-            var prefix = gs.webcamFilename;
-            var ext = gs.webcamExt;
+            var prefix = JCS_Glob.games.webcamFilename;
+            var ext = JCS_Glob.games.webcamExt;
             return JCS_IO.LastFileIndex(SavePath(), prefix, ext);
         }
 
@@ -270,8 +262,7 @@ namespace JCSUnity
         /// <returns> Image path form by index. </returns>
         public static string ImagePathByIndex(int index)
         {
-            var gs = JCS_GameSettings.FirstInstance();
-            string path = SavePath() + gs.webcamFilename + index + gs.webcamExt;
+            string path = SavePath() + JCS_Glob.games.webcamFilename + index + JCS_Glob.games.webcamExt;
             return path;
         }
 
@@ -400,7 +391,7 @@ namespace JCSUnity
                 if (mDelayTimer > mDelayTime)
                 {
                     mDelayTimer = 0.0f;
-                    JCS_SceneManager.FirstInstance().GetWhiteScreen().FadeOut();
+                    JCS_Glob.scenem.GetWhiteScreen().FadeOut();
                     mSplashEffectTrigger = false;
                 }
             }
@@ -425,10 +416,8 @@ namespace JCSUnity
 
             if (GetRectTransform() != null)
             {
-                var scs = JCS_ScreenSettings.FirstInstance();
-
-                float screenWidth = scs.standardSize.width;
-                float screenHeight = scs.standardSize.height;
+                float screenWidth = JCS_Glob.screens.standardSize.width;
+                float screenHeight = JCS_Glob.screens.standardSize.height;
 
                 float xRatio = screenWidth / (float)mWebCamTexture.width;
                 float yRatio = screenHeight / (float)mWebCamTexture.height;

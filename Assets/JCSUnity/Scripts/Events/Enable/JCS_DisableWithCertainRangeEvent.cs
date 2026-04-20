@@ -127,7 +127,7 @@ namespace JCSUnity
         {
             if (mTarget == null)
             {
-                if (JCS_GameSettings.FirstInstance().debugMode)
+                if (JCS_Glob.games.debugMode)
                     Debug.LogError("Can't set the position without target transform.");
 
                 return;

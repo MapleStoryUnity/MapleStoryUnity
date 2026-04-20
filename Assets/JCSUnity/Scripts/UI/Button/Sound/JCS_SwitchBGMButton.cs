@@ -49,7 +49,7 @@ namespace JCSUnity
 
         public override void OnClick()
         {
-            JCS_SoundManager.FirstInstance().SwitchBGM(
+            JCS_Glob.soundm.SwitchBGM(
                 mSoundClip,
                 mSoundFadeInTime,
                 mSoundFadeOutTime);

@@ -74,13 +74,11 @@ namespace JCSUnity
         /// <returns> timeto fade out the music. </returns>
         public float TimeOut()
         {
-            var sm = JCS_SoundManager.FirstInstance();
-
             // check if override the setting.
-            if (sm.overrideSetting)
+            if (JCS_Glob.soundm.overrideSetting)
             {
                 // return the override value.
-                return sm.timeOut;
+                return JCS_Glob.soundm.timeOut;
             }
 
             // if not override, 
@@ -95,13 +93,11 @@ namespace JCSUnity
         /// <returns> time to fade in the sound </returns>
         public float TimeIn()
         {
-            var sm = JCS_SoundManager.FirstInstance();
-
             // check if override the setting.
-            if (sm.overrideSetting)
+            if (JCS_Glob.soundm.overrideSetting)
             {
                 // return the override value.
-                return sm.timeIn;
+                return JCS_Glob.soundm.timeIn;
             }
 
             // if not override, 

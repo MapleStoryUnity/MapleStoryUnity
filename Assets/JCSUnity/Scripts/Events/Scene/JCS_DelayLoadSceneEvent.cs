@@ -51,10 +51,10 @@ namespace JCSUnity
         private void Start()
         {
             // Hide all the open dialogue
-            JCS_UIManager.FirstInstance().HideAllOpenDialogue();
+            JCS_Glob.uim.HideAllOpenDialogue();
 
             // Plus the fade out time
-            mDelayTime += JCS_SceneManager.FirstInstance().timeOut;
+            mDelayTime += JCS_Glob.scenem.timeOut;
         }
 
         private void Update()
@@ -65,7 +65,7 @@ namespace JCSUnity
             {
                 string sceneName = JCS_SceneManager.GetSceneNameByOption(mSceneName, mReloadScene);
 
-                JCS_SceneManager.FirstInstance().LoadScene(sceneName);
+                JCS_Glob.scenem.LoadScene(sceneName);
             }
         }
     }

@@ -272,15 +272,13 @@ namespace JCSUnity
             if (!switchingServer)
                 return;
 
-            var plp = JCS_PacketLostPreventer.FirstInstance();
-
             // If not force, then we do need to check if we meet the 
             // requirement to swtich server.
             if (!forceSwitchServer)
             {
                 // Cannot switch server if we are still waiting for packet 
                 // to process.
-                if (plp.IsPreventing())
+                if (JCS_Glob.plp.IsPreventing())
                     return;
             }
             else
@@ -289,7 +287,7 @@ namespace JCSUnity
                 // will like to terminate the server request!
                 // 
                 // ATTENTION(jenchieh): Use this carefully.
-                plp.ClearTracking();
+                JCS_Glob.plp.ClearTracking();
             }
 
             // close the previous one.

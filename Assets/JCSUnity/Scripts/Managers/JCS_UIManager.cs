@@ -316,7 +316,7 @@ namespace JCSUnity
 
             mCanvasesPause.Add(canvas);
 
-            JCS_PauseManager.FirstInstance().Pause();
+            JCS_Glob.pausem.Pause();
         }
 
         /// <summary>
@@ -329,8 +329,26 @@ namespace JCSUnity
             mCanvasesPause = JCS_Array.RemoveEmptyMissing(mCanvasesPause);
 
             // Unpause it when no more blocking UI.
-            if (mCanvasesPause.Count <= 0)
-                JCS_PauseManager.FirstInstance().Unpause();
+            if (!ShouldPause())
+                JCS_Glob.pausem.Unpause();
+        }
+
+        /// <summary>
+        /// Deregister all the canvas from the pause list.
+        /// </summary>
+        public void DeregisterPauseAll()
+        {
+            mCanvasesPause.Clear();
+
+            JCS_Glob.pausem.Unpause();
+        }
+
+        /// <summary>
+        /// Return true if the game is currently paused by the UI.
+        /// </summary>
+        public bool ShouldPause()
+        {
+            return mCanvasesPause.Count > 0;
         }
     }
 }

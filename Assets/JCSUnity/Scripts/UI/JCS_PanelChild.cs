@@ -166,8 +166,7 @@ namespace JCSUnity
         /// </summary>
         private bool IsResponsive()
         {
-            var screenS = JCS_ScreenSettings.FirstInstance();
-            return screenS.IsResponsive();
+            return JCS_Glob.screens.IsResponsive();
         }
 
         /// <summary>

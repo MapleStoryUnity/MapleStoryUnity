@@ -22,7 +22,7 @@ namespace JCSUnity
         public override void OnClick()
         {
             // load exit button scene.
-            JCS_SceneManager.FirstInstance().LoadScene("JCS_AppCloseSimulate");
+            JCS_Glob.scenem.LoadScene("JCS_AppCloseSimulate");
         }
     }
 }

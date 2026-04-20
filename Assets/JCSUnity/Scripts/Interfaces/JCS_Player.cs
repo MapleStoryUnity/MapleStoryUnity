@@ -65,10 +65,10 @@ namespace JCSUnity
         protected virtual void Start()
         {
             // set Execute order lower than "JCS_GameManager"
-            JCS_GameManager.FirstInstance().player = this;
+            JCS_Glob.gamem.player = this;
 
             // Player Manager will take care of all the player
-            JCS_PlayerManager.FirstInstance().AddPlayerToManage(this);
+            JCS_Glob.playerm.AddPlayerToManage(this);
         }
 
         protected virtual void Update()

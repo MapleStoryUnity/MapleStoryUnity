@@ -44,13 +44,11 @@ namespace JCSUnity
 
         protected void InitFile()
         {
-            var pds = JCS_PackageDataSettings.FirstInstance();
-
-            if (pds == null)
+            if (JCS_Glob.pds == null)
                 return;
 
-            copyright = pds.copyright;
-            version = pds.version;
+            copyright = JCS_Glob.pds.copyright;
+            version = JCS_Glob.pds.version;
 
             // Set init flag.
             mInitialized = true;
@@ -75,8 +73,7 @@ namespace JCSUnity
         /// </summary>
         public static string SavePath()
         {
-            var apps = JCS_AppSettings.FirstInstance();
-            string path = JCS_Path.Combine(Application.persistentDataPath, apps.dataPath);
+            string path = JCS_Path.Combine(Application.persistentDataPath, JCS_Glob.apps.dataPath);
             return path;
         }
     }

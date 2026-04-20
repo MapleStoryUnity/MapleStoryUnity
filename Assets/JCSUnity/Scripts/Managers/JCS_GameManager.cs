@@ -13,7 +13,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Make sure u have this execute first!!!
+    /// The overall game manager.
     /// </summary>
     public class JCS_GameManager : JCS_Manager<JCS_GameManager>
     {
@@ -39,20 +39,18 @@ namespace JCSUnity
         public bool doneInitialized { get { return mDoneInitialize; } }
         public bool gamePaused
         {
-            get { return JCS_PauseManager.FirstInstance().paused; }
+            get { return JCS_Glob.pausem.paused; }
             set
             {
-                var pm = JCS_PauseManager.FirstInstance();
-
                 // check if need the game pause the same as the value previously
                 // set. In order to save some perforce by enable/disable all the
                 // JCS_PauseAction in the game.
-                if (pm.paused != value)
+                if (JCS_Glob.pausem.paused != value)
                 {
                     if (value)
-                        pm.Pause();
+                        JCS_Glob.pausem.Pause();
                     else
-                        pm.Unpause();
+                        JCS_Glob.pausem.Unpause();
                 }
             }
         }
@@ -64,7 +62,7 @@ namespace JCSUnity
         {
             RegisterInstance(this);
 
-            Invoke(nameof(OnFirstFrame), JCS_Constants.FIRST_FRAME_INVOKE_TIME);
+            Invoke(nameof(OnFirstFrame), JCS_Consts.FIRST_FRAME_INVOKE_TIME);
         }
 
         /// <summary>
@@ -102,13 +100,13 @@ namespace JCSUnity
         /// </summary>
         private void OnFirstFrame()
         {
-            SetDoneInitializeFlag();
+            ExecDoneInitialize();
         }
 
         /// <summary>
         /// Set the game done initialize flag.
         /// </summary>
-        private void SetDoneInitializeFlag()
+        private void ExecDoneInitialize()
         {
             if (mDoneInitialize)
                 return;

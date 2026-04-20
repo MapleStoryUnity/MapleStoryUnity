@@ -56,7 +56,7 @@ namespace JCSUnity
 
         [Tooltip("How fast this camera rotates.")]
         [SerializeField]
-        [Range(JCS_Constants.FRICTION_MIN, 30.0f)]
+        [Range(JCS_Consts.FRICTION_MIN, 30.0f)]
         private float mRotateFriction = 0.2f;
 
         [Tooltip("Angle that rotate once.")]
@@ -226,8 +226,7 @@ namespace JCSUnity
                 // to here...
                 mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-                var input = JCS_TouchInput.FirstInstance();
-                mWheelDegree = input.touchDistanceDelta;
+                mWheelDegree = JCS_Glob.touch.touchDistanceDelta;
 #endif
                 ZoomCamera(mWheelDegree);
             }

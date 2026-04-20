@@ -37,7 +37,7 @@ namespace JCSUnity
             base.FixedUpdate();
 
             if (JCS_Input.GetKeyDown(KeyCode.H))
-                JCS_SceneManager.FirstInstance().LoadScene("JCS_SideScrollerDemo");
+                JCS_Glob.scenem.LoadScene("JCS_SideScrollerDemo");
 
 
             if (mIndex == 0)
@@ -86,7 +86,7 @@ namespace JCSUnity
             // enable all the component here
             if (act)
             {
-                if (JCS_GameSettings.FirstInstance().cameraType != JCS_CameraType.MULTI_TARGET)
+                if (JCS_Glob.games.cameraType != JCS_CameraType.MULTI_TARGET)
                     mTopDownAudioController.GetAudioListener().enabled = true;
                 mIsControllable = true;
             }

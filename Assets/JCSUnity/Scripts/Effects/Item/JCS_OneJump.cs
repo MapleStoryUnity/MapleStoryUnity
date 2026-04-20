@@ -62,7 +62,7 @@ just stop there.")]
 
         [Tooltip("Deacceleration after bouncing from the wall.")]
         [SerializeField]
-        [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
+        [Range(JCS_Consts.FRICTION_MIN, 5.0f)]
         private float mBounceFriction = 0.2f;
 
         /* Setter & Getter */
@@ -85,16 +85,12 @@ just stop there.")]
             mBoxCollider = GetComponent<BoxCollider>();
             mRigidbody = GetComponent<Rigidbody>();
         }
+
         private void Start()
         {
-            var pm = JCS_PlayerManager.FirstInstance();
-            var gm2d = JCS_2DGameManager.FirstInstance();
+            JCS_Glob.playerm?.IgnorePhysicsToAllPlayer(mBoxCollider);
 
-            if (pm != null)
-                pm.IgnorePhysicsToAllPlayer(mBoxCollider);
-
-            if (gm2d != null)
-                gm2d.IgnoreAllPlatformTrigger(mBoxCollider);
+            JCS_Glob.gm2d?.IgnoreAllPlatformTrigger(mBoxCollider);
         }
 
         private void FixedUpdate()
@@ -111,6 +107,7 @@ just stop there.")]
         private void OnTriggerEnter(Collider other)
         {
             var iw = other.GetComponent<JCS_ItemWall>();
+            
             if (iw != null)
             {
                 // no longer moving along x-axis or z-axis.
@@ -198,7 +195,7 @@ just stop there.")]
             // if is debug mode print this out.
             // in order to know what does item touched and 
             // stop this movement.
-            if (JCS_GameSettings.FirstInstance().debugMode)
+            if (JCS_Glob.games.debugMode)
                 Debug.Log(other.transform.name);
 
             mColliderName = other.name;
@@ -217,7 +214,7 @@ just stop there.")]
                 JCS_Physics.SetOnTopOfBoxWithSlope(mBoxCollider, beSetBox);
 
             // enable the physic once on the ground
-            JCS_PlayerManager.FirstInstance().IgnorePhysicsToAllPlayer(mBoxCollider, false);
+            JCS_Glob.playerm.IgnorePhysicsToAllPlayer(mBoxCollider, false);
         }
     }
 }
