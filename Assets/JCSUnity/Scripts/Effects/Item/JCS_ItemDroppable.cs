@@ -404,7 +404,7 @@ just stop there.")]
 
                 if (rotateDrop)
                 {
-                    var irx = newItem.gameObject.AddComponent<JCS_ItemRotation>();
+                    var irx = newItem.gameObject.AddComponent<JCS_ItemRotate>();
                     irx.rotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
                     irx.effect = true;
                     irx.rotateDirection = JCS_Vector3Direction.FORWARD;
@@ -413,13 +413,13 @@ just stop there.")]
                     if (mIncludeDepth)
                     {
                         // add rotation on y axis.
-                        var iry = newItem.gameObject.AddComponent<JCS_ItemRotation>();
+                        var iry = newItem.gameObject.AddComponent<JCS_ItemRotate>();
                         iry.rotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
                         iry.effect = true;
                         iry.rotateDirection = JCS_Vector3Direction.UP;
 
                         // add rotation on z axis.
-                        var irz = newItem.gameObject.AddComponent<JCS_ItemRotation>();
+                        var irz = newItem.gameObject.AddComponent<JCS_ItemRotate>();
                         irz.rotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
                         irz.effect = true;
                         irz.rotateDirection = JCS_Vector3Direction.RIGHT;

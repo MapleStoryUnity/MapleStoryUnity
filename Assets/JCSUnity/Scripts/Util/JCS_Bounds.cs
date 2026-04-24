@@ -42,5 +42,50 @@ namespace JCSUnity
                 center + new Vector3(extents.x, extents.y, extents.z)     // Top-front-right
             };
         }
+
+        /// <summary>
+        /// Return the bounds by renderer.
+        /// </summary>
+        public static Bounds ByRender(GameObject go)
+        {
+            Renderer[] renderers = go.GetComponentsInChildren<Renderer>();
+
+            if (renderers.Length == 0)
+                return new Bounds();
+
+            Bounds bounds = renderers[0].bounds;
+
+            for (int i = 1, ni = renderers.Length; i < ni; ++i)
+            {
+                // NOTE(jenchieh): Normally a particle system could
+                // mess up the bounds; simply ignore it here.
+                if (renderers[i] is ParticleSystemRenderer)
+                    continue;
+
+                bounds.Encapsulate(renderers[i].bounds);
+            }
+
+            return bounds;
+        }
+
+        /// <summary>
+        /// Return the bounds by mesh filter.
+        /// </summary>
+        public static Bounds ByMesh(GameObject go)
+        {
+            MeshFilter[] mfs = go.GetComponentsInChildren<MeshFilter>();
+
+            if (mfs.Length == 0)
+                return new Bounds();
+
+            Bounds bounds = mfs[0].mesh.bounds;
+
+            for (int i = 1, ni = mfs.Length; i < ni; ++i)
+            {
+                bounds.Encapsulate(mfs[i].mesh.bounds);
+            }
+
+            return bounds;
+        }
     }
 }

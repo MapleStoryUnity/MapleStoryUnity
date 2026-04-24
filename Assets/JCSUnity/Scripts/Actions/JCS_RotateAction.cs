@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_Rotation.cs $
+ * $File: JCS_RotateAction.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -14,11 +14,11 @@ namespace JCSUnity
     /// <summary>
     /// Do the rotate action depends on axis.
     /// </summary>
-    public class JCS_Rotation : MonoBehaviour
+    public class JCS_RotateAction : MonoBehaviour
     {
         /* Variables */
 
-        [Separator("⚡️ Runtime Variables (JCS_Rotation)")]
+        [Separator("⚡️ Runtime Variables (JCS_RotateAction)")]
 
         [Tooltip("Do the effect?")]
         [SerializeField]

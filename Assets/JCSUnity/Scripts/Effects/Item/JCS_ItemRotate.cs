@@ -14,7 +14,7 @@ namespace JCSUnity
     /// Item rotation effect.
     /// </summary>
     [RequireComponent(typeof(JCS_OneJump))]
-    public class JCS_ItemRotation : JCS_Rotation
+    public class JCS_ItemRotate : JCS_RotateAction
     {
         /* Variables */
 
