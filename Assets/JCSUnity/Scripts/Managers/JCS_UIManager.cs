@@ -338,9 +338,10 @@ namespace JCSUnity
         /// </summary>
         public void DeregisterPauseAll()
         {
-            mCanvasesPause.Clear();
-
-            JCS_Glob.pausem.Unpause();
+            foreach (JCS_Canvas canvas in mCanvasesPause.ToList())
+            {
+                canvas.Hide();
+            }
         }
 
         /// <summary>

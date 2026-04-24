@@ -69,5 +69,26 @@ namespace JCSUnity
 #endif
             }
         }
+
+        public Color color
+        {
+            get
+            {
+                if (mTextLegacy)
+                    return mTextLegacy.color;
+
+                return mTextTMP.color;
+            }
+
+            set
+            {
+                if (mTextLegacy)
+                    mTextLegacy.color = value;
+#if TMP_PRO
+                if (mTextTMP)
+                    mTextTMP.color = value;
+#endif
+            }
+        }
     }
 }

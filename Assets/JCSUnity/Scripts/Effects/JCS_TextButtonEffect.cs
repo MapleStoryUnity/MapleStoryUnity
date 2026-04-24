@@ -17,12 +17,13 @@ namespace JCSUnity
     /// Treat this button object just a text button.
     /// </summary>
     [RequireComponent(typeof(Button))]
-    [RequireComponent(typeof(EventTrigger))]
     public class JCS_TextButtonEffect : MonoBehaviour
+        , IPointerEnterHandler
+        , IPointerExitHandler
+        , IPointerDownHandler
+        , IPointerUpHandler
     {
         /* Variables */
-
-        private EventTrigger mEventTrigger = null;
 
         private Button mButton = null;
 
@@ -32,7 +33,7 @@ namespace JCSUnity
 
         [Tooltip("Text object to change color.")]
         [SerializeField]
-        private Text mText = null;
+        private JCS_TextObject mTextObject = null;
 
         [Tooltip("Color text when the button is normal.")]
         [SerializeField]
@@ -52,7 +53,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Text textComp { get { return mText; } }
+        public JCS_TextObject textObject { get { return mTextObject; } }
         public Color normalColor { get { return mNormalColor; } set { mNormalColor = value; } }
         public Color highlightedColor { get { return mHighlightedColor; } set { mHighlightedColor = value; } }
         public Color pressedColor { get { return mPressedColor; } set { mPressedColor = value; } }
@@ -62,32 +63,18 @@ namespace JCSUnity
 
         private void Awake()
         {
-            mEventTrigger = GetComponent<EventTrigger>();
             mButton = GetComponent<Button>();
             mBtn = GetComponent<JCS_Button>();
 
             // Try find it.
-            if (mText == null)
-                mText = GetComponentInChildren<Text>();
-
-            JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, 
-                EventTriggerType.PointerEnter, 
-                OnPointerEnter);
-            JCS_UIUtil.AddEventTriggerEvent(mEventTrigger,
-                EventTriggerType.PointerExit,
-                OnPointerExit);
-            JCS_UIUtil.AddEventTriggerEvent(mEventTrigger,
-                EventTriggerType.PointerDown,
-                OnPointerDown);
-            JCS_UIUtil.AddEventTriggerEvent(mEventTrigger,
-                EventTriggerType.PointerUp,
-                OnPointerUp);
+            if (mTextObject == null)
+                mTextObject = GetComponentInChildren<JCS_TextObject>();
 
             // Initialize the first color.
             if (IsButtonInteractable())
-                mText.color = mNormalColor;
+                mTextObject.color = mNormalColor;
             else
-                mText.color = mDisabledColor;
+                mTextObject.color = mDisabledColor;
         }
 
         /// <summary>
@@ -102,9 +89,9 @@ namespace JCSUnity
         public void OnPointerEnter()
         {
             if (IsButtonInteractable())
-                mText.color = mHighlightedColor;
+                mTextObject.color = mHighlightedColor;
             else
-                mText.color = mDisabledColor;
+                mTextObject.color = mDisabledColor;
         }
 
         /// <summary>
@@ -120,9 +107,9 @@ namespace JCSUnity
         public void OnPointerExit()
         {
             if (IsButtonInteractable())
-                mText.color = mNormalColor;
+                mTextObject.color = mNormalColor;
             else
-                mText.color = mDisabledColor;
+                mTextObject.color = mDisabledColor;
         }
 
         /// <summary>
@@ -136,9 +123,9 @@ namespace JCSUnity
         public void OnPointerDown()
         {
             if (IsButtonInteractable())
-                mText.color = mPressedColor;
+                mTextObject.color = mPressedColor;
             else
-                mText.color = mDisabledColor;
+                mTextObject.color = mDisabledColor;
         }
 
         /// <summary>
@@ -154,9 +141,9 @@ namespace JCSUnity
             // NOTE(jenchieh): this function is have the exactly 
             // the same code as OnPointerEnter. Consider remove this?
             if (IsButtonInteractable())
-                mText.color = mHighlightedColor;
+                mTextObject.color = mHighlightedColor;
             else
-                mText.color = mDisabledColor;
+                mTextObject.color = mDisabledColor;
         }
 
         /// <summary>

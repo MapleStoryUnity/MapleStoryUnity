@@ -1,4 +1,4 @@
-/**
+﻿/**
  * $File: JCS_Consts.cs $
  * $Date: $
  * $Revision: $

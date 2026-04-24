@@ -122,7 +122,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
-        private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
+        private JCS_TimeType mTimeType = JCS_TimeType.UNSCALED_DELTA_TIME;
 
         // timer to calculate the scroll time
         private float mScrollTimer = 0.0f;

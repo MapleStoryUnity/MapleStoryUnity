@@ -45,10 +45,11 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_BlackSlideScreen mBlackSlideScreen = null;
 
+        // We just need to hold it.
         [Tooltip("The raw image used to play video transition.")]
         [SerializeField]
         [ReadOnly]
-        private RawImage mRawImgVideoTransition = null;
+        private RawImage mImgVideoTransition = null;
 
         [Tooltip("Which direction to fade slide.")]
         [SerializeField]
@@ -165,7 +166,7 @@ namespace JCSUnity
 
                 case JCS_SwitchSceneType.VIDEO:
                     {
-                        mRawImgVideoTransition = JCS_UISettings.PopVideoTransition();
+                        mImgVideoTransition = JCS_UISettings.PopVideoTransition();
                     }
                     break;
             }

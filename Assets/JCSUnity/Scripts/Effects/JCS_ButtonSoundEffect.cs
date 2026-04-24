@@ -15,16 +15,17 @@ namespace JCSUnity
     /// <summary>
     /// Customize your own button sound base on different 
     /// circumstance.
-    /// 
-    /// Please use this class with Unity's "Event Trigger (Script)"!!!
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
-    [RequireComponent(typeof(EventTrigger))]
+    [DisallowMultipleComponent]
     public class JCS_ButtonSoundEffect : MonoBehaviour
+        , IPointerEnterHandler
+        , IPointerExitHandler
+        , IPointerDownHandler
+        , IPointerUpHandler
+        , IPointerClickHandler
     {
         /* Variables */
-
-        private EventTrigger mEventTrigger = null;
 
         [Separator("📋 Check Variables (JCS_ButtonSoundEffect)")]
 
@@ -39,12 +40,6 @@ namespace JCSUnity
 have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
-
-        [Header("🔍 Auto add to Unity's \"Event Trigger(Script)\" or not?")]
-
-        [Tooltip("is true u dont have to add manully!")]
-        [SerializeField]
-        private bool mAutoAddEvent = true;
 
         [Header("🔍 *USAGE: Please use this component with Unity's \"Event Trigger(Script)\"!!!")]
 
@@ -110,8 +105,6 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
 
         /* Setter & Getter */
 
-        public bool autoAddEvent { get { return mAutoAddEvent; } set { mAutoAddEvent = value; } }
-
         public AudioClip onMouseOverSound { get { return mOnMouseOverSound; } set { mOnMouseOverSound = value; } }
         public AudioClip onMouseExitSound { get { return mOnMouseExitSound; } set { mOnMouseExitSound = value; } }
         public AudioClip onMouseDownSound { get { return mOnMouseDownSound; } set { mOnMouseDownSound = value; } }
@@ -146,7 +139,6 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         {
             if (mSoundPlayer == null)
                 mSoundPlayer = GetComponent<JCS_SoundPlayer>();
-            mEventTrigger = GetComponent<EventTrigger>();
 
             if (mBtn == null)
                 mBtn = GetComponent<JCS_Button>();
@@ -160,18 +152,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
              * player. 
              */
             if (mSoundPlayer == null)
-            {
                 mSoundPlayer = JCS_Glob.soundPlayer;
-            }
-
-            if (mAutoAddEvent)
-            {
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerEnter, ItOnMouseEnter);
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerExit, ItOnMouseExit);
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerDown, ItOnMouseDown);
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerUp, ItOnMouseUp);
-                JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerClick, ItOnMouseClick);
-            }
         }
 
         private void Update()
@@ -204,11 +185,9 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
             }
         }
 
-        public void ItOnMouseEnter()
-        {
-            ItOnMouseEnter(null);
-        }
-        public void ItOnMouseEnter(PointerEventData data)
+        #region IPointer interfaces
+
+        public void OnPointerEnter(PointerEventData eventData)
         {
             mIsEntered = true;
 
@@ -229,11 +208,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
                 mOnMouseOverSoundMethod);
         }
 
-        public void ItOnMouseExit()
-        {
-            ItOnMouseExit(null);
-        }
-        public void ItOnMouseExit(PointerEventData data)
+        public void OnPointerExit(PointerEventData eventData)
         {
             mIsEntered = false;
 
@@ -255,11 +230,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
             }
         }
 
-        public void ItOnMouseDown()
-        {
-            ItOnMouseDown(null);
-        }
-        public void ItOnMouseDown(PointerEventData data)
+        public void OnPointerDown(PointerEventData eventData)
         {
             if (mBtn == null || !mIsEntered)
                 return;
@@ -280,11 +251,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
             }
         }
 
-        public void ItOnMouseUp()
-        {
-            ItOnMouseUp(null);
-        }
-        public void ItOnMouseUp(PointerEventData data)
+        public void OnPointerUp(PointerEventData eventData)
         {
             if (mBtn == null || !mIsEntered)
                 return;
@@ -304,11 +271,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
             }
         }
 
-        public void ItOnMouseClick()
-        {
-            ItOnMouseClick(null);
-        }
-        public void ItOnMouseClick(PointerEventData data)
+        public void OnPointerClick(PointerEventData eventData)
         {
             if (mBtn == null)
                 return;
@@ -327,5 +290,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
                     mOnMouseClickSoundMethod);
             }
         }
+
+        #endregion
     }
 }
