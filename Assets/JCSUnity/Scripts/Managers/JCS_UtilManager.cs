@@ -29,11 +29,21 @@ namespace JCSUnity
 
         [Tooltip("Trasnparent sprite.")]
         [SerializeField]
-        private Sprite mSpriteTransparent = null;
+        private Sprite mSpTransparent = null;
+
+        [Tooltip("Trasnparent sprite.")]
+        [SerializeField]
+        private Sprite mSpBlack = null;
+
+        [Tooltip("Trasnparent sprite.")]
+        [SerializeField]
+        private Sprite mSpWhite = null;
 
         /* Setter & Getter */
 
-        public Sprite spriteTransparent { get { return mSpriteTransparent; } }
+        public Sprite spTransparent { get { return mSpTransparent; } }
+        public Sprite spBlack { get { return mSpBlack; } }
+        public Sprite spWhite { get { return mSpWhite; } }
 
         public void SetMixDamageTextPool(JCS_MixDamageTextPool tp) { mMixDamageTextPool = tp; }
         public JCS_MixDamageTextPool GetMixDamageTextPool() { return mMixDamageTextPool; }

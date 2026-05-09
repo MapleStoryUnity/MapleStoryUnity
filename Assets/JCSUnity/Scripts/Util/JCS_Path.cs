@@ -56,11 +56,21 @@ namespace JCSUnity
         /// <summary>
         /// Convert a path to asset compatible path.
         /// 
-        /// The returned string should start with `Assets/`.
+        /// The returned string should start with the `Assets/` folder.
         /// </summary>
         public static string ToAssetPath(string path)
         {
             return path.Replace(Application.dataPath, "Assets");
+        }
+
+        /// <summary>
+        /// Convert a path to under the asset path.
+        /// 
+        /// The returned string should go under `Assets/` folder.
+        /// </summary>
+        public static string ToUnderAssetPath(string path)
+        {
+            return path.Replace(Application.dataPath, "");
         }
 
         /// <summary>

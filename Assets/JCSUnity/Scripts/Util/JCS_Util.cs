@@ -17,10 +17,7 @@ using PeterVuorela.Tweener;
 
 namespace JCSUnity
 {
-    // Function pointer
-    public delegate float TweenDelegate(float t, float b, float c, float d);
-
-    public delegate int JCS_Range(int min, int max);
+    public delegate float EasingRaw(float t, float b, float c, float d);
 
     /// <summary>
     /// All the utility function put here.
@@ -53,7 +50,9 @@ namespace JCSUnity
                 case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
                 case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
             }
+
             Debug.LogError("This shouldn't happens, charset `bytes to string`");
+
             return null;
         }
 
@@ -75,7 +74,9 @@ namespace JCSUnity
                 case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
                 case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
             }
+
             Debug.LogError("This shouldn't happens, charset `string to bytes`");
+
             return null;
         }
 
@@ -87,7 +88,7 @@ namespace JCSUnity
         public static string EscapeURL(string url)
         {
             url = url.Replace(" ", "%20");
-            return url;
+            return url.Replace(" ", "%20");
         }
 
         #endregion
@@ -710,6 +711,14 @@ namespace JCSUnity
             return name.Replace("(Clone)", "");
         }
 
+        /// <summary>
+        /// Return the name without the clone string.
+        /// </summary>
+        public static string UncloneString(this string name)
+        {
+            return RemoveCloneString(name);
+        }
+
         #endregion
 
         #region Finding
@@ -898,9 +907,9 @@ namespace JCSUnity
         /// </summary>
         /// <param name="type"> type of the tween formula </param>
         /// <returns> function pointer </returns>
-        public static TweenDelegate GetEasing(JCS_TweenType type)
+        public static EasingRaw GetEasing(JCS_TweenType type)
         {
-            TweenDelegate easing = null;
+            EasingRaw easing = null;
 
             switch (type)
             {

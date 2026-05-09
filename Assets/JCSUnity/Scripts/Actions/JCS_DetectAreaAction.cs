@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -31,7 +32,7 @@ namespace JCSUnity
         [SerializeField]
         private Collider[] mDetectCollider = null;
 
-        private JCS_Vec<JCS_DetectAreaObject> mDetectedObjects = null;
+        private List<JCS_DetectAreaObject> mDetectedObjects = null;
 
         /* Setter & Getter */
 
@@ -67,7 +68,7 @@ namespace JCSUnity
             }
 
             // create list to manage all detected object
-            mDetectedObjects = new JCS_Vec<JCS_DetectAreaObject>();
+            mDetectedObjects = new List<JCS_DetectAreaObject>();
         }
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace JCSUnity
             if (dao == null)
                 return;
 
-            mDetectedObjects.push(dao);
+            mDetectedObjects.Add(dao);
         }
         /// <summary>
         /// If detected target leave the area,
@@ -91,7 +92,7 @@ namespace JCSUnity
             if (dao == null)
                 return;
 
-            mDetectedObjects.slice(dao);
+            mDetectedObjects.Remove(dao);
         }
 
         /// <summary>
@@ -106,14 +107,14 @@ namespace JCSUnity
 
             bool theFirstAssign = true;
 
-            for (int index = 0; index < mDetectedObjects.length; ++index)
+            for (int index = 0; index < mDetectedObjects.Count; ++index)
             {
-                JCS_DetectAreaObject obj = mDetectedObjects.at(index);
-                if (mDetectedObjects.at(index) == null)
+                JCS_DetectAreaObject obj = mDetectedObjects[index];
+                if (mDetectedObjects[index] == null)
                 {
                     // remove from the list, 
                     // the object could be dead for some reason.
-                    mDetectedObjects.slice(index);
+                    mDetectedObjects.RemoveAt(index);
                     return null;
                 }
 
@@ -126,7 +127,7 @@ namespace JCSUnity
                         continue;
                 }
 
-                Vector3 objectPos = mDetectedObjects.at(index).transform.position;
+                Vector3 objectPos = mDetectedObjects[index].transform.position;
                 Vector3 areaPos = transform.position;
 
                 float distance = Vector3.Distance(objectPos, areaPos);
@@ -153,7 +154,7 @@ namespace JCSUnity
                 return null;
 
             // return result
-            return mDetectedObjects.at(furthestIndex);
+            return mDetectedObjects[furthestIndex];
         }
 
         /// <summary>
@@ -168,14 +169,14 @@ namespace JCSUnity
 
             bool theFirstAssign = true;
 
-            for (int index = 0; index < mDetectedObjects.length; ++index)
+            for (int index = 0; index < mDetectedObjects.Count; ++index)
             {
-                JCS_DetectAreaObject obj = mDetectedObjects.at(index);
-                if (mDetectedObjects.at(index) == null)
+                JCS_DetectAreaObject obj = mDetectedObjects[index];
+                if (mDetectedObjects[index] == null)
                 {
                     // remove from the list, 
                     // the object could be dead for some reason.
-                    mDetectedObjects.slice(index);
+                    mDetectedObjects.RemoveAt(index);
                     return null;
                 }
 
@@ -215,7 +216,7 @@ namespace JCSUnity
                 return null;
 
             // return result
-            return mDetectedObjects.at(closestIndex);
+            return mDetectedObjects[closestIndex];
         }
     }
 }

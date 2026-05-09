@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -46,7 +47,7 @@ namespace JCSUnity
         [Range(50, 5000)]
         private int mNumOfParticle = 50;
 
-        private JCS_Vec<JCS_Particle> mParticles = null;
+        private List<JCS_Particle> mParticles = null;
         private int mLastAvaliableIndex = 0;
 
         [Separator("⚡️ Runtime Variables (JCS_ParticleSystem)")]
@@ -176,14 +177,14 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         private bool mSetToSamePositionWhenActive = true;
 
         //-- Thread
-        private JCS_Vec<int> mThread = null;
-        private JCS_Vec<float> mTimers = null;           // timer per thread
-        private JCS_Vec<int> mParticleCount = null;         // how many shoot should process per thread
-        private JCS_Vec<int> mParticleCounter = null;         // counter per thread
+        private List<int> mThread = null;
+        private List<float> mTimers = null;           // timer per thread
+        private List<int> mParticleCount = null;         // how many shoot should process per thread
+        private List<int> mParticleCounter = null;         // counter per thread
 
         /* Setter & Getter */
 
-        public JCS_Vec<JCS_Particle> GetParticles() { return mParticles; }
+        public List<JCS_Particle> GetParticles() { return mParticles; }
 
         // Binds.
         public bool active { get { return mActive; } set { mActive = value; } }
@@ -215,12 +216,12 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
 
         private void Awake()
         {
-            mParticles = new JCS_Vec<JCS_Particle>();
+            mParticles = new List<JCS_Particle>();
 
-            mThread = new JCS_Vec<int>();
-            mTimers = new JCS_Vec<float>();
-            mParticleCount = new JCS_Vec<int>();
-            mParticleCounter = new JCS_Vec<int>();
+            mThread = new List<int>();
+            mTimers = new List<float>();
+            mParticleCount = new List<int>();
+            mParticleCounter = new List<int>();
 
             mFreezePos = transform.position;
         }
@@ -329,7 +330,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         /// </returns>
         public bool IsParticleEnd()
         {
-            return (mThread.length == 0);
+            return (mThread.Count == 0);
         }
 
         /// <summary>
@@ -351,7 +352,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             for (int index = 0; index < mNumOfParticle; ++index)
             {
                 var trans = JCS_Util.Instantiate(mParticle) as JCS_Particle;
-                mParticles.push(trans);
+                mParticles.Add(trans);
 
                 // disable the object
                 trans.gameObject.SetActive(false);
@@ -413,12 +414,12 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         private void DoSequenceParticle(int density)
         {
             // thread itself
-            mThread.push(mThread.length);
+            mThread.Add(mThread.Count);
 
             // needed data
-            mTimers.push(0);
-            mParticleCount.push(density);
-            mParticleCounter.push(0);
+            mTimers.Add(0);
+            mParticleCount.Add(density);
+            mParticleCounter.Add(0);
         }
 
         /// <summary>
@@ -434,10 +435,12 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
                 return null;
             }
 
-            for (int index = mLastAvaliableIndex; index < mParticles.length; ++index)
+            for (int index = mLastAvaliableIndex; index < mParticles.Count; ++index)
             {
-                JCS_Particle particle = mParticles.at(index);
+                JCS_Particle particle = mParticles[index];
+
                 bool isActive = particle.gameObject.activeInHierarchy;
+
                 if (isActive == false)
                 {
                     particle.gameObject.SetActive(true);
@@ -468,7 +471,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         /// </summary>
         private void ProccessSequences()
         {
-            for (int processIndex = 0; processIndex < mThread.length; ++processIndex)
+            for (int processIndex = 0; processIndex < mThread.Count; ++processIndex)
             {
                 // process all the thread
                 Sequence(processIndex);
@@ -482,7 +485,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         private void Sequence(int processIndex)
         {
             // get the timer from the thread
-            float newTimer = mTimers.at(processIndex);
+            float newTimer = mTimers[processIndex];
 
             // add time to timer
             newTimer += JCS_Time.ItTime(mTimeType);
@@ -490,8 +493,9 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             // check if we can do the particle or not
             if (mTimeAParticle < newTimer)
             {
-                int totalParticleCount = mParticleCount.at(processIndex);
-                int currentParticleCount = mParticleCounter.at(processIndex);
+                int totalParticleCount = mParticleCount[processIndex];
+                int currentParticleCount = mParticleCounter[processIndex];
+
                 if (currentParticleCount == totalParticleCount)
                 {
                     // Remove Thread.
@@ -514,12 +518,12 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
 
                 // update new count, in order 
                 // to spawn next bullet
-                mParticleCounter.set(processIndex, currentParticleCount);
+                mParticleCounter[processIndex] = currentParticleCount;
                 newTimer = 0;
             }
 
             // update timer
-            mTimers.set(processIndex, newTimer);
+            mTimers[processIndex] = newTimer;
         }
 
         /// <summary>
@@ -528,11 +532,11 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         /// <param name="processIndex"> thread id </param>
         private void EndProcessSequence(int processIndex)
         {
-            mThread.slice(processIndex);
+            mThread.RemoveAt(processIndex);
 
-            mTimers.slice(processIndex);
-            mParticleCount.slice(processIndex);
-            mParticleCounter.slice(processIndex);
+            mTimers.RemoveAt(processIndex);
+            mParticleCount.RemoveAt(processIndex);
+            mParticleCounter.RemoveAt(processIndex);
         }
 
         /// <summary>

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -52,7 +53,7 @@ namespace JCSUnity
         private float mLogSpacing = 1;
 
         // vector of log text rendering on the screen.
-        private JCS_Vec<JCS_LogText> mRenderLogText = null;
+        private List<JCS_LogText> mRenderLogText = null;
 
         /* Setter & Getter */
 
@@ -68,7 +69,7 @@ namespace JCSUnity
 
             mLogTextPool = GetComponent<JCS_GUITextPool>();
 
-            mRenderLogText = new JCS_Vec<JCS_LogText>();
+            mRenderLogText = new List<JCS_LogText>();
         }
 
 #if UNITY_EDITOR
@@ -114,7 +115,7 @@ namespace JCSUnity
 
             UpdateSpace();
 
-            mRenderLogText.push(logText);
+            mRenderLogText.Add(logText);
 
             Vector3 newPos = logText.simpleTrackAction.targetPosition;
 
@@ -136,7 +137,7 @@ namespace JCSUnity
         /// <param name="txt"></param>
         public void RemoveFromRenderVec(JCS_LogText txt)
         {
-            mRenderLogText.slice(txt);
+            mRenderLogText.Remove(txt);
         }
 
         /// <summary>
@@ -145,9 +146,9 @@ namespace JCSUnity
         /// <param name="spaces"></param>
         public void UpdateSpace(int spaces = 1)
         {
-            for (int index = 0; index < mRenderLogText.length; ++index)
+            for (int index = 0; index < mRenderLogText.Count; ++index)
             {
-                JCS_LogText logText = mRenderLogText.at(index);
+                JCS_LogText logText = mRenderLogText[index];
 
                 logText.simpleTrackAction.DeltaTargetPosY(mLogSpacing * spaces);
             }

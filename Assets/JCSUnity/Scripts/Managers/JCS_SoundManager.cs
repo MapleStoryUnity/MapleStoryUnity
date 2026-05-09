@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -253,11 +254,11 @@ namespace JCSUnity
         /// </summary>
         /// <param name="list"> list of the audio source </param>
         /// <param name="vol"> target volume. </param>
-        private void SetVolume(JCS_Vec<AudioSource> list, float vol)
+        private void SetVolume(List<AudioSource> list, float vol)
         {
-            for (int index = 0; index < list.length; ++index)
+            for (int index = 0; index < list.Count; ++index)
             {
-                list.at(index).volume = vol;
+                list[index].volume = vol;
             }
         }
 
@@ -266,11 +267,11 @@ namespace JCSUnity
         /// </summary>
         /// <param name="list"> list of the audio source. </param>
         /// <param name="act"> target mute action. </param>
-        private void SetMute(JCS_Vec<AudioSource> list, bool act)
+        private void SetMute(List<AudioSource> list, bool act)
         {
-            for (int index = 0; index < list.length; ++index)
+            for (int index = 0; index < list.Count; ++index)
             {
-                list.at(index).mute = act;
+                list[index].mute = act;
             }
         }
 

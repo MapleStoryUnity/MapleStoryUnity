@@ -20,10 +20,10 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private TweenDelegate mEasingRed = null;
-        private TweenDelegate mEasingGreen = null;
-        private TweenDelegate mEasingBlue = null;
-        private TweenDelegate mEasingAlpha = null;
+        private EasingRaw mEasingRed = null;
+        private EasingRaw mEasingGreen = null;
+        private EasingRaw mEasingBlue = null;
+        private EasingRaw mEasingAlpha = null;
 
 
         // Callback to execute when start tweening.

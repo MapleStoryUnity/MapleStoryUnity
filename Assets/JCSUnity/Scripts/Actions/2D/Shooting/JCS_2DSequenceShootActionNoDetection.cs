@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -66,12 +67,12 @@ namespace JCSUnity
         private float mShootGap = 0.1f;
 
         //** Sequence Data **
-        private JCS_Vec<int> mThread = null;           // main thread
-        private JCS_Vec<float> mTimers = null;         // timer per thread
-        private JCS_Vec<int> mShootCount = null;       // how many shoot should process per thread
-        private JCS_Vec<int> mShootCounter = null;     // counter per thread
-        private JCS_Vec<Vector3> mShootPos = null;
-        private JCS_Vec<Vector3> mShootAngles = null;
+        private List<int> mThread = null;           // main thread
+        private List<float> mTimers = null;         // timer per thread
+        private List<int> mShootCount = null;       // how many shoot should process per thread
+        private List<int> mShootCounter = null;     // counter per thread
+        private List<Vector3> mShootPos = null;
+        private List<Vector3> mShootAngles = null;
 
         /* Setter & Getter */
 
@@ -109,12 +110,12 @@ namespace JCSUnity
             mShootAction.overrideShoot = true;
             mCursorShootAction.overrideShoot = true;
 
-            mThread = new JCS_Vec<int>();
-            mTimers = new JCS_Vec<float>();
-            mShootCount = new JCS_Vec<int>();
-            mShootCounter = new JCS_Vec<int>();
-            mShootPos = new JCS_Vec<Vector3>();
-            mShootAngles = new JCS_Vec<Vector3>();
+            mThread = new List<int>();
+            mTimers = new List<float>();
+            mShootCount = new List<int>();
+            mShootCounter = new List<int>();
+            mShootPos = new List<Vector3>();
+            mShootAngles = new List<Vector3>();
         }
 
         private void Update()
@@ -151,14 +152,14 @@ namespace JCSUnity
             }
 
             // thread itself
-            mThread.push(mThread.length);
+            mThread.Add(mThread.Count);
 
             // needed data
-            mTimers.push(0);                // timer to calculate between each shoot.
-            mShootCount.push(hit);          // hit per sequence.
-            mShootCounter.push(0);          // counter to count how many shoot left?
-            mShootPos.push(pos);            // position to spawn the bullet implements the position stay effect!
-            mShootAngles.push(mShootAction.spawnPoint.eulerAngles);
+            mTimers.Add(0);                // timer to calculate between each shoot.
+            mShootCount.Add(hit);          // hit per sequence.
+            mShootCounter.Add(0);          // counter to count how many shoot left?
+            mShootPos.Add(pos);            // position to spawn the bullet implements the position stay effect!
+            mShootAngles.Add(mShootAction.spawnPoint.eulerAngles);
 
         }
 
@@ -187,7 +188,7 @@ namespace JCSUnity
         /// </summary>
         private void ProccessSequences()
         {
-            for (int processIndex = 0; processIndex < mThread.length; ++processIndex)
+            for (int processIndex = 0; processIndex < mThread.Count; ++processIndex)
             {
                 // process all the thread
                 Sequence(processIndex);
@@ -201,7 +202,7 @@ namespace JCSUnity
         private void Sequence(int processIndex)
         {
             // get the timer from the thread
-            float newTimer = mTimers.at(processIndex);
+            float newTimer = mTimers[processIndex];
 
             // add time to timer
             newTimer += JCS_Time.ItTime(mTimeType);
@@ -209,8 +210,8 @@ namespace JCSUnity
             // check if we can shoot or not
             if (mTimePerShoot < newTimer)
             {
-                int totalShootCount = mShootCount.at(processIndex);
-                int currentShootCount = mShootCounter.at(processIndex);
+                int totalShootCount = mShootCount[processIndex];
+                int currentShootCount = mShootCounter[processIndex];
                 if (currentShootCount == totalShootCount)
                 {
                     // Remove Thread.
@@ -223,13 +224,13 @@ namespace JCSUnity
 
                 // if stay in the same position
                 if (mSequenceStay)
-                    spawnPos = mShootPos.at(processIndex);
+                    spawnPos = mShootPos[processIndex];
 
                 if (mShootGapEffect)
                     spawnPos.y += currentShootCount * mShootGap;
 
                 if (mKeepShootAngle)
-                    shootAngle = mShootAngles.at(processIndex);
+                    shootAngle = mShootAngles[processIndex];
 
                 // do shooting
                 mShootAction.ShootWithShootCount(spawnPos, shootAngle);
@@ -238,12 +239,12 @@ namespace JCSUnity
 
                 // update new count, in order
                 // to spawn next bullet
-                mShootCounter.set(processIndex, currentShootCount);
+                mShootCounter[processIndex] = currentShootCount;
                 newTimer = 0;
             }
 
             // update timer
-            mTimers.set(processIndex, newTimer);
+            mTimers[processIndex] = newTimer;
         }
 
         /// <summary>
@@ -252,13 +253,13 @@ namespace JCSUnity
         /// <param name="processIndex"> thread id to kill. </param>
         private void EndProcessSequence(int processIndex)
         {
-            mThread.slice(processIndex);
+            mThread.RemoveAt(processIndex);
 
-            mTimers.slice(processIndex);
-            mShootCount.slice(processIndex);
-            mShootCounter.slice(processIndex);
-            mShootPos.slice(processIndex);
-            mShootAngles.slice(processIndex);
+            mTimers.RemoveAt(processIndex);
+            mShootCount.RemoveAt(processIndex);
+            mShootCounter.RemoveAt(processIndex);
+            mShootPos.RemoveAt(processIndex);
+            mShootAngles.RemoveAt(processIndex);
         }
     }
 }

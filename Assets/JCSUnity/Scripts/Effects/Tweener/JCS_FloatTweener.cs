@@ -38,7 +38,7 @@ namespace JCSUnity
         // specific function call.
         private Action mOnDone = null;
 
-        private TweenDelegate mEasingFunc = null;
+        private EasingRaw mEasingFunc = null;
 
         private float mTimeElapsed = 0.0f;
 

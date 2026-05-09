@@ -39,18 +39,18 @@ namespace JCSUnity
         /// </summary>
         public static bool IsUnityDefinedUI(Component comp)
         {
-            return (comp.GetComponent<RawImage>() ||
-                comp.GetComponent<Image>() ||
-                comp.GetComponent<Button>() ||
-                comp.GetComponent<Dropdown>() ||
-                comp.GetComponent<TMP_Dropdown>() ||
-                comp.GetComponent<Slider>() ||
-                comp.GetComponent<Scrollbar>() ||
-                comp.GetComponent<Text>() ||
-                comp.GetComponent<TMP_Text>() ||
-                comp.GetComponent<Toggle>() ||
-                comp.GetComponent<InputField>() ||
-                comp.GetComponent<TMP_InputField>());
+            return comp.GetComponent<RawImage>()
+                || comp.GetComponent<Image>()
+                || comp.GetComponent<Button>()
+                || comp.GetComponent<Dropdown>()
+                || comp.GetComponent<TMP_Dropdown>()
+                || comp.GetComponent<Slider>()
+                || comp.GetComponent<Scrollbar>()
+                || comp.GetComponent<Text>()
+                || comp.GetComponent<TMP_Text>()
+                || comp.GetComponent<Toggle>()
+                || comp.GetComponent<InputField>()
+                || comp.GetComponent<TMP_InputField>();
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace JCSUnity
             return bounds;
         }
 
-        #region EVENT
+        #region Event
 
         /// <summary>
         /// Add Event to Unity's Event Trigger(Script)
@@ -120,7 +120,7 @@ namespace JCSUnity
 
         #endregion
 
-        #region LANGUAGE
+        #region Language
 
         /// <summary>
         /// Set text by system language and language data.
@@ -163,7 +163,7 @@ namespace JCSUnity
 #endif
         #endregion
 
-        #region TEXT
+        #region Text
         /// <summary>
         /// Set the text with data.
         /// </summary>
@@ -189,7 +189,7 @@ namespace JCSUnity
 #endif
         #endregion
 
-        #region DROPDOWN
+        #region Dropdown
 
         /*************************************************************************/
         /*   Universal Version                                                    */
@@ -527,7 +527,7 @@ namespace JCSUnity
 
         #endregion
 
-        #region ANCHOR
+        #region Anchor
 
         /// <summary>
         /// Check the anchor presets type.
@@ -743,7 +743,7 @@ namespace JCSUnity
 
         #endregion
 
-        #region CANVAS
+        #region Canvas
 
         /// <summary>
         /// Show the canvas so it's visible on the screen.
@@ -771,7 +771,7 @@ namespace JCSUnity
 
         #endregion
 
-        #region PANELS
+        #region Panel
 
         /// <summary>
         /// Active panels in array.
@@ -819,7 +819,24 @@ namespace JCSUnity
 
         #endregion
 
-        #region IMAGE
+        #region Layout
+
+        /// <summary>
+        /// Trigger to force build the entire transform's layout.
+        /// </summary>
+        public static void ForceBuildLayout(Transform trans)
+        {
+            foreach (LayoutGroup lg in trans.GetComponentsInChildren<LayoutGroup>())
+            {
+                var rt = lg.transform as RectTransform;
+
+                LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
+            }
+        }
+
+        #endregion
+
+        #region Image
 
         /// <summary>
         /// Returns the size of the image.
@@ -844,14 +861,30 @@ namespace JCSUnity
 
         #endregion
 
-        #region SPRITE
+        #region Sprite
 
         /// <summary>
-        /// Return transparent sprite.
+        /// Return a transparent sprite.
         /// </summary>
         public static Sprite SpriteTransparent()
         {
-            return JCS_Glob.utilm.spriteTransparent;
+            return JCS_Glob.utilm.spTransparent;
+        }
+
+        /// <summary>
+        /// Return a black sprite.
+        /// </summary>
+        public static Sprite SpriteBlack()
+        {
+            return JCS_Glob.utilm.spBlack;
+        }
+
+        /// <summary>
+        /// Return a white sprite.
+        /// </summary>
+        public static Sprite SpriteWhite()
+        {
+            return JCS_Glob.utilm.spWhite;
         }
 
         /// <summary>

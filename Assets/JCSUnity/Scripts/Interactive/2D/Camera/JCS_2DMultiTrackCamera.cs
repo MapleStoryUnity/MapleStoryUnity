@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -23,7 +24,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private JCS_Vec<JCS_Player> mTargetList = null;
+        private List<JCS_Player> mTargetList = null;
 
         private AudioListener mAudioListener = null;
 
@@ -80,7 +81,7 @@ namespace JCSUnity
 
         protected void Awake()
         {
-            mTargetList = new JCS_Vec<JCS_Player>();
+            mTargetList = new List<JCS_Player>();
 
             mAudioListener = GetComponent<AudioListener>();
 
@@ -122,7 +123,7 @@ namespace JCSUnity
         /// <param name="p"></param>
         public void AddTargetToTrackList(JCS_Player p)
         {
-            mTargetList.push(p);
+            mTargetList.Add(p);
         }
 
         /// <summary>
@@ -131,7 +132,7 @@ namespace JCSUnity
         /// <param name="p"></param>
         public void RemoveTargetFromTrackList(JCS_Player p)
         {
-            mTargetList.slice(p);
+            mTargetList.Remove(p);
         }
 
         /// <summary>
@@ -142,7 +143,7 @@ namespace JCSUnity
         private Vector3 CalculateTheCameraPosition()
         {
             // no target trackable
-            if (mTargetList.length == 0)
+            if (mTargetList.Count == 0)
                 return transform.position;
 
             float minHeight = 0,
@@ -154,9 +155,9 @@ namespace JCSUnity
 
             JCS_Player p = null;
 
-            for (int index = 0; index < mTargetList.length; ++index)
+            for (int index = 0; index < mTargetList.Count; ++index)
             {
-                p = mTargetList.at(index);
+                p = mTargetList[index];
 
                 if (p == null)
                     continue;

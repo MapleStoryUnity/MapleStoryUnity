@@ -25,6 +25,8 @@ namespace JCSUnity
         // Callback after the game is done initialize.
         private Action mOnAfterInitialize = null;
 
+        private Action mExecThisFrame = null;
+
         [Separator("📋 Check Variables (JCS_GameManager)")]
 
         [Tooltip("Is game done initialize?")]
@@ -63,6 +65,11 @@ namespace JCSUnity
             RegisterInstance(this);
 
             Invoke(nameof(OnFirstFrame), JCS_Consts.FIRST_FRAME_INVOKE_TIME);
+        }
+
+        private void LateUpdate()
+        {
+            ExecThisFrame();
         }
 
         /// <summary>
@@ -116,6 +123,25 @@ namespace JCSUnity
             mOnSystemAfterInitialize?.Invoke();
 
             mOnAfterInitialize?.Invoke();
+        }
+
+        /// <summary>
+        /// Register the execution only execute this frame.
+        /// </summary>
+        public void RegisterExecThisFrame(Action action)
+        {
+            mExecThisFrame -= action;
+            mExecThisFrame += action;
+        }
+
+        /// <summary>
+        /// Execute the frame callback.
+        /// </summary>
+        private void ExecThisFrame()
+        {
+            mExecThisFrame?.Invoke();
+
+            mExecThisFrame = null;
         }
     }
 }

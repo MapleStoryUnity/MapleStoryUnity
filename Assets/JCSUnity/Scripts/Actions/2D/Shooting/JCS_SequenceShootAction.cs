@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -83,13 +84,13 @@ namespace JCSUnity
         private JCS_DetectAreaObject mDetectedObject = null;
 
         //** Sequence Data **
-        private JCS_Vec<int> mThread = null;                    // main thread
-        private JCS_Vec<float> mTimers = null;                  // timer per thread
-        private JCS_Vec<int> mShootCount = null;                // how many shoot should process per thread
-        private JCS_Vec<int> mShootCounter = null;              // counter per thread
-        private JCS_Vec<Vector3> mShootPos = null;
-        private JCS_Vec<Transform> mTargetsPerSequence = null;
-        private JCS_Vec<bool> mShootDirection = null;
+        private List<int> mThread = null;                    // main thread
+        private List<float> mTimers = null;                  // timer per thread
+        private List<int> mShootCount = null;                // how many shoot should process per thread
+        private List<int> mShootCounter = null;              // counter per thread
+        private List<Vector3> mShootPos = null;
+        private List<Transform> mTargetsPerSequence = null;
+        private List<bool> mShootDirection = null;
 
         /* Setter & Getter */
 
@@ -114,13 +115,13 @@ namespace JCSUnity
             // override the shoot effect in the base one.
             mShootAction.overrideShoot = true;
 
-            mThread = new JCS_Vec<int>();
-            mTimers = new JCS_Vec<float>();
-            mShootCount = new JCS_Vec<int>();
-            mShootCounter = new JCS_Vec<int>();
-            mShootPos = new JCS_Vec<Vector3>();
-            mTargetsPerSequence = new JCS_Vec<Transform>();
-            mShootDirection = new JCS_Vec<bool>();
+            mThread = new List<int>();
+            mTimers = new List<float>();
+            mShootCount = new List<int>();
+            mShootCounter = new List<int>();
+            mShootPos = new List<Vector3>();
+            mTargetsPerSequence = new List<Transform>();
+            mShootDirection = new List<bool>();
 
             // try to get the ability format.
             if (mAbilityFormat == null)
@@ -171,11 +172,11 @@ namespace JCSUnity
 
             // does not found the target to damage
             if (mDetectedObject == null)
-                mTargetsPerSequence.push(null);
+                mTargetsPerSequence.Add(null);
             else
             {
                 // found target to damage, add in to data segment
-                mTargetsPerSequence.push(mDetectedObject.transform);
+                mTargetsPerSequence.Add(mDetectedObject.transform);
 
                 JCS_2DLiveObject liveObj = mDetectedObject.GetComponent<JCS_2DLiveObject>();
                 if (liveObj != null)
@@ -207,13 +208,13 @@ namespace JCSUnity
             }
 
             // thread itself
-            mThread.push(mThread.length);
+            mThread.Add(mThread.Count);
 
             // needed data
-            mTimers.push(0);                // timer to calculate between each shoot.
-            mShootCount.push(hit);          // hit per sequence.
-            mShootCounter.push(0);          // counter to count how many shoot left?
-            mShootPos.push(pos);            // position to spawn the bullet implements the position stay effect!
+            mTimers.Add(0);        // timer to calculate between each shoot.
+            mShootCount.Add(hit);  // hit per sequence.
+            mShootCounter.Add(0);  // counter to count how many shoot left?
+            mShootPos.Add(pos);    // position to spawn the bullet implements the position stay effect!
 
 
             bool isLeft = true;
@@ -221,7 +222,7 @@ namespace JCSUnity
                 isLeft = false;
 
             // shoot direction
-            mShootDirection.push(isLeft);   // decide which direction should the bullet goes? (right/left)
+            mShootDirection.Add(isLeft);   // decide which direction should the bullet goes? (right/left)
         }
 
         /// <summary>
@@ -229,7 +230,7 @@ namespace JCSUnity
         /// </summary>
         private void ProccessSequences()
         {
-            for (int processIndex = 0; processIndex < mThread.length; ++processIndex)
+            for (int processIndex = 0; processIndex < mThread.Count; ++processIndex)
             {
                 // process all the thread
                 Sequence(processIndex);
@@ -243,7 +244,7 @@ namespace JCSUnity
         private void Sequence(int processIndex)
         {
             // get the timer from the thread
-            float newTimer = mTimers.at(processIndex);
+            float newTimer = mTimers[processIndex];
 
             // add time to timer
             newTimer += JCS_Time.ItTime(mTimeType);
@@ -251,8 +252,8 @@ namespace JCSUnity
             // check if we can shoot or not
             if (mTimePerShoot < newTimer)
             {
-                int totalShootCount = mShootCount.at(processIndex);
-                int currentShootCount = mShootCounter.at(processIndex);
+                int totalShootCount = mShootCount[processIndex];
+                int currentShootCount = mShootCounter[processIndex];
                 if (currentShootCount == totalShootCount)
                 {
                     // Remove Thread.
@@ -264,7 +265,7 @@ namespace JCSUnity
 
                 // if stay in the same position
                 if (mSequenceStay)
-                    spawnPos = mShootPos.at(processIndex);
+                    spawnPos = mShootPos[processIndex];
 
                 if (mShootGapEffect)
                 {
@@ -272,7 +273,7 @@ namespace JCSUnity
                 }
 
                 // direction.
-                bool direction = mShootDirection.at(processIndex);
+                bool direction = mShootDirection[processIndex];
 
                 // shoot a bullet
                 if (mInSequenceEffect)
@@ -284,9 +285,9 @@ namespace JCSUnity
                     {
                         theSub = false;
                         if (mDamageApplying != null)
-                            mShootAction.Shoot(spawnPos, direction, mDamageApplying, currentShootCount, theSub, mTargetsPerSequence.at(processIndex));
+                            mShootAction.Shoot(spawnPos, direction, mDamageApplying, currentShootCount, theSub, mTargetsPerSequence[processIndex]);
                         else
-                            mShootAction.Shoot(spawnPos, direction, mHit, currentShootCount, theSub, mTargetsPerSequence.at(processIndex));
+                            mShootAction.Shoot(spawnPos, direction, mHit, currentShootCount, theSub, mTargetsPerSequence[processIndex]);
 
                         // after set the damage set it back to null
                         mDamageApplying = null;
@@ -295,7 +296,7 @@ namespace JCSUnity
                     // process the sub bullet in sequence
                     else
                     {
-                        mShootAction.Shoot(spawnPos, direction, mHit, currentShootCount, theSub, mTargetsPerSequence.at(processIndex));
+                        mShootAction.Shoot(spawnPos, direction, mHit, currentShootCount, theSub, mTargetsPerSequence[processIndex]);
                     }
                 }
                 else
@@ -305,12 +306,12 @@ namespace JCSUnity
 
                 // update new count, in order
                 // to spawn next bullet
-                mShootCounter.set(processIndex, currentShootCount);
+                mShootCounter[processIndex] = currentShootCount;
                 newTimer = 0;
             }
 
             // update timer
-            mTimers.set(processIndex, newTimer);
+            mTimers[processIndex] = newTimer;
         }
 
         /// <summary>
@@ -319,14 +320,14 @@ namespace JCSUnity
         /// <param name="processIndex"> thread id to kill. </param>
         private void EndProcessSequence(int processIndex)
         {
-            mThread.slice(processIndex);
+            mThread.RemoveAt(processIndex);
 
-            mTimers.slice(processIndex);
-            mShootCount.slice(processIndex);
-            mShootCounter.slice(processIndex);
-            mShootPos.slice(processIndex);
-            mTargetsPerSequence.slice(processIndex);
-            mShootDirection.slice(processIndex);
+            mTimers.RemoveAt(processIndex);
+            mShootCount.RemoveAt(processIndex);
+            mShootCounter.RemoveAt(processIndex);
+            mShootPos.RemoveAt(processIndex);
+            mTargetsPerSequence.RemoveAt(processIndex);
+            mShootDirection.RemoveAt(processIndex);
         }
 
         /// <summary>

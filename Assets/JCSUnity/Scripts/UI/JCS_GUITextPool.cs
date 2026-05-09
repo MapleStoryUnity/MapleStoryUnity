@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -32,7 +33,10 @@ namespace JCSUnity
         // optimize
         private int mLastSpawnPos = 0;
 
-        private JCS_Vec<JCS_LogText> mLogTexts = null;
+        [Tooltip("The pool text.")]
+        [SerializeField]
+        [ReadOnly]
+        private List<JCS_LogText> mLogTexts = null;
 
         /* Setter & Getter */
 
@@ -50,7 +54,7 @@ namespace JCSUnity
         /// <returns></returns>
         public JCS_LogText ExecuteOneFromPool(bool secondSearch = false)
         {
-            if (mNumberOfHandle == 0)
+            if (mLogTexts.IsNullOrEmpty())
                 return null;
 
             JCS_LogText logText;
@@ -58,7 +62,7 @@ namespace JCSUnity
             // loop through and see any not active log text we can use in the pool
             for (int index = mLastSpawnPos; index < mNumberOfHandle; ++index)
             {
-                logText = mLogTexts.at(index);
+                logText = mLogTexts[index];
 
                 // if not active, meaning we can 
                 // active the log text
@@ -112,15 +116,13 @@ namespace JCSUnity
             // Get the log system from the same transfrom/node.
             var logSystem = GetComponent<JCS_IGLogSystem>();
 
-            mLogTexts = new JCS_Vec<JCS_LogText>(mNumberOfHandle);
-
             for (int count = 0; count < mNumberOfHandle; ++count)
             {
                 // spawn a new game object, and get the component
                 var logText = JCS_Util.Instantiate(mLogText) as JCS_LogText;
 
                 // add to array
-                mLogTexts.set(count, logText);
+                mLogTexts.Add(logText);
 
                 // set parent
                 JCS_Util.SetParentWithoutLosingInfo(logText.transform, transform);

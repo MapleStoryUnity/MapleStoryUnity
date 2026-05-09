@@ -12,7 +12,7 @@ namespace PeterVuorela.Tweener
 
         public Action onDone = null;
 
-        private TweenDelegate _Easing = null;
+        private EasingRaw _Easing = null;
 
         private float _From = 0.0f;
         private float _To = 0.0f;
@@ -49,7 +49,7 @@ namespace PeterVuorela.Tweener
         public void easeFromTo(float from, float to,
             bool resetElapsedTime = true,
             float duration = 1.0f,
-            TweenDelegate easing = null, Action callback = null,
+            EasingRaw easing = null, Action callback = null,
             JCS_TimeType deltaTimeType = JCS_TimeType.DELTA_TIME)
         {
             if (easing == null)

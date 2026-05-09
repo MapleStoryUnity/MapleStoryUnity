@@ -17,6 +17,8 @@ namespace JCSUnity
     /// </summary>
     public class JCS_MixDamageTextPool : MonoBehaviour
     {
+        public delegate int MinMax(int min, int max);
+
         public delegate int[] DamageTextSpawnerFP(int minDamage, int maxDamage, Vector3 pos, int hit, int percentOfCritical);
 
         /* Variables */
@@ -219,7 +221,7 @@ namespace JCSUnity
             Vector3 pos,
             int hit,
             int percentOfCritical,
-            JCS_Range algorithm,
+            MinMax algorithm,
             int defenseValue,
             bool isEnemy = false,
             AudioClip hitSound = null)
@@ -330,7 +332,7 @@ namespace JCSUnity
             int[] damages,
             Vector3 pos,
             int cirticalChance,
-            JCS_Range algorithm,
+            MinMax algorithm,
             bool isEnemy = false,
             AudioClip hitSound = null)
         {

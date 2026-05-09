@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -28,18 +29,18 @@ namespace JCSUnity
         private Transform mLastAttacker= null;
 
         // Record all the attacker attack this enemy!
-        private JCS_Vec<Transform> mAttackers = null;
+        private List<Transform> mAttackers = null;
 
         /* Setter & Getter */
 
         public Transform lastAttacker { get { return mLastAttacker; } set { mLastAttacker = value; } }
-        public JCS_Vec<Transform> GetAttackers() { return mAttackers; }
+        public List<Transform> GetAttackers() { return mAttackers; }
 
         /* Functions */
 
         private void Awake()
         {
-            mAttackers = new JCS_Vec<Transform>();
+            mAttackers = new List<Transform>();
         }
     }
 }

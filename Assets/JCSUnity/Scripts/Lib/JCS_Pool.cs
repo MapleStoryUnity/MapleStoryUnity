@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 
 namespace JCSUnity
 {
@@ -16,16 +17,16 @@ namespace JCSUnity
     public class JCS_Pool<T>
     {
 
-        private JCS_Vec<T> objects = null;
+        private List<T> objects = null;
         private int mLastUseIndex = 0;
 
 
-        public JCS_Vec<T> GetObjects() { return objects; }
+        public List<T> GetObjects() { return objects; }
         public int lastUseIndex { get { return mLastUseIndex; } }
 
         public JCS_Pool(int num)
         {
-            objects = new JCS_Vec<T>(num);
+            objects = new List<T>(num);
         }
 
         /// <summary>

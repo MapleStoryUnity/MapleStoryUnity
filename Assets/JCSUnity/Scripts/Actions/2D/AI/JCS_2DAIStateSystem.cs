@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
@@ -39,7 +40,7 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_AIMoveActionType mAIMoveActionType = JCS_AIMoveActionType.NONE;
 
-        private JCS_Vec<JCS_AIAction> mAIActions = null;
+        private List<JCS_AIAction> mAIActions = null;
 
         /* Setter & Getter */
 
@@ -49,13 +50,13 @@ namespace JCSUnity
 
         private void Awake()
         {
-            mAIActions = new JCS_Vec<JCS_AIAction>();
+            mAIActions = new List<JCS_AIAction>();
 
             // add all the ai action into the array.
             JCS_AIAction[] actions = GetComponents<JCS_AIAction>();
             for (int index = 0; index < actions.Length; ++index)
             {
-                mAIActions.push(actions[index]);
+                mAIActions.Add(actions[index]);
             }
         }
 
@@ -85,14 +86,15 @@ namespace JCSUnity
                 case JCS_AIMoveActionType.WALK:
                     {
                         // try to get the component on this transform.
-                        JCS_2DWalkAction wa = GetComponent<JCS_2DWalkAction>();
+                        var wa = GetComponent<JCS_2DWalkAction>();
+
                         if (wa == null)  // if nothing here.
                         {
                             // add it on to it
                             wa = gameObject.AddComponent<JCS_2DWalkAction>();
 
                             // and push into array.
-                            mAIActions.push(wa);
+                            mAIActions.Add(wa);
                         }
 
                         // disable all the action
@@ -104,36 +106,42 @@ namespace JCSUnity
                     break;
                 case JCS_AIMoveActionType.JUMP:
                     {
-                        JCS_2DJumpAction ja = GetComponent<JCS_2DJumpAction>();
+                        var ja = GetComponent<JCS_2DJumpAction>();
+
                         if (ja == null)
                         {
                             ja = gameObject.AddComponent<JCS_2DJumpAction>();
-                            mAIActions.push(ja);
+                            mAIActions.Add(ja);
                         }
+
                         DisableActions();
                         ja.enabled = true;
                     }
                     break;
                 case JCS_AIMoveActionType.FLY:
                     {
-                        JCS_2DFlyAction fa = GetComponent<JCS_2DFlyAction>();
+                        var fa = GetComponent<JCS_2DFlyAction>();
+
                         if (fa == null)
                         {
                             fa = gameObject.AddComponent<JCS_2DFlyAction>();
-                            mAIActions.push(fa);
+                            mAIActions.Add(fa);
                         }
+
                         DisableActions();
                         fa.enabled = true;
                     }
                     break;
                 case JCS_AIMoveActionType.SWIM:
                     {
-                        JCS_2DSwimAction sa = GetComponent<JCS_2DSwimAction>();
+                        var sa = GetComponent<JCS_2DSwimAction>();
+
                         if (sa == null)
                         {
                             sa = gameObject.AddComponent<JCS_2DSwimAction>();
-                            mAIActions.push(sa);
+                            mAIActions.Add(sa);
                         }
+
                         DisableActions();
                         sa.enabled = true;
                     }
@@ -148,9 +156,9 @@ namespace JCSUnity
         /// </summary>
         private void DisableActions()
         {
-            for (int index = 0; index < mAIActions.length; ++index)
+            for (int index = 0; index < mAIActions.Count; ++index)
             {
-                JCS_AIAction aa = mAIActions.at(index);
+                JCS_AIAction aa = mAIActions[index];
                 aa.enabled = false;
             }
         }

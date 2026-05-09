@@ -38,7 +38,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DamageText mDamageText = null;
 
-        private JCS_Vec<JCS_DamageText> mDamageTexts = null;
+        private List<JCS_DamageText> mDamageTexts = null;
 
         [Separator("⚡️ Runtime Variables (JCS_DamageTextPool)")]
 
@@ -259,7 +259,8 @@ namespace JCSUnity
 
             for (int index = mLastSpawnPos; index < mNumberOfHandle; ++index)
             {
-                dt = mDamageTexts.at(index);
+                dt = mDamageTexts[index];
+
                 // if not active, meaning we can spawn the text
                 if (!dt.isActive())
                 {
@@ -318,7 +319,7 @@ namespace JCSUnity
         /// </summary>
         private void InitDamageTextToArray()
         {
-            mDamageTexts = new JCS_Vec<JCS_DamageText>(mNumberOfHandle);
+            mDamageTexts = new List<JCS_DamageText>(mNumberOfHandle);
 
             if (mDamageText == null)
                 return;
@@ -333,7 +334,7 @@ namespace JCSUnity
                     mDamageText.transform.rotation) as JCS_DamageText;
 
                 // add to array
-                mDamageTexts.set(count, dt);
+                mDamageTexts[count] = dt;
 
                 // set parent
                 dt.transform.SetParent(transform);

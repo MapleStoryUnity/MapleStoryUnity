@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mBlackScreen: {fileID: 0}
   mBlackSlideScreen: {fileID: 0}
-  mRawImgVideoTransition: {fileID: 0}
+  mImgVideoTransition: {fileID: 0}
   mAlign: 0
   mPopWhiteScreen: 1
   mWhiteScreen: {fileID: 0}
@@ -329,7 +329,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTestWithKey: 0
   mCanvases: []
-  mGlobalUndoRedoSystem: {fileID: 0}
+  mCanvasesPause: []
+  mURSystem: {fileID: 0}
   mGameUI: {fileID: 0}
   mForceDialogue: {fileID: 0}
   mFocusGameDialogue: {fileID: 0}
@@ -365,7 +366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMixDamageTextPool: {fileID: 0}
-  mSpriteTransparent: {fileID: 21300000, guid: c7eced5e94022104d917659ef2734bf4, type: 3}
+  mSpTransparent: {fileID: 21300000, guid: c7eced5e94022104d917659ef2734bf4, type: 3}
+  mSpBlack: {fileID: 21300000, guid: 6bacba3b799cbad4c975910e5caeeaa3, type: 3}
+  mSpWhite: {fileID: 21300000, guid: 29469016cb7415447b0a925269d3e481, type: 3}
 --- !u!114 &11461692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,11 +629,7 @@ MonoBehaviour:
   mDragDisplacement: {x: 0, y: 0}
   mDragging: 0
   mTouchTime: 0
-  mMultiTouch: 0
-  mTouchDistance: 0
-  mTouchDistanceDelta: 0
   mMouseType: 0
-  mDetectTouchCount: 1
 --- !u!114 &3255448869455908852
 MonoBehaviour:
   m_ObjectHideFlags: 0
