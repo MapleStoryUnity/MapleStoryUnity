@@ -22,6 +22,94 @@ namespace JCSUnity
         /* Functions */
 
         /// <summary>
+        /// Return the default bounds.
+        /// </summary>
+        public static Bounds Default(GameObject go)
+        {
+            return new(go.transform.position, Vector3.zero);
+        }
+
+        /// <summary>
+        /// Return true if the renderer should be ignored 
+        /// when calculating bounds.
+        /// </summary>
+        public static bool IgnoreComponents(Component renderer)
+        {
+            // NOTE(jenchieh): Normally a particle system could
+            // mess up the bounds; simply ignore it here.
+            if (renderer is ParticleSystemRenderer)
+                return true;
+
+            // UI element should be ignored.
+            if (renderer.GetComponent<RectTransform>())
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// Return the bounds by renderer.
+        /// </summary>
+        public static Bounds ByRender(GameObject go)
+        {
+            Renderer[] renderers = go.GetComponentsInChildren<Renderer>();
+
+            bool first = false;
+
+            Bounds bounds = Default(go);
+
+            foreach (Renderer renderer in renderers)
+            {
+                if (IgnoreComponents(renderer))
+                    continue;
+
+                if (!first)
+                {
+                    bounds = renderer.bounds;
+
+                    first = true;
+
+                    continue;
+                }
+
+                bounds.Encapsulate(renderer.bounds);
+            }
+
+            return bounds;
+        }
+
+        /// <summary>
+        /// Return the bounds by mesh filter.
+        /// </summary>
+        public static Bounds ByMesh(GameObject go)
+        {
+            MeshFilter[] mfs = go.GetComponentsInChildren<MeshFilter>();
+
+            bool first = false;
+
+            Bounds bounds = Default(go);
+
+            foreach (MeshFilter mf in mfs)
+            {
+                if (IgnoreComponents(mf))
+                    continue;
+
+                if (!first)
+                {
+                    bounds = mf.mesh.bounds;
+
+                    first = true;
+
+                    continue;
+                }
+
+                bounds.Encapsulate(mf.mesh.bounds);
+            }
+
+            return bounds;
+        }
+
+        /// <summary>
         /// Return 8 corners from the bounds.
         /// </summary>
         /// <param name="bounds"> The bounds to get from. </param>
@@ -41,51 +129,6 @@ namespace JCSUnity
                 center + new Vector3(-extents.x, extents.y, extents.z),   // Top-front-left
                 center + new Vector3(extents.x, extents.y, extents.z)     // Top-front-right
             };
-        }
-
-        /// <summary>
-        /// Return the bounds by renderer.
-        /// </summary>
-        public static Bounds ByRender(GameObject go)
-        {
-            Renderer[] renderers = go.GetComponentsInChildren<Renderer>();
-
-            if (renderers.Length == 0)
-                return new Bounds();
-
-            Bounds bounds = renderers[0].bounds;
-
-            for (int i = 1, ni = renderers.Length; i < ni; ++i)
-            {
-                // NOTE(jenchieh): Normally a particle system could
-                // mess up the bounds; simply ignore it here.
-                if (renderers[i] is ParticleSystemRenderer)
-                    continue;
-
-                bounds.Encapsulate(renderers[i].bounds);
-            }
-
-            return bounds;
-        }
-
-        /// <summary>
-        /// Return the bounds by mesh filter.
-        /// </summary>
-        public static Bounds ByMesh(GameObject go)
-        {
-            MeshFilter[] mfs = go.GetComponentsInChildren<MeshFilter>();
-
-            if (mfs.Length == 0)
-                return new Bounds();
-
-            Bounds bounds = mfs[0].mesh.bounds;
-
-            for (int i = 1, ni = mfs.Length; i < ni; ++i)
-            {
-                bounds.Encapsulate(mfs[i].mesh.bounds);
-            }
-
-            return bounds;
         }
     }
 }

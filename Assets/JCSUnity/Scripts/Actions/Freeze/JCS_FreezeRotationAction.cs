@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
 
@@ -34,7 +35,7 @@ namespace JCSUnity
 
         [Tooltip("Freeze the rotation in each axis.")]
         [SerializeField]
-        private JCS_Bool3 mFreezeRotation = JCS_Bool3.allFalse;
+        private bool3 mFreezeRotation = default;
 
         /* Setter & Getter */
 
@@ -54,7 +55,7 @@ namespace JCSUnity
                     mRotationToFreeze = eulerAngles;
             }
         }
-        public JCS_Bool3 freezeRotation { get { return mFreezeRotation; } set { mFreezeRotation = value; } }
+        public bool3 freezeRotation { get { return mFreezeRotation; } set { mFreezeRotation = value; } }
 
         /* Functions */
 
@@ -76,11 +77,11 @@ namespace JCSUnity
                 newRot = localEulerAngles;
 
             /* Freeze euler angles */
-            if (mFreezeRotation.check1)
+            if (mFreezeRotation.x)
                 newRot.x = mRotationToFreeze.x;
-            if (mFreezeRotation.check2)
+            if (mFreezeRotation.y)
                 newRot.y = mRotationToFreeze.y;
-            if (mFreezeRotation.check3)
+            if (mFreezeRotation.z)
                 newRot.z = mRotationToFreeze.z;
 
             if (mIsLocalRotation)

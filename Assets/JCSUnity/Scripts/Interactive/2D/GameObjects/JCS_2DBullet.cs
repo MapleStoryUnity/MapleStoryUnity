@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace JCSUnity
@@ -218,7 +219,7 @@ namespace JCSUnity
                 mRandDegreeRangeY,
                 mRandDegreeRangeZ);
 
-            JCS_Bool3 checkers = new JCS_Bool3(
+            var checkers = new bool3(
                 mRandDegreeX,
                 mRandDegreeY,
                 mRandDegreeZ);

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
 
@@ -46,15 +47,15 @@ namespace JCSUnity
 
         [Tooltip("Freeze the position in each axis.")]
         [SerializeField]
-        private JCS_Bool3 mFreezePosition = JCS_Bool3.allFalse;
+        private bool3 mFreezePosition = default;
 
         [Tooltip("Freeze the rotation in each axis.")]
         [SerializeField]
-        private JCS_Bool3 mFreezeRotation = JCS_Bool3.allFalse;
+        private bool3 mFreezeRotation = default;
 
         [Tooltip("Freeze the scale in each axis.")]
         [SerializeField]
-        private JCS_Bool3 mFreezeScale = JCS_Bool3.allFalse;
+        private bool3 mFreezeScale = default;
 
         /* Setter & Getter */
 
@@ -62,9 +63,9 @@ namespace JCSUnity
         public Vector3 positionToFreeze { get { return mPositionToFreeze; } set { mPositionToFreeze = value; } }
         public Vector3 rotationToFreeze { get { return mRotationToFreeze; } set { mRotationToFreeze = value; } }
         public Vector3 scaleToFreeze { get { return mScaleToFreeze; } set { mScaleToFreeze = value; } }
-        public JCS_Bool3 freezePosition { get { return mFreezePosition; } set { mFreezePosition = value; } }
-        public JCS_Bool3 freezeRotation { get { return mFreezeRotation; } set { mFreezeRotation = value; } }
-        public JCS_Bool3 freezeScale { get { return mFreezeScale; } set { mFreezeScale = value; } }
+        public bool3 freezePosition { get { return mFreezePosition; } set { mFreezePosition = value; } }
+        public bool3 freezeRotation { get { return mFreezeRotation; } set { mFreezeRotation = value; } }
+        public bool3 freezeScale { get { return mFreezeScale; } set { mFreezeScale = value; } }
         public bool isLocalPosition
         {
             get { return mIsLocalPosition; }
@@ -140,11 +141,11 @@ namespace JCSUnity
                 newPos = localPosition;
 
             /* Freeze position */
-            if (mFreezePosition.check1)
+            if (mFreezePosition.x)
                 newPos.x = mPositionToFreeze.x;
-            if (mFreezePosition.check2)
+            if (mFreezePosition.y)
                 newPos.y = mPositionToFreeze.y;
-            if (mFreezePosition.check3)
+            if (mFreezePosition.z)
                 newPos.z = mPositionToFreeze.z;
 
             /* Apply new value to transform. */
@@ -164,11 +165,11 @@ namespace JCSUnity
                 newRot = localEulerAngles;
 
             /* Freeze euler angles */
-            if (mFreezeRotation.check1)
+            if (mFreezeRotation.x)
                 newRot.x = mRotationToFreeze.x;
-            if (mFreezeRotation.check2)
+            if (mFreezeRotation.y)
                 newRot.y = mRotationToFreeze.y;
-            if (mFreezeRotation.check3)
+            if (mFreezeRotation.z)
                 newRot.z = mRotationToFreeze.z;
 
             if (mIsLocalRotation)
@@ -185,11 +186,11 @@ namespace JCSUnity
             Vector3 newScale = localScale;
 
             /* Freeze scale */
-            if (mFreezeScale.check1)
+            if (mFreezeScale.x)
                 newScale.x = mScaleToFreeze.x;
-            if (mFreezeScale.check2)
+            if (mFreezeScale.y)
                 newScale.y = mScaleToFreeze.y;
-            if (mFreezeScale.check3)
+            if (mFreezeScale.z)
                 newScale.z = mScaleToFreeze.z;
 
             localScale = newScale;

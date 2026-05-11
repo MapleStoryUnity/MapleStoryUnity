@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
 
@@ -42,7 +43,7 @@ namespace JCSUnity
 
         [Tooltip("Freeze in a certain vector? (x, y, z)")]
         [SerializeField]
-        private JCS_Bool3 mFreeze = JCS_Bool3.allFalse;
+        private bool3 mFreeze = default;
 
         /* Setter & Getter */
 
@@ -70,13 +71,13 @@ namespace JCSUnity
             Vector3 newVal = mTransformTweener.GetSelfTransformTypeVector3();
 
             // x
-            if (!mFreeze.check1)
+            if (!mFreeze.x)
                 newVal.x = JCS_Random.Range(mMinVectorRange.x, mMaxVectorRange.x);
             // y
-            if (!mFreeze.check2)
+            if (!mFreeze.y)
                 newVal.y = JCS_Random.Range(mMinVectorRange.y, mMaxVectorRange.y);
             // z
-            if (!mFreeze.check3)
+            if (!mFreeze.z)
                 newVal.z = JCS_Random.Range(mMinVectorRange.z, mMaxVectorRange.z);
 
             mTransformTweener.DoTween(newVal);

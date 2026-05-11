@@ -13,6 +13,7 @@ using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using MyBox;
 using PeterVuorela.Tweener;
 
 namespace JCSUnity
@@ -540,6 +541,37 @@ namespace JCSUnity
             callback?.Invoke(parent);
 
             trans.SetParent(parent);
+        }
+
+        #endregion
+
+        #region Layer
+
+        /// <summary>
+        /// Set the layer by name, and then return the layer index.
+        /// </summary>
+        public static int SetLayer(this GameObject obj, string layerName)
+        {
+            return SetLayer(obj, layerName, false);
+        }
+        public static int SetLayer(this GameObject obj, string layerName, bool recursive)
+        {
+            int layer = LayerMask.NameToLayer(layerName);
+
+            // Already set; avoid overhead.
+            if (obj.layer == layer)
+                return layer;
+
+            if (recursive)
+            {
+                obj.SetLayerRecursively(layer);
+            }
+            else
+            {
+                obj.layer = layer;
+            }
+
+            return layer;
         }
 
         #endregion

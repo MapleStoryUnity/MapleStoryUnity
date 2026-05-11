@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2025 by Shen, Jen-Chieh $
  */
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace JCSUnity
@@ -269,23 +270,23 @@ namespace JCSUnity
         /// <param name="randVec"> value for each axis. </param>
         /// <param name="checks"> check for eaxh axis. </param>
         /// <returns> transform result. </returns>
-        public static Vector3 ApplyRandVector3(Vector3 trans, Vector3 randVec, JCS_Bool3 checks)
+        public static Vector3 ApplyRandVector3(Vector3 trans, Vector3 randVec, bool3 checks)
         {
             Vector3 tempVec = trans;
 
-            if (checks.check1)
+            if (checks.x)
             {
                 float val = JCS_Random.Range(-randVec.x, randVec.x);
                 tempVec = IncVecX(tempVec, val);
             }
 
-            if (checks.check2)
+            if (checks.y)
             {
                 float val = JCS_Random.Range(-randVec.y, randVec.y);
                 tempVec = IncVecY(tempVec, val);
             }
 
-            if (checks.check3)
+            if (checks.z)
             {
                 float val = JCS_Random.Range(-randVec.z, randVec.z);
                 tempVec = IncVecZ(tempVec, val);

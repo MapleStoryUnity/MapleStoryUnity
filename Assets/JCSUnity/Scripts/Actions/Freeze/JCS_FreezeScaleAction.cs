@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
 
@@ -30,12 +31,12 @@ namespace JCSUnity
 
         [Tooltip("Freeze the scale in each axis.")]
         [SerializeField]
-        private JCS_Bool3 mFreezeScale = JCS_Bool3.allFalse;
+        private bool3 mFreezeScale = default;
 
         /* Setter & Getter */
 
         public bool active { get { return mActive; } set { mActive = value; } }
-        public JCS_Bool3 freezeScale { get { return mFreezeScale; } set { mFreezeScale = value; } }
+        public bool3 freezeScale { get { return mFreezeScale; } set { mFreezeScale = value; } }
         public Vector3 scaleToFreeze { get { return mScaleToFreeze; } set { mScaleToFreeze = value; } }
 
         /* Functions */
@@ -62,11 +63,11 @@ namespace JCSUnity
             Vector3 newScale = localScale;
 
             /* Freeze scale */
-            if (mFreezeScale.check1)
+            if (mFreezeScale.x)
                 newScale.x = mScaleToFreeze.x;
-            if (mFreezeScale.check2)
+            if (mFreezeScale.y)
                 newScale.y = mScaleToFreeze.y;
-            if (mFreezeScale.check3)
+            if (mFreezeScale.z)
                 newScale.z = mScaleToFreeze.z;
 
             localScale = newScale;

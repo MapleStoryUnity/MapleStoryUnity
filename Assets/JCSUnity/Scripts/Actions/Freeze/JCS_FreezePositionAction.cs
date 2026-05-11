@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
 
@@ -34,7 +35,7 @@ namespace JCSUnity
 
         [Tooltip("Freeze the position in each axis.")]
         [SerializeField]
-        private JCS_Bool3 mFreezePosition = JCS_Bool3.allFalse;
+        private bool3 mFreezePosition = default;
 
         /* Setter & Getter */
 
@@ -54,7 +55,7 @@ namespace JCSUnity
                     mPositionToFreeze = position;
             }
         }
-        public JCS_Bool3 freezePosition { get { return mFreezePosition; } set { mFreezePosition = value; } }
+        public bool3 freezePosition { get { return mFreezePosition; } set { mFreezePosition = value; } }
 
         /* Functions */
 
@@ -85,11 +86,11 @@ namespace JCSUnity
                 newPos = localPosition;
 
             /* Freeze position */
-            if (mFreezePosition.check1)
+            if (mFreezePosition.x)
                 newPos.x = mPositionToFreeze.x;
-            if (mFreezePosition.check2)
+            if (mFreezePosition.y)
                 newPos.y = mPositionToFreeze.y;
-            if (mFreezePosition.check3)
+            if (mFreezePosition.z)
                 newPos.z = mPositionToFreeze.z;
 
             /* Apply new value to transform. */

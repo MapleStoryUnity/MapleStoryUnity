@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
 
@@ -207,21 +208,21 @@ namespace JCSUnity
                 // use the current spawner position.
                 objSpawned.transform.position,
                 new Vector3(mRandPosRangeX, mRandPosRangeY, mRandPosRangeZ),
-                new JCS_Bool3(mRandPosX, mRandPosY, mRandPosZ));
+                new bool3(mRandPosX, mRandPosY, mRandPosZ));
 
             // randomize the rotation a bit.
             Vector3 randRot = JCS_Vector.ApplyRandVector3(
                 // use the current spawner position.
                 objSpawned.transform.eulerAngles,
                 new Vector3(mRandRotRangeX, mRandRotRangeY, mRandRotRangeZ),
-                new JCS_Bool3(mRandRotationX, mRandRotationY, mRandRotationZ));
+                new bool3(mRandRotationX, mRandRotationY, mRandRotationZ));
 
             // randomize the rotation a bit.
             Vector3 randScale = JCS_Vector.ApplyRandVector3(
                 // use the current spawner position.
                 objSpawned.transform.localScale,
                 new Vector3(mRandScaleRangeX, mRandScaleRangeY, mRandScaleRangeZ),
-                new JCS_Bool3(mRandScaleX, mRandScaleY, mRandScaleZ));
+                new bool3(mRandScaleX, mRandScaleY, mRandScaleZ));
 
             objSpawned.transform.position = randPos;
             objSpawned.transform.eulerAngles = randRot;
