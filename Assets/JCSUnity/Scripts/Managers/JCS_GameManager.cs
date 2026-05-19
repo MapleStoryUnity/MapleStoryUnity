@@ -26,6 +26,7 @@ namespace JCSUnity
         private Action mOnAfterInitialize = null;
 
         private Action mExecThisFrame = null;
+        private Action mExecLateThisFrame = null;
 
         [Separator("📋 Check Variables (JCS_GameManager)")]
 
@@ -67,9 +68,14 @@ namespace JCSUnity
             Invoke(nameof(OnFirstFrame), JCS_Consts.FIRST_FRAME_INVOKE_TIME);
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             ExecThisFrame();
+        }
+
+        private void LateUpdate()
+        {
+            ExecLateThisFrame();
         }
 
         /// <summary>
@@ -140,8 +146,25 @@ namespace JCSUnity
         private void ExecThisFrame()
         {
             mExecThisFrame?.Invoke();
-
             mExecThisFrame = null;
+        }
+
+        /// <summary>
+        /// Register the execution only execute late this frame.
+        /// </summary>
+        public void RegisterExecLateThisFrame(Action action)
+        {
+            mExecLateThisFrame -= action;
+            mExecLateThisFrame += action;
+        }
+
+        /// <summary>
+        /// Execute the late frame callback.
+        /// </summary>
+        private void ExecLateThisFrame()
+        {
+            mExecLateThisFrame?.Invoke();
+            mExecLateThisFrame = null;
         }
     }
 }
