@@ -64,6 +64,7 @@ namespace JCSUnity
         public void SetObjectType(JCS_UnityObjectType ob)
         {
             mObjectType = ob;
+
             UpdateUnityData();
         }
         public JCS_UnityObjectType GetObjectType() { return mObjectType; }
@@ -257,6 +258,7 @@ namespace JCSUnity
                 }
 
                 Debug.LogError("Return default local position (This should not happens)");
+                
                 return transform;
             }
         }
@@ -335,6 +337,7 @@ namespace JCSUnity
                 }
 
                 Debug.LogError("Return default local position (This should not happens)");
+               
                 return transform.position;
             }
 
@@ -384,7 +387,9 @@ namespace JCSUnity
                         return mTextMesh.transform.localPosition;
 #endif
                 }
+                
                 Debug.LogError("Return default local position (This should not happens)");
+                
                 return transform.localPosition;
             }
 
@@ -436,6 +441,7 @@ namespace JCSUnity
                 }
 
                 Debug.LogError("Return default local rotation (This should not happens)");
+             
                 return transform.eulerAngles;
             }
 
@@ -487,6 +493,7 @@ namespace JCSUnity
                 }
 
                 Debug.LogError("Return default local rotation (This should not happens)");
+
                 return transform.localEulerAngles;
             }
 
@@ -536,7 +543,9 @@ namespace JCSUnity
                         return mTextMesh.transform.localScale;
 #endif
                 }
+
                 Debug.LogError("Return default local scale (This should not happens)");
+
                 return transform.localScale;
             }
 
@@ -560,6 +569,7 @@ namespace JCSUnity
                         return;
 #endif
                 }
+
                 Debug.LogError("Set default local scale (This should not happens)");
             }
         }
@@ -586,7 +596,9 @@ namespace JCSUnity
                         return mTextMesh.enabled;
 #endif
                 }
+
                 Debug.LogError("Return default visible (This should not happens)");
+
                 return false;
             }
 
@@ -625,14 +637,11 @@ namespace JCSUnity
                 return mRenderer.material.GetColor(prop);
             }
 
-            try
-            {
-                return mRenderer.material.color;
-            }
-            catch
-            {
-                // ignore
-            }
+            Material mat = mRenderer.material;
+
+            // The `.color` and `GetColor("_Color")` is equivalent.
+            if (mat && mat.HasProperty("_Color"))
+                return mat.color;
 
             return Color.white;
         }
@@ -647,14 +656,11 @@ namespace JCSUnity
                 mRenderer.material.SetColor(prop, val);
             }
 
-            try
-            {
-                mRenderer.material.color = val;
-            }
-            catch
-            {
-                // ignore
-            }
+            Material mat = mRenderer.material;
+
+            // The `.color` and `GetColor("_Color")` is equivalent.
+            if (mat && mat.HasProperty("_Color"))
+                mat.color = val;
         }
 
         /// <summary>
@@ -681,6 +687,7 @@ namespace JCSUnity
                 }
 
                 Debug.LogError("Return default Local Red (This should not happens)");
+
                 return new Color(255, 128, 64, 32);
             }
 
@@ -707,6 +714,7 @@ namespace JCSUnity
 #endif
 
                 }
+
                 Debug.LogError("Set default Local Red (This should not happens)");
             }
         }
@@ -733,7 +741,9 @@ namespace JCSUnity
                         return mTextMesh.color.a;
 #endif
                 }
+
                 Debug.LogError("Return default Local Alpha (This should not happens)");
+
                 return 0;
             }
 
@@ -781,6 +791,7 @@ namespace JCSUnity
                         return;
 #endif
                 }
+
                 Debug.LogError("Set default Local Alpha (This should not happens)");
             }
         }
@@ -807,7 +818,9 @@ namespace JCSUnity
                         return mTextMesh.color.r;
 #endif
                 }
+                
                 Debug.LogError("Return default Local Red (This should not happens)");
+
                 return 0;
             }
 
@@ -855,6 +868,7 @@ namespace JCSUnity
                         return;
 #endif
                 }
+
                 Debug.LogError("Set default Local Red (This should not happens)");
             }
         }
@@ -881,7 +895,9 @@ namespace JCSUnity
                         return mTextMesh.color.g;
 #endif
                 }
+
                 Debug.LogError("Return default Local Green (This should not happens)");
+
                 return 0;
             }
 
@@ -929,6 +945,7 @@ namespace JCSUnity
                         return;
 #endif
                 }
+
                 Debug.LogError("Set default Local Blue (This should not happens)");
             }
         }
@@ -955,7 +972,9 @@ namespace JCSUnity
                         return mTextMesh.color.b;
 #endif
                 }
+
                 Debug.LogError("Return default Local Blue (This should not happens)");
+
                 return 0;
             }
 
@@ -1003,6 +1022,7 @@ namespace JCSUnity
                         return;
 #endif
                 }
+
                 Debug.LogError("Set default Local Blue (This should not happens)");
             }
         }
@@ -1029,7 +1049,9 @@ namespace JCSUnity
                         return mTextMesh.material.mainTexture;
 #endif
                 }
+
                 Debug.LogError("Return default Local Blue (This should not happens)");
+
                 return null;
             }
 
@@ -1055,6 +1077,7 @@ namespace JCSUnity
                         return;
 #endif
                 }
+
                 Debug.LogError("Set default Local Blue (This should not happens)");
             }
         }
@@ -1073,7 +1096,9 @@ namespace JCSUnity
                     case JCS_UnityObjectType.UI:
                         return mImage.sprite;
                 }
+
                 Debug.LogError("Failed to get sprite composite cuz current unity object setting does not have it.");
+
                 return null;
             }
 
@@ -1088,6 +1113,7 @@ namespace JCSUnity
                         mImage.sprite = value;
                         return;
                 }
+
                 Debug.LogError("Failed to set the sprite cuz the current unity object setting does not have sprite coposite.");
             }
         }
@@ -1111,7 +1137,9 @@ namespace JCSUnity
                     case JCS_UnityObjectType.SPRITE:
                         return mSpriteRenderer.isVisible;
                 }
+
                 Debug.LogError("Return default Local isVisible (This should not happens)");
+
                 return false;
             }
 
@@ -1138,7 +1166,9 @@ namespace JCSUnity
 #endif
                         return JCS_Mathf.IsPositive(mRectTransform.localScale.x);
                 }
+
                 Debug.LogError("Return default Local FlipX (This should not happens)");
+
                 return false;
             }
 
@@ -1180,6 +1210,7 @@ namespace JCSUnity
                         }
                         return;
                 }
+
                 Debug.LogError("Set default Local FlipX (This should not happens)");
             }
         }
@@ -1205,7 +1236,9 @@ namespace JCSUnity
 #endif
                         return JCS_Mathf.IsPositive(mRectTransform.localScale.y);
                 }
+
                 Debug.LogError("Return default Local FlipY (This should not happens)");
+
                 return false;
             }
 
@@ -1247,6 +1280,7 @@ namespace JCSUnity
                         }
                         return;
                 }
+
                 Debug.LogError("Set default Local FlipY (This should not happens)");
             }
         }
